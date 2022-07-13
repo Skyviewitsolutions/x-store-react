@@ -1,90 +1,88 @@
-.LoginMaincontainer{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.LoginMaincontainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.LoginContainer{
-   
-    width: 600px;
-    padding:20px 20px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    border-radius: 5px;
-    padding-bottom: 3%;
+.LoginContainer {
+  width: 480px;
+  padding: 20px 20px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: 5px;
+  padding-bottom: 3%;
 }
-.Loginlogo{
-    width:90%;
-    margin: auto;
-    height: 120px;
-    display: flex;
-    justify-content: center;
+.Loginlogo {
+  width: 90%;
+  margin: auto;
+  height: 80px;
+  display: flex;
+  justify-content: center;
 }
-.Loginlogo img{
-    height: 60%;
-    width: 60%;
-    object-fit: cover;
+.Loginlogo img {
+  height: 60%;
+  width: 60%;
+  object-fit: cover;
 }
-.Loginform{
-    width: 100%;
-    padding: 10px 10px;
+.Loginform {
+  width: 100%;
+  padding: 10px 10px;
 }
-.Loginform label{
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 8px;
+.Loginform label {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
-.Loginform input{
-    width: 100%;
-    height: 50px;
-    padding: 10px 10px;
-    border-radius: 4px;
-    outline: none;
-    border: 1px solid lightgray;
+.Loginform input {
+  width: 100%;
+  height: 38px;
+  padding: 10px 10px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid lightgray;
 }
-.Loginicons{
-    display: flex;
-    width: 100%;
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    justify-content: space-between;
+.Loginicons {
+  display: flex;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  justify-content: space-between;
 }
-.Loginicons input{
-    border: none;
-    width: 85%;
-    height: 50px;
-    border-radius: 4px;
-    
+.Loginicons input {
+  border: none;
+  width: 85%;
+  height: 38px;
+  border-radius: 4px;
 }
-.Loginicons .eye{
- width: 15%;
- background-color: #724b68;
- color: white;
- padding: 10px;
- border-radius: 2px;
+.Loginicons .eye {
+  width: 15%;
+  background-color: #724b68;
+  color: white;
+  padding: 8px;
+  border-radius: 2px;
 }
-.Loginbtn{
-    width: 96%;
-    margin-top: 2.6rem;
-    background-color:#017e84;
-    color: white;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: 500;
-    text-align: center;
-    border: none;
-    border-radius: 4px;
-    height: 50px;
-    margin-left: 2%;
+.Loginbtn {
+  width: 96%;
+  margin-top: 2.6rem;
+  background-color: #017e84;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  height: 38px;
+  margin-left: 2%;
 }
 
-.LoginContent{
-    display: flex;
-    justify-content: space-between;
-    font-size: 18px;
-    color: #017e84;
-    font-weight: 600;
-    margin: auto;
-    width: 95%;
-
+.LoginContent {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #017e84;
+  font-weight: 600;
+  margin: auto;
+  width: 95%;
 }

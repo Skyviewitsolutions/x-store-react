@@ -1,0 +1,114 @@
+.SignupMainContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SignupContainer{
+    width: 480px;
+    padding:10px 25px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 5px;
+    padding-bottom: 2%;
+}
+.Signuplogo{
+    width:90%;
+    margin: auto;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.Signuplogo img{
+    height: 60%;
+    width: 60%;
+    object-fit: cover;
+}
+.Signupform{
+    width: 100%;
+    padding: 5px 5px;
+    margin-bottom: 5px;
+    
+}
+.Signupform2{
+    width: 100%;
+    padding: 5px 5px;
+    margin-bottom: 5px;
+    
+}
+.Signupform label{
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.Signupform input{
+    width: 100%;
+    height: 38px;
+    padding: 10px 10px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    border: 1px solid lightgray;
+}
+.Signupform2 label{
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.Signupform2 input{
+    width: 100%;
+    
+    padding: 10px 10px;
+    border-radius: 4px;
+    outline: none;
+
+}
+
+.Signupicons{
+    display: flex;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    justify-content: space-between;
+    height: 37px;
+    
+}
+
+.Signupicons input{
+    border: none;
+    width: 85%;
+    border-radius: 4px;
+    
+}
+.Signupicons .eye{
+ width: 15%;
+ background-color: #724b68;
+ color: white;
+ padding: 8px;
+ border-radius: 2px;
+}
+
+.Signupbtn{
+    width: 96%;
+    margin-top: 1.6rem;
+    background-color:#017e84;
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    height: 38px;
+    margin-left: 2%;
+}
+.SignupContent{
+    font-size: 14px;
+    color: #017e84;
+    font-weight: 600;
+    margin: auto;
+    width: 95%;
+}

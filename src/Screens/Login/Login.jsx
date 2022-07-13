@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import XSTORE from '../../assets/Images/xstore.png';
+import XSTORE from '../../assets/images/xstore.png';
 import { AiOutlineEye } from 'react-icons/ai';
 
 const Login = () => {
@@ -22,7 +22,7 @@ const Login = () => {
           <label>Password</label><br/>
           <div className="Loginicons">
           <input type="Password" required="Please Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} /> 
-           <AiOutlineEye size="50px" className="eye"/>
+           <AiOutlineEye size="38px" className="eye"/>
           </div>
         </div>
         
