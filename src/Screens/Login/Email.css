@@ -1,40 +1,39 @@
-.LoginMaincontainer{
+.EmailMainContainer{
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.LoginContainer{
-   
+.EmailContainer{
     width: 600px;
     padding:20px 20px;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     border-radius: 5px;
-    padding-bottom: 3%;
+    padding-bottom: 4%;
 }
-.Loginlogo{
+.Emaillogo{
     width:90%;
     margin: auto;
     height: 120px;
     display: flex;
     justify-content: center;
 }
-.Loginlogo img{
+.Emaillogo img{
     height: 60%;
     width: 60%;
     object-fit: cover;
 }
-.Loginform{
+.Emailform{
     width: 100%;
     padding: 10px 10px;
 }
-.Loginform label{
+.Emailform label{
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 8px;
 }
-.Loginform input{
+.Emailform input{
     width: 100%;
     height: 50px;
     padding: 10px 10px;
@@ -42,33 +41,12 @@
     outline: none;
     border: 1px solid lightgray;
 }
-.Loginicons{
-    display: flex;
-    width: 100%;
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    justify-content: space-between;
-}
-.Loginicons input{
-    border: none;
-    width: 85%;
-    height: 50px;
-    border-radius: 4px;
-    
-}
-.Loginicons .eye{
- width: 15%;
- background-color: #724b68;
- color: white;
- padding: 10px;
- border-radius: 2px;
-}
-.Loginbtn{
+.Emailbtn{
     width: 96%;
-    margin-top: 2.6rem;
+    margin-top: 1.6rem;
     background-color:#017e84;
     color: white;
-    font-size: 20px;
+    font-size: 21px;
     text-transform: uppercase;
     font-weight: 500;
     text-align: center;
@@ -77,14 +55,9 @@
     height: 50px;
     margin-left: 2%;
 }
-
-.LoginContent{
-    display: flex;
-    justify-content: space-between;
-    font-size: 18px;
+.Emailback{
     color: #017e84;
-    font-weight: 600;
-    margin: auto;
-    width: 95%;
-
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 3%;
 }
