@@ -1,0 +1,22 @@
+.container {
+    margin: auto;
+    width: 60%;
+    
+  }
+  
+  .row {
+    margin-left: 10%;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .cardd {
+    width: 100px;
+    margin-left: 3.6%;
+    
+  min-height: 70px;
+  }
+  
+  
