@@ -1,7 +1,7 @@
 .container {
     margin: auto;
     width: 60%;
-    
+    border: 2px solid red;
   }
   
   .row {
@@ -10,13 +10,41 @@
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+    
   }
-  
+
+  .dashCont{
+    
+     display: flex;
+     flex-wrap: wrap;
+    margin-left: 16px;
+  }
   .cardd {
     width: 100px;
-    margin-left: 3.6%;
-    
-  min-height: 70px;
+    height: 100px;
+    margin: 20px;
+    justify-content: center;
   }
-  
+
+  .Dash{
+    box-shadow:  rgba(0, 0, 0, 0.35) 0px 3px 8px;
+    height: 80px;
+    width: 80px;
+    margin: auto;
+  }
+
+   
+    @media (max-width: 1000px) {
+      .container {
+      text-align: center;
+      width: 90%;
+      
+    }
+   
+    .cardd {
+      width: 80px;
+    min-height: 70px;
+    }
+  }
+ 
   

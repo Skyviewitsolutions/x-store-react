@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './ForgetPassword.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import XSTORE from "../../assets/images/xstore.png"
+import XSTORE from "../../assets/Images/xstore.png"
 
 const ForgetPassword = () => {
     const[email, setEmail] = useState("");
