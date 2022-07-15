@@ -1,7 +1,15 @@
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #857a82;
+}
 .container {
     margin: auto;
     width: 60%;
-    border: 2px solid red;
+   border: 2px solid gray;
+
   }
   
   .row {
@@ -24,17 +32,22 @@
     height: 100px;
     margin: 20px;
     justify-content: center;
+    cursor: pointer;
   }
 
   .Dash{
-    box-shadow:  rgba(0, 0, 0, 0.35) 0px 3px 8px;
+   
     height: 80px;
     width: 80px;
     margin: auto;
+    border-radius: 5px;
   }
-
+.Dash:hover{
+  box-shadow:  rgba(0, 0, 0, 0.35) 0px 3px 8px;
+  transition: 0.2s;
+}
    
-    @media (max-width: 1000px) {
+    @media only screen and (max-width: 1000px) {
       .container {
       text-align: center;
       width: 90%;
@@ -45,6 +58,62 @@
       width: 80px;
     min-height: 70px;
     }
+    .dashCont{
+     margin-left:6.3%;
+   }
   }
- 
+  @media  screen, (min-width : 480px) and (max-width: 768px) {
+    .dashCont{
+      margin: auto;
+      margin-left: 25px;
+    }
+  }
   
+
+  @media  (max-width : 600px)  {
+    .container {
+      text-align: center;
+      width: 100%;
+      
+    }
+    .dashCont{
+      margin: auto;
+      margin-left: 25px;
+    }
+  }
+  
+  @media  (max-width : 360px)  {
+    .container {
+      text-align: center;
+      width: 100%;
+      
+    }
+    .dashCont{
+      margin: auto;
+     margin-left: 12%;
+    }
+  }
+  
+  @media only screen and (max-width: 240px) {
+    .container {
+      text-align: center;
+      width: 100%;
+      
+    }
+    .dashCont{
+      margin: auto;
+      size: 10px;
+    }
+    .cardd {
+      width: 40px;
+    min-height: 40px;
+
+    }
+    .Dash{
+      text-align: center;
+      height: 80px;
+      width: 70px;
+      
+    }
+    
+  }
