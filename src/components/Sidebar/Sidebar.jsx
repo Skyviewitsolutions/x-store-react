@@ -14,21 +14,29 @@ const Sidebar = () => {
           <div className="all"><span>All</span></div>
           </li>
           <li>
-            <level>Dashboard</level><span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+            <level>Assets</level> <span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
             </span>
           </li>
           <li>
-          <level>Dashboard</level>  <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" />
+          <level>BATTERY</level>  <span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+            </span>
           </li>
           <li>
-          <level>Dashboard</level> 
+          <level>Electricle</level>  <span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+            </span>
           </li>
           <li>
-          <level>Dashboard</level> 
+          <level>Filters</level>   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+          </li>
+          <li>
+          <level>GR</level>   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+          </li>
+          <li>
+          <level>Machanical</level>   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
           </li>
         </ul>
 
-        <div className="content"></div>
+        
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 .container {
   height: 100vh;
-  background-color: #ccc;
+  width: 350px;
   position: relative;
+  border: #fff;
 }
 
 .container .sidebar {
@@ -15,19 +16,17 @@
   box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
 }
 .sidebar li:nth-child(1) {
-  
- 
   display: flex;
-justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   font-weight: 500;
   font-style: italic;
   font-family: emoji;
   padding-top: 20px;
 }
 
-
-
 .sidebar li {
+  width: 100%;
   padding: 5px;
   cursor: pointer;
   transition: all 0.5s;
@@ -37,32 +36,39 @@ justify-content: space-between;
   gap: 10px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
+  justify-content: space-between;
 }
 
-.sidebar li span:nth-child(1) {
-  font-size: 20px;
+.sidebar li level:nth-child(1) {
+  font-size: 14px;
 }
-.sp{
-    font-size: 26px;
+.sp {
+  font-size: 26px;
 }
-.sp1{
-    font-size: 12px;
-    margin-left: 20px;
-    /* padding-left: 10px; */
+.sp1 {
+  font-size: 14px;
+  margin-left: 20px;
+  font-weight: 600;
 }
 
 .sidebar li span:nth-child(2) {
-  font-size: 16px;
+  font-size: 14px;
+  margin-left: 65%;
 }
 
 .container .content {
   padding-left: 75px;
 }
-.sidebar li .all{
-    height: 35px;
-    width: 60%;
-    background-color:#d3ecfa ;
-    line-height: 35px;
-    padding-left: 5px;
-    border-radius: 5px;
+.sidebar li .all {
+  height: 35px;
+  width: 60%;
+  background-color: #d3ecfa;
+  line-height: 35px;
+  padding-left: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+.form-check-input {
+  font-size: 12px;
+  margin-top: 6px;
 }
