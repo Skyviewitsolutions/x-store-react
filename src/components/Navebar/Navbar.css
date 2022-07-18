@@ -1,0 +1,39 @@
+.container-fluid{
+    margin: 0px;
+    padding: 0px;
+}
+.Navbar{
+    width: 100%;
+    background-color: #875a7b;
+    color: white;
+}
+.navetext{
+    color: white !important;
+    font-size:14px!important;
+
+}
+.navetext:hover{
+
+    background-color: #68465f;
+}
+.head{
+    height: 100px;
+    width: 100%;
+    background-color:white;
+    border-bottom: 1px solid gray;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.search{
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+   height: 35px;
+   border-bottom: 1px solid black;
+}
+
+input{
+    width: 97%;
+    outline: none;
+    border: none;
+
+}
