@@ -1,16 +1,16 @@
 import React from 'react'
-import Navebar from "../../components/Navebar/Navbar"
+import Navbar from "../../components/Navbar/Navbar"
 import InventoryCard from '../../components/InventoryCard/InventoryCard'
 
 const InventoryScreen = () => {
   return (<>
-    <Navebar/>
+    <Navbar/>
     <div style={{display : "flex" ,width:"100%"}}>
         <InventoryCard />
         <InventoryCard />
         <InventoryCard />
         <InventoryCard />
-        <InventoryCard />
+        
         
       
     </div>

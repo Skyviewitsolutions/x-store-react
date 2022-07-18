@@ -4,7 +4,8 @@ const InventoryCard = () => {
   return (
     <>
       <div className="container-fluid">
-        <div className="mainbox">
+       
+        <div className="row" style={{width:"100%"}}>
           <div className="box">
             <div className="b1">
               <h5
@@ -177,6 +178,7 @@ const InventoryCard = () => {
 
         </div>
       </div>
+   
     </>
   );
 };
