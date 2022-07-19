@@ -9,7 +9,7 @@ import InventoryScreen from './Screens/Inventory/InventoryScreen';
 import ProductVarient from './components/ProductVarient/ProductVarient';
 import Sidebar from './components/Sidebar/Sidebar';
 import InventoryProducts from './Screens/InventoryProducts/InventoryProducts';
-
+import Otp from './Screens/OTPPage/Otp';
 const App = () => {
 
   return(<>
@@ -23,6 +23,7 @@ const App = () => {
         <Route path="/Inventory" element={<InventoryScreen/>} />
         <Route path="/ProductVarient" element={<ProductVarient/>} />
         <Route path="/InventoryProducts" element={<InventoryProducts/>} />
+        <Route path="/OtpPage" element={<Otp/>} />
       </Routes>
     </Router>
     

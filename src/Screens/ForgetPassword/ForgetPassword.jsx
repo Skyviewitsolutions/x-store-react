@@ -2,9 +2,16 @@ import React,{useState} from 'react'
 import './ForgetPassword.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import XSTORE from "../../assets/Images/xstore.png"
-
+import {useNavigate} from 'react-router-dom';
 const ForgetPassword = () => {
-    const[email, setEmail] = useState("");
+  const[email, setEmail] = useState("");
+  const Navigate = useNavigate();
+const  RedirectToLogin = () => {
+   Navigate("/Login");
+}
+const RedirectToChangePassword = () => {
+  Navigate("/ChangePassword");
+}
   return (
     <div className="EmailMainContainer">
     <div className="EmailContainer mt-5">
@@ -18,7 +25,7 @@ const ForgetPassword = () => {
        
           <button className="Emailbtn mt-4">Confirm</button>
         <div className="mt-2 Emailback">
-            <span>Back to login</span>
+        <span onClick={RedirectToLogin}>Back to login</span>
             </div>
     </div>
     </div>
