@@ -1,3 +1,17 @@
-.container-fluid{
-    background-color: white;
+.PVMain{
+    width: 100%;
+}
+.pvmleft{
+    
+    height: 100vh;
+    width:15%;
+    margin-left: -1%;
+    float: left;
+}
+.pvmRight{
+    height: 100vh;
+    width: 85%;
+    float: left;
+    margin-left: 1%;
+    position: -ms-page;
 }

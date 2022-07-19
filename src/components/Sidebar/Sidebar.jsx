@@ -5,13 +5,14 @@ import "./Sidebar.css";
 const Sidebar = () => {
   return (
     <div>
-      <div className="container">
+      <div className="container sbr">
         <ul className="sidebar">
           
             <span className="sp">{<MdList/>}<span className="sp1">PRODUCT CATEGORY</span></span>
         
-          <li>
-          <div className="all"><span>All</span></div>
+            <li>
+            <level>All</level> <span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+            </span>
           </li>
           <li>
             <level>Assets</level> <span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
