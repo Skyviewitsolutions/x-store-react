@@ -3,3 +3,8 @@
 .MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.tss-tlx3x1-MUIDataTableToolbar-root.css-hyum1k-MuiToolbar-root {
     display: none !important;
 }
+
+.tss-1h9t3sl-MUIDataTableHeadCell-sortAction {
+    font-size: 12px;
+    font-weight: 600;
+}
