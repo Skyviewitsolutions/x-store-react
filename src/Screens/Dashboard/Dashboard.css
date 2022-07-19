@@ -7,9 +7,9 @@
   background-color: #857a82;
   
 }
-.container {
+.containers {
     margin: auto;
-    width: 100%;
+    width: 60%;
    border: 2px solid gray;
 
   }
@@ -50,7 +50,7 @@
 }
    
     @media only screen and (max-width: 1000px) {
-      .container {
+      .containers {
       text-align: center;
       width: 90%;
       
@@ -73,7 +73,7 @@
   
 
   @media  (max-width : 600px)  {
-    .container {
+    .containers {
       text-align: center;
       width: 100%;
       
@@ -85,7 +85,7 @@
   }
   
   @media  (max-width : 360px)  {
-    .container {
+    .containers {
       text-align: center;
       width: 100%;
       
@@ -97,7 +97,7 @@
   }
   
   @media only screen and (max-width: 240px) {
-    .container {
+    .containers {
       text-align: center;
       width: 100%;
       

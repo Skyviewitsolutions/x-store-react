@@ -1,14 +1,15 @@
 .sbr {
-  height: 100vh;
+  height: 100%;
   width: 250px;
   position: relative;
   border: #fff;
+  background-color: white;
 }
 
 .sbr .sidebar {
   position: absolute;
   background-color: #fff;
-  height: 100vh;
+  height: 100%;
   width: 250px;
  
   z-index: 10;

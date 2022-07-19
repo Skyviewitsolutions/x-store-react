@@ -76,7 +76,7 @@ const submit = () => {
 
   return (
     <div className="SignupMainContainer">
-    <div className="SignupContainer mt-4">
+    <div className="SignupContainer ">
         <div className="row Signuplogo mt-4">
             <img src={XSTORE} alt="logo" />
         </div>

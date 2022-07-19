@@ -14,7 +14,7 @@ const RedirectToChangePassword = () => {
 }
   return (
     <div className="EmailMainContainer">
-    <div className="EmailContainer mt-5">
+    <div className="EmailContainer ">
      <div className="row Emaillogo mt-4">
             <img src={XSTORE} alt="logo" />
         </div>
@@ -23,7 +23,7 @@ const RedirectToChangePassword = () => {
           <input type="email" required="Please Enter Email"  onChange={(e) => setEmail(e.target.value)} value={email}/>
         </div>
        
-          <button className="Emailbtn mt-4">Confirm</button>
+          <button className="Emailbtn mt-4" onClick={RedirectToChangePassword}>Confirm</button>
         <div className="mt-2 Emailback">
         <span onClick={RedirectToLogin}>Back to login</span>
             </div>

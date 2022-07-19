@@ -40,7 +40,7 @@ const Login = () => {
   }
   return (
        <div className="LoginMaincontainer">
-    <div className="LoginContainer mt-5">
+    <div className="LoginContainer ">
         <div className="row Loginlogo mt-4">
             <img src={XSTORE} alt="logo" />
         </div>

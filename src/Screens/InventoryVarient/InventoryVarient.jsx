@@ -1,11 +1,10 @@
-import React from "react";
-import Navebar from "../Navbar/Navbar";
-import Sidebar from "../Sidebar/Sidebar";
-import "./ProductVarient.css";
-import ProductVarientTab from "./ProductVarientTab";
+import React from 'react';
+import "./InventoryVarient.css";
+import Navebar from '../../components/Navbar/Navbar';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import ProductVarientTab from '../../components/ProductVarient/ProductVarientTab';
 
-const ProductVarient = () => {
-
+const InventoryVarient = () => {
   return (
     <div>
       <Navebar />
@@ -24,6 +23,7 @@ const ProductVarient = () => {
           </div>
         </div>
     
-  );
+  )
 }
-export default ProductVarient;
+
+export default InventoryVarient

@@ -26,7 +26,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="container-fluid main">
-        <div className="container">
+        <div className="containers">
         <div className="dashCont">
          
           <Card img={<BsChatText size={40} color="white"/>} text="Discuss" className="dash" bgColor="#cc6886"/>
