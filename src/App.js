@@ -8,7 +8,7 @@ import Navebar from './components/Navbar/Navbar';
 import InventoryScreen from './Screens/Inventory/InventoryScreen';
 import ProductVarient from './components/ProductVarient/ProductVarient';
 import Sidebar from './components/Sidebar/Sidebar';
-
+import InventoryProducts from './Screens/InventoryProducts/InventoryProducts';
 
 const App = () => {
 
@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/Dashboard" element={<Dashboard/>} />
         <Route path="/Inventory" element={<InventoryScreen/>} />
         <Route path="/ProductVarient" element={<ProductVarient/>} />
+        <Route path="/InventoryProducts" element={<InventoryProducts/>} />
       </Routes>
     </Router>
     

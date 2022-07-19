@@ -1,0 +1,18 @@
+.ProductsMainContainer{
+    width: 100%;
+}
+.ProductContainer{
+    width: 100%;
+    display: flex;
+}
+.ProductSidebar{
+    width: 25%;
+    height: 100%;
+}
+.Product2Card{
+    width: 75%;
+    display : flex ;
+    flex-wrap: wrap;
+    height: 100%;
+    background-color: #eff1f3;
+}

@@ -5,23 +5,25 @@ import "./ProductVarient.css";
 import ProductVarientTab from "./ProductVarientTab";
 
 const ProductVarient = () => {
+
   return (
     <div>
       <Navebar />
       <div className="container-fluid PROVAR">
         <div className="PVMain">
+          
           <div className="pvmleft">
-            <Sidebar />
-          </div>
+         
+            <Sidebar/>
+            </div>
           <div className="pvmRight">
          
             <ProductVarientTab/>
             </div>
+            </div>
           </div>
         </div>
-      </div>
     
   );
-};
-
+}
 export default ProductVarient;
