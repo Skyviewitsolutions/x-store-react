@@ -1,3 +1,14 @@
 .container-fluid{
     background-color: white;
 }
+.main1{
+    display: flex;
+    width: 100%;
+}
+.VarientSidebar{
+    width: 25%;
+}
+.ProductTab{
+    width: 75%;
+    margin-top: 10px;
+}
