@@ -5,7 +5,7 @@ import { TbArrowsLeftRight } from 'react-icons/tb';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { FaRandom } from 'react-icons/fa';
 import { FaCogs } from 'react-icons/fa';
-
+import Nav from 'react-bootstrap/Nav';
 const InventoryProductDetailsMain = () => {
   return (
     <div className='MainContainer'>
@@ -78,6 +78,32 @@ const InventoryProductDetailsMain = () => {
           </div>
 
         </div>
+        <div className="detailsbtn">
+    <Nav variant="tabs" defaultActiveKey="/home">
+      <Nav.Item className='detailslink'> 
+        <Nav.Link href="">General Information</Nav.Link>
+      </Nav.Item>
+      <Nav.Item className='detailslink'>
+        <Nav.Link eventKey="link-1">Variants</Nav.Link>
+      </Nav.Item>
+      <Nav.Item className='detailslink'>
+        <Nav.Link eventKey="link-2">
+          Purchase
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item className='detailslink'>
+        <Nav.Link eventKey="link-3">
+          Inventory
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item className='detailslink'>
+        <Nav.Link eventKey="link-4" >
+          Accounting
+        </Nav.Link>
+      </Nav.Item>
+    </Nav>
+        </div>
+
       </div>
     </div>
   )

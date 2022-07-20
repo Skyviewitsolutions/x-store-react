@@ -1,17 +1,18 @@
 .MainContainer{
     width: 100%;
-    background-color: #beb8b8;
+    background-color: #f3f5f7;
     padding: 10px 10px;
 }
 .Container{
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    margin-top: 10px;
+    margin-top: 5px;
     background-color: #fff;
+    border: 1px solid #cdd3d9;
 }
 .ContainerHeader{
     width: 100%;
-    border: 1px solid #cdd3d9;
+    border-bottom: 1px solid #cdd3d9;
     display: flex;
 }
 .div1{
@@ -46,7 +47,6 @@
 }
 .detailsbox{
     width: 100%;
-    border-top:1px solid #beb8b8;
 }
 .detailsheading{
     width: 50%;
@@ -59,7 +59,7 @@
 }
 .detailsinput{
     margin-left: 35px;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 .detailsinput label{
     font-size: 16px;
@@ -67,4 +67,20 @@
     font-weight: 600;
     margin-left: 10px;
 }
+.detailsinput input{
+    width: 24px;
+    border-bottom:1px solid #beb8b8;
+}
+.detailsbtn{
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.detailslink{
+    border: 1px solid #beb8b8;
+    border-bottom: none;
+}
 
+.detailslink a.nav-link {
+    color:#6f6f6f;
+    font-size: 15px;
+}
