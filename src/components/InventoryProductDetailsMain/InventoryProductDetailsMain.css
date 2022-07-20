@@ -1,0 +1,70 @@
+.MainContainer{
+    width: 100%;
+    background-color: #beb8b8;
+    padding: 10px 10px;
+}
+.Container{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin-top: 10px;
+    background-color: #fff;
+}
+.ContainerHeader{
+    width: 100%;
+    border: 1px solid #cdd3d9;
+    display: flex;
+}
+.div1{
+    width: 20%;
+    border-right: 1px solid #cdd3d9;
+}
+.div2{
+    width: 200px;
+    display: flex;
+    padding: 2px 0px;
+    margin-left: 10px;
+    border-right: 1px solid #cdd3d9;
+}
+.text p{
+    color: #b68695;
+    font-size: 18px;
+    margin-left: 19px;
+    font-weight: 600;
+    margin-bottom: -7px;
+}
+.text span{
+  font-size: 15px;
+  padding-left: 20px;
+  color: #6f6f6f;
+}
+.text2 p{
+    color:#6f6f6f;
+    font-size: 18px;
+    margin-left: 19px;
+    margin-bottom: -7px;
+    margin-top: 8px;
+}
+.detailsbox{
+    width: 100%;
+    border-top:1px solid #beb8b8;
+}
+.detailsheading{
+    width: 50%;
+    
+}
+.detailsheading p{
+    font-size: 35px;
+    margin-left: 35px;
+    margin-top: 18px; 
+}
+.detailsinput{
+    margin-left: 35px;
+    margin-top: 10px;
+}
+.detailsinput label{
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+    margin-left: 10px;
+}
+

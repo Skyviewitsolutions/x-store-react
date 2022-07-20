@@ -11,7 +11,7 @@ import InventoryVarient from './Screens/InventoryVarient/InventoryVarient';
 import InventoryProducts from './Screens/InventoryProducts/InventoryProducts';
 import Otp from './Screens/OTPPage/Otp';
 import ChangePassword from "./Screens/ChangePassword/ChangePassword"
-
+import InventoryProductDetails from './Screens/InventoryProductDetails/InventoryProductDetails';
 const App = () => {
 
   return(<>
@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/Inventory" element={<InventoryScreen/>} />
         <Route path="/InventoryVarient" element={<InventoryVarient/>} />
         <Route path="/InventoryProducts" element={<InventoryProducts/>} />
-        
+        <Route path='/InventoryProductsDetails' element={<InventoryProductDetails/>} />
       </Routes>
     </Router>
     

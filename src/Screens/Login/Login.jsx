@@ -59,7 +59,7 @@ const Login = () => {
           <span style={{color:"red"}}>{passwordError}</span>
         </div>
         
-          <button className="Loginbtn">Sign In</button>
+          <button className="Loginbtn" onClick={submit}>Sign In</button>
        
         <div className="LoginContent mt-2">
         <span onClick={RedirecttoSignup}>Don't have an account?</span>
