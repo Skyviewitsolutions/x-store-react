@@ -1,0 +1,58 @@
+.InventoryContainer{
+   width: 100%;
+   padding-top: 25px; 
+   display: flex;
+   padding-bottom: 30px;
+}
+.Inventory1{
+    width: 50%;
+    margin-left: 37px;
+}
+.Inventory1 h5{
+    color: #666666;
+    margin-top: 30px;
+    font-size: 25px;
+    font-weight: 400; 
+}
+
+.content1{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+}
+.content1 p{
+    width: 200px;
+    color: #6a666a;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+.content1 input{
+    width: 20px;
+}
+.content1 label{
+    color: #666666;
+    font-size: 14px;
+    font-weight: 500px;
+    margin-bottom: 4px;
+    margin-left: 5px;
+}
+.content1 span{
+    color: #6a666a;
+    font-size: 16px;
+}
+.Logistics h5{
+    color: #666666;
+    margin-top: 30px;
+    font-size: 25px;
+    font-weight: 400; 
+}
+.Inventory2{
+    width: 50%;
+}
+.Inventory2 h5{
+    color: #666666;
+    margin-top: 30px;
+    font-size: 25px;
+    font-weight: 400; 
+}

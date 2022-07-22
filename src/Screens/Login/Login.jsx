@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import XSTORE from '../../assets/Images/xstore.png';
 import { AiOutlineEye,AiOutlineEyeInvisible } from 'react-icons/ai';
 import {useNavigate} from "react-router-dom";
+import validator from 'validator';
 const Login = () => {
 
   const [email, setEmail] = useState("");
@@ -23,6 +24,9 @@ const Login = () => {
     {
       setEmailError("Please enter valid email");
     }
+    else if(!validator.isEmail(email)){
+      setEmailError("InValid Email ")
+   }
     else if(!password)
     {
       setEmailError("");

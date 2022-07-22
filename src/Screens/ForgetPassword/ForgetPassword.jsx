@@ -3,14 +3,27 @@ import './ForgetPassword.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import XSTORE from "../../assets/Images/xstore.png"
 import {useNavigate} from 'react-router-dom';
+import validator from 'validator';
 const ForgetPassword = () => {
   const[email, setEmail] = useState("");
+  const[emailError,setEmailError]  = useState("");
   const Navigate = useNavigate();
 const  RedirectToLogin = () => {
    Navigate("/Login");
 }
 const RedirectToChangePassword = () => {
-  Navigate("/ChangePassword");
+  if(!email)
+  {
+    setEmailError("Please Enter Your valid email");
+  }
+  else if(!validator.isEmail(email)){
+    setEmailError("InValid Email ")
+  }
+  else{
+    setEmailError("");
+    Navigate("/ChangePassword");
+  alert("submited successfully");
+  }
 }
   return (
     <div className="EmailMainContainer">
@@ -21,6 +34,7 @@ const RedirectToChangePassword = () => {
         <div className="Emailform">
           <label>Your Email</label><br/>
           <input type="email" required="Please Enter Email"  onChange={(e) => setEmail(e.target.value)} value={email}/>
+          <span style={{color:"red"}}>{emailError }</span>
         </div>
        
           <button className="Emailbtn mt-4" onClick={RedirectToChangePassword}>Confirm</button>

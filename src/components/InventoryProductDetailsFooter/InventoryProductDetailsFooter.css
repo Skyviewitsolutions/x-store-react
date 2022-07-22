@@ -1,0 +1,38 @@
+.ProductDeatilsFooter{
+    width: 100%;
+    border: 1px solid #dee2e6;
+    background-color:#fff;
+    display: flex;
+    justify-content: space-between;
+}
+.left{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin-left: 48px;
+}
+.left p{
+    color: #008784;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+.log{
+    margin:16px 15px;
+}
+.right{
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+.right p{
+    color: #008784;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.clip{
+    display: flex;
+    align-items: center;
+     
+}

@@ -6,6 +6,11 @@ import { HiOutlineRefresh } from 'react-icons/hi';
 import { FaRandom } from 'react-icons/fa';
 import { FaCogs } from 'react-icons/fa';
 import Nav from 'react-bootstrap/Nav';
+import GeneralInformation from './GeneralInformation';
+import Accounting from './Accounting';
+import ProductDetailsInventory from './ProductDetailsInventory';
+import Variants from './Variants';
+import Purchase from './Purchase';
 const InventoryProductDetailsMain = () => {
   return (
     <div className='MainContainer'>
@@ -32,7 +37,7 @@ const InventoryProductDetailsMain = () => {
             <TbArrowsLeftRight size="25px" style={{ color: "#848484", marginTop: "5px", }} />
             <div className="text2">
               <p>Traceability</p>
-            </div>
+            </div>  
           </div>
           <div className="div2">
             <HiOutlineRefresh size="25px" style={{ color: "#848484", marginTop: "5px", }} />
@@ -103,7 +108,13 @@ const InventoryProductDetailsMain = () => {
       </Nav.Item>
     </Nav>
         </div>
-
+          <div className="GeneralInformation">
+            {/* <GeneralInformation /> */}
+            {/* <Accounting /> */}
+            {/* <ProductDetailsInventory /> */}
+            {/* <Variants /> */}
+            <Purchase />
+          </div>
       </div>
     </div>
   )

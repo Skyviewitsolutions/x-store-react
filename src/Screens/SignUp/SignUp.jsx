@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import XSTORE from '../../assets/Images/xstore.png';
 import { AiOutlineEye,AiOutlineEyeInvisible } from 'react-icons/ai';
 import {useNavigate} from 'react-router-dom';
-
+import validator from 'validator';
 const SignUp = () => {
     
 const [name,setName] = useState("");
@@ -37,6 +37,9 @@ const submit = () => {
         setNameError("");
         setEmailerror("Please Enter Your valid email");
       }
+      else if(!validator.isEmail(email)){
+         setEmailerror("InValid Email ")
+      }
       else if(!phoneno)
       {
         setEmailerror("");
@@ -62,7 +65,7 @@ const submit = () => {
     }
     else if(confirmpass !== password)
     {
-      setConfirmError("does not match confirm password")
+      setConfirmError("Password does not match")
     }
     else{
       setNameError("");
