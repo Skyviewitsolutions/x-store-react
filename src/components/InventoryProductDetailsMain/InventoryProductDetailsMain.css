@@ -2,6 +2,10 @@
     width: 100%;
     background-color: #f3f5f7;
     padding: 10px 10px;
+    flex: 1;
+    height: 500px;
+    overflow-y: scroll;
+   padding-right: 12px;
 }
 .Container{
     width: 100%;
@@ -14,6 +18,7 @@
     width: 100%;
     border-bottom: 1px solid #cdd3d9;
     display: flex;
+    cursor: pointer;
 }
 .div1{
     width: 20%;
@@ -23,8 +28,11 @@
     width: 200px;
     display: flex;
     padding: 2px 0px;
-    margin-left: 10px;
+    padding-left: 10px;
     border-right: 1px solid #cdd3d9;
+}
+.div2:hover{
+    background-color: #f3efef;
 }
 .text p{
     color: #b68695;
@@ -47,6 +55,17 @@
 }
 .detailsbox{
     width: 100%;
+    position: relative;
+}
+.cameraimg{
+    position: absolute;
+    right: 30px;
+    top:25px;
+    border: 1px solid #cccc;
+}
+.cameraimg img{
+    height: 100px;
+    width: 100px;
 }
 .detailsheading{
     width: 50%;
@@ -74,6 +93,7 @@
 .detailsbtn{
     margin-left: 15px;
     margin-top: 20px;
+    cursor: pointer;
 }
 .detailslink{
     border: 1px solid #beb8b8;

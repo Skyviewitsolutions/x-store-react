@@ -5,7 +5,7 @@ const InventoryCard = () => {
     <>
       <div className="container-fluid">
        
-        <div className="row" style={{width:"100%"}}>
+        <div className="row" style={{width:"100%",}}>
           <div className="box">
             <div className="b1">
               <h5

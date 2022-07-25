@@ -12,6 +12,15 @@ import InventoryProducts from './Screens/InventoryProducts/InventoryProducts';
 import Otp from './Screens/OTPPage/Otp';
 import ChangePassword from "./Screens/ChangePassword/ChangePassword"
 import InventoryProductDetails from './Screens/InventoryProductDetails/InventoryProductDetails';
+import Uom from './Screens/Configuration/Uom';
+import UomCategories from './Screens/Configuration/UomCategories';
+import ProductCategories from './Screens/Configuration/ProductCategories';
+import Attributes from './Screens/Configuration/Attributes';
+import Location from './Screens/Location/Location';
+import Warehouse from './Screens/Configuration/Warehouse';
+import ConfigRoutes from './Screens/Configuration/ConfigRoutes';
+import OperationTypes from './Screens/Configuration/OperationTypes';
+
 const App = () => {
 
   return(<>
@@ -29,6 +38,14 @@ const App = () => {
         <Route path="/InventoryVarient" element={<InventoryVarient/>} />
         <Route path="/InventoryProducts" element={<InventoryProducts/>} />
         <Route path='/InventoryProductsDetails' element={<InventoryProductDetails/>} />
+        <Route path='/Uom' element={<Uom/>} />
+        <Route path='/UomCategories' element={<UomCategories/>} />
+        <Route path="/ProductCategories" element={<ProductCategories/>} />
+        <Route path="/Attributes" element={<Attributes/>} />
+        <Route path="/Location" element={<Location/>} />
+        <Route path= '/Warehouse' element = {<Warehouse/>} />
+        <Route path='/ConfigRoutes' element = {<ConfigRoutes/>} />
+        <Route path='/OperationType' element = {<OperationTypes/>} />
       </Routes>
     </Router>
     

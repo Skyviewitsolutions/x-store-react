@@ -2,7 +2,7 @@ import React from 'react';
 import "./InventoryVarient.css";
 import Navebar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import ProductVarientTab from '../../components/ProductVarient/ProductVarientTab';
+import CustomTable from '../../components/CustomTable/CustomTable';
 
 const InventoryVarient = () => {
   return (
@@ -17,7 +17,7 @@ const InventoryVarient = () => {
             </div>
           <div className="pvmRight">
          
-            <ProductVarientTab/>
+            <CustomTable/>
             </div>
             </div>
           </div>

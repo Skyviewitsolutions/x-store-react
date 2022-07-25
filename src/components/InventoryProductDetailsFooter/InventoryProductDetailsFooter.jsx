@@ -25,6 +25,7 @@ const InventoryProductDetailsFooter = () => {
             </div>
             <p>Follow</p>
         </div>
+        
         </div>
   )
 }

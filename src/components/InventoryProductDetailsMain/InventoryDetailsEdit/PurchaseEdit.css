@@ -1,0 +1,59 @@
+.PurchaseEditContainer{
+    width: 100%;
+    padding: 50px 20px;
+}
+.PurchaseEditVariants{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 15px;
+}
+.PurchaseEditVariants p{
+    font-size: 15px;
+    margin-left: 30px;
+    color: #66667d;
+    font-weight: 700;
+}
+.PurchaseEditVariants2{
+    width: 100%;
+    height: 200px;
+    border-radius: 2px;
+    box-shadow: rgb(203, 205, 206) 3px 3px 6px 0px inset, rgba(224, 220, 220, 0.5) -3px -3px 6px 1px inset;
+}
+.PurchaseEditVariants2 p{
+    margin-left: 25px;
+    color: #468793;
+    font-size: 16px;
+    padding-top: 8px;
+}
+.PurchaseEditVariants3 h5{
+    color: #6f6f66;
+    margin-left: 35px;
+    padding-top: 30px;
+    font-size: 25px;
+    font-weight: 400;
+}
+.PurchaseEdittext{
+    display: flex;
+   align-items: center;
+}
+.PurchaseEdittext p{
+    color: #6e6e6e;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 35px;
+    width: 150px;
+    height: 19px;
+    margin-bottom: 0px;
+}
+.PurchaseEdittext input{
+    width: 15px;
+}
+.PurchaseEdittext label{
+    margin-left: 10px;
+}
+.PurchaseEditVariants3 p{
+    margin-left: 30px;
+    color: #6e6e6e;
+}

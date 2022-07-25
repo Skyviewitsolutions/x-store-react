@@ -36,7 +36,7 @@ const ProductDetailsInventory = () => {
                   <span style={{color:"#00878f"}}>Administrator</span>
                 </div>
         </div>
-        <div className='Description'>
+        <div >
            <h5>Description for Delivery Orders</h5>
            <h5>Description for Receipts</h5>
            <h5>Description for Internal Transfers</h5>

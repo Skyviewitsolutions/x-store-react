@@ -1,0 +1,42 @@
+.VariantsEditContainer{
+    width: 100%;
+    padding: 10px 20px;
+}
+.VariantsEdit{
+    width: 100%;
+    display: flex;
+}
+.VariantsEditContent1{
+    display: flex;
+    width: 50%;
+}
+.VariantsEditContent1 p{
+    font-size: 15px;
+    margin-left: 30px;
+    color: #212529;
+    font-weight: 700;
+    margin-top: 5px;
+}
+.VariantsEditcontent2 p{
+    font-size: 15px;
+    margin-left: 30px;
+    color: #212529;
+    font-weight: 700;
+    margin-top: 5px;
+}
+.VariantsEdit2{
+    width: 100%;
+    height: 200px;
+    border-radius: 2px;
+    box-shadow: rgb(203, 205, 206) 3px 3px 6px 0px inset, rgba(224, 220, 220, 0.5) -3px -3px 6px 1px inset;
+}
+.VariantsEdit2 p{
+    margin-left: 25px;
+    color: #468793;
+    font-size: 16px;
+    padding-top: 8px;
+}
+.VariantsEditContainerp{
+    color: rgb(175, 174, 174);
+    margin-top: 18px;
+}
