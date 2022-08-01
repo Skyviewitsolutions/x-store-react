@@ -9,6 +9,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
+    cursor: pointer;
 }
 .ProductsCamera{
     height: 100px;

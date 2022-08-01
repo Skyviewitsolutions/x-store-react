@@ -20,6 +20,15 @@ import Location from './Screens/Location/Location';
 import Warehouse from './Screens/Configuration/Warehouse';
 import ConfigRoutes from './Screens/Configuration/ConfigRoutes';
 import OperationTypes from './Screens/Configuration/OperationTypes';
+import Empty from './Screens/Error/Empty';
+import Importempty from './Screens/Import/Importempty';
+import Uomdetails from './Screens/Configuration/Uomdetails';
+import AddProduct from './Screens/AddProduct/AddProduct';
+import UnitPage from './components/InventoryProductDetailsMain/GeneralInformationPage/UnitsPage';
+import AddWarehouse from './Screens/Configuration/AddWarehouse/AddWarehouse';
+import WarehouseConfig from './Screens/Configuration/AddWarehouse/WarehouseConfig';
+import AddLocation from './Screens/Configuration/AddLocation/AddLocation';
+import AddProductCategories from './Screens/Configuration/AddProductCategory/AddProductCategories';
 
 const App = () => {
 
@@ -31,7 +40,6 @@ const App = () => {
         <Route path="/ForgetPassword" element={<ForgetPassword/>} />
         <Route path="/OtpPage" element={<Otp/>} />
         <Route path="/ChangePassword" element={<ChangePassword/>} />
-
         {/* inside projects */}
         <Route path="/Dashboard" element={<Dashboard/>} />
         <Route path="/Inventory" element={<InventoryScreen/>} />
@@ -46,6 +54,15 @@ const App = () => {
         <Route path= '/Warehouse' element = {<Warehouse/>} />
         <Route path='/ConfigRoutes' element = {<ConfigRoutes/>} />
         <Route path='/OperationType' element = {<OperationTypes/>} />
+        <Route path='/Empty' element={<Empty/>} />
+        <Route path='/Importempty' element={<Importempty/>} />
+        <Route path='/Uomdetails' element={<Uomdetails/>} />
+        <Route path='/AddProduct' element={<AddProduct/>} />
+        <Route path='/UnitPage' element={<UnitPage/>} />
+        <Route path='/AddWarehouse' element={<AddWarehouse/>} />
+        <Route path='/WarehouseConfig' element={<WarehouseConfig/>}/>
+        <Route path='/AddLocation' element={<AddLocation/>}/>
+        <Route path='/AddProductCategories' element={<AddProductCategories/>}/>
       </Routes>
     </Router>
     

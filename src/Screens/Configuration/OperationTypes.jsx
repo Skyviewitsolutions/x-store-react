@@ -37,10 +37,10 @@ const OperationTypes = () => {
         {label : 'WareHouse', name : 'warehouse'}
     ]
     return(
-        <>
-        <Navebar />
+        <div style={{width:'100vw',height:'100vh',overflow:'hidden'}}>
+        <Navebar showBelowMenu={true}/>
         <CustomTable  data = {data} column = {column}/>
-        </>
+        </div>
     )
 }
 

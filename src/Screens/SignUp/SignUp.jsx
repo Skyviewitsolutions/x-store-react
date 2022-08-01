@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './SignUp.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import XSTORE from '../../assets/Images/xstore.png';
+import XSTORE from '../../assets/Images/xstore1.png';
 import { AiOutlineEye,AiOutlineEyeInvisible } from 'react-icons/ai';
 import {useNavigate} from 'react-router-dom';
 import validator from 'validator';
@@ -73,7 +73,7 @@ const submit = () => {
       setPhonenoError("");
       setPasswordError("");
       setConfirmError("");
-    alert("submited successfully");
+      navigate("/OtpPage");
     }
 }
 

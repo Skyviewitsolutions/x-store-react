@@ -37,3 +37,31 @@ input{
     border: none;
 
 }
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    cursor: pointer;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+
+    background-color: #68465f;
+    color: #fff !important;
+}
+.navbar-light .navbar-nav .nav-link:active{
+
+    background-color: #68465f;
+    color: #fff !important;
+}
+.createbtn{
+    background-color:#00a09d;
+    border:none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.createbtn:hover{
+    background-color:#036463;
+}

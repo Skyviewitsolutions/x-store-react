@@ -1,0 +1,74 @@
+.WarehouseConfigContainer {
+  width: 100%;
+  display: flex;
+  padding: 35px 45px;
+}
+
+.configpart1 {
+  width: 50%;
+}
+
+.configpart1 p {
+  color: #666666;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 20px;
+  /* margin-top: 10px; */
+}
+
+.checkbox {
+  display: flex;
+  margin-bottom: 0px;
+  align-items: center;
+}
+
+.checkbox p {
+  width: 200px;
+  color: #666666;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+
+.checkbox input {
+  width: 16px;
+  margin-left: 20px;
+}
+
+.checkbox label {
+  margin-left: 10px;
+  color: #666666;
+  font-size: 16px;
+}
+
+.config2 {
+  width: 50%;
+}
+
+.config2 h6 {
+  color: #666666;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.configcontent {
+  display: flex;
+}
+
+.configcontent p {
+  width: 200px;
+  color: #666666;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+
+.configcontent input {
+  width: 16px;
+  margin-left: 20px;
+}

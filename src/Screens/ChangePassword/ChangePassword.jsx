@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './ChangePassword.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import XSTORE from '../../assets/Images/xstore.png';
+import XSTORE from '../../assets/Images/xstore1.png';
 import {useNavigate} from 'react-router-dom';
 import { AiOutlineEye,AiOutlineEyeInvisible } from 'react-icons/ai';
 const ChangePassword = () => {

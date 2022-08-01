@@ -1,7 +1,20 @@
 import React from 'react'
 import './GeneralInformation.css';
-import { FaArrowRight } from 'react-icons/fa'
+import { FaArrowRight } from 'react-icons/fa';
+import UpdateCost from './Model/UpdateCost';
+import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 const GeneralInformation = () => {
+
+    const [showUpdateCost , setShowUpdateCost] = useState(false);
+
+    const navigate = useNavigate();
+     
+    const RedirectToUnit  = () => {
+        navigate('/UnitPage');
+    }
+
     return (
         <div className='GeneralInformationContainer'>
             <div className="part1">
@@ -30,20 +43,20 @@ const GeneralInformation = () => {
                 <div className="firstcontent3">
                     <p>Cost</p>
                     <span>	0.0000 SARper Units</span>
-                    <span style={{ color: "#008784" }}>Update Cost</span>
+                    <span style={{ color: "#008784" }} onClick={() => setShowUpdateCost(true)}>Update Cost</span>
                 </div>
                 <div className="firstcontent3">
                     <p>Unit of Measure</p>
-                    <span style={{ color: "#008784" }}>Units</span>
+                    <span style={{ color: "#008784" }} onClick={RedirectToUnit}>Units</span>
                 </div>
                 <div className="firstcontent3">
                     <p>Purchase Unit of</p>
-                    <span style={{ color: "#008784" }}>Units</span>
+                    <span style={{ color: "#008784" }} onClick={RedirectToUnit}>Units</span>
                 </div>
                 <p style={{ color: "#6a666a", fontSize: "17px", fontWeight: "500" }}>Measure</p>
 
             </div>
-
+             <UpdateCost showUpdateCost={showUpdateCost} setShowUpdateCost={setShowUpdateCost}/>
         </div>
     )
 }

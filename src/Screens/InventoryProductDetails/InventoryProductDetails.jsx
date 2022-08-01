@@ -12,7 +12,7 @@ const InventoryProductDetails = () => {
         <Navebar />
         <ProductDetailsHeader isEdit={isEdit} setIsEdit={setIsEdit} />
         <InventoryProductDetailsMain isEdit={isEdit}/>
-        <InventoryProductDetailsFooter />
+        {/* <InventoryProductDetailsFooter /> */}
     </div>
   )
 }

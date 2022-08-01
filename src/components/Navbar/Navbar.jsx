@@ -1,15 +1,22 @@
 import React from 'react'
-import { Nav, Navbar, } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
 import { FaSearchMinus } from 'react-icons/fa';
 import './Navbar.css';
-const Navebar = () => {
+import {useNavigate} from 'react-router-dom';
+
+const Navebar = (props) => {
+  const { showBelowMenu } = props;
+  const navigate =  useNavigate();
+  const RedirectToCreatePage = () => {
+    navigate('/AddWarehouse');
+  }
   return (
     <>
       <div className='container-fluid'>
         <Navbar className='Navbar' expand="lg" style={{ color: "white" }}>
 
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/Dashboard">
             <span style={{ color: 'white', marginLeft: "15px" }}> {<BsFillGrid3X3GapFill />}</span>
             <span style={{ marginLeft: "25px", color: "white", fontWeight: "bold" }}>Inventory</span>
           </Navbar.Brand>
@@ -18,10 +25,51 @@ const Navebar = () => {
             <Nav className="me-auto px-5">
               <Nav.Link href="#home" className='navetext'>OverView</Nav.Link>
               <Nav.Link href="#link" className='navetext'>Operations</Nav.Link>
-              <Nav.Link href="#link" className='navetext'>Master Data</Nav.Link>
-              <Nav.Link href="#link" className='navetext'>Wherehouses Reports</Nav.Link>
+              <NavDropdown title="Master Data" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="/InventoryProducts">Product</NavDropdown.Item>
+                <NavDropdown.Item href="/InventoryVarient">
+                  Product Variants
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Reordering Rules</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.4">
+                  Lots/Serial Numbers
+                </NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link href="#link" className='navetext'>Warehouses Reports</Nav.Link>
               <Nav.Link href="#link" className='navetext'>Reporting</Nav.Link>
-              <Nav.Link href="#link" className='navetext'>Configurations</Nav.Link>
+              <NavDropdown title="Configurations" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="" style={{fontSize:'12px'}}>Warehouse Management</NavDropdown.Item>
+                <NavDropdown.Item href="/Warehouse">
+                  Warehouse
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/Location">Location</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.4">
+                  Rules
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/ConfigRoutes">
+                  Routes
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/OperationType">
+                  Operation Types
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.4">
+                  Putaway Rules
+                </NavDropdown.Item>
+                <NavDropdown.Item href="" style={{fontSize:'12px'}}>Product</NavDropdown.Item>
+                <NavDropdown.Item href="/ProductCategories">
+                  Product Categories
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/Attributes">
+                  Attributes
+                </NavDropdown.Item>
+                <NavDropdown.Item href="" style={{fontSize:'12px'}}>Units of Measures </NavDropdown.Item>
+                <NavDropdown.Item href="/UomCategories">
+                  UOM Categories
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/UOM">
+                  UOM
+                </NavDropdown.Item>
+              </NavDropdown>
 
             </Nav>
           </Navbar.Collapse>
@@ -30,18 +78,22 @@ const Navebar = () => {
 
 
       </div>
-      {/* <div className='container-fluid'>
-        <div className='row head'>
-          <div className="col-sm-6" style={{ width: "50%" }}><h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>Inventory Overview</h5></div>
-          <div className="col-sm-6 d-flex justify-content-center" style={{ width: "50%" }}>
-            <div class="input-box " className='search'>
-              <input type="text" placeholder='Search ...' /><span>{<FaSearchMinus />}</span>
+      {showBelowMenu === true &&
+        <div className='container-fluid'>
+          <div className='row head'>
+            <div className="col-sm-6" style={{ width: "50%" }}><h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>Inventory Overview</h5>
+            <button className='createbtn' onClick={RedirectToCreatePage}>Create</button>
+            </div>
+            <div className="col-sm-6 d-flex justify-content-center" style={{ width: "50%" }}>
+              <div class="input-box " className='search'>
+                <input type="text" placeholder='Search ...' /><span>{<FaSearchMinus />}</span>
 
+              </div>
             </div>
           </div>
         </div>
-      </div> */}
-
+      }
+        
     </>
   )
 }

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Otp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import XSTORE from "../../assets/Images/xstore.png";
-import { useNavigate } from "react-router-dom";
+import XSTORE from "../../assets/Images/xstore1.png";
 // import OtpInput from "react-otp-input";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
@@ -14,6 +13,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grid: {
@@ -48,7 +48,10 @@ const Otp = () => {
   const [num4, setNum4] = useState("");
   const [num1Error, setNum1Error] = useState("");
   const [num2Error,setNum2Error] = useState("");
-
+  const navigate = useNavigate();
+  const varify = () => {
+    navigate('/Dashboard');
+  }
   const handleNum1 = (e) => {
     const value = e.target.value;
     const nextSibling = e.target.nextSibling;
@@ -78,12 +81,7 @@ const Otp = () => {
     const nextSibling = e.target.nextSibling;
     setNum4(value);
   };
-  const varify = () => {
-    if(!num1)
-    {
-      setNum1Error("Please enter otp");
-    }
-  }
+
   return (
     <div className="OtpMainContainer">
       <div className="OtpContainer">

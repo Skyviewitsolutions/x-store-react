@@ -22,7 +22,7 @@
     margin-top: 30px;
 }
 .Otplogo img{
-    height: 60%;
+    height: 100%;
     width: 60%;
     object-fit: cover;
 }
@@ -49,7 +49,7 @@
 .Otpbtn{
     width: 96%;
     margin-top: 2.6rem;
-    background-color: #017e84;
+    background-color:#1669a2;
     color: white;
     font-size: 16px;
     text-transform: uppercase;

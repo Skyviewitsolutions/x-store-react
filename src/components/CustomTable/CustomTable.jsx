@@ -20,7 +20,7 @@ const CustomTable = (props) => {
 
   return(
     <>
-<div style={{ maxWidth: '100%'}}>
+<div className='protab'>
       <MUIDataTable
         columns={column}
         data={data}

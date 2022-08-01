@@ -2,6 +2,11 @@
     width: 100%;
     border: 1px solid #dee2e6;
     background-color:#fff;
+    cursor: pointer;
+    padding-bottom: 5px;
+  
+}
+.productdetails{
     display: flex;
     justify-content: space-between;
 }
@@ -35,4 +40,63 @@
     display: flex;
     align-items: center;
      
+}
+.sendmessage{
+    width: 90%;
+    border: 1px solid #ccc;
+    padding: 20px 40px;
+    margin: auto;
+    
+}
+.sendmessage i{
+    color: #6666;
+    font-size: 13px;
+}
+.message{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.user{
+    width: 5%;
+}
+.user img{
+    height: 50px;
+    width: 50px;
+}
+.messagebox{
+    width: 95%;
+    border: 1px solid #ccc;
+    padding: 20px 10px;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+.messagebox input{
+    border-bottom: 1px solid #cccc;
+    padding-bottom: 15px;
+
+}
+.sendbtn{
+    background-color:#00a09d;
+    border:none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin:20px 70px;
+    padding: 8px 20px;
+    font-weight: 600;
+    border-radius: 1px;
+}
+.attachment p{
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 0px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.attachment label{
+    text-align: center;
+    color: #008784;
+    cursor: pointer;
 }

@@ -4,11 +4,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { MdArrowDropDown } from 'react-icons/md';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
 
 const ProductDetailsHeader = (props) => {
-
+     const navigate = useNavigate();
+    const RedirectToProduct = () => {
+       navigate('/InventoryProducts');
+    }
+    const RedirectToEmpty = () => {
+        navigate('/Empty')
+    }
     const { isEdit, setIsEdit } = props;
-
     return (
         <div className='DetailsMainheader'>
             <div className="Detaialsheader">
@@ -17,8 +23,8 @@ const ProductDetailsHeader = (props) => {
                     <div className="detailsbutton">
                         {isEdit === false && <button className='btn1' onClick={() => setIsEdit(true)}>Edit</button>}
                         {isEdit === true && <button className='btn1'onClick={() => setIsEdit(false)} >Save</button>}
-                       {isEdit === false && <button className='btn2'>Create</button> }
-                       { isEdit === true && <button className='btn2'>Discard</button> }
+                       {isEdit === false && <button className='btn2' onClick={() => setIsEdit(true)}>Create</button> }
+                       { isEdit === true && <button className='btn2' onClick={RedirectToProduct}>Discard</button> }
                     </div>
                 </div>
                 <div className="deatailsdropdown">
@@ -38,7 +44,7 @@ const ProductDetailsHeader = (props) => {
                 </div>
             </div>
             <div className="detailsheader2">
-                <button className='btn3'>Update Quantity</button>
+                <button className='btn3' onClick={RedirectToEmpty}>Update Quantity</button>
                 <button className='btn3'>Replenish</button>
             </div>
         </div>

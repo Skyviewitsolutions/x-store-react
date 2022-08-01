@@ -1,0 +1,31 @@
+.AddProductCategoriesContainer{
+    width: 100%;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    padding:10px 15px;
+}
+.AddProductCatehead{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+.AddProductCate1{
+    width: 60%;
+}
+.AddProductCate2{
+    width: 40%;
+    display: flex;
+    padding-left: 10px;
+    border-left: 1px solid #cdd3d9;
+}
+.AddProductcatehead1{
+    width: 200px;
+    display: flex;
+    padding: 6px 0px;
+    padding-left: 10px;
+    border-right: 1px solid #cdd3d9;
+}
+.AddProductcatehead1:hover{
+    background-color: #f3efef;
+}

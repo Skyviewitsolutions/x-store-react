@@ -22,7 +22,7 @@
 }
 
 .Signuplogo img{
-    height: 60%;
+    height: 100%;
     width: 60%;
     object-fit: cover;
 }
@@ -86,7 +86,7 @@
 }
 .Signupicons .eye{
  width: 15%;
- background-color: #724b68;
+ background-color: #1669a2;
  color: white;
  padding: 8px;
  border-radius: 2px;
@@ -95,7 +95,7 @@
 .Signupbtn{
     width: 96%;
     margin-top: 1.6rem;
-    background-color:#017e84;
+    background-color:#1669a2;
     color: white;
     font-size: 15px;
     text-transform: uppercase;
@@ -108,7 +108,7 @@
 }
 .SignupContent{
     font-size: 14px;
-    color: #017e84;
+    color: #1669a2;
     font-weight: 600;
     margin: auto;
     width: 95%;

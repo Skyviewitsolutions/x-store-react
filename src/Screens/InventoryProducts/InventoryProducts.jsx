@@ -7,12 +7,21 @@ const InventoryProducts = () => {
   return (
     <>
       <div className="ProductsMainContainer">
-        <Navebar />
+        <Navebar showBelowMenu={true}/>
         <div className="ProductContainer">
           <div className="ProductSidebar">
             <Sidebar />
           </div>
           <div className="Product2Card">
+            <InventoryProductsCard />
+            <InventoryProductsCard />
+            <InventoryProductsCard />
+            <InventoryProductsCard />
+            <InventoryProductsCard />
+            <InventoryProductsCard />
+            <InventoryProductsCard />
+            <InventoryProductsCard />
+            <InventoryProductsCard />
             <InventoryProductsCard />
             <InventoryProductsCard />
             <InventoryProductsCard />
