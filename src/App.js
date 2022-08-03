@@ -29,6 +29,7 @@ import AddWarehouse from './Screens/Configuration/AddWarehouse/AddWarehouse';
 import WarehouseConfig from './Screens/Configuration/AddWarehouse/WarehouseConfig';
 import AddLocation from './Screens/Configuration/AddLocation/AddLocation';
 import AddProductCategories from './Screens/Configuration/AddProductCategory/AddProductCategories';
+import AddRoute from './Screens/Configuration/AddRoute/AddRoute';
 
 const App = () => {
 
@@ -63,6 +64,7 @@ const App = () => {
         <Route path='/WarehouseConfig' element={<WarehouseConfig/>}/>
         <Route path='/AddLocation' element={<AddLocation/>}/>
         <Route path='/AddProductCategories' element={<AddProductCategories/>}/>
+       <Route path='/AddRoute' element={<AddRoute/>} />
       </Routes>
     </Router>
     

@@ -58,9 +58,7 @@ const Dashboard = () => {
             <Card img={<RiMoneyEuroBoxLine size={40} color="white"/>} text="Expenses" className="dash" bgColor="#737573"/>
             <Card img={<GiTakeMyMoney size={40} color="white"/>} text="Loan" className="dash" bgColor="#bcb377"/> 
             
-           
-            
-            
+          
             </div>
         </div>
         <div className="arrowicon"> <FaAngleLeft size={40} onClick={RedirectToInventory}/></div>

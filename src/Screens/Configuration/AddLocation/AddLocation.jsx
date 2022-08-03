@@ -5,7 +5,9 @@ import { FaCubes } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import Multiselect from "multiselect-react-dropdown";
- 
+ import Navebar from "../../../components/Navbar/Navbar";
+
+
 const AddLocation = () => {
 
     const [selectedValue,setSelectedValue] = useState()
@@ -27,6 +29,8 @@ const onRemove = (selectedList, removedItem) => {
     
 }
   return (
+    <>
+    <Navebar showBelowMenu={true}/>
     <div className="AddlocationCon">
       <div className="AddLocationhead">
         <div className="AddLocation1"></div>
@@ -60,6 +64,7 @@ const onRemove = (selectedList, removedItem) => {
           </div>
         </div>
       </div>
+      <div className="AddLocationmain">
       <div className="AddLocationinput">
         <h5>Location Name</h5>
         <input type="text" />
@@ -146,6 +151,8 @@ const onRemove = (selectedList, removedItem) => {
       </div>
      
     </div>
+    </div>
+    </>
   );
 };
 

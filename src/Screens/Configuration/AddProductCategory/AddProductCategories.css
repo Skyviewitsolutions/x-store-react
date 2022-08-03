@@ -2,7 +2,13 @@
     width: 100%;
     border: 1px solid #ccc;
     margin-top: 20px;
-    padding:10px 15px;
+    padding-bottom: 5%;
+    flex: 1;
+    height: 500px;
+    overflow-y: scroll;
+}
+.AddProductCateMain{
+    padding: 15px 35px;
 }
 .AddProductCatehead{
     width: 100%;
@@ -11,13 +17,14 @@
     border-bottom: 1px solid #ccc;
 }
 .AddProductCate1{
-    width: 60%;
+    width: 75%;
 }
 .AddProductCate2{
-    width: 40%;
+    width: 25%;
     display: flex;
     padding-left: 10px;
     border-left: 1px solid #cdd3d9;
+    align-items: center;
 }
 .AddProductcatehead1{
     width: 200px;
@@ -25,7 +32,240 @@
     padding: 6px 0px;
     padding-left: 10px;
     border-right: 1px solid #cdd3d9;
+    align-items: center;
 }
 .AddProductcatehead1:hover{
     background-color: #f3efef;
+}
+.AddProductCatedetails{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.AddProductCatedetails1{
+    width: 70%;
+    border-right: 1px solid #cccc;
+    
+}
+
+.AddProductCatecontent input{
+    border: none;
+    border-bottom: 3px solid #666666;
+    outline: none;
+    margin-left: 20px;
+    width: 700px;
+}
+.AddProductCatecontent select{
+    border: none;
+    border-bottom: 1px solid #cccc;
+    outline: none;
+    margin-left: 20px;
+    width: 700px;
+}
+.AddProductCatecontent{
+    display: flex;
+    align-items: center;
+}
+.AddProductCatecontent p{
+width: 150px;
+color: #6a666a;
+font-size: 15px;
+font-weight: 600;
+margin-left: 20px;
+margin-top: 10px;
+/* margin-bottom: 0px; */
+}
+.AddProductCateText p{
+    color:#6f6f6f;
+    font-size: 16px;
+    margin-left: 19px;
+    font-weight: 600;
+    margin-bottom: -7px;
+}
+.AddProductdetails2{
+    width: 30%;
+    padding: 10px 15px;
+}
+.AddProductdetails2 p{
+    font-size: 18px;
+    color: #6c757d;
+}
+.alertbox{
+    width: 300px;
+    background-color: #d1ecf1;
+    border-radius: 2px;
+    padding: 15px 15px;
+}
+
+.AddProductCateContent{
+    width: 100%;
+    padding: 10px 15px;
+}
+
+.AddProductCateContent h5{
+    color: #6c757d;
+    font-size: 24px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.AddProductCateMultiselect{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.AddProductCateMultiselect>div{
+    width: 100%;
+}
+.Addmultiselect{
+    border: none;
+    border-bottom: 3px solid #666666;
+    outline: none;
+    margin-left: 15px;
+    width:90%;
+    color: #666666;
+}
+
+.searchWrapper {
+    border: none !important;
+    min-height: 22px;
+    padding: 5px;
+    position: relative;
+}
+.AddProductCateMultiselect p{
+    color: #6f6f6f;
+    font-size: 17px;
+    margin-left: 5px;
+    font-weight: 600;
+    /* margin-bottom: -7px; */
+    margin-top: 22px;
+}
+.highlightOption {
+    color: #fff;
+    background-color: #1669a2;
+}
+.highlightOption:hover {
+    background: #6c757d !important;
+    color: #fff;
+}
+
+.chip {
+    align-items: center;
+    border: 1px solid #6f6f6f;
+    border-radius: 11px;
+    color:#fff;
+    background: #6a666a;
+    display: inline-flex;
+    font-size: 13px;
+    line-height: 19px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 4px 10px;
+    font-weight: 600;
+}
+.AddProductCatetotal p{
+    font-size: 18px;
+    color: #6a666a;
+    font-weight: 600;
+}
+.AddProductCatedropdown {
+    display: flex;
+    align-items: center;
+}
+.AddProductCatedropdown p{
+    color:#6f6f6f;
+    font-size: 16px;
+    margin-left: 3px;
+    font-weight: 600;
+    margin-bottom: -7px;
+}
+.AddProductCatedropdown select{
+    border: none;
+    border-bottom: 1px solid #cccc;
+    outline: none;
+    margin-left: 20px;
+    width: 80%; 
+}
+.AddProductdetailscontent3{
+    width: 100%;
+    display: flex;
+    padding: 10px 10px;
+    align-items: center;
+}
+.AddProductdetailscontent3 h5{
+    color: #6c757d;
+    font-size: 24px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+.InventoryValuation{
+    width: 48%;
+    
+}
+.AddProductCate3dropdown {
+    display: flex;
+    margin-top: 7px;
+    align-items: center;
+}
+.AddProductCate3dropdown p{
+    color:#6f6f6f;
+    font-size: 16px;
+    margin-left: 3px;
+    font-weight: 600;
+    margin-bottom: -7px;
+    width: 200px;
+}
+.AddProductCate3dropdown select{
+    border: none;
+    border-bottom: 2px solid #6f6f6f;
+    outline: none;
+    margin-left: 10px;
+    width: 400px; 
+}
+.AddProductCateEmptybox{
+    width: 50%;
+}
+.AddProductCatecontent4{
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.AccountProperties h5{
+    color: #6c757d;
+    font-size: 24px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+.AccountStock{
+    width: 50%;
+    padding: 15px 15px;
+}
+.AccountStock h5{
+    color: #6c757d;
+    font-size: 22px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+.stockdropdown{
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+}
+.stockdropdown p{
+    color:#6f6f6f;
+    font-size: 16px;
+    margin-left: 3px;
+    font-weight: 600;
+    margin-bottom: -10px;
+    width: 200px;
+}
+.stockdropdown select{
+    border: none;
+    border-bottom: 1px solid #cccc;
+    outline: none;
+    margin-left: 5px;
+    width: 400px; 
 }

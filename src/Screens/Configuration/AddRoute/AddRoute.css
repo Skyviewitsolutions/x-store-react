@@ -1,0 +1,117 @@
+.AddRouteContainer{
+    width: 100%;
+    border: 1px solid #6666;
+    padding:10px 25px;
+    flex: 1;
+    height: 500px;
+    overflow-y: scroll;
+}
+.AddRouteinput{
+    width: 100%;
+    padding: 10px 15px;
+}
+.AddRouteinput p{
+    font-size: 18px;
+    color: #000;
+    font-weight: 600;
+}
+.AddRouteinput input{
+    width: 700px;
+    border-bottom: 3px solid #666666;
+}
+.Applicationon{
+    width: 100%;
+    padding: 35px 15px;
+}
+.Applicationon h5{
+    font-size: 21px;
+    font-weight: 400;
+    color: #666666;
+}
+.Applicationon p{
+    font-size: 16px;
+    color: #cccc;
+}
+.AddRoutecheckbox{
+    width: 100%;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+}
+.checkbox1{
+    width: 50%;
+    /* display: flex; */
+}
+.pro{
+    display: flex;
+}
+.pro p{
+   width: 200px;
+   font-size: 15px;
+   color: #666666;
+   font-weight: 600;
+   margin-bottom: 5px;
+}
+.pro input {
+    width: 17px;
+}
+.checkbox2{
+    width: 50%;
+}
+
+.AddProductCateMultiselect>div{
+    width: 500px;
+}
+.Addmultiselect{
+    border: none;
+    border-bottom: 1px solid #cccc;
+    outline: none;
+    margin-left: 15px;
+    width:400px;
+    color: #666666;
+}
+.Rules{
+    width: 100%;
+    padding: 10px 15px;
+}
+.Rules h5{
+    font-size: 22px;
+    color: #666666;
+    font-weight: 400;
+}
+.box{
+    width: 100%;
+
+}
+.AddRouteboxmain{
+    width: 100%;
+    padding: 10px 20px;
+    border-top: 1px solid #cccc;
+    border-bottom: 1px solid #ccc;
+}
+.AddRoutebox{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.AddRoutecontent{
+    width: 30%;
+}
+.AddRoutecontent p{
+    font-size: 15px;
+    margin-left: 30px;
+    color: #212529;
+    font-weight: 700;
+    margin-top: 5px;
+}
+.AddRouteboxshadow{
+    width: 100%;
+    height: 200px;
+    border-radius: 2px;
+    box-shadow: rgb(203, 205, 206) 3px 3px 6px 0px inset, rgba(224, 220, 220, 0.5) -3px -3px 6px 1px inset;
+    padding: 10px 10px;
+}
+.AddRouteboxshadow p{
+    font-size: 15px;
+    color:#4eb6e5;
+}

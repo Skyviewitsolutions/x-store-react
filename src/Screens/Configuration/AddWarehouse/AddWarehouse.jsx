@@ -12,13 +12,13 @@ const [event , setEvent] = useState("WarehouseConfig");
 
   return (
     <>
-        <Navebar />
+        <Navebar showBelowMenu={true}/>
     <div className="AddwareHouseContainer">
       <div className="AddWareHouseHead">
-        <div className="head1"></div>
+        <div className="head1empty"></div>
         <div className="head2">
           <HiOutlineRefresh
-            size="30px"
+            size="33px"
             style={{ color: "#848484", marginTop: "5px" }}
           />
           <div className="AddWarehousetext">
