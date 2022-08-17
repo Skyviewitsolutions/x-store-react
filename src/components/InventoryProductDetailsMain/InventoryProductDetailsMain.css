@@ -103,3 +103,56 @@
     color:#6f6f6f;
     font-size: 15px;
 }
+
+.proin{
+    font-size: 35px;
+    margin-left: 35px;
+    margin-top: 18px;
+    border: none;
+    border-bottom: 3px solid #6666;
+}
+
+@media only screen and (max-width:1000px)
+{
+   .proin{
+    border: none;
+   } 
+   .div2{
+    padding-left: 5px;
+   }
+   .hello{
+    size:20px;
+   }
+   .div1{
+    display: none !important;
+   }
+   .text p{
+    font-size: 14px;
+   }
+   .text span {
+    font-size: 13px !important;
+    padding-left: 20px;
+}
+.text2 p {
+    font-size: 15px;
+}
+.firstcontent3 span {
+    font-size: 13px;
+    margin-left: 13px;
+}
+.firstcontent3 p {
+    font-size: 14px;
+    width: 150px;
+}
+.detailsheading p {
+    font-size: 30px;
+}
+.detailsinput label {
+    font-size: 14px;
+}
+
+.detailsinput input {
+    width: 20px;
+}
+
+}

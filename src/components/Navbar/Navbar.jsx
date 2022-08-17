@@ -6,11 +6,11 @@ import './Navbar.css';
 import {useNavigate} from 'react-router-dom';
 
 const Navebar = (props) => {
-  const { showBelowMenu } = props;
+  const { showBelowMenu , handleCreatePage } = props;
   const navigate =  useNavigate();
-  const RedirectToCreatePage = () => {
-    navigate('/AddWarehouse');
-  }
+
+  
+
   return (
     <>
       <div className='container-fluid'>
@@ -24,7 +24,7 @@ const Navebar = (props) => {
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
               <Nav.Link href="#home" className='navetext'>OverView</Nav.Link>
-              <Nav.Link href="#link" className='navetext'>Operations</Nav.Link>
+              <Nav.Link href="/Inventory" className='navetext'>Operations</Nav.Link>
               <NavDropdown title="Master Data" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="/InventoryProducts">Product</NavDropdown.Item>
                 <NavDropdown.Item href="/InventoryVarient">
@@ -82,7 +82,7 @@ const Navebar = (props) => {
         <div className='container-fluid'>
           <div className='row head'>
             <div className="col-sm-6" style={{ width: "50%" }}><h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>Inventory Overview</h5>
-            <button className='createbtn' onClick={RedirectToCreatePage}>Create</button>
+            <button className='createbtn' onClick={handleCreatePage}>Create</button>
             </div>
             <div className="col-sm-6 d-flex justify-content-center" style={{ width: "50%" }}>
               <div class="input-box " className='search'>

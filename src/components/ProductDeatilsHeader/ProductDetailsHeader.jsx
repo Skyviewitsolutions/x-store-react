@@ -14,7 +14,7 @@ const ProductDetailsHeader = (props) => {
     const RedirectToEmpty = () => {
         navigate('/Empty')
     }
-    const { isEdit, setIsEdit } = props;
+    const { isEdit, setIsEdit , save } = props;
     return (
         <div className='DetailsMainheader'>
             <div className="Detaialsheader">
@@ -22,7 +22,7 @@ const ProductDetailsHeader = (props) => {
                     <p>Products/ 001122335215-HYD</p>
                     <div className="detailsbutton">
                         {isEdit === false && <button className='btn1' onClick={() => setIsEdit(true)}>Edit</button>}
-                        {isEdit === true && <button className='btn1'onClick={() => setIsEdit(false)} >Save</button>}
+                        {isEdit === true && <button className='btn1'onClick={save}>Save</button>}
                        {isEdit === false && <button className='btn2' onClick={() => setIsEdit(true)}>Create</button> }
                        { isEdit === true && <button className='btn2' onClick={RedirectToProduct}>Discard</button> }
                     </div>

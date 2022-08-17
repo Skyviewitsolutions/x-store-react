@@ -38,6 +38,8 @@
 }
 .Addlocationdetails input{
     width: 800px;
+    border:none;
+    outline: none;
     border-bottom: 3px solid #212529;
 }
 .Addlocationpopupdropdown{
@@ -92,6 +94,8 @@
 }
 .optioninputtype input{
     width: 300px;
+    border:none;
+    outline: none;
     border-bottom: 1px solid #cccc;
 }
 .Addlocationfooter{

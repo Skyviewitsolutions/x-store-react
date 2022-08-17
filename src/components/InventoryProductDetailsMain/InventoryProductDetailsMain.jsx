@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./InventoryProductDetailsMain.css";
 import { FaCubes } from "react-icons/fa";
 import { TbArrowsLeftRight } from "react-icons/tb";
@@ -19,13 +19,18 @@ import AccountingEdit from "./InventoryDetailsEdit/AccountingEdit";
 import camera from "../../assets/Images/camera.png";
 import { useNavigate } from "react-router-dom";
 import InventoryProductDetailsFooter from "../InventoryProductDetailsFooter/InventoryProductDetailsFooter";
+import axios from "axios";
 
 
 const InventoryProductDetailsMain = (props) => {
   const [events, setEvents] = useState("generalInformation");
-  const { isEdit } = props;
+  const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomertax , description , setDescription } = props;
   const navigate = useNavigate();
+  
+  
 
+
+ 
   const RedirectToEmpty = (data) => {
     if (data === "Hand") {
       const val = {
@@ -88,12 +93,12 @@ const InventoryProductDetailsMain = (props) => {
             />
             <div className="text">
               <p>0</p>
-              <span>Reordering Rules</span>
+              <span>Reordering</span>
             </div>
           </div>
           <div className="div2">
             <FaCogs
-              size="25px"
+              size="25px" className="hello"
               style={{ color: "#848484", marginTop: "5px" }}
             />
             <div className="text2">
@@ -114,15 +119,13 @@ const InventoryProductDetailsMain = (props) => {
           <div className="detailsheading">
             {isEdit === false && <p>001122335215-HYD</p>}
             {isEdit === true && (
+
               <input
                 type="text"
+                className="proin"
                 placeholder="Product Name"
-                style={{
-                  fontSize: "35px",
-                  marginLeft: "35px",
-                  marginTop: "18px",
-                  borderBottom: "3px solid #666666",
-                }}
+                value={productName}
+                onChange={ (e) => setProductName(e.target.value)}
               />
             )}
             <div className="detailsinput">
@@ -186,7 +189,7 @@ const InventoryProductDetailsMain = (props) => {
         </div>
         <div className="GeneralInformation">
           {events === "generalInformation" && isEdit === false && (
-            <GeneralInformation />
+            <GeneralInformation/>
           )}
           {events === "variants" && isEdit === false && <Variants />}
           {events === "Purchase" && isEdit === false && <Purchase />}
@@ -195,7 +198,8 @@ const InventoryProductDetailsMain = (props) => {
           )}
           {events === "Accounting" && isEdit === false && <Accounting />}
           {events === "generalInformation" && isEdit === true && (
-            <GeneralInformationEdit />
+            <GeneralInformationEdit productType={productType} productCategory={productCategory} setProductType={setProductType} setProductCategory={setProductCategory} interRef={interRef} setInterRef ={setInterRef} units={units} setUnits={setUnits} 
+            salesPrice = {salesPrice} setSalesPrice = {setSalesPrice} customerTax={customerTax} setCustomertax={setCustomertax}cost={cost} setCost={setCost} description={description} setDescription = {setDescription}/>
           )}
           {events === "variants" && isEdit === true && <VariantsEdit />}
           {events === "Purchase" && isEdit === true && <PurchaseEdit />}

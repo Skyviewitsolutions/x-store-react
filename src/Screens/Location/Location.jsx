@@ -1,79 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Location.css'
 import Navebar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import CustomTable from '../../components/CustomTable/CustomTable';
-
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 const Location = () => {
 
-    const data = [
-        {
-            id: 1,
-            location: 'HFWH/STOCK/Diesel',
-            locationtype: 'Internal Location',
-          },
-          {
-            id: 2,
-            location: '	AFWH/Stock',
-            locationtype: 'Internal Location',
-          },
-          {
-              id: 3,
-              location: '	MAKWH/Stock',
-              locationtype: 'Internal Location',
-            },
-            {
-              id: 2,
-              location: '	JOFW/Stock/Diesel',
-              locationtype: 'Internal Location',
-            },
-            {
-              id: 4,
-              location: 'MAKWH/Stock/Diesel',
-              locationtype: 'Internal Location',
-            },
-            {
-              id: 5,
-              location: '​RIWH/STOCK',
-              locationtype: 'Internal Location',
-            },
-            {
-              id: 6,
-              location: 'OFWH/STOCK',
-              locationtype: 'Internal Location',
-            },
-            {
-              id: 7,
-              location: 'BAWH/Stock',
-              locationtype: 'Internal Location',
-            },
-            {
-              id: 8,
-              location: '	MAKWH/Stock/Oil',
-              locationtype: 'Internal Location',
-            },
-            {
-              id: 9,
-              location: '	BAPMS/Al Baha Store for Projects Materials',
-              locationtype: 'Internal Location',
-            },
-            {
-              id: 10,
-              location: 'ROAD/STOCK',
-              locationtype: 'Internal Location',
-            },
-    ];
+  const navigate = useNavigate();
+  const handleCreatePage = () => {
+    navigate('/AddLocation')
+  }
+  const url = "https://xstore.skyviewads.com/WareHouse/LocationMaster/GetAllLoc";
 
+  const [Locationdetails , setLocationdetails] = useState([]);
+
+useEffect(() => {
+   axios.post(url)
+   .then((res) => {
+    console.log(res,"response");
+    if(res.data.status === true)
+    {
+      setLocationdetails(res.data.data);
+    }
+    else if(res.data.status === false)
+    {
+      alert(res.data.message);
+    }
+   })
+   .catch((err) => {
+    console.log(err,"error");
+   })
+},[])
+
+    
     const column = [
 
-            { label: 'Location', name: 'location' },
-            { label: 'Location Type', name: 'locationtype' },
+            { label: 'Location', name: 'LOCATION_NAME' },
+            { label: 'Location Type', name: 'LOCATION_TYPE' },
         
     ];
 
   return (
     <div>
-    <Navebar />
+    <Navebar showBelowMenu={true}  handleCreatePage={handleCreatePage}/>
     <div className="container-fluid PROVAR">
       <div className="Main">
         
@@ -82,7 +52,7 @@ const Location = () => {
           <Sidebar/>
           </div> */}
         <div className="Right">
-          <CustomTable data={data} column = {column}/>
+          <CustomTable data={Locationdetails} column = {column}/>
           </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddProductCategories.css";
 import { FaRandom } from "react-icons/fa";
 import { FaCubes } from "react-icons/fa";
@@ -6,9 +6,12 @@ import { FaList } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import Multiselect from "multiselect-react-dropdown";
 import Navebar from "../../../components/Navbar/Navbar";
-
+import axios from "axios";
+import DiffrentAccount from "../../../components/InventoryProductDetailsMain/Model/AddDiffrentAccount/DiffrentAccount";
+import { useNavigate } from "react-router-dom";
 const AddProductCategories = () => {
   const [selectedValue, setSelectedValue] = useState();
+  const [showAccount , setShowAccount] = useState(false);
   const options = [
     { name: "Vendor Location", id: 1 },
     { name: "View", id: 2 },
@@ -22,6 +25,31 @@ const AddProductCategories = () => {
   const onSelect = (selectedList, selectedItem) => {};
 
   const onRemove = (selectedList, removedItem) => {};
+  const navigate = useNavigate();
+  const RedirectToDiffrentAccount = () => {
+        navigate('/DiffrentAccount');
+  }
+
+  const url = "https://xstore.skyviewads.com/ProductsXM/AddProduct_Category";
+  const [AddProductcate , setProductCate] = useState([]);
+
+   useEffect (() => {
+     axios.post(url)
+     .then((res) => {
+      console.log(res,"result");
+      if(res.data.status === true)
+      {
+        setProductCate(res.data.data);
+      }
+      else if(res.data.status === false)
+      {
+       alert(res.data.message);
+      }
+     })
+     .catch((err) => {
+      console.log(err,"error");
+     })
+   },[])
 
   return (
 
@@ -176,6 +204,8 @@ const AddProductCategories = () => {
               <option>110101002 صندوق الزلفي</option>
               <option>110101002 صندوق الزلفي</option>
               <option>110101002 صندوق الزلفي</option>
+              <option onClick={RedirectToDiffrentAccount}>Create and Edit....</option>
+              <option>Search More...</option>
             </select>
             <FaExternalLinkAlt
               size="14px"
@@ -265,6 +295,7 @@ const AddProductCategories = () => {
         </div>
       </div>
       </div>
+      <DiffrentAccount showAccount={showAccount} setShowAddRoute={setShowAccount}/>
       </>
   );
 };

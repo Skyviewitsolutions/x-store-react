@@ -8,7 +8,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const GeneralInformation = () => {
 
     const [showUpdateCost , setShowUpdateCost] = useState(false);
-
     const navigate = useNavigate();
      
     const RedirectToUnit  = () => {
@@ -39,7 +38,7 @@ const GeneralInformation = () => {
                     <FaArrowRight size="20px" style={{ color: "#008784", marginLeft: "10px" }} />
                     <span>Extra Prices</span>
                 </div>
-                <p style={{ color: "#6a666a", fontSize: "17px", fontWeight: "500" }}>Customer Taxes</p>
+                <p  className="custext">Customer Taxes</p>
                 <div className="firstcontent3">
                     <p>Cost</p>
                     <span>	0.0000 SARper Units</span>
@@ -53,7 +52,7 @@ const GeneralInformation = () => {
                     <p>Purchase Unit of</p>
                     <span style={{ color: "#008784" }} onClick={RedirectToUnit}>Units</span>
                 </div>
-                <p style={{ color: "#6a666a", fontSize: "17px", fontWeight: "500" }}>Measure</p>
+                <p  className="custext">Measure</p>
 
             </div>
              <UpdateCost showUpdateCost={showUpdateCost} setShowUpdateCost={setShowUpdateCost}/>

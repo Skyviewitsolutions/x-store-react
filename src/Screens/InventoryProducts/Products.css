@@ -3,25 +3,53 @@
     overflow: hidden;
     height: 100vh;
 }
+
 .ProductContainer{
     width: 100%;
     display: flex;
     justify-content: space-between;
     height: 98%;
-    
-    
 }
+
 .ProductSidebar{
    width: 17%;
     height: 100%;
     margin-left: 0px !important;
-    
 }
-.Product2Card{
-    width: 83%;
-    display : flex ;
-    flex-wrap: wrap;
+
+.Product33Card{
+    width: 85% ;
     height: 80%;
     background-color: #eff1f3;
-   overflow-y: scroll;
+    overflow-y: scroll;
+}
+
+.productcardcont{
+    display : flex ;
+    flex-wrap: wrap ;
+}
+
+@media only screen and (max-width: 1000px){
+
+    .ProductsMainContainer{
+      background-color: #eff1f3;
+    }
+
+    .ProductSidebar{
+       width : 26% ;
+       background-color: #fff;
+    }
+
+    .Product2Card{
+        margin: 0px 25px;
+    }
+
+    
+}
+@media only screen and (max-width: 820px){
+    .ProductSidebar{
+        width : 32% ;
+        background-color: #fff;
+     }
+ 
 }

@@ -17,6 +17,8 @@
 }
 .AddRouteinput input{
     width: 700px;
+    outline: none;
+    border: none;
     border-bottom: 3px solid #666666;
 }
 .Applicationon{

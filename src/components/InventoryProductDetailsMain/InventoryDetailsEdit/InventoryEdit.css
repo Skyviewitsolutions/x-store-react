@@ -55,6 +55,8 @@
 }
 .Editcontent2 input{
     width: 150px;
+    outline: none;
+    border: none;
     border-bottom: 1px solid #cccccc;
 }
 .Editcontent2 label{

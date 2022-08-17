@@ -7,11 +7,22 @@ const InventoryScreen = () => {
   return (<>
   <div className="inveScren">
     <Navbar/>
-    <div style={{display : "flex" ,width:"100%"}} className="inveBox">
+    <div className="inveBox">
         <InventoryCard />
         <InventoryCard />
         <InventoryCard />
         <InventoryCard />
+        
+        <InventoryCard />
+        <InventoryCard />
+        <InventoryCard />
+        <InventoryCard />
+         
+        <InventoryCard />
+        <InventoryCard />
+        <InventoryCard />
+        <InventoryCard />
+         
         
         
       

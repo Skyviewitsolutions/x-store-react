@@ -1,10 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import Navebar from '../../components/Navbar/Navbar';
 import './Uomdetails.css';
+
 const Uomdetails = () => {
+
+  const navigate = useNavigate();
+  const handleCreatePage = () => {
+    navigate('/Add')
+  }
   return (
     <div>
-        <Navebar showBelowMenu={true}/>
+        <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage}/>
     <div className='UomdetailsContainer'>
         <div className="uompart1">
           <div className="Uomcontent">

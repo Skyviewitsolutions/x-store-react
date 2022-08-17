@@ -96,6 +96,9 @@ margin-top: 10px;
     border-radius: 2px;
     padding: 15px 15px;
 }
+.alertbox b{
+    font-size: 14px;
+}
 
 .AddProductCateContent{
     width: 100%;
@@ -105,7 +108,7 @@ margin-top: 10px;
 .AddProductCateContent h5{
     color: #6c757d;
     font-size: 24px;
-    margin-left: 10px;
+    margin-left: 0px;
     font-weight: 400;
 }
 
@@ -196,7 +199,7 @@ margin-top: 10px;
 .AddProductdetailscontent3 h5{
     color: #6c757d;
     font-size: 24px;
-    margin-left: 10px;
+    margin-left: 0px;
     font-weight: 400;
 }
 .InventoryValuation{
@@ -229,14 +232,14 @@ margin-top: 10px;
 .AddProductCatecontent4{
     display: flex;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 21px;
     justify-content: space-between;
-    align-items: center;
+    padding-left: 10px;
 }
 .AccountProperties h5{
     color: #6c757d;
     font-size: 24px;
-    margin-left: 10px;
+    margin-left: 0px;
     font-weight: 400;
 }
 .AccountStock{
@@ -266,6 +269,91 @@ margin-top: 10px;
     border: none;
     border-bottom: 1px solid #cccc;
     outline: none;
-    margin-left: 5px;
-    width: 400px; 
+    width: 331px; 
+}
+
+@media only screen and (max-width: 1000px)
+{
+    .AddProductCateText p{
+        font-size: 13px;
+    }
+
+.AddProductCatecontent p {
+    width: 131px;
+    font-size: 16px;
+}
+.AddProductCatecontent input {
+    border: none;
+    border-bottom: 2px solid #666666;
+    outline: none;
+    margin-left: 20px;
+    width: 374px !important;
+}
+.AddProductCatecontent select {
+    border: none;
+    border-bottom: 1px solid #cccc;
+    outline: none;
+    margin-left: 20px;
+    width: 371px !important;
+}
+.alertbox {
+    width: 250px !important;
+}
+.AddProductCateContent h5 {
+    font-size: 21px;
+}
+.AddProductCateMultiselect p {
+    font-size: 18px;
+}
+.AddProductCatetotal p {
+    font-size: 16px;
+}
+.AddProductCatedropdown select {            
+    margin-left: 16px;
+    width: 50%;
+}
+.AddProductCatedropdown p {
+    font-size: 13px;
+}
+.AddProductdetailscontent3 h5 {
+    font-size: 21px;
+}
+.AddProductCate3dropdown p {
+    font-size: 14px;
+    width: 211px;
+}
+.AddProductCatecontent4{
+    display: flex;
+    flex-wrap: wrap;
+}
+.AccountStock {
+    width: 79%;
+    margin-top: 20px;
+    padding: 0px;
+}
+.AccountStock h5 { 
+    margin-left: 0px;
+}
+.AddProductCateContent {
+    width: 100%;
+    padding: 10px 12px;
+}
+.InventoryValuation {
+    width: 100%;
+}
+.stockdropdown p {
+
+    font-size: 13px;
+}
+}
+@media only screen and (max-width: 768px){
+    .AddProductCate1 {
+        width: 73%;
+    }
+    .AddProductCate2 {
+        width: 30%;
+    }
+    .alertbox{
+        width: 200px !important;
+    }
 }

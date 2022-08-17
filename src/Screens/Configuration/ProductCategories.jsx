@@ -1,60 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navebar  from '../../components/Navbar/Navbar';
 import CustomTable from '../../components/CustomTable/CustomTable';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const ProductCategories = () => {
 
-  const data = [
-    {
-      id : '1',
-      productCategories : 'Assets',
-    },
-    {
-      id : '2',
-      productCategories : 'Assets / Computers and printers',
-    },
-    {
-      id : '3',
-      productCategories : 'Assets / Extinguishing programs, permits and licenses',
-    },
-    {
-      id : '4',
-      productCategories : 'Assets / Furniture ',
-    },
-    {
-      id : '5',
-      productCategories : '	Assets / Houses',
-    },
-    {
-      id : '6',
-      productCategories : 'Assets / lab equipment',
-    },
-    {
-      id : '7',
-      productCategories : '	Assets / Prefabricated plastic and concrete barriers',
-    },
-    {
-      id : '8',
-      productCategories : 'Assets / The machines and the equipments',
-    },
-    {
-      id : '9',
-      productCategories : '	Assets / Vehicles',
-    },
-    {
-      id : '10',
-      productCategories : '	BATTERY',
-    },
-  ]; 
+  const navigate = useNavigate();
+  const handleCreatePage = () => {
+    navigate('/AddProductCategories');
+  }
+
+  const url = "https://xstore.skyviewads.com/ProductsXM/DisplayAllProductCategory";
+  const [ProductCate ,  setProductCate] = useState([]);
+
+  useEffect (() => {
+    axios.post(url)
+    .then((res) => {
+      console.log(res,"result");
+      if(res.data.status === true)
+      {
+        setProductCate(res.data.data);
+      }
+      else if(res.data.status === false)
+      {
+        alert(res.data.message);
+      }
+    })
+    .catch((err) => {
+      console.log(err,"error");
+    })
+     
+  },[])
 
   const column = [
-    { label : 'Product Category', name: 'productCategories'},
+    { label : 'Product Category', name: 'CATEGORY_NAME'},
   ];
 
 
   return (
     <div style={{width:"100vw",height:'100vh',overflow:'hidden'}}>
-        <Navebar showBelowMenu={true}/>
-        <CustomTable  data = {data} column = {column}/>
+        <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage}/>
+        <CustomTable data={ProductCate} column = {column}/>
     </div>
   )
 }

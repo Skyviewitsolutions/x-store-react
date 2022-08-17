@@ -30,6 +30,10 @@ import WarehouseConfig from './Screens/Configuration/AddWarehouse/WarehouseConfi
 import AddLocation from './Screens/Configuration/AddLocation/AddLocation';
 import AddProductCategories from './Screens/Configuration/AddProductCategory/AddProductCategories';
 import AddRoute from './Screens/Configuration/AddRoute/AddRoute';
+import AddAtrribute from './Screens/Configuration/AddAtrribute/AddAtrribute';
+import { ToastContainer, toast } from 'react-toastify';
+ import 'react-toastify/dist/ReactToastify.css';
+import DemoTable from './Screens/DemoTable';
 
 const App = () => {
 
@@ -65,6 +69,8 @@ const App = () => {
         <Route path='/AddLocation' element={<AddLocation/>}/>
         <Route path='/AddProductCategories' element={<AddProductCategories/>}/>
        <Route path='/AddRoute' element={<AddRoute/>} />
+       <Route path='/AddAttribute' element={<AddAtrribute/>} />
+       <Route path='/DemoTable' element={<DemoTable/>}/>
       </Routes>
     </Router>
     

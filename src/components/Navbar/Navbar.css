@@ -31,8 +31,8 @@
    border-bottom: 1px solid black;
 }
 
-input{
-    width: 97%;
+.search input{
+    width: 94%;
     outline: none;
     border: none;
 
@@ -65,3 +65,4 @@ input{
 .createbtn:hover{
     background-color:#036463;
 }
+

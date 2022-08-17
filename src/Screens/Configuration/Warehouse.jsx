@@ -1,80 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navebar from '../../components/Navbar/Navbar'
 import CustomTable from '../../components/CustomTable/CustomTable'
+import {useNavigate } from 'react-router-dom'
+import axios from 'axios'
 const Warehouse = () => {
+  
+  const navigate  = useNavigate();
+  const handleCreatePage = () => {
+    navigate('/AddWarehouse');
+  }
 
-  const data = [
-    {
-      id : '1',
-      warehouse : 'Riyadh Projects Materials Store',
-      Locationstock : '	RIPMS/Riyadh Projects Materials Store',
-      address : '	شركة الإنجاز للمقاولات والتجارة',
-    },
-    {
-      id : '2',
-      warehouse : 'Jeddah Project Materials Store',
-      Locationstock : 'JEPMS/Jeddah Project Materials Store',
-      address : '	شركة الإنجاز للمقاولات والتجارة',
-    },
-    {
-      id : '3',
-      warehouse : '	Bisha Project Materials Store',
-      Locationstock : '	BIPMS/Bisha Project Materials Store	',
-      address: 'شركة الإنجاز للمقاولات والتجارة',
-    },
-    {
-      id : '4',
-      warehouse : 'ALBAHA Project Materials Store',
-      Locationstock : '	BAPMS/Al Baha Store for Projects Materials		',
-      address:'	شركة الإنجاز للمقاولات والتجارة',
-    },
-    {
-      id : '5',
-      warehouse : 'Yanbu Project Materials Store',
-      Locationstock : '	YAPMS/Yanbu Project Materials Store	',
-      address: '	شركة الإنجاز للمقاولات والتجارة',
-    },
-    {
-      id : '6',
-      warehouse : 'AlJouf Projects Materials Store',
-      Locationstock : '		YAPMS/Yanbu Project Materials Store	',
-      address: ' شركة الإنجاز للمقاولات والتجارة',
-    },
-    {
-      id : '7',
-      warehouse : '	Al-Bahah Warehouse',
-      Locationstock : 'BAWH/Stock',
-      address:'	Al-Bahah Warehouse',
-    },
-    {
-      id : '8',
-      warehouse : 'Makkah Warehouse',
-      Locationstock : '	MAKWH/Stock	',
-      address:'	Makkah Warehouse',
-    },
-    {
-      id : '9',
-      warehouse : '	Bisha Warehouse',
-      Locationstock : '	BIWH/Stock	',
-      address:'	Bisha Warehouse',
-    },
-    {
-      id : '10',
-      warehouse : 'Yanbu Warehouse',
-      Locationstock : '	YWH/Stock		',
-      address:'	Yanbu Warehouse',
-    },
-  ];
+  const url = "https://xstore.skyviewads.com/WareHouse/WareHouseAddress/GetAllWareHouse";
+
+  const [WareHousedetails,setWareHousedetails] = useState([]);
+  const formData = new FormData();
+  useEffect(() => {
+     axios.post(url,formData)
+     .then((res) => {
+      console.log(res , "response");
+      if(res.data.status === true)
+      {
+        setWareHousedetails(res.data.data);
+      }
+      else if(res.data.status === false)
+      {
+        alert(res.data.message);
+      }
+     })
+     .catch((err) => {
+      console.log(err,"error");
+     })
+  },[])
+  
 
   const column  = [
-    {label : 'Warehouse' , name :'warehouse' },
-    {label : 'Location stock' , name :'Locationstock' },
-    {label : 'Address' , name : 'address' },
+    {label : 'Warehouse' , name :'WAREHOUSE_NAME' },
+    {label : 'Location stock' , name :'TRANSIT_LOCATION' },
+    {label : 'Address' , name : 'WAREHOUSE_ADDRESS' },
   ]
   return (
     <div style={{width:'100vw',height:'100vh',overflow:'hidden'}}>
-        <Navebar showBelowMenu={true}/>
-        <CustomTable  data = {data} column = {column}/>
+        <Navebar showBelowMenu={true}  handleCreatePage={handleCreatePage}/>
+        <CustomTable  column = {column} data={WareHousedetails}/>
     </div>
   )
 }

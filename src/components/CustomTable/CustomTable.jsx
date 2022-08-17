@@ -5,8 +5,8 @@ import './ProductTab.css'
 
 const CustomTable = (props) => {
 
-  const {column , data} = props
-    
+  const {data,column} = props
+    console.log(data);
     // const columns = [
     //     { label: 'Title', name: 'title' },
     //     { label: 'Author', name: 'authors' },
@@ -22,10 +22,10 @@ const CustomTable = (props) => {
     <>
 <div className='protab'>
       <MUIDataTable
-        columns={column}
         data={data}
-        // title='Books Directory'
-        // options={options}
+        columns={column}
+        // titl='Books Directory'
+        // options=-{options}
       />
       </div>
     </>

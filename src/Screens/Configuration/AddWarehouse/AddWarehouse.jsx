@@ -30,14 +30,7 @@ const [event , setEvent] = useState("WarehouseConfig");
         <p>Warehouse</p>
         <input
           type="text"
-          placeholder="شركة الإنجاز للمقاولات والتجارة"
-          style={{
-            fontSize: "35px",
-            marginLeft: "35px",
-            marginTop: "18px",
-            borderBottom: "3px solid #666666",
-            color: "#000",
-          }}
+          placeholder="Al-Enjaz Contracting & Trading Company"
         />
       </div>
       <div className="shortname">
@@ -49,7 +42,7 @@ const [event , setEvent] = useState("WarehouseConfig");
           <div className="Adddropdown">
             <p> Address</p>
             <select>
-              <option>شركة الإنجاز للمقاولات والتجارة</option>
+              <option>Al-Enjaz Contracting & Trading Company</option>
               <option>110</option>
               <option>13103</option>
               <option>20</option>
@@ -72,7 +65,7 @@ const [event , setEvent] = useState("WarehouseConfig");
           <div className="Adddropdown">
             <p>Responsibles</p>
             <select>
-              <option>شركة الإنجاز للمقاولات والتجارة</option>
+              <option>Al-Enjaz Contracting & Trading Company</option>
               <option>110</option>
               <option>13103</option>
               <option>20</option>

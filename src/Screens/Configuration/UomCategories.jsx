@@ -1,46 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navebar from '../../components/Navbar/Navbar';
 import CustomTable from '../../components/CustomTable/CustomTable';
+import axios from 'axios';
+
 const UomCategories = () => {
 
-  const data = [
-    {
-      id: 1,
-      UnitofMeasurecategory:'Length / Distance' ,
-    },
-    {
-      id: 2,
-      UnitofMeasurecategory:'Unit' ,
-    },
-    {
-      id: 3,
-      UnitofMeasurecategory:'Unsorted/Imported Units' ,
-    },
-    {
-      id: 4,
-      UnitofMeasurecategory:'	Volume',
-    },
-    {
-      id: 5,
-      UnitofMeasurecategory:'Weight' ,
-    },
-    {
-      id: 6,
-      UnitofMeasurecategory:'Working Time' ,
-    },
-    {
-      id: 7,
-      UnitofMeasurecategory:'متر مربع' ,
-    },
-  ]
+  const [Uomdetails , setUomdetails] = useState([]);
+  const url = "https://xstore.skyviewads.com/ProductsXM/ProductsUnitsAll";
+
+ useEffect(() => {
+      axios.get(url)
+      .then((res) => {
+        console.log(res,"response");
+        if(res.data.status === true)
+        {
+          setUomdetails(res.data.data);
+        }
+        else if(res.data.status ===  false) 
+        {
+          alert(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      })
+ },[])
 
   const column = [
-    {label : 'Unit of Measure Category', name: 'UnitofMeasurecategory'}
+    {label : 'Unit of Measure Category', name: "UNIT_NAME"}
   ]
   return (
     <div style={{width:'100vw',height:'100vh',overflow:'hidden'}}>
          <Navebar showBelowMenu={true} />
-         <CustomTable data = {data} column = {column}/>
+        
+            <CustomTable  data={Uomdetails} column={column}/>
+              
+         
     </div>
   )
 }

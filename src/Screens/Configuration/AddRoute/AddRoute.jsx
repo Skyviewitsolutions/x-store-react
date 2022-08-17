@@ -9,10 +9,9 @@ const AddRoute = () => {
 
     const navigate = useNavigate();
     const [selectedValue, setSelectedValue] = useState();
+    const [showAddRoute , setShowAddRoute] = useState(false);
     
-    const RedirectToAddRoutePopup = () => {
-       navigate('/AddRoutePopup');
-    }
+   
     const options = [
       { name: "Riyadh Project material store", id: 1 },
       { name: "Jaddah Project material store", id: 2 },
@@ -83,10 +82,10 @@ const AddRoute = () => {
         </div>
     </div> 
         <div className="AddRouteboxshadow">
-        <p onClick={RedirectToAddRoutePopup}>Add line</p>
+        <p  onClick={ () => setShowAddRoute(true)}>Add line</p>
         </div>
             </div>
-            <AddRoutePopup />
+            <AddRoutePopup showAddRoute={showAddRoute} setShowAddRoute={setShowAddRoute}/>
         </div>
         </>
   )

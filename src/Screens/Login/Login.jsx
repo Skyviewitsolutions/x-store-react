@@ -5,6 +5,7 @@ import XSTORE from '../../assets/Images/xstore1.png';
 import { AiOutlineEye,AiOutlineEyeInvisible } from 'react-icons/ai';
 import {useNavigate} from "react-router-dom";
 import validator from 'validator';
+import axios from 'axios';
 const Login = () => {
 
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ const Login = () => {
   const [emailError , setEmailError] = useState("");
   const [passwordError , setPasswordError] = useState("");
   const navigate = useNavigate();
+  const [isLoading , setIsLoading] = useState(false);
    const RedirecttoSignup = () => {
     navigate("/");
    }
@@ -39,7 +41,33 @@ const Login = () => {
     else{
       setEmailError("");
       setPasswordError("");
-      navigate('/Dashboard');
+      setIsLoading(true);
+      
+      const url = "https://xstore.skyviewads.com/UserLogin/login"
+
+      const form = new FormData();
+
+    form.append("email" , email);
+    form.append("pass" , password);
+     
+    axios.post( url , form)
+    .then((res) => {
+      console.log(res , "response");
+      if(res.data.status === true) 
+      {
+        setIsLoading(false);
+        navigate('/Dashboard');
+      }
+      else if(res.data.status === false)
+      {
+       
+       alert(res.data.message);
+      }
+    })
+    .catch((error) => {
+      setIsLoading(false);
+      console.log(error , "error");
+    })
     }
   }
   return (
@@ -63,8 +91,9 @@ const Login = () => {
           <span style={{color:"red"}}>{passwordError}</span>
         </div>
         
-          <button className="Loginbtn" onClick={submit}>Sign In</button>
-       
+          <button className="Loginbtn" onClick={submit}>
+            {isLoading ?   <div class="spinner-border text-light" role="status" style={{width:"23px",height:"23px"}}> </div>  :"Sign In"}
+          </button>    
         <div className="LoginContent mt-2">
         <span onClick={RedirecttoSignup}>Don't have an account?</span>
           <span onClick={RedirectToForgetPassword}>Forget Password</span>

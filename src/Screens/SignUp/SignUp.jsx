@@ -5,6 +5,7 @@ import XSTORE from '../../assets/Images/xstore1.png';
 import { AiOutlineEye,AiOutlineEyeInvisible } from 'react-icons/ai';
 import {useNavigate} from 'react-router-dom';
 import validator from 'validator';
+import axios from 'axios';
 const SignUp = () => {
     
 const [name,setName] = useState("");
@@ -20,6 +21,7 @@ const [phonenoError , setPhonenoError] = useState("");
 const [passwordError , setPasswordError] = useState("");
 const [confirmError , setConfirmError] = useState("");
 const navigate = useNavigate();
+const [isLoading , setIsLoading] = useState(false);
 const Redirecttologin = () => {
   navigate("/login");
 }
@@ -73,7 +75,33 @@ const submit = () => {
       setPhonenoError("");
       setPasswordError("");
       setConfirmError("");
-      navigate("/OtpPage");
+       setIsLoading(true);
+      const url = "https://xstore.skyviewads.com/UserLogin/signup";
+   
+      const form = new  FormData();
+
+      form.append("name" , name) ;
+      form.append("email" ,email) ;
+      form.append("mobile" ,phoneno);
+      form.append("pass" , password);
+     
+      axios.post(url , form)
+      .then((res) => {
+        console.log(res,"result");
+        if(res.data.status === true){
+          setIsLoading(false);
+          navigate("/Dashboard");
+        }
+        else if(res.data.status === false) 
+        {
+          setIsLoading(false);
+          alert(res.data.message);
+        }
+      })
+      .catch((error) => {
+        console.log(error,"error");
+      })
+      
     }
 }
 
@@ -115,7 +143,10 @@ const submit = () => {
           <span style={{color:"red"}}>{confirmError}</span>
         </div>
        
-          <button  className="Signupbtn" onClick={submit}>Sign Up</button>
+          <button  className="Signupbtn" onClick={submit}>
+            {isLoading ? <div class="spinner-border text-light" role="status" style={{width:"23px",height:"23px"}}>
+            </div> : "Sign Up"}
+          </button>
   
         <div className="SignupContent mt-2">
           <span  onClick={Redirecttologin}>I already have an account</span>

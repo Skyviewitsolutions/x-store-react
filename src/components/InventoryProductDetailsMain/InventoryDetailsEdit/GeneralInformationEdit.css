@@ -42,6 +42,7 @@
 }
 .Editfirstcontent2 input{
     border: none;
+    outline: none;
     border-bottom: 1px solid #cccccc;
     width: 450px;
     margin-left: 10px;

@@ -60,3 +60,25 @@
     font-size: 15px;  
     margin-left: 20px;
 }
+.custext{
+    color: #6a666a;
+    font-size: 17px;
+    font-weight: 500;
+}
+@media only screen and (max-width: 1000px){
+ 
+    .firstcontent3 p {
+        font-size: 14px;
+        width: 150px;
+    }
+    .firstcontent3 span {
+        font-size: 14px;
+        margin-left: 8px;
+    }
+    .custext {
+        font-size: 15px;
+    }
+    .part1 h5 {
+        font-size: 29px;
+    }
+}
