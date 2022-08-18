@@ -6,11 +6,11 @@ import { HiOutlineRefresh } from "react-icons/hi";
 import { FaRandom } from "react-icons/fa";
 import { FaCogs } from "react-icons/fa";
 import Nav from "react-bootstrap/Nav";
-import GeneralInformation from "./GeneralInformation";
-import Accounting from "./Accounting";
-import ProductDetailsInventory from "./ProductDetailsInventory";
-import Variants from "./Variants";
-import Purchase from "./Purchase";
+import GeneralInformation from "./GeneralInformation/GeneralInformation";
+import Accounting from "./Accounting/Accounting";
+import ProductDetailsInventory from "./ProductsDetailsInventory/ProductDetailsInventory";
+import Variants from "./Varients/Variants";
+import Purchase from "./Purchase/Purchase";
 import GeneralInformationEdit from "./InventoryDetailsEdit/GeneralInformationEdit";
 import VariantsEdit from "./InventoryDetailsEdit/VariantsEdit";
 import PurchaseEdit from "./InventoryDetailsEdit/PurchaseEdit";
@@ -23,14 +23,13 @@ import axios from "axios";
 
 
 const InventoryProductDetailsMain = (props) => {
+
   const [events, setEvents] = useState("generalInformation");
-  const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomertax , description , setDescription } = props;
+
+  const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomerTax , description , setDescription } = props;
+
   const navigate = useNavigate();
   
-  
-
-
- 
   const RedirectToEmpty = (data) => {
     if (data === "Hand") {
       const val = {
@@ -52,6 +51,7 @@ const InventoryProductDetailsMain = (props) => {
       navigate("/Empty", { state: val });
     }
   };
+
   return (
     <div className="MainContainer">
       <div className="Container">
@@ -199,7 +199,7 @@ const InventoryProductDetailsMain = (props) => {
           {events === "Accounting" && isEdit === false && <Accounting />}
           {events === "generalInformation" && isEdit === true && (
             <GeneralInformationEdit productType={productType} productCategory={productCategory} setProductType={setProductType} setProductCategory={setProductCategory} interRef={interRef} setInterRef ={setInterRef} units={units} setUnits={setUnits} 
-            salesPrice = {salesPrice} setSalesPrice = {setSalesPrice} customerTax={customerTax} setCustomertax={setCustomertax}cost={cost} setCost={setCost} description={description} setDescription = {setDescription}/>
+            salesPrice = {salesPrice} setSalesPrice = {setSalesPrice} customerTax={customerTax} setCustomerTax={setCustomerTax} cost={cost} setCost={setCost} description={description} setDescription = {setDescription}/>
           )}
           {events === "variants" && isEdit === true && <VariantsEdit />}
           {events === "Purchase" && isEdit === true && <PurchaseEdit />}

@@ -7,8 +7,10 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import Multiselect from "multiselect-react-dropdown";
 import Navebar from "../../../components/Navbar/Navbar";
 import axios from "axios";
-import DiffrentAccount from "../../../components/InventoryProductDetailsMain/Model/AddDiffrentAccount/DiffrentAccount";
 import { useNavigate } from "react-router-dom";
+import DiffrentAccount  from "../../../components/Model/AddDiffrentAccount/DiffrentAccount"
+
+
 const AddProductCategories = () => {
   const [selectedValue, setSelectedValue] = useState();
   const [showAccount , setShowAccount] = useState(false);
@@ -26,30 +28,18 @@ const AddProductCategories = () => {
 
   const onRemove = (selectedList, removedItem) => {};
   const navigate = useNavigate();
-  const RedirectToDiffrentAccount = () => {
-        navigate('/DiffrentAccount');
-  }
+
 
   const url = "https://xstore.skyviewads.com/ProductsXM/AddProduct_Category";
   const [AddProductcate , setProductCate] = useState([]);
+  const [parentCategory , setParentCategory] = useState('');
+  
 
-   useEffect (() => {
-     axios.post(url)
-     .then((res) => {
-      console.log(res,"result");
-      if(res.data.status === true)
-      {
-        setProductCate(res.data.data);
-      }
-      else if(res.data.status === false)
-      {
-       alert(res.data.message);
-      }
-     })
-     .catch((err) => {
-      console.log(err,"error");
-     })
-   },[])
+  const updateParentCategory = (val) =>{
+    if(val === "Create and Edit.."){
+      setShowAccount(true);
+    }
+  }
 
   return (
 
@@ -89,20 +79,19 @@ const AddProductCategories = () => {
           </div>
           <div className="AddProductCatecontent">
             <p>Parent Category</p>
-            <select>
-              <option>Assets</option>
-              <option>Assets / Computers and printers</option>
-              <option>
+            <select onChange={(e) => updateParentCategory(e.target.value)} className="prntSlt">
+              <option value="Assets">Assets</option>
+              <option value="Assets / Computers and printers">Assets / Computers and printers</option>
+              <option value="Assets / Extinguishing programs, permits and licenses">
                 Assets / Extinguishing programs, permits and licenses
               </option>
-              <option>Assets / Furniture </option>
-              <option>Assets / Houses</option>
-              <option>Assets / lab equipment</option>
-              <option>
+              <option  value="Assets / Furniture">Assets / Furniture </option>
+              <option value="Assets / Houses">Assets / Houses</option>
+              <option value="Assets / lab equipment">Assets / lab equipment</option>
+              <option value="Assets / Prefabricated plastic and concrete barriers">
                 Assets / Prefabricated plastic and concrete barriers
               </option>
-              <option>Search More....</option>
-              <option>Create and Edit..</option>
+              <option value="Create and Edit.." style={{ color : '#1f1fed'}}>Create and Edit..</option>
             </select>
             <FaExternalLinkAlt
               size="14px"
@@ -204,7 +193,7 @@ const AddProductCategories = () => {
               <option>110101002 صندوق الزلفي</option>
               <option>110101002 صندوق الزلفي</option>
               <option>110101002 صندوق الزلفي</option>
-              <option onClick={RedirectToDiffrentAccount}>Create and Edit....</option>
+              <option>Create and Edit....</option>
               <option>Search More...</option>
             </select>
             <FaExternalLinkAlt
@@ -295,7 +284,8 @@ const AddProductCategories = () => {
         </div>
       </div>
       </div>
-      <DiffrentAccount showAccount={showAccount} setShowAddRoute={setShowAccount}/>
+      <DiffrentAccount showAccount={showAccount} setShowAccount={setShowAccount}/>
+      
       </>
   );
 };

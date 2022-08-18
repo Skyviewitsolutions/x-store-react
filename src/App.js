@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Login from './Screens/Login/Login';
 import SignUp from './Screens/SignUp/SignUp';
 import ForgetPassword from "./Screens/ForgetPassword/ForgetPassword";
@@ -32,8 +32,8 @@ import AddProductCategories from './Screens/Configuration/AddProductCategory/Add
 import AddRoute from './Screens/Configuration/AddRoute/AddRoute';
 import AddAtrribute from './Screens/Configuration/AddAtrribute/AddAtrribute';
 import { ToastContainer, toast } from 'react-toastify';
- import 'react-toastify/dist/ReactToastify.css';
-import DemoTable from './Screens/DemoTable';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
 
@@ -70,11 +70,10 @@ const App = () => {
         <Route path='/AddProductCategories' element={<AddProductCategories/>}/>
        <Route path='/AddRoute' element={<AddRoute/>} />
        <Route path='/AddAttribute' element={<AddAtrribute/>} />
-       <Route path='/DemoTable' element={<DemoTable/>}/>
       </Routes>
     </Router>
     
   </>)
 }
 
-export default App
+export default App;

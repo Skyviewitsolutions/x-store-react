@@ -5,6 +5,7 @@
 .Navbar{
     width: 100%;
     background-color: #875a7b;
+    /* background-color: var(--primarys); */
     color: white;
 }
 .navetext{

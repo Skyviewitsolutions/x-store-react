@@ -4,13 +4,12 @@ import {MdArrowDropDown } from 'react-icons/md'
 import Multiselect from "multiselect-react-dropdown";
 import Navebar from '../../../components/Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
-import AddRoutePopup from '../../../components/InventoryProductDetailsMain/Model/AddRoutePopup/AddRoutePopup';
+import AddRoutePopup from '../../../components/Model/AddRoutePopup/AddRoutePopup';
 const AddRoute = () => {
 
     const navigate = useNavigate();
     const [selectedValue, setSelectedValue] = useState();
     const [showAddRoute , setShowAddRoute] = useState(false);
-    
    
     const options = [
       { name: "Riyadh Project material store", id: 1 },

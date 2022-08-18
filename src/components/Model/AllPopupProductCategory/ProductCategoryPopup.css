@@ -1,0 +1,120 @@
+.procCon{
+    width:140%;
+    background-color: #fff;
+    position: relative;
+    margin-left: -20%;
+    padding-bottom: 4%;
+}
+
+.proChead{
+    width: 100%;
+    border-bottom: 1px solid #cccc;
+}
+.proChead p{
+    color:#1e1e1f ;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 10px; 
+}
+.procicons{
+    position:absolute;
+    top:10px;
+    right: 20px;
+    color: rgba(75, 74 , 74, 0.4);
+    cursor: pointer;   
+}
+.proiconsdiv{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #cccc;
+    justify-content: flex-end;
+}
+
+.proCbicon{
+    width: 160px;
+    display: flex;
+    border-left: 1px solid #cccc;
+}
+.procbarsicon{
+    color: #848484;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+
+.procont{
+    margin-left: 18px;
+}
+.procont p{
+    color:#736f6f;
+    font-size: 18px;
+    margin-top: 0px;
+    font-weight: 600;
+    margin-bottom: 0px; 
+}
+.procont span{
+    color: #736f6f;
+    font-size: 15px;  
+}
+.pronapa{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+.prode{
+    width: 60%;
+    border-right: 1px solid #cccc;
+}
+.detinp{
+    display: flex;
+    align-items: center;
+}
+.detinp p{
+    width: 150px;
+    font-size: 17px;
+    color: #736f6f;
+    margin-left: 15px;
+    font-weight: 600;
+}
+.detinp input {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #666666;
+    width: 400px;
+}
+.detsele{
+    display: flex;
+    align-items: center;
+}
+.detsele p{
+    width: 150px;
+    font-size: 17px;
+    color: #736f6f;
+    margin-left: 15px;
+    font-weight: 600; 
+}
+.detsele select{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    width: 400px;
+}
+.procatalert{
+    width: 40%;
+    padding: 15px 15px;
+}
+.proalbox{
+    width: 300px;
+    background-color: #d1ecf1;
+    border-radius: 2px;
+    padding: 15px 15px;
+    
+}
+.proalbox b{
+    font-size: 14px;
+}
+.procatalert p{
+    color: #666666;
+    font-size: 18px;
+}

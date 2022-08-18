@@ -1,7 +1,7 @@
 import React from 'react'
 import './GeneralInformation.css';
 import { FaArrowRight } from 'react-icons/fa';
-import UpdateCost from './Model/UpdateCost';
+import UpdateCost from '../../Model/GenInfoUpdate/UpdateCost';
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ const GeneralInformation = () => {
                 <p  className="custext">Customer Taxes</p>
                 <div className="firstcontent3">
                     <p>Cost</p>
-                    <span>	0.0000 SARper Units</span>
+                    <span>	0.0000 SAR per Units</span>
                     <span style={{ color: "#008784" }} onClick={() => setShowUpdateCost(true)}>Update Cost</span>
                 </div>
                 <div className="firstcontent3">
