@@ -11,15 +11,16 @@
     padding: 10px 15px;
 }
 .AddRouteinput p{
-    font-size: 18px;
+    font-size: 21px;
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
+    margin-bottom: 0px;
 }
 .AddRouteinput input{
     width: 700px;
     outline: none;
     border: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 2px solid #666666;
 }
 .Applicationon{
     width: 100%;
@@ -103,7 +104,7 @@
     font-size: 15px;
     margin-left: 30px;
     color: #212529;
-    font-weight: 700;
+    font-weight: 500;
     margin-top: 5px;
 }
 .AddRouteboxshadow{
@@ -116,4 +117,20 @@
 .AddRouteboxshadow p{
     font-size: 15px;
     color:#4eb6e5;
+}
+@media only screen and (max-width:1000px)
+{
+    .pro input {
+        width: 13px;
+    }
+    .pro p {
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .AddRouteinput p {
+        font-size: 16px;
+    }
+    .Applicationon h5 {
+        font-size: 21px;
+    }
 }

@@ -28,7 +28,7 @@ const GeneralInformationEdit = (props) => {
       <div className="GeneralInformationEditContainer">
         <div className="Editpart1">
           <div className="Editfirstcontent">
-            <p>Product Type</p>
+            <p>Product Type</p> 
             <select
               value={productType}
               onChange={(e) => setProductType(e.target.value)}

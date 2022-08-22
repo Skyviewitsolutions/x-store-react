@@ -21,7 +21,6 @@ import { useNavigate } from "react-router-dom";
 import InventoryProductDetailsFooter from "../InventoryProductDetailsFooter/InventoryProductDetailsFooter";
 import axios from "axios";
 
-
 const InventoryProductDetailsMain = (props) => {
 
   const [events, setEvents] = useState("generalInformation");
@@ -29,7 +28,7 @@ const InventoryProductDetailsMain = (props) => {
   const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomerTax , description , setDescription } = props;
 
   const navigate = useNavigate();
-  
+    
   const RedirectToEmpty = (data) => {
     if (data === "Hand") {
       const val = {
@@ -119,7 +118,7 @@ const InventoryProductDetailsMain = (props) => {
           <div className="detailsheading">
             {isEdit === false && <p>001122335215-HYD</p>}
             {isEdit === true && (
-
+             
               <input
                 type="text"
                 className="proin"

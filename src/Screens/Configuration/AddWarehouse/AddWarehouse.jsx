@@ -15,7 +15,6 @@ const [event , setEvent] = useState("WarehouseConfig");
         <Navebar showBelowMenu={true}/>
     <div className="AddwareHouseContainer">
       <div className="AddWareHouseHead">
-        <div className="head1empty"></div>
         <div className="head2">
           <HiOutlineRefresh
             size="33px"

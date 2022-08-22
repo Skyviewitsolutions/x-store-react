@@ -90,3 +90,18 @@
      width: 450px;
      outline: none;
  }
+
+ @media only screen and (max-width: 1000px)
+ {
+    .Editfirstcontent p {
+        width: 122px;
+    }
+    
+.Editfirstcontent select {
+    width: 250px;
+}
+.Editfirstcontent2 input {
+    width: 336px;
+    
+}
+ }

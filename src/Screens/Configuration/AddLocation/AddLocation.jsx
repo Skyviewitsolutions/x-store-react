@@ -33,7 +33,7 @@ const onRemove = (selectedList, removedItem) => {
     <Navebar showBelowMenu={true}/>
     <div className="AddlocationCon">
       <div className="AddLocationhead">
-        <div className="AddLocation1"></div>
+        
         <div className="AddLocation2">
           <div className="head1">
             <FaRandom
@@ -110,21 +110,12 @@ const onRemove = (selectedList, removedItem) => {
           </div>
           <div className="Addlocationcontent">
             <p>Users</p>
-            {/* <select>
-                <option>Vendor Location</option>
-                <option>View</option>
-                <option>Internal Location</option>
-                <option>Customer Location</option>
-                <option>Inventory Loss</option>
-                <option>Production</option>
-                <option>Transit Location</option>
-              </select> */}
             <Multiselect className='multiselect'
-              options={options} // Options to display in the dropdown
-              selectedValues={selectedValue} // Preselected value to persist in dropdown
-              onSelect={onSelect} // Function will trigger on select event
-              onRemove={onRemove} // Function will trigger on remove event
-              displayValue="name" // Property name to display in the dropdown options
+              options={options}
+              selectedValues={selectedValue} 
+              onSelect={onSelect}
+              onRemove={onRemove} 
+              displayValue="name"
             />
           </div>
           <h4>Logistics</h4>

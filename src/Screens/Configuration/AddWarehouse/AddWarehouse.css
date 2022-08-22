@@ -2,12 +2,10 @@
     width: 100%;
     border: 1px solid #ccc;
     margin-top: 20px;
-    /* padding: 10px 10px; */
     padding-bottom: 5%;
     flex: 1;
     height: 500px;
     overflow-y: scroll;
-    /* padding: 10px 10px; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .AddWareHouseHead{
@@ -15,12 +13,9 @@
     border-bottom: 1px solid #ccc;
     display: flex;
     align-items: center;
-}
-.head1empty{
- width: 85%;
+    justify-content: flex-end;
 }
 .head2{
-    width: 15%;
     display: flex;
     padding: 5px 10px;
     align-items: center;
@@ -31,7 +26,7 @@
     font-size: 18px;
     margin-left: 19px;
     margin-bottom: -6px;
-    /* margin-top: 8px; */
+    width: 170px;
 }
 .Createcontent p{
 font-size: 16px;

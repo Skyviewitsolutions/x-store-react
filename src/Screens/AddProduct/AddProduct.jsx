@@ -7,6 +7,7 @@ import "./AddProduct.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import ProductCategoryPopup from "../../components/Model/AllPopupProductCategory/ProductCategoryPopup";
 
 const AddProduct = () => {
 
@@ -92,6 +93,7 @@ const AddProduct = () => {
            </div>
         </Modal> */}
       <ToastContainer />
+      {/* <ProductCategoryPopup /> */}
     </div>
   );
 };

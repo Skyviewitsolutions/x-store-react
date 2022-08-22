@@ -235,7 +235,7 @@ const AddProductCategories = () => {
             />
       </div>
         <div className="stockdropdown">
-            <p>Stock Input Account</p>
+            <p>Stock Output Account</p>
             <select>
               <option></option>
               <option>110101001 صندوق ادارة الرياض</option>
