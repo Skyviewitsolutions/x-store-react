@@ -2,10 +2,14 @@
     margin: 0px;
     padding: 0px;
 }
+
+.navCont{
+    background-color: var(--red);
+}
 .Navbar{
     width: 100%;
-    background-color: #875a7b;
-    /* background-color: var(--primarys); */
+    background-color: #1669a2;
+    /* background: var(--red); */
     color: white;
 }
 .navetext{
@@ -15,7 +19,7 @@
 }
 .navetext:hover{
 
-    background-color: #68465f;
+    background-color: #053352;
 }
 .head{
     height: 100px;
@@ -44,16 +48,16 @@
 }
 .navbar-light .navbar-nav .nav-link:hover{
 
-    background-color: #68465f;
+    background-color: #1669a2;
     color: #fff !important;
 }
 .navbar-light .navbar-nav .nav-link:active{
 
-    background-color: #68465f;
+    background-color: #1669a2;
     color: #fff !important;
 }
 .createbtn{
-    background-color:#00a09d;
+    background-color:#1669a2;
     border:none;
     color: #fff;
     font-size: 15px;

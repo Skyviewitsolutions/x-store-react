@@ -4,9 +4,9 @@
     margin-top: 20px;
     padding-bottom: 5%;
     flex: 1;
-    height: 500px;
+    /* height: 500px; */
     overflow-y: scroll;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 .AddWareHouseHead{
     width: 100%;
@@ -47,7 +47,7 @@ margin-top: 15px;
 .shortname{
     width: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 }
 .Addcontent{
     width: 50%;
@@ -55,7 +55,7 @@ margin-top: 15px;
     align-items: center;
     margin-bottom: 8px;
     margin-top: 30px;
-    margin-left:20px;
+    margin-left:0px;
 }
 .Addcontent p{
     color: #6a666a;
@@ -122,6 +122,11 @@ margin-top: 15px;
     }
     .Createcontent input {
         font-size: 23px; 
+    }
+    .shortname {
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
     }
 
 }

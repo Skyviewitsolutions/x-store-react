@@ -1,9 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./GeneralInformationEdit.css";
 import { FaArrowRight } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import axios from "axios";
 
 const GeneralInformationEdit = (props) => {
+  const [proCate, setProCate] = useState([]);
+  const [uoms , setUoms] = useState([]);
+  const [purchase , setPurchase] = useState([]);
+  const [proTypes , setProductTypes] = useState([]);
+  const productCategoryurl =
+    "https://xstore.skyviewads.com/ProductsXM/DisplayAllProductCategory";
+   
+    const uomsurl = "https://xstore.skyviewads.com/Units/GetAllUOM";
+
+    const unitsurl = "https://xstore.skyviewads.com/ProductsXM/ProductsUnitsAll";
+    const protypeurl = "https://xstore.skyviewads.com/ProductsXM/GetAllProductType";
+   
+  useEffect(() => {
+    axios
+      .post(productCategoryurl)
+      .then((res) => {
+        console.log(res, "responsedddd");
+        if (res.data.status == true) {
+          setProCate(res.data.data);
+        } else if (res.data.status == false) {
+          alert(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.post(uomsurl)
+    .then((res) => {
+      
+      if(res.data.status == true)
+      {
+        setUoms(res.data.data);
+      }
+      else if(res.data.status ==  false)
+      {
+        alert(res.data.message)
+      }
+    })
+    .catch((err) =>{
+      console.log(err,"error");
+    })
+  },[])
+  useEffect(() => {
+  axios.get(unitsurl)
+  .then((res) => {
+    console.log(res,'result');
+    if(res.data.status == true)
+    {
+      setPurchase(res.data.data);
+    }
+    else if(res.data.status == false)
+    {
+      alert(res.data.message);
+    }
+  })
+  .catch((err) => {
+    console.log(err,'this is error')
+  })
+  },[])
+  useEffect(() => {
+    axios.post(protypeurl)
+    .then((res) => {
+      console.log(res,"this is product")
+      if(res.data.status == true)
+      {
+        setProductTypes(res.data.data);
+      }
+      else if(res.data.status == false)
+      {
+        alert(res.data.message)
+      }
+    })
+    .catch((err) => {
+      console.log(err,'error')
+    })
+  },[])
   const {
     productType,
     setProductType,
@@ -28,43 +108,38 @@ const GeneralInformationEdit = (props) => {
       <div className="GeneralInformationEditContainer">
         <div className="Editpart1">
           <div className="Editfirstcontent">
-            <p>Product Type</p> 
+            <p>Product Type</p>
             <select
               value={productType}
               onChange={(e) => setProductType(e.target.value)}
             >
-              <option value="Consumable">Consumable</option>
+              {proTypes.map((item,index) => {
+                return(
+                  <>
+                 <option value="Consumable" key={index}>{item.PRODUCT_TYPE}</option>
+                  </>
+                )
+              })}
+              
               <option value="Service">Service</option>
               <option value="Storable Product">Storable Product</option>
             </select>
           </div>
           <div className="Editfirstcontent">
+            
             <p> Product Category</p>
             <select
               value={productCategory}
               onChange={(e) => setProductCategory(e.target.value)}
             >
-              <option value="Filters / PUTZMEISTER">
-                Filters / PUTZMEISTER
-              </option>
-              <option value="Assets">Assets</option>
-              <option value="Assets / Computers and Printers">
-                Assets / Computers and Printers
-              </option>
-              <option value="Assets / Extinguishing programs, permits and licenses">
-                Assets / Extinguishing programs, permits and licenses
-              </option>
-              <option value="Assets / Furniture">Assets / Furniture </option>
-              <option value="Assets / Houses">Assets / Houses</option>
-              <option value="Assets / lab equipment">
-                Assets / lab equipment
-              </option>
-              <option value="Assets / Prefabricated plastic and concrete barriers">
-                Assets / Prefabricated plastic and concrete barriers
-              </option>
-              <option value="Create and Edit..." style={{ color: "#1f1fed" }}>
-                Create and Edit...
-              </option>
+              {proCate.map((item,index)=>{
+                return(
+                  <>
+                  <option key={index} value={item.CATEGORY_NAME}>{item.CATEGORY_NAME}</option>
+                  </>
+                )
+              })}
+              
             </select>
           </div>
           <div className="Editfirstcontent2">
@@ -139,12 +214,14 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Unit of Measure</p>
             <select value={units} onChange={(e) => setUnits(e.target.value)}>
-              <option value="Barell">Barell</option>
-              <option value="Cm">Cm</option>
-              <option value="Days">Days</option>
-              <option value="Dozens">Dozens</option>
-              <option value="DRUM">DRUM</option>
-              <option value="Oz">Oz</option>
+              {
+                uoms.map((item,index) => {
+                  return(
+                    <>
+                     <option value="Barell" key={index}>{item.UNITCATEGORY}</option>
+                    </>
+                  )
+                  } )}
             </select>
             <FaExternalLinkAlt
               size="14px"
@@ -154,12 +231,13 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Purchase Unit of</p>
             <select>
-              <option value="Barell">Barell</option>
-              <option value="Cm">Cm</option>
-              <option value="Days">Days</option>
-              <option value="Dozens">Dozens</option>
-              <option value="DRUM">DRUM</option>
-              <option value="Oz">Oz</option>
+              {purchase.map((item,index) => {
+                return(
+                  <>
+                  <option value="Barell" key={index}>{item.UNIT_NAME}</option>
+                  </>
+                )
+              })}
             </select>
             <FaExternalLinkAlt
               size="14px"

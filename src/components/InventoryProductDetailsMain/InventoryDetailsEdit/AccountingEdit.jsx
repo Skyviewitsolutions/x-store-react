@@ -1,7 +1,29 @@
-import React from 'react'
+import React,{useEffect,useState}from 'react'
 import './AccountingEdit.css';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import axios from 'axios';
+
 const AccountingEdit = () => {
+
+  const incomeaccUrl = "https://xstore.skyviewads.com/AccountDepartment/ProductIncome/GetAllPI";
+  const [income , setIncome] = useState([])
+  useEffect(() => {
+   axios.post(incomeaccUrl)
+   .then((res) => {
+    console.log(res,'this is income');
+    if(res.data.status == true)
+    {
+      setIncome(res.data.data);
+    }
+    else if(res.data.status == false)
+    {
+      alert(res.data.message);
+    }
+   })
+   .catch((err) => {
+    console.log(err,'error');
+   })
+  },[])
   return (
     <div className='AccountingContainer'>
             <div className="acc1">
@@ -9,16 +31,13 @@ const AccountingEdit = () => {
               <div className="AccountingEditcontent">
               <p>Income Account</p>
             <select>
-                <option></option>
-              <option>110306001 ضريبة القيمة المضافة على المشتريات</option>
-              <option>110601001 مخزون قطع غيار</option>
-              <option>110601002 مخزون كفرات</option>
-              <option>110601003 مخزون زيوت وشحوم</option>
-              <option>110601004 مخزون ديزل </option>
-              <option>110601005 مخزون مواد جاهزة</option>
-              <option>110601006 وسيط مخزون</option>
-              <option><span  style={{ color: "#008784" }}>Search More....</span></option>
-              <option><span  style={{ color: "#008784" }}>Create and Edit...</span></option>
+              {income.map((item,index) => {
+                return(
+                  <>
+                  <option value="110306001" key={index}>{item.PRODUCT_INCOME_NAME}</option>
+                  </>
+                )
+              })}
             </select>
             <FaExternalLinkAlt size="14px" style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }} />
           </div>

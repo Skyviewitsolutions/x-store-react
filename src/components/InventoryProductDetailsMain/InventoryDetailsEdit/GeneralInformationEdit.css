@@ -101,7 +101,10 @@
     width: 250px;
 }
 .Editfirstcontent2 input {
-    width: 336px;
-    
+    width: 336px;   
+}
+.GeneralInformationEditContainer{
+  display: flex;
+  flex-wrap: wrap;
 }
  }

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const InventoryProducts = () => {
   const [product, setProduct] = useState([]);
-  const url = "https://xstore.skyviewads.com/ProductsXM/AllProducts";
+  const url = "https://xstore.skyviewads.com/ProductManagement/ProductManagement/GetAllProduct";
 
   const navigate = useNavigate();
 
