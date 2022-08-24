@@ -201,7 +201,7 @@ const InventoryProductDetailsMain = (props) => {
           )}
           {events === "variants" && isEdit === true && <VariantsEdit />}
           {events === "Purchase" && isEdit === true && <PurchaseEdit />}
-          {events === "Inventory" && isEdit === true && <InventoryEdit />}
+          {events === "Inventory" && isEdit === true && <InventoryEdit {...props} />}
           {events === "Accounting" && isEdit === true && <AccountingEdit {...props}/>}
         </div>
       </div>

@@ -9,16 +9,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import ProductCategoryPopup from "../../components/Model/AllPopupProductCategory/ProductCategoryPopup";
 
+
 const AddProduct = () => {
 
-  const url = "https://xstore.skyviewads.com/ProductsXM/AddProducts";
+  const url = "https://xstore.skyviewads.com/ProductManagement/ProductManagement/AddProduct";
   
   const [isEdit, setIsEdit] = useState(false);
   const [productName, setProductName] = useState("");
   const [productType, setProductType] = useState("Consumable");
   const [productCategory, setProductCategory] = useState(
-    "Filters / PUTZMEISTER"
-  );
+    "Filters / PUTZMEISTER" );
   const [sold , setSold] = useState(false)
   const [purchased , setPurchased] = useState(false)
   const [expensed , setExpensed] = useState(false);
@@ -30,35 +30,33 @@ const AddProduct = () => {
   const [interRef, setInterRef] = useState("");
   const [customerTax, setCustomerTax] = useState("");
   const [description, setDescription] = useState("");
-  const [unitOfMeasurement , setUnitOfMeasurement] = useState("");
-  const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("");
-  const [weight , setWeight] = useState("");
-  const [volume , setVolume] = useState("");
+  const [unitOfMeasurement , setUnitOfMeasurement] = useState("meter");
+  const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("unit");
+  const [weight , setWeight] = useState("0");
+  const [volume , setVolume] = useState("0");
   const [buy , setBuy] = useState(false)
   const [replenishOnOrder , setReplenishOnOrder] = useState(false)
   const [customerLeadTime , setCustomerLeadTime] = useState("");
   const [descriptionDeliveryOrder , setDescriptionDeliveryOrder] = useState("");
   const [descriptionInternalTranser , setDescriptionInternalTranser] = useState("")
   const [descriptionForReceipt , setDescriptionForReceipt] = useState("")
-  const [incomeAccount , setIncomeAccount] = useState("")
-  const [expenseAccount , setExpenceAccount] = useState("")
-  const [assetType , setAssetType] = useState("")
-  const [priceDifference , setPriceDifference] = useState("")
-  const [account , setAccount] = useState("");
+  const [incomeAccount , setIncomeAccount] = useState("0")
+  const [expenseAccount , setExpenceAccount] = useState("SBI")
+  const [assetType , setAssetType] = useState("110601001 مخزون قطع غيار")
+  const [priceDifference , setPriceDifference] = useState("110306001 ضريبة القيمة المضافة على المشتريات")
+  const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
   const [img , setImg] = useState("");
-
-
 
   const formData = new FormData();
 
-  formData.append("ProductName", productName);
-  formData.append("ProductType", productType);
-  formData.append("ProductCategory", productCategory);
+  formData.append("productName", productName);
+  formData.append("productType", productType);
+  formData.append("productCategory", productCategory);
   formData.append("units", units);
   formData.append("cost", cost);
-  formData.append("SalesPrice", salesPrice);
-  formData.append("InterRef", interRef);
-  formData.append("CustomerTax", customerTax);
+  formData.append("sales_price", salesPrice);
+  formData.append("internal_Reference", interRef);
+  formData.append("customer_tax", customerTax);
   formData.append("description", description);
   formData.append('unit_of_measurement' , unitOfMeasurement)
   formData.append('purchase_unit_of_measurement' , purchaseUnitOfMeasuremnt)
@@ -93,14 +91,26 @@ const AddProduct = () => {
       toast("InterRef field is required !", { type: "warning" });
     } else if (customerTax === "") {
       toast("Customer Tax is required", { type: "warning" });
-    } else {
+    } 
+    else if(customerLeadTime === ""){
+      toast("Customer lead time is required" , {type : "warning"})
+    }
+   
+    else {
       axios
         .post(url, formData)
         .then((res) => {
           console.log(res, "response");
+          if(res.data.status === true){
+            toast("Product Added Successfully" , {type : "success"})
+          }
+          else if(res.data.status === false){
+            toast(res.data.message , {type : "error"});
+          }
         })
         .catch((err) => {
           console.log(err, "error");
+          toast("something went wrong" , {type : "error"})
         });
     }
   };

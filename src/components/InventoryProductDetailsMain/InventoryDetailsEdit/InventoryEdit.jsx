@@ -1,7 +1,11 @@
 import React from 'react'
 import './InventoryEdit.css';
-import { FaExternalLinkAlt } from 'react-icons/fa'
-const InventoryEdit = () => {
+import { FaExternalLinkAlt } from 'react-icons/fa';
+
+const InventoryEdit = (props) => {
+
+    const {buy , setBuy , customerLeadTime ,setCustomerLeadTime , weight , setWeight , volume , setVolume , descriptionDeliveryOrder , setDescriptionDeliveryOrder ,descriptionInternalTranser , setDescriptionInternalTranser , descriptionForReceipt ,setDescriptionForReceipt , replenishOnOrder ,setReplenishOnOrder} = props ;
+
     return (
         <div className='InventoryEditContainer'>
             <div className="Inventory1Edit">
@@ -9,17 +13,17 @@ const InventoryEdit = () => {
                     <h5>Operations</h5>
                     <div className="Editcontent1">
                         <p>Routes</p>
-                        <input type="checkbox" />
+                        <input type="checkbox" value={buy} onChange={() => setBuy(!buy)}/>
                         <label>Buy</label>
                     </div>
                     <div className="Editcontent1">
                         <p></p>
-                        <input type="checkbox" />
+                        <input type="checkbox" value={replenishOnOrder} onChange={() => setReplenishOnOrder(!replenishOnOrder)}/>
                         <label>Replenish on Order (MTO)</label>
                     </div>
                     <div className="Editcontent2">
                         <p>Customer Lead Time</p>
-                        <input type="text" placeholder='0.00' />
+                        <input type="text" placeholder='0.00' value={customerLeadTime} onChange={(e) => setCustomerLeadTime(e.target.value)}/>
                         <span>days</span>
                     </div>
                 </div>
@@ -27,12 +31,12 @@ const InventoryEdit = () => {
                     <h5>Logistics</h5>
                     <div className="Editcontent2">
                         <p>Weight</p>
-                        <input type="text" placeholder='0.00' style={{ width: "450px" }} />
+                        <input type="text" placeholder='0.00' style={{ width: "450px" }} value={weight} onChange={(e) => setWeight(e.target.value)}/>
                         <span>kg</span>
                     </div>
                     <div className="Editcontent2">
                         <p>Volume</p>
-                        <input type="text" placeholder='0.00' style={{ width: "450px" }} />
+                        <input type="text" placeholder='0.00' style={{ width: "450px" }} value={volume} onChange={(e) => setVolume(e.target.value)}/>
                         <span>m³</span>
                     </div>
                     <div className="Editcontent1">
@@ -52,13 +56,13 @@ const InventoryEdit = () => {
                 </div>
                 <div className='EditDescription'>
                     <h5>Description for Delivery Orders</h5>
-                    <textarea placeholder='this note is added to delivery orders'>
+                    <textarea placeholder='this note is added to delivery orders' value={descriptionDeliveryOrder} onChange={(e) =>setDescriptionDeliveryOrder(e.target.value)}>
                     </textarea>
                     <h5>Description for Receipts</h5>
-                    <textarea placeholder='This note is added to receipt orders (e.g.where to store the product in the warehouse).'>
+                    <textarea placeholder='This note is added to receipt orders (e.g.where to store the product in the warehouse).' value={descriptionForReceipt} onChange={(e) => setDescriptionForReceipt(e.target.value)}>
                     </textarea>
                     <h5>Description for Internal Transfers</h5>
-                    <textarea placeholder='This note is added to internal transfer orders (e.g.where to pick the product in the warehouse).'>
+                    <textarea placeholder='This note is added to internal transfer orders (e.g.where to pick the product in the warehouse).' value={descriptionInternalTranser} onChange={(e) => setDescriptionInternalTranser(e.target.value)}>
                     </textarea>
                 </div>
             </div>
