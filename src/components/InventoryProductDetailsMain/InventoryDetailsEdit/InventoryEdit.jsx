@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect , useState} from 'react'
 import './InventoryEdit.css';
 import { FaExternalLinkAlt } from 'react-icons/fa'
+import axios from 'axios'
 const InventoryEdit = () => {
     return (
         <div className='InventoryEditContainer'>
@@ -8,9 +9,9 @@ const InventoryEdit = () => {
                 <div className="OperatinEdit">
                     <h5>Operations</h5>
                     <div className="Editcontent1">
-                        <p>Routes</p>
+                         <p>Routes</p>
                         <input type="checkbox" />
-                        <label>Buy</label>
+                        <label>Buy</label> 
                     </div>
                     <div className="Editcontent1">
                         <p></p>

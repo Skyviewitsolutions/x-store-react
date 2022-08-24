@@ -33,6 +33,7 @@ import AddRoute from './Screens/Configuration/AddRoute/AddRoute';
 import AddAtrribute from './Screens/Configuration/AddAtrribute/AddAtrribute';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ChartAccount from './Screens/AccountScreen/ChartAccouts/ChartAccount';
 
 
 const App = () => {
@@ -70,6 +71,7 @@ const App = () => {
         <Route path='/AddProductCategories' element={<AddProductCategories/>}/>
        <Route path='/AddRoute' element={<AddRoute/>} />
        <Route path='/AddAttribute' element={<AddAtrribute/>} />
+       <Route path='/ChartAccount' element={<ChartAccount/>} />
       </Routes>
     </Router>
     

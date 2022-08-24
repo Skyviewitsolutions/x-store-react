@@ -54,3 +54,14 @@
     width: 450px;
     outline: none;
 }
+
+@media only screen and (max-width:1000px)
+{
+    .AccountingContainer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .AccountingEditcontent p {
+        width: 200px
+    }
+}

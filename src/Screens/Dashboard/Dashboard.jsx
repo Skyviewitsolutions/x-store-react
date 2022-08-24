@@ -49,7 +49,7 @@ const Dashboard = () => {
             <Card img={<MdOutlineLocalAtm size={40} color="white"/>} text="Purchase Contract" className="dash" bgColor="#b43d7a"/>
             <Card img={<MdOutlinePayment size={40} color="white"/>} text="Purchase" className="dash" bgColor="#7faac1"/>
             <Card img={<FaBoxOpen size={40} color="white"/>} text="Inventory" className="dash" bgColor="#a35656" onClick={RedirectToInventory}/>
-            <Card img={<MdOutlineAccountBalanceWallet size={40} color="white"/>} text="Accounting" className="dash" bgColor="#d78d61"/>
+            <Card img={<MdOutlineAccountBalanceWallet size={40} color="white"/>} text="Accounting" className="dash" bgColor="#d78d61" onClick={()=>navigate('/ChartAccount')}/>
 
             <Card img={<MdOutlineSwitchAccount size={40} color="white"/>} text="Payroll" className="dash" bgColor="#cc6786"/>
             <Card img={<HiOutlineUserGroup size={40} color="white"/>} text="Employee" className="dash" bgColor="#248e91"/>

@@ -62,6 +62,7 @@ const Login = () => {
       {
        
        alert(res.data.message);
+       setIsLoading(false);
       }
     })
     .catch((error) => {

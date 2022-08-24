@@ -64,11 +64,11 @@ const Navebar = (props) => {
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Warehouse Management
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/Warehouse">Warehouse</NavDropdown.Item>
-                <NavDropdown.Item href="/Location">Location</NavDropdown.Item>
+                <NavDropdown.Item onClick={()=> navigate('/Warehouse')}>Warehouse</NavDropdown.Item>
+                <NavDropdown.Item  onClick={ () => navigate('/Location')}>Location</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">Rules</NavDropdown.Item>
-                <NavDropdown.Item href="/ConfigRoutes">Routes</NavDropdown.Item>
-                <NavDropdown.Item href="/OperationType">
+                <NavDropdown.Item  onClick = {()=> navigate('/ConfigRoutes')}>Routes</NavDropdown.Item>
+                <NavDropdown.Item  onClick={()=> navigate('/OperationType')}>
                   Operation Types
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">
@@ -77,19 +77,19 @@ const Navebar = (props) => {
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Product
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/ProductCategories">
+                <NavDropdown.Item  onClick = {() => navigate('/ProductCategories')}>
                   Product Categories
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/Attributes">
+                <NavDropdown.Item  onClick={() => navigate('/Attributes')}>
                   Attributes
                 </NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Units of Measures{" "}
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/UomCategories">
+                <NavDropdown.Item  onClick = {() => navigate('/UomCategories')}>
                   UOM Categories
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/UOM">UOM</NavDropdown.Item>
+                <NavDropdown.Item  onClick={()=> navigate('/UOM')}>UOM</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
