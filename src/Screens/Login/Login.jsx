@@ -6,6 +6,9 @@ import { AiOutlineEye,AiOutlineEyeInvisible } from 'react-icons/ai';
 import {useNavigate} from "react-router-dom";
 import validator from 'validator';
 import axios from 'axios';
+import { endpoints } from '../../services/endpoints';
+
+
 const Login = () => {
 
   const [email, setEmail] = useState("");
@@ -43,7 +46,7 @@ const Login = () => {
       setPasswordError("");
       setIsLoading(true);
       
-      const url = "https://xstore.skyviewads.com/UserLogin/login"
+      const url = endpoints.authentication.login;
 
       const form = new FormData();
 
@@ -60,7 +63,6 @@ const Login = () => {
       }
       else if(res.data.status === false)
       {
-       
        alert(res.data.message);
       }
     })

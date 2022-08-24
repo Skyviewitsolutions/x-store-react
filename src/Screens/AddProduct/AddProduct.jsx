@@ -19,12 +19,35 @@ const AddProduct = () => {
   const [productCategory, setProductCategory] = useState(
     "Filters / PUTZMEISTER"
   );
+  const [sold , setSold] = useState(false)
+  const [purchased , setPurchased] = useState(false)
+  const [expensed , setExpensed] = useState(false);
+  const [deduction , setDeduction] = useState(false)
+
   const [units, setUnits] = useState("Barell");
   const [cost, setCost] = useState("");
   const [salesPrice, setSalesPrice] = useState("");
   const [interRef, setInterRef] = useState("");
   const [customerTax, setCustomerTax] = useState("");
   const [description, setDescription] = useState("");
+  const [unitOfMeasurement , setUnitOfMeasurement] = useState("");
+  const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("");
+  const [weight , setWeight] = useState("");
+  const [volume , setVolume] = useState("");
+  const [buy , setBuy] = useState(false)
+  const [replenishOnOrder , setReplenishOnOrder] = useState(false)
+  const [customerLeadTime , setCustomerLeadTime] = useState("");
+  const [descriptionDeliveryOrder , setDescriptionDeliveryOrder] = useState("");
+  const [descriptionInternalTranser , setDescriptionInternalTranser] = useState("")
+  const [descriptionForReceipt , setDescriptionForReceipt] = useState("")
+  const [incomeAccount , setIncomeAccount] = useState("")
+  const [expenseAccount , setExpenceAccount] = useState("")
+  const [assetType , setAssetType] = useState("")
+  const [priceDifference , setPriceDifference] = useState("")
+  const [account , setAccount] = useState("");
+  const [img , setImg] = useState("");
+
+
 
   const formData = new FormData();
 
@@ -37,6 +60,27 @@ const AddProduct = () => {
   formData.append("InterRef", interRef);
   formData.append("CustomerTax", customerTax);
   formData.append("description", description);
+  formData.append('unit_of_measurement' , unitOfMeasurement)
+  formData.append('purchase_unit_of_measurement' , purchaseUnitOfMeasuremnt)
+  formData.append('weight' , weight)
+  formData.append('volume' , volume)
+  formData.append('buy' , buy)
+  formData.append('replenish_on_order' , replenishOnOrder)
+  formData.append('customer_lead_time' , customerLeadTime)
+  formData.append('description_for_delivery_order' , descriptionDeliveryOrder)
+  formData.append('description_for_receipts' , descriptionForReceipt)
+  formData.append('description_for_internal_transfer' , descriptionInternalTranser)
+  formData.append("income_account" , incomeAccount)
+  formData.append('expense_account' ,expenseAccount)
+  formData.append("asset_type" , assetType)
+  formData.append('price_differnce' , priceDifference)
+  formData.append('account' , account);
+  formData.append('sold' , sold)
+  formData.append('perchased' , purchased)
+  formData.append('expended' , expensed)
+  formData.append('perchased' , purchased)
+  formData.append('deduction' , deduction)
+
 
   const save = () => {
     if (productName === "") {
@@ -85,6 +129,46 @@ const AddProduct = () => {
         setCustomerTax={setCustomerTax}
         description={description}
         setDescription={setDescription}
+        sold={sold}
+        setSold={setSold}
+        purchased={purchased}
+        setPurchased={setPurchased}
+        setExpensed={setExpensed}
+        expensed={expensed}
+        deduction={deduction}
+        setDeduction={setDeduction}
+        unitOfMeasurement={unitOfMeasurement}
+        setUnitOfMeasurement={setUnitOfMeasurement}
+        purchaseUnitOfMeasuremnt={purchaseUnitOfMeasuremnt}
+        setPurchaseUnitOfMeasurement={setPurchaseUnitOfMeasurement}
+        weight={weight}
+        setWeight={setWeight}
+        volume={volume}
+        setVolume={setVolume}
+        buy={buy}
+        setBuy={setBuy}
+        replenishOnOrder={replenishOnOrder}
+        setReplenishOnOrder={setReplenishOnOrder}
+        customerLeadTime={customerLeadTime}
+        setCustomerLeadTime={setCustomerLeadTime}
+        descriptionDeliveryOrder={descriptionDeliveryOrder}
+        setDescriptionDeliveryOrder={setDescriptionDeliveryOrder}
+        descriptionInternalTranser={descriptionInternalTranser}
+        setDescriptionInternalTranser={setDescriptionInternalTranser}
+        descriptionForReceipt={descriptionForReceipt}
+        setDescriptionForReceipt={setDescriptionForReceipt}
+        incomeAccount={incomeAccount}
+        setIncomeAccount={setIncomeAccount}
+        expenseAccount={expenseAccount}
+        setExpenceAccount={setExpenceAccount}
+        assetType={assetType}
+        setAssetType={setAssetType}
+        priceDifference={priceDifference}
+        setPriceDifference={setPriceDifference}
+        account={account}
+        setAccount={setAccount}
+        img={img}
+        setImg={setImg}
       />
 
       {/* <Modal show={true}>

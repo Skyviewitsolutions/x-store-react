@@ -64,7 +64,9 @@ const Navebar = (props) => {
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Warehouse Management
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/Warehouse">Warehouse</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate("/Warehouse")}>
+                  Warehouse
+                </NavDropdown.Item>
                 <NavDropdown.Item href="/Location">Location</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">Rules</NavDropdown.Item>
                 <NavDropdown.Item href="/ConfigRoutes">Routes</NavDropdown.Item>
