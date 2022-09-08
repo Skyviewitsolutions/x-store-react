@@ -1,0 +1,107 @@
+.AddPaymentCon{
+    width: 100%;
+    border: 1px solid #cccc;
+    padding: 10px 20px;
+}
+.AddPaytext {
+    display: flex;
+    align-items: center;
+}
+.AddPaytext p{
+    font-size: 17px;
+    width: 150px;
+    color: #666666;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.AddPaytext input{
+    border: none;
+    outline: none;
+    width: 500px;
+    border-bottom: 2px solid #666666;
+}
+.AddPayDes p{
+    margin-top: 30px;
+    font-size: 16px;
+    color: #666666;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.AddPayDes span{
+    color:#8d8d8d;
+    font-size: 15px;
+}
+.AddPayDes input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.AddPayTerms p{
+    margin-top: 30px;
+    font-size: 30px;
+    color: #8d8d8d;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+.AddPayTerms span{
+    color:#8d8d8d;
+    font-size: 15px;  
+}
+.AddPayTerms input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.AddPaymentbox{
+    width: 100%;
+}
+.AddPaymentcontent{
+   display: flex;
+   align-items: center;
+}
+
+.AddPaymentcontent p{
+    width:150px;
+    font-size: 16px;
+    margin-left: 30px;
+    color: #212529;
+    font-weight: 500;
+    margin-top: 5px;
+} 
+
+.AddPaymentshadow{
+    width: 100%;
+    height: 150px;
+    border-radius: 2px;
+    box-shadow: rgb(203, 205, 206) 3px 3px 6px 0px inset, rgba(224, 220, 220, 0.5) -3px -3px 6px 1px inset;
+    padding: 10px 10px;
+}
+.addPymentContBx2 div{
+    margin-top: 7px;
+}
+
+.addPymentContBx2 span{
+    margin-left:8px;
+}
+
+.AddPaymentcontent1{
+    display: flex;
+    align-items: center;
+}
+.AddPaymentcontent1 p{
+    width:150px;
+    font-size: 16px;
+    margin-left: 30px;
+    color: #212529;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+ .AddPaymentcontent1 input{
+    outline: none;
+    border: none;
+    width: 500px;
+    border-bottom: 1px solid #cccccc;
+} 

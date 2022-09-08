@@ -1,0 +1,63 @@
+.AddAccountCon{
+    width: 100%;
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+}
+.AddAccTypeFirst{
+    width: 50%;
+}
+.AddAccContent{
+    display: flex;
+    align-items: center;
+}
+.AddAccContent p{
+    color:#6f6f6f;
+    font-size: 16px;
+    margin-left: 19px;
+    margin-bottom: -6px;
+    width: 170px;
+}
+.AddAccContent input{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 500px;
+}
+.AddAccContent select{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 500px;
+}
+.des h3{
+    font-size: 25px;
+    color: #666666;
+    font-weight: 400;
+    margin-left: 18px;
+    margin-top: 10px;
+}
+.des input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    width: 650px;
+    margin-left: 18px;
+}
+.AddAccTypeSecond{
+    width: 50%;
+}
+.AddAccTypecheckbox{
+    display: flex;
+    align-items: center;
+}
+.AddAccTypecheckbox p{
+    color:#6f6f6f;
+    font-size: 16px;
+    margin-left: 19px;
+    margin-bottom: -6px;
+    width: 170px;
+}
+.AddAccTypecheckbox input{
+    width: 25px;
+}

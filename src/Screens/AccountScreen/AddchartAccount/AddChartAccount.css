@@ -1,0 +1,102 @@
+.Accmaincon{
+    width: 100%;
+    padding: 10px 10px;
+}
+.AddChartAccountContainer{
+    width: 100%;
+    border: 1px solid #cccc;
+    padding-bottom: 40px;
+}
+.AddChartAccountHead{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid #cccc;
+}
+.AddAccounthead1{
+    width: 200px;
+    display: flex;
+    padding: 6px 0px;
+    padding-left: 10px;
+    border-left: 1px solid #cdd3d9;
+    align-items: center;
+}
+.AddAccounthead1:hover{
+    background-color: #f3efef;
+}
+.AddChartAccText p{
+    color:#6f6f6f;
+    font-size: 16px;
+    margin-left: 19px;
+    font-weight: 600;
+    margin-bottom: -7px;
+}
+.AddChartAccountContent{
+    width: 100%;
+    padding: 10px 15px;
+}
+
+.AddAccountCon1{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.AddAccountCon1 p{
+    width: 200px;
+    color: #6a666a;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+.AddAccountCon1 input{
+    border: none;
+    border-bottom: 2px solid #666666;
+    outline: none;
+    width: 500px;
+}
+.AddAccountCon1 select{
+    border: none;
+    border-bottom:2px solid #666666;
+    outline: none;
+    width: 500px
+}
+.AddChartAccountMultiselect{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 0px;
+}
+.AddChartAccountMultiselect p{
+    color: #6f6f6f;
+    width: 200px;
+    font-size: 17px;
+    margin-left: 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.AddChartAccmultiselect{
+    border: none;
+    border-bottom: 3px solid #666666;
+    outline: none;
+    width:500px;
+    color: #666666;
+}
+.AddAccountCheckbox{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.AddAccountCheckbox p{
+    color: #6f6f6f;
+    width: 200px;
+    font-size: 17px;
+    margin-left: 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.AddAccountCheckbox input{
+    width: 15px;
+}
+

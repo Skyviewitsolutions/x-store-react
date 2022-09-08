@@ -1,0 +1,67 @@
+.AddAccGroupCon{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    padding-top: 30px;
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 15px;
+}
+.AddAccgroupdetails{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.accgroupfirst{
+    width: 50%;
+}
+.acctext{
+    display: flex;
+    align-items: center;
+}
+.acctext p{
+    width: 200px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.acctext input{
+    border: none;
+    outline: none;
+    width: 700px;
+    border-bottom: 1px solid #cccc;
+}
+.acctext select{
+    border: none;
+    outline: none;
+    width: 700px;
+    border-bottom: 1px solid #cccc; 
+}
+.accgroupsecond{
+    width: 50%;
+    border-left: 1px solid #cccc;
+    padding: 20px 25px;
+    margin-left: 30px;
+}
+.accgroupsecond p{
+    color: #666666;
+    font-size: 18px;
+    font-weight: 500;;
+    margin-bottom: 0px;
+}
+.accgroupalertbox{
+    width: 100%;
+    padding: 20px 10px;
+    background: #d1ecf1;
+    border-radius: 4px;
+}
+.accgroupalertbox p{
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-bottom: 0px;   
+}

@@ -1,6 +1,6 @@
 {
   "name": "oddoproject",
-  "homepage": "https://xstore.skyviewads.com/",
+  "homepage": "https://xstore-front.skyviewads.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

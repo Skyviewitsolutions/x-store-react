@@ -1,0 +1,89 @@
+.AddAnalyticAccountGroupCon{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    /* padding-top: 30px; */
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px;
+}
+.AddAnalyticAccountGrouphead{
+    width: 100%;
+    border-bottom: 1px solid #cccc;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+.AddAnalyticAccountGroupcontent{
+    display: flex;
+    padding: 5px 10px;
+    justify-content: flex-end;
+    align-items: center;
+    border-left: 1px solid #cccc;
+}
+.AddAnalyticAccountGrouptext p{
+    color:#6f6f6f;
+    font-size: 18px;
+    margin-left: 19px;
+    margin-bottom: -6px;
+    width: 170px;
+}
+.AddAnalyticAccountGroupdetails{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.AddAnalyticAccountGroupfirst{
+    width: 50%; 
+}
+.AddAnalyticAccountGrouptext1{
+    display: flex;
+    align-items: center;
+}
+.AddAnalyticAccountGrouptext1 p{
+    width: 200px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.AddAnalyticAccountGrouptext1 input{
+    border: none;
+    outline: none;
+    width: 700px;
+    border-bottom: 1px solid #cccc;
+}
+.AddAnalyticAccountGrouptext1 select{
+    border: none;
+    outline: none;
+    width: 700px;
+    border-bottom: 1px solid #cccc; 
+}
+.AddAnalyticAccountGroupsecond{
+    width: 50%;
+    border-left: 1px solid #cccc;
+    padding: 20px 25px;
+    margin-left: 30px;
+}
+.AddAnalyticAccountGroupsecond p{
+    color: #666666;
+    font-size: 18px;
+    font-weight: 500;;
+    margin-bottom: 0px;
+}
+.AddAnalyticAccountGroupalertbox{
+    width: 100%;
+    padding: 20px 10px;
+    background: #d1ecf1;
+    border-radius: 4px;
+}
+.AddAnalyticAccountGroupalertbox p{
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-bottom: 0px;   
+}

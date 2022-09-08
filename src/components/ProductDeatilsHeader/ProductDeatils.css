@@ -11,7 +11,7 @@
     margin-right: 10px;
 }
 .detailsText p{
-color: #9d8f8f;
+color: #5e5757;
 font-size: 21px;
 margin-left: 26px;
 margin-top: 13px;
@@ -23,7 +23,7 @@ margin-bottom: 8px;
     margin-bottom: 10px;
 }
 .btn1{
-   background-color:#00a09d;
+   background-color:#1669a2;
     border:none;
     color: #fff;
     font-size: 15px;
@@ -33,7 +33,7 @@ margin-bottom: 8px;
     font-weight: 600;
 }
 .btn2{
-    color: #00a09d;
+    color: #1669a2;
     text-transform: uppercase;
     padding: 8px 20px;
     font-weight: 600;
@@ -83,14 +83,14 @@ align-items: flex-end;
     display: flex;
 }
 .detailsheader2 p{
-   color: #00a8c4;
+   color: #1669a2;
    font-size: 18px;
    text-align: center;
    text-transform: uppercase;
    margin-left: 10px;
 }
 .btn3{
-    color: #00a09d;
+    color: #1669a2;
     text-transform: uppercase;
     padding: 8px 20px;
     font-weight: 500;

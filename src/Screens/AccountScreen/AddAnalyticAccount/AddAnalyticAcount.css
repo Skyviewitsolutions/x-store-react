@@ -1,0 +1,122 @@
+.AddAnalyticCon{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    /* padding-top: 30px; */
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px 
+}
+.AddAnalytichead{
+    width: 100%;
+    border-bottom: 1px solid #cccc;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.Analyticcontent{
+    display: flex;
+    padding: 5px 10px;
+    justify-content: flex-end;
+    align-items: center;
+    border-left: 1px solid #cccc;
+}
+.Analytictext p{
+    color:#6f6f6f;
+    font-size: 18px;
+    margin-left: 19px;
+    margin-bottom: -6px;
+    width: 170px;
+}
+.Analyticmain{
+    width: 100%;
+    padding: 18px 30px;
+}
+.Analyticdetails p{
+    color:#6f6f6f;
+    font-size: 18px;
+    margin-bottom: -6px;
+    font-weight:500;
+    margin-top: 10px;
+    
+}
+.Analyticdetails input{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    margin-top: 24px;
+}
+.AnalyticContent{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+}
+.Analyticfirst{
+    width: 50%;
+}
+.AnalyticInputcontent{
+    display: flex;
+    align-items: center;
+}
+.AnalyticInputcontent p{
+    width: 150px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666666;
+    margin-bottom: 0px;
+}
+.AnalyticInputcontent input{
+    width: 350px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+}
+.Analyticselect{
+    display: flex;
+    align-items: center;
+}
+.Analyticselect p{
+    width: 150px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666666;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.Analyticselect select{
+    width: 350px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+}
+.AnalyticMulti{
+    display: flex;
+    align-items: center;
+}
+.AnalyticMulti p{
+    width: 150px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666666;
+    margin-bottom: 0px; 
+    margin-top: 10px; 
+}
+.Analyticmultiselect{
+    border: none;
+    border-bottom: 1px solid #cccc;
+    outline: none;
+    width:350px;
+    color: #666666; 
+}
+.AnaylticContentSecond{
+    width: 50%;
+}
+@media only screen and (max-width:1000px)
+{
+    .AnalyticContent{
+        display: flex;
+        flex-direction: column;
+    }
+
+}

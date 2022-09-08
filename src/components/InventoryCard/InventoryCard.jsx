@@ -13,7 +13,7 @@ const InventoryCard = () => {
                 style={{
                   marginLeft: "10px",
                   marginTop: "10px",
-                  color: "#188984",
+                  color: "#1669a2",
                 }}
               >
                 Receipts
@@ -22,7 +22,7 @@ const InventoryCard = () => {
                 style={{
                   marginLeft: "10px",
                   fontSize: "12px",
-                  color: "#66667a",
+                  color: "#1669a2",
                 }}
               >
                 RIYADH warehouse

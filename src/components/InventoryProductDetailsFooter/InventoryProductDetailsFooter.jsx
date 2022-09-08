@@ -23,7 +23,7 @@ const InventoryProductDetailsFooter = () => {
           <FaClock
             size="15px"
             style={{
-              color: "#008784",
+              color: "#1669a2",
               marginRight: "5px",
               marginBottom: "5px",
             }}
@@ -35,7 +35,7 @@ const InventoryProductDetailsFooter = () => {
             <FaPaperclip
               size="15px"
               style={{
-                color: "#008784",
+                color: "#1669a2",
                 marginRight: "5px",
                 marginBottom: "5px",
               }}
@@ -49,7 +49,7 @@ const InventoryProductDetailsFooter = () => {
             <FaUser
               ize="15px"
               style={{
-                color: "#008784",
+                color: "#1669a2",
                 marginRight: "5px",
                 marginBottom: "5px",
               }}
@@ -64,7 +64,7 @@ const InventoryProductDetailsFooter = () => {
           <i>
             To: Followers of
             <span
-              style={{ color: "#666f8f", fontSize: "13px", fontWeight: "bold" }}
+              style={{ color: "#1669a2", fontSize: "13px", fontWeight: "bold" }}
             >
               "01182672-FUEL"
             </span>{" "}
@@ -82,7 +82,7 @@ const InventoryProductDetailsFooter = () => {
       )}
       <div className="attachment">
         <p>Attachment</p>
-        <FaPlusSquare style={{ marginLeft: "46%", color: "#00a09d" }} />
+        <FaPlusSquare style={{ marginLeft: "46%", color: "#1669a2" }} />
         <label  htmlFor="attach">Add Attachment</label>
         <input type="file" style={{ display: "none" }} id="attach" />
       </div>

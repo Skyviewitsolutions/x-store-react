@@ -1,0 +1,251 @@
+.AddAssetTypeCon{
+    width: 100%;
+    border: 1px solid #cccc;
+    margin-top:10px;
+    padding: 25px 40px;
+    padding-bottom: 20px;
+}
+.assetType{
+    width: 100%;
+}
+.assetType p {
+    font-size: 15px;
+    color: black;
+    margin-bottom: 0px;
+}
+.assetType input{
+    width: 600px;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #666666;
+}
+.assetTypetextbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.assetTypeparent{
+    width: 70%;
+}
+.parentcat{
+    display: flex;
+    align-items: center;
+}
+.parentcat p{
+    width: 150px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.parentcat input{
+    width: 20px;
+    height: 15px;
+
+}
+.parentcat select{
+    outline:none;
+    border: none;
+    width: 700px;
+    border-bottom: 1px solid #cccc;
+}
+.assettypebox{
+    width: 30%;
+    border-left: 1px solid #cccc;
+    padding: 20px 25px;
+    margin-left: 30px;
+}
+.assettypebox p{
+    color: #666666;
+    font-size: 18px;
+    font-weight: 500;;
+    margin-bottom: 0px;
+}
+.assetalertbox{
+    width: 100%;
+    padding: 20px 10px;
+    background: #d1ecf1;
+    border-radius: 4px;
+}
+.assetalertbox p{
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-bottom: 0px;   
+}
+.assetTypedetails{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+}
+.assetdetails1{
+    width: 50%;
+}
+.assetdetails1 p{
+    font-size: 25px;
+    color: #666666;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+.assettext{
+    display: flex;
+    align-items: center;
+
+}
+.assettext p {
+    width: 300px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.assettext select{
+    width: 400px;
+    border: none;
+    outline:"none";
+    border-bottom: 3px solid #666666;
+}
+.assettypedetails2{
+    width: 50%;
+    margin-left: 30px;
+}
+.assettypedetails2 p{
+    font-size: 25px;
+    color: #666666;
+    font-weight: 400;
+    margin-bottom: 0px; 
+    margin-top: 10px;
+}
+.assetradio{
+    display: flex;
+    align-items: center;
+}
+.assetradio p{
+    width: 200px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.assetradio input{
+    width: 16px;
+    margin-left: 20px;
+    height: 15px;
+
+}
+.assetradio label{
+    margin-left: 10px;
+    color: #666666;
+    font-size: 16px;
+}
+.assettext2{
+    display: flex;
+    align-items: center;
+}
+.assettext2 p{
+    width: 200px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.assettext2 input{
+    width: 400px;
+    border:none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+}
+.AssettypeAddiDepri{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.Additional{
+    width: 50%;
+}
+.Additional p{
+    font-size: 25px;
+    color: #666666;
+    font-weight: 400;
+    margin-bottom: 0px; 
+    margin-top: 10px;
+}
+.assettypecheckbox{
+    display: flex;
+    align-items: center;
+}
+.assettypecheckbox p{
+    width: 200px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.assettypecheckbox input{
+    width: 20px;
+    height: 15px;
+
+}
+.assettypeselect{
+    display: flex;
+    align-items: center;
+}
+.assettypeselect p{
+    width: 200px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.assettypeselect select{
+    outline: none;
+    border: none;
+    width: 400px;
+    border-bottom: 1px solid #cccc;
+}
+.Depreciation{
+    width: 50%;
+}
+.Depreciation p{
+    font-size: 25px;
+    color: #666666;
+    font-weight: 400;
+    margin-bottom: 0px; 
+    margin-top: 10px;
+}
+.distradio{
+    display: flex;
+    align-items: center; 
+}
+.distradio p{
+    width: 200px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.distradio input{
+    width: 16px;
+    margin-left: 20px;
+}
+.distradio label{
+    margin-left: 10px;
+    color: #666666;
+    font-size: 16px;
+}
+.depcheckbox{
+display: flex;
+align-items: center;
+}
+.depcheckbox p{
+    width: 200px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.depcheckbox input{
+    width: 50px;
+}

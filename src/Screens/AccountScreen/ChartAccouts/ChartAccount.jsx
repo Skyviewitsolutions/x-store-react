@@ -1,10 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import CustomTable from '../../../components/CustomTable/CustomTable';
 import Navebar from '../../../components/Navbar/Navbar';
 import './ChartAccount.css';
 
-function ChartAccount() {
+function ChartAccount(props) {
+   
+  const navigate =  useNavigate()
 
+  const handleCreatePage = () => {
+    navigate('/AddChartAccount')
+  }
   const data = [
     {
       id: "1",
@@ -57,7 +64,7 @@ function ChartAccount() {
   ]
   return (
     <div>
-      <Navebar showBelowMenu={true}/>
+     <AccountNavbar  showBelowMenu={true} handleCreatePage={handleCreatePage} title = "Chart of Account"/>
     <CustomTable data={data} column={column} />
     </div>
   )

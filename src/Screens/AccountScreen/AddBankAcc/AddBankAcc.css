@@ -1,0 +1,133 @@
+.AddBankCon{
+    width: 100%;
+    border: 1px solid #cccc;
+    padding: 10px 15px;
+}
+.AddBanktext p{
+ color: #000;
+ font-size: 16px;
+ font-weight: 500;
+}
+.AddBanktext input{
+    width: 800px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #666666;
+}
+.AddBankConbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.AddBankfirsttext{
+    width: 50%;
+    margin-top: 15px;
+}
+.BankAc{
+    display: flex;
+    align-items: center;
+}
+.BankAc p{
+    width: 200px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #7f7f7f;
+    margin-bottom: 0px;
+}
+.BankAc select{
+    width: 500px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+}
+.BankAc span{
+    font-size: 16px;
+    color: #7f7f7f;
+}
+.AddBankAccSecondText{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.AddBankAccSecondText p{
+    width: 150px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #7f7f7f;
+    margin-bottom: 0px; 
+}
+.AddBankAccSecondText  select{
+    width: 500px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+}
+.Addbankbox2{
+    width: 100%;
+    display: flex;
+    margin-top: 44px;
+    justify-content: space-between;
+}
+.Paymenttype{
+    width: 50%;
+}
+.Paymenttype p{
+    font-size: 25px;
+    color: #7f7f7f;
+    font-weight: 400;
+}
+.Addbankpay{
+    display: flex;
+    align-items: center;
+}
+.Addbankpay p{
+    width: 150px;
+    font-size: 17px;
+    color: #7f7f7f;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.Addbankpay input{
+    width: 20px;
+    height: 15px;
+}
+.Addbankpay span{
+    font-size: 15px;
+    color: #7f7f7f;
+    margin-left: 10px;
+}
+.BankStatements{
+    width: 50%;
+}
+.BankStatements p{
+    font-size: 25px;
+    color: #7f7f7f;
+    font-weight: 400;
+}
+.bankselect{
+    display: flex;
+    align-items: center;
+}
+.bankselect p{
+    width: 150px;
+    font-size: 17px;
+    color: #7f7f7f;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.bankselect select{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+    width: 400px;
+}
+.bankselect input{
+    width: 20px;
+    height: 15px;
+}
+.bankselect span{
+    font-size: 16px;
+    color: #7f7f7f;
+}

@@ -1,0 +1,37 @@
+.JournalMainCon{
+    width: 100%;
+    padding: 10px 10px;
+}
+.JournalContainer{
+    width: 100%;
+    border: 1px solid #cccc;
+    padding: 10px 20px;
+}
+.JournalContainer p{
+    font-size: 18px;
+    color: #000;
+    font-weight: 500;
+}
+.JournalContainer input {
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+}
+.Journalinput{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.Journalinput p{
+    font-size: 18px;
+    color: #000;
+    font-weight: 500;
+    width: 150px;
+}
+.Journalinput select{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+}

@@ -5,10 +5,12 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import axios from "axios";
 
 const GeneralInformationEdit = (props) => {
+  
   const [proCate, setProCate] = useState([]);
   const [uoms , setUoms] = useState([]);
   const [purchase , setPurchase] = useState([]);
   const [proTypes , setProductTypes] = useState([]);
+
   const productCategoryurl =
     "https://xstore.skyviewads.com/ProductsXM/DisplayAllProductCategory";
    
@@ -102,6 +104,8 @@ const GeneralInformationEdit = (props) => {
     description,
     setDescription,
   } = props;
+
+  console.log(productType ,"productType")
 
   return (
     <div>

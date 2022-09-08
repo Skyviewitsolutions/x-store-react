@@ -1,0 +1,118 @@
+.TaxNameCon{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    padding-top: 30px;
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px;
+
+}
+.TaxNamemain{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.TaxNamecontent{
+    width: 50%;
+}
+.AddTaxinput{
+    display: flex;
+    align-items: center;
+}
+.AddTaxinput p{
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px;
+
+}
+.AddTaxinput input{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 400px;
+}
+.AddTaxinput select{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 400px;  
+}
+.TaxNamecontent2{
+    width: 50%;
+}
+.AddTaxammount{
+    display: flex;
+    align-items: center;
+}
+.AddTaxammount p{
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px; 
+}
+.AddTaxammount input{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 200px;
+}
+.TaxAdvance{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.Taxadvance1{
+    width: 50%;
+}
+.TaxAdvance h3{
+    font-size: 25px;
+    color: #666666;
+    font-weight: 400;
+    margin-left: 50px;
+}
+.Advanceinput{
+    display: flex;
+    align-items: center;
+}
+.Advanceinput p{
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px; 
+}
+.Advanceinput input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    width: 400px;
+}
+.Advanceinput select{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 400px; 
+}
+.Advancecheckbox{
+    display: flex;
+    align-items: center;
+}
+.Advancecheckbox p{
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px; 
+}
+.Advancecheckbox input{
+    width: 20px;
+}

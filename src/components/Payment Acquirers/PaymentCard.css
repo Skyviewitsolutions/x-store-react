@@ -1,0 +1,51 @@
+.PaymentCardcon{
+        height: 160px;
+        width: 48%;
+        margin-top: 10px;
+        border: 1px solid lightgray;
+        border-radius: 2px;
+        background-color: #fff;
+        cursor: pointer;
+        position: relative; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;  
+       
+}
+.Paymentcard{
+    width: 100%;
+    display: flex;
+}
+.PaymentCardContent{
+    width: 70%;
+    padding: 10px 20px;
+}
+.PaymentCardContent p{
+   font-size: 20px;
+   margin-bottom: 0px;
+}
+.PaymentCardContent span{
+    font-size: 15px;
+    color:#706f6ffa;
+}
+.notesimg{
+    height: 70px;
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+}
+.notesimg img{
+    width: 95px;
+}
+.Enablebtn{
+    width: 70px;
+    height: 25px;
+    background-color: #28a745;
+    color: white;
+    font-size: 13px;
+    border: none;
+    margin-left: 15px;
+    margin-bottom: 26px;
+
+}

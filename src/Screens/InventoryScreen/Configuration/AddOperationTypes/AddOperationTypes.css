@@ -1,0 +1,71 @@
+.AddOperatintypeContainer{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    padding-top: 30px;
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px;
+}
+
+.Addoperationcontent
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.operationcon1{
+    width: 50%;
+}
+.operation{
+    display: flex;
+   align-items: center;
+}
+.operation p {
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.operation input{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 500px;
+}
+.operation select{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc ;
+    width: 500px;
+}
+.type{
+    width: 50%;
+}
+.show{
+    display: flex;
+   align-items: center;  
+}
+.show p{
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.show input{
+    width: 20px;
+}
+.location{
+    width: 100%;
+    margin-top: 20px;
+}
+.location h3{
+    margin-left: 50px;
+    color: #666666;
+    font-size: 30px;
+    font-weight: 400;
+}

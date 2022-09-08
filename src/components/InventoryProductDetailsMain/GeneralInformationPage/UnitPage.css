@@ -22,17 +22,19 @@
     font-weight: 600;
     margin-bottom: 7px;
 }
-.unitcontent span{
-    margin-left: 50px;
-    font-size: 15px;
-    color: #6a6666;
-    padding-bottom: 10px;
-
+.unitcontent input{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #666666;
+}
+.unitcontent select{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #666666;
 }
 .unitpart2{
     width: 50%;
 }
-.unitcontent input{
-    width: 15px;
-    margin-left:50px;
-}
+

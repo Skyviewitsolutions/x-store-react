@@ -6,7 +6,7 @@ import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
 const Navebar = (props) => {
-  const { showBelowMenu, handleCreatePage } = props;
+  const { showBelowMenu, handleCreatePage,save , title} = props;
   const navigate = useNavigate();
 
   return (
@@ -64,6 +64,7 @@ const Navebar = (props) => {
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Warehouse Management
                 </NavDropdown.Item>
+
                 <NavDropdown.Item onClick={()=> navigate('/Warehouse')}>Warehouse</NavDropdown.Item>
                 <NavDropdown.Item  onClick={ () => navigate('/Location')}>Location</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">Rules</NavDropdown.Item>
@@ -100,11 +101,12 @@ const Navebar = (props) => {
           <div className="row head">
             <div className="col-sm-6" style={{ width: "50%" }}>
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
-                Inventory Overview
+              {title ? title : "Inventory"}
               </h5>
               <button className="createbtn" onClick={handleCreatePage}>
                 Create
               </button>
+              <button className="createbtn" onClick={save}>Save</button>
             </div>
             <div
               className="col-sm-6 d-flex justify-content-center"

@@ -5,11 +5,12 @@ import UpdateCost from '../../Model/GenInfoUpdate/UpdateCost';
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-const GeneralInformation = () => {
+const GeneralInformation = (props) => {
 
     const [showUpdateCost , setShowUpdateCost] = useState(false);
     const navigate = useNavigate();
-     
+    const {productType,productCategory,interRef,salesPrice,customerTax,cost, unitOfMeasurement,purchaseUnitOfMeasuremnt,description}=props;
+
     const RedirectToUnit  = () => {
         navigate('/UnitPage');
     }
@@ -19,38 +20,41 @@ const GeneralInformation = () => {
             <div className="part1">
                 <div className="firstcontent">
                     <p>Product Type</p>
-                    <span>Storable Product</span>
+                    <span>{productType}</span>
                 </div>
                 <div className="firstcontent">
                     <p> Product Category</p>
-                    <span style={{ color: "#008784" }}>Filters / PUTZMEISTER</span>
+                    <span style={{ color: "#1669a2" }}>{ productCategory}</span>
                 </div>
                 <div className="firstcontent2">
                     <p>Internal Reference</p>
-                    <p>Barcode</p>
+                    <p>{interRef}</p>
                 </div>
-                <h5>Internal Notes</h5>
+                <h5>{description}</h5>
             </div>
             <div className="part2">
                 <div className="firstcontent3">
                     <p>Sales Price</p>
-                    <span>1.0000 SAR</span>
-                    <FaArrowRight size="20px" style={{ color: "#008784", marginLeft: "10px" }} />
+                    <span>{salesPrice}</span>
+                    <FaArrowRight size="20px" style={{ color: "#1669a2", marginLeft: "10px" }} />
                     <span>Extra Prices</span>
                 </div>
+                <div className="firstcontent3">
                 <p  className="custext">Customer Taxes</p>
+                <span>{customerTax}</span>
+                </div>
                 <div className="firstcontent3">
                     <p>Cost</p>
-                    <span>	0.0000 SAR per Units</span>
-                    <span style={{ color: "#008784" }} onClick={() => setShowUpdateCost(true)}>Update Cost</span>
+                    <span>{cost}</span>
+                    <span style={{ color: "#1669a2" }} onClick={() => setShowUpdateCost(true)}>Update Cost</span>
                 </div>
                 <div className="firstcontent3">
                     <p>Unit of Measure</p>
-                    <span style={{ color: "#008784" }} onClick={RedirectToUnit}>Units</span>
+                    <span style={{ color: "#1669a2" }} onClick={RedirectToUnit}>{unitOfMeasurement}</span>
                 </div>
                 <div className="firstcontent3">
                     <p>Purchase Unit of</p>
-                    <span style={{ color: "#008784" }} onClick={RedirectToUnit}>Units</span>
+                    <span style={{ color: "#1669a2" }} onClick={RedirectToUnit}>{purchaseUnitOfMeasuremnt}</span>
                 </div>
                 <p  className="custext">Measure</p>
 

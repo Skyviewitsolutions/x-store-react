@@ -1,0 +1,77 @@
+.AddCurrenciesCon{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    /* padding-top: 30px; */
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px;
+} 
+.AddCurrencieshead
+{
+    width: 100%;
+    border-bottom: 1px solid #cccc;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.content{
+    display: flex;
+    padding: 5px 10px;
+    justify-content: flex-end;
+    align-items: center;
+    border-left: 1px solid #cccc;
+   
+}
+.Currenciestext p{
+    color:#6f6f6f;
+    font-size: 18px;
+    margin-left: 19px;
+    margin-bottom: -6px;
+    width: 170px;
+}
+.AddCurrenciesdetails{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+}
+.Currenciesdetails1{
+    width: 50%;
+}
+.currenciestext{
+    display: flex;
+    align-items: center;
+}
+.currenciestext p{
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.currenciestext input{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 500px;
+}
+.currenciescheckbox{
+    display: flex;
+    align-items: center;
+}
+.currenciescheckbox p{
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.currenciescheckbox input{
+    width: 25px;
+}
+.Currenciesdetails2{
+    width: 50%;
+}

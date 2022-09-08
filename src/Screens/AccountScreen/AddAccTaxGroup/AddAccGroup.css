@@ -1,0 +1,31 @@
+.AddAccTaxGroupCon{
+width: 98%;
+border: 1px solid #cccc;
+padding-bottom:10%;
+padding-top: 30px;
+margin: auto;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+margin-top: 40px;
+}
+.AddAccTaxGroupContent{
+    width: 100%;
+}
+.AddAccTaxGroupText{
+    display: flex;
+    align-items: center;
+}
+.AddAccTaxGroupText p{
+    color: #666666;
+    width: 300px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.AddAccTaxGroupText input{
+    border: none;
+    outline: none;
+    width:500px;
+    border-bottom: 3px solid #666666;
+}

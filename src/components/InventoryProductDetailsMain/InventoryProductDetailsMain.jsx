@@ -25,7 +25,7 @@ const InventoryProductDetailsMain = (props) => {
 
   const [events, setEvents] = useState("generalInformation");
 
-  const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomerTax , description , setDescription } = props;
+  const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomerTax , description , setDescription , sold , purchased , expensed , deduction , setSold , setPurchased , setExpensed , setDecution,productdetails } = props;
 
   const navigate = useNavigate();
     
@@ -116,7 +116,7 @@ const InventoryProductDetailsMain = (props) => {
         </div>
         <div className="detailsbox">
           <div className="detailsheading">
-            {isEdit === false && <p>001122335215-HYD</p>}
+            {isEdit === false && <p>{productName}</p>}
             {isEdit === true && (
              
               <input
@@ -124,25 +124,25 @@ const InventoryProductDetailsMain = (props) => {
                 className="proin"
                 placeholder="Product Name"
                 value={productName}
-                onChange={ (e) => setProductName(e.target.value)}
+                onChange={(e) => setProductName(e.target.value)}
               />
             )}
             <div className="detailsinput">
               <div>
-                <input type="checkbox" />
-                <label>Can be Sold</label>
+                <input type="checkbox" value={sold} onChange={ () => setSold(!sold)} />
+                <label>Sold</label>
               </div>
               <div>
-                <input type="checkbox" />
-                <label>Can be Purchased</label>
+                <input type="checkbox" value={purchased} onChange={() => setPurchased(!purchased)}/>
+                <label>Purchased</label>
               </div>
               <div>
-                <input type="checkbox" />
-                <label>Can be Expensed</label>
+                <input type="checkbox" value={expensed} onChange={() => setExpensed(!expensed)}/>
+                <label>Expensed</label>
               </div>
               <div>
-                <input type="checkbox" />
-                <label>Can be Deduction</label>
+                <input type="checkbox" value={deduction} onChange={() => setDecution(!deduction)}/>
+                <label>Deduction</label>
               </div>
             </div>
             {isEdit === true && (
@@ -188,22 +188,21 @@ const InventoryProductDetailsMain = (props) => {
         </div>
         <div className="GeneralInformation">
           {events === "generalInformation" && isEdit === false && (
-            <GeneralInformation/>
+            <GeneralInformation {...props}/>
           )}
           {events === "variants" && isEdit === false && <Variants />}
           {events === "Purchase" && isEdit === false && <Purchase />}
           {events === "Inventory" && isEdit === false && (
-            <ProductDetailsInventory />
+            <ProductDetailsInventory {...props}/>
           )}
-          {events === "Accounting" && isEdit === false && <Accounting />}
+          {events === "Accounting" && isEdit === false && <Accounting {...props} />}
           {events === "generalInformation" && isEdit === true && (
-            <GeneralInformationEdit productType={productType} productCategory={productCategory} setProductType={setProductType} setProductCategory={setProductCategory} interRef={interRef} setInterRef ={setInterRef} units={units} setUnits={setUnits} 
-            salesPrice = {salesPrice} setSalesPrice = {setSalesPrice} customerTax={customerTax} setCustomerTax={setCustomerTax} cost={cost} setCost={setCost} description={description} setDescription = {setDescription}/>
+            <GeneralInformationEdit {...props}/>
           )}
           {events === "variants" && isEdit === true && <VariantsEdit />}
           {events === "Purchase" && isEdit === true && <PurchaseEdit />}
-          {events === "Inventory" && isEdit === true && <InventoryEdit />}
-          {events === "Accounting" && isEdit === true && <AccountingEdit />}
+          {events === "Inventory" && isEdit === true && <InventoryEdit {...props} />}
+          {events === "Accounting" && isEdit === true && <AccountingEdit {...props}/>}
         </div>
       </div>
 

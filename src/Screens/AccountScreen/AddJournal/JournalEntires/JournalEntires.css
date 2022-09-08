@@ -1,0 +1,46 @@
+.JournalEntiresCon{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+}
+.journalENtiresFirst{
+  width: 50%;
+}
+.FirstContent{
+    display: flex;
+    align-items: center;
+}
+.FirstContent p{
+    font-size: 15px;
+    color: #66666f;
+    font-weight: 500;
+    width: 150px;
+    margin-top: 0px;
+}
+.FirstContent input{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #666666;
+}
+.journalEntiresSecond{
+    width: 50%;
+}
+.SecondContent{
+    display: flex;
+    align-items: center;  
+}
+.SecondContent p{
+    font-size: 15px;
+    color: #66666f;
+    font-weight: 500;
+    width: 200px;
+    margin-top: 0px;
+}
+.SecondContent select{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;   
+}

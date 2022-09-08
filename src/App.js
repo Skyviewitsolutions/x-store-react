@@ -1,42 +1,93 @@
-import React from 'react';
-import Login from './Screens/Login/Login';
-import SignUp from './Screens/SignUp/SignUp';
-import ForgetPassword from "./Screens/ForgetPassword/ForgetPassword";
+import React from "react";
+import Login from "./Screens/Authentication/Login/Login";
+import SignUp from "./Screens/Authentication/SignUp/SignUp";
+import ForgetPassword from "./Screens/Authentication/ForgetPassword/ForgetPassword";
 import Dashboard from "./Screens/Dashboard/Dashboard";
-import { useNavigate ,BrowserRouter as Router , Routes ,Route } from 'react-router-dom';
-import Navebar from './components/Navbar/Navbar';
-import InventoryScreen from './Screens/Inventory/InventoryScreen';
-import Sidebar from './components/Sidebar/Sidebar';
-import InventoryVarient from './Screens/InventoryVarient/InventoryVarient';
-import InventoryProducts from './Screens/InventoryProducts/InventoryProducts';
-import Otp from './Screens/OTPPage/Otp';
-import ChangePassword from "./Screens/ChangePassword/ChangePassword"
-import InventoryProductDetails from './Screens/InventoryProductDetails/InventoryProductDetails';
-import Uom from './Screens/Configuration/Uom';
-import UomCategories from './Screens/Configuration/UomCategories';
-import ProductCategories from './Screens/Configuration/ProductCategories';
-import Attributes from './Screens/Configuration/Attributes';
-import Location from './Screens/Location/Location';
-import Warehouse from './Screens/Configuration/Warehouse';
-import ConfigRoutes from './Screens/Configuration/ConfigRoutes';
-import OperationTypes from './Screens/Configuration/OperationTypes';
-import Empty from './Screens/Error/Empty';
-import Importempty from './Screens/Import/Importempty';
-import Uomdetails from './Screens/Configuration/Uomdetails';
-import AddProduct from './Screens/AddProduct/AddProduct';
-import UnitPage from './components/InventoryProductDetailsMain/GeneralInformationPage/UnitsPage';
-import AddWarehouse from './Screens/Configuration/AddWarehouse/AddWarehouse';
-import WarehouseConfig from './Screens/Configuration/AddWarehouse/WarehouseConfig';
-import AddLocation from './Screens/Configuration/AddLocation/AddLocation';
-import AddProductCategories from './Screens/Configuration/AddProductCategory/AddProductCategories';
-import AddRoute from './Screens/Configuration/AddRoute/AddRoute';
-import AddAtrribute from './Screens/Configuration/AddAtrribute/AddAtrribute';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ChartAccount from './Screens/AccountScreen/ChartAccouts/ChartAccount';
+import Otp from "./Screens/Authentication/OTPPage/Otp";
+import ChangePassword from "./Screens/Authentication/ChangePassword/ChangePassword";
 
+import {
+  useNavigate,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Navebar from "./components/Navbar/Navbar";
+import InventoryScreen from "./Screens/InventoryScreen/Inventory/InventoryScreen";
+import Sidebar from "./components/Sidebar/Sidebar";
+import InventoryVarient from "./Screens/InventoryScreen/InventoryVarient/InventoryVarient";
+import InventoryProducts from "./Screens/InventoryScreen/InventoryProducts/InventoryProducts";
+import InventoryProductDetails from "./Screens/InventoryScreen/InventoryProductDetails/InventoryProductDetails";
+import Uom from "./Screens/InventoryScreen/Configuration/Uom";
+import UomCategories from "./Screens/InventoryScreen/Configuration/UomCategories";
+import ProductCategories from "./Screens/InventoryScreen/Configuration/ProductCategories";
+import Attributes from "./Screens/InventoryScreen/Configuration/Attributes";
+import Location from "./Screens/InventoryScreen/Location/Location";
+import Warehouse from "./Screens/InventoryScreen/Configuration/Warehouse";
+import ConfigRoutes from "./Screens/InventoryScreen/Configuration/ConfigRoutes";
+import OperationTypes from "./Screens/InventoryScreen/Configuration/OperationTypes";
+import Empty from "./Screens/Error/Empty";
+import Importempty from "./Screens/InventoryScreen/Import/Importempty";
+import Uomdetails from "./Screens/InventoryScreen/Configuration/Uomdetails";
+import AddProduct from "./Screens/InventoryScreen/AddProduct/AddProduct";
+import UnitPage from "./components/InventoryProductDetailsMain/GeneralInformationPage/UnitsPage";
+import AddWarehouse from "./Screens/InventoryScreen/Configuration/AddWarehouse/AddWarehouse";
+import WarehouseConfig from "./Screens/InventoryScreen/Configuration/AddWarehouse/WarehouseConfig";
+import AddLocation from "./Screens/InventoryScreen/Configuration/AddLocation/AddLocation";
+import AddProductCategories from "./Screens/InventoryScreen/Configuration/AddProductCategory/AddProductCategories";
+import AddRoute from "./Screens/InventoryScreen/Configuration/AddRoute/AddRoute";
+import AddAtrribute from "./Screens/InventoryScreen/Configuration/AddAtrribute/AddAtrribute";
+import ChartAccount from "./Screens/AccountScreen/ChartAccouts/ChartAccount";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AddChartAccount from "./Screens/AccountScreen/AddchartAccount/AddChartAccount";
+import Journal from "./Screens/AccountScreen/Journals/Journal";
+import AddJournal from "./Screens/AccountScreen/AddJournal/AddJournal";
+import JournalEntires from "./Screens/AccountScreen/AddJournal/JournalEntires/JournalEntires";
+import AdvanceSetting from "./Screens/AccountScreen/AddJournal/AdvanceSetting/AdvanceSetting";
+import PaymentTerms from "./Screens/AccountScreen/PaymentTerms/PaymentTerms";
+import AddPayment from "./Screens/AccountScreen/AddPaymentTerms/AddPayment";
+import BankAcc from "./Screens/AccountScreen/Bank Account/BankAcc";
+import AddBankAcc from "./Screens/AccountScreen/AddBankAcc/AddBankAcc";
+import PaymentCard from "./components/Payment Acquirers/PaymentCard";
+import AccountNavbar from "./components/AccountNavbar/AccountNavbar";
+import Incometerms from "./Screens/AccountScreen/Incometerms/Incometerms";
+import AccPaymentCard from "./Screens/AccountScreen/AccPayemntCard/AccPaymentCard";
+import Currencies from "./Screens/AccountScreen/Currencies/Currencies";
+import AddCurrencies from "./Screens/AccountScreen/AddCurrencies/AddCurrencies";
+import AddOperationTypes from "./Screens/InventoryScreen/Configuration/AddOperationTypes/AddOperationTypes";
+import AddPutwayRules from "./Screens/InventoryScreen/Configuration/AddPutwayRules/AddPutwayRules";
+import TaxName from "./Screens/AccountScreen/TaxName/TaxName";
+import AddTaxName from "./Screens/AccountScreen/AddTaxName/AddTaxName";
+import JournalGroup from "./Screens/AccountScreen/JournalGroup/JournalGroup";
+import AddJournalGroup from "./Screens/AccountScreen/AddJournalGroup/AddJournalGroup";
+import AccountTypes from "./Screens/AccountScreen/AcountTypes/AccountTypes";
+import AddAccountType from "./Screens/AccountScreen/AddAccountType/AddAccountType";
+import AccountTags from "./Screens/AccountScreen/AccountTags/AccountTags";
+import AddAccountTag from "./Screens/AccountScreen/AddAccountTag/AddAccountTag";
+import AccountGroup from "./Screens/AccountScreen/AccountGroup/AccountGroup";
+import AddAccGroup from "./Screens/AccountScreen/AddAccGroup/AddAccGroup";
+import AssetTypes from "./Screens/AccountScreen/AssetTypes/AssetTypes";
+import AddAssetType from "./Screens/AccountScreen/AddAssetType/AddAssetType";
+import AddIncoterms from "./Screens/AccountScreen/AddIncoterms/AddIncoterms";
+import AccTaxGroup from "./Screens/AccountScreen/AccTaxGroup/AccTaxGroup";
+import AddAccTaxGroup from "./Screens/AccountScreen/AddAccTaxGroup/AddAccTaxGroup";
+import AssetUseStatus from "./Screens/AccountScreen/AssetUseStatus/AssetUseStatus";
+import AddAssetUseStatus from "./Screens/AccountScreen/AddAssetUseStatus/AddAssetUseStatus";
+import DifferedExpenseType from "./Screens/AccountScreen/DifferdExpenseType/DifferedExpenseType";
+import AddDifferedType from "./Screens/AccountScreen/AddDifferedType/AddDifferedType";
+import AnalyticAccounts from "./Screens/AccountScreen/AnalyticAccounts/AnalyticAccounts";
+import AddAnalyticAccount from "./Screens/AccountScreen/AddAnalyticAccount/AddAnalyticAccount";
+import AnalyticTag from "./Screens/AccountScreen/AnalyticTags/AnalyticTag";
+import AddAnalyticTag from "./Screens/AccountScreen/AddAnalyticTag/AddAnalyticTag";
+import AnalyticAccountGroups from "./Screens/AccountScreen/AnalyticAccountGroups/AnalyticAccountGroups";
+import AddAnalyticAccountGroup from "./Screens/AccountScreen/AddAnalyticAccountGroup/AddAnalyticAccountGroup";
+import AnalyticAccountType from "./Screens/AccountScreen/AnalyticAccountType/AnalyticAccountType";
+import AddAnalyticAccountType from "./Screens/AccountScreen/AddAnalyticAccountType/AddAnalyticAccountType";
 
 const App = () => {
+ 
+
 
   return(<>
     <Router>
@@ -71,7 +122,52 @@ const App = () => {
         <Route path='/AddProductCategories' element={<AddProductCategories/>}/>
        <Route path='/AddRoute' element={<AddRoute/>} />
        <Route path='/AddAttribute' element={<AddAtrribute/>} />
+       <Route path="/AddOperationTypes" element={<AddOperationTypes/>} />
+       <Route path='/AddPutwayRules' element={<AddPutwayRules/>} />
+       {/* --------Accounting Pages------------- */}
+       <Route path='/AccountNavbar' element={<AccountNavbar/>}/>
+       <Route path='PaymentTerms' element={<PaymentTerms/>}/>
+       <Route path='AddPayment' element={<AddPayment/>} />
        <Route path='/ChartAccount' element={<ChartAccount/>} />
+       <Route path='/AddChartAccount' element={<AddChartAccount/>} />
+       <Route path='/Journal' element={<Journal/>} />
+       <Route path='/AddJournal' element={<AddJournal/>} />
+       <Route path="/JournalEntires" element={<JournalEntires/>} />
+       <Route path="/AdvanceSetting" element={<AdvanceSetting/>} />
+       <Route path='/BankAcc' element={<BankAcc/>} /> 
+       <Route path='/AddBankAcc' element={<AddBankAcc/>} />
+       <Route path='/PaymentCard' element={<PaymentCard/>} />
+       <Route path='/Incometerms' element={<Incometerms/>} />
+       <Route path='/AddIncoTerms' element={<AddIncoterms/>} />
+       <Route path='/AccPaymentCard' element={<AccPaymentCard/>} />
+       <Route path="/Currencies" element={<Currencies/>} />
+       <Route path="/AddCurrencies" element={<AddCurrencies/>} />
+      <Route path="/TaxName" element={<TaxName/>} />
+      <Route path="/AddTaxName" element={<AddTaxName/>}/>
+      <Route path="/JournalGroup" element={<JournalGroup/>} />
+      <Route path="/AddJournalGroup" element={<AddJournalGroup/>} />
+      <Route path="/AccountTypes" element={<AccountTypes/>} />
+      <Route path="/AddAccountType" element={<AddAccountType/>} />
+      <Route path="/AccountTags" element={<AccountTags/>} />
+      <Route path="/AddAccountTag" element={<AddAccountTag/>} />
+      <Route path="/AccountGroup" element={<AccountGroup/>} />
+      <Route path="/AddAccGroup" element={<AddAccGroup/>} />
+      <Route path="/AssetTypes" element={<AssetTypes/>} />
+      <Route path="/AddAssetType" element={<AddAssetType/>}/>
+      <Route path="/AccTaxGroup" element={<AccTaxGroup/>} />
+      <Route path="/AddAccTaxGroup" element={<AddAccTaxGroup/>} />
+      <Route path="/AssetUseStatus" element={<AssetUseStatus/>} />
+      <Route path="/AddAssetUseStatus" element={<AddAssetUseStatus/>} />
+      <Route path="/DifferedExpenseType" element={<DifferedExpenseType/>} />
+      <Route path='/AddDifferedType' element={<AddDifferedType/>} />
+      <Route path="/AnalyticAccounts" element={<AnalyticAccounts/>} />
+      <Route path="/AddAnalyticAccount" element={<AddAnalyticAccount/>} />
+      <Route path="/AnalyticTag" element={<AnalyticTag/>} />
+      <Route path="/AddAnalyticTag" element={<AddAnalyticTag/>} />
+      <Route path='/AnalyticAccountGroup' element={<AnalyticAccountGroups/>} />
+      <Route path='/AddAnalyticAccountGroup' element={<AddAnalyticAccountGroup/>} />
+      <Route path='/AnalyticAccountType' element={<AnalyticAccountType/>} />
+      <Route path='/AddAnalyticAccountType' element={<AddAnalyticAccountType/>} />
       </Routes>
     </Router>
     

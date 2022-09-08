@@ -1,0 +1,52 @@
+.TechnicalInforCon{
+    width: 100%;
+    display: flex;
+}
+.TechnicalInforCon h4{
+    color: #6f6666;
+    font-size: 25px;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-weight: 400;
+}
+.tech1{
+    width: 50%;
+}
+.techdetails{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.techdetails p{
+    width: 120px;
+    color: #6a666a;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+.techdetails span{
+    color:#0096b5 ;
+    font-size: 14px;
+    margin-left: 40px;
+}
+.tech2{
+  width: 50%;
+
+}
+
+.tech2 h4{
+    color: #6f6666;
+    font-size: 25px;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-weight: 400;
+}
+.transitlocation{
+    border: none;
+    outline: none;
+    width: 500px;
+    border-bottom: 1px solid #cccc;
+}

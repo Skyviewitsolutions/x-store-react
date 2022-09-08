@@ -5,7 +5,7 @@
 .box {
     height: 180px;
   border: 1px solid gray;
- border-left:5px solid #2c8397 ;
+ border-left:5px solid #1669a2 ;
  display: flex;
  width: 100%;
 }
@@ -23,7 +23,7 @@
 }
 
 .btnc{
-    background-color:#00a09d ;
+    background-color:#1669a2 ;
     width:75%;
     height: 35px;
     text-align: center;
@@ -39,7 +39,7 @@
 
 }
 .txtclr{
-    color:#00a09d ;
+    color:#1669a2;
     font-size: 14px;
 }
 .txtclr2{
