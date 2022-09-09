@@ -41,8 +41,14 @@ export  const endpoints =  {
        updateUOM : BASE_URL + "/Units/UpdateUOM",
        deleteUOM : BASE_URL + "/Units/DeleteUOM",
      },
+     UomCategory:{
+       allUomCate : BASE_URL + "/ProductsUnitsAll",
+       addUomCate : BASE_URL + "/ProductsUnitsAdd",
+       updateUomCate : BASE_URL + "/UpdateUnits",
+       deleteUomCate : BASE_URL + "/deleteproductunits",
+     },
      OpertionType:{
-        allOpertaionType: BASE_URL + "/GetAllOperationType",
+        allOpertaionType: BASE_URL + "/OperationType/GetAllOperationType",
         addOperationType: BASE_URL + "/OperationType/AddOperationType",
         singleOperationType: BASE_URL + "/OperationType/GetSingleOperationType",
         updateOperationType: BASE_URL + "/OperationType/UpdateOperationType",

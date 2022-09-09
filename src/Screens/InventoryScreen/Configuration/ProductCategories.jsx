@@ -62,7 +62,7 @@ const ProductCategories = () => {
 
   const handleUpdate = (data) => {
     const val = ProductCate.filter((itm,index) => {
-      return itm.categoryid == data
+      return itm.ID == data
     })
 
     const orgValue = val[0];
@@ -75,7 +75,7 @@ const ProductCategories = () => {
     { label: "Product Category", name: "CATEGORY_NAME" },
     {
       label: "Action",
-      name: "CATEGORY_NAME",
+      name: "ID",
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
@@ -88,7 +88,7 @@ const ProductCategories = () => {
                   onClick={() => deleteItem(value)}
                 />
               </div>
-            </>
+            </> 
           );
         },
       },

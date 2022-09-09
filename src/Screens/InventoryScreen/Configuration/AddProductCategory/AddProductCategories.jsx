@@ -40,7 +40,7 @@ const AddProductCategories = (props) => {
   //  const [expense , setExpense] = useState([]);
    
    const [productCateName , setProductCateName] = useState("");
-   const [update , setUpdate] = useState();
+   const [update , setUpdate] = useState(false);
 
    const formData = new FormData();
    formData.append("categoryName",productCateName);
@@ -78,8 +78,18 @@ const AddProductCategories = (props) => {
 
   const location = useLocation();
   const selectedData = location.state;
+   console.log(selectedData , "SelectedData here")
+   
+  useEffect( () => {
+    if(selectedData)
+    {
+      setUpdate(true);
+      setProductCateName(selectedData.CATEGORY_NAME);
+    }
+  },[selectedData]);
 
   const productcateUpadteUrl = endpoints.productCategory.updateProductCate;
+
   const updateData = () => {
     if(productCateName === "" )
     {
@@ -87,7 +97,7 @@ const AddProductCategories = (props) => {
     }
     else{
       const formData = new FormData();
-      formData.append("categoryid" , selectedData.categoryid);
+      formData.append("categoryid" , selectedData.ID);
       formData.append("categoryName",productCateName);
       axios.post(productcateUpadteUrl,formData)
       .then((res) => {
@@ -111,7 +121,7 @@ const AddProductCategories = (props) => {
   return (
 
     <>
-    <Navebar showBelowMenu={true} stitle="Product Category"   save={update === true ? updateData : save}/>
+    <Navebar showBelowMenu={true} title="Product Category"   save={update === true ? updateData : save}/>
     <div className="AddProductCategoriesContainer">
       <div className="AddProductCatehead">
         <div className="AddProductCate1"></div>

@@ -43,6 +43,7 @@ const Location = () => {
   const locationDeleteUrl = endpoints.location.deleteLocation;
 
   const deleteItem = (data) => {
+    
     const formData = new FormData();
     formData.append("Id",data);
     axios.post(locationDeleteUrl,formData)

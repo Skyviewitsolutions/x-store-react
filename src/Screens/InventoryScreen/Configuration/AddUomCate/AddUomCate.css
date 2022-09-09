@@ -1,0 +1,28 @@
+.AddUomCateCon{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    /* padding-top: 30px; */
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px;
+} 
+.AddUomCateContent{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.AddUomCateContent p{
+    color:#6f6f6f;
+    font-size: 18px;
+    margin-left: 19px;
+    margin-bottom: -6px;
+    width: 170px;
+
+}
+.AddUomCateContent input{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 500px;
+}

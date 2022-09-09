@@ -37,7 +37,7 @@ const Uom = () => {
 
   const deleteItem = (data) => {
     const formData = new FormData();
-    formData.append("UnitName", data);
+    formData.append("ID", data);
 
     axios
       .post(deleteUrl, formData)
@@ -54,23 +54,30 @@ const Uom = () => {
         console.log(err, "error");
       });
   };
+  
+
+  const handleUpdate = (data) => {
+    const val = UOM.filter((itm,index) => {
+      return itm.ID == data
+    })
+
+    const orgValue = val[0];
+    navigate("/UnitPage" , {state:orgValue})
+  }
 
   const column = [
     { label: "Unit of Measure", name: "UNITNAME" },
     { label: "Category", name: "UNITCATEGORY" },
     { label: "Type", name: "UNITTYPE" },
     {
-      label: "actions",
-      name: "UNITNAME",
+      label: "Actions",
+      name: "ID",
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
-          console.log(value , "value")
-          console.log(tableMeta , "tablemeta")
-          console.log(updateValue , "updateValue")
           return (
             <>
               <div className="updtdlt">
-                <FiEdit size={23} color="#4f4e4d" />                                                                                                                                    
+                <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)} />                                                                                                                                    
                 <MdDelete
                   size={23}
                   color="#4f4e4d"

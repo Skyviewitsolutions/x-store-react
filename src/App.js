@@ -29,6 +29,7 @@ import OperationTypes from "./Screens/InventoryScreen/Configuration/OperationTyp
 import Empty from "./Screens/Error/Empty";
 import Importempty from "./Screens/InventoryScreen/Import/Importempty";
 import Uomdetails from "./Screens/InventoryScreen/Configuration/Uomdetails";
+import AddUomCate from "./Screens/InventoryScreen/Configuration/AddUomCate/AddUomCate";
 import AddProduct from "./Screens/InventoryScreen/AddProduct/AddProduct";
 import UnitPage from "./components/InventoryProductDetailsMain/GeneralInformationPage/UnitsPage";
 import AddWarehouse from "./Screens/InventoryScreen/Configuration/AddWarehouse/AddWarehouse";
@@ -105,6 +106,7 @@ const App = () => {
         <Route path='/InventoryProductsDetails' element={<InventoryProductDetails/>} />
         <Route path='/Uom' element={<Uom/>} />
         <Route path='/UomCategories' element={<UomCategories/>} />
+        <Route path='/AddUomCate' element={<AddUomCate/>} />
         <Route path="/ProductCategories" element={<ProductCategories/>} />
         <Route path="/Attributes" element={<Attributes/>} />
         <Route path="/Location" element={<Location/>} />
