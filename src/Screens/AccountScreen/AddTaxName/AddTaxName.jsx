@@ -12,10 +12,14 @@ const AddTaxName = () => {
     const [taxGroup , setTaxGroup] = useState("");
     const [affect , setAffect] = useState("");
     const [cost , setCost] = useState("");
-    
+
+    const save = () => {
+
+    }
+
   return (
     <>
-    <AccountNavbar showBelowMenu={true} title="TaxName"/>
+    <AccountNavbar showBelowMenu={true} title="TaxName" save={save}/>
     <div className='TaxNameCon'>
         <div className="TaxNamemain">
         <div className="TaxNamecontent">

@@ -1,7 +1,9 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import CustomTable from '../../../components/CustomTable/CustomTable';
+import { endpoints } from '../../../services/endpoints';
 import './Currencies.css';
 const Currencies = () => {
     const navigate = useNavigate()
@@ -10,53 +12,37 @@ const Currencies = () => {
         navigate('/AddCurrencies');
     }
 
-    const data = [
-        {
-            id:1,
-            Currencies:"SAR",
-            Symbol:"SAR",
-            Date:"",
-            CurrentRate:"1.000000000000"
-        },
-        {
-            id:2,
-            Currencies:"AED",
-            Symbol:"AED",
-            Date:"",
-            CurrentRate:"1.000000000000"
-        },
-        {
-            id:3,
-            Currencies:"AFN",
-            Symbol:"Afs",
-            Date:"",
-            CurrentRate:"1.000000000000"
-        },
-        {
-            id:4,
-            Currencies:"ALL",
-            Symbol:"L",
-            Date:"",
-            CurrentRate:"1.000000000000"
-        },
-        {
-            id:5,
-            Currencies:"AMD",
-            Symbol:"դր.",
-            Date:"",
-            CurrentRate:"1.000000000000"
-        },
-    ]
+   const [currencies , setCurrencies] = useState([]);
+   const CurrenciesAllUrl = endpoints.Currency.allCurrency;
+    
+   useEffect(() => {
+    axios.post(CurrenciesAllUrl)
+    .then((res) => {
+       if(res.data.status === true)
+       {
+        setCurrencies(res.data.data);
+       }
+       else if(res.data.status === false)
+       {
+        alert(res.data.message);
+       }
+    })
+    .catch((err) => {
+        console.log(err,"error");
+    })
+   },[])
 
-    const column = [{label:"Currencies" , name:"Currencies"},
-              {label:"Symbol" , name:"Symbol"},
-              {label:"Date" , name:"Date"},
-              {label:"CurrentRate" , name:"CurrentRate"}
+
+
+    const column = [{label:"Currencies" , name:"CURRENCY"},
+              {label:"Symbol" , name:"CURRENCY_UNIT"},
+              {label:"Date" , name:"CREATE_DATE"},
+              {label:"CurrentRate" , name:"CURRENCY_RATE"}
 ]
   return (
     <div>
         <AccountNavbar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Currencies"/>
-        <CustomTable data={data} column={column} />
+        <CustomTable data={currencies} column={column} />
     </div>
   )
 }
