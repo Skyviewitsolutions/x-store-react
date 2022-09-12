@@ -6,7 +6,7 @@ import "./AccountNavbar.css";
 import { useNavigate } from "react-router-dom";
 
 const AccountNavbar = (props) => {
-  const { showBelowMenu, handleCreatePage,title } = props;
+  const { showBelowMenu, handleCreatePage,title,save } = props;
   const navigate = useNavigate();
 
   return (
@@ -142,13 +142,14 @@ const AccountNavbar = (props) => {
       {showBelowMenu === true && (
         <div className="container-fluid">
           <div className="row Acchead">
-            <div className="col-sm-6" style={{ width: "50%" }}>
+          <div className="col-sm-6" style={{ width: "50%" }}>
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
-              {title ? title : "Accounting"}
+              {title ? title : "Inventory"}
               </h5>
-              <button className="ACCcreatebtn" onClick={handleCreatePage}>
+              <button className="createbtn" onClick={handleCreatePage}>
                 Create
               </button>
+              <button className="createbtn" onClick={save}>Save</button>
             </div>
             <div
               className="col-sm-6 d-flex justify-content-center"

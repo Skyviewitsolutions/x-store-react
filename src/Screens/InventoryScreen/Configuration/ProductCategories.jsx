@@ -15,7 +15,7 @@ const ProductCategories = () => {
 
   const url =
     endpoints.productCategory.allProductCate;
-  const [ProductCate, setProductCate] = useState([]);
+  const [productCate, setProductCate] = useState([]);
   
   const getProductCate = () => {
     axios
@@ -40,7 +40,7 @@ const ProductCategories = () => {
 
   const deleteItem = (data) => {
     const formData = new FormData();
-    formData.append("categoryName",data);
+    formData.append("id",data);
   axios.post(productdeleteUrl,formData)
   .then((res) => {
     console.log(res,"productcatedelete");
@@ -61,7 +61,7 @@ const ProductCategories = () => {
   };
 
   const handleUpdate = (data) => {
-    const val = ProductCate.filter((itm,index) => {
+    const val = productCate.filter((itm,index) => {
       return itm.ID == data
     })
 
@@ -98,7 +98,7 @@ const ProductCategories = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
       <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Product Category" />
-      <CustomTable data={ProductCate} column={column} />
+      <CustomTable data={productCate} column={column} />
       <ToastContainer />
     </div>
   );

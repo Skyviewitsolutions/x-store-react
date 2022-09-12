@@ -42,10 +42,10 @@ export  const endpoints =  {
        deleteUOM : BASE_URL + "/Units/DeleteUOM",
      },
      UomCategory:{
-       allUomCate : BASE_URL + "/ProductsUnitsAll",
-       addUomCate : BASE_URL + "/ProductsUnitsAdd",
-       updateUomCate : BASE_URL + "/UpdateUnits",
-       deleteUomCate : BASE_URL + "/deleteproductunits",
+       allUomCate : BASE_URL + "/ProductsXM/ProductsUnitsAll",
+       addUomCate : BASE_URL + "/ProductsXM/ProductsUnitsAdd",
+       updateUomCate : BASE_URL + "/ProductsXM/UpdateUnits",
+       deleteUomCate : BASE_URL + "/ProductsXM/deleteproductunits",
      },
      OpertionType:{
         allOpertaionType: BASE_URL + "/OperationType/GetAllOperationType",
@@ -70,6 +70,13 @@ export  const endpoints =  {
     } ,
     
     //----------- Accounting Api---------->
+    PaymentTerms:{
+       allPayment:BASE_URL + "/PaymentTerms/GetAllPaymentTerms",
+       addPayment:BASE_URL + "/PaymentTerms/AddPaymentTerms",
+       singlePayment:BASE_URL + "/PaymentTerms/GetSinglePaymentTerms",
+       updatePayment:BASE_URL + "/PaymentTerms/UpdatePaymentTerms",
+       deletePayment:BASE_URL + "/PaymentTerms/DeletePaymentTerms",
+    },
     Currency:{
         allCurrency:BASE_URL + "/Currency/GetAllCurrency",
         addCurrency:BASE_URL + "/Currency/AddCurrency",

@@ -41,7 +41,7 @@ const Navebar = (props) => {
                 Operations
               </Nav.Link>
               <NavDropdown title="Master Data" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="/InventoryProducts">
+                <NavDropdown.Item onClick={()=> navigate('/InventoryProducts')}>
                   Product
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/InventoryVarient">

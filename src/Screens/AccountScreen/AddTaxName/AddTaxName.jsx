@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import './AddTaxNAme.css';
 const AddTaxName = () => {
+
+    const [taxName , setTaxname] = useState("");
+    const [taxScope , setTaxscope] = useState("");
+    const [taxComputation , setTaxComputation] = useState("");
+    const [ammount ,  setAmmount] = useState("");
+    const [labelInvoice , setLabelInvoice] = useState("");
+    const [IncludedPrice , setIncludedPrice] = useState("");
+    const [taxGroup , setTaxGroup] = useState("");
+    const [affect , setAffect] = useState("");
+    const [cost , setCost] = useState("");
+    
   return (
     <>
     <AccountNavbar showBelowMenu={true} title="TaxName"/>

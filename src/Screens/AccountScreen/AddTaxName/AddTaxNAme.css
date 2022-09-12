@@ -104,9 +104,10 @@
 .Advancecheckbox{
     display: flex;
     align-items: center;
+    margin-top: 7px;
 }
 .Advancecheckbox p{
-    width: 150px;
+    width: 250px;
     font-size: 15px;
     color: #666666;
     margin-left: 50px;

@@ -6,29 +6,36 @@ import { endpoints } from '../../../services/endpoints';
 import { FiEdit } from 'react-icons/fi';
 import { MdDelete } from 'react-icons/md';
 import { toast,ToastContainer } from 'react-toastify';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 
 const UomCategories = () => {
 
-  const [Uomdetails , setUomdetails] = useState([]);
+  const [uomdetails , setUomdetails] = useState([]);
   const url = endpoints.UomCategory.allUomCate;
+  const navigate = useNavigate();
 
-
+const getUomCategory = () => {
+  axios.get(url )
+  .then((res) => {
+    console.log(res,"response");
+    if(res.data.status === true)
+    {
+      setUomdetails(res.data.data);
+    }
+    else if(res.data.status ===  false) 
+    {
+      alert(res.data.message);
+    }
+  })
+  .catch((err) => {
+    console.log(err, "error");
+  })
+}
  useEffect(() => {
-      axios.get(url)
-      .then((res) => {
-        console.log(res,"response");
-        if(res.data.status === true)
-        {
-          setUomdetails(res.data.data);
-        }
-        else if(res.data.status ===  false) 
-        {
-          alert(res.data.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err, "error");
-      })
+
+ getUomCategory();
+      
  },[])
 
  const UomCateDeleteUrl = endpoints.UomCategory.deleteUomCate;
@@ -43,6 +50,7 @@ const UomCategories = () => {
     console.log(res,"responseuom")
     if(res.data.status === true)
     {
+      getUomCategory()
       toast("Uom Category deleted Successfully!",{type:"success"});
     }
     else if(res.data.status === false) 
@@ -54,6 +62,15 @@ const UomCategories = () => {
     console.log(err,"error");
   });
  }
+
+ const handleUpdate = (data) => {
+  const val = uomdetails.filter((itm,index) => {
+    return itm.ID == data
+  })
+  const orgValue = val[0];
+  console.log(orgValue, "orgValue here")
+  navigate("/AddUomCate" , {state:orgValue});
+ }
   const column = [
     {label : 'Unit of Measure Category', name: "UNIT_NAME"},
     {
@@ -64,7 +81,7 @@ const UomCategories = () => {
           return(
             <>
             <div className="updtdlt">
-              <FiEdit size={23} color="#4f4e4d" />
+              <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)} />
               <MdDelete size={23} color="4f4e4d"  onClick={() => deleteItem(value)} />
             </div>
             </>
@@ -74,11 +91,15 @@ const UomCategories = () => {
 
     }
   ]
+
+  const handleCreatePage = () => {
+    navigate('/AddUomCate');
+  }
   return (
     <div style={{width:'100vw',height:'100vh',overflow:'hidden'}}>
-         <Navebar showBelowMenu={true} title="Units of Measure Categories"/>
+         <Navebar showBelowMenu={true} title="Units of Measure Categories" handleCreatePage = {handleCreatePage} />
         
-            <CustomTable  data={Uomdetails} column={column}/>
+            <CustomTable  data={uomdetails} column={column} />
             <ToastContainer />
     </div>
   )
