@@ -3,7 +3,7 @@ import "./ProductDetailsInventory.css";
 
 const ProductDetailsInventory = (props) => {
 
-  const {buy,replenishOnOrder,customerLeadTime,weight,volume,descriptionDeliveryOrder,descriptionForReceipt,descriptionInternalTranser} = props;
+  const {buy,replenishOnOrder,customerLeadTime,weight,volume,descriptionDeliveryOrder,descriptionForReceipt,descriptionInternalTranser,setBuy,setReplenishOnOrder} = props;
   return (
     <div className="InventoryContainer">
       <div className="Inventory1">
@@ -11,12 +11,14 @@ const ProductDetailsInventory = (props) => {
           <h5>Operations</h5>
           <div className="content1">
             <p>Routes</p>
-            <input type="checkbox" />
+            <input type="checkbox" value={buy} checked={buy}
+            onChange={() => setBuy(!buy) }/>
             <label>Buy</label>
           </div>
           <div className="content1">
             <p></p>
-            <input type="checkbox" />
+            <input type="checkbox"  value={replenishOnOrder} checked={replenishOnOrder}
+            onChange={() => setReplenishOnOrder(!replenishOnOrder) }/>
             <label>Replenish on Order (MTO)</label>
           </div>
           <div className="content1">

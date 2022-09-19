@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { endpoints } from "../../../services/endpoints";
 
+
 const InventoryProducts = () => {
   const [product, setProduct] = useState([]);
   const url = endpoints.products.allProduct;

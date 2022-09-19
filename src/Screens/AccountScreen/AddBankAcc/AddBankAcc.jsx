@@ -44,12 +44,12 @@ const AddBankAcc = () => {
         <div className="Paymenttype">
             <p>Payment Method Types</p>
             <div className="Addbankpay">
-                <p>For Incoming</p>
+                <p>For Incoming Payments</p>
                 <input type="checkbox" />
                 <span>Manual</span>
             </div>
             <div className="Addbankpay">
-                <p>Payments</p>
+                <p></p>
                 <input type="checkbox" />
                 <span>Electronic</span>
             </div>

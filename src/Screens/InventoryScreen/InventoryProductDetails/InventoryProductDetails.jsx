@@ -157,10 +157,10 @@ const InventoryProductDetails = () => {
         
         <InventoryProductDetailsMain isEdit={isEdit} 
            productName = {productName}
-           sold= {sold}
-           purchased={purchased}
-           expensed={expensed}
-           deduction={deduction}
+           sold= {JSON.parse(sold)}
+           purchased={JSON.parse(purchased)}
+           expensed={JSON.parse(expensed)}
+           deduction={JSON.parse(deduction)}
            productType={productType}
            productCategory={productCategory}
            interRef = {interRef}
@@ -198,7 +198,7 @@ const InventoryProductDetails = () => {
            setPurchaseUnitOfMeasurement={setPurchaseUnitOfMeasurement}
            setWeight={setWeight}
            setVolume={setVolume}
-           setBuy={ setBuy}
+           setBuy={setBuy}
            setReplenishOnOrder={setReplenishOnOrder}
            setCustomerLeadTime={setCustomerLeadTime}
            setDescriptionDeliveryOrder={setDescriptionDeliveryOrder}

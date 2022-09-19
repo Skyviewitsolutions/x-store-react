@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './AddCurrencies.css';
 import {FaMoneyBillAlt} from 'react-icons/fa'
 import { HiOutlineRefresh } from 'react-icons/hi';
@@ -6,6 +6,7 @@ import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import { toast } from 'react-toastify';
 import { endpoints } from '../../../services/endpoints';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const AddCurrencies = () => {
 
@@ -13,7 +14,8 @@ const AddCurrencies = () => {
   const [currenciesUnit , setCurrenciesUnit] = useState("");
   const [currenciesRate , setCurrenciesRate] = useState("");
   const [currenciesSubunit , setCurrenciesSubUnit] = useState("");
-  const [active , setActive] = useState("");
+  const [active , setActive] = useState(false);
+  const [update , setUpdate] = useState("")
   const AddCurrenciesUrl = endpoints.Currency.addCurrency;
 
   const formData = new FormData();
@@ -63,9 +65,74 @@ const AddCurrencies = () => {
     }
 
   }
+
+  const location = useLocation();
+
+  const selectedData = location.state;
+  console.log(selectedData , "SelectedData here");
+
+  useEffect(() => {
+   if(selectedData) {
+    setUpdate(true);
+    setActive(JSON.parse(selectedData.ACTIVE).lowerCase);
+    setCurrencies(selectedData.CURRENCY);
+    setCurrenciesRate(selectedData.CURRENCY_RATE);
+    setCurrenciesUnit(selectedData.CURRENCY_UNIT);
+    setCurrenciesSubUnit(selectedData.CURRENCY_SUBUNIT);
+   }
+  },[selectedData])
+
+  const updateCurrenciesUrl = endpoints.Currency.updateCurrency;
+
+  const updateData = () => {
+    if(currencies === "")
+    {
+      toast("Currencies Is Required!",{type:"warning"});
+    }
+    else if(currenciesUnit === "")
+    {
+      toast("Currencies Unit is Required!",{type:"warning"});
+    }
+    else if(currenciesRate === "")
+    {
+      toast("Currencies Rate is Required!",{type:"warning"});
+    }
+    else if(currenciesSubunit === "")
+    {
+      toast("Currencies SubUnit is Required!" ,{type:"warning"});
+    }
+    else if(active === "")
+    {
+      toast("active is Required!",{type:"warning"});
+    }
+    else{
+     const formData = new FormData();
+     formData.append("Id" , selectedData.ID);
+     formData.append("Currencys" , currencies);
+     formData.append("Currency_Unit" , currenciesUnit);
+     formData.append("Currency_Rate" , currenciesRate);
+     formData.append("Currency_Subunit" , currenciesSubunit);
+     formData.append("Active" , active);
+     axios.post(updateCurrenciesUrl,formData)
+     .then((res) => {
+      if(res.data.status === true)
+      {
+        toast("Currencies is updated Successfully !",{type:"success"})
+      }
+      else if(res.data.status === false)
+      {
+        toast(res.data.message , {type:"error"});
+      }
+     })
+     .catch((err) => {
+      console.log(err,"error");
+     })
+    }
+  }
+  
   return (
     <>
-    <AccountNavbar showBelowMenu={true} title="Currencies" save={save}/>
+    <AccountNavbar showBelowMenu={true} title="Currencies"save={update === true ? updateData : save}/>
     <div className='AddCurrenciesCon'>
        <div className="AddCurrencieshead">
         <div className="content">
@@ -82,25 +149,25 @@ const AddCurrencies = () => {
          <div className="Currenciesdetails1">
             <div className="currenciestext">
               <p>Currency</p>
-              <input type="text" />
+              <input type="text" value={currencies} onChange={(e) => setCurrencies(e.target.value)}/>
             </div>
             <div className="currenciestext">
               <p>Current Rate</p>
-              <span>0.0000</span>
+             <input type="text" value={currenciesRate} onChange={(e) => setCurrenciesRate(e.target.value)}/>
             </div>
             <div className="currenciescheckbox">
               <p>Active</p>
-              <input type="checkbox" />
+              <input type="checkbox" value={active} onChange={() => setActive(!active)} checked={active}/>
             </div>
          </div>
          <div className="Currenciesdetails2">
          <div className="currenciestext">
               <p>Currency Unit</p>
-              <input type="text" />
+              <input type="text" value={currenciesUnit} onChange={(e) => setCurrenciesUnit(e.target.value)}/>
             </div>
          <div className="currenciestext">
               <p>Currency Subunit</p>
-              <input type="text" />
+              <input type="text" value={currenciesSubunit} onChange={(e) => setCurrenciesSubUnit(e.target.value)}/>
             </div>
          </div>
       </div>

@@ -22,10 +22,7 @@ const InventoryProductsCard = (props) => {
 
   const deleteProduct = (dta) => {
     const formData = new FormData();
-  formData.append("productName",dta.PRODUCT_NAME);
-  formData.append("productType",dta.PRODUCT_TYPE);
-  formData.append("productCategory",dta.PRODUCT_CATEGORY);
-
+  formData.append("id",dta.PRODUCT_ID);
     axios.post(deleteUrl,formData)
     .then((res) => {
       console.log(res,'deleteresult');

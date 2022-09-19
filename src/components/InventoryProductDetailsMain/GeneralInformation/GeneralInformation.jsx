@@ -50,11 +50,11 @@ const GeneralInformation = (props) => {
                 </div>
                 <div className="firstcontent3">
                     <p>Unit of Measure</p>
-                    <span style={{ color: "#1669a2" }} onClick={RedirectToUnit}>{unitOfMeasurement}</span>
+                    <span style={{ color: "#1669a2" }} >{unitOfMeasurement}</span>
                 </div>
                 <div className="firstcontent3">
                     <p>Purchase Unit of</p>
-                    <span style={{ color: "#1669a2" }} onClick={RedirectToUnit}>{purchaseUnitOfMeasuremnt}</span>
+                    <span style={{ color: "#1669a2" }} >{purchaseUnitOfMeasuremnt}</span>
                 </div>
                 <p  className="custext">Measure</p>
 
