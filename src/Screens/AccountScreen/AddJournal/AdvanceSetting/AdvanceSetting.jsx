@@ -2,9 +2,12 @@ import React,{useState}from 'react'
 import './AdvanceSetting.css';
 import Multiselect from "multiselect-react-dropdown";
 
-const AdvanceSetting = () => {
+const AdvanceSetting = (props) => {
 
-  const [selectedValue,setSelectedValue] = useState()
+ 
+
+  const {acctypeAllow,setAccTypeAllow,accAllow,setAccAllow,lockPost,setLockPost} = props
+
   const options = [
     { name: "Receviable", id: 1 },
     { name: "Payable", id: 2 },
@@ -23,12 +26,21 @@ const AdvanceSetting = () => {
     { name: "110101007 صندوق مكة", id: 4 },
   ];
 
-const  onSelect = (selectedList, selectedItem) => {
-   
-}
+const  onSelect1 = (selectedList, selectedItem) => {
+  setAccTypeAllow(selectedList);
+  console.log(selectedList , "selecctedList Here")
+};
 
-const onRemove = (selectedList, removedItem) => {
-    
+const onRemove1 = (selectedList, removedItem) => {
+  setAccTypeAllow(selectedList);
+}
+const  onSelect2 = (selectedList, selectedItem) => {
+  setAccAllow(selectedList);
+  console.log(selectedList , "selecctedList Here")
+};
+
+const onRemove2 = (selectedList, removedItem) => {
+  setAccAllow(selectedList);
 }
   return (
     <div className='AdvanceSettingCon'>
@@ -40,9 +52,9 @@ const onRemove = (selectedList, removedItem) => {
         <p>Account Types Allowed</p>
         <Multiselect className='Advancemultiselect'
               options={options}
-              selectedValues={selectedValue} 
-              onSelect={onSelect}
-              onRemove={onRemove} 
+              selectedValues={acctypeAllow} 
+              onSelect={onSelect1}
+              onRemove={onRemove1} 
               displayValue="name"
             />
       </div>
@@ -50,15 +62,15 @@ const onRemove = (selectedList, removedItem) => {
         <p>Accounts Allowed</p>
         <Multiselect className='Advancemultiselect'
               options={options1}
-              selectedValues={selectedValue} 
-              onSelect={onSelect}
-              onRemove={onRemove} 
+              selectedValues={accAllow} 
+              onSelect={onSelect2}
+              onRemove={onRemove2} 
               displayValue="name"
             />
       </div>
       <div className="AdvanceSettingcheckbox">
         <p>Lock Posted Entries with Hash</p>
-        <input type="checkbox" />
+        <input type="checkbox" value={lockPost} onChange={()=> setLockPost(!lockPost)} checked={lockPost}/>
       </div>
     </div>
   )

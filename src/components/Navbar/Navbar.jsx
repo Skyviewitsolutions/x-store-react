@@ -44,9 +44,9 @@ const Navebar = (props) => {
                 <NavDropdown.Item onClick={()=> navigate('/InventoryProducts')}>
                   Product
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/InventoryVarient">
+                {/* <NavDropdown.Item  onClick={()=> navigate( "/InventoryVarient")}>
                   Product Variants
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item href="#action/3.3">
                   Reordering Rules
                 </NavDropdown.Item>
@@ -68,7 +68,7 @@ const Navebar = (props) => {
                 <NavDropdown.Item onClick={()=> navigate('/Warehouse')}>Warehouse</NavDropdown.Item>
                 <NavDropdown.Item  onClick={ () => navigate('/Location')}>Location</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">Rules</NavDropdown.Item>
-                <NavDropdown.Item  onClick = {()=> navigate('/ConfigRoutes')}>Routes</NavDropdown.Item>
+                {/* <NavDropdown.Item  onClick = {()=> navigate('/ConfigRoutes')}>Routes</NavDropdown.Item> */}
                 <NavDropdown.Item  onClick={()=> navigate('/OperationType')}>
                   Operation Types
                 </NavDropdown.Item>

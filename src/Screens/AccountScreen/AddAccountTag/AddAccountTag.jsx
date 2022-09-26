@@ -6,8 +6,11 @@ import { endpoints } from "../../../services/endpoints";
 import { toast,ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+
 const AddAccountTag = () => {
+
   const [selectedValue, setSelectedValue] = useState();
+  
   const options = [
     { name: "110101002 Zulfi Box", id: 1 },
     { name: "110101001 Riyadh Management Fund", id: 2 },

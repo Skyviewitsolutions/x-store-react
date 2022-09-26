@@ -111,6 +111,99 @@ export  const endpoints =  {
         singleJournalGroup:BASE_URL + "/JournalGroup/GetSingleJG",
         updateJournalGroup:BASE_URL + "/JournalGroup/UpdateJG",
         deleteJournalGroup:BASE_URL + "/JournalGroup/DeleteJG"
+    },
+    IncomeTerms:{
+        allIncomeTerms:BASE_URL + "/IncomeTerms/GetAllICT",
+        addIncomeTerms:BASE_URL + "/IncomeTerms/AddICT",
+        singleIncomeTerms:BASE_URL + "/IncomeTerms/GetSingleICT",
+        updateIncomeTerms:BASE_URL + "/IncomeTerms/UpdateICT",
+        deleteIncomeTerms:BASE_URL  +"/IncomeTerms/DeleteICT",
+    },
+    Journals:{
+        allJournals:BASE_URL + "/Invoices/Journals/GetAllJr",
+        addJournals:BASE_URL + "/Invoices/Journals/AddJr",
+        singleJournals:BASE_URL + "/Invoices/Journals/GetSingleJr",
+        updateJournals:BASE_URL +"/Invoices/Journals/UpdateJr",
+        deleteJournals:BASE_URL + "/Invoices/Journals/DeleteJr",
+    },
+    BankAccount:{
+        allBank:BASE_URL + "/BankAcc/GetAllBA",
+        addBank:BASE_URL + "/BankAcc/AddBA",
+        singleBank:BASE_URL + "/BankAcc/GetSingleBA",
+        updateBank:BASE_URL + "/BankAcc/UpdateBA",
+        deleteBank:BASE_URL + "/BankAcc/DeleteBA",
+    },
+    ChartAccount:{
+        allChartAcc:BASE_URL + "/ChartsOfAccount/GetAllCrtAcc",
+        addChartAcc:BASE_URL + "/ChartsOfAccount/AddCrtAcc",
+        singleChartAcc:BASE_URL + "/ChartsOfAccount/GetSingleCrtAcc",
+        updateChartAcc:BASE_URL +  "/ChartsOfAccount/UpdateCrtAcc",
+        deleteChartAcc:BASE_URL + "/ChartsOfAccount/DeleteCrtAcc",
+    },
+    AccountGroup:{
+        allAccGrp:BASE_URL + "/AccountGroup/GetAllACCGrp",
+        addAccGrp:BASE_URL + "/AccountGroup/AddACCGrp",
+        singleAccGrp:BASE_URL + "/AccountGroup/GetSingleACCGrp",
+        updateAccGrp:BASE_URL + "/AccountGroup/UpdateACCGrp",
+        deleteAccGrp:BASE_URL + "/AccountGroup/DeleteACCGrp",
+    },
+    AccountTaxGrp:{
+        allAccgrpTax:BASE_URL + "/AccountTaxGroup/GetAllAccTaxGrp",
+        addAccGrpTax:BASE_URL + "/AccountTaxGroup/AddAccTaxGrp",
+        updateAccGrpTax:BASE_URL + "/AccountTaxGroup/UpdateAccTaxGrp",
+        deleteAccGrpTax:BASE_URL + "/AccountTaxGroup/DeleteAccTaxGrp",
+        singleAccGrpTax:BASE_URL + "/AccountTaxGroup/GetSingleAccTaxGrp",
+    },
+    AssetType:{
+        allAssettype:BASE_URL + "/AssetType/GetAllAst",
+        addAssetType:BASE_URL + "/AssetType/AddAst",
+        singleAssetType:BASE_URL + "/AssetType/GetSingleAst",
+        updateAssetType:BASE_URL + "/AssetType/UpdateAst",
+        deleteAssetType:BASE_URL + "/AssetType/DeleteAst",
+    },
+    AssetUseStatus:{
+        allAssetuseStatus:BASE_URL + "/AssetUseStatus/GetAllAUS",
+        addAssetUseStatus:BASE_URL + "/AssetUseStatus/AddAUS",
+        singleAssetUseStatus:BASE_URL + "/AssetUseStatus/GetSingleAUS",
+        updateAssetUseStatus:BASE_URL + "/AssetUseStatus/UpdateAUS",
+        deleteAssetUseStatus:BASE_URL + "/AssetUseStatus/DeleteAUS",
+    },
+    AnalyticAccType:{
+        allAnalytictype:BASE_URL + "/AnalyticType/GetAllAnAccType",
+        addAnAccType:BASE_URL + "/AnalyticType/AddAnAccType",
+        singleAnAccType:BASE_URL + "/AnalyticType/GetSingleAnAccType",
+        updateAnAccType:BASE_URL + "/AnalyticType/UpdateAnAccType",
+        deleteAnAccType:BASE_URL + "/AnalyticType/DeleteAnAccType",
+    },
+    AnalyticAcc:{
+        allAnaAcc:BASE_URL + "/AnalyticAccount/GetAllAnalyticAccount",
+        addAnaAcc:BASE_URL + "/AnalyticAccount/AddAnalyticAccount",
+        singleAnaAcc:BASE_URL + "/AnalyticAccount/GetSingleAnalyticAccount",
+        updateAnaAcc:BASE_URL + "/AnalyticAccount/UpdateAnalyticAccount",
+        deleteAnaAcc:BASE_URL + "/AnalyticAccount/DeleteAnalyticAccount",
+    },
+    DefExpenseType:{
+        allDefExType:BASE_URL + "/DeferedExpType/GetAllDefferedType",
+        addDefExType:BASE_URL + "/DeferedExpType/AddDefferedType",
+        singleDefExType:BASE_URL + "/DeferedExpType/GetSingleDefferedType",
+        updateDefExType:BASE_URL + "/DeferedExpType/UpdateDefferedType",
+        deleteDefExType:BASE_URL + "/DeferedExpType/DeleteDefferedType",
+    },
+    AnalyticAccGrp:{
+        allAnnAccGrp:BASE_URL + "/AnalyticAccGrp/GetAllAnalyticAccGrp",
+        addAnnAccGrp:BASE_URL + "/AnalyticAccGrp/AddAnalyticAccGrp",
+        singleAnnAccGrp:BASE_URL + "/AnalyticAccGrp/GetSingleAnalyticAccGrp",
+        updateAnnAccGrp:BASE_URL + "/AnalyticAccGrp/UpdateAnalyticAccGrp",
+        deleteAnnAccGrp:BASE_URL + "/AnalyticAccGrp/DeleteAnalyticAccGrp",
+    },
+    AnalyticTag:{
+        allAnnTag:BASE_URL + "/AnalyticTag/GetAllAT",
+        addAnnTag:BASE_URL + "/AnalyticTag/AddAT",
+        singleAnnTag:BASE_URL + "/AnalyticTag/GetSingleAT",
+        updateAnnTag:BASE_URL + "/AnalyticTag/UpdateAT",
+        deleteAnnTag:BASE_URL + "/AnalyticTag/DeleteAT",
     }
+    
+    
 
 }

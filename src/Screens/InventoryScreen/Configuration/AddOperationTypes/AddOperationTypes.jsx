@@ -5,7 +5,9 @@ import { toast, ToastContainer } from "react-toastify";
 import Navebar from "../../../../components/Navbar/Navbar";
 import { endpoints } from "../../../../services/endpoints";
 import "./AddOperationTypes.css";
+
 const AddOperationTypes = () => {
+
   const warehouseurl = endpoints.wareHouse.allWarehouse;
   const locationUrl = endpoints.location.allLocation;
   const [warehouse, setWareHouse] = useState([]);

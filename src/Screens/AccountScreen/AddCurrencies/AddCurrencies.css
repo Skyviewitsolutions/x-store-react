@@ -33,7 +33,7 @@
 .AddCurrenciesdetails{
     width: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     padding: 15px 15px;
 }
 .Currenciesdetails1{
@@ -74,4 +74,12 @@
 }
 .Currenciesdetails2{
     width: 50%;
+}
+
+
+@media screen and (max-width: 1000px)
+{
+    .AddCurrenciesdetails{
+       flex-direction: column;
+    }
 }

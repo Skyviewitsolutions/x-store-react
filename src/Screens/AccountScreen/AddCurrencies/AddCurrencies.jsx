@@ -3,7 +3,7 @@ import './AddCurrencies.css';
 import {FaMoneyBillAlt} from 'react-icons/fa'
 import { HiOutlineRefresh } from 'react-icons/hi';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
-import { toast } from 'react-toastify';
+import { toast,ToastContainer} from 'react-toastify';
 import { endpoints } from '../../../services/endpoints';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
@@ -52,7 +52,7 @@ const AddCurrencies = () => {
         console.log(res,"AccountTagAdd");
         if(res.data.status === true)
         {
-            toast("Currencies Added Successfully" , {type:"Success"})
+            toast("Currencies Added Successfully" , {type:"success"})
         }
         else if(res.data.status === false)
         {
@@ -74,7 +74,7 @@ const AddCurrencies = () => {
   useEffect(() => {
    if(selectedData) {
     setUpdate(true);
-    setActive(JSON.parse(selectedData.ACTIVE).lowerCase);
+    setActive(JSON.parse(selectedData.ACTIVE.toLowerCase()));
     setCurrencies(selectedData.CURRENCY);
     setCurrenciesRate(selectedData.CURRENCY_RATE);
     setCurrenciesUnit(selectedData.CURRENCY_UNIT);
@@ -171,6 +171,7 @@ const AddCurrencies = () => {
             </div>
          </div>
       </div>
+      <ToastContainer/>
     </div>
     </>
   )

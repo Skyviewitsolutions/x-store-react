@@ -17,7 +17,7 @@
 .AddBankConbox{
     width: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
 }
 .AddBankfirsttext{
@@ -36,6 +36,12 @@
     margin-bottom: 0px;
 }
 .BankAc select{
+    width: 500px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+}
+.BankAc input{
     width: 500px;
     outline: none;
     border: none;
@@ -84,7 +90,7 @@
 }
 .Addbankpay p{
     width: 200px;
-    font-size: 17px;
+    font-size: 15px;
     color: #7f7f7f;
     font-weight: 500;
     margin-bottom: 0px;
@@ -112,7 +118,7 @@
 }
 .bankselect p{
     width: 150px;
-    font-size: 17px;
+    font-size: 15px;
     color: #7f7f7f;
     font-weight: 500;
     margin-bottom: 0px;
@@ -130,4 +136,19 @@
 .bankselect span{
     font-size: 16px;
     color: #7f7f7f;
+}
+@media screen and (max-width: 1000px)
+{
+    .AddBankConbox{
+       flex-direction: column;
+    }
+    .AddBankAccSecondText p{
+        margin-left: 0px;
+    }
+    .AddBankAccSecondText select{
+        width: 350px;
+    }
+    .Addbankbox2{
+        flex-direction:column;
+    }
 }

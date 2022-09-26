@@ -53,7 +53,9 @@ const InventoryProducts = () => {
             </div>
           </div>
         </div>
-        <div></div>
+        <div>
+          
+        </div>
       </div>
     </>
   );

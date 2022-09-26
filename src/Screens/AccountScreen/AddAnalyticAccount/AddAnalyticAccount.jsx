@@ -135,6 +135,18 @@ const AddAnalyticAccount = () => {
               <option>Properties</option>
             </select>
           </div>
+          <div className="AnalyticInputcontent">
+            <p>Debit</p>
+            <input type="text" />
+          </div>
+          <div className="AnalyticInputcontent">
+            <p>Credit</p>
+            <input type="text" />
+          </div>
+          <div className="AnalyticInputcontent">
+            <p>Balance</p>
+            <input type="text" />
+          </div>
         </div>
       </div>
       </div>

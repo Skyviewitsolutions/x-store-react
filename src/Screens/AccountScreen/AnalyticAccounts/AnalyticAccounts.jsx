@@ -1,81 +1,53 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import CustomTable from '../../../components/CustomTable/CustomTable';
+import { endpoints } from '../../../services/endpoints';
 import './AnalyticAccounts.css'
 
 const AnalyticAccounts = () => {
  
     const navigate = useNavigate();
-    const data = [
+     const [analyticAcc , setAnayticAcc] = useState([]);
+
+     const allAnalyticAccUrl = endpoints.AnalyticAcc.allAnaAcc;
+
+     const getAnalyticAcc = () => {
+      axios.post(allAnalyticAccUrl)
+      .then((res) => {
+        if(res.data.status === true)
         {
-            id:1,
-            Name:"Al Aflag Project",
-            Refrence:"",
-            Customer:"",
-            Debit:"2,817,110.48",
-            Credit:'4,269,380.86',
-            Balance:"1,452,270.38",
-
-        },
+            setAnayticAcc(res.data.data);
+        }
+        else if(res.data.status === false)
         {
-            id:2,
-            Name:"Al Bahah Administration",
-            Refrence:"",
-            Customer:"",
-            Debit:"2,817,110.48",
-            Credit:'4,269,380.86',
-            Balance:"1,452,270.38",
+            toast(res.data.message);
+        }
+      })
+     }
 
-        },
-        {
-            id:3,
-            Name:"Al Bahah Warehouse",
-            Refrence:"",
-            Customer:"",
-            Debit:"2,817,110.48",
-            Credit:'4,269,380.86',
-            Balance:"1,452,270.38",
+     useEffect(() => {
+     getAnalyticAcc();
+     },[])
 
-        },
-        {
-            id:4,
-            Name:"Al Bahah Workshop",
-            Refrence:"",
-            Customer:"",
-            Debit:"2,817,110.48",
-            Credit:'4,269,380.86',
-            Balance:"1,452,270.38",
-
-        },
-        {
-            id:5,
-            Name:"Al Majma'ah 108 Project",
-            Refrence:"",
-            Customer:"",
-            Debit:"2,817,110.48",
-            Credit:'4,269,380.86',
-            Balance:"1,452,270.38",
-
-        },
-    ]
-
-    const column = [
-        {label:"Name" , name:"Name"},
-        {label:"Refrence", name:"Refrence"},
-        {label:"Customer", name:"Customer"},
-        {label:"Debit", name:"Debit"},
-        {label:"Credit", name:"Credit"},
-        {label:"Balance", name:"Balance"},
-    ]
-
+     const column = [
+        { label: "Name", name: "ANALYTIC_ACCOUNT" },
+    { label: "Reference", name: "ANALYTIC_REFERENCE" },
+    { label: "Customer", name: "ANALYTIC_CUSTOMER" },
+    { label: "Debit", name: "EXCLUDED_JOURNALS" },
+    { label: "Credit", name: "EXCLUDED_JOURNALS" },
+    { label: "Balance", name: "EXCLUDED_JOURNALS" },
+     ]
     const handleCreatePage = () => {
      navigate('/AddAnalyticAccount')
     }
   return (
     <div>
         <AccountNavbar showBelowMenu={true} handleCreatePage={handleCreatePage}  title="Analytic Account"/>
-        <CustomTable  data={data} column={column}/>
+        <CustomTable  data={analyticAcc} column={column}/>
     </div>
   )
 }

@@ -45,3 +45,15 @@
     font-weight: 500;
     width: 150px;
 }
+
+
+@media screen and (max-width: 1000px)
+{
+    .AddAccountTagContent input{
+       width: 500px;
+    }
+
+.AddAccountTagContent select{
+    width: 500px;
+}
+}

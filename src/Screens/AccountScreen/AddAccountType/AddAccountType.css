@@ -2,7 +2,7 @@
     width: 100%;
     padding: 15px 15px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 }
 .AddAccTypeFirst{
     width: 50%;
@@ -60,4 +60,14 @@
 }
 .AddAccTypecheckbox input{
     width: 25px;
+}
+
+@media screen and (max-width: 1000px)
+{
+    .AddAccountCon{
+        flex-direction: column;
+    }
+    .des input{
+        width: 400px;
+    }
 }

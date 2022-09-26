@@ -1,73 +1,108 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
-import CustomTable from '../../../components/CustomTable/CustomTable';
-import Navebar from '../../../components/Navbar/Navbar';
-import './ChartAccount.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { FiEdit } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { toast,ToastContainer} from "react-toastify";
+import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
+import CustomTable from "../../../components/CustomTable/CustomTable";
+import Navebar from "../../../components/Navbar/Navbar";
+import { endpoints } from "../../../services/endpoints";
+import "./ChartAccount.css";
 
 function ChartAccount(props) {
-   
-  const navigate =  useNavigate()
+  const navigate = useNavigate();
 
   const handleCreatePage = () => {
-    navigate('/AddChartAccount')
+    navigate("/AddChartAccount");
+  };
+
+  const [chartAcc, setChartAcc] = useState([]);
+  const allChartAccUrl = endpoints.ChartAccount.allChartAcc;
+
+  const getChartAcc = () => {
+    axios
+      .post(allChartAccUrl)
+      .then((res) => {
+        if (res.data.status === true) {
+          setChartAcc(res.data.data);
+        } else if (res.data.status === false) {
+          alert(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  };
+
+  useEffect(() => {
+    getChartAcc();
+  }, []);
+
+  const deleteChartAccURL = endpoints.ChartAccount.deleteChartAcc;
+
+const deleteItem = (data) => {
+const formData = new FormData();
+formData.append("Id",data);
+axios.post(deleteChartAccURL,formData)
+.then((res) => {
+  if(res.data.status === true)
+  {
+    getChartAcc();
+      toast("Chart Of Account Is Deleted Successfully!",{type:"success"})
   }
-  const data = [
-    {
-      id: "1",
-      Code: "110101001",
-      Name:"Riyadh Management Fund",
-      Type:"	Bank and Cash",
-      AccountCurrency:	"SAR",
-    },
-    {
-      id: "2",
-      Code: "110101002",
-      Name:"zalfi box",
-      Type:"	Bank and Cash",
-      AccountCurrency:	"SAR",
-    },
-    {
-      id: "3",
-      Code: "110101003",
-      Name:"Hofuf Fund",
-      Type:"	Bank and Cash",
-      AccountCurrency:	"SAR",
-    },
-    {
-      id: "4",
-      Code: "110101004",
-      Name:"patio box",
-      Type:"	Bank and Cash",
-      AccountCurrency:	"SAR",
-    },
-    {
-      id: "5",
-      Code: "110101005",
-      Name:"Bisha Box",
-      Type:"	Bank and Cash",
-      AccountCurrency:	"SAR",
-    },
-    {
-      id: "6",
-      Code: "110101006",
-      Name:"Yanbu box",
-      Type:"	Bank and Cash",
-      AccountCurrency:	"SAR",
-    },
-  ]
-  const column = [
-    { label :'Code', name:'Code'},
-    { label :'Name', name:'Name'},
-    { label :'Type', name:'Type'},
-    { label :'AccountCurrency', name:'AccountCurrency'},
-  ]
-  return (
-    <div>
-     <AccountNavbar  showBelowMenu={true} handleCreatePage={handleCreatePage} title = "Chart of Account"/>
-    <CustomTable data={data} column={column} />
-    </div>
-  )
+  else if(res.data.status === false)
+  {
+      toast(res.data.message,{type:"error"});
+  }
+})
+.catch((err) => {
+  console.log(err,"error");
+})
 }
 
-export default ChartAccount
+const handleUpdate = (data) =>{
+  console.log(data ,"value")
+    const val = chartAcc.filter((itm,index) => {
+      return itm.ID == data
+    })
+    const orgValue = val[0];
+    console.log(orgValue,"irhhcbsdh")
+    navigate("/AddChartAccount" , {state:orgValue});
+    }
+ 
+
+  const column = [
+    { label: "Code", name: "CHART_CODE" },
+    { label: "Name", name: "CHART_OF_NAME" },
+    { label: "Type", name: "CHART_TYPE" },
+    { label: "AccountCurrency", name: "ACCOUNT_CURRENCY" },
+    {
+      label: "Action",
+      name: "ID",
+      options: {
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return (
+            <>
+              <FiEdit size={23} color="#4f434d" onClick={() => handleUpdate(value)}/>
+              <MdDelete size={23} color="#4f434d" onClick={() => deleteItem(value)}/>
+            </>
+          );
+        },
+      },
+    },
+  ];
+  return (
+    <div>
+      <AccountNavbar
+        showBelowMenu={true}
+        handleCreatePage={handleCreatePage}
+        title="Chart of Account"
+      />
+      <CustomTable data={chartAcc} column={column} />
+      <ToastContainer/>
+    </div>
+  );
+}
+
+export default ChartAccount;

@@ -38,24 +38,30 @@ const AccountNavbar = (props) => {
                 OverView
               </Nav.Link>
               <Nav.Link href="/Inventory" className="Accnavetext">
-                Operations
+                Customers
               </Nav.Link>
-              <NavDropdown title="Master Data" id="collasible-nav-dropdown">
+              <NavDropdown title="Vendors" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="/InventoryProducts">
-                  Product
+                  Bills
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/InventoryVarient">
-                  Product Variants
+                  Refund
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">
-                  Reordering Rules
+                  Receipts
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">
-                  Lots/Serial Numbers
+                  Payment
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.4">
+                  Product
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.4">
+                  vendors
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="#link" className="Accnavetext">
-                Warehouses Reports
+                Accounting
               </Nav.Link>
               <Nav.Link href="#link" className="Accnavetext">
                 Reporting
@@ -69,11 +75,11 @@ const AccountNavbar = (props) => {
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>Invoicing</NavDropdown.Item>
                 <NavDropdown.Item  onClick={ () => navigate('/PaymentTerms')}>Payment Terms</NavDropdown.Item>
                 <NavDropdown.Item  onClick = {()=> navigate('/TaxName')}>Taxes</NavDropdown.Item>
-                <NavDropdown.Item  onClick={()=> navigate('/Fisical')}>
+                {/* <NavDropdown.Item  onClick={()=> navigate('/Fisical')}>
                   Fisical Positions
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item onClick={() => navigate('/Incometerms')}>
-                  Incoterms
+                  IncomeTerms
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4"  onClick={ () => navigate('/Journal')}>
                   Journals
@@ -117,8 +123,8 @@ const AccountNavbar = (props) => {
                 <NavDropdown.Item onClick={() => navigate('/AnalyticAccounts')}>Analytic Accounts</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AnalyticTag')}>Analytic Tags</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AnalyticAccountGroup')}>Analytic Account Groups</NavDropdown.Item>
-                <NavDropdown.Item>Analytic Account Type</NavDropdown.Item>
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
+                <NavDropdown.Item onClick={() => navigate('/AnalyticAccountType')}>Analytic Account Type</NavDropdown.Item>
+                {/* <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                  Templates
                 </NavDropdown.Item>
                 <NavDropdown.Item>Chart of Accounts Templates</NavDropdown.Item>
@@ -132,7 +138,7 @@ const AccountNavbar = (props) => {
                 <NavDropdown.Item>Report Source</NavDropdown.Item>
              <NavDropdown.Item>Report Template</NavDropdown.Item>
              <NavDropdown.Item>Aged Partner Balance</NavDropdown.Item>
-             <NavDropdown.Item>Report Dimension</NavDropdown.Item>
+             <NavDropdown.Item>Report Dimension</NavDropdown.Item> */}
              </div>
               </NavDropdown>
             </Nav>

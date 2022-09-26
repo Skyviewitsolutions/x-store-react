@@ -35,3 +35,18 @@
     outline: none;
     border-bottom: 3px solid #666666;
 }
+
+@media screen and (max-width:1000px){
+    .Journalinput p{
+        width: 100px;
+    }
+    .Journalinput select{
+        width: 400px;
+    }
+}
+@media screen and (max-width:768px)
+{
+    .JournalContainer input {
+        width: 450px;
+    }
+}

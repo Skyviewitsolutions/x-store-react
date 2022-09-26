@@ -17,49 +17,79 @@ const TaxName = () => {
   const allTaxUrl = endpoints.TaxName.allTaxName;
   const [taxName, setTaxname] = useState([]);
 
-  useEffect(() => {
+  const getTaxName = () => {
     axios
-      .post(allTaxUrl)
-      .then((res) => {
-        console.log(res, "response");
-        if (res.data.status === true) {
-          setTaxname(res.data.data);
-        } else if (res.data.status === false) {
-          toast(res.data.message, { type: "error" });
-        }
-      })
-      .catch((err) => {
-        console.log(err, "error");
-      });
+    .post(allTaxUrl)
+    .then((res) => {
+      console.log(res, "response");
+      if (res.data.status === true) {
+        setTaxname(res.data.data);
+      } else if (res.data.status === false) {
+        toast(res.data.message, { type: "error" });
+      }
+    })
+    .catch((err) => {
+      console.log(err, "error");
+    });
+  }
+
+  useEffect(() => {
+    getTaxName();
   }, []);
+
+  const deleteTaxUrl = endpoints.TaxName.deleteTaxName;
+
+  const deleteItem = (data) => {
+    const formData = new FormData();
+    formData.append("Id",data);
+    axios.post(deleteTaxUrl,formData)
+    .then((res) =>{
+    if(res.data.status === true)
+    {
+      getTaxName();
+      toast("Tax Name Is Deleted Successfully!",{type:"success"});
+    }
+    else if(res.data.status === false)
+    {
+      toast(res.data.message,{type:"error"});
+    }
+ }) 
+ .catch((err) => {
+  console.log(err,"error");
+ })
+  }
+
+  const handleUpdate = (data) => {
+    const val = taxName.filter((itm,index) => {
+      return itm.ID == data
+    })
+    const orgValue = val[0];
+    navigate("/AddTaxName" , {state:orgValue});
+  }
+
 
   const column = [
     { label: "TaxName", name: "TAX_NAME" },
     { label: "TaxScope", name: "TAX_SCOPE" },
     { label: "Label on Invoices", name: "LABEL_ON_INVOICES" },
     {
-      label: "Actions",
-      name: "Id",
-      options: {
-        customeBodyRender: (value, tableMeta, UpdateValue) => {
-          return (
-            <>
-              <div className="updtdlt">
-                <FiEdit
-                  size={23}
-                  color="#4f4e4d"
-                />
-                <MdDelete
-                  size={23}
-                  color="4f4e4d"
-                />
+      label:"Action",
+      name:"ID",
+      options:{
+          customBodyRender:(value,tableMeta,updateValue) => {
+           return(
+              <>
+               <div className="updtdlt">
+                  <FiEdit size={23} color="#4f434d"  onClick={() => handleUpdate(value)}/>
+                  <MdDelete size={23} color="#4f434d" onClick={() => deleteItem(value)}/>
               </div>
-            </>
-          );
-        },
-      },
-    },
+              </>
+           )
+          }
+      }
+  }
   ];
+
   const handleCreatePage = () => {
     navigate("/AddTaxName");
   };
