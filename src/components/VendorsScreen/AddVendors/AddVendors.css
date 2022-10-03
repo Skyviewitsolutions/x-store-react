@@ -1,0 +1,169 @@
+.AddVendorsCon{
+    width: 100%;
+    background-color: #f3f5f7;
+    padding: 10px 10px;
+    flex: 1;
+    height: 500px;
+    overflow-y: scroll;
+   /* padding-right: 12px; */
+ 
+}
+.container{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin-top: 5px;
+    background-color: #fff;
+    border: 1px solid #cdd3d9;
+    padding-bottom: 50px;
+}
+.VendorsHeader{
+    width: 100%;
+    border-bottom: 1px solid #cdd3d9;
+    display: flex;
+    cursor: pointer;
+    justify-content: flex-end;
+}
+.VendorsIcons{
+    width: 200px;
+    display: flex;
+    padding: 2px 0px;
+    padding-left: 10px;
+    border-left: 1px solid #cdd3d9;
+}
+.VendorsIcons:hover{
+    background-color: #f3efef;
+}
+.text span{
+    font-size: 15px;
+    padding-left: 20px;
+    color: #6f6f6f;
+  }
+  .text2 p{
+      color:#6f6f6f;
+      font-size: 18px;
+      margin-left: 19px;
+      margin-bottom: -7px;
+      margin-top: 8px;
+  }
+.VendorsDetails{
+    margin-top: 20px;
+    padding: 10px 15px;
+    position: relative;
+}
+.radiobutton{
+    display: flex;
+}
+.IndCom{
+    display: flex;
+    align-items: center;
+}
+.IndCom p{
+ margin-left: 10px;
+ color: #6f6f6f;
+ font-size: 15px;
+ margin-bottom: 5px;
+}
+.com{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.com p{
+ margin-left: 10px;
+ color: #6f6f6f;
+ font-size: 15px;
+ margin-bottom: 5px;
+}
+
+.nameinput p{
+color: #6f6f6f;
+font-size: 25px;
+margin-bottom: 5px;
+}
+.nameinput input{
+    width: 500px;
+    outline: none;
+    border: none;
+    border-bottom:1px solid #6f6f6f;
+}
+.comselect{
+    margin-top: 5px;
+
+}
+.comselect select{
+    width: 500px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #6f6f6f;
+}
+.VendorsDetails2{
+    width: 100%;
+    display: flex;
+    padding: 10px 15px;
+    justify-content: space-between;
+}
+.vendorsbox1{
+    width: 50%;
+}
+.vendorsbox1 h3{
+    color: #6f6f6f;
+    font-size: 20px;
+
+}
+
+.vendorstextinput{
+    display: flex;
+    align-items: center;
+}
+.vendorstextinput p{
+    width: 100px;
+    color: #6a666a;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.vendorstextinput input{
+    width: 450px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #6f6f6f;
+}
+.vendorstextcheckbox{
+    display: flex;
+    align-items: center; 
+}
+.vendorstextcheckbox p{
+    width: 100px;
+    color: #6a666a;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.vendorstextcheckbox input{
+    width: 40px;
+   
+}
+.vendorstextinput select{
+    width: 450px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #6f6f6f;
+}
+.Vendorsbox2{
+    width: 50%;
+    margin-top: 25px;
+}
+.Adddetails{
+    margin-top: 15px;
+}
+@media (min-width: 1400px){
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1450px;
+}
+}
+
+@media screen and (max-width:1000px) {
+    .VendorsDetails2{
+        flex-direction: column;
+    }
+}

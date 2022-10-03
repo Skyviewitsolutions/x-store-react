@@ -13,21 +13,7 @@ import { endpoints } from "../../../../services/endpoints";
 import { toast,ToastContainer } from "react-toastify";
 
 const AddProductCategories = (props) => {
-  const [selectedValue, setSelectedValue] = useState();
   const [showAccount , setShowAccount] = useState(false);
-  const options = [
-    { name: "Vendor Location", id: 1 },
-    { name: "View", id: 2 },
-    { name: "Internal Location", id: 2 },
-    { name: "Customer Location", id: 3 },
-    { name: "Inventory Loss", id: 4 },
-    { name: "Production", id: 5 },
-    { name: "Transit Location", id: 6 },
-  ];
-
-  const onSelect = (selectedList, selectedItem) => {};
-
-  const onRemove = (selectedList, removedItem) => {};
   const navigate = useNavigate();
 
    const AddProductCateUrl = endpoints.productCategory.addProductCategory;
@@ -35,9 +21,9 @@ const AddProductCategories = (props) => {
    const pricediffUrl = endpoints.products.priceDifference;
    const expenseUrl = endpoints.products.expenseAccount;
 
-  //  const [income , setIncome] = useState([]);
-  //  const [pricediffacc , setPricediffacc] = useState([]);
-  //  const [expense , setExpense] = useState([]);
+   const [income , setIncome] = useState([]);
+   const [pricediffacc , setPricediffacc] = useState([]);
+   const [expense , setExpense] = useState([]);
    
    const [productCateName , setProductCateName] = useState("");
    const [update , setUpdate] = useState(false);
@@ -154,7 +140,7 @@ const AddProductCategories = (props) => {
             <p>Name</p>
             <input type="text" value={productCateName} onChange={(e) => setProductCateName(e.target.value)}/>
           </div>
-          {/* <div className="AddProductCatecontent">
+          <div className="AddProductCatecontent">
             <p>Parent Category</p>
             <select onChange={(e) => updateParentCategory(e.target.value)} className="prntSlt">
               <option value="Assets">Assets</option>
@@ -168,84 +154,24 @@ const AddProductCategories = (props) => {
               <option value="Assets / Prefabricated plastic and concrete barriers">
                 Assets / Prefabricated plastic and concrete barriers
               </option>
-              <option value="Create and Edit.." style={{ color : '#1f1fed'}}>Create and Edit..</option>
             </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-          </div> */}
+          </div>
+          <div className="AddProductCatecontent">
+            <p>Product Category Code</p>
+            <input type="text"/>
+          </div>
         </div>
-        <div className="AddProductdetails2">
+        
+        {/* <div className="AddProductdetails2">
           <p>Hierarchy</p>
           <div className="alertbox">
             <b>No hierarchy position.</b>
           </div>
-        </div>
-      </div>
-      {/* <div className="AddProductCateContent">
-        <h5>Logistics</h5>
-
-        <div className="AddProductCateMultiselect">
-          <p>Routes</p>
-          <Multiselect
-            className="Addmultiselect"
-            options={options} // Options to display in the dropdown
-            selectedValues={selectedValue} // Preselected value to persist in dropdown
-            onSelect={onSelect} // Function will trigger on select event
-            onRemove={onRemove} // Function will trigger on remove event
-            displayValue="name" // Property name to display in the dropdown options
-          />
-        </div>
-        <div className="AddProductCatetotal">
-          <p>Total routes</p>
-        </div>
-          <div className="AddProductCatedropdown">
-            <p>Force Removal Strategy</p>
-            <select>
-              <option>First in first out (FIFO)</option>
-              <option>Last in First Out (LIFO)</option>
-            </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-          </div>
-      </div>
-      <div className="AddProductdetailscontent3">
-        <div className="InventoryValuation">
-          <h5>Inventory Valuation</h5>
-        <div className="AddProductCate3dropdown">
-            <p>Costing Method</p>
-            <select>
-              <option></option>
-              <option>Standard Price</option>
-              <option>First in first out (FIFO)</option>
-              <option>Average Cost(AVCO)</option>
-            </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-          </div>
-        <div className="AddProductCate3dropdown">
-            <p>Inventory Valuation</p>
-            <select>
-              <option>Manual</option>
-              <option>Automated</option>
-            </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-          </div>
-        </div>
-        <div className="AddProductCateEmptybox"></div>
+        </div> */}
       </div>
       <div className="AddProductCatecontent4">
         <div className="AccountProperties">
-          <h5>Account Properties</h5>
-        
+          <h6>Account Properties</h6>
         <div className="stockdropdown">
             <p>Income Account</p>
             <select>
@@ -258,28 +184,6 @@ const AddProductCategories = (props) => {
               )
             })}
             </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-          </div>
-        <div className="stockdropdown">
-            <p>Price Difference Account</p>
-            <select>
-              <option></option>
-           {pricediffacc.map((item,index) => {
-            return(
-              <>
-              <option key={index}>{item.AMOUNT_NAME}</option>
-                </>
-
-            )
-           })}
-            </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
           </div>
         <div className="stockdropdown">
             <p>Expense Account</p>
@@ -293,80 +197,44 @@ const AddProductCategories = (props) => {
             )
            })}
             </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
           </div>
         </div>
-        <div className="AccountStock">
-        <h5>Account Stock Properties</h5>
-        <div className="stockdropdown">
-            <p>Stock Input Account</p>
-            <select>
-              <option></option>
-              <option>110101001 صندوق ادارة الرياض</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-            </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-      </div>
-        <div className="stockdropdown">
-            <p>Stock Output Account</p>
-            <select>
-              <option></option>
-              <option>110101001 صندوق ادارة الرياض</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-            </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-      </div>
-        <div className="stockdropdown">
-            <p>Stock Valuation Account</p>
-            <select>
-              <option></option>
-              <option>110101001 صندوق ادارة الرياض</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-            </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-      </div>
-        <div className="stockdropdown">
-            <p>Stock Journal</p>
-            <select>
-              <option></option>
-              <option>110101001 صندوق ادارة الرياض</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-              <option>110101002 صندوق الزلفي</option>
-            </select>
-            <FaExternalLinkAlt
-              size="14px"
-              style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
-            </div>
-      
         </div>
-      </div>  */}
-
-        
+      <div className="AddProductdetailscontent3">
+      <div className="Logistics">
+        <h6>Logistics</h6>
+          <div className="force">
+            <p>Force Removal Strategy</p>
+            <select>
+              <option>First in first out (FIFO)</option>
+              <option>Last in First Out (LIFO)</option>
+            </select>
+          </div>
       </div>
+        <div className="InventoryValuation">
+          <h6>Inventory Valuation</h6>
+        <div className="force">
+            <p>Costing Method</p>
+            <select>
+              <option></option>
+              <option>Standard Price</option>
+              <option>First in first out (FIFO)</option>
+              <option>Average Cost(AVCO)</option>
+            </select>
+          </div>
+        <div className="force">
+            <p>Inventory Valuation</p>
+            <select>
+              <option></option>
+              <option>Manual</option>
+              <option>Automated</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    
+        </div>
+   
       <ToastContainer />
       </div>
       <DiffrentAccount showAccount={showAccount} setShowAccount={setShowAccount}/>

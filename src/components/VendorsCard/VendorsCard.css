@@ -1,0 +1,70 @@
+.VendorsContainer {
+    height: 100px;
+    width: 350px;
+    /* margin: auto; */
+    margin-left: 60px;
+    margin-top: 10px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+  }
+  .VendorsCon{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .VendorsImg {
+    height: 100px;
+    width: 10%;
+  }
+  
+  .VendorsImg img {
+    width: 65px;
+    margin: 12px 10px;
+  }
+  
+  .VendorsContent {
+    width: 75%;
+    margin: 10px 10px;
+    padding-left: 15px;
+  }
+  
+  .VendorsContent h6 {
+    font-size: 14px;
+    color: #000;
+    margin-top: -4px;
+    margin-bottom: 1%;
+    margin-left: 10px;
+  }
+  
+  .VendorsContent p {
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 0%;
+    margin-left: 10px;
+  }
+  .deleteicon {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  @media only screen and (max-width: 1000px) {
+    .VendorsContainer {
+      width: 303px;
+      margin-left: 21px;
+    }
+  }
+  @media only screen and (max-width: 820px) {
+    .VendorsContainer {
+      width: 230px;
+      margin-left: 15px;
+    }
+    .VendorsContent {
+      width: 66%;
+    }
+  }
+  

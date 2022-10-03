@@ -1,0 +1,79 @@
+.SalesCon{
+    width: 100%;
+}
+.SalesContent1{
+    width: 100%;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between; 
+}
+.Sales{
+    width: 50%;
+}
+.Sales h3{
+    color: #6f6f6f;
+    font-size: 25px;
+    font-weight: 400;
+}
+.inputText{
+    display: flex;
+    align-items: center;
+}
+.inputText p{
+    width: 150px;
+    color: #6a666a;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+
+}
+.inputText select{
+    width: 450px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc; 
+}
+.Purchase {
+    width: 50%;
+}
+.Purchase h3{
+    color: #6f6f6f;
+    font-size: 25px;
+    font-weight: 400;
+}
+.SalesContent2{
+    width: 100%;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between; 
+}
+.Fisical{
+    width: 50%;
+}
+.Fisical h3{
+    color: #6f6f6f;
+    font-size: 25px;
+    font-weight: 400;
+}
+.Misc{
+    width: 50%;
+}
+.Misc h3{
+    color: #6f6f6f;
+    font-size: 25px;
+    font-weight: 400;
+}
+.inputText input{
+    width: 450px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc; 
+}
+@media screen and (max-width:1000px) {
+    .SalesContent1{
+        flex-direction: column;
+    }
+    .SalesContent2{
+        flex-direction: column;
+    }
+}

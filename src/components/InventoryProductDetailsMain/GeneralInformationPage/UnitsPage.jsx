@@ -161,22 +161,12 @@ const UnitPage = () => {
               </option>
             </select>
           </div>
-        </div>
-        {/* <div className="unitpart2">
-          <div className="unitpart1">
-          <div className="unitcontent">
-            <p>Active</p>
-            <input type='checkbox' />
-          </div>
-          
           <div className="unitcontent">
             <p>Rounding Precisio</p>
-            <span>0.00010</span>
-            
+            <input typ="text" placeholder="0.00010" />
           </div>
           
-          </div>
-          </div> */}
+        </div>
       </div>
       <ToastContainer />
     </div>

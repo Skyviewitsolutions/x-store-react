@@ -85,6 +85,8 @@ import AnalyticAccountGroups from "./Screens/AccountScreen/AnalyticAccountGroups
 import AddAnalyticAccountGroup from "./Screens/AccountScreen/AddAnalyticAccountGroup/AddAnalyticAccountGroup";
 import AnalyticAccountType from "./Screens/AccountScreen/AnalyticAccountType/AnalyticAccountType";
 import AddAnalyticAccountType from "./Screens/AccountScreen/AddAnalyticAccountType/AddAnalyticAccountType";
+import Vendors from "./components/VendorsScreen/VendorsCard/Vendors";
+import AddVendors from "./components/VendorsScreen/AddVendors/AddVendors";
 
 const App = () => {
  
@@ -93,8 +95,10 @@ const App = () => {
   return(<>
     <Router>
       <Routes>
-        <Route path="/" element={<SignUp/>}/>
-        <Route path="/Login" element={<Login/>}/>
+        {/* ----------------Inventory----------------- */}
+        
+        {/* <Route path="/" element={<SignUp/>}/> */}
+        <Route path="/" element={<Login/>}/>
         <Route path="/ForgetPassword" element={<ForgetPassword/>} />
         <Route path="/OtpPage" element={<Otp/>} />
         <Route path="/ChangePassword" element={<ChangePassword/>} />
@@ -126,7 +130,9 @@ const App = () => {
        <Route path='/AddAttribute' element={<AddAtrribute/>} />
        <Route path="/AddOperationTypes" element={<AddOperationTypes/>} />
        <Route path='/AddPutwayRules' element={<AddPutwayRules/>} />
+
        {/* --------Accounting Pages------------- */}
+
        <Route path='/AccountNavbar' element={<AccountNavbar/>}/>
        <Route path='PaymentTerms' element={<PaymentTerms/>}/>
        <Route path='AddPayment' element={<AddPayment/>} />
@@ -170,6 +176,10 @@ const App = () => {
       <Route path='/AddAnalyticAccountGroup' element={<AddAnalyticAccountGroup/>} />
       <Route path='/AnalyticAccountType' element={<AnalyticAccountType/>} />
       <Route path='/AddAnalyticAccountType' element={<AddAnalyticAccountType/>} />
+
+      {/* -------------------------Vendors---------------------------------- */}
+      <Route path="/Vendors" element={<Vendors/>} />
+      <Route path="/AddVendors" element={<AddVendors/>} />
       </Routes>
     </Router>
     

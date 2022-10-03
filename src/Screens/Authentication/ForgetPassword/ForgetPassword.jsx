@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import XSTORE from "../../../assets/Images/xstore1.png"
 import {useNavigate} from 'react-router-dom';
 import validator from 'validator';
+
 const ForgetPassword = () => {
+
   const[email, setEmail] = useState("");
   const[emailError,setEmailError]  = useState("");
   const Navigate = useNavigate();
 const  RedirectToLogin = () => {
-   Navigate("/Login");
+   Navigate("/");
 }
 const RedirectToChangePassword = () => {
   if(!email)

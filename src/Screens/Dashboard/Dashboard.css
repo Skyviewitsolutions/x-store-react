@@ -5,7 +5,7 @@
   height: 100vh;
   /* width: 100%; */
   /* background-color: #857a82; */
-  background-color: #1669a2;
+  background-image: linear-gradient(177deg, rgb(7 75 122), rgb(142 193 229));
   position: relative;
   
 }

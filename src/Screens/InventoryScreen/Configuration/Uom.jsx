@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { endpoints } from "../../../services/endpoints";
-import {toast , ToastContainer} from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const Uom = () => {
   const UOMapiurl = endpoints.UOM.allUOM;
@@ -21,7 +21,7 @@ const Uom = () => {
         if (res.data.status === true) {
           setUOM(res.data.data);
         } else if (res.data.status === false) {
-          toast(res.data.message , {type : "info"});
+          toast(res.data.message, { type: "info" });
         }
       })
       .catch((err) => {
@@ -54,16 +54,15 @@ const Uom = () => {
         console.log(err, "error");
       });
   };
-  
 
   const handleUpdate = (data) => {
-    const val = UOM.filter((itm,index) => {
-      return itm.ID == data
-    })
+    const val = UOM.filter((itm, index) => {
+      return itm.ID == data;
+    });
 
     const orgValue = val[0];
-    navigate("/UnitPage" , {state:orgValue})
-  }
+    navigate("/UnitPage", { state: orgValue });
+  };
 
   const column = [
     { label: "Unit of Measure", name: "UNITNAME" },
@@ -77,11 +76,17 @@ const Uom = () => {
           return (
             <>
               <div className="updtdlt">
-                <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)} />                                                                                                                                    
+                <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
                 <MdDelete
                   size={23}
                   color="#4f4e4d"
                   onClick={() => deleteItem(value)}
+                  style={{ cursor: "pointer" }}
                 />
               </div>
             </>
@@ -97,9 +102,13 @@ const Uom = () => {
 
   return (
     <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
-      <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Units of Measure"/>
+      <Navebar
+        showBelowMenu={true}
+        handleCreatePage={handleCreatePage}
+        title="Units of Measure"
+      />
       <CustomTable data={UOM} column={column} />
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

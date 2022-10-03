@@ -325,15 +325,6 @@ const AddLocation = () => {
               </div>
             </div>
             <div className="Locationdetails2">
-              <h4>Oil details</h4>
-              <div className="Addlocationcontent2">
-                <p>Oil location</p>
-                <input
-                  type="checkbox"
-                  checked={oillocation}
-                  onChange={() => setOillocation(!oillocation)}
-                />
-              </div>
             </div>
           </div>
         </div>

@@ -1,55 +1,115 @@
-import axios from 'axios';
-import React, { useState } from 'react'
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
-import CustomTable from '../../../components/CustomTable/CustomTable';
-import { endpoints } from '../../../services/endpoints';
-import './AnalyticAccounts.css'
+import axios from "axios";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { FiEdit } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
+import CustomTable from "../../../components/CustomTable/CustomTable";
+import { endpoints } from "../../../services/endpoints";
+import "./AnalyticAccounts.css";
 
 const AnalyticAccounts = () => {
- 
-    const navigate = useNavigate();
-     const [analyticAcc , setAnayticAcc] = useState([]);
+  const navigate = useNavigate();
+  const [analyticAcc, setAnayticAcc] = useState([]);
 
-     const allAnalyticAccUrl = endpoints.AnalyticAcc.allAnaAcc;
+  const allAnalyticAccUrl = endpoints.AnalyticAcc.allAnaAcc;
 
-     const getAnalyticAcc = () => {
-      axios.post(allAnalyticAccUrl)
+  const getAnalyticAcc = () => {
+    axios
+      .post(allAnalyticAccUrl)
       .then((res) => {
-        if(res.data.status === true)
-        {
-            setAnayticAcc(res.data.data);
-        }
-        else if(res.data.status === false)
-        {
-            toast(res.data.message);
+        if (res.data.status === true) {
+          setAnayticAcc(res.data.data);
+        } else if (res.data.status === false) {
+          toast(res.data.message);
         }
       })
-     }
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  };
 
-     useEffect(() => {
-     getAnalyticAcc();
-     },[])
+  useEffect(() => {
+    getAnalyticAcc();
+  }, []);
 
-     const column = [
-        { label: "Name", name: "ANALYTIC_ACCOUNT" },
+  const AnnAccDeleteUrl = endpoints.AnalyticAcc.deleteAnaAcc;
+
+  const deleteItem = (data) => {
+
+    const formData = new FormData();
+    formData.append("Id", data);
+    axios
+      .post(AnnAccDeleteUrl, formData)
+      .then((res) => {
+        if (res.data.status === true) {
+          getAnalyticAcc();
+          toast("Analytic Account deleted Successfully", { type: "success" });
+        } else if(res.data.status === false)
+        {
+          toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  };
+
+  const handleUpdate = (data) => {
+    console.log(data ,"value")
+    const val = analyticAcc.filter((itm,index) => {
+      return itm.ID == data
+    })
+    const orgValue = val[0];
+    console.log(orgValue,"irhhcbsdh")
+    navigate("/AddAnalyticAccount" , {state:orgValue});   
+}
+
+  const column = [
+    { label: "Name", name: "ANALYTIC_ACCOUNT" },
     { label: "Reference", name: "ANALYTIC_REFERENCE" },
     { label: "Customer", name: "ANALYTIC_CUSTOMER" },
     { label: "Debit", name: "EXCLUDED_JOURNALS" },
     { label: "Credit", name: "EXCLUDED_JOURNALS" },
     { label: "Balance", name: "EXCLUDED_JOURNALS" },
-     ]
-    const handleCreatePage = () => {
-     navigate('/AddAnalyticAccount')
-    }
+    {
+      label: "Action",
+      name: "ID",
+      options: {
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return (
+            <>
+              <FiEdit size={23} color="#4f434d" onClick={() =>  handleUpdate(value)} style={{ cursor: "pointer" }}/>
+              <MdDelete
+                size={23}
+                color="#4f434d"
+                onClick={() => deleteItem(value)}
+                style={{ cursor: "pointer" }}
+              />
+            </>
+          );
+        },
+      },
+    },
+  ];
+
+  const handleCreatePage = () => {
+    navigate("/AddAnalyticAccount");
+  };
+
   return (
     <div>
-        <AccountNavbar showBelowMenu={true} handleCreatePage={handleCreatePage}  title="Analytic Account"/>
-        <CustomTable  data={analyticAcc} column={column}/>
+      <AccountNavbar
+        showBelowMenu={true}
+        handleCreatePage={handleCreatePage}
+        title="Analytic Account"
+      />
+      <CustomTable data={analyticAcc} column={column} />
+      <ToastContainer />
     </div>
-  )
-}
+  );
+};
 
-export default AnalyticAccounts
+export default AnalyticAccounts;

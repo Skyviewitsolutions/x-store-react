@@ -1,0 +1,50 @@
+.invoicing{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+.BankAccount{
+    width: 50%;
+}
+.BankAccount h3{
+    color: #6f6f6f;
+    font-size: 25px;
+    font-weight: 400;
+}
+.banktext{
+    display: flex;
+    align-items: center;
+}
+.banktext p{
+    width: 150px;
+    color: #6a666a;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.banktext input{
+    width: 450px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #6f6f6f;
+}
+.Accounting{
+    width: 50%;
+}
+.Accounting h3{
+    color: #6f6f6f;
+    font-size: 25px;
+    font-weight: 400;
+}
+.banktext select{
+    width: 450px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #6f6f6f;
+}
+@media screen and (max-width:1000px) {
+    .invoicing{
+        flex-direction: column;
+    }
+}

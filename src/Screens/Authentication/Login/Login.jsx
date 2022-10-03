@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 import validator from 'validator';
 import axios from 'axios';
 import { endpoints } from '../../../services/endpoints';
+import { toast,ToastContainer} from 'react-toastify';
 
 
 const Login = () => {
@@ -63,7 +64,7 @@ const Login = () => {
       }
       else if(res.data.status === false)
       {
-       alert(res.data.message);
+       toast(res.data.message,{type:"error"});
        setIsLoading(false);
       }
     })
@@ -74,6 +75,7 @@ const Login = () => {
     }
   }
   return (
+    <div className="maindiv">
        <div className="LoginMaincontainer">
     <div className="LoginContainer ">
         <div className="row Loginlogo mt-4">
@@ -97,13 +99,15 @@ const Login = () => {
           <button className="Loginbtn" onClick={submit}>
             {isLoading ?   <div class="spinner-border text-light" role="status" style={{width:"23px",height:"23px"}}> </div>  :"Sign In"}
           </button>    
-        <div className="LoginContent mt-2">
-        <span onClick={RedirecttoSignup}>Don't have an account?</span>
+        {/* <div className="LoginContent mt-2">
+        <span onClick={RedirecttoSignup}>Don't have an account?</span> 
           <span onClick={RedirectToForgetPassword}>Forget Password</span>
 
-        </div>
+        </div> */}
        
     </div>
+    </div>
+    <ToastContainer/>
     </div>
   )
 }

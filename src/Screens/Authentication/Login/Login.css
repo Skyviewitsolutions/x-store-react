@@ -1,3 +1,7 @@
+.maindiv{
+  background-image: linear-gradient(177deg, rgb(7 75 122), rgb(142 193 229));
+}
+
 .LoginMaincontainer {
   width: 100vw;
   height: 100vh;
@@ -12,6 +16,7 @@
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   border-radius: 5px;
   padding-bottom: 3%;
+  background-color: #ffff;
 }
 .Loginlogo {
   width: 90%;

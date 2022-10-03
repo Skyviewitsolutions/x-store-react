@@ -79,12 +79,14 @@ const AccountTypes = () => {
                   size={23}
                   color="#4f4e4d"
                   onClick={() => handleUpdate(value)}
+                  style={{cursor:"pointer"}}
                  
                 />
                 <MdDelete
                   size={23}
                   color="4f4e4d"
                   onClick={() => deleteItem(value)}
+                  style={{cursor:"pointer"}}
                   
                 />
               </div>

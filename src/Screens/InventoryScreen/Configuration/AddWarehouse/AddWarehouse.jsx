@@ -186,93 +186,75 @@ const AddWarehouse = (props) => {
         </div>
         <div className="shortname">
           <div className="Addcontent">
-            <p>Short Name</p>
-            <input
-              type="text"
-              value={shortName}
-              onChange={(e) => setShortname(e.target.value)}
-            />
+            <div className="textIn">
+              <p>Short Name</p>
+              <input
+                type="text"
+                value={shortName}
+                onChange={(e) => setShortname(e.target.value)}
+              />
+            </div>
+            <div className="textIn">
+              <p>Street</p>
+              <input
+                type="text"
+                value={shortName}
+                onChange={(e) => setShortname(e.target.value)}
+              />
+            </div>
+            <div className="textIn">
+              <p>City</p>
+              <input
+                type="text"
+                value={shortName}
+                onChange={(e) => setShortname(e.target.value)}
+              />
+            </div>
+            <div className="textIn">
+              <p>State</p>
+              <input
+                type="text"
+                value={shortName}
+                onChange={(e) => setShortname(e.target.value)}
+              />
+            </div>
+            <div className="textIn">
+              <p>Country</p>
+              <input
+                type="text"
+                value={shortName}
+                onChange={(e) => setShortname(e.target.value)}
+              />
+            </div>
+            <div className="textIn">
+              <p>Zip Code</p>
+              <input
+                type="text"
+                value={shortName}
+                onChange={(e) => setShortname(e.target.value)}
+              />
+            </div>
           </div>
           <div className="Addcontent2">
             <div className="Adddropdown">
-              <p>Address</p>
-              <select
-                onChange={(e) => setAddress(e.target.value)}
-                value={address}
-              >
-                <option value=""></option>
-                {locationall.map((item, index) => {
-                  return (
-                    <>
-                      <option key={index} value={item.LOCATION_NAME}>
-                        {item.LOCATION_NAME}
-                      </option>
-                    </>
-                  );
-                })}
-              </select>
-    
-
+              <p>Phone</p>
+              <input type="text" />
             </div>
             <div className="Adddropdown">
-              <p>Responsibles</p>
-              <select
-                onChange={(e) => setResponsible(e.target.value)}
-                value={responsible}
-              >
-                <option></option>
-                <option value="Al-Enjaz Contracting & Trading Company">
-                  Al-Enjaz Contracting & Trading Company
-                </option>
-                <option value="110">110</option>
-                <option value="13103">13103</option>
-                <option value="20">20</option>
-                <option value="20804">20804</option>
-                <option value="300048513700003">300048513700003</option>
-                <option value="Aad Saud Alshaibani Alotaibi">
-                  Aad Saud Alshaibani Alotaibi
-                </option>
-                <option value="Aalok Kumar Bodhnath Maht">
-                  Aalok Kumar Bodhnath Maht
-                </option>
-              </select>
+              <p>Mobile</p>
+              <input type="text" />
+            </div>
+            <div className="Adddropdown">
+              <p>email</p>
+              <input type="text" />
+            </div>
+            <div className="Adddropdown">
+              <p>Users</p>
+              <input type="text" />
             </div>
           </div>
         </div>
-        <div className="Adddetails">
-          <Nav variant="tabs" defaultActiveKey="/home">
-            <Nav.Item
-              className="detailslink"
-              onClick={() => setEvent("WarehouseConfig")}
-            >
-              <Nav.Link href="">Warehouse Configuration</Nav.Link>
-            </Nav.Item>
-            <Nav.Item
-              className="detailslink"
-              onClick={() => setEvent("TechnicalInfor")}
-            >
-              <Nav.Link eventKey="link-1">Technical Information</Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </div>
-        <div className="Warehouse">
-          {event === "WarehouseConfig" && (
-            <WarehouseConfig
-              incomingShips={incomingShips}
-              setIncomingships={setIncomingships}
-              outgoingShips={outgoingShips}
-              setOutgoingships={setOutgoingships}
-              resupply={resupply}
-              setResupply={setResupply}
-            />
-          )}
-          {event === "TechnicalInfor" && (
-            <TechnicalInfor
-              transitLocation={transitLocation}
-              setTransitLocation={setTransitLocation}
-            />
-          )}
-        </div>
+
         <ToastContainer />
       </div>
     </>

@@ -21,7 +21,7 @@
    align-items: center;
 }
 .operation p {
-    width: 150px;
+    width: 200px;
     font-size: 15px;
     color: #666666;
     margin-left: 50px;
@@ -32,13 +32,13 @@
     border: none;
     outline: none;
     border-bottom: 3px solid #666666;
-    width: 500px;
+    width: 450px;
 }
 .operation select{
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc ;
-    width: 500px;
+    width: 450px;
 }
 .type{
     width: 50%;
@@ -48,7 +48,7 @@
    align-items: center;  
 }
 .show p{
-    width: 150px;
+    width: 200px;
     font-size: 15px;
     color: #666666;
     margin-left: 50px;

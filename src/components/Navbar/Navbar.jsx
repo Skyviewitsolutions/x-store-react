@@ -46,13 +46,13 @@ const Navebar = (props) => {
                 </NavDropdown.Item>
                 {/* <NavDropdown.Item  onClick={()=> navigate( "/InventoryVarient")}>
                   Product Variants
-                </NavDropdown.Item> */}
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">
                   Reordering Rules
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">
                   Lots/Serial Numbers
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
               </NavDropdown>
               <Nav.Link href="#link" className="navetext">
                 Warehouses Reports
@@ -60,30 +60,30 @@ const Navebar = (props) => {
               <Nav.Link href="#link" className="navetext">
                 Reporting
               </Nav.Link>
-              <NavDropdown title="Configurations" id="collasible-nav-dropdown">
+              <NavDropdown title="Settings" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Warehouse Management
                 </NavDropdown.Item>
 
                 <NavDropdown.Item onClick={()=> navigate('/Warehouse')}>Warehouse</NavDropdown.Item>
                 <NavDropdown.Item  onClick={ () => navigate('/Location')}>Location</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">Rules</NavDropdown.Item>
+                {/* <NavDropdown.Item href="#action/3.4">Rules</NavDropdown.Item> */}
                 {/* <NavDropdown.Item  onClick = {()=> navigate('/ConfigRoutes')}>Routes</NavDropdown.Item> */}
                 <NavDropdown.Item  onClick={()=> navigate('/OperationType')}>
                   Operation Types
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">
+                {/* <NavDropdown.Item href="#action/3.4">
                   Putaway Rules
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Product
                 </NavDropdown.Item>
                 <NavDropdown.Item  onClick = {() => navigate('/ProductCategories')}>
                   Product Categories
                 </NavDropdown.Item>
-                <NavDropdown.Item  onClick={() => navigate('/Attributes')}>
+                {/* <NavDropdown.Item  onClick={() => navigate('/Attributes')}>
                   Attributes
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Units of Measures{" "}
                 </NavDropdown.Item>

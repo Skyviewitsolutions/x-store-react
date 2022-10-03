@@ -56,7 +56,7 @@ const AccountNavbar = (props) => {
                 <NavDropdown.Item href="#action/3.4">
                   Product
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">
+                <NavDropdown.Item  onClick={ () => navigate('/Vendors')}>
                   vendors
                 </NavDropdown.Item>
               </NavDropdown>
@@ -66,7 +66,7 @@ const AccountNavbar = (props) => {
               <Nav.Link href="#link" className="Accnavetext">
                 Reporting
               </Nav.Link>
-              <NavDropdown title="Configurations" id="collasible-nav-dropdown" >
+              <NavDropdown title="Settings" id="collasible-nav-dropdown" >
                 <div className="Configcls">
                 <NavDropdown.Item  href="">
                  Setting
@@ -104,7 +104,7 @@ const AccountNavbar = (props) => {
                 </NavDropdown.Item>
                 <NavDropdown.Item  onClick={()=> navigate('/ChartAccount')}>Chart of Accounts</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/JournalGroup')}>Journal Group</NavDropdown.Item>
-                <NavDropdown.Item >Reconciliation Models</NavDropdown.Item>
+                {/* <NavDropdown.Item >Reconciliation Models</NavDropdown.Item> */}
                 <NavDropdown.Item >Account Defaults</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AccountTypes')}>Account Types</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AccountTags')}>Account Tags</NavDropdown.Item>

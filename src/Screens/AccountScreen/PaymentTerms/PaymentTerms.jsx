@@ -78,8 +78,8 @@ const PaymentTerms = (props) => {
             customBodyRender:(value , tableMeta , updateValue) => {
               return(
                 <div className="updtdlt">
-                <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)}/>
-                <MdDelete size={23} color="4f4e4d" onClick={() => deleteItem(value)}
+                <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
+                <MdDelete size={23} color="4f4e4d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}
                 />
               </div>
               )

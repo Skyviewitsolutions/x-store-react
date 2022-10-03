@@ -44,7 +44,7 @@ const ProductDetailsHeader = (props) => {
                 </div>
             </div>
             <div className="detailsheader2">
-                <button className='btn3' onClick={RedirectToEmpty}>Update Quantity</button>
+                <button className='btn3'>Update Quantity</button>
                 <button className='btn3'>Replenish</button>
             </div>
         </div>
