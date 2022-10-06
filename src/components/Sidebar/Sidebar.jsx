@@ -7,9 +7,14 @@ import { endpoints } from "../../services/endpoints";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-const Sidebar = () => {
+
+
+const Sidebar = (props) => {
+
   const [productCate, setProductCate] = useState([]);
   const productCateUrl = endpoints.productCategory.allProductCate;
+
+  const {productCategory , setProductCategory} = props;
 
   useEffect(() => {
     axios.post(productCateUrl).then((res) => {
@@ -20,6 +25,7 @@ const Sidebar = () => {
       }
     });
   }, []);
+  
   return (
     <div>
       <div className="sbr">
@@ -28,6 +34,20 @@ const Sidebar = () => {
             {<MdList />}
             <span className="sp1">PRODUCT CATEGORY</span>
           </span>
+          <li>
+            <label htmlFor="all">All</label>
+            <span>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="all"
+                value="all"
+                onChange={(e) => setProductCategory(e.target.value)}
+                checked={productCategory === "all" ? true : false}
+              />
+            </span>
+          </li>
           {productCate.map((item, index) => {
             return (
               <>
@@ -42,6 +62,9 @@ const Sidebar = () => {
                       type="radio"
                       name="flexRadioDefault"
                       id={item.CATEGORY_NAME}
+                      checked={productCategory === item.CATEGORY_NAME ? true : false}
+                      value={item.CATEGORY_NAME}
+                      onChange={(e) => setProductCategory(e.target.value)}
                     />
                   </span>
                 </li>
