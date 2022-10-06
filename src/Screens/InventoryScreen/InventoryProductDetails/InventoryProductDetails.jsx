@@ -9,7 +9,6 @@ import {endpoints} from "../../../services/endpoints";
 import { ToastContainer, toast } from "react-toastify";
 
 
-
 const InventoryProductDetails = () => {
 
    const [isEdit , setIsEdit] = useState(false);
@@ -49,11 +48,11 @@ const InventoryProductDetails = () => {
   const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
   const [img , setImg] = useState("");
 
-   console.log(productdetails , "produtDetails");
   
    const updateUrl = endpoints.products.updateProduct;
 
    useEffect(() =>{
+
     setProductName(productdetails.PRODUCT_NAME)
     setId(productdetails.PRODUCT_ID)
     setProductType(productdetails.PRODUCT_TYPE)
@@ -116,6 +115,7 @@ const InventoryProductDetails = () => {
   formData.append('id' , id)
    
   const updateData = () =>{
+
     if (productName === "") {
       toast("Product name required !", { type: "warning" });
     } else if (cost === "") {

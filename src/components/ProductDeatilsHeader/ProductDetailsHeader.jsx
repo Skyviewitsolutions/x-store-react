@@ -7,6 +7,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
 const ProductDetailsHeader = (props) => {
+
      const navigate = useNavigate();
     const RedirectToProduct = () => {
        navigate('/InventoryProducts');
@@ -15,6 +16,7 @@ const ProductDetailsHeader = (props) => {
         navigate('/Empty')
     }
     const { isEdit, setIsEdit , save,name } = props;
+    console.log(isEdit , "isEdit");
     return (
         <div className='DetailsMainheader'>
             <div className="Detaialsheader">

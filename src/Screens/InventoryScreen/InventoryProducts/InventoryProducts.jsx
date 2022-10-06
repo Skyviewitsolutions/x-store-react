@@ -9,6 +9,7 @@ import { endpoints } from "../../../services/endpoints";
 
 
 const InventoryProducts = () => {
+  
   const [product, setProduct] = useState([]);
   const url = endpoints.products.allProduct;
 
