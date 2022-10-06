@@ -13,7 +13,7 @@ const AddProduct = () => {
 
   const url = endpoints.products.addProduct;
   
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(true);
   const [productName, setProductName] = useState("");
   const [productType, setProductType] = useState("Consumable");
   const [productCategory, setProductCategory] = useState(
