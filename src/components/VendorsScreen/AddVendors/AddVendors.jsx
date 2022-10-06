@@ -51,12 +51,12 @@ const AddVendors = () => {
           <div className="VendorsDetails">
             <div className="radiobutton">
             <div className="IndCom">
-              <input type="radio" name="com" />
-              <p>Individual</p>
+              <input type="radio" name="com" id='com'/>
+              <label htmlFor="com">Individual</label>
               </div>
               <div className="com">
-              <input type="radio" name="com" />
-              <p>Company</p>
+              <input type="radio" name="com"  id='company'/>
+              <label htmlFor="company">Company</label>
               </div>
               </div>
             <div className="nameinput">
@@ -108,8 +108,8 @@ const AddVendors = () => {
                 <input type="text" />
               </div>
               <div className="vendorstextcheckbox">
-                <p>Work Address</p>
-                <input type="checkbox" />
+                <label htmlFor="work">Work Address</label>
+                <input type="checkbox" id='work'/>
               </div>
               <div className="vendorstextinput">
                 <p>Supplier type</p>

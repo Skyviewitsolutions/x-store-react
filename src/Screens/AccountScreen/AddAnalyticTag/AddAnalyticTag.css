@@ -30,7 +30,7 @@
     display: flex;
     align-items: center; 
 }
-.AddAnalyticTagChecbox p{
+.AddAnalyticTagChecbox label{
     width: 200px;
     color: #666666;
     font-size: 15px;

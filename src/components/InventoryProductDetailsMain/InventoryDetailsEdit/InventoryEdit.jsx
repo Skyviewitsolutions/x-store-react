@@ -116,7 +116,7 @@ const InventoryEdit = (props) => {
           ></textarea>
         </div>
       </div>
-      <div className="EditInventory2">
+      {/* <div className="EditInventory2">
         <h5>Traceability</h5>
         <div className="Editcontent1">
           <p>Tracking</p>
@@ -135,7 +135,7 @@ const InventoryEdit = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

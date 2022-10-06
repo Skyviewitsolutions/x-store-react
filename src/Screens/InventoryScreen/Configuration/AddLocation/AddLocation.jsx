@@ -23,7 +23,6 @@ const AddLocation = () => {
   const [locationType, setLocationType] = useState("");
   const [scrapLocation, setScapLocation] = useState(false);
   const [returnLocation, setReturnLocation] = useState(false);
-  const [oillocation, setOillocation] = useState(false);
   const [users, setUsers] = useState("");
   const [removel, setRemovel] = useState("");
   const [notes, setNotes] = useState("");
@@ -33,7 +32,6 @@ const AddLocation = () => {
   formData.append("Location_Name", locationName);
   formData.append("Parent_Location", parentLocation);
   formData.append("Location_Type", locationType);
-  formData.append("Oil_Details", oillocation);
   formData.append("Scrap_Location", scrapLocation);
   formData.append("Return_Location", returnLocation);
   formData.append("Users", users);
@@ -47,8 +45,6 @@ const AddLocation = () => {
       toast("parent Location is Required!", { type: "warning" });
     } else if (locationType === "") {
       toast("Location Type is Required!", { type: "warning" });
-    } else if (oillocation === "") {
-      toast("Oil Details is required!", { type: "warning" });
     } else if (scrapLocation === "") {
       toast("Scrap Location is Required!", { type: "warning" });
     } else if (returnLocation === "") {
@@ -101,7 +97,6 @@ const AddLocation = () => {
       setParentLocation(selectedData.PARENT_LOCATION);
       setScapLocation(selectedData.SCRAP_LOCATION);
       setReturnLocation(selectedData.RETURN_LOCATION);
-      setOillocation(selectedData.OIL_DETAILS);
       setUsers(selectedData.USERS);
       setRemovel(selectedData.REMOVAL_STRATEGY);
       setNotes(selectedData.NOTES)
@@ -120,8 +115,6 @@ const AddLocation = () => {
       toast("parent Location is Required!", { type: "warning" });
     } else if (locationType === "") {
       toast("Location Type is Required!", { type: "warning" });
-    } else if (oillocation === "") {
-      toast("Oil Details is required!", { type: "warning" });
     } else if (scrapLocation === "") {
       toast("Scrap Location is Required!", { type: "warning" });
     } else if (returnLocation === "") {
@@ -137,7 +130,6 @@ const AddLocation = () => {
       formData.append("Location_Name", locationName);
       formData.append("Parent_Location", parentLocation);
       formData.append("Location_Type", locationType);
-      formData.append("Oil_Details", oillocation);
       formData.append("Scrap_Location", scrapLocation);
       formData.append("Return_Location", returnLocation);
       formData.append("Users", users);

@@ -63,7 +63,7 @@ const Warehouse = () => {
   const handleUpdate = (data) =>{
    
     const val = WareHousedetails.filter((itm,index) =>{
-      return itm.WARE_HOUSE_ID == data
+      return itm.WARE_ID == data
     })
 
     const orgValue = val[0];
@@ -77,7 +77,7 @@ const Warehouse = () => {
     { label: "Address", name: "WAREHOUSE_ADDRESS" },
     {
       label: "Actions",
-      name: "WARE_HOUSE_ID",
+      name: "WARE_ID",
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
          

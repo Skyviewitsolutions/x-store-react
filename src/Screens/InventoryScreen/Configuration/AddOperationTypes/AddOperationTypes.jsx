@@ -176,7 +176,7 @@ const AddOperationTypes = () => {
                 value={operationWarehouse}
                 onChange={(e) => setOperationwarehouse(e.target.value)}
               >
-                <option></option>
+                <option value=""></option>
                 {warehouse.map((item, index) => {
                   return (
                     <>

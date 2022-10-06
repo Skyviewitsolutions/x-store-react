@@ -44,6 +44,7 @@ const JournalEntires = (props) => {
         <div className="SecondContent">
         <p>Default Debit Account</p>
             <select value={debitAcc} onChange={(e) => setDebitAcc(e.target.value)}>
+                <option value=""></option>
                 <option value="110101001">110101001</option>
                 <option value="110101002">110101002</option>
                 <option value="110101003">110101003</option>

@@ -104,7 +104,6 @@
     width: 336px;   
 }
 .GeneralInformationEditContainer{
-  display: flex;
-  flex-wrap: wrap;
+ flex-direction: column;
 }
  }

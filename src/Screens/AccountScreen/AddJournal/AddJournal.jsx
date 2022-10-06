@@ -39,6 +39,7 @@ const AddJournal = (props) => {
   formData.append("Acc_Type_Allowd",acctypeAllow);
   formData.append("Acc_Allowd",accAllow);
   formData.append("Lock_Enteries",lockPost);
+  
   if (journalName === "") {
     toast("journalName required !", { type: "warning" });
   } else if (journalType === "") {
@@ -54,7 +55,7 @@ const AddJournal = (props) => {
   } else if (creditAcc === "") {
     toast("Default Credit Account is required !", { type: "warning" });
   } else if (currency === "") {
-    toast("currency is required !", { type: "warning" });
+    toast("Currency is required !", { type: "warning" });
   } else if (acctypeAllow === "") {
     toast("Account Types Allowed is required !", { type: "warning" });
   } else if (accAllow === "") {

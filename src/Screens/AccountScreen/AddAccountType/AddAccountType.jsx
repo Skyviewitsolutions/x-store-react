@@ -153,8 +153,8 @@ const AddAccountType = () => {
          </div>
          <div className="AddAccTypeSecond">
             <div className="AddAccTypecheckbox">
-                <p>Bring Accounts Balance Forward</p>
-                <input type="checkbox" value={balance} onChange={() => setBalance(!balance)} checked={balance}/>
+                <label htmlFor='balance'>Bring Accounts Balance Forward</label>
+                <input type="checkbox" value={balance} onChange={() => setBalance(!balance)} checked={balance} id='balance'/>
             </div>
          </div>
          <ToastContainer/>

@@ -70,6 +70,7 @@ margin-top: 15px;
 }
 .textIn input{
     border: none;
+    outline: none;
     border-bottom: 3px solid #6a666a;
     width: 450px;
     margin-left: 5px;

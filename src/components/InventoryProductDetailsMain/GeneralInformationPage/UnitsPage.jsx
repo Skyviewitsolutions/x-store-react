@@ -14,12 +14,14 @@ const UnitPage = () => {
   const [unitCategory, setUnitcategory] = useState("");
   const [unitType, setUnitType] = useState("");
   const [uomcate, setUomCate] = useState([]);
+  const [rounding,setRounding] = useState("");
   const [update, setUpdate] = useState();
 
   const formData = new FormData();
   formData.append("UnitName", unitName);
   formData.append("UnitCategory", unitCategory);
   formData.append("UnitType", unitType);
+  formData.append("Rounding_Precisio",rounding);
 
   const save = () => {
     if (unitName === "") {
@@ -27,8 +29,12 @@ const UnitPage = () => {
     } else if (unitCategory === "") {
       toast("Unit Category is Required!", { type: "warning" });
     } else if (unitType === "") {
-      toast("Unit type is Require!", { type: "warning" });
-    } else {
+      toast("Unit type is Required!", { type: "warning" });
+    } else if(rounding === "")
+    {
+      toast("Rounding Precisio is Required!," ,{type:"warning"});
+    }
+    else {
       axios
         .post(AddUOMUrl, formData)
         .then((res) => {
@@ -72,6 +78,7 @@ const UnitPage = () => {
       setUnitName(selectedData.UNITNAME);
       setUnitType(selectedData.UNITTYPE);
       setUnitcategory(selectedData.UNITCATEGORY);
+      setRounding(selectedData.ROUNDING_PRECISIO);
     }
   }, [selectedData]);
 
@@ -89,8 +96,7 @@ const UnitPage = () => {
       formData.append("UnitName", unitName);
       formData.append("UnitType", unitType);
       formData.append("UnitCategory", unitCategory);
-
-     
+      formData.append("Rounding_Precisio",rounding);
       axios
         .post(UomUpdateUrl, formData)
         .then((res) => {
@@ -149,7 +155,7 @@ const UnitPage = () => {
               onChange={(e) => setUnitType(e.target.value)}
               value={unitType}
             >
-              <option value={""}></option>
+              <option value=""></option>
               <option value="Bigger than the reference Unit of Measure">
                 Bigger than the reference Unit of Measure
               </option>
@@ -163,7 +169,7 @@ const UnitPage = () => {
           </div>
           <div className="unitcontent">
             <p>Rounding Precisio</p>
-            <input typ="text" placeholder="0.00010" />
+            <input type="text" placeholder="0.00010" value={rounding} onChange={(e) => setRounding(e.target.value)}/>
           </div>
           
         </div>

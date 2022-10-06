@@ -326,8 +326,8 @@ const save = () => {
               </select>
             </div>
             <div className="parentcat">
-              <p>Is Virtual</p>
-              <input type="checkbox" value={virtual} onChange={() => setVirtual(!virtual)} checked={virtual}/>
+              <label htmlFor='virtual'>Is Virtual</label>
+              <input type="checkbox" value={virtual} onChange={() => setVirtual(!virtual)} checked={virtual} id="virtual"/>
             </div>
           </div>
           <div className="assettypebox">
@@ -408,13 +408,13 @@ const save = () => {
             <p>Periodicity</p>
             <div className="assetradio">
               <p>Time Method Based On</p>
-              <input type="radio" name="method" checked={time==="Number of Entries"} value={time} onChange={(e) => setTime("Number of Entries")}/>
-              <label>Number of Entries</label>
+              <input type="radio" name="method" checked={time==="Number of Entries"} value={time} onChange={(e) => setTime("Number of Entries")} id="time"/>
+              <label htmlFor='time'>Number of Entries</label>
             </div>
             <div className="assetradio">
               <p></p>
-              <input type="radio" name="method" checked={time==="Ending Date"} value={time} onChange={(e) => setTime("Ending Date")}/>
-              <label>Ending Date</label>
+              <input type="radio" name="method" checked={time==="Ending Date"} value={time} onChange={(e) => setTime("Ending Date")} id="Date"/>
+              <label htmlFor='Date'>Ending Date</label>
             </div>
             <div className="assettext2">
               <p>Number of Entries</p>
@@ -430,12 +430,12 @@ const save = () => {
           <div className="Additional">
             <p>Additional Options</p>
             <div className="assettypecheckbox">
-              <p>Auto-confirm Assets</p>
-              <input type="checkbox" value={auto} onChange={(e) => setAuto(!auto)} checked={auto}/>
+              <label htmlFor='auto'>Auto-confirm Assets</label>
+              <input type="checkbox" value={auto} onChange={(e) => setAuto(!auto)} checked={auto} id="auto"/>
             </div>
             <div className="assettypecheckbox">
-              <p>Group Journal Entries</p>
-              <input type="checkbox" value={group} onChange={(e) => setGroup(!group)} checked={group}/>
+              <label htmlFor='group'>Group Journal Entries</label>
+              <input type="checkbox" value={group} onChange={(e) => setGroup(!group)} checked={group} id='group'/>
             </div>
             <div className="assettypeselect">
               <p>Automatic Creation</p>
@@ -447,25 +447,25 @@ const save = () => {
               </select>
             </div>
             <div className="assettypecheckbox">
-              <p>Create record for each quantity</p>
-              <input type="checkbox" value={record} onChange={() => setRecord(!record)} checked={record}/>
+              <label htmlFor='record'>Create record for each quantity</label>
+              <input type="checkbox" value={record} onChange={() => setRecord(!record)} checked={record} id='record'/>
             </div>
           </div>
           <div className="Depreciation">
             <p>Depreciation Method</p>
             <div className="distradio">
               <p>Computation Method</p>
-              <input type="radio" name="Depreciation" value={computation} onChange={(e) => setComputaion("Linear")} checked={computation==="Linear"}/>
-              <label>Linear</label>
+              <input type="radio" name="Depreciation" value={computation} onChange={(e) => setComputaion("Linear")} checked={computation==="Linear"} id='computation'/>
+              <label htmlFor='computation'>Linear</label>
             </div>
             <div className="distradio">
               <p></p>
-              <input type="radio" name="Depreciation" value={computation} onChange={(e) => setComputaion("Degressive")} checked={computation==="Degressive"}/>
-              <label>Degressive</label>
+              <input type="radio" name="Depreciation" value={computation} onChange={(e) => setComputaion("Degressive")} checked={computation==="Degressive"} id='Degressive'/>
+              <label htmlFor='Degressive'>Degressive</label>
             </div>
             <div className="depcheckbox">
-              <p>Accordance with the time</p>
-              <input type="checkbox" value={accordance} onChange={(e) => setAccordance(!accordance)} checked={accordance}/>
+              <label htmlFor='accordance'>Accordance with the time</label>
+              <input type="checkbox" value={accordance} onChange={(e) => setAccordance(!accordance)} checked={accordance} id='accordance'/>
             </div>
           </div>
         </div>

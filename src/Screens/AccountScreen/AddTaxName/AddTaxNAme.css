@@ -104,7 +104,7 @@
     align-items: center;
     margin-top: 7px;
 }
-.Advancecheckbox p{
+.Advancecheckbox label{
     width: 250px;
     font-size: 15px;
     color: #666666;

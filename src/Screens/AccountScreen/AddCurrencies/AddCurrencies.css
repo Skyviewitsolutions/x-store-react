@@ -61,7 +61,7 @@
     display: flex;
     align-items: center;
 }
-.currenciescheckbox p{
+.currenciescheckbox label{
     width: 150px;
     font-size: 15px;
     color: #666666;

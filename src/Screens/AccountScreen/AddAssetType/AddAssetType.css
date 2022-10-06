@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
 }
-.parentcat p{
+.parentcat label{
     width: 150px;
     font-size: 16px;
     font-weight: 500;
@@ -177,7 +177,7 @@
     display: flex;
     align-items: center;
 }
-.assettypecheckbox p{
+.assettypecheckbox label{
     width: 200px;
     font-size: 15px;
     font-weight: 500;
@@ -239,7 +239,7 @@
 display: flex;
 align-items: center;
 }
-.depcheckbox p{
+.depcheckbox label{
     width: 200px;
     font-size: 15px;
     font-weight: 500;

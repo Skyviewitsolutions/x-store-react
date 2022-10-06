@@ -20,22 +20,80 @@ const AddProductCategories = (props) => {
    const incomeUrl = endpoints.products.incomeAcoount;
    const pricediffUrl = endpoints.products.priceDifference;
    const expenseUrl = endpoints.products.expenseAccount;
-
    const [income , setIncome] = useState([]);
-   const [pricediffacc , setPricediffacc] = useState([]);
+   const [ removalStrategy , setRemovalStrategy] = useState("");
    const [expense , setExpense] = useState([]);
-   
-   const [productCateName , setProductCateName] = useState("");
+   const [parentCate , setParentCate] = useState("");
+   const [incomeAcc , setIncomeAcc] = useState("");
+   const [expenseAcc , setExpenseAcc] = useState("");
+   const [productCateCode , setProductCateCode] = useState("");
+   const [costing , setCosting] = useState("");
+   const [valuation , setValuation] = useState("");
+   const [name , setName] = useState("")
+
    const [update , setUpdate] = useState(false);
 
+   useEffect(() => {
+    axios.post(incomeUrl)
+    .then((res) => {
+      if(res.data.status === true)
+      {
+        setIncome(res.data.data);
+      }
+      else if(res.data.status === false)
+      {
+        toast(res.data.message,{type:"error"});
+      }
+    }) 
+   },[])
+
+   useEffect(() => {
+     axios.post(expenseUrl)
+     .then((res) => {
+      if(res.data.status === true)
+      {
+        setExpense(res.data.data);
+      }
+      else if(res.data.status === false)
+      {
+        toast(res.data.message,{type:"error"})
+      }
+     }) 
+   },[])
    const formData = new FormData();
-   formData.append("categoryName",productCateName);
+   formData.append("name",name);
+   formData.append("Parent_Category",parentCate)
+   formData.append("Product_Category_Code",productCateCode);
+   formData.append("Income_Account",incomeAcc);
+   formData.append("Expense_Account",expenseAcc);
+   formData.append("Force_RemovalStrategy",removalStrategy);
+   formData.append("Costing_Method",costing);
+   formData.append("Inventory_Valuation",valuation);
 
      const save = () => {
-      if(productCateName === "" )
+      if(name === "" )
       {
         toast("Product Category Name is Required!",{type:"warning"})
+      }else if(parentCate === ""){
+        toast("Product Category Is Required !",{type:"warning"})
+      }else if(productCateCode === ""){
+        toast("Product Category Code Is Required!",{type:"warning"});
+      }else if(incomeAcc === ""){
+        toast("Income Account Is Required!",{type:"warning"});
       }
+      else if(expenseAcc === ""){
+        toast("Expense Account Is Required!",{type:"warning"});
+      }
+      else if(removalStrategy === ""){
+        toast("Force Removal Strategy Is Required!",{type:"warning"});
+      }
+      else if(costing === ""){
+        toast("Costing Method Is Required!",{type:"warning"});
+      }
+      else if(valuation === ""){
+        toast("Inventory Valuation Is Required!",{type:"warning"});
+      }
+      
       else{
         axios.post(AddProductCateUrl,formData)
         .then((res) => {
@@ -69,22 +127,57 @@ const AddProductCategories = (props) => {
   useEffect( () => {
     if(selectedData)
     {
+
       setUpdate(true);
-      setProductCateName(selectedData.CATEGORY_NAME);
+      setName(selectedData.CATEGORY_NAME);
+      setParentCate(selectedData.PARENT_CATEGORY);
+      setProductCateCode(selectedData.PRODUCT_CATEGORY_CODE);
+      setIncomeAcc(selectedData.INCOME_ACCOUNT);
+      setExpenseAcc(selectedData.EXPENSE_ACCOUNT);
+      setRemovalStrategy(selectedData.FORCE_REMOVAL_STRATEGY);
+      setCosting(selectedData.COSTING_METHOD);
+      setValuation(selectedData.INVENTORY_VALUTION);
     }
   },[selectedData]);
 
   const productcateUpadteUrl = endpoints.productCategory.updateProductCate;
 
   const updateData = () => {
-    if(productCateName === "" )
+    if(name === "" )
     {
       toast("Product Category Name is Required!",{type:"warning"})
+    }else if(parentCate === ""){
+      toast("Product Category Is Required !",{type:"warning"})
+    }else if(productCateCode === ""){
+      toast("Product Category Code Is Required!",{type:"warning"});
+    }else if(incomeAcc === ""){
+      toast("Income Account Is Required!",{type:"warning"});
     }
+    else if(expenseAcc === ""){
+      toast("Expense Account Is Required!",{type:"warning"});
+    }
+    else if(removalStrategy === ""){
+      toast("Force Removal Strategy Is Required!",{type:"warning"});
+    }
+    else if(costing === ""){
+      toast("Costing Method Is Required!",{type:"warning"});
+    }
+    else if(valuation === ""){
+      toast("Inventory Valuation Is Required!",{type:"warning"});
+    }
+    
     else{
       const formData = new FormData();
-      formData.append("categoryid" , selectedData.ID);
-      formData.append("categoryName",productCateName);
+      formData.append("id" , selectedData.CATEGORY_ID);
+      formData.append("Parent_Category",parentCate)
+      formData.append("name",name);
+      formData.append("Product_Category_Code",productCateCode);
+      formData.append("Income_Account",incomeAcc);
+      formData.append("Expense_Account",expenseAcc);
+      formData.append("Force_RemovalStrategy",removalStrategy);
+      formData.append("Costing_Method",costing);
+      formData.append("Inventory_Valuation",valuation);
+   
       axios.post(productcateUpadteUrl,formData)
       .then((res) => {
         if (res.data.status === true)
@@ -102,7 +195,6 @@ const AddProductCategories = (props) => {
       });
     }
   }
-
   
   return (
 
@@ -138,11 +230,12 @@ const AddProductCategories = (props) => {
         <div className="AddProductCatedetails1">
           <div className="AddProductCatecontent">
             <p>Name</p>
-            <input type="text" value={productCateName} onChange={(e) => setProductCateName(e.target.value)}/>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
           </div>
           <div className="AddProductCatecontent">
             <p>Parent Category</p>
-            <select onChange={(e) => updateParentCategory(e.target.value)} className="prntSlt">
+            <select onChange={(e) => setParentCate(e.target.value)} value={parentCate} className="prntSlt">
+              <option value=""></option>
               <option value="Assets">Assets</option>
               <option value="Assets / Computers and printers">Assets / Computers and printers</option>
               <option value="Assets / Extinguishing programs, permits and licenses">
@@ -158,7 +251,7 @@ const AddProductCategories = (props) => {
           </div>
           <div className="AddProductCatecontent">
             <p>Product Category Code</p>
-            <input type="text"/>
+            <input type="text" value={productCateCode} onChange={(e) => setProductCateCode(e.target.value)}/>
           </div>
         </div>
         
@@ -174,12 +267,12 @@ const AddProductCategories = (props) => {
           <h6>Account Properties</h6>
         <div className="stockdropdown">
             <p>Income Account</p>
-            <select>
-              <option></option>
+            <select value={incomeAcc} onChange={(e) => setIncomeAcc(e.target.value)}>
+              <option value=""></option>
             {income.map((item,index) => {
               return(
                 <>
-                <option key={index}>{item.PRODUCT_INCOME_NAME}</option>
+                <option key={index} value={item.PRODUCT_INCOME_NAME}>{item.PRODUCT_INCOME_NAME}</option>
                 </>
               )
             })}
@@ -187,12 +280,12 @@ const AddProductCategories = (props) => {
           </div>
         <div className="stockdropdown">
             <p>Expense Account</p>
-            <select>
-              <option></option>
+            <select value={expenseAcc} onChange={(e) => setExpenseAcc(e.target.value)}>
+              <option value=""></option>
            {expense.map((item,index) => {
             return(
               <>
-              <option key={index}>{item.EXPENSE_NAME}</option>
+              <option key={index} value={item.EXPENSE_NAME}>{item.EXPENSE_NAME}</option>
               </>
             )
            })}
@@ -205,9 +298,10 @@ const AddProductCategories = (props) => {
         <h6>Logistics</h6>
           <div className="force">
             <p>Force Removal Strategy</p>
-            <select>
-              <option>First in first out (FIFO)</option>
-              <option>Last in First Out (LIFO)</option>
+            <select value={removalStrategy} onChange={(e) => setRemovalStrategy(e.target.value)}>
+              <option value=""></option>
+              <option value="First in first out (FIFO)">First in first out (FIFO)</option>
+              <option value="Last in First Out (LIFO)">Last in First Out (LIFO)</option>
             </select>
           </div>
       </div>
@@ -215,19 +309,19 @@ const AddProductCategories = (props) => {
           <h6>Inventory Valuation</h6>
         <div className="force">
             <p>Costing Method</p>
-            <select>
-              <option></option>
-              <option>Standard Price</option>
-              <option>First in first out (FIFO)</option>
-              <option>Average Cost(AVCO)</option>
+            <select value={costing} onChange={(e) => setCosting(e.target.value)}>
+              <option value=""></option>
+              <option value="Standard Price">Standard Price</option>
+              <option value="First in first out (FIFO)">First in first out (FIFO)</option>
+              <option value="Average Cost(AVCO)">Average Cost(AVCO)</option>
             </select>
           </div>
         <div className="force">
             <p>Inventory Valuation</p>
-            <select>
-              <option></option>
-              <option>Manual</option>
-              <option>Automated</option>
+            <select value={valuation} onChange={(e) => setValuation(e.target.value)}>
+              <option value=""></option>
+              <option value="Manual">Manual</option>
+              <option value="Automated">Automated</option>
             </select>
           </div>
         </div>

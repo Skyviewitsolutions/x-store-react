@@ -69,8 +69,8 @@ const onRemove2 = (selectedList, removedItem) => {
             />
       </div>
       <div className="AdvanceSettingcheckbox">
-        <p>Lock Posted Entries with Hash</p>
-        <input type="checkbox" value={lockPost} onChange={()=> setLockPost(!lockPost)} checked={lockPost}/>
+        <label htmlFor='lockPost'>Lock Posted Entries with Hash</label>
+        <input type="checkbox" value={lockPost} onChange={()=> setLockPost(!lockPost)} checked={lockPost} id="lockPost"/>
       </div>
     </div>
   )

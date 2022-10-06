@@ -156,8 +156,8 @@ const AddCurrencies = () => {
              <input type="text" value={currenciesRate} onChange={(e) => setCurrenciesRate(e.target.value)}/>
             </div>
             <div className="currenciescheckbox">
-              <p>Active</p>
-              <input type="checkbox" value={active} onChange={() => setActive(!active)} checked={active}/>
+              <label htmlFor='active'>Active</label>
+              <input type="checkbox" value={active} onChange={() => setActive(!active)} checked={active} id="active"/>
             </div>
          </div>
          <div className="Currenciesdetails2">

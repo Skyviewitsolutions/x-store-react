@@ -25,7 +25,7 @@ const InventoryProductDetailsMain = (props) => {
 
   const [events, setEvents] = useState("generalInformation");
 
-  const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomerTax , description , setDescription , sold , purchased , expensed , deduction , setSold , setPurchased , setExpensed , setDecution,productdetails, buy ,setBuy,replenishOnOrder,setReplenishOnOrder} = props;
+  const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomerTax , description , setDescription , sold , purchased , expensed , deduction , setSold , setPurchased , setExpensed , setDeduction,productdetails, buy ,setBuy,replenishOnOrder,setReplenishOnOrder} = props;
 
   const navigate = useNavigate();
     
@@ -129,20 +129,20 @@ const InventoryProductDetailsMain = (props) => {
             )}
             <div className="detailsinput">
               <div>
-                <input type="checkbox" value={sold} onChange={ () => setSold(!sold)} checked={sold}/>
-                <label>Sold</label>
+                <input type="checkbox" value={sold} onChange={ () => setSold(!sold)} checked={sold} id="sold"/>
+                <label htmlFor="sold">Sold</label>
               </div>
               <div>
-                <input type="checkbox" value={purchased} onChange={() => setPurchased(!purchased)} checked={purchased}/>
-                <label>Purchased</label>
+                <input type="checkbox" value={purchased} onChange={() => setPurchased(!purchased)} checked={purchased} id="purchased"/>
+                <label htmlFor="purchased">Purchased</label>
               </div>
               <div>
-                <input type="checkbox" value={expensed} onChange={() => setExpensed(!expensed)} checked={expensed}/>
-                <label>Expensed</label>
+                <input type="checkbox" value={expensed} onChange={() => setExpensed(!expensed)} checked={expensed} id="expensed"/>
+                <label htmlFor="expensed">Expensed</label>
               </div>
               <div>
-                <input type="checkbox" value={deduction} onChange={() => setDecution(!deduction)} checked={deduction}/>
-                <label>Deduction</label>
+                <input type="checkbox" value={deduction} onChange={() => setDeduction(!deduction)} checked={deduction} id="deduction"/>
+                <label htmlFor="deduction">Deduction</label>
               </div>
             </div>
             {isEdit === true && (

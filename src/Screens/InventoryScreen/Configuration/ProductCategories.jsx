@@ -25,7 +25,7 @@ const ProductCategories = () => {
       if (res.data.status === true) {
         setProductCate(res.data.data);
       } else if (res.data.status === false) {
-        alert(res.data.message);
+      toast(res.data.message,{type:"warning"});
       }
     })
     .catch((err) => {
@@ -62,7 +62,7 @@ const ProductCategories = () => {
 
   const handleUpdate = (data) => {
     const val = productCate.filter((itm,index) => {
-      return itm.ID == data
+      return itm.CATEGORY_ID == data
     })
 
     const orgValue = val[0];
@@ -75,7 +75,7 @@ const ProductCategories = () => {
     { label: "Product Category", name: "CATEGORY_NAME" },
     {
       label: "Action",
-      name: "ID",
+      name: "CATEGORY_ID",
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
           return (

@@ -36,7 +36,7 @@ const InventoryProducts = () => {
   return (
     <>
       <div className="ProductsMainContainer">
-        <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Inventory Products"/>
+        <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Products"/>
         <div className="ProductContainer">
           <div className="ProductSidebar">
             <Sidebar />

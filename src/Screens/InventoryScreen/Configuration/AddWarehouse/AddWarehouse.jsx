@@ -20,12 +20,15 @@ const AddWarehouse = (props) => {
   const [locationall, setLocationall] = useState([]);
   const [warehouseName, setWarehousename] = useState("");
   const [shortName, setShortname] = useState("");
-  const [address, setAddress] = useState("");
-  const [responsible, setResponsible] = useState("");
-  const [incomingShips, setIncomingships] = useState("");
-  const [outgoingShips, setOutgoingships] = useState("");
-  const [resupply, setResupply] = useState(false);
-  const [transitLocation, setTransitLocation] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [phone, setPhone] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [email, setEmail] = useState("");
+  const [users, setUsers] = useState("");
   const [update, setUpdate] = useState(false);
 
   const save = () => {
@@ -33,29 +36,38 @@ const AddWarehouse = (props) => {
 
     formData.append("WareHsName", warehouseName);
     formData.append("ShortName", shortName);
-    formData.append("Address", address);
-    formData.append("Responsible", responsible);
-    formData.append("IncomingShips", incomingShips);
-    formData.append("OutGoingShips", outgoingShips);
-    formData.append("Resupply", resupply);
-    formData.append("TransitLocation", transitLocation);
+    formData.append("Street", street);
+    formData.append("City", city);
+    formData.append("Country", country);
+    formData.append("State",state);
+    formData.append("Zip_Code", zipCode);
+    formData.append("Phone", phone);
+    formData.append("Mobile", mobile);
+    formData.append("Email", email);
+    formData.append("Users", users);
 
     if (warehouseName === "") {
       toast("WareHouseName required !", { type: "warning" });
     } else if (shortName === "") {
       toast("ShortName is required !", { type: "warning" });
-    } else if (address === "") {
-      toast("address is required !", { type: "warning" });
-    } else if (responsible === "") {
-      toast("responsible is required !", { type: "warning" });
-    } else if (incomingShips === "") {
-      toast("incomingships is required !", { type: "warning" });
-    } else if (outgoingShips === "") {
-      toast("outgoing is required !", { type: "warning" });
-    } else if (resupply === "") {
-      toast("resupply is required !", { type: "warning" });
-    } else if (transitLocation === "") {
-      toast("transit Location is required !", { type: "warning" });
+    } else if (street === "") {
+      toast("Street is required !", { type: "warning" });
+    } else if (city === "") {
+      toast("City is required !", { type: "warning" });
+    } else if (state === "") {
+      toast("State is required !", { type: "warning" });
+    } else if (country === "") {
+      toast("Country is required !", { type: "warning" });
+    } else if (zipCode === "") {
+      toast("Zip Code is required !", { type: "warning" });
+    } else if (mobile === "") {
+      toast("Mobile is required !", { type: "warning" });
+    } else if (email === "") {
+      toast("Email is required !", { type: "warning" });
+    } else if (users === "") {
+      toast("Users is required !", { type: "warning" });
+    } else if (phone === "") {
+      toast("Phone  is required !", { type: "warning" });
     } else {
       axios
         .post(AddWarehouseUrl, formData)
@@ -74,7 +86,6 @@ const AddWarehouse = (props) => {
   };
 
   const formData2 = new FormData();
-
   useEffect(() => {
     axios
       .post(AllLoactionUrl, formData2)
@@ -99,13 +110,16 @@ const AddWarehouse = (props) => {
     if (selectedData) {
       setUpdate(true);
       setWarehousename(selectedData.WAREHOUSE_NAME);
-      setAddress(selectedData.WAREHOUSE_ADDRESS);
-      setTransitLocation(selectedData.TRANSIT_LOCATION);
-      setShortname(selectedData.SHORTNAME);
-      setResponsible(selectedData.RESPONSIBLE);
-      setIncomingships(selectedData.INCOMING_SHIPMENT);
-      setOutgoingships(selectedData.OUTGOING_SHIPMENTS);
-      setResupply(JSON.parse(selectedData.RESUPPLY.toLowerCase()));
+      setShortname(selectedData.WAREHOUSE_SHOT_NAME);
+      setStreet(selectedData.WAREHOUSE_STREET);
+      setCity(selectedData.WAREHOUSE_CITY);
+      setState(selectedData.WAREHOUSE_STATE);
+      setCountry(selectedData.WAREHOUSE);
+      setZipCode(selectedData.WAREHOUSE_ZIPCODE);
+      setPhone(selectedData.WAREHOUSE_PHONE);
+      setMobile(selectedData.WAREHOSE_MOBILE);
+      setEmail(selectedData.WAREHOUSE_EMAIL);
+      setUsers(selectedData.WAREHOUSE_USER);
     }
   }, [selectedData]);
 
@@ -116,30 +130,38 @@ const AddWarehouse = (props) => {
       toast("WareHouseName required !", { type: "warning" });
     } else if (shortName === "") {
       toast("ShortName is required !", { type: "warning" });
-    } else if (address === "") {
-      toast("address is required !", { type: "warning" });
-    } else if (responsible === "") {
-      toast("responsible is required !", { type: "warning" });
-    } else if (incomingShips === "") {
-      toast("incomingships is required !", { type: "warning" });
-    } else if (outgoingShips === "") {
-      toast("outgoing is required !", { type: "warning" });
-    } else if (resupply === "") {
-      toast("resupply is required !", { type: "warning" });
-    } else if (transitLocation === "") {
-      toast("transit Location is required !", { type: "warning" });
+    } else if (street === "") {
+      toast("Street is required !", { type: "warning" });
+    } else if (city === "") {
+      toast("City is required !", { type: "warning" });
+    } else if (state === "") {
+      toast("State is required !", { type: "warning" });
+    } else if (country === "") {
+      toast("Country is required !", { type: "warning" });
+    } else if (zipCode === "") {
+      toast("Zip Code is required !", { type: "warning" });
+    } else if (mobile === "") {
+      toast("Mobile is required !", { type: "warning" });
+    } else if (email === "") {
+      toast("Email is required !", { type: "warning" });
+    } else if (users === "") {
+      toast("Users is required !", { type: "warning" });
+    } else if (phone === "") {
+      toast("Phone  is required !", { type: "warning" });
     } else {
       const formData = new FormData();
-      formData.append("Id", selectedData.WARE_HOUSE_ID);
+      formData.append("Id", selectedData.WARE_ID);
       formData.append("WareHsName", warehouseName);
       formData.append("ShortName", shortName);
-      formData.append("Address", address);
-      formData.append("Responsible", responsible);
-      formData.append("IncomingShips", incomingShips);
-      formData.append("OutGoingShips", outgoingShips);
-      formData.append("Resupply", resupply);
-      formData.append("TransitLocation", transitLocation);
-
+      formData.append("Street", street);
+      formData.append("City", city);
+      formData.append("Country", country);
+      formData.append("State",state);
+      formData.append("Zip_Code", zipCode);
+      formData.append("Phone", phone);
+      formData.append("Mobile", mobile);
+      formData.append("Email", email);
+      formData.append("Users", users);
       axios
         .post(updateUrl, formData)
         .then((res) => {
@@ -198,59 +220,75 @@ const AddWarehouse = (props) => {
               <p>Street</p>
               <input
                 type="text"
-                value={shortName}
-                onChange={(e) => setShortname(e.target.value)}
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
               />
             </div>
             <div className="textIn">
               <p>City</p>
               <input
                 type="text"
-                value={shortName}
-                onChange={(e) => setShortname(e.target.value)}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
               />
             </div>
             <div className="textIn">
               <p>State</p>
               <input
                 type="text"
-                value={shortName}
-                onChange={(e) => setShortname(e.target.value)}
+                value={state}
+                onChange={(e) => setState(e.target.value)}
               />
             </div>
             <div className="textIn">
               <p>Country</p>
               <input
                 type="text"
-                value={shortName}
-                onChange={(e) => setShortname(e.target.value)}
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
               />
             </div>
             <div className="textIn">
               <p>Zip Code</p>
               <input
                 type="text"
-                value={shortName}
-                onChange={(e) => setShortname(e.target.value)}
+                value={zipCode}
+                onChange={(e) => setZipCode(e.target.value)}
               />
             </div>
           </div>
           <div className="Addcontent2">
             <div className="Adddropdown">
               <p>Phone</p>
-              <input type="text" />
+              <input
+                type="text"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
             </div>
             <div className="Adddropdown">
               <p>Mobile</p>
-              <input type="text" />
+              <input
+                type="text"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+              />
             </div>
             <div className="Adddropdown">
               <p>email</p>
-              <input type="text" />
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="Adddropdown">
               <p>Users</p>
-              <input type="text" />
+              <input
+                type="text"
+                value={users}
+                onChange={(e) => setUsers(e.target.value)}
+              />
             </div>
           </div>
         </div>

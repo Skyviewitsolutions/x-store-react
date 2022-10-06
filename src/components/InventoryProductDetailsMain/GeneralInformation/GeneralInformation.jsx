@@ -36,8 +36,8 @@ const GeneralInformation = (props) => {
                 <div className="firstcontent3">
                     <p>Sales Price</p>
                     <span>{salesPrice}</span>
-                    <FaArrowRight size="20px" style={{ color: "#1669a2", marginLeft: "10px" }} />
-                    <span>Extra Prices</span>
+                    {/* <FaArrowRight size="20px" style={{ color: "#1669a2", marginLeft: "10px" }} />
+                    <span>Extra Prices</span> */}
                 </div>
                 <div className="firstcontent3">
                 <p  className="custext">Customer Taxes</p>

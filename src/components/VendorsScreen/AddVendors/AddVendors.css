@@ -57,7 +57,7 @@
     display: flex;
     align-items: center;
 }
-.IndCom p{
+.IndCom label{
  margin-left: 10px;
  color: #6f6f6f;
  font-size: 15px;
@@ -68,7 +68,7 @@
     align-items: center;
     margin-left: 10px;
 }
-.com p{
+.com label{
  margin-left: 10px;
  color: #6f6f6f;
  font-size: 15px;
@@ -132,7 +132,7 @@ margin-bottom: 5px;
     display: flex;
     align-items: center; 
 }
-.vendorstextcheckbox p{
+.vendorstextcheckbox label{
     width: 100px;
     color: #6a666a;
     font-size: 15px;

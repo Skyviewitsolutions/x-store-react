@@ -321,7 +321,7 @@ const AddAnalyticAccount = () => {
               <option value=""></option>
               <option value="110">110</option>
               <option value="13103">13103</option>
-              <option value="">Aad Saud Alshaibani Alotaibi</option>
+              <option value="Aad Saud Alshaibani Alotaibi">Aad Saud Alshaibani Alotaibi</option>
               <option value="Aad Saud Alshaibani Alotaibi">Aad Saud Alshaibani Alotaibi</option>
               <option value="Aalok Kumar Bodhnath Maht">Aalok Kumar Bodhnath Maht</option>
               <option value="AALY ALQEMA EST.">AALY ALQEMA EST.</option>

@@ -47,13 +47,13 @@ const ProductDetailsInventory = (props) => {
           <h5>{descriptionInternalTranser}</h5>
         </div>
       </div>
-      <div className="Inventory2">
+      {/* <div className="Inventory2">
         <h5>Traceability</h5>
         <div className="content1">
           <p>Tracking</p>
           <span> No Tracking </span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

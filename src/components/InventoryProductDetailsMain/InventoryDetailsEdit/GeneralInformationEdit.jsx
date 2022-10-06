@@ -175,11 +175,11 @@ const GeneralInformationEdit = (props) => {
               value={salesPrice}
               onChange={(e) => setSalesPrice(e.target.value)}
             />
-            <FaArrowRight
+            {/* <FaArrowRight
               size="20px"
               style={{ color: "#008784", marginLeft: "10px" }}
             />
-            <span>Extra Prices</span>
+            <span>Extra Prices</span> */}
           </div>
           <div className="Editfirstcontent3">
             <p
@@ -227,10 +227,10 @@ const GeneralInformationEdit = (props) => {
                   )
                   } )}
             </select>
-            <FaExternalLinkAlt
+            {/* <FaExternalLinkAlt
               size="14px"
               style={{ color: "#79757d", marginLeft: "8x", marginTop: "10px" }}
-            />
+            /> */}
           </div>
           <div className="Editfirstcontent3">
             <p>Purchase Unit of</p>
@@ -243,10 +243,10 @@ const GeneralInformationEdit = (props) => {
                 )
               })}
             </select>
-            <FaExternalLinkAlt
+            {/* <FaExternalLinkAlt
               size="14px"
               style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
+            /> */}
           </div>
           <p style={{ color: "#6a666a", fontSize: "17px", fontWeight: "500" }}>
             Measure

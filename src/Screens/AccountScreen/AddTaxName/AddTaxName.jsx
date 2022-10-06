@@ -227,19 +227,19 @@ const AddTaxName = () => {
            </select>
             </div>
             <div className="Advancecheckbox">
-                <p>Include in Analytic Cost</p>
-                <input type="checkbox" value={cost} onChange={() => setCost(!cost)} checked={cost}/>
+                <label htmlFor="cost">Include in Analytic Cost</label>
+                <input type="checkbox" value={cost} onChange={() => setCost(!cost)} checked={cost} id="cost"/>
 
             </div>
             </div>
             <div className="Taxadvance2">
             <div className="Advancecheckbox">
-                <p>Included in Price</p>
-                <input type="checkbox" value={includedPrice} onChange={() => setIncludedPrice(!includedPrice)} checked={includedPrice}/>
+                <label htmlFor="includedPrice">Included in Price</label>
+                <input type="checkbox" value={includedPrice} onChange={() => setIncludedPrice(!includedPrice)} checked={includedPrice} id="includedPrice"/>
             </div>
             <div className="Advancecheckbox">
-                <p>Affect Base of Subsequent Taxes</p>
-                <input type="checkbox" value={affect} onChange={() => setAffect(!affect)} checked={affect}/>
+                <label htmlFor="affect">Affect Base of Subsequent Taxes</label>
+                <input type="checkbox" value={affect} onChange={() => setAffect(!affect)} checked={affect} id="affect"/>
             </div>
             </div>
         </div>

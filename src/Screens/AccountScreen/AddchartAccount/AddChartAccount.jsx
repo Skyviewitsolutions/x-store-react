@@ -256,7 +256,7 @@ const AddChartAccount = () => {
               <Multiselect
                 className="AddChartAccmultiselect"
                 options={options} // Options to display in the dropdown
-                selectedValues={selectedValue} // Preselected value to persist in dropdown
+                selectedValues={defTax} // Preselected value to persist in dropdown
                 onSelect={onSelect1} // Function will trigger on select event
                 onRemove={onRemove1} // Function will trigger on remove event
                 displayValue="name" // Property name to display in the dropdown options
@@ -267,7 +267,7 @@ const AddChartAccount = () => {
               <Multiselect
                 className="AddChartAccmultiselect"
                 options={option} // Options to display in the dropdown
-                selectedValues={selectedValue} // Preselected value to persist in dropdown
+                selectedValues={tag} // Preselected value to persist in dropdown
                 onSelect={onSelect2} // Function will trigger on select event
                 onRemove={onRemove2} // Function will trigger on remove event
                 displayValue="name" // Property name to display in the dropdown options
@@ -303,16 +303,16 @@ const AddChartAccount = () => {
               </select>
             </div>
             <div className="AddAccountCheckbox">
-              <p>Allow Reconciliation</p>
-              <input type="Checkbox"  value={allowRec} onChange={() => setAllowRec(!allowRec)} checked={allowRec}/>
+              <label htmlFor="allowRec">Allow Reconciliation</label>
+              <input type="Checkbox"  value={allowRec} onChange={() => setAllowRec(!allowRec)} checked={allowRec} id="allowRec"/>
             </div>
             <div className="AddAccountCheckbox">
-              <p>Deprecated</p>
-              <input type="Checkbox" value={deprecated} onChange={() => setDeprecated(!deprecated)} checked={deprecated}/>
+              <label htmlFor="deprecated">Deprecated</label>
+              <input type="Checkbox" value={deprecated} onChange={() => setDeprecated(!deprecated)} checked={deprecated} id="deprecated"/>
             </div>
             <div className="AddAccountCheckbox">
-              <p>Centralized</p>
-              <input type="Checkbox" value={centralized} onChange={() => setCentralized(!centralized)} checked={centralized}/>
+              <label htmlFor="centralized">Centralized</label>
+              <input type="Checkbox" value={centralized} onChange={() => setCentralized(!centralized)} checked={centralized} id="centralized"/>
             </div>
           </div>
         </div>

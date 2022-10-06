@@ -35,7 +35,7 @@ const Navebar = (props) => {
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
               <Nav.Link href="#home" className="navetext">
-                OverView
+                Overview
               </Nav.Link>
               <Nav.Link href="/Inventory" className="navetext">
                 Operations
