@@ -69,6 +69,7 @@ const InventoryProducts = () => {
                 return (
                   <>
                     <InventoryProductsCard data={item} setDeleteRef={setDeleteRef} deleteRef={deleteRef}/>
+                    
                   </>
                 );
               })}

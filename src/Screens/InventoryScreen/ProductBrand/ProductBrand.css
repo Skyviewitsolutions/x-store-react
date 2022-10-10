@@ -1,4 +1,4 @@
-.UnitContainer{
+.productBrandCon{
     width: 98%;
     border: 1px solid #cccc;
     display: flex;
@@ -8,13 +8,14 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     margin-top: 40px;
 }
-.unitpart1{
-    width: 50%;
+.productbrandtext{
+    width: 100%;
 }
-.unitcontent{
+.brand{
     display: flex;
+    align-items: center;
 }
-.unitcontent p {
+.brand p {
     width: 150px;
     font-size: 15px;
     color: #666666;
@@ -22,34 +23,9 @@
     font-weight: 600;
     margin-bottom: 8px;
 }
-.unitcontent input{
+.brand input{
     width: 500px;
     border: none;
     outline: none;
     border-bottom: 1px solid #666666;
 }
-.unitcontent select{
-    width: 500px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #666666;
-}
-.unitcheckbox{
-    display: flex;
-}
-.unitcheckbox p{
-    width: 150px;
-    font-size: 15px;
-    color: #666666;
-    margin-left: 50px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-.unitcheckbox input{
-    width: 30px;
-    height: 25px;
-    margin-top: 5px;
-}
-
-
-

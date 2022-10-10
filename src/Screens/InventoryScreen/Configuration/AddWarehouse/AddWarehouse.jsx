@@ -13,7 +13,8 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 const AddWarehouse = (props) => {
-  const [event, setEvent] = useState("WarehouseConfig");
+  const [events, setEvents] = useState("WarehouseConfig");
+  const [isEdit , setIsEdit] = useState(false);
 
   const AddWarehouseUrl = endpoints.wareHouse.addWarehouse;
   const AllLoactionUrl = endpoints.location.allLocation;
@@ -30,6 +31,8 @@ const AddWarehouse = (props) => {
   const [email, setEmail] = useState("");
   const [users, setUsers] = useState("");
   const [update, setUpdate] = useState(false);
+
+
 
   const save = () => {
     const formData = new FormData();
@@ -85,10 +88,9 @@ const AddWarehouse = (props) => {
     }
   };
 
-  const formData2 = new FormData();
   useEffect(() => {
     axios
-      .post(AllLoactionUrl, formData2)
+      .post(AllLoactionUrl)
       .then((res) => {
         console.log(res, "locationresult");
         if (res.data.status === true) {
@@ -216,82 +218,39 @@ const AddWarehouse = (props) => {
                 onChange={(e) => setShortname(e.target.value)}
               />
             </div>
-            <div className="textIn">
-              <p>Street</p>
-              <input
-                type="text"
-                value={street}
-                onChange={(e) => setStreet(e.target.value)}
-              />
-            </div>
-            <div className="textIn">
-              <p>City</p>
-              <input
-                type="text"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-            </div>
-            <div className="textIn">
-              <p>State</p>
-              <input
-                type="text"
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-              />
-            </div>
-            <div className="textIn">
-              <p>Country</p>
-              <input
-                type="text"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-              />
-            </div>
-            <div className="textIn">
-              <p>Zip Code</p>
-              <input
-                type="text"
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
-              />
-            </div>
           </div>
           <div className="Addcontent2">
             <div className="Adddropdown">
-              <p>Phone</p>
-              <input
-                type="text"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-            <div className="Adddropdown">
-              <p>Mobile</p>
-              <input
-                type="text"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
-              />
-            </div>
-            <div className="Adddropdown">
-              <p>email</p>
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="Adddropdown">
-              <p>Users</p>
-              <input
-                type="text"
-                value={users}
-                onChange={(e) => setUsers(e.target.value)}
-              />
+              <p>Address</p>
+             <select>
+            <option value=""></option>
+              {locationall.map((item,index) => {
+                return(
+                  <>
+                <option value={item.LOCATION_NAME}>{item.LOCATION_NAME}</option>
+                  </>
+                )
+              })}
+             </select>
             </div>
           </div>
+          </div>
+          <div className="detailsbtn">
+          <Nav variant="tabs" defaultActiveKey="/home">
+            <Nav.Item
+              className="detailslink"
+              onClick={() => setEvents("WarehouseConfig")}
+            >
+              <Nav.Link href="">Warehouse Configuration</Nav.Link>
+            </Nav.Item>
+          </Nav>
         </div>
+        <div className="GeneralInformation">
+          {events === "WarehouseConfig" && isEdit === false && (
+            <WarehouseConfig/>
+          )}
+        </div>
+    
 
         <ToastContainer />
       </div>

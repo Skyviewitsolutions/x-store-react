@@ -189,22 +189,12 @@ const AddOperationTypes = () => {
               </select>
             </div>
             <div className="operation">
-              <p>Default Source Location</p>
-              <select
-                value={sourcelocation}
-                onChange={(e) => setSourceLocation(e.target.value)}
-              >
-                <option></option>
-                {location.map((item, index) => {
-                  return (
-                    <>
-                      <option key={index} value={item.LOCATION_NAME}>
-                        {item.LOCATION_NAME}
-                      </option>
-                    </>
-                  );
-                })}
-              </select>
+              <p>Barcode</p>
+              <input
+                type="text"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+              />
             </div>
           </div>
           <div className="type">
@@ -231,6 +221,45 @@ const AddOperationTypes = () => {
            
           </div>
         </div>
+        <div className="location">
+          <h3>Locations</h3>
+          <div className="operation">
+              <p>Default Source Location</p>
+              <select
+                value={sourcelocation}
+                onChange={(e) => setSourceLocation(e.target.value)}
+              >
+                <option></option>
+                {location.map((item, index) => {
+                  return (
+                    <>
+                      <option key={index} value={item.LOCATION_NAME}>
+                        {item.LOCATION_NAME}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
+            </div>
+          <div className="operation">
+              <p>Default Destination Location</p>
+              <select
+                value={sourcelocation}
+                onChange={(e) => setSourceLocation(e.target.value)}
+              >
+                <option></option>
+                {location.map((item, index) => {
+                  return (
+                    <>
+                      <option key={index} value={item.LOCATION_NAME}>
+                        {item.LOCATION_NAME}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
+            </div>
+          </div>
 
         <ToastContainer />
       </div>

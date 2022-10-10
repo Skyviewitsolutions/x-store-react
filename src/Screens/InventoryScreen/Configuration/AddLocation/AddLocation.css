@@ -172,6 +172,13 @@
   outline: none;
   border-bottom: 1px solid #cccc;
 }
-
+.Addlocationcontent input{
+  border: none;
+  border-bottom: 1px solid #cccc;
+  outline: none;
+  margin-left: 15px;
+  width: 500px !important;
+  color: #666666;
+}
 
 

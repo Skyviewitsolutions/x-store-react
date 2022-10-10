@@ -90,9 +90,8 @@ margin-top: 15px;
     font-weight: 600;
     margin-bottom: 0px;
 }
-.Adddropdown input{
+.Adddropdown select{
     border: none;
-    margin-left: 40px;
     border-bottom: 3px solid #6a666a;
     width: 450px;
     outline: none;

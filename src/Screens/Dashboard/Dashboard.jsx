@@ -1,28 +1,86 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Dashboard.css";
-import {FaAngleLeft} from 'react-icons/fa'
+import { FaAngleLeft } from "react-icons/fa";
 
-import { BsCalendarWeekFill, BsChatText } from 'react-icons/bs';
-import{RiContactsBookLine,RiUserSearchLine,RiMoneyEuroBoxLine, RiDiscussLine} from 'react-icons/ri'
-import { GoCalendar } from 'react-icons/go';
-import {FaBoxOpen,FaFileInvoiceDollar,FaUserClock,FaUserCog} from 'react-icons/fa';
-import {GiNotebook,GiArchiveResearch,GiTakeMyMoney} from 'react-icons/gi';
+import { BsCalendarWeekFill, BsChatText } from "react-icons/bs";
+import {
+  RiContactsBookLine,
+  RiUserSearchLine,
+  RiMoneyEuroBoxLine,
+  RiDiscussLine,
+} from "react-icons/ri";
+import { GoCalendar } from "react-icons/go";
+import {
+  FaBoxOpen,
+  FaFileInvoiceDollar,
+  FaUserClock,
+  FaUserCog,
+} from "react-icons/fa";
+import { GiNotebook, GiArchiveResearch, GiTakeMyMoney } from "react-icons/gi";
 
-import { HiOutlineUserGroup } from 'react-icons/hi';
-import { MdOutlineLocalActivity,MdOutlineLocalAtm ,MdOutlinePayment,MdOutlineAccountBalanceWallet,MdOutlineSwitchAccount, MdOutlineInventory2} from 'react-icons/md';
+import { HiOutlineUserGroup } from "react-icons/hi";
+import {
+  MdOutlineLocalActivity,
+  MdOutlineLocalAtm,
+  MdOutlinePayment,
+  MdOutlineAccountBalanceWallet,
+  MdOutlineSwitchAccount,
+  MdOutlineInventory2,
+} from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { IoMdContact } from "react-icons/io";
+import Discuss from "../../assets/Images/icons/discuss.png";
+import Calender from "../../assets/Images/icons/calender.png";
+import Contact from "../../assets/Images/icons/contact.png";
+import User from "../../assets/Images/icons/user audit.png";
+import Doc from "../../assets/Images/icons/doc manager.png";
+import Asset from "../../assets/Images/icons/asset tracking.png";
+import Cost from "../../assets/Images/icons/cost center.png";
+import Coc from "../../assets/Images/icons/coc.png";
+import purchaseCon from "../../assets/Images/icons/purchase contract.png";
+import purchase from "../../assets/Images/icons/purchase.png";
+import inventory from "../../assets/Images/icons/inventoey.png";
+import accounting from "../../assets/Images/icons/accounting.png";
+import payroll from "../../assets/Images/icons/payroll.png";
+import employee from "../../assets/Images/icons/employee.png";
+import attendance from '../../assets/Images/icons/attendance.png';
+import timeOff from "../../assets/Images/icons/time off.png";
+import expenses from "../../assets/Images/icons/expenses.png";
+import loan from "../../assets/Images/icons/loan.png"
 
 const Card = (props) => {
-  const {onClick} = props;
-  
+  const { onClick } = props;
+
   return (
     <div className="col-sm-1 cardd" onClick={onClick}>
-      <div >
-        <div className="Dash" style={{ background:props.bgColor,justifyContent:"center",paddingTop:"20px",textAlign:"center"}}>  {props.img}</div>
-        <h6 className="odtxt" style={{ fontSize: "14px",textAlign:"center", width:"100%",marginTop:"8px",color:"white"}}>{props.text}</h6></div>
-      
+      <div>
+        <div
+          className="Dash"
+          style={{
+            display:"flex",
+            background: props.bgColor,
+            justifyContent: "center",
+            textAlign: "center",
+            alignItems:"center",
+          }}
+        >
+          {" "}
+          <img src={props.img} alt="" width="70%" height="70%"/>
+        </div>
+        <h6
+          className="odtxt"
+          style={{
+            fontSize: "14px",
+            textAlign: "center",
+            width: "100%",
+            marginTop: "8px",
+            color: "white",
+          }}
+        >
+          {props.text}
+        </h6>
+      </div>
     </div>
   );
 };
@@ -30,40 +88,132 @@ const Card = (props) => {
 const Dashboard = () => {
   const navigate = useNavigate();
   const RedirectToInventory = () => {
-   navigate('/Inventory');
-  }
+    navigate("/Inventory");
+  };
 
   return (
     <>
       <div className="container-fluid main">
         <div className="containers">
-        <div className="dashCont">
-          <Card img={<RiDiscussLine size={40} color="white"/>} text="Discuss" className="dash" bgColor="#cc6886"/>
-            <Card img={<BsCalendarWeekFill size={40} color="white"/>} text="Calender" className="dash" bgColor="#c2b871"/>
-            <Card img={<IoMdContact size={40} color="white"/>} text="Contact" className="dash" bgColor="#259093"/>
-            <Card img={<RiUserSearchLine size={40} color="white"/>} text="User Audit" className="dash" bgColor="#6f9fa6"/>
-            <Card img={<GiNotebook size={40} color="white"/>} text="Doc Manager" className="dash" bgColor="#9a8156"/>
-            <Card img={<GiArchiveResearch size={40} color="white"/>} text="Asset Tracking" className="dash" bgColor="#68ae82"/>
+          <div className="dashCont">
+            <Card
+              img={Discuss}
+              text="Discuss"
+              className="dash"
+              bgColor="#cc6886"
+            />
+            <Card
+              img={Calender}
+              text="Calender"
+              className="dash"
+              bgColor="#c2b871"
+            />
+            <Card
+              img={Contact}
+              text="Contact"
+              className="dash"
+              bgColor="#259093"
+            />
+            <Card
+              img={User}
+              text="User Audit"
+              className="dash"
+              bgColor="#6f9fa6"
+            />
+            <Card
+              img={Doc}
+              text="Doc Manager"
+              className="dash"
+              bgColor="#9a8156"
+            />
+            <Card
+              img={Asset}
+              text="Asset Tracking"
+              className="dash"
+              bgColor="#68ae82"
+            />
 
-          <Card img={<MdOutlineInventory2 size={40} color="white"/>} text="Cost Center" className="dash" bgColor="#bd6882"/>
-            <Card img={<MdOutlineLocalActivity size={40} color="white"/>} text="COC" className="dash" bgColor="#484d93"/>
-            <Card img={<MdOutlineLocalAtm size={40} color="white"/>} text="Purchase Contract" className="dash" bgColor="#b43d7a"/>
-            <Card img={<MdOutlinePayment size={40} color="white"/>} text="Purchase" className="dash" bgColor="#7faac1"/>
-            <Card img={<FaBoxOpen size={40} color="white"/>} text="Inventory" className="dash" bgColor="#a35656" onClick={RedirectToInventory}/>
-            <Card img={<MdOutlineAccountBalanceWallet size={40} color="white"/>} text="Accounting" className="dash" bgColor="#d78d61" onClick={()=>navigate('/ChartAccount')}/>
+            <Card
+              img={Cost}
+              text="Cost Center"
+              className="dash"
+              bgColor="#bd6882"
+            />
+            <Card
+              img={Coc}
+              text="COC"
+              className="dash"
+              bgColor="#484d93"
+            />
+            <Card
+              img={purchaseCon}
+              text="Purchase Contract"
+              className="dash"
+              bgColor="#b43d7a"
+            />
+            <Card
+              img={purchase}
+              text="Purchase"
+              className="dash"
+              bgColor="#7faac1"
+            />
+            <Card
+              img={inventory}
+              text="Inventory"
+              className="dash"
+              bgColor="#a35656"
+              onClick={RedirectToInventory}
+            />
+            <Card
+              img={accounting}
+              text="Accounting"
+              className="dash"
+              bgColor="#d78d61"
+              onClick={() => navigate("/ChartAccount")}
+            />
 
-            <Card img={<MdOutlineSwitchAccount size={40} color="white"/>} text="Payroll" className="dash" bgColor="#cc6786"/>
-            <Card img={<HiOutlineUserGroup size={40} color="white"/>} text="Employee" className="dash" bgColor="#248e91"/>
-            <Card img={<FaUserClock size={40} color="white"/>} text="Attendance" className="dash" bgColor="#82acc2"/>
-            <Card img={<FaUserCog size={40} color="white"/>} text="Time Off" className="dash" bgColor="#c2b870"/>
-            <Card img={<RiMoneyEuroBoxLine size={40} color="white"/>} text="Expenses" className="dash" bgColor="#737573"/>
-            <Card img={<GiTakeMyMoney size={40} color="white"/>} text="Loan" className="dash" bgColor="#bcb377"/> 
-            
-          
-            </div>
+            <Card
+              img={payroll}
+              text="Payroll"
+              className="dash"
+              bgColor="#cc6786"
+            />
+            <Card
+              img={employee}
+              text="Employee"
+              className="dash"
+              bgColor="#248e91"
+            />
+            <Card
+              img={attendance}
+              text="Attendance"
+              className="dash"
+              bgColor="#82acc2"
+            />
+            <Card
+              img={timeOff}
+              text="Time Off"
+              className="dash"
+              bgColor="#c2b870"
+            />
+            <Card
+              img={expenses}
+              text="Expenses"
+              className="dash"
+              bgColor="#737573"
+            />
+            <Card
+              img={loan}
+              text="Loan"
+              className="dash"
+              bgColor="#bcb377"
+            />
+          </div>
         </div>
-        <div className="arrowicon"> <FaAngleLeft size={40} onClick={RedirectToInventory}/></div>
-       
+        <div className="arrowicon">
+          {" "}
+          <FaAngleLeft size={40} onClick={RedirectToInventory} />
+        </div>
       </div>
     </>
   );

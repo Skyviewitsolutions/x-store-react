@@ -17,7 +17,7 @@ const AddProduct = () => {
   const [productName, setProductName] = useState("");
   const [productType, setProductType] = useState("Consumable");
   const [productCategory, setProductCategory] = useState(
-    "Filters / PUTZMEISTER");
+    "");
   const [sold , setSold] = useState(false)
   const [purchased , setPurchased] = useState(false)
   const [expensed , setExpensed] = useState(false);

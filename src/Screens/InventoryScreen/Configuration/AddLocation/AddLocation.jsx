@@ -218,15 +218,6 @@ const AddLocation = () => {
                 </option>
                 <option value="BAWH">BAWH</option>
               </select>
-
-              <FaExternalLinkAlt
-                size="14px"
-                style={{
-                  color: "#79757d",
-                  marginLeft: "8px",
-                  marginTop: "10px",
-                }}
-              />
               <h4>Additional Information</h4>
               <div className="Addlocationcontent">
                 <p>Location Type</p>
@@ -263,25 +254,8 @@ const AddLocation = () => {
                 />
               </div>
               <div className="Addlocationcontent">
-                <p>User</p>
-                <select
-                  value={users}
-                  onChange={(e) => setUsers(e.target.value)}
-                >
-                  <option value=""></option>
-                  <option value="Abd Alla Mohamed Ahmed">
-                    Abd Alla Mohamed Ahmed
-                  </option>
-                  <option value="Abdul Basit Abdul Ghani">
-                    Abdul Basit Abdul Ghani
-                  </option>
-                  <option value="Abd Alla Mohamed Ahmed">
-                    Abd Alla Mohamed Ahmed
-                  </option>
-                  <option value="Abdul Rahman Hamad Alosailan">
-                    Abdul Rahman Hamad Alosailan
-                  </option>
-                </select>
+                <p>Barcode</p>
+               <input type="text"/>
               </div>
               <h4>Logistics</h4>
               <div className="Addlocationcontent">
@@ -298,14 +272,6 @@ const AddLocation = () => {
                     Last in Last out(LIFO)
                   </option>
                 </select>
-                <FaExternalLinkAlt
-                  size="14px"
-                  style={{
-                    color: "#79757d",
-                    marginLeft: "8px",
-                    marginTop: "10px",
-                  }}
-                />
               </div>
               <div className="notes">
                 <p>External note...</p>

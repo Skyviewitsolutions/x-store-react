@@ -136,6 +136,7 @@ const GeneralInformationEdit = (props) => {
               value={productCategory}
               onChange={(e) => setProductCategory(e.target.value)}
             >
+              <option value=""></option>
               {proCate.map((item,index)=>{
                 return(
                   <>
@@ -222,7 +223,7 @@ const GeneralInformationEdit = (props) => {
                 uoms.map((item,index) => {
                   return(
                     <>
-                     <option value="Barell" key={index}>{item.UNITCATEGORY}</option>
+                     <option value={item.UNITCATEGORY} key={index}>{item.UNITCATEGORY}</option>
                     </>
                   )
                   } )}

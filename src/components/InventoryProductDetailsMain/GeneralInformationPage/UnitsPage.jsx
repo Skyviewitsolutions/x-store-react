@@ -171,6 +171,10 @@ const UnitPage = () => {
             <p>Rounding Precisio</p>
             <input type="text" placeholder="0.00010" value={rounding} onChange={(e) => setRounding(e.target.value)}/>
           </div>
+          <div className="unitcheckbox">
+            <p>Active</p>
+            <input type="checkbox" />
+          </div>
           
         </div>
       </div>

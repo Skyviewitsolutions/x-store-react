@@ -87,6 +87,8 @@ import AnalyticAccountType from "./Screens/AccountScreen/AnalyticAccountType/Ana
 import AddAnalyticAccountType from "./Screens/AccountScreen/AddAnalyticAccountType/AddAnalyticAccountType";
 import Vendors from "./components/VendorsScreen/VendorsCard/Vendors";
 import AddVendors from "./components/VendorsScreen/AddVendors/AddVendors";
+import ProductBrand from "./Screens/InventoryScreen/ProductBrand/ProductBrand";
+import SalesTerms from "./SalesScreen/SalesTerms/SalesTerms";
 
 const App = () => {
  
@@ -130,6 +132,7 @@ const App = () => {
        <Route path='/AddAttribute' element={<AddAtrribute/>} />
        <Route path="/AddOperationTypes" element={<AddOperationTypes/>} />
        <Route path='/AddPutwayRules' element={<AddPutwayRules/>} />
+       <Route path='/ProductBrand' element={<ProductBrand/>} />
 
        {/* --------Accounting Pages------------- */}
 
@@ -180,9 +183,11 @@ const App = () => {
       {/* -------------------------Vendors---------------------------------- */}
       <Route path="/Vendors" element={<Vendors/>} />
       <Route path="/AddVendors" element={<AddVendors/>} />
+
+     {/* ------------------------------------SalesScreen------------------------ */}
+       <Route path="/SalesTerms" element={<SalesTerms/>} />
       </Routes>
     </Router>
-    
   </>)
 }
 

@@ -1,17 +1,16 @@
-import React from "react";
+import React from 'react'
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaSearchMinus } from "react-icons/fa";
-import "./Navbar.css";
+import "./SalesNavbar.css";
 import { useNavigate } from "react-router-dom";
+const SalesNavbar = (props) => {
 
-const Navebar = (props) => {
-  const { showBelowMenu, handleCreatePage,save , title} = props;
-  const navigate = useNavigate();
-
+    const { showBelowMenu, handleCreatePage,title,save } = props;
+    const navigate = useNavigate();
   return (
     <>
-      <div className="container-fluid navCont">
+          <div className="container-fluid navCont">
         <Navbar className="Navbar" expand="lg" style={{ color: "white" }}>
           <Navbar.Brand href="/Dashboard">
             <span style={{ color: "white", marginLeft: "15px" }}>
@@ -21,7 +20,7 @@ const Navebar = (props) => {
             <span
               style={{ marginLeft: "25px", color: "white", fontWeight: "bold" }}
             >
-              Inventory
+             Sales
             </span>
           </Navbar.Brand>
           <Navbar.Toggle
@@ -35,12 +34,12 @@ const Navebar = (props) => {
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
               <Nav.Link href="#home" className="navetext">
-                Overview
+                Order
               </Nav.Link>
               <Nav.Link href="/Inventory" className="navetext">
-                Operations
+                Invoice
               </Nav.Link>
-              <NavDropdown title="Master Data" id="collasible-nav-dropdown">
+              <NavDropdown title="Products" id="collasible-nav-dropdown">
                 <NavDropdown.Item onClick={()=> navigate('/InventoryProducts')}>
                   Product
                 </NavDropdown.Item>
@@ -55,35 +54,22 @@ const Navebar = (props) => {
                 </NavDropdown.Item> */}
               </NavDropdown>
               <Nav.Link href="#link" className="navetext">
-                Warehouses Reports
-              </Nav.Link>
-              <Nav.Link href="#link" className="navetext">
                 Reporting
               </Nav.Link>
               <NavDropdown title="Settings" id="collasible-nav-dropdown">
+                <NavDropdown.Item onClick={()=> navigate('/SalesTerms')}>Sales Teams</NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                  Warehouse Management
+                  Sales Orders
                 </NavDropdown.Item>
-
-                <NavDropdown.Item onClick={()=> navigate('/Warehouse')}>Warehouse</NavDropdown.Item>
-                <NavDropdown.Item  onClick={ () => navigate('/Location')}>Location</NavDropdown.Item>
-                {/* <NavDropdown.Item href="#action/3.4">Rules</NavDropdown.Item> */}
-                {/* <NavDropdown.Item  onClick = {()=> navigate('/ConfigRoutes')}>Routes</NavDropdown.Item> */}
-                <NavDropdown.Item  onClick={()=> navigate('/OperationType')}>
-                  Operation Types
+                <NavDropdown.Item>
+                  Shipping Methods
                 </NavDropdown.Item>
-                {/* <NavDropdown.Item href="#action/3.4">
-                  Putaway Rules
-                </NavDropdown.Item> */}
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Product
                 </NavDropdown.Item>
-                <NavDropdown.Item  onClick = {() => navigate('/ProductCategories')}>
-                  Product Categories
-                </NavDropdown.Item>
-                {/* <NavDropdown.Item  onClick={() => navigate('/Attributes')}>
+                <NavDropdown.Item  onClick={() => navigate('/Attributes')}>
                   Attributes
-                </NavDropdown.Item> */}
+                </NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Units of Measures{" "}
                 </NavDropdown.Item>
@@ -122,7 +108,7 @@ const Navebar = (props) => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Navebar;
+export default SalesNavbar
