@@ -1,7 +1,10 @@
 import React from 'react'
-import CustomTable from '../../components/CustomTable/CustomTable'
-import Navebar from '../../components/Navbar/Navbar'
-import SalesNavbar from '../SalesNavbar/SalesNavbar'
+import CustomTable from '../../../components/CustomTable/CustomTable'
+
+//import Navebar from '../../../components/Navbar/Navbar'
+ import SalesNavbar from '../SalesNavbar/SalesNavbar'
+
+
 
 const SalesTerms = () => {
 
@@ -36,9 +39,10 @@ const SalesTerms = () => {
         <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
       <SalesNavbar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Sales Teams"/>
       <CustomTable column={column} data={data} />
+      
     </div>
     </div>
   )
 }
 
-export default SalesTerms
+export default SalesTerms;

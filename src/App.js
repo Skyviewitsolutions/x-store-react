@@ -88,7 +88,12 @@ import AddAnalyticAccountType from "./Screens/AccountScreen/AddAnalyticAccountTy
 import Vendors from "./components/VendorsScreen/VendorsCard/Vendors";
 import AddVendors from "./components/VendorsScreen/AddVendors/AddVendors";
 import ProductBrand from "./Screens/InventoryScreen/ProductBrand/ProductBrand";
-import SalesTerms from "./SalesScreen/SalesTerms/SalesTerms";
+import SalesTerms from "./Screens/SalesScreen/SalesTerms/SalesTerms";
+import ShippingMethods from "./Screens/SalesScreen/ShippingMethods/ShippingMethods";
+import SalesAttribute from "./Screens/SalesScreen/SalesAttribute/SalesAttribute";
+import SalesUOM from "./Screens/SalesScreen/SalesUOM/SalesUOM";
+import SalesUOMCategory from "./Screens/SalesScreen/SalesUOMCategory/SalesUOMCategory";
+// import SalesTerms from "./SalesScreen/SalesTerms/SalesTerms";
 
 const App = () => {
  
@@ -185,7 +190,11 @@ const App = () => {
       <Route path="/AddVendors" element={<AddVendors/>} />
 
      {/* ------------------------------------SalesScreen------------------------ */}
-       <Route path="/SalesTerms" element={<SalesTerms/>} />
+       <Route path="/sales_teams" element={<SalesTerms/>} />
+       <Route path="/shipping_methods" element={<ShippingMethods/>}/>
+       <Route path="/sales_attribute" element={<SalesAttribute/>}/>
+       <Route path="/sales_units_of_measure" element={<SalesUOM/>}/>
+       <Route path="/sales_units_of_measure_category" element={<SalesUOMCategory/>}/>
       </Routes>
     </Router>
   </>)

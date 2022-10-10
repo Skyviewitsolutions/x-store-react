@@ -3,33 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Dashboard.css";
 import { FaAngleLeft } from "react-icons/fa";
 
-import { BsCalendarWeekFill, BsChatText } from "react-icons/bs";
-import {
-  RiContactsBookLine,
-  RiUserSearchLine,
-  RiMoneyEuroBoxLine,
-  RiDiscussLine,
-} from "react-icons/ri";
-import { GoCalendar } from "react-icons/go";
-import {
-  FaBoxOpen,
-  FaFileInvoiceDollar,
-  FaUserClock,
-  FaUserCog,
-} from "react-icons/fa";
-import { GiNotebook, GiArchiveResearch, GiTakeMyMoney } from "react-icons/gi";
 
-import { HiOutlineUserGroup } from "react-icons/hi";
-import {
-  MdOutlineLocalActivity,
-  MdOutlineLocalAtm,
-  MdOutlinePayment,
-  MdOutlineAccountBalanceWallet,
-  MdOutlineSwitchAccount,
-  MdOutlineInventory2,
-} from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { IoMdContact } from "react-icons/io";
+
 import Discuss from "../../assets/Images/icons/discuss.png";
 import Calender from "../../assets/Images/icons/calender.png";
 import Contact from "../../assets/Images/icons/contact.png";
@@ -141,9 +117,10 @@ const Dashboard = () => {
             />
             <Card
               img={Coc}
-              text="COC"
+              text="Sales"
               className="dash"
               bgColor="#484d93"
+              onClick={() => navigate('/sales_teams')}
             />
             <Card
               img={purchaseCon}

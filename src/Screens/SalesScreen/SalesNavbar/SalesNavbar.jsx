@@ -6,11 +6,11 @@ import "./SalesNavbar.css";
 import { useNavigate } from "react-router-dom";
 const SalesNavbar = (props) => {
 
-    const { showBelowMenu, handleCreatePage,title,save } = props;
-    const navigate = useNavigate();
+  const { showBelowMenu, handleCreatePage, title, save } = props;
+  const navigate = useNavigate();
   return (
     <>
-          <div className="container-fluid navCont">
+      <div className="container-fluid navCont">
         <Navbar className="Navbar" expand="lg" style={{ color: "white" }}>
           <Navbar.Brand href="/Dashboard">
             <span style={{ color: "white", marginLeft: "15px" }}>
@@ -20,7 +20,7 @@ const SalesNavbar = (props) => {
             <span
               style={{ marginLeft: "25px", color: "white", fontWeight: "bold" }}
             >
-             Sales
+              Sales
             </span>
           </Navbar.Brand>
           <Navbar.Toggle
@@ -34,13 +34,15 @@ const SalesNavbar = (props) => {
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
               <Nav.Link href="#home" className="navetext">
-                Order
+                Orders
               </Nav.Link>
-              <Nav.Link href="/Inventory" className="navetext">
-                Invoice
+              <Nav.Link href="#" className="navetext">
+                To Invoice
               </Nav.Link>
               <NavDropdown title="Products" id="collasible-nav-dropdown">
-                <NavDropdown.Item onClick={()=> navigate('/InventoryProducts')}>
+                <NavDropdown.Item 
+                // onClick={() => navigate('/InventoryProducts')}
+                >
                   Product
                 </NavDropdown.Item>
                 {/* <NavDropdown.Item  onClick={()=> navigate( "/InventoryVarient")}>
@@ -56,28 +58,28 @@ const SalesNavbar = (props) => {
               <Nav.Link href="#link" className="navetext">
                 Reporting
               </Nav.Link>
-              <NavDropdown title="Settings" id="collasible-nav-dropdown">
-                <NavDropdown.Item onClick={()=> navigate('/SalesTerms')}>Sales Teams</NavDropdown.Item>
+              <NavDropdown title="Configuration" id="collasible-nav-dropdown">
+                <NavDropdown.Item onClick={() => navigate('/sales_teams')}>Sales Teams</NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Sales Orders
                 </NavDropdown.Item>
-                <NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate('/shipping_methods')}>
                   Shipping Methods
                 </NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Product
                 </NavDropdown.Item>
-                <NavDropdown.Item  onClick={() => navigate('/Attributes')}>
+                <NavDropdown.Item onClick={() => navigate('/sales_attribute')}>
                   Attributes
                 </NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Units of Measures{" "}
                 </NavDropdown.Item>
-                <NavDropdown.Item  onClick = {() => navigate('/UomCategories')}>
+                <NavDropdown.Item onClick={() => navigate('/sales_units_of_measure_category')}>
                   UOM Categories
                 </NavDropdown.Item>
-                <NavDropdown.Item  onClick={()=> navigate('/UOM')}>UOM</NavDropdown.Item>
-                <NavDropdown.Item  onClick={()=> navigate('/ProductBrand')}>ProductBrand</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate('/sales_units_of_measure')}>UOM</NavDropdown.Item>
+                {/* <NavDropdown.Item onClick={() => navigate('/ProductBrand')}>ProductBrand</NavDropdown.Item> */}
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -88,7 +90,7 @@ const SalesNavbar = (props) => {
           <div className="row head">
             <div className="col-sm-6" style={{ width: "50%" }}>
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
-              {title ? title : "Inventory"}
+                {title ? title : "Sales"}
               </h5>
               <button className="createbtn" onClick={handleCreatePage}>
                 Create
