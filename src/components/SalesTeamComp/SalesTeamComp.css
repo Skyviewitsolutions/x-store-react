@@ -1,0 +1,33 @@
+.graphcon{
+    width: 450px;
+    border: 1px solid #cccc;
+    padding: 10px 15px;
+    margin: 15px;
+}
+.sales p{
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+}
+.buttext{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.butt button{
+    background-color:#0077b0;
+    border:none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    /* margin: auto; */
+    padding: 5px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-left: 10px;
+}
+.qua p{
+    color: #0077b0;
+    margin-bottom: 0px;
+    font-size: 15px;
+}

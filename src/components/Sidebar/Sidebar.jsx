@@ -12,7 +12,7 @@ import axios from "axios";
 const Sidebar = (props) => {
 
   const [productCate, setProductCate] = useState([]);
-  const productCateUrl = endpoints.productCategory.allProductCate;
+  const productCateUrl = "https://xstore.skyviewads.com/ProductManagement/ProductCategory/GetAllProductCat"
 
   const {productCategory , setProductCategory} = props;
 

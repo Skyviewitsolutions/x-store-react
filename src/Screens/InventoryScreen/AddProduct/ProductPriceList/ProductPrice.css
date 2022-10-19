@@ -1,0 +1,43 @@
+.ProductPriceListCon{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    padding-top: 30px;
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px; 
+}
+.ProductPriceContent{
+    width: 100%;
+    display: flex;
+}
+.ProPriFirstContent{
+ width: 50%;
+}
+.ProPrice{
+    display: flex;
+    align-items: center;
+}
+.ProPrice p{
+    width: 150px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.ProPrice select{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 450px; 
+}
+.ProPrice input{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #666666;
+    width: 450px; 
+}
+.ProPriSecondContent{
+    width: 50%;
+}

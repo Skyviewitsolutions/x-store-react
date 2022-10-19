@@ -1,0 +1,67 @@
+.descon{
+    width: 100%;
+    padding: 10px 15px;
+}
+.destext p{
+    font-size: 15px;
+    color: #666666;
+    font-weight: 400;
+}
+.desselect{
+    display: flex;
+    align-items: center;
+    position:relative;
+    width: 50%;
+    margin-top: 5px;
+   
+}
+.desselect p{
+    width: 150px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #666666;
+    margin-bottom: 0px;
+}
+.desselect input{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.mutiselectbox{
+    width: 400px;
+    border: 1px solid black;
+    position: absolute;
+    right: 0px;
+    bottom: -10px;
+}
+.Zipbox{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+.zipbox1{
+    width: 50%;
+}
+.Zipfrom{
+    display: flex;
+    align-items: center;
+}
+.Zipfrom p{
+    width: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #666666;
+    margin-bottom: 0px;
+}
+.Zipfrom input{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.zipbox2{
+    width: 50%;
+}

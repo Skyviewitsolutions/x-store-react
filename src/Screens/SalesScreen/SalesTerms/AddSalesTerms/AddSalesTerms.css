@@ -1,0 +1,91 @@
+.SalesTeamMainCon{
+    width: 80%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    padding-top: 30px;
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px;
+}
+.SalesTeamCon{
+  padding: 0px 32px;  
+}
+.salesTeamName{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.salesTeamName p{
+    font-size: 20px;
+    color: #6f6f6f;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.salesTeamName input{
+    width: 600px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    color: #000;
+    font-size: 25px;
+}
+.SalesTeamQuo{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.SalesTeamQuo input{
+    width: 16px;
+    height: 21px;
+}
+.SalesTeamQuo p{
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    width: 150px;
+    margin-left: 10px;
+}
+.salesteam{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.salesteam p{
+    color: #6f6f6f;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    width: 150px;
+}
+.salesteam select{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.salesteam input{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;  
+}
+.SalesTermMultiselect{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 0px;
+}
+.SalesTermMultiselect p{
+    color: #6f6f6f;
+    width: 150px;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.SalesTerMultiselect{
+    border: none;
+    border-bottom: 1px solid #666666;
+    outline: none;
+    width:400px;
+    color: #666666;
+}

@@ -111,7 +111,9 @@ const AddVendors = () => {
                 <label htmlFor="work">Work Address</label>
                 <input type="checkbox" id='work'/>
               </div>
-              <div className="vendorstextinput">
+            </div>
+            <div className="Vendorsbox2">
+            <div className="vendorstextinput">
                 <p>Supplier type</p>
                 <select>
                   <option></option>
@@ -119,8 +121,6 @@ const AddVendors = () => {
                   <option>Vendor</option>
                 </select>
               </div>
-            </div>
-            <div className="Vendorsbox2">
               <div className="vendorstextinput">
                 <p>Phone</p>
                 <input type="text" />
@@ -137,7 +137,7 @@ const AddVendors = () => {
                 <p>Website Link</p>
                 <input type="text" />
               </div>
-              <div className="vendorstextinput">
+              {/* <div className="vendorstextinput">
                 <p>Language</p>
                 <select>
                   <option></option>
@@ -151,7 +151,7 @@ const AddVendors = () => {
                   <option></option>
                   <option>Ministry Of Transportaion</option>
                 </select>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="Adddetails">

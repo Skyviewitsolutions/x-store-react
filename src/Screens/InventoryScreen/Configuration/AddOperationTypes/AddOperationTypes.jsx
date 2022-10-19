@@ -19,6 +19,7 @@ const AddOperationTypes = () => {
   const [code, setCode] = useState("");
   const [detailsoperation, setDetailsoperation] = useState("");
   const [sourcelocation, setSourceLocation] = useState("");
+  const [destination , setDestination] = useState("");
   const [operationWarehouse, setOperationwarehouse] = useState("");
 
   const [update, setUpdate] = useState();
@@ -30,6 +31,7 @@ const AddOperationTypes = () => {
   formData.append("Show_Detailed_Operations", detailsoperation);
   formData.append("Warehouse", operationWarehouse);
   formData.append("Default_Source_Location", sourcelocation);
+  formData.append("Default_Destination", destination);
 
   const save = () => {
     if (operationType === "") {
@@ -44,7 +46,9 @@ const AddOperationTypes = () => {
       toast("Warehouse is required !", { type: "warning" });
     } else if (sourcelocation === "") {
       toast("Source Location is Required!", { type: "warning" });
-    } else {
+    } else if(destination === ""){
+      toast("Destination Location is Required!", { type: "warning" });
+    }else {
       axios
         .post(AddOperationTypeURL, formData)
         .then((res) => {
@@ -95,12 +99,14 @@ const AddOperationTypes = () => {
   useEffect(() => {
     if (selectedData) {
       setUpdate(true);
-      setOperationType(selectedData.OPERATION_TYPE);
-      setTypeOfOperation(selectedData.TYPE_OF_OPERATION);
-      setCode(selectedData.CODE);
-      setDetailsoperation(selectedData.SHOW_DETAILED_OPERATIONS);
+      setOperationType(selectedData.OPERATION_NAME);
+      setTypeOfOperation(selectedData.OPERATION_TYPE);
+      setCode(selectedData.OPERATION_CODE);
+      setDetailsoperation(selectedData.SHOW_DETAILED);
       setSourceLocation(selectedData.DEFAULT_SOURCE_LOCATION);
-      setOperationwarehouse(selectedData.WAREHOUSE);
+      setDestination(selectedData.DEFAULT_DESTINATION);
+      setOperationwarehouse(selectedData.WAREHOUSE_INFO);
+
     }
   }, [selectedData]);
 
@@ -121,13 +127,15 @@ const AddOperationTypes = () => {
       toast("Source Location is Required!", { type: "warning" });
     } else {
       const formData = new FormData();
-      formData.append("Id", selectedData.ID);
+      formData.append("Id", selectedData.OPERATION_ID);
       formData.append("Operation_Type", operationType);
       formData.append("Type_Of_Operation", typeofoperation);
       formData.append("Code", code);
       formData.append("Show_Detailed_Operations", detailsoperation);
       formData.append("Warehouse", operationWarehouse);
       formData.append("Default_Source_Location", sourcelocation);
+      formData.append("Default_Destination", destination);
+      
       axios
         .post(operationUpdateUrl, formData)
         .then((res) => {
@@ -155,7 +163,7 @@ const AddOperationTypes = () => {
         <div className="Addoperationcontent">
           <div className="operationcon1">
             <div className="operation">
-              <p>Operation Type</p>
+              <p>Operation Name</p>
               <input
                 type="text"
                 value={operationType}
@@ -192,14 +200,12 @@ const AddOperationTypes = () => {
               <p>Barcode</p>
               <input
                 type="text"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
               />
             </div>
           </div>
           <div className="type">
             <div className="operation">
-              <p>Type of Operation</p>
+              <p>Opeation Type</p>
               <select
                 value={typeofoperation}
                 onChange={(e) => setTypeOfOperation(e.target.value)}
@@ -244,8 +250,8 @@ const AddOperationTypes = () => {
           <div className="operation">
               <p>Default Destination Location</p>
               <select
-                value={sourcelocation}
-                onChange={(e) => setSourceLocation(e.target.value)}
+                value={destination}
+                onChange={(e) => setDestination(e.target.value)}
               >
                 <option></option>
                 {location.map((item, index) => {

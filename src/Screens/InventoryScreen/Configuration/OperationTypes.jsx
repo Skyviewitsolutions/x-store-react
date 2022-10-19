@@ -66,7 +66,7 @@ const OperationTypes = (props) => {
 
   const handleUpdate = (data) => {
      const val = opertaionType.filter((itm,index) => {
-      return itm.ID == data
+      return itm.OPERATION_ID == data
      })
      console.log(val,"val");
 
@@ -77,10 +77,10 @@ const OperationTypes = (props) => {
   
   const column = [
     { label: "Operation Type", name: "OPERATION_TYPE" },
-    { label: "WareHouse", name: "WAREHOUSE" },
+    { label: "WareHouse", name: "WAREHOUSE_INFO" },
     {
       label: "Actions",
-      name: "ID",
+      name: "OPERATION_ID",
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
           return (

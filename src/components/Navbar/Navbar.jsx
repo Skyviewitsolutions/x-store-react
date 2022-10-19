@@ -6,7 +6,7 @@ import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
 const Navebar = (props) => {
-  const { showBelowMenu, handleCreatePage,save , title} = props;
+  const { showBelowMenu, handleCreatePage,save , title,disabledCreate,} = props;
   const navigate = useNavigate();
 
   return (
@@ -92,6 +92,7 @@ const Navebar = (props) => {
                 </NavDropdown.Item>
                 <NavDropdown.Item  onClick={()=> navigate('/UOM')}>UOM</NavDropdown.Item>
                 <NavDropdown.Item  onClick={()=> navigate('/ProductBrand')}>ProductBrand</NavDropdown.Item>
+                <NavDropdown.Item  onClick={()=> navigate('/ParentCategory')}>Parent Category</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -104,7 +105,7 @@ const Navebar = (props) => {
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
               {title ? title : "Inventory"}
               </h5>
-              <button className="createbtn" onClick={handleCreatePage}>
+              <button className="createbtn" onClick={handleCreatePage} disabled={disabledCreate}>
                 Create
               </button>
               <button className="createbtn" onClick={save}>Save</button>

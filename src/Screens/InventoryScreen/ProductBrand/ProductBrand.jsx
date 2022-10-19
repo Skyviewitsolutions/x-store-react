@@ -1,29 +1,72 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { toast,ToastContainer} from 'react-toastify';
 import Navebar from '../../../components/Navbar/Navbar';
+import { endpoints } from '../../../services/endpoints';
 import './ProductBrand.css';
+
 const ProductBrand = () => {
+
+  const addProductBrandUrl = endpoints.productBrand.addProductBrand;
+  const [brandCode , setBrandCode] = useState("");
+  const [brandNameEn , setBrandNameEn] = useState("");
+  const [brandNameAr , setBrandNameAr] = useState("");
+
+  const save = () => {
+    const formData = new FormData();
+    formData.append("Brand_Code" , brandCode);
+    formData.append("Brand_Name" , brandNameEn);
+    formData.append("Brand_Name_Arbic" , brandNameAr);
+    if(brandCode === "")
+    {
+      toast("Brand Code Is Required!",{type:"warning"});
+    }
+    else if(brandNameEn === "")
+    {
+      toast("Brand Name English is Required!",{type:"warning"})
+    }
+    else if(brandNameAr === "")
+    {
+      toast("Brand Name Arbic is Required!",{type:"warning"})
+    }
+    else{
+      axios.post(addProductBrandUrl,formData)
+      .then((res) => {
+        if(res.data.status === true)
+        {
+          toast("Product Brand Added Is Successfully",{type:"success"})
+        }
+        else if(res.data.status === false)
+        {
+          toast(res.data.message ,{type:"error"});
+        }
+      })
+    }
+  }
   return (
     <>
     <Navebar
     showBelowMenu={true}
     title="ProductBrand"
+    save={save}
   />
     <div className='productBrandCon'>
       <div className="productbrandtext">
         <div className="brand">
             <p>Brand Code</p>
-            <input type="text"/>
+            <input type="text" value={brandCode} onChange={(e) => setBrandCode(e.target.value)}/>
         </div>
         <div className="brand">
             <p>Brand Name(English)</p>
-            <input type="text"/>
+            <input type="text" value={brandNameEn} onChange={(e) => setBrandNameEn(e.target.value)}/>
         </div>
         <div className="brand">
             <p>Brand Name(Arabic)</p>
-            <input type="text"/>
+            <input type="text" value={brandNameAr} onChange={(e) => setBrandNameAr(e.target.value)}/>
         </div>
       </div>
     </div>
+    <ToastContainer/>
     </>
   )
 }

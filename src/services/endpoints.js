@@ -11,7 +11,25 @@ export  const endpoints =  {
         expenseAccount : BASE_URL + "/AccountDepartment/ExpenseAccount/GetAllExp",
         priceDifference : BASE_URL + "/ProductManagement/ProductDifferentPrice/GetAllPDP",
         productUnitAll : BASE_URL + "/ProductsXM/ProductsUnitsAll",
+        productType : BASE_URL + "/ProductsXM/GetAllProductType",
     } ,
+    productBrand:{
+        allProductBrand : BASE_URL + "/ProductManagement/ProductBrand/GetAll",
+        addProductBrand : BASE_URL + "/ProductManagement/ProductBrand/Add",
+        updateProductBrand : BASE_URL + "/ProductManagement/ProductBrand/Update",
+        deleteProductBrand : BASE_URL + "/ProductManagement/ProductBrand/Delete",
+        singleProductBrand : BASE_URL + "/ProductManagement/ProductBrand/GetSingle"
+    },
+   parentCate:{
+      allParentCate : BASE_URL + "/ProductManagement/ParentProductCategory/GetAllProductCat",
+      addParentCate : BASE_URL + "/ProductManagement/ParentProductCategory/AddProduct_Category",
+    },
+    productPriceList:{
+      allPricelist: BASE_URL + "/SalesDepartment/PriceList/GetAll",
+      addPriceList: BASE_URL + "/SalesDepartment/PriceList/Add",
+      updatePriceList: BASE_URL + "/SalesDepartment/PriceList/Update",
+      deletePriceList: BASE_URL + "/SalesDepartment/PriceList/Delete"
+    },
     wareHouse : {
         addWarehouse : BASE_URL + "/WareHouse/WareHouseAddress/AddWareHouse",
         allWarehouse : BASE_URL + "/WareHouse/WareHouseAddress/GetAllWareHouse" ,
@@ -28,11 +46,8 @@ export  const endpoints =  {
         locationType : BASE_URL + "/WareHouse/LocationTypeXs/GetAllLoc"
     },
     productCategory:{
-       addProductCategory: BASE_URL + "/ProductsXM/AddProduct_Category",
-       allProductCate : BASE_URL + "/ProductsXM/DisplayAllProductCategory",
-       singleProductCate : BASE_URL + "/ProductsXM/GetSingleProductCat",
-       updateProductCate : BASE_URL + "/ProductsXM/product_Categoryupdate",
-       deleteProductCate : BASE_URL + "/ProductsXM/DeleteProduct_Category",
+       addProductCategory: BASE_URL + "/ProductManagement/ProductCategory/AddProduct_Category",
+       allProductCate : BASE_URL + "/ProductManagement/ProductCategory/GetAllProductCat",
     },
     UOM:{
        addUOM : BASE_URL + "/Units/AddUnitOfMeasurement",

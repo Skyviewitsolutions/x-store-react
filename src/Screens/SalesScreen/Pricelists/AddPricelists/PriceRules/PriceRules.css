@@ -1,0 +1,79 @@
+.priceRulesCon{
+    padding: 10px 25px;
+}
+.priceRulesCon h3{
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.PriceRulesdetail{
+    width: 100%;
+    display: flex;
+    margin-top: 15px;
+}
+.detail1{
+    width: 50%;
+}
+.apply{
+    display: flex;
+}
+.applytext p{
+    width: 150px;
+    font-size: 15px;
+    color: #6f6f6f;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.pricepro{
+    display: flex;
+    align-items: center;
+}
+.pricepro span{
+    font-size: 15px;
+    color: #6f6f6f;
+    margin-left: 10px;
+}
+.detail2{
+    width: 50%;
+}
+.textin{
+    display: flex;
+    align-items: center;
+}
+.textin p{
+    width: 150px;
+    font-size: 15px;
+    color: #6f6f6f;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.textin input{
+    width: 300px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    color: #000;
+}
+.priceComp{
+    width: 100%;
+    display: flex;
+   padding: 20px 10px;
+}
+.computePrice{
+    width: 50%;
+}
+.fixedPrice{
+    width: 50%;
+}
+.computePrice h3{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #6f6f6f;
+}
+.pricetext{
+    width: 100%;
+   padding: 10px 20px;
+}
+.pricetext p{
+    color: #cccc;
+    font-size: 15px;
+}

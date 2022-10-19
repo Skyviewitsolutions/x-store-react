@@ -21,6 +21,7 @@ const Warehouse = () => {
   const formData = new FormData();
 
   const getWarehouseList = () => {
+    
     axios
       .post(url, formData)
       .then((res) => {
@@ -63,7 +64,7 @@ const Warehouse = () => {
   const handleUpdate = (data) =>{
    
     const val = WareHousedetails.filter((itm,index) =>{
-      return itm.WARE_ID == data
+      return itm.WAREHOUSE_ID == data
     })
 
     const orgValue = val[0];
@@ -73,11 +74,11 @@ const Warehouse = () => {
 
   const column = [
     { label: "Warehouse", name: "WAREHOUSE_NAME" },
-    { label: "Location stock", name: "TRANSIT_LOCATION" },
+    { label: "Location stock", name: "LOCATIONS_STOCK" },
     { label: "Address", name: "WAREHOUSE_ADDRESS" },
     {
       label: "Actions",
-      name: "WARE_ID",
+      name: "WAREHOUSE_ID",
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
          

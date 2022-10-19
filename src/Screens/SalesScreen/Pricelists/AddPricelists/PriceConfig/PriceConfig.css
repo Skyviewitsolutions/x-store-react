@@ -1,0 +1,58 @@
+.priceConfigDetail{
+    width: 100%;
+    display: flex;
+    padding: 15px 20px;
+}
+.availbility{
+    width: 50%;
+}
+.availbility h3{
+    color: #6f6f6f;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+.contry{
+    display: flex;
+    align-items: center;
+}
+.contry p{
+    width: 150px;
+    font-size: 15px;
+    color: #6f6f6f;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.contry select{
+    width: 300px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+     
+}
+.discounts{
+    width: 50%;
+}
+.discounts h3{
+    color: #6f6f6f;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+.dispolicy{
+    display: flex;
+}
+.distext p{
+        width: 150px;
+        font-size: 15px;
+        color: #6f6f6f;
+        font-weight: 600;
+        margin-bottom: 5px;
+}
+.discount{
+    display: flex;
+    align-items: center;
+}
+.discount span{
+    font-size: 15px;
+    color: #6f6f6f;
+    margin-left: 10px; 
+}

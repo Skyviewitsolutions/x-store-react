@@ -3,12 +3,7 @@ import "./WarehouseConfig.css";
 
 const WarehouseConfig = (props) => {
   const {
-    incomingShips,
-    setIncomingships,
-    outgoingShips,
-    setOutgoingships,
-    setResupply,
-    resupply,
+  buy,setBuy,resupply,setResupply,menufactureResupply,setMenufactureResupply,manufacture,setManufacture
   } = props;
   return (
     <div className="WarehouseConfigContainer">
@@ -18,8 +13,8 @@ const WarehouseConfig = (props) => {
           <p>Buy to Resupply</p>
           <input
             type="checkbox"
-            checked={resupply}
-            onChange={() => setResupply(!resupply)}
+            checked={buy}
+            onChange={() => setBuy(!buy)}
           />
         </div>
         <div className="configcontent">
@@ -34,17 +29,17 @@ const WarehouseConfig = (props) => {
           <p>Manufacture to Resupply</p>
           <input
             type="checkbox"
-            checked={resupply}
-            onChange={() => setResupply(!resupply)}
+            checked={menufactureResupply}
+            onChange={() => setMenufactureResupply(!menufactureResupply)}
           />
         </div>
         <div className="manufacturure">
             <p>Manufacture</p>
-            <select>
-              <option></option>
-              <option>Manufacture (1 step)</option>
-              <option>Pick components and then manufacture (2 steps)</option>
-              <option>Pick components, manufacture and then store products (3 steps)</option>
+            <select value={manufacture} onChange={(e) => setManufacture(e.target.value)}>
+              <option value=""></option>
+              <option value="Manufacture (1 step)">Manufacture (1 step)</option>
+              <option value="Pick components and then manufacture (2 steps)">Pick components and then manufacture (2 steps)</option>
+              <option value="Pick components, manufacture and then store products (3 steps)">Pick components, manufacture and then store products (3 steps)Pick components, manufacture and then store products (3 steps)</option>
             </select>
             </div>
         </div>

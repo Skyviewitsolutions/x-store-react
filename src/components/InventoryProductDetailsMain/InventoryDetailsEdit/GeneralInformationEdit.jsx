@@ -3,22 +3,24 @@ import "./GeneralInformationEdit.css";
 import { FaArrowRight } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import axios from "axios";
+import { endpoints } from "../../../services/endpoints";
+import { toast, ToastContainer } from "react-toastify";
 
 const GeneralInformationEdit = (props) => {
-  
   const [proCate, setProCate] = useState([]);
-  const [uoms , setUoms] = useState([]);
-  const [purchase , setPurchase] = useState([]);
-  const [proTypes , setProductTypes] = useState([]);
+  const [uoms, setUoms] = useState([]);
+  const [purchase, setPurchase] = useState([]);
+  const [proTypes, setProductTypes] = useState([]);
+  const [proBrand , setProBrand] = useState([]);
 
-  const productCategoryurl =
-    "https://xstore.skyviewads.com/ProductsXM/DisplayAllProductCategory";
-   
-    const uomsurl = "https://xstore.skyviewads.com/Units/GetAllUOM";
+  const productCategoryurl = endpoints.productCategory.allProductCate;
+  const productBrandUrl = endpoints.productBrand.allProductBrand;
 
-    const unitsurl = "https://xstore.skyviewads.com/ProductsXM/ProductsUnitsAll";
-    const protypeurl = "https://xstore.skyviewads.com/ProductsXM/GetAllProductType";
-   
+  const uomsurl = endpoints.UOM.allUOM;
+
+  const unitsurl = endpoints.products.productUnitAll;
+  const protypeurl = endpoints.products.productType;
+
   useEffect(() => {
     axios
       .post(productCategoryurl)
@@ -36,55 +38,60 @@ const GeneralInformationEdit = (props) => {
   }, []);
 
   useEffect(() => {
-    axios.post(uomsurl)
-    .then((res) => {
-      
-      if(res.data.status == true)
-      {
-        setUoms(res.data.data);
-      }
-      else if(res.data.status ==  false)
-      {
-        alert(res.data.message)
-      }
-    })
-    .catch((err) =>{
-      console.log(err,"error");
-    })
-  },[])
+    axios
+      .post(uomsurl)
+      .then((res) => {
+        if (res.data.status == true) {
+          setUoms(res.data.data);
+        } else if (res.data.status == false) {
+          alert(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  }, []);
   useEffect(() => {
-  axios.get(unitsurl)
+    axios
+      .get(unitsurl)
+      .then((res) => {
+        console.log(res, "result");
+        if (res.data.status == true) {
+          setPurchase(res.data.data);
+        } else if (res.data.status == false) {
+          alert(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err, "this is error");
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .post(protypeurl)
+      .then((res) => {
+        console.log(res, "this is product");
+        if (res.data.status === true) {
+          setProductTypes(res.data.data);
+        } else if (res.data.status === false) {
+          toast(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  }, []);
+ 
+  useEffect(() => {
+  axios.post(productBrandUrl)
   .then((res) => {
-    console.log(res,'result');
-    if(res.data.status == true)
-    {
-      setPurchase(res.data.data);
+    if(res.data.status === true){
+      setProBrand(res.data.data);
     }
-    else if(res.data.status == false)
-    {
-      alert(res.data.message);
+    else if(res.data.status === false){
+      toast(res.data.message);
     }
   })
-  .catch((err) => {
-    console.log(err,'this is error')
-  })
-  },[])
-  useEffect(() => {
-    axios.post(protypeurl)
-    .then((res) => {
-      console.log(res,"this is product")
-      if(res.data.status == true)
-      {
-        setProductTypes(res.data.data);
-      }
-      else if(res.data.status == false)
-      {
-        alert(res.data.message)
-      }
-    })
-    .catch((err) => {
-      console.log(err,'error')
-    })
   },[])
   const {
     productType,
@@ -105,7 +112,7 @@ const GeneralInformationEdit = (props) => {
     setDescription,
   } = props;
 
-  console.log(productType ,"productType")
+  console.log(productType, "productType");
 
   return (
     <div>
@@ -117,38 +124,40 @@ const GeneralInformationEdit = (props) => {
               value={productType}
               onChange={(e) => setProductType(e.target.value)}
             >
-              {proTypes.map((item,index) => {
-                return(
+              {proTypes.map((item, index) => {
+                return (
                   <>
-                 <option value="Consumable" key={index}>{item.PRODUCT_TYPE}</option>
+                    <option value="Consumable" key={index}>
+                      {item.PRODUCT_TYPE}
+                    </option>
                   </>
-                )
+                );
               })}
-              
+
               <option value="Service">Service</option>
               <option value="Storable Product">Storable Product</option>
             </select>
           </div>
           <div className="Editfirstcontent">
-            
             <p> Product Category</p>
             <select
               value={productCategory}
               onChange={(e) => setProductCategory(e.target.value)}
             >
               <option value=""></option>
-              {proCate.map((item,index)=>{
-                return(
+              {proCate.map((item, index) => {
+                return (
                   <>
-                  <option key={index} value={item.CATEGORY_NAME}>{item.CATEGORY_NAME}</option>
+                    <option key={index} value={item.CATEGORY_NAME}>
+                      {item.CATEGORY_NAME}
+                    </option>
                   </>
-                )
+                );
               })}
-              
             </select>
           </div>
           <div className="Editfirstcontent2">
-            <p>Internal Reference</p>
+            <p>Product Code</p>
             <input
               type="text"
               value={interRef}
@@ -158,6 +167,19 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent2">
             <p>Barcode</p>
             <input type="text" />
+          </div>
+          <div className="Editfirstcontent">
+            <p> Product Brand</p>
+            <select>
+              <option></option>
+              {proBrand.map((item,index) => {
+                return(
+                  <>
+                  <option value={item.BRAND_NAME_ENGLISH}>{item.BRAND_NAME_ENGLISH}</option>
+                  </>
+                )
+              })}
+            </select>
           </div>
           <h5>Internal Notes</h5>
           <textarea
@@ -219,14 +241,15 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Unit of Measure</p>
             <select value={units} onChange={(e) => setUnits(e.target.value)}>
-              {
-                uoms.map((item,index) => {
-                  return(
-                    <>
-                     <option value={item.UNITCATEGORY} key={index}>{item.UNITCATEGORY}</option>
-                    </>
-                  )
-                  } )}
+              {uoms.map((item, index) => {
+                return (
+                  <>
+                    <option value={item.UNITCATEGORY} key={index}>
+                      {item.UNITCATEGORY}
+                    </option>
+                  </>
+                );
+              })}
             </select>
             {/* <FaExternalLinkAlt
               size="14px"
@@ -236,12 +259,14 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Purchase Unit of</p>
             <select>
-              {purchase.map((item,index) => {
-                return(
+              {purchase.map((item, index) => {
+                return (
                   <>
-                  <option value="Barell" key={index}>{item.UNIT_NAME}</option>
+                    <option value="Barell" key={index}>
+                      {item.UNIT_NAME}
+                    </option>
                   </>
-                )
+                );
               })}
             </select>
             {/* <FaExternalLinkAlt
@@ -254,6 +279,7 @@ const GeneralInformationEdit = (props) => {
           </p>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

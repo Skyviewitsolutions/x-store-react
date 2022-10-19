@@ -102,7 +102,7 @@ const Location = () => {
 
   return (
     <div>
-      <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Location"/>
+      <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Location" disabledCreate={false}/>
       <div className="container-fluid PROVAR">
         <div className="Main">
           {/* <div className="left">

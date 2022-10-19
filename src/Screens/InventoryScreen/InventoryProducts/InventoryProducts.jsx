@@ -15,6 +15,7 @@ const InventoryProducts = () => {
   const url = endpoints.products.allProduct;
   const [productCategory , setProductCategory] = useState("all");
 
+  console.log(url ,"urhere")
   const navigate = useNavigate();
  const [deleteRef, setDeleteRef] = useState(false);
 

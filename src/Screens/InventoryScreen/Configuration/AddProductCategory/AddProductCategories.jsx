@@ -16,21 +16,28 @@ const AddProductCategories = (props) => {
   const [showAccount, setShowAccount] = useState(false);
   const navigate = useNavigate();
 
-  const AddProductCateUrl = endpoints.productCategory.addProductCategory;
+  const addProductCateUrl = endpoints.productCategory.addProductCategory;
   const incomeUrl = endpoints.products.incomeAcoount;
   const pricediffUrl = endpoints.products.priceDifference;
   const expenseUrl = endpoints.products.expenseAccount;
+  const allParentCateurl = endpoints.parentCate.allParentCate;
+  const [getParentCate , setGetParentCate] = useState([]);
   const [pricedif, setPriceDef] = useState([]);
   const [income, setIncome] = useState([]);
-  const [removalStrategy, setRemovalStrategy] = useState("");
   const [expense, setExpense] = useState([]);
+  const [removalStrategy, setRemovalStrategy] = useState("");
   const [parentCate, setParentCate] = useState("");
   const [incomeAcc, setIncomeAcc] = useState("");
   const [expenseAcc, setExpenseAcc] = useState("");
+  const [pricedifAcc , setPriceDifAcc] = useState("");
   const [productCateCode, setProductCateCode] = useState("");
   const [costing, setCosting] = useState("");
   const [valuation, setValuation] = useState("");
   const [name, setName] = useState("");
+   const [stockIn , setStockIn] = useState("");
+    const [stockOut , setStockOut] = useState("");
+    const [stockVal , setStockVal] = useState("");
+    const [stockJournal , setStockJournal] = useState("");
 
   const [update, setUpdate] = useState(false);
 
@@ -54,7 +61,8 @@ const AddProductCategories = (props) => {
     });
   }, []);
   useEffect(() => {
-    axios.post(pricediffUrl).then((res) => {
+    axios.post(pricediffUrl)
+    .then((res) => {
       if (res.data.status === true) {
         setPriceDef(res.data.data);
       } else if (res.data.status === false) {
@@ -62,15 +70,30 @@ const AddProductCategories = (props) => {
       }
     });
   }, []);
-  const formData = new FormData();
-  formData.append("name", name);
-  formData.append("Parent_Category", parentCate);
-  formData.append("Product_Category_Code", productCateCode);
-  formData.append("Income_Account", incomeAcc);
-  formData.append("Expense_Account", expenseAcc);
-  formData.append("Force_RemovalStrategy", removalStrategy);
-  formData.append("Costing_Method", costing);
-  formData.append("Inventory_Valuation", valuation);
+  useEffect(() => {
+   axios.post(allParentCateurl)
+   .then((res) => {
+    if(res.data.status === true){
+      setGetParentCate(res.data.data);
+    }
+    else if(res.data.status === false){
+      toast(res.data.message,{type:"error"});
+    }
+   })
+  },[])
+        const formData = new FormData();
+        formData.append("Name", name);
+        formData.append("Parent_Category", parentCate);
+        formData.append("Price_Difference", pricedif);
+        formData.append("Income_Acc", incomeAcc);
+        formData.append("Expense_Acc", expenseAcc);
+        formData.append("Stock_In_Acc", stockIn);
+        formData.append("Stock_Out_Acc",stockOut );
+        formData.append("Stock_Val_Acc", stockVal);
+        formData.append("Stock_Journal",stockJournal);
+        formData.append("Force_Rem_Stra",removalStrategy);
+        formData.append("Costing_Method",costing);
+        formData.append("Inventory_Valuation",valuation);
 
   const save = () => {
     if (name === "") {
@@ -83,7 +106,15 @@ const AddProductCategories = (props) => {
       toast("Income Account Is Required!", { type: "warning" });
     } else if (expenseAcc === "") {
       toast("Expense Account Is Required!", { type: "warning" });
-    } else if (removalStrategy === "") {
+    } else if(stockIn === ""){
+      toast("Stock Input is Required!",{type:"warning"});
+    }else if(stockOut === ""){
+      toast("Stock Output is Required!",{type:"warning"});
+    }else if(stockVal === ""){
+      toast("Stock Valuation is required!",{type:"warning"});
+    }else if(stockJournal === ""){
+      toast("Stock Journal is Required!",{type:"warning"});
+    }else if (removalStrategy === "") {
       toast("Force Removal Strategy Is Required!", { type: "warning" });
     } else if (costing === "") {
       toast("Costing Method Is Required!", { type: "warning" });
@@ -91,7 +122,7 @@ const AddProductCategories = (props) => {
       toast("Inventory Valuation Is Required!", { type: "warning" });
     } else {
       axios
-        .post(AddProductCateUrl, formData)
+        .post(addProductCateUrl, formData)
         .then((res) => {
           console.log(res, "responseresult");
           if (res.data.status == true) {
@@ -112,77 +143,76 @@ const AddProductCategories = (props) => {
     }
   };
 
-  const location = useLocation();
-  const selectedData = location.state;
-  console.log(selectedData, "SelectedData here");
+  // const location = useLocation();
+  // const selectedData = location.state;
+  // console.log(selectedData, "SelectedData here");
 
-  useEffect(() => {
-    if (selectedData) {
-      setUpdate(true);
-      setName(selectedData.CATEGORY_NAME);
-      setParentCate(selectedData.PARENT_CATEGORY);
-      setProductCateCode(selectedData.PRODUCT_CATEGORY_CODE);
-      setIncomeAcc(selectedData.INCOME_ACCOUNT);
-      setExpenseAcc(selectedData.EXPENSE_ACCOUNT);
-      setRemovalStrategy(selectedData.FORCE_REMOVAL_STRATEGY);
-      setCosting(selectedData.COSTING_METHOD);
-      setValuation(selectedData.INVENTORY_VALUTION);
-    }
-  }, [selectedData]);
+  // useEffect(() => {
+  //   if (selectedData) {
+  //     setUpdate(true);
+  //     setName(selectedData.CATEGORY_NAME);
+  //     setParentCate(selectedData.PARENT_CATEGORY);
+  //     setProductCateCode(selectedData.PRODUCT_CATEGORY_CODE);
+  //     setIncomeAcc(selectedData.INCOME_ACCOUNT);
+  //     setExpenseAcc(selectedData.EXPENSE_ACCOUNT);
+  //     setRemovalStrategy(selectedData.FORCE_REMOVAL_STRATEGY);
+  //     setCosting(selectedData.COSTING_METHOD);
+  //     setValuation(selectedData.INVENTORY_VALUTION);
+  //   }
+  // }, [selectedData]);
 
-  const productcateUpadteUrl = endpoints.productCategory.updateProductCate;
+  // const productcateUpadteUrl = endpoints.productCategory.updateProductCate;
 
-  const updateData = () => {
-    if (name === "") {
-      toast("Product Category Name is Required!", { type: "warning" });
-    } else if (parentCate === "") {
-      toast("Product Category Is Required !", { type: "warning" });
-    } else if (productCateCode === "") {
-      toast("Product Category Code Is Required!", { type: "warning" });
-    } else if (incomeAcc === "") {
-      toast("Income Account Is Required!", { type: "warning" });
-    } else if (expenseAcc === "") {
-      toast("Expense Account Is Required!", { type: "warning" });
-    } else if (removalStrategy === "") {
-      toast("Force Removal Strategy Is Required!", { type: "warning" });
-    } else if (costing === "") {
-      toast("Costing Method Is Required!", { type: "warning" });
-    } else if (valuation === "") {
-      toast("Inventory Valuation Is Required!", { type: "warning" });
-    } else {
-      const formData = new FormData();
-      formData.append("id", selectedData.CATEGORY_ID);
-      formData.append("Parent_Category", parentCate);
-      formData.append("name", name);
-      formData.append("Product_Category_Code", productCateCode);
-      formData.append("Income_Account", incomeAcc);
-      formData.append("Expense_Account", expenseAcc);
-      formData.append("Force_RemovalStrategy", removalStrategy);
-      formData.append("Costing_Method", costing);
-      formData.append("Inventory_Valuation", valuation);
+  // const updateData = () => {
+  //   if (name === "") {
+  //     toast("Product Category Name is Required!", { type: "warning" });
+  //   } else if (parentCate === "") {
+  //     toast("Product Category Is Required !", { type: "warning" });
+  //   } else if (productCateCode === "") {
+  //     toast("Product Category Code Is Required!", { type: "warning" });
+  //   } else if (incomeAcc === "") {
+  //     toast("Income Account Is Required!", { type: "warning" });
+  //   } else if (expenseAcc === "") {
+  //     toast("Expense Account Is Required!", { type: "warning" });
+  //   } else if (removalStrategy === "") {
+  //     toast("Force Removal Strategy Is Required!", { type: "warning" });
+  //   } else if (costing === "") {
+  //     toast("Costing Method Is Required!", { type: "warning" });
+  //   } else if (valuation === "") {
+  //     toast("Inventory Valuation Is Required!", { type: "warning" });
+  //   } else {
+  //     const formData = new FormData();
+  //     formData.append("id", selectedData.CATEGORY_ID);
+  //     formData.append("Parent_Category", parentCate);
+  //     formData.append("name", name);
+  //     formData.append("Product_Category_Code", productCateCode);
+  //     formData.append("Income_Account", incomeAcc);
+  //     formData.append("Expense_Account", expenseAcc);
+  //     formData.append("Force_RemovalStrategy", removalStrategy);
+  //     formData.append("Costing_Method", costing);
+  //     formData.append("Inventory_Valuation", valuation);
 
-      axios
-        .post(productcateUpadteUrl, formData)
-        .then((res) => {
-          if (res.data.status === true) {
-            toast("ProductCategory Updated Successfully!", { type: "success" });
-          } else if (res.data.status === false) {
-            toast(res.data.message, { type: "error" });
-          }
-        })
-        .catch((err) => {
-          console.log(err, "error");
-          toast("Something went wrong", { type: "error" });
-        });
-    }
-  };
-
+  //     axios
+  //       .post(productcateUpadteUrl, formData)
+  //       .then((res) => {
+  //         if (res.data.status === true) {
+  //           toast("ProductCategory Updated Successfully!", { type: "success" });
+  //         } else if (res.data.status === false) {
+  //           toast(res.data.message, { type: "error" });
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err, "error");
+  //         toast("Something went wrong", { type: "error" });
+  //       });
+  //   }
+  // };
   return (
     <>
       <Navebar
         showBelowMenu={true}
         title="Product Category"
-        save={update === true ? updateData : save}
+        save={save}
       />
       <div className="AddProductCategoriesContainer">
         <div className="AddProductCatehead">
@@ -228,23 +258,13 @@ const AddProductCategories = (props) => {
                   className="prntSlt"
                 >
                   <option value=""></option>
-                  <option value="Assets">Assets</option>
-                  <option value="Assets / Computers and printers">
-                    Assets / Computers and printers
-                  </option>
-                  <option value="Assets / Extinguishing programs, permits and licenses">
-                    Assets / Extinguishing programs, permits and licenses
-                  </option>
-                  <option value="Assets / Furniture">
-                    Assets / Furniture{" "}
-                  </option>
-                  <option value="Assets / Houses">Assets / Houses</option>
-                  <option value="Assets / lab equipment">
-                    Assets / lab equipment
-                  </option>
-                  <option value="Assets / Prefabricated plastic and concrete barriers">
-                    Assets / Prefabricated plastic and concrete barriers
-                  </option>
+                   {getParentCate.map((item,index) => {
+                    return(
+                      <>
+                      <option value={item.CATEGORY_NAME}>{item.CATEGORY_NAME}</option>
+                      </>
+                    )
+                   })}
                 </select>
               </div>
               <div className="AddProductCatecontent">
@@ -270,8 +290,8 @@ const AddProductCategories = (props) => {
               <div className="stockdropdown">
                 <p>Price Difference Account</p>
                 <select
-                  value={expenseAcc}
-                  onChange={(e) => setExpenseAcc(e.target.value)}
+                  value={pricedifAcc}
+                  onChange={(e) => setPriceDifAcc(e.target.value)}
                 >
                   <option value=""></option>
                   {pricedif.map((item, index) => {
@@ -326,51 +346,51 @@ const AddProductCategories = (props) => {
               <h6>Account Stock Properties</h6>
               <div className="stockdropdown">
                 <p>Stock Input Account</p>
-                <select>
-                  <option></option>
-                  <option>100002 Bank</option>
-                  <option>100003 Security Deposit</option>
-                  <option>100004 Un-Realized Collection</option>
-                  <option>100010 MAIN CASH RYD01</option>
-                  <option>100101 STORE CASH COLLECTION</option>
-                  <option>100201 STORE CARD COLLECTION</option>
+                <select onChange={(e) => setStockIn(e.target.value)} value={stockIn}>
+                  <option value=""></option>
+                  <option value="100002 Bank">100002 Bank</option>
+                  <option value="100003 Security Deposit">100003 Security Deposit</option>
+                  <option value="100004 Un-Realized Collection">100004 Un-Realized Collection</option>
+                  <option value="100010 MAIN CASH RYD01">100010 MAIN CASH RYD01</option>
+                  <option value="100101 STORE CASH COLLECTION">100101 STORE CASH COLLECTION</option>
+                  <option value="100201 STORE CARD COLLECTION">100201 STORE CARD COLLECTION</option>
                 </select>
               </div>
               <div className="stockdropdown">
                 <p>Stock Output Account</p>
-                <select>
-                  <option></option>
-                  <option>100002 Bank</option>
-                  <option>100003 Security Deposit</option>
-                  <option>100004 Un-Realized Collection</option>
-                  <option>100010 MAIN CASH RYD01</option>
-                  <option>100101 STORE CASH COLLECTION</option>
-                  <option>100201 STORE CARD COLLECTION</option>
+                <select value={stockOut} onChange={(e) => setStockOut(e.target.value)}>
+                  <option value=""></option>
+                  <option value="100002 Bank">100002 Bank</option>
+                  <option value="100003 Security Deposit">100003 Security Deposit</option>
+                  <option value="100004 Un-Realized Collection">100004 Un-Realized Collection</option>
+                  <option value="100010 MAIN CASH RYD01">100010 MAIN CASH RYD01</option>
+                  <option value="100101 STORE CASH COLLECTION">100101 STORE CASH COLLECTION</option>
+                  <option value="100201 STORE CARD COLLECTION">100201 STORE CARD COLLECTION</option>
                 </select>
               </div>
               <div className="stockdropdown">
                 <p>Stock Valuation Account</p>
-                <select>
-                  <option></option>
-                  <option>100002 Bank</option>
-                  <option>100003 Security Deposit</option>
-                  <option>100004 Un-Realized Collection</option>
-                  <option>100010 MAIN CASH RYD01</option>
-                  <option>100101 STORE CASH COLLECTION</option>
-                  <option>100201 STORE CARD COLLECTION</option>
+                <select value={stockVal} onChange={(e) => setStockVal(e.target.value)}>
+                  <option value=""></option>
+                  <option value="100002 Bank">100002 Bank</option>
+                  <option value="100003 Security Deposit">100003 Security Deposit</option>
+                  <option value="100004 Un-Realized Collection">100004 Un-Realized Collection</option>
+                  <option value="100010 MAIN CASH RYD01">100010 MAIN CASH RYD01</option>
+                  <option value="100101 STORE CASH COLLECTION">100101 STORE CASH COLLECTION</option>
+                  <option value="100201 STORE CARD COLLECTION">100201 STORE CARD COLLECTION</option>
                 </select>
               </div>
               <div className="stockdropdown">
                 <p>Stock Journal</p>
-                <select>
-                  <option></option>
-                  <option>Customer Invoices (SAR)</option>
-                  <option>Vendor Bills (SAR)</option>
-                  <option>Miscellaneous Operations (SAR)</option>
-                  <option>Inventory Valuation (SAR)</option>
-                  <option>Exchange Difference (SAR)</option>
-                  <option>Bank (SAR)</option>
-                  <option>POS CARD BANK (SAR)</option>
+                <select value={stockJournal} onChange={(e) => setStockJournal(e.target.value)}>
+                  <option value=""></option>
+                  <option value="Customer Invoices (SAR)">Customer Invoices (SAR)</option>
+                  <option value="Vendor Bills (SAR)">Vendor Bills (SAR)</option>
+                  <option value="Miscellaneous Operations (SAR)">Miscellaneous Operations (SAR)</option>
+                  <option value="Inventory Valuation (SAR)">Inventory Valuation (SAR)</option>
+                  <option value="Exchange Difference (SAR)">Exchange Difference (SAR)</option>
+                  <option value="Bank (SAR)">Bank (SAR)</option>
+                  <option value="POS CARD BANK (SAR)">POS CARD BANK (SAR)</option>
                 </select>
               </div>
             </div>

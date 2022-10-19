@@ -1,11 +1,10 @@
-import React from 'react'
+import React from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaSearchMinus } from "react-icons/fa";
 import "./SalesNavbar.css";
 import { useNavigate } from "react-router-dom";
 const SalesNavbar = (props) => {
-
   const { showBelowMenu, handleCreatePage, title, save } = props;
   const navigate = useNavigate();
   return (
@@ -33,52 +32,67 @@ const SalesNavbar = (props) => {
           />
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
-              <Nav.Link href="#home" className="navetext">
-                Orders
-              </Nav.Link>
-              <Nav.Link href="#" className="navetext">
-                To Invoice
-              </Nav.Link>
+            <NavDropdown title="Orders" id="collasible-nav-dropdown">
+                <NavDropdown.Item  onClick={() => navigate("/Quotations")}>Quotations</NavDropdown.Item>
+                <NavDropdown.Item  onClick={() => navigate("/SalesOrders")}>Orders</NavDropdown.Item>
+                <NavDropdown.Item>Sales Teams</NavDropdown.Item>
+                <NavDropdown.Item>Customers</NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="To Invoice" id="collasible-nav-dropdown">
+                <NavDropdown.Item  onClick={() => navigate("/OrderstoInvoice")}>Orders to Invoice</NavDropdown.Item>
+                <NavDropdown.Item>Orders to Upsell</NavDropdown.Item>
+              </NavDropdown>
               <NavDropdown title="Products" id="collasible-nav-dropdown">
-                <NavDropdown.Item 
+                <NavDropdown.Item
                 // onClick={() => navigate('/InventoryProducts')}
                 >
                   Product
                 </NavDropdown.Item>
-                {/* <NavDropdown.Item  onClick={()=> navigate( "/InventoryVarient")}>
-                  Product Variants
+                <NavDropdown.Item>Product Variants</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate("/Pricelists")}>
+                  Pricelists
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Reordering Rules
+                <NavDropdown.Item
+                  onClick={() => navigate("/PromotionPrograms")}
+                >
+                  Promotion Programs
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">
-                  Lots/Serial Numbers
-                </NavDropdown.Item> */}
+                <NavDropdown.Item onClick={() => navigate("/CouponPrograms")}>
+                  Coupon Programs
+                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="#link" className="navetext">
                 Reporting
               </Nav.Link>
               <NavDropdown title="Configuration" id="collasible-nav-dropdown">
-                <NavDropdown.Item onClick={() => navigate('/sales_teams')}>Sales Teams</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate("/sales_teams")}>
+                  Sales Teams
+                </NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Sales Orders
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate('/shipping_methods')}>
+                <NavDropdown.Item onClick={() => navigate("/shipping_methods")}>
                   Shipping Methods
                 </NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Product
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate('/sales_attribute')}>
+                <NavDropdown.Item onClick={() => navigate("/sales_attribute")}>
                   Attributes
                 </NavDropdown.Item>
                 <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Units of Measures{" "}
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate('/sales_units_of_measure_category')}>
+                <NavDropdown.Item
+                  onClick={() => navigate("/sales_units_of_measure_category")}
+                >
                   UOM Categories
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate('/sales_units_of_measure')}>UOM</NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => navigate("/sales_units_of_measure")}
+                >
+                  UOM
+                </NavDropdown.Item>
                 {/* <NavDropdown.Item onClick={() => navigate('/ProductBrand')}>ProductBrand</NavDropdown.Item> */}
               </NavDropdown>
             </Nav>
@@ -95,7 +109,9 @@ const SalesNavbar = (props) => {
               <button className="createbtn" onClick={handleCreatePage}>
                 Create
               </button>
-              <button className="createbtn" onClick={save}>Save</button>
+              <button className="createbtn" onClick={save}>
+                Save
+              </button>
             </div>
             <div
               className="col-sm-6 d-flex justify-content-center"
@@ -110,7 +126,7 @@ const SalesNavbar = (props) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default SalesNavbar
+export default SalesNavbar;

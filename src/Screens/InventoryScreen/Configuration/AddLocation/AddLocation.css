@@ -31,9 +31,9 @@
   align-items: center;
 }
 
-.head1:hover {
-  background-color: #cccc;
-}
+/* .head1:hover {
+  background-color: #ccc;
+} */
 
 .AddLocationText p {
   color: #6f6f6f;

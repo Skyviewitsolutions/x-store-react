@@ -12,82 +12,66 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
+
 const AddWarehouse = (props) => {
+
   const [events, setEvents] = useState("WarehouseConfig");
-  const [isEdit , setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   const AddWarehouseUrl = endpoints.wareHouse.addWarehouse;
   const AllLoactionUrl = endpoints.location.allLocation;
   const [locationall, setLocationall] = useState([]);
   const [warehouseName, setWarehousename] = useState("");
   const [shortName, setShortname] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [phone, setPhone] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [email, setEmail] = useState("");
-  const [users, setUsers] = useState("");
+  const [address, setAddress] = useState("");
+  const [buy, setBuy] = useState("");
+  const [resupply, setResupply] = useState("");
+  const [menufactureResupply, setMenufactureResupply] = useState("");
+  const [manufacture, setManufacture] = useState("");
   const [update, setUpdate] = useState(false);
 
-
+  const token = localStorage.getItem("token")
 
   const save = () => {
-    const formData = new FormData();
 
-    formData.append("WareHsName", warehouseName);
-    formData.append("ShortName", shortName);
-    formData.append("Street", street);
-    formData.append("City", city);
-    formData.append("Country", country);
-    formData.append("State",state);
-    formData.append("Zip_Code", zipCode);
-    formData.append("Phone", phone);
-    formData.append("Mobile", mobile);
-    formData.append("Email", email);
-    formData.append("Users", users);
+    const formData = new FormData();
+    formData.append("Name", warehouseName);
+    formData.append("Short_Name", shortName);
+    formData.append("Address", address);
+    formData.append("Buy_To_Resupply", buy);
+    formData.append("Resupply_Sub", resupply);
+    formData.append("Manufacture_To_Resupply", menufactureResupply);
+    formData.append("Manufacture", manufacture);
 
     if (warehouseName === "") {
       toast("WareHouseName required !", { type: "warning" });
     } else if (shortName === "") {
       toast("ShortName is required !", { type: "warning" });
-    } else if (street === "") {
-      toast("Street is required !", { type: "warning" });
-    } else if (city === "") {
-      toast("City is required !", { type: "warning" });
-    } else if (state === "") {
-      toast("State is required !", { type: "warning" });
-    } else if (country === "") {
-      toast("Country is required !", { type: "warning" });
-    } else if (zipCode === "") {
-      toast("Zip Code is required !", { type: "warning" });
-    } else if (mobile === "") {
-      toast("Mobile is required !", { type: "warning" });
-    } else if (email === "") {
-      toast("Email is required !", { type: "warning" });
-    } else if (users === "") {
-      toast("Users is required !", { type: "warning" });
-    } else if (phone === "") {
-      toast("Phone  is required !", { type: "warning" });
+    } else if (address === "") {
+      toast("Adress is required !", { type: "warning" });
+    } else if (buy === "") {
+      toast("Buy to resupply is required !", { type: "warning" });
+    } else if (resupply === "") {
+      toast("Resupply Subcontractors is required !", {type: "warning"});
+    } else if (menufactureResupply === "") {
+      toast("Manufacture to Resupply is required !", {type: "warning"});
     } else {
       axios
         .post(AddWarehouseUrl, formData)
         .then((res) => {
+          console.log(res,"response warehouse")
           if (res.data.status == true) {
             toast("Warehouse Added Sucessfully!", { type: "Success" });
           } else if (res.data.status === false) {
             toast(res.data.message, { type: "error" });
           }
-        })
+        })      
         .catch((err) => {
           console.log(err, "error");
           toast("something went wrong", { type: "error" });
         });
     }
-  };
-
+  }
   useEffect(() => {
     axios
       .post(AllLoactionUrl)
@@ -96,7 +80,7 @@ const AddWarehouse = (props) => {
         if (res.data.status === true) {
           setLocationall(res.data.data);
         } else if (res.data.status === false) {
-          alert(res.data.message);
+          toast(res.data.message);
         }
       })
       .catch((err) => {
@@ -112,16 +96,12 @@ const AddWarehouse = (props) => {
     if (selectedData) {
       setUpdate(true);
       setWarehousename(selectedData.WAREHOUSE_NAME);
-      setShortname(selectedData.WAREHOUSE_SHOT_NAME);
-      setStreet(selectedData.WAREHOUSE_STREET);
-      setCity(selectedData.WAREHOUSE_CITY);
-      setState(selectedData.WAREHOUSE_STATE);
-      setCountry(selectedData.WAREHOUSE);
-      setZipCode(selectedData.WAREHOUSE_ZIPCODE);
-      setPhone(selectedData.WAREHOUSE_PHONE);
-      setMobile(selectedData.WAREHOSE_MOBILE);
-      setEmail(selectedData.WAREHOUSE_EMAIL);
-      setUsers(selectedData.WAREHOUSE_USER);
+      setShortname(selectedData.SHORT_NAME);
+      setAddress(selectedData.WAREHOUSE_ADDRESS);
+      setBuy(selectedData.BUY_RESUPPLY);
+      setResupply(selectedData.RESUPPLY);
+      setMenufactureResupply(selectedData.MANUFACTURE_RESUPPLY);
+      setManufacture(selectedData.MANUFACTURE);
     }
   }, [selectedData]);
 
@@ -132,38 +112,24 @@ const AddWarehouse = (props) => {
       toast("WareHouseName required !", { type: "warning" });
     } else if (shortName === "") {
       toast("ShortName is required !", { type: "warning" });
-    } else if (street === "") {
-      toast("Street is required !", { type: "warning" });
-    } else if (city === "") {
-      toast("City is required !", { type: "warning" });
-    } else if (state === "") {
-      toast("State is required !", { type: "warning" });
-    } else if (country === "") {
-      toast("Country is required !", { type: "warning" });
-    } else if (zipCode === "") {
-      toast("Zip Code is required !", { type: "warning" });
-    } else if (mobile === "") {
-      toast("Mobile is required !", { type: "warning" });
-    } else if (email === "") {
-      toast("Email is required !", { type: "warning" });
-    } else if (users === "") {
-      toast("Users is required !", { type: "warning" });
-    } else if (phone === "") {
-      toast("Phone  is required !", { type: "warning" });
+    } else if (address === "") {
+      toast("Adress is required !", { type: "warning" });
+    } else if (buy === "") {
+      toast("Buy to resupply is required !", { type: "warning" });
+    } else if (resupply === "") {
+      toast("Resupply Subcontractors is required !", { type: "warning" });
+    } else if (menufactureResupply === "") {
+      toast("Manufacture to Resupply is required !", { type: "warning" });
     } else {
       const formData = new FormData();
-      formData.append("Id", selectedData.WARE_ID);
-      formData.append("WareHsName", warehouseName);
-      formData.append("ShortName", shortName);
-      formData.append("Street", street);
-      formData.append("City", city);
-      formData.append("Country", country);
-      formData.append("State",state);
-      formData.append("Zip_Code", zipCode);
-      formData.append("Phone", phone);
-      formData.append("Mobile", mobile);
-      formData.append("Email", email);
-      formData.append("Users", users);
+      formData.append("Id", selectedData.WAREHOUSE_ID);
+      formData.append("Name", warehouseName);
+      formData.append("Short_Name", shortName);
+      formData.append("Address", address);
+      formData.append("Buy_To_Resupply", buy);
+      formData.append("Resupply_Sub", resupply);
+      formData.append("Manufacture_To_Resupply", menufactureResupply);
+      formData.append("Manufacture", manufacture);
       axios
         .post(updateUrl, formData)
         .then((res) => {
@@ -222,20 +188,25 @@ const AddWarehouse = (props) => {
           <div className="Addcontent2">
             <div className="Adddropdown">
               <p>Address</p>
-             <select>
-            <option value=""></option>
-              {locationall.map((item,index) => {
-                return(
-                  <>
-                <option value={item.LOCATION_NAME}>{item.LOCATION_NAME}</option>
-                  </>
-                )
-              })}
-             </select>
+              <select
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              >
+                <option value=""></option>
+                {locationall.map((item, index) => {
+                  return (
+                    <>
+                      <option value={item.LOCATION_NAME}>
+                        {item.LOCATION_NAME}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
             </div>
           </div>
-          </div>
-          <div className="detailsbtn">
+        </div>
+        <div className="detailsbtn">
           <Nav variant="tabs" defaultActiveKey="/home">
             <Nav.Item
               className="detailslink"
@@ -247,10 +218,18 @@ const AddWarehouse = (props) => {
         </div>
         <div className="GeneralInformation">
           {events === "WarehouseConfig" && isEdit === false && (
-            <WarehouseConfig/>
+            <WarehouseConfig
+              buy={buy}
+              setBuy={setBuy}
+              resupply={resupply}
+              setResupply={setResupply}
+              menufactureResupply={menufactureResupply}
+              setMenufactureResupply={setMenufactureResupply}
+              manufacture={manufacture}
+              setManufacture={setManufacture}
+            />
           )}
         </div>
-    
 
         <ToastContainer />
       </div>

@@ -1,0 +1,51 @@
+.PricelistMainCon{
+  width: 80%;
+  border: 1px solid #cccc;
+  padding-bottom: 5%;
+  padding-top: 30px;
+  margin: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  margin-top: 40px;
+}
+.PricelistCon{
+    padding:0px 32px;
+}
+.pricelistName{
+    width: 100%;
+    margin-bottom: 5px; 
+}
+.pricelistName p{
+    font-size: 18px;
+    color: #6f6f6f;
+    font-weight: 600;
+    margin-bottom: 5px; 
+}
+.pricelistName input{
+    width: 600px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    color: #000;
+    font-size: 25px;
+}
+.Pricecurrency{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.Pricecurrency p{
+    width: 150px;
+    font-size: 15px;
+    color: #6f6f6f;
+    font-weight: 600;
+    margin-bottom: 5px;
+
+}
+.Pricecurrency select{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    color: #000;
+    
+}

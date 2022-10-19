@@ -23,7 +23,6 @@ const AddLocation = () => {
   const [locationType, setLocationType] = useState("");
   const [scrapLocation, setScapLocation] = useState(false);
   const [returnLocation, setReturnLocation] = useState(false);
-  const [users, setUsers] = useState("");
   const [removel, setRemovel] = useState("");
   const [notes, setNotes] = useState("");
   const [update, setUpdate] = useState(false);
@@ -34,7 +33,6 @@ const AddLocation = () => {
   formData.append("Location_Type", locationType);
   formData.append("Scrap_Location", scrapLocation);
   formData.append("Return_Location", returnLocation);
-  formData.append("Users", users);
   formData.append("Removal_Strategy", removel);
   formData.append("Notes", notes);
 
@@ -49,8 +47,6 @@ const AddLocation = () => {
       toast("Scrap Location is Required!", { type: "warning" });
     } else if (returnLocation === "") {
       toast("Return Location is Required!", { type: "warning" });
-    } else if (users === "") {
-      toast("Users is Required!", { type: "warning" });
     } else if (removel === "") {
       toast("Removal_Strategy is Required!", { type: "warning" });
     } else {
@@ -97,7 +93,6 @@ const AddLocation = () => {
       setParentLocation(selectedData.PARENT_LOCATION);
       setScapLocation(selectedData.SCRAP_LOCATION);
       setReturnLocation(selectedData.RETURN_LOCATION);
-      setUsers(selectedData.USERS);
       setRemovel(selectedData.REMOVAL_STRATEGY);
       setNotes(selectedData.NOTES)
     }
@@ -119,8 +114,6 @@ const AddLocation = () => {
       toast("Scrap Location is Required!", { type: "warning" });
     } else if (returnLocation === "") {
       toast("Return Location is Required!", { type: "warning" });
-    } else if (users === "") {
-      toast("Users is Required!", { type: "warning" });
     } else if (removel === "") {
       toast("Removal_Strategy is Required!", { type: "warning" });
     } else {
@@ -132,7 +125,6 @@ const AddLocation = () => {
       formData.append("Location_Type", locationType);
       formData.append("Scrap_Location", scrapLocation);
       formData.append("Return_Location", returnLocation);
-      formData.append("Users", users);
       formData.append("Removal_Strategy", removel);
       formData.append("Notes", notes);
       axios.post(locationupdateUrl,formData)

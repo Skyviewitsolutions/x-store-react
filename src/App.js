@@ -93,6 +93,19 @@ import ShippingMethods from "./Screens/SalesScreen/ShippingMethods/ShippingMetho
 import SalesAttribute from "./Screens/SalesScreen/SalesAttribute/SalesAttribute";
 import SalesUOM from "./Screens/SalesScreen/SalesUOM/SalesUOM";
 import SalesUOMCategory from "./Screens/SalesScreen/SalesUOMCategory/SalesUOMCategory";
+import AddSalesTerms from "./Screens/SalesScreen/SalesTerms/AddSalesTerms/AddSalesTerms";
+import AddShippingMethod from "./Screens/SalesScreen/ShippingMethods/AddShippingMethods/AddShippingMethod";
+import AddSalesAttribute from "./Screens/SalesScreen/SalesAttribute/AddSalesAttribute/AddSalesAttribute";
+import Pricelists from "./Screens/SalesScreen/Pricelists/Pricelists";
+import AddPricelists from "./Screens/SalesScreen/Pricelists/AddPricelists/AddPricelists";
+import PromotionPrograms from "./Screens/SalesScreen/PromotionPrograms/PromotionPrograms";
+import CouponPrograms from "./Screens/SalesScreen/CouponPrograms/CouponPrograms";
+import OrderstoInvoice from "./Screens/SalesScreen/OrderstoInvoice/OrderstoInvoice";
+import Quotations from "./Screens/SalesScreen/Orders/Quotations/Quotations";
+import SalesOrders from "./Screens/SalesScreen/Orders/SalesOrders/SalesOrders";
+import ParentCategory from "./Screens/InventoryScreen/Configuration/ParentCategory/ParentCategory";
+import SalesTeam from "./Screens/SalesScreen/Orders/SalesTeam/SalesTeam";
+import ProductPriceList from "./Screens/InventoryScreen/AddProduct/ProductPriceList/ProductPriceList";
 // import SalesTerms from "./SalesScreen/SalesTerms/SalesTerms";
 
 const App = () => {
@@ -138,6 +151,8 @@ const App = () => {
        <Route path="/AddOperationTypes" element={<AddOperationTypes/>} />
        <Route path='/AddPutwayRules' element={<AddPutwayRules/>} />
        <Route path='/ProductBrand' element={<ProductBrand/>} />
+       <Route path='/ParentCategory' element={<ParentCategory/>} />
+       <Route path='/ProductPrice' element={<ProductPriceList/>} />
 
        {/* --------Accounting Pages------------- */}
 
@@ -191,10 +206,21 @@ const App = () => {
 
      {/* ------------------------------------SalesScreen------------------------ */}
        <Route path="/sales_teams" element={<SalesTerms/>} />
+       <Route path="/AddSalesTeam" element={<AddSalesTerms/>}/>
        <Route path="/shipping_methods" element={<ShippingMethods/>}/>
        <Route path="/sales_attribute" element={<SalesAttribute/>}/>
+       <Route path="/AddSalesAttribute" element={<AddSalesAttribute/>}/>
        <Route path="/sales_units_of_measure" element={<SalesUOM/>}/>
        <Route path="/sales_units_of_measure_category" element={<SalesUOMCategory/>}/>
+       <Route path="/AddShippingMethod" element={<AddShippingMethod/>}/>
+       <Route path="/Pricelists" element={<Pricelists/>} /> 
+       <Route path="/AddPricelists" element={<AddPricelists/>}/>
+       <Route path="/PromotionPrograms" element={<PromotionPrograms/>}/>
+       <Route path="/CouponPrograms" element={<CouponPrograms/>} />
+       <Route path="/OrderstoInvoice" element={<OrderstoInvoice/>} />
+       <Route path="/Quotations" element={<Quotations/>} />
+       <Route path="/SalesOrders" element={<SalesOrders/>}/>
+       <Route path='/OrdersSalesTeam' element={<SalesTeam/>} />
       </Routes>
     </Router>
   </>)

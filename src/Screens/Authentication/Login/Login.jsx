@@ -59,6 +59,8 @@ const Login = () => {
       console.log(res , "response");
       if(res.data.status === true) 
       {
+        const token = res.data.session_token;
+        localStorage.setItem("token" , token);
         setIsLoading(false);
         navigate('/Dashboard');
       }

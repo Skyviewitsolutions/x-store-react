@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import CustomTable from '../../../components/CustomTable/CustomTable'
 
 //import Navebar from '../../../components/Navbar/Navbar'
@@ -8,8 +9,10 @@ import CustomTable from '../../../components/CustomTable/CustomTable'
 
 const SalesTerms = () => {
 
-    const handleCreatePage = () => {
+  const navigate = useNavigate();
 
+    const handleCreatePage = () => {
+      navigate('/AddSalesTeam');
     }
 
     const data = [

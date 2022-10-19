@@ -27,7 +27,7 @@ const GeneralInformation = (props) => {
                     <span style={{ color: "#1669a2" }}>{ productCategory}</span>
                 </div>
                 <div className="firstcontent2">
-                    <p>Internal Reference</p>
+                    <p>Product Code</p>
                     <p>{interRef}</p>
                 </div>
                 <h5>{description}</h5>

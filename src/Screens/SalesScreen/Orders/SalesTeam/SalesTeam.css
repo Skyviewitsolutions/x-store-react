@@ -1,0 +1,22 @@
+.SalesGraphMain{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+@media only screen and (max-width: 1000px){
+
+    .ProductsMainContainer{
+      background-color: #eff1f3;
+    }
+
+  
+
+    .Product2Card{
+        margin: 0px 25px;
+    }
+
+    
+}
