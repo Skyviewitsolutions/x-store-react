@@ -21,7 +21,7 @@ const AddProductCategories = (props) => {
   const pricediffUrl = endpoints.products.priceDifference;
   const expenseUrl = endpoints.products.expenseAccount;
   const allParentCateurl = endpoints.parentCate.allParentCate;
-  const [getParentCate , setGetParentCate] = useState([]);
+  const [getParentCate, setGetParentCate] = useState([]);
   const [pricedif, setPriceDef] = useState([]);
   const [income, setIncome] = useState([]);
   const [expense, setExpense] = useState([]);
@@ -29,15 +29,15 @@ const AddProductCategories = (props) => {
   const [parentCate, setParentCate] = useState("");
   const [incomeAcc, setIncomeAcc] = useState("");
   const [expenseAcc, setExpenseAcc] = useState("");
-  const [pricedifAcc , setPriceDifAcc] = useState("");
+  const [pricedifAcc, setPriceDifAcc] = useState("");
   const [productCateCode, setProductCateCode] = useState("");
   const [costing, setCosting] = useState("");
   const [valuation, setValuation] = useState("");
   const [name, setName] = useState("");
-   const [stockIn , setStockIn] = useState("");
-    const [stockOut , setStockOut] = useState("");
-    const [stockVal , setStockVal] = useState("");
-    const [stockJournal , setStockJournal] = useState("");
+  const [stockIn, setStockIn] = useState("");
+  const [stockOut, setStockOut] = useState("");
+  const [stockVal, setStockVal] = useState("");
+  const [stockJournal, setStockJournal] = useState("");
 
   const [update, setUpdate] = useState(false);
 
@@ -61,8 +61,7 @@ const AddProductCategories = (props) => {
     });
   }, []);
   useEffect(() => {
-    axios.post(pricediffUrl)
-    .then((res) => {
+    axios.post(pricediffUrl).then((res) => {
       if (res.data.status === true) {
         setPriceDef(res.data.data);
       } else if (res.data.status === false) {
@@ -71,29 +70,27 @@ const AddProductCategories = (props) => {
     });
   }, []);
   useEffect(() => {
-   axios.post(allParentCateurl)
-   .then((res) => {
-    if(res.data.status === true){
-      setGetParentCate(res.data.data);
-    }
-    else if(res.data.status === false){
-      toast(res.data.message,{type:"error"});
-    }
-   })
-  },[])
-        const formData = new FormData();
-        formData.append("Name", name);
-        formData.append("Parent_Category", parentCate);
-        formData.append("Price_Difference", pricedif);
-        formData.append("Income_Acc", incomeAcc);
-        formData.append("Expense_Acc", expenseAcc);
-        formData.append("Stock_In_Acc", stockIn);
-        formData.append("Stock_Out_Acc",stockOut );
-        formData.append("Stock_Val_Acc", stockVal);
-        formData.append("Stock_Journal",stockJournal);
-        formData.append("Force_Rem_Stra",removalStrategy);
-        formData.append("Costing_Method",costing);
-        formData.append("Inventory_Valuation",valuation);
+    axios.post(allParentCateurl).then((res) => {
+      if (res.data.status === true) {
+        setGetParentCate(res.data.data);
+      } else if (res.data.status === false) {
+        toast(res.data.message, { type: "error" });
+      }
+    });
+  }, []);
+  const formData = new FormData();
+  formData.append("Name", name);
+  formData.append("Parent_Category", parentCate);
+  formData.append("Price_Difference", pricedif);
+  formData.append("Income_Acc", incomeAcc);
+  formData.append("Expense_Acc", expenseAcc);
+  formData.append("Stock_In_Acc", stockIn);
+  formData.append("Stock_Out_Acc", stockOut);
+  formData.append("Stock_Val_Acc", stockVal);
+  formData.append("Stock_Journal", stockJournal);
+  formData.append("Force_Rem_Stra", removalStrategy);
+  formData.append("Costing_Method", costing);
+  formData.append("Inventory_Valuation", valuation);
 
   const save = () => {
     if (name === "") {
@@ -106,15 +103,15 @@ const AddProductCategories = (props) => {
       toast("Income Account Is Required!", { type: "warning" });
     } else if (expenseAcc === "") {
       toast("Expense Account Is Required!", { type: "warning" });
-    } else if(stockIn === ""){
-      toast("Stock Input is Required!",{type:"warning"});
-    }else if(stockOut === ""){
-      toast("Stock Output is Required!",{type:"warning"});
-    }else if(stockVal === ""){
-      toast("Stock Valuation is required!",{type:"warning"});
-    }else if(stockJournal === ""){
-      toast("Stock Journal is Required!",{type:"warning"});
-    }else if (removalStrategy === "") {
+    } else if (stockIn === "") {
+      toast("Stock Input is Required!", { type: "warning" });
+    } else if (stockOut === "") {
+      toast("Stock Output is Required!", { type: "warning" });
+    } else if (stockVal === "") {
+      toast("Stock Valuation is required!", { type: "warning" });
+    } else if (stockJournal === "") {
+      toast("Stock Journal is Required!", { type: "warning" });
+    } else if (removalStrategy === "") {
       toast("Force Removal Strategy Is Required!", { type: "warning" });
     } else if (costing === "") {
       toast("Costing Method Is Required!", { type: "warning" });
@@ -122,7 +119,7 @@ const AddProductCategories = (props) => {
       toast("Inventory Valuation Is Required!", { type: "warning" });
     } else {
       axios
-        .post(addProductCateUrl, formData)
+        .post(addProductCateUrl, formData,)
         .then((res) => {
           console.log(res, "responseresult");
           if (res.data.status == true) {
@@ -209,11 +206,7 @@ const AddProductCategories = (props) => {
   // };
   return (
     <>
-      <Navebar
-        showBelowMenu={true}
-        title="Product Category"
-        save={save}
-      />
+      <Navebar showBelowMenu={true} title="Product Category" save={save} />
       <div className="AddProductCategoriesContainer">
         <div className="AddProductCatehead">
           <div className="AddProductCate1"></div>
@@ -258,13 +251,15 @@ const AddProductCategories = (props) => {
                   className="prntSlt"
                 >
                   <option value=""></option>
-                   {getParentCate.map((item,index) => {
-                    return(
+                  {getParentCate.map((item, index) => {
+                    return (
                       <>
-                      <option value={item.CATEGORY_NAME}>{item.CATEGORY_NAME}</option>
+                        <option value={item.CATEGORY_NAME}>
+                          {item.CATEGORY_NAME}
+                        </option>
                       </>
-                    )
-                   })}
+                    );
+                  })}
                 </select>
               </div>
               <div className="AddProductCatecontent">
@@ -346,51 +341,103 @@ const AddProductCategories = (props) => {
               <h6>Account Stock Properties</h6>
               <div className="stockdropdown">
                 <p>Stock Input Account</p>
-                <select onChange={(e) => setStockIn(e.target.value)} value={stockIn}>
+                <select
+                  onChange={(e) => setStockIn(e.target.value)}
+                  value={stockIn}
+                >
                   <option value=""></option>
                   <option value="100002 Bank">100002 Bank</option>
-                  <option value="100003 Security Deposit">100003 Security Deposit</option>
-                  <option value="100004 Un-Realized Collection">100004 Un-Realized Collection</option>
-                  <option value="100010 MAIN CASH RYD01">100010 MAIN CASH RYD01</option>
-                  <option value="100101 STORE CASH COLLECTION">100101 STORE CASH COLLECTION</option>
-                  <option value="100201 STORE CARD COLLECTION">100201 STORE CARD COLLECTION</option>
+                  <option value="100003 Security Deposit">
+                    100003 Security Deposit
+                  </option>
+                  <option value="100004 Un-Realized Collection">
+                    100004 Un-Realized Collection
+                  </option>
+                  <option value="100010 MAIN CASH RYD01">
+                    100010 MAIN CASH RYD01
+                  </option>
+                  <option value="100101 STORE CASH COLLECTION">
+                    100101 STORE CASH COLLECTION
+                  </option>
+                  <option value="100201 STORE CARD COLLECTION">
+                    100201 STORE CARD COLLECTION
+                  </option>
                 </select>
               </div>
               <div className="stockdropdown">
                 <p>Stock Output Account</p>
-                <select value={stockOut} onChange={(e) => setStockOut(e.target.value)}>
+                <select
+                  value={stockOut}
+                  onChange={(e) => setStockOut(e.target.value)}
+                >
                   <option value=""></option>
                   <option value="100002 Bank">100002 Bank</option>
-                  <option value="100003 Security Deposit">100003 Security Deposit</option>
-                  <option value="100004 Un-Realized Collection">100004 Un-Realized Collection</option>
-                  <option value="100010 MAIN CASH RYD01">100010 MAIN CASH RYD01</option>
-                  <option value="100101 STORE CASH COLLECTION">100101 STORE CASH COLLECTION</option>
-                  <option value="100201 STORE CARD COLLECTION">100201 STORE CARD COLLECTION</option>
+                  <option value="100003 Security Deposit">
+                    100003 Security Deposit
+                  </option>
+                  <option value="100004 Un-Realized Collection">
+                    100004 Un-Realized Collection
+                  </option>
+                  <option value="100010 MAIN CASH RYD01">
+                    100010 MAIN CASH RYD01
+                  </option>
+                  <option value="100101 STORE CASH COLLECTION">
+                    100101 STORE CASH COLLECTION
+                  </option>
+                  <option value="100201 STORE CARD COLLECTION">
+                    100201 STORE CARD COLLECTION
+                  </option>
                 </select>
               </div>
               <div className="stockdropdown">
                 <p>Stock Valuation Account</p>
-                <select value={stockVal} onChange={(e) => setStockVal(e.target.value)}>
+                <select
+                  value={stockVal}
+                  onChange={(e) => setStockVal(e.target.value)}
+                >
                   <option value=""></option>
                   <option value="100002 Bank">100002 Bank</option>
-                  <option value="100003 Security Deposit">100003 Security Deposit</option>
-                  <option value="100004 Un-Realized Collection">100004 Un-Realized Collection</option>
-                  <option value="100010 MAIN CASH RYD01">100010 MAIN CASH RYD01</option>
-                  <option value="100101 STORE CASH COLLECTION">100101 STORE CASH COLLECTION</option>
-                  <option value="100201 STORE CARD COLLECTION">100201 STORE CARD COLLECTION</option>
+                  <option value="100003 Security Deposit">
+                    100003 Security Deposit
+                  </option>
+                  <option value="100004 Un-Realized Collection">
+                    100004 Un-Realized Collection
+                  </option>
+                  <option value="100010 MAIN CASH RYD01">
+                    100010 MAIN CASH RYD01
+                  </option>
+                  <option value="100101 STORE CASH COLLECTION">
+                    100101 STORE CASH COLLECTION
+                  </option>
+                  <option value="100201 STORE CARD COLLECTION">
+                    100201 STORE CARD COLLECTION
+                  </option>
                 </select>
               </div>
               <div className="stockdropdown">
                 <p>Stock Journal</p>
-                <select value={stockJournal} onChange={(e) => setStockJournal(e.target.value)}>
+                <select
+                  value={stockJournal}
+                  onChange={(e) => setStockJournal(e.target.value)}
+                >
                   <option value=""></option>
-                  <option value="Customer Invoices (SAR)">Customer Invoices (SAR)</option>
+                  <option value="Customer Invoices (SAR)">
+                    Customer Invoices (SAR)
+                  </option>
                   <option value="Vendor Bills (SAR)">Vendor Bills (SAR)</option>
-                  <option value="Miscellaneous Operations (SAR)">Miscellaneous Operations (SAR)</option>
-                  <option value="Inventory Valuation (SAR)">Inventory Valuation (SAR)</option>
-                  <option value="Exchange Difference (SAR)">Exchange Difference (SAR)</option>
+                  <option value="Miscellaneous Operations (SAR)">
+                    Miscellaneous Operations (SAR)
+                  </option>
+                  <option value="Inventory Valuation (SAR)">
+                    Inventory Valuation (SAR)
+                  </option>
+                  <option value="Exchange Difference (SAR)">
+                    Exchange Difference (SAR)
+                  </option>
                   <option value="Bank (SAR)">Bank (SAR)</option>
-                  <option value="POS CARD BANK (SAR)">POS CARD BANK (SAR)</option>
+                  <option value="POS CARD BANK (SAR)">
+                    POS CARD BANK (SAR)
+                  </option>
                 </select>
               </div>
             </div>

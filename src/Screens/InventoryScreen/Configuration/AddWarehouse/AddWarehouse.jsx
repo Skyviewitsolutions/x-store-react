@@ -57,7 +57,7 @@ const AddWarehouse = (props) => {
       toast("Manufacture to Resupply is required !", {type: "warning"});
     } else {
       axios
-        .post(AddWarehouseUrl, formData)
+        .post(AddWarehouseUrl, formData,)
         .then((res) => {
           console.log(res,"response warehouse")
           if (res.data.status == true) {
@@ -144,6 +144,7 @@ const AddWarehouse = (props) => {
           toast("something went wrong", { type: "error" });
         });
     }
+
   };
 
   return (
@@ -174,6 +175,12 @@ const AddWarehouse = (props) => {
             onChange={(e) => setWarehousename(e.target.value)}
           />
         </div>
+        <div className="Createcontent">
+          <p>Warehouse</p>
+          <input
+            type="file"
+          />
+        </div>
         <div className="shortname">
           <div className="Addcontent">
             <div className="textIn">
@@ -184,6 +191,7 @@ const AddWarehouse = (props) => {
                 onChange={(e) => setShortname(e.target.value)}
               />
             </div>
+
           </div>
           <div className="Addcontent2">
             <div className="Adddropdown">

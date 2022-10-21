@@ -24,7 +24,6 @@ import axios from "axios";
 const InventoryProductDetailsMain = (props) => {
 
   const [events, setEvents] = useState("generalInformation");
-
   const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomerTax , description , setDescription , sold , purchased , expensed , deduction , setSold , setPurchased , setExpensed , setDeduction,productdetails, buy ,setBuy,replenishOnOrder,setReplenishOnOrder} = props;
 
   const navigate = useNavigate();

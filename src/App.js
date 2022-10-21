@@ -106,7 +106,7 @@ import SalesOrders from "./Screens/SalesScreen/Orders/SalesOrders/SalesOrders";
 import ParentCategory from "./Screens/InventoryScreen/Configuration/ParentCategory/ParentCategory";
 import SalesTeam from "./Screens/SalesScreen/Orders/SalesTeam/SalesTeam";
 import ProductPriceList from "./Screens/InventoryScreen/AddProduct/ProductPriceList/ProductPriceList";
-// import SalesTerms from "./SalesScreen/SalesTerms/SalesTerms";
+import Testing from './Screens/InventoryScreen/Testing/Testing'
 
 const App = () => {
  
@@ -153,6 +153,8 @@ const App = () => {
        <Route path='/ProductBrand' element={<ProductBrand/>} />
        <Route path='/ParentCategory' element={<ParentCategory/>} />
        <Route path='/ProductPrice' element={<ProductPriceList/>} />
+       <Route path='/testing' element={<Testing/>} />
+  
 
        {/* --------Accounting Pages------------- */}
 
