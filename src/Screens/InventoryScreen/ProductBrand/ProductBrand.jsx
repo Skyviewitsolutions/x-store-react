@@ -11,12 +11,16 @@ const ProductBrand = () => {
   const [brandCode , setBrandCode] = useState("");
   const [brandNameEn , setBrandNameEn] = useState("");
   const [brandNameAr , setBrandNameAr] = useState("");
+  const userAuth = localStorage.getItem("userAuth");
+  const getAuthtoken = localStorage.getItem("authtoken");
 
   const save = () => {
     const formData = new FormData();
     formData.append("Brand_Code" , brandCode);
     formData.append("Brand_Name" , brandNameEn);
     formData.append("Brand_Name_Arbic" , brandNameAr);
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     if(brandCode === "")
     {
       toast("Brand Code Is Required!",{type:"warning"});

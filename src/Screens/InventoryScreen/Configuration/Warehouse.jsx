@@ -18,8 +18,11 @@ const Warehouse = () => {
   const url = endpoints.wareHouse.allWarehouse;
 
   const [WareHousedetails, setWareHousedetails] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const formData = new FormData();
-
+  formData.append("User_Authorization" , getAuthtoken);
+  formData.append("User_AuthKey" , userAuth);
   const getWarehouseList = () => {
     
     axios
@@ -44,6 +47,8 @@ const Warehouse = () => {
   const deleteItem = (data) => {
     const formData = new FormData();
     formData.append("Id", data);
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios
       .post(WarehousedeleteUrl, formData)
       .then((res) => {

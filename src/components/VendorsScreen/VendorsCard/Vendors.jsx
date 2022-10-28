@@ -1,6 +1,7 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom';
 import AccountNavbar from '../../AccountNavbar/AccountNavbar';
+import Navebar from '../../Navbar/Navbar';
 import VendorsCard from '../../VendorsCard/VendorsCard';
 import './Vendors.css';
 
@@ -11,9 +12,8 @@ const Vendors = () => {
   };
   return (
     <div>
-      <AccountNavbar
+    <Navebar
         showBelowMenu={true}
-        handleCreatePage={handleCreatePage}
         title="Vendors"
       />
              <VendorsCard/>

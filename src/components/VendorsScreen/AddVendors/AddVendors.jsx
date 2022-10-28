@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import { RiShoppingCartFill } from "react-icons/ri";
 import { BsPencilSquare } from "react-icons/bs";
 import "./AddVendors.css";
-import AccountNavbar from "../../AccountNavbar/AccountNavbar";
-import { Nav } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import SalesPurchase from "./SalesPurchase";
 import Invoicing from "./Invoicing";
 import camera from "../../../assets/Images/camera.png";
+import Navebar from "../../Navbar/Navbar"
 
 const AddVendors = () => {
     const [event, setEvent] = useState("Sales & Purchase");
 
   return (
     <div>
-      <AccountNavbar showBelowMenu={true} title="Vendors" />
+     <Navebar
+        showBelowMenu={true}
+        title="Vendors"
+      />
       <div className="AddVendorsCon">
         <div className="container">
           <div className="VendorsHeader">

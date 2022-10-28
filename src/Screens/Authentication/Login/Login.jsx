@@ -59,8 +59,10 @@ const Login = () => {
       console.log(res , "response");
       if(res.data.status === true) 
       {
-        const token = res.data.session_token;
-        localStorage.setItem("token" , token);
+        const authtoken = res.data.User_Authorization;
+        const userAuth = res.data.User_AuthKey;
+        localStorage.setItem("authtoken",authtoken);
+        localStorage.setItem("userAuth" , userAuth);
         setIsLoading(false);
         navigate('/Dashboard');
       }

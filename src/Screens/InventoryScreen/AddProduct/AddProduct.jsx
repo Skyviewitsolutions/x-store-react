@@ -16,8 +16,7 @@ const AddProduct = () => {
   const [isEdit, setIsEdit] = useState(true);
   const [productName, setProductName] = useState("");
   const [productType, setProductType] = useState("Consumable");
-  const [productCategory, setProductCategory] = useState(
-    "");
+  const [productCategory, setProductCategory] = useState("");
   const [sold , setSold] = useState(false)
   const [purchased , setPurchased] = useState(false)
   const [expensed , setExpensed] = useState(false);

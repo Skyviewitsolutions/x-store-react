@@ -30,6 +30,8 @@ axios.post(CurrencyUrl)
     console.log(err,"Currency Error");
 })
 },[])
+
+
   return (
     <div>
         <SalesNavbar

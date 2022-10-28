@@ -29,11 +29,10 @@ const AddWarehouse = (props) => {
   const [menufactureResupply, setMenufactureResupply] = useState("");
   const [manufacture, setManufacture] = useState("");
   const [update, setUpdate] = useState(false);
-
-  const token = localStorage.getItem("token")
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const save = () => {
-
     const formData = new FormData();
     formData.append("Name", warehouseName);
     formData.append("Short_Name", shortName);
@@ -42,7 +41,8 @@ const AddWarehouse = (props) => {
     formData.append("Resupply_Sub", resupply);
     formData.append("Manufacture_To_Resupply", menufactureResupply);
     formData.append("Manufacture", manufacture);
-
+    formData.append("User_Authorization" , getAuthtoken)
+    formData.append("User_AuthKey" , userAuth);
     if (warehouseName === "") {
       toast("WareHouseName required !", { type: "warning" });
     } else if (shortName === "") {
@@ -130,10 +130,12 @@ const AddWarehouse = (props) => {
       formData.append("Resupply_Sub", resupply);
       formData.append("Manufacture_To_Resupply", menufactureResupply);
       formData.append("Manufacture", manufacture);
+      formData.append("User_Authorization" , getAuthtoken);
+      formData.append("User_AuthKey" , userAuth);
       axios
         .post(updateUrl, formData)
         .then((res) => {
-          if (res.data.status == true) {
+          if (res.data.status == true) {       
             toast("Warehouse Updated Sucessfully!", { type: "Success" });
           } else if (res.data.status === false) {
             toast(res.data.message, { type: "error" });
@@ -173,12 +175,6 @@ const AddWarehouse = (props) => {
             placeholder="Al-Enjaz Contracting & Trading Company"
             value={warehouseName}
             onChange={(e) => setWarehousename(e.target.value)}
-          />
-        </div>
-        <div className="Createcontent">
-          <p>Warehouse</p>
-          <input
-            type="file"
           />
         </div>
         <div className="shortname">

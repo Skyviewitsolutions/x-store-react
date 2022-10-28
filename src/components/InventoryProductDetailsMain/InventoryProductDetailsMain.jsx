@@ -22,12 +22,44 @@ import InventoryProductDetailsFooter from "../InventoryProductDetailsFooter/Inve
 import axios from "axios";
 
 const InventoryProductDetailsMain = (props) => {
-
   const [events, setEvents] = useState("generalInformation");
-  const { isEdit , productName , setProductName ,productType , setProductType , productCategory , setProductCategory ,units,setUnits,cost, setCost,salesPrice, setSalesPrice , interRef,setInterRef , customerTax , setCustomerTax , description , setDescription , sold , purchased , expensed , deduction , setSold , setPurchased , setExpensed , setDeduction,productdetails, buy ,setBuy,replenishOnOrder,setReplenishOnOrder} = props;
+  const {
+    isEdit,
+    productName,
+    setProductName,
+    productType,
+    setProductType,
+    productCategory,
+    setProductCategory,
+    units,
+    setUnits,
+    cost,
+    setCost,
+    salesPrice,
+    setSalesPrice,
+    interRef,
+    setInterRef,
+    customerTax,
+    setCustomerTax,
+    description,
+    setDescription,
+    sold,
+    purchased,
+    expensed,
+    deduction,
+    setSold,
+    setPurchased,
+    setExpensed,
+    setDeduction,
+    productdetails,
+    buy,
+    setBuy,
+    replenishOnOrder,
+    setReplenishOnOrder,
+  } = props;
 
   const navigate = useNavigate();
-    
+
   const RedirectToEmpty = (data) => {
     if (data === "Hand") {
       const val = {
@@ -96,7 +128,8 @@ const InventoryProductDetailsMain = (props) => {
           </div>
           <div className="div2">
             <FaCogs
-              size="25px" className="hello"
+              size="25px"
+              className="hello"
               style={{ color: "#848484", marginTop: "5px" }}
             />
             <div className="text2">
@@ -117,7 +150,6 @@ const InventoryProductDetailsMain = (props) => {
           <div className="detailsheading">
             {isEdit === false && <p>{productName}</p>}
             {isEdit === true && (
-             
               <input
                 type="text"
                 className="proin"
@@ -128,19 +160,43 @@ const InventoryProductDetailsMain = (props) => {
             )}
             <div className="detailsinput">
               <div>
-                <input type="checkbox" value={sold} onChange={ () => setSold(!sold)} checked={sold} id="sold"/>
+                <input
+                  type="checkbox"
+                  value={sold}
+                  onChange={() => setSold(!sold)}
+                  checked={sold}
+                  id="sold"
+                />
                 <label htmlFor="sold">Sold</label>
               </div>
               <div>
-                <input type="checkbox" value={purchased} onChange={() => setPurchased(!purchased)} checked={purchased} id="purchased"/>
+                <input
+                  type="checkbox"
+                  value={purchased}
+                  onChange={() => setPurchased(!purchased)}
+                  checked={purchased}
+                  id="purchased"
+                />
                 <label htmlFor="purchased">Purchased</label>
               </div>
               <div>
-                <input type="checkbox" value={expensed} onChange={() => setExpensed(!expensed)} checked={expensed} id="expensed"/>
+                <input
+                  type="checkbox"
+                  value={expensed}
+                  onChange={() => setExpensed(!expensed)}
+                  checked={expensed}
+                  id="expensed"
+                />
                 <label htmlFor="expensed">Expensed</label>
               </div>
               <div>
-                <input type="checkbox" value={deduction} onChange={() => setDeduction(!deduction)} checked={deduction} id="deduction"/>
+                <input
+                  type="checkbox"
+                  value={deduction}
+                  onChange={() => setDeduction(!deduction)}
+                  checked={deduction}
+                  id="deduction"
+                />
                 <label htmlFor="deduction">Deduction</label>
               </div>
             </div>
@@ -187,21 +243,27 @@ const InventoryProductDetailsMain = (props) => {
         </div>
         <div className="GeneralInformation">
           {events === "generalInformation" && isEdit === false && (
-            <GeneralInformation {...props}/>
+            <GeneralInformation {...props} />
           )}
           {events === "variants" && isEdit === false && <Variants />}
           {events === "Purchase" && isEdit === false && <Purchase />}
           {events === "Inventory" && isEdit === false && (
-            <ProductDetailsInventory {...props}/>
+            <ProductDetailsInventory {...props} />
           )}
-          {events === "Accounting" && isEdit === false && <Accounting {...props} />}
+          {events === "Accounting" && isEdit === false && (
+            <Accounting {...props} />
+          )}
           {events === "generalInformation" && isEdit === true && (
-            <GeneralInformationEdit {...props}/>
+            <GeneralInformationEdit {...props} />
           )}
           {events === "variants" && isEdit === true && <VariantsEdit />}
           {events === "Purchase" && isEdit === true && <PurchaseEdit />}
-          {events === "Inventory" && isEdit === true && <InventoryEdit {...props} />}
-          {events === "Accounting" && isEdit === true && <AccountingEdit {...props}/>}
+          {events === "Inventory" && isEdit === true && (
+            <InventoryEdit {...props} />
+          )}
+          {events === "Accounting" && isEdit === true && (
+            <AccountingEdit {...props} />
+          )}
         </div>
       </div>
 
