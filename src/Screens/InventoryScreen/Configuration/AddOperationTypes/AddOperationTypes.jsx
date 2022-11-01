@@ -11,6 +11,8 @@ const AddOperationTypes = () => {
   const locationUrl = endpoints.location.allLocation;
   const [warehouse, setWareHouse] = useState([]);
   const [location, setLocation] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const AddOperationTypeURL = endpoints.OpertionType.addOperationType;
 
@@ -19,21 +21,23 @@ const AddOperationTypes = () => {
   const [code, setCode] = useState("");
   const [detailsoperation, setDetailsoperation] = useState("");
   const [sourcelocation, setSourceLocation] = useState("");
-  const [destination , setDestination] = useState("");
+  const [destination, setDestination] = useState("");
   const [operationWarehouse, setOperationwarehouse] = useState("");
 
   const [update, setUpdate] = useState();
 
-  const formData = new FormData();
-  formData.append("Operation_Type", operationType);
-  formData.append("Type_Of_Operation", typeofoperation);
-  formData.append("Code", code);
-  formData.append("Show_Detailed_Operations", detailsoperation);
-  formData.append("Warehouse", operationWarehouse);
-  formData.append("Default_Source_Location", sourcelocation);
-  formData.append("Default_Destination", destination);
-
   const save = () => {
+    const formData = new FormData();
+    formData.append("Operation_Type", operationType);
+    formData.append("Type_Of_Operation", typeofoperation);
+    formData.append("Code", code);
+    formData.append("Show_Detailed_Operations", detailsoperation);
+    formData.append("Warehouse", operationWarehouse);
+    formData.append("Default_Source_Location", sourcelocation);
+    formData.append("Default_Destination", destination);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+
     if (operationType === "") {
       toast("Operation Type is Required !", { type: "warning" });
     } else if (typeofoperation === "") {
@@ -46,9 +50,9 @@ const AddOperationTypes = () => {
       toast("Warehouse is required !", { type: "warning" });
     } else if (sourcelocation === "") {
       toast("Source Location is Required!", { type: "warning" });
-    } else if(destination === ""){
+    } else if (destination === "") {
       toast("Destination Location is Required!", { type: "warning" });
-    }else {
+    } else {
       axios
         .post(AddOperationTypeURL, formData)
         .then((res) => {
@@ -65,6 +69,9 @@ const AddOperationTypes = () => {
     }
   };
   useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
       .post(warehouseurl)
       .then((res) => {
@@ -106,7 +113,6 @@ const AddOperationTypes = () => {
       setSourceLocation(selectedData.DEFAULT_SOURCE_LOCATION);
       setDestination(selectedData.DEFAULT_DESTINATION);
       setOperationwarehouse(selectedData.WAREHOUSE_INFO);
-
     }
   }, [selectedData]);
 
@@ -135,6 +141,8 @@ const AddOperationTypes = () => {
       formData.append("Warehouse", operationWarehouse);
       formData.append("Default_Source_Location", sourcelocation);
       formData.append("Default_Destination", destination);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       
       axios
         .post(operationUpdateUrl, formData)
@@ -198,9 +206,7 @@ const AddOperationTypes = () => {
             </div>
             <div className="operation">
               <p>Barcode</p>
-              <input
-                type="text"
-              />
+              <input type="text" />
             </div>
           </div>
           <div className="type">
@@ -224,48 +230,47 @@ const AddOperationTypes = () => {
                 onChange={(e) => setDetailsoperation(!detailsoperation)}
               />
             </div>
-           
           </div>
         </div>
         <div className="location">
           <h3>Locations</h3>
           <div className="operation">
-              <p>Default Source Location</p>
-              <select
-                value={sourcelocation}
-                onChange={(e) => setSourceLocation(e.target.value)}
-              >
-                <option></option>
-                {location.map((item, index) => {
-                  return (
-                    <>
-                      <option key={index} value={item.LOCATION_NAME}>
-                        {item.LOCATION_NAME}
-                      </option>
-                    </>
-                  );
-                })}
-              </select>
-            </div>
-          <div className="operation">
-              <p>Default Destination Location</p>
-              <select
-                value={destination}
-                onChange={(e) => setDestination(e.target.value)}
-              >
-                <option></option>
-                {location.map((item, index) => {
-                  return (
-                    <>
-                      <option key={index} value={item.LOCATION_NAME}>
-                        {item.LOCATION_NAME}
-                      </option>
-                    </>
-                  );
-                })}
-              </select>
-            </div>
+            <p>Default Source Location</p>
+            <select
+              value={sourcelocation}
+              onChange={(e) => setSourceLocation(e.target.value)}
+            >
+              <option></option>
+              {location.map((item, index) => {
+                return (
+                  <>
+                    <option key={index} value={item.LOCATION_NAME}>
+                      {item.LOCATION_NAME}
+                    </option>
+                  </>
+                );
+              })}
+            </select>
           </div>
+          <div className="operation">
+            <p>Default Destination Location</p>
+            <select
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+            >
+              <option></option>
+              {location.map((item, index) => {
+                return (
+                  <>
+                    <option key={index} value={item.LOCATION_NAME}>
+                      {item.LOCATION_NAME}
+                    </option>
+                  </>
+                );
+              })}
+            </select>
+          </div>
+        </div>
 
         <ToastContainer />
       </div>

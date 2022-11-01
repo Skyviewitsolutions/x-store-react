@@ -14,9 +14,16 @@ const UomCategories = () => {
   const [uomdetails , setUomdetails] = useState([]);
   const url = endpoints.UomCategory.allUomCate;
   const navigate = useNavigate();
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
 const getUomCategory = () => {
-  axios.get(url )
+
+  const formData = new FormData();
+  formData.append("User_Authorization" , getAuthtoken);
+  formData.append("User_AuthKey" , userAuth);
+
+  axios.post(url  , formData)
   .then((res) => {
     console.log(res,"response");
     if(res.data.status === true)
@@ -44,10 +51,12 @@ const getUomCategory = () => {
    
   const formData = new FormData();
   formData.append("id" , data);
+  formData.append("User_Authorization" , getAuthtoken);
+  formData.append("User_AuthKey" , userAuth);
+
   axios.post(UomCateDeleteUrl,formData)
   .then((res) => {
 
-    console.log(res,"responseuom")
     if(res.data.status === true)
     {
       getUomCategory()

@@ -9,7 +9,9 @@ import { MdDelete } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
 
 const ProductCategories = () => {
+
   const navigate = useNavigate();
+
   const handleCreatePage = () => {
     navigate("/AddProductCategories");
   };
@@ -18,11 +20,17 @@ const ProductCategories = () => {
   const [productCate, setProductCate] = useState([]);
 
   const token = localStorage.getItem("token")
-  console.log(token)
 
   const getProductCate = () => {
+
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+  const formData = new FormData();
+  formData.append("User_Authorization" , getAuthtoken);
+  formData.append("User_AuthKey" , userAuth);
+
     axios
-      .post(allProductCate )
+      .post(allProductCate , formData )
       .then((res) => {
         console.log(res, "result");
         if (res.data.status === true) {
@@ -61,12 +69,12 @@ const ProductCategories = () => {
   // };
 
   const handleUpdate = (data) => {
+
     const val = productCate.filter((itm, index) => {
       return itm.CATEGORY_ID == data;
     });
 
     const orgValue = val[0];
-
     navigate("/AddProductCategories", { state: orgValue });
   };
 

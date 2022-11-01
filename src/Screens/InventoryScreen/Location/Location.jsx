@@ -8,7 +8,7 @@ import axios from "axios";
 import { endpoints } from "../../../services/endpoints";
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-import {toast , ToastContainer} from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const Location = () => {
 
@@ -21,20 +21,25 @@ const Location = () => {
   const [Locationdetails, setLocationdetails] = useState([]);
 
   const getLocation = () => {
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
-    .post(url)
-    .then((res) => {
-      console.log(res, "response");
-      if (res.data.status === true) {
-        setLocationdetails(res.data.data);
-      } else if (res.data.status === false) {
-        alert(res.data.message);
-      }
-    })
-    .catch((err) => {
-      console.log(err, "error");
-    });
-  }
+      .post(url, formData)
+      .then((res) => {
+        console.log(res, "response location");
+        if (res.data.status === true) {
+          setLocationdetails(res.data.data);
+        } else if (res.data.status === false) {
+          alert(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  };
 
   useEffect(() => {
     getLocation();
@@ -43,36 +48,33 @@ const Location = () => {
   const locationDeleteUrl = endpoints.location.deleteLocation;
 
   const deleteItem = (data) => {
-    
     const formData = new FormData();
-    formData.append("Id",data);
-    axios.post(locationDeleteUrl,formData)
-    .then((res) => {
-      console.log(res,"deleteLoaction");
-      if(res.data.status === true)
-      {
-        getLocation();
-        toast("Location deleted Successfully",{type:"success"});
-      }
-      else if(res.data.status === false)
-      {
-        toast(res.data.message,{type:"error"})
-      }
-    })
-    .catch((err) => {
-      console.log(err,"error");
-    });
+    formData.append("Id", data);
+    axios
+      .post(locationDeleteUrl, formData)
+      .then((res) => {
+        console.log(res, "deleteLoaction");
+        if (res.data.status === true) {
+          getLocation();
+          toast("Location deleted Successfully", { type: "success" });
+        } else if (res.data.status === false) {
+          toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
   };
 
   const handleUpdate = (data) => {
-    const val = Locationdetails.filter((itm,index) => {
-      return itm.LOCATION_ID == data
-    })
+    const val = Locationdetails.filter((itm, index) => {
+      return itm.LOCATION_ID == data;
+    });
 
     const orgValue = val[0];
     // console.log(orgValue , "orgValue");
-    navigate("/AddLocation" , {state:orgValue});
-  }
+    navigate("/AddLocation", { state: orgValue });
+  };
 
   const column = [
     { label: "Location", name: "LOCATION_NAME" },
@@ -85,12 +87,17 @@ const Location = () => {
           return (
             <>
               <div className="updtdlt">
-                <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
+                <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
                 <MdDelete
                   size={23}
                   color="#4f4e4d"
                   onClick={() => deleteItem(value)}
-                  style={{cursor:"pointer"}}
+                  style={{ cursor: "pointer" }}
                 />
               </div>
             </>
@@ -102,7 +109,12 @@ const Location = () => {
 
   return (
     <div>
-      <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Location" disabledCreate={false}/>
+      <Navebar
+        showBelowMenu={true}
+        handleCreatePage={handleCreatePage}
+        title="Location"
+        disabledCreate={false}
+      />
       <div className="container-fluid PROVAR">
         <div className="Main">
           {/* <div className="left">

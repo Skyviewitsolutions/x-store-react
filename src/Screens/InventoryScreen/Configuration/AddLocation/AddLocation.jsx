@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useLocation } from "react-router-dom";
 import { SecurityUpdate } from "@mui/icons-material";
 
+
 const AddLocation = () => {
   
   const AddLocUrl = endpoints.location.addLocation;
@@ -27,13 +28,19 @@ const AddLocation = () => {
   const [notes, setNotes] = useState("");
   const [update, setUpdate] = useState(false);
 
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+
   const formData = new FormData();
+  
   formData.append("Location_Name", locationName);
   formData.append("Parent_Location", parentLocation);
   formData.append("Location_Type", locationType);
   formData.append("Scrap_Location", scrapLocation);
   formData.append("Return_Location", returnLocation);
   formData.append("Removal_Strategy", removel);
+  formData.append("User_Authorization" , getAuthtoken);
+  formData.append("User_AuthKey" , userAuth);
   formData.append("Notes", notes);
 
   const save = () => {
@@ -91,11 +98,13 @@ const AddLocation = () => {
       setLocationName(selectedData.LOCATION_NAME);
       setLocationType(selectedData.LOCATION_TYPE);
       setParentLocation(selectedData.PARENT_LOCATION);
-      setScapLocation(selectedData.SCRAP_LOCATION);
-      setReturnLocation(selectedData.RETURN_LOCATION);
-      setRemovel(selectedData.REMOVAL_STRATEGY);
+      setScapLocation(JSON.parse(selectedData.SCRAP_LOCATION));
+      setReturnLocation(JSON.parse(selectedData.RETURN_LOCATION));
+      setRemovel(selectedData.REMOVAL_STRATAGY);
       setNotes(selectedData.NOTES)
     }
+
+    console.log(selectedData , "selectedData here");
   }, [selectedData]);
 
   console.log(locationType, "locationTypehere");
@@ -127,6 +136,8 @@ const AddLocation = () => {
       formData.append("Return_Location", returnLocation);
       formData.append("Removal_Strategy", removel);
       formData.append("Notes", notes);
+      formData.append("User_Authorization" , getAuthtoken);
+      formData.append("User_AuthKey" , userAuth);
       axios.post(locationupdateUrl,formData)
       .then((res) => {
         if(res.data.status == true)
@@ -245,10 +256,7 @@ const AddLocation = () => {
                   onChange={(e) => setReturnLocation(!returnLocation)}
                 />
               </div>
-              <div className="Addlocationcontent">
-                <p>Barcode</p>
-               <input type="text"/>
-              </div>
+             
               <h4>Logistics</h4>
               <div className="Addlocationcontent">
                 <p>Removal Strategy</p>

@@ -10,6 +10,7 @@ import { MdDelete } from "react-icons/md";
 import { toast,ToastContainer } from "react-toastify";
 
 const OperationTypes = (props) => {
+
   const navigate = useNavigate();
 
   const handleCreatePage = () => {
@@ -17,14 +18,19 @@ const OperationTypes = (props) => {
   };
 
   const [opertaionType, setOperationType] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const alloperationUrl = endpoints.OpertionType.allOpertaionType;
 
   const getOperationType = () => {
+
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .post(alloperationUrl)
+      .post(alloperationUrl , formData)
       .then((res) => {
-        console.log(res, "operationType Response");
         if (res.data.status === true) {
           setOperationType(res.data.data);
         } else if (res.data.status === false) {
@@ -45,6 +51,8 @@ const OperationTypes = (props) => {
   const deleteItem = (data) => {
    const formdata = new FormData();
    formdata.append("Id" , data);
+   formdata.append("User_Authorization" , getAuthtoken);
+   formdata.append("User_AuthKey" , userAuth);
    axios.post(opertaionTypeDelteUrl , formdata)
     .then((res) => {
        

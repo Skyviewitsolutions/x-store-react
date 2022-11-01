@@ -24,15 +24,16 @@ const AddWarehouse = (props) => {
   const [warehouseName, setWarehousename] = useState("");
   const [shortName, setShortname] = useState("");
   const [address, setAddress] = useState("");
-  const [buy, setBuy] = useState("");
-  const [resupply, setResupply] = useState("");
-  const [menufactureResupply, setMenufactureResupply] = useState("");
+  const [buy, setBuy] = useState(false);
+  const [resupply, setResupply] = useState(false);
+  const [menufactureResupply, setMenufactureResupply] = useState(false);
   const [manufacture, setManufacture] = useState("");
   const [update, setUpdate] = useState(false);
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
 
   const save = () => {
+    
     const formData = new FormData();
     formData.append("Name", warehouseName);
     formData.append("Short_Name", shortName);
@@ -72,12 +73,19 @@ const AddWarehouse = (props) => {
         });
     }
   }
+
+  
   useEffect(() => {
+
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken)
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .post(AllLoactionUrl)
+      .post(AllLoactionUrl , formData)
       .then((res) => {
         console.log(res, "locationresult");
         if (res.data.status === true) {
+          
           setLocationall(res.data.data);
         } else if (res.data.status === false) {
           toast(res.data.message);
@@ -94,16 +102,18 @@ const AddWarehouse = (props) => {
 
   useEffect(() => {
     if (selectedData) {
+      console.log(selectedData , "selectedData")
       setUpdate(true);
       setWarehousename(selectedData.WAREHOUSE_NAME);
       setShortname(selectedData.SHORT_NAME);
       setAddress(selectedData.WAREHOUSE_ADDRESS);
-      setBuy(selectedData.BUY_RESUPPLY);
-      setResupply(selectedData.RESUPPLY);
-      setMenufactureResupply(selectedData.MANUFACTURE_RESUPPLY);
+      setBuy(JSON.parse(selectedData.BUY_RESUPPLY));
+      setResupply(JSON.parse(selectedData.RESUPPLY));
+      setMenufactureResupply(JSON.parse(selectedData.MANUFACTURE_RESUPPLY));
       setManufacture(selectedData.MANUFACTURE);
     }
   }, [selectedData]);
+
 
   const updateUrl = endpoints.wareHouse.updateWarehouse;
 

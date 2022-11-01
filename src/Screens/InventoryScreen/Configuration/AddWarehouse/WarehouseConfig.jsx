@@ -5,6 +5,8 @@ const WarehouseConfig = (props) => {
   const {
   buy,setBuy,resupply,setResupply,menufactureResupply,setMenufactureResupply,manufacture,setManufacture
   } = props;
+
+  console.log(resupply , "resupply here");
   return (
     <div className="WarehouseConfigContainer">
       <div className="config2">

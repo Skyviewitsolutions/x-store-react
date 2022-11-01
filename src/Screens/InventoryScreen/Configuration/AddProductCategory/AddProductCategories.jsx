@@ -13,6 +13,7 @@ import { endpoints } from "../../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddProductCategories = (props) => {
+
   const [showAccount, setShowAccount] = useState(false);
   const navigate = useNavigate();
 
@@ -70,7 +71,13 @@ const AddProductCategories = (props) => {
     });
   }, []);
   useEffect(() => {
-    axios.post(allParentCateurl).then((res) => {
+    const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+  const formData = new FormData();
+  formData.append("User_Authorization" , getAuthtoken);
+  formData.append("User_AuthKey" , userAuth);
+
+    axios.post(allParentCateurl , formData).then((res) => {
       if (res.data.status === true) {
         setGetParentCate(res.data.data);
       } else if (res.data.status === false) {
@@ -78,6 +85,10 @@ const AddProductCategories = (props) => {
       }
     });
   }, []);
+
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+
   const formData = new FormData();
   formData.append("Name", name);
   formData.append("Parent_Category", parentCate);
@@ -91,6 +102,8 @@ const AddProductCategories = (props) => {
   formData.append("Force_Rem_Stra", removalStrategy);
   formData.append("Costing_Method", costing);
   formData.append("Inventory_Valuation", valuation);
+  formData.append("User_Authorization" , getAuthtoken);
+  formData.append("User_AuthKey" , userAuth);
 
   const save = () => {
     if (name === "") {

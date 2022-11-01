@@ -7,6 +7,7 @@ import './Uomdetails.css';
 import axios from 'axios';
 
 const Uomdetails = () => {
+  
   const navigate = useNavigate();
   const handleCreatePage = () => {
     navigate('/Add')

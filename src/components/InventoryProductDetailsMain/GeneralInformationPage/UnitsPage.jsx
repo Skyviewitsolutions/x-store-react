@@ -14,14 +14,18 @@ const UnitPage = () => {
   const [unitCategory, setUnitcategory] = useState("");
   const [unitType, setUnitType] = useState("");
   const [uomcate, setUomCate] = useState([]);
-  const [rounding,setRounding] = useState("");
+  const [rounding, setRounding] = useState("");
   const [update, setUpdate] = useState();
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const formData = new FormData();
   formData.append("UnitName", unitName);
   formData.append("UnitCategory", unitCategory);
   formData.append("UnitType", unitType);
-  formData.append("Rounding_Precisio",rounding);
+  formData.append("Rounding_Precisio", rounding);
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
 
   const save = () => {
     if (unitName === "") {
@@ -30,11 +34,9 @@ const UnitPage = () => {
       toast("Unit Category is Required!", { type: "warning" });
     } else if (unitType === "") {
       toast("Unit type is Required!", { type: "warning" });
-    } else if(rounding === "")
-    {
-      toast("Rounding Precisio is Required!," ,{type:"warning"});
-    }
-    else {
+    } else if (rounding === "") {
+      toast("Rounding Precisio is Required!,", { type: "warning" });
+    } else {
       axios
         .post(AddUOMUrl, formData)
         .then((res) => {
@@ -52,8 +54,12 @@ const UnitPage = () => {
   };
 
   useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+
     axios
-      .get(UomCateURL)
+      .post(UomCateURL, formData)
       .then((res) => {
         console.log(res, "UOmCateResponse");
         if (res.data.status == true) {
@@ -96,7 +102,10 @@ const UnitPage = () => {
       formData.append("UnitName", unitName);
       formData.append("UnitType", unitType);
       formData.append("UnitCategory", unitCategory);
-      formData.append("Rounding_Precisio",rounding);
+      formData.append("Rounding_Precisio", rounding);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
+
       axios
         .post(UomUpdateUrl, formData)
         .then((res) => {
@@ -169,13 +178,17 @@ const UnitPage = () => {
           </div>
           <div className="unitcontent">
             <p>Rounding Precisio</p>
-            <input type="text" placeholder="0.00010" value={rounding} onChange={(e) => setRounding(e.target.value)}/>
+            <input
+              type="text"
+              placeholder="0.00010"
+              value={rounding}
+              onChange={(e) => setRounding(e.target.value)}
+            />
           </div>
           <div className="unitcheckbox">
-            <p>Active</p>
-            <input type="checkbox" />
+            {/* <p>Active</p> */}
+            {/* <input type="checkbox" /> */}
           </div>
-          
         </div>
       </div>
       <ToastContainer />

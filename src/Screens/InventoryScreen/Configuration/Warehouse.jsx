@@ -8,8 +8,9 @@ import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
 
+
 const Warehouse = () => {
-  
+
   const navigate = useNavigate();
   const handleCreatePage = () => {
     navigate("/AddWarehouse");
@@ -20,11 +21,11 @@ const Warehouse = () => {
   const [WareHousedetails, setWareHousedetails] = useState([]);
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
+
   const formData = new FormData();
-  formData.append("User_Authorization" , getAuthtoken);
-  formData.append("User_AuthKey" , userAuth);
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
   const getWarehouseList = () => {
-    
     axios
       .post(url, formData)
       .then((res) => {
@@ -39,6 +40,7 @@ const Warehouse = () => {
         console.log(err, "error");
       });
   };
+
   useEffect(() => {
     getWarehouseList();
   }, []);
@@ -47,8 +49,8 @@ const Warehouse = () => {
   const deleteItem = (data) => {
     const formData = new FormData();
     formData.append("Id", data);
-    formData.append("User_Authorization" , getAuthtoken);
-    formData.append("User_AuthKey" , userAuth);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
       .post(WarehousedeleteUrl, formData)
       .then((res) => {
@@ -65,17 +67,15 @@ const Warehouse = () => {
       });
   };
 
-
-  const handleUpdate = (data) =>{
-   
-    const val = WareHousedetails.filter((itm,index) =>{
-      return itm.WAREHOUSE_ID == data
-    })
+  const handleUpdate = (data) => {
+    const val = WareHousedetails.filter((itm, index) => {
+      return itm.WAREHOUSE_ID == data;
+    });
 
     const orgValue = val[0];
     // console.log(orgValue , "orgValue")
-    navigate("/AddWarehouse" , {state : orgValue});
-  }
+    navigate("/AddWarehouse", { state: orgValue });
+  };
 
   const column = [
     { label: "Warehouse", name: "WAREHOUSE_NAME" },
@@ -86,16 +86,20 @@ const Warehouse = () => {
       name: "WAREHOUSE_ID",
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
-         
           return (
             <>
               <div className="updtdlt">
-                <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
+                <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
                 <MdDelete
                   size={23}
                   color="#4f4e4d"
                   onClick={() => deleteItem(value)}
-                  style={{cursor:"pointer"}}
+                  style={{ cursor: "pointer" }}
                 />
               </div>
             </>
@@ -106,7 +110,11 @@ const Warehouse = () => {
   ];
   return (
     <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
-      <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Warehouse"/>
+      <Navebar
+        showBelowMenu={true}
+        handleCreatePage={handleCreatePage}
+        title="Warehouse"
+      />
       <CustomTable column={column} data={WareHousedetails} />
       <ToastContainer />
     </div>

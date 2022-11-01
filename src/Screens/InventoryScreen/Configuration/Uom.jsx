@@ -13,11 +13,17 @@ const Uom = () => {
   const [UOM, setUOM] = useState();
   const navigate = useNavigate();
 
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+
   const getList = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
-      .post(UOMapiurl)
+      .post(UOMapiurl, formData)
       .then((res) => {
-        console.log(res, "response");
+        console.log(res, "uom");
         if (res.data.status === true) {
           setUOM(res.data.data);
         } else if (res.data.status === false) {
@@ -36,8 +42,12 @@ const Uom = () => {
   const deleteUrl = endpoints.UOM.deleteUOM;
 
   const deleteItem = (data) => {
+
     const formData = new FormData();
-    formData.append("ID", data);
+    
+    formData.append("id" , data)
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
 
     axios
       .post(deleteUrl, formData)
