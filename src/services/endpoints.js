@@ -25,10 +25,12 @@ export const endpoints = {
     singleProductBrand: BASE_URL + "/ProductManagement/ProductBrand/GetSingle",
   },
   parentCate: {
+    deleteParentCate : "/ProductManagement/ParentProductCategory/Delete",
     allParentCate:
       BASE_URL + "/ProductManagement/ParentProductCategory/GetAllProductCat",
     addParentCate:
       BASE_URL + "/ProductManagement/ParentProductCategory/AddProduct_Category",
+      updateParentCate : "/ProductManagement/ParentProductCategory/Update"
   },
   productPriceList: {
     allPricelist: BASE_URL + "/SalesDepartment/PriceList/GetAll",

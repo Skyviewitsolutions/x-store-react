@@ -5,7 +5,6 @@ import ForgetPassword from "./Screens/Authentication/ForgetPassword/ForgetPasswo
 import Dashboard from "./Screens/Dashboard/Dashboard";
 import Otp from "./Screens/Authentication/OTPPage/Otp";
 import ChangePassword from "./Screens/Authentication/ChangePassword/ChangePassword";
-
 import {
   useNavigate,
   BrowserRouter as Router,
@@ -106,11 +105,12 @@ import SalesOrders from "./Screens/SalesScreen/Orders/SalesOrders/SalesOrders";
 import ParentCategory from "./Screens/InventoryScreen/Configuration/ParentCategory/ParentCategory";
 import SalesTeam from "./Screens/SalesScreen/Orders/SalesTeam/SalesTeam";
 import ProductPriceList from "./Screens/InventoryScreen/AddProduct/ProductPriceList/ProductPriceList";
+import AddParentCategory from "./Screens/InventoryScreen/Configuration/AddParentCategory/AddParentCategory";
+
+
 
 const App = () => {
  
-
-
   return(<>
     <Router>
       <Routes>
@@ -150,6 +150,7 @@ const App = () => {
        <Route path="/AddOperationTypes" element={<AddOperationTypes/>} />
        <Route path='/AddPutwayRules' element={<AddPutwayRules/>} />
        <Route path='/ProductBrand' element={<ProductBrand/>} />
+       <Route path="/AddParentCategory" element={<AddParentCategory/>}/>
        <Route path='/ParentCategory' element={<ParentCategory/>} />
        <Route path='/ProductPrice' element={<ProductPriceList/>} />
   

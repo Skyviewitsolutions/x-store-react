@@ -21,11 +21,13 @@ const Location = () => {
   const [Locationdetails, setLocationdetails] = useState([]);
 
   const getLocation = () => {
+
     const getAuthtoken = localStorage.getItem("authtoken");
     const userAuth = localStorage.getItem("userAuth");
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
+    
     axios
       .post(url, formData)
       .then((res) => {

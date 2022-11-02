@@ -7,6 +7,7 @@ import "./AddUomCate.css";
 import { useLocation } from "react-router-dom";
 
 const AddUomCate = () => {
+
   const AddUomCateUrl = endpoints.UomCategory.addUomCate;
   const [uomCategory, setUomCategory] = useState("");
   const [update, setUpdate] = useState("");
@@ -14,7 +15,9 @@ const AddUomCate = () => {
   const userAuth = localStorage.getItem("userAuth");
 
   const save = () => {
+
     const formData = new FormData();
+    formData.append("Unit_Name" , uomCategory)
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
 
@@ -55,8 +58,8 @@ const AddUomCate = () => {
     } else {
       const formData = new FormData();
 
-      formData.append("unit", selectedData.ID);
-      formData.append("Unitname", uomCategory);
+      formData.append("ID", selectedData.ID);
+      formData.append("Unit_Name", uomCategory);
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
       
