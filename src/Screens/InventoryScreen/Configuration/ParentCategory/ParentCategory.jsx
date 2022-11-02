@@ -1,5 +1,4 @@
 import React , {useState} from "react";
-import "./parentCategory.css";
 import { useNavigate } from "react-router-dom";
 import Navebar from "../../../../components/Navbar/Navbar";
 import Sidebar from "../../../../components/Sidebar/Sidebar";
@@ -84,8 +83,8 @@ const ParentCategory = () => {
   },[])
 
   const column = [
-    { label: "Location", name: "LOCATION_NAME" },
-    { label: "Location Type", name: "LOCATION_TYPE" },
+    { label: "CATEGORY_NAME", name: "CATEGORY_NAME" },
+    { label: "PARENT_CATEGORY", name: "PARENT_CATEGORY" },
     {
       label: "Actions",
       name: "LOCATION_ID",
@@ -120,7 +119,7 @@ const ParentCategory = () => {
         <Navebar
           showBelowMenu={true}
           handleCreatePage={handleCreatePage}
-          title="Location"
+          title="Parent Category"
           disabledCreate={false}
         />
         <div className="container-fluid PROVAR">

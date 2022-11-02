@@ -13,11 +13,15 @@ const Sidebar = (props) => {
 
   const [productCate, setProductCate] = useState([]);
   const productCateUrl = "https://xstore.skyviewads.com/ProductManagement/ProductCategory/GetAllProductCat"
-
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth")
   const {productCategory , setProductCategory} = props;
 
   useEffect(() => {
-    axios.post(productCateUrl).then((res) => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(productCateUrl,formData).then((res) => {
       if (res.data.status === true) {
         setProductCate(res.data.data);
       } else if (res.data.status === false) {

@@ -48,7 +48,8 @@ const InventoryProductDetails = () => {
   const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
   const [img , setImg] = useState("");
 
-  
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
    const updateUrl = endpoints.products.updateProduct;
 
    useEffect(() =>{
@@ -56,10 +57,10 @@ const InventoryProductDetails = () => {
     setProductName(productdetails.PRODUCT_NAME)
     setId(productdetails.PRODUCT_ID)
     setProductType(productdetails.PRODUCT_TYPE)
-    setSold(productdetails.SOLD)
-    setPurchased(productdetails.PERCHASED)
-    setExpensed(productdetails.EXPENDED)
-    setDeduction(productdetails.DEDUCTION)
+    setSold(productdetails.PRODUCT_SOLD)
+    setPurchased(productdetails.PRODUCT_BUY)
+    setExpensed(productdetails.PRODUCT_EXPENDED)
+    setDeduction(productdetails.PRODUCT_DEDUCTION)
     setUnits(productdetails.UNITS_MEASUREMENT)
     setCost(productdetails.PRODUCT_COST)
     setSalesPrice(productdetails.SALE_PRICE)
@@ -81,39 +82,7 @@ const InventoryProductDetails = () => {
     setAssetType(productdetails.EXPENCE_TYPE)
   },[productdetails])
    
-   const formData = new FormData();
 
-  formData.append("productName",productName)
-  formData.append("productType", productType);
-  formData.append("productCategory", productCategory);
-  formData.append("units", units);
-  formData.append("cost", cost);
-  formData.append("sales_price", salesPrice);
-  formData.append("internal_Reference", interRef);
-  formData.append("customer_tax", customerTax);
-  formData.append("description", description);
-  formData.append('unit_of_measurement' , unitOfMeasurement)
-  formData.append('purchase_unit_of_measurement' , purchaseUnitOfMeasuremnt)
-  formData.append('weight' , weight)
-  formData.append('volume' , volume)
-  formData.append('buy' , buy)
-  formData.append('replenish_on_order' , replenishOnOrder)
-  formData.append('customer_lead_time' , customerLeadTime)
-  formData.append('description_for_delivery_order' , descriptionDeliveryOrder)
-  formData.append('description_for_receipts' , descriptionForReceipt)
-  formData.append('description_for_internal_transfer' , descriptionInternalTranser)
-  formData.append("income_account" , incomeAccount)
-  formData.append('expense_account' ,expenseAccount)
-  formData.append("asset_type" , assetType)
-  formData.append('price_differnce' , priceDifference)
-  formData.append('account' , account);
-  formData.append('sold' , sold)
-  formData.append('perchased' , purchased)
-  formData.append('expended' , expensed)
-  formData.append('perchased' , purchased)
-  formData.append('deduction' , deduction)
-  formData.append('id' , id)
-   
   const updateData = () =>{
 
     if (productName === "") {
@@ -132,6 +101,41 @@ const InventoryProductDetails = () => {
     }
    
     else {
+      const formData = new FormData();
+
+      formData.append("productName",productName)
+      formData.append("productType", productType);
+      formData.append("productCategory", productCategory);
+      formData.append("units", units);
+      formData.append("cost", cost);
+      formData.append("sales_price", salesPrice);
+      formData.append("internal_Reference", interRef);
+      formData.append("customer_tax", customerTax);
+      formData.append("description", description);
+      formData.append('unit_of_measurement' , unitOfMeasurement)
+      formData.append('purchase_unit_of_measurement' , purchaseUnitOfMeasuremnt)
+      formData.append('weight' , weight)
+      formData.append('volume' , volume)
+      formData.append('buy' , buy)
+      formData.append('replenish_on_order' , replenishOnOrder)
+      formData.append('customer_lead_time' , customerLeadTime)
+      formData.append('description_for_delivery_order' , descriptionDeliveryOrder)
+      formData.append('description_for_receipts' , descriptionForReceipt)
+      formData.append('description_for_internal_transfer' , descriptionInternalTranser)
+      formData.append("income_account" , incomeAccount)
+      formData.append('expense_account' ,expenseAccount)
+      formData.append("asset_type" , assetType)
+      formData.append('price_differnce' , priceDifference)
+      formData.append('account' , account);
+      formData.append('sold' , sold)
+      formData.append('perchased' , purchased)
+      formData.append('expended' , expensed)
+      formData.append('perchased' , purchased)
+      formData.append('deduction' , deduction)
+      formData.append('id' , id)
+      formData.append("User_Authorization" , getAuthtoken);
+      formData.append("User_AuthKey" , userAuth);
+       
       axios
         .post(updateUrl, formData)
         .then((res) => {

@@ -195,6 +195,7 @@ const AddWarehouse = (props) => {
                 type="text"
                 value={shortName}
                 onChange={(e) => setShortname(e.target.value)}
+                readOnly={update === true ? true : false}
               />
             </div>
 

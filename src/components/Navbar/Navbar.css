@@ -11,6 +11,7 @@
     background-color: #0077b0;
     /* background: var(--red); */
     color: white;
+    position: relative;
 }
 .navetext{
     color: white !important;
@@ -71,4 +72,16 @@
 .createbtn:hover{
     background-color:#036463;
 }
-
+.logout{
+    position:absolute;
+    right: 20px;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+.logout p{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}

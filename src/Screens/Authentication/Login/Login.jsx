@@ -31,7 +31,7 @@ const Login = () => {
       setEmailError("Please enter valid email");
     }
     else if(!validator.isEmail(email)){
-      setEmailError("InValid Email ")
+      setEmailError("Invalid Email ")
    }
     else if(!password)
     {

@@ -4,6 +4,7 @@ import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaSearchMinus } from "react-icons/fa";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
+import { IoMdLogOut } from "react-icons/io";
 
 const Navebar = (props) => {
   const { showBelowMenu, handleCreatePage,save , title,disabledCreate,} = props;
@@ -92,12 +93,17 @@ const Navebar = (props) => {
                 </NavDropdown.Item>
                 <NavDropdown.Item  onClick={()=> navigate('/UOM')}>UOM</NavDropdown.Item>
                 <NavDropdown.Item  onClick={()=> navigate('/ProductBrand')}>ProductBrand</NavDropdown.Item>
-                <NavDropdown.Item  onClick={()=> navigate('/ParentCategory')}>Parent Category</NavDropdown.Item>
+                {/* <NavDropdown.Item  onClick={()=> navigate('/ParentCategory')}>Parent Category</NavDropdown.Item> */}
                 <NavDropdown.Item  onClick={()=> navigate('/Vendors')}>Vendors</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
+          <div className="logout">
+              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}} onClick={() => navigate('/')}/>
+              <p>Logout</p>
+            </div>
         </Navbar>
+        
       </div>
       {showBelowMenu === true && (
         <div className="container-fluid">

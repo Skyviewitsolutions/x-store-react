@@ -9,21 +9,26 @@ import { toast, ToastContainer } from "react-toastify";
 const GeneralInformationEdit = (props) => {
   const [proCate, setProCate] = useState([]);
   const [uoms, setUoms] = useState([]);
-  const [purchase, setPurchase] = useState([]);
+  const [getPurchase , setGetPurchase] = useState([]);
   const [proTypes, setProductTypes] = useState([]);
   const [proBrand , setProBrand] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const productCategoryurl = endpoints.productCategory.allProductCate;
   const productBrandUrl = endpoints.productBrand.allProductBrand;
 
   const uomsurl = endpoints.UOM.allUOM;
 
-  const unitsurl = endpoints.products.productUnitAll;
+  
   const protypeurl = endpoints.products.productType;
 
   useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .post(productCategoryurl)
+      .post(productCategoryurl,formData)
       .then((res) => {
         console.log(res, "responsedddd");
         if (res.data.status == true) {
@@ -38,8 +43,11 @@ const GeneralInformationEdit = (props) => {
   }, []);
 
   useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .post(uomsurl)
+      .post(uomsurl,formData)
       .then((res) => {
         if (res.data.status == true) {
           setUoms(res.data.data);
@@ -52,12 +60,15 @@ const GeneralInformationEdit = (props) => {
       });
   }, []);
   useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .get(unitsurl)
+      .post(uomsurl,formData)
       .then((res) => {
-        console.log(res, "result");
+        console.log(res, "unit");
         if (res.data.status == true) {
-          setPurchase(res.data.data);
+          setGetPurchase(res.data.data);
         } else if (res.data.status == false) {
           alert(res.data.message);
         }
@@ -67,8 +78,11 @@ const GeneralInformationEdit = (props) => {
       });
   }, []);
   useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .post(protypeurl)
+      .post(protypeurl,formData)
       .then((res) => {
         console.log(res, "this is product");
         if (res.data.status === true) {
@@ -83,7 +97,10 @@ const GeneralInformationEdit = (props) => {
   }, []);
  
   useEffect(() => {
-  axios.post(productBrandUrl)
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+  axios.post(productBrandUrl,formData)
   .then((res) => {
     if(res.data.status === true){
       setProBrand(res.data.data);
@@ -110,7 +127,10 @@ const GeneralInformationEdit = (props) => {
     setCost,
     description,
     setDescription,
+    purchased,
+    setPurchased,
   } = props;
+  
 
   console.log(productType, "productType");
 
@@ -258,12 +278,12 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent3">
             <p>Purchase Unit of</p>
-            <select>
-              {purchase.map((item, index) => {
+            <select value={purchased} onChange={(e) => setPurchased(e.target.value)}>
+              {getPurchase.map((item, index) => {
                 return (
                   <>
-                    <option value="Barell" key={index}>
-                      {item.UNIT_NAME}
+                    <option value= {item.UNITNAME} key={index}>
+                      {item.UNITNAME}
                     </option>
                   </>
                 );

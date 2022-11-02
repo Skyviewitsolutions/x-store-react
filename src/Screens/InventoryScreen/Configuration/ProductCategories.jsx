@@ -18,13 +18,12 @@ const ProductCategories = () => {
 
   const allProductCate = endpoints.productCategory.allProductCate;
   const [productCate, setProductCate] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const token = localStorage.getItem("token")
 
   const getProductCate = () => {
-
-  const getAuthtoken = localStorage.getItem("authtoken");
-  const userAuth = localStorage.getItem("userAuth");
   const formData = new FormData();
   formData.append("User_Authorization" , getAuthtoken);
   formData.append("User_AuthKey" , userAuth);
@@ -47,26 +46,29 @@ const ProductCategories = () => {
     getProductCate();
   }, []);
 
-  // const productdeleteUrl = endpoints.productCategory.deleteProductCate;
+  const productdeleteUrl = endpoints.productCategory.deleteProductCate;
 
-  // const deleteItem = (data) => {
-  //   const formData = new FormData();
-  //   formData.append("id", data);
-  //   axios
-  //     .post(productdeleteUrl, formData)
-  //     .then((res) => {
-  //       // console.log(res,"productcatedelete");
-  //       if (res.data.status === true) {
-  //         getProductCate();
-  //         toast("Product Category deleted Successfully !", { type: "success" });
-  //       } else if (res.data.status === false) {
-  //         toast(res.data.message, { type: "error" });
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err, "error");
-  //     });
-  // };
+  const deleteItem = (data) => {
+    console.log(data,"data");
+    const formData = new FormData();
+    formData.append("id", data);
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+    axios
+      .post(productdeleteUrl, formData)
+      .then((res) => {
+        console.log(res,"productcatedelete");
+        if (res.data.status === true) {
+          getProductCate();
+          toast("Product Category deleted Successfully !", { type: "success" });
+        } else if (res.data.status === false) {
+          toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  };
 
   const handleUpdate = (data) => {
 
@@ -98,7 +100,7 @@ const ProductCategories = () => {
                 <MdDelete
                   size={23}
                   color="#4f4e4d"
-                
+                  onClick={() => deleteItem(value)}
                   style={{ cursor: "pointer" }}
                 />
               </div>

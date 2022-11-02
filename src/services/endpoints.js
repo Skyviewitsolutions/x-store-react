@@ -59,6 +59,8 @@ export const endpoints = {
       BASE_URL + "/ProductManagement/ProductCategory/AddProduct_Category",
     allProductCate:
       BASE_URL + "/ProductManagement/ProductCategory/GetAllProductCat",
+      deleteProductCate : BASE_URL + "/ProductManagement/ProductCategory/Delete",
+      updateProductCate : BASE_URL + "/ProductManagement/ProductCategory/Update"
   },
   UOM: {
     addUOM: BASE_URL + "/Units/AddUnitOfMeasurement",

@@ -10,6 +10,8 @@ import { endpoints } from "../../../services/endpoints";
 const InventoryProducts = () => {
   const [product, setProduct] = useState([]);
   const [allProd, setAllProd] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const url = endpoints.products.allProduct;
   const [productCategory, setProductCategory] = useState("all");
 
@@ -17,8 +19,11 @@ const InventoryProducts = () => {
   const [deleteRef, setDeleteRef] = useState(false);
 
   const getProduct = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
-      .post(url)
+      .post(url , formData)
       .then((res) => {
         console.log(res, "response");
         if (res.data.status === true) {

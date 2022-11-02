@@ -18,11 +18,15 @@ const InventoryProductsCard = (props) => {
   };
   const { data ,deleteRef ,setDeleteRef } = props;
   const [iconColor, setIconColor] = useState("#7478a1");
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const deleteUrl = endpoints.products.deleteProduct;
 
   const deleteProduct = (dta) => {
     const formData = new FormData();
-  formData.append("id",dta.PRODUCT_ID);
+  formData.append("ID",dta.PRODUCT_ID);
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
     axios.post(deleteUrl,formData)
     .then((res) => {
       console.log(res,'deleteresult');

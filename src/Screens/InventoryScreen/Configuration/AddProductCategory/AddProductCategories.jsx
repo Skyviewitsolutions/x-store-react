@@ -153,73 +153,75 @@ const AddProductCategories = (props) => {
     }
   };
 
-  // const location = useLocation();
-  // const selectedData = location.state;
-  // console.log(selectedData, "SelectedData here");
+  const location = useLocation();
+  const selectedData = location.state;
+  console.log(selectedData, "SelectedData here");
 
-  // useEffect(() => {
-  //   if (selectedData) {
-  //     setUpdate(true);
-  //     setName(selectedData.CATEGORY_NAME);
-  //     setParentCate(selectedData.PARENT_CATEGORY);
-  //     setProductCateCode(selectedData.PRODUCT_CATEGORY_CODE);
-  //     setIncomeAcc(selectedData.INCOME_ACCOUNT);
-  //     setExpenseAcc(selectedData.EXPENSE_ACCOUNT);
-  //     setRemovalStrategy(selectedData.FORCE_REMOVAL_STRATEGY);
-  //     setCosting(selectedData.COSTING_METHOD);
-  //     setValuation(selectedData.INVENTORY_VALUTION);
-  //   }
-  // }, [selectedData]);
+  useEffect(() => {
+    if (selectedData) {
+      setUpdate(true);
+      setName(selectedData.CATEGORY_NAME);
+      setParentCate(selectedData.PARENT_CATEGORY);
+      setProductCateCode(selectedData.PRODUCT_CATEGORY_CODE);
+      setIncomeAcc(selectedData.INCOME_ACCOUNT);
+      setExpenseAcc(selectedData.EXPENSE_ACCOUNT);
+      setRemovalStrategy(selectedData.FORCE_REMOVAL_STRATEGY);
+      setCosting(selectedData.COSTING_METHOD);
+      setValuation(selectedData.INVENTORY_VALUTION);
+    }
+  }, [selectedData]);
 
-  // const productcateUpadteUrl = endpoints.productCategory.updateProductCate;
+  const productcateUpadteUrl = endpoints.productCategory.updateProductCate;
 
-  // const updateData = () => {
-  //   if (name === "") {
-  //     toast("Product Category Name is Required!", { type: "warning" });
-  //   } else if (parentCate === "") {
-  //     toast("Product Category Is Required !", { type: "warning" });
-  //   } else if (productCateCode === "") {
-  //     toast("Product Category Code Is Required!", { type: "warning" });
-  //   } else if (incomeAcc === "") {
-  //     toast("Income Account Is Required!", { type: "warning" });
-  //   } else if (expenseAcc === "") {
-  //     toast("Expense Account Is Required!", { type: "warning" });
-  //   } else if (removalStrategy === "") {
-  //     toast("Force Removal Strategy Is Required!", { type: "warning" });
-  //   } else if (costing === "") {
-  //     toast("Costing Method Is Required!", { type: "warning" });
-  //   } else if (valuation === "") {
-  //     toast("Inventory Valuation Is Required!", { type: "warning" });
-  //   } else {
-  //     const formData = new FormData();
-  //     formData.append("id", selectedData.CATEGORY_ID);
-  //     formData.append("Parent_Category", parentCate);
-  //     formData.append("name", name);
-  //     formData.append("Product_Category_Code", productCateCode);
-  //     formData.append("Income_Account", incomeAcc);
-  //     formData.append("Expense_Account", expenseAcc);
-  //     formData.append("Force_RemovalStrategy", removalStrategy);
-  //     formData.append("Costing_Method", costing);
-  //     formData.append("Inventory_Valuation", valuation);
+  const updateData = () => {
+    if (name === "") {
+      toast("Product Category Name is Required!", { type: "warning" });
+    } else if (parentCate === "") {
+      toast("Product Category Is Required !", { type: "warning" });
+    } else if (productCateCode === "") {
+      toast("Product Category Code Is Required!", { type: "warning" });
+    } else if (incomeAcc === "") {
+      toast("Income Account Is Required!", { type: "warning" });
+    } else if (expenseAcc === "") {
+      toast("Expense Account Is Required!", { type: "warning" });
+    } else if (removalStrategy === "") {
+      toast("Force Removal Strategy Is Required!", { type: "warning" });
+    } else if (costing === "") {
+      toast("Costing Method Is Required!", { type: "warning" });
+    } else if (valuation === "") {
+      toast("Inventory Valuation Is Required!", { type: "warning" });
+    } else {
+      const formData = new FormData();
+      formData.append("id", selectedData.CATEGORY_ID);
+      formData.append("Parent_Category", parentCate);
+      formData.append("name", name);
+      formData.append("Product_Category_Code", productCateCode);
+      formData.append("Income_Account", incomeAcc);
+      formData.append("Expense_Account", expenseAcc);
+      formData.append("Force_RemovalStrategy", removalStrategy);
+      formData.append("Costing_Method", costing);
+      formData.append("Inventory_Valuation", valuation);
+      formData.append("User_Authorization" , getAuthtoken);
+      formData.append("User_AuthKey" , userAuth);
 
-  //     axios
-  //       .post(productcateUpadteUrl, formData)
-  //       .then((res) => {
-  //         if (res.data.status === true) {
-  //           toast("ProductCategory Updated Successfully!", { type: "success" });
-  //         } else if (res.data.status === false) {
-  //           toast(res.data.message, { type: "error" });
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err, "error");
-  //         toast("Something went wrong", { type: "error" });
-  //       });
-  //   }
-  // };
+      axios
+        .post(productcateUpadteUrl, formData)
+        .then((res) => {
+          if (res.data.status === true) {
+            toast("ProductCategory Updated Successfully!", { type: "success" });
+          } else if (res.data.status === false) {
+            toast(res.data.message, { type: "error" });
+          }
+        })
+        .catch((err) => {
+          console.log(err, "error");
+          toast("Something went wrong", { type: "error" });
+        });
+    }
+  };
   return (
     <>
-      <Navebar showBelowMenu={true} title="Product Category" save={save} />
+      <Navebar showBelowMenu={true} title="Product Category"  save={update === true ? updateData : save} />
       <div className="AddProductCategoriesContainer">
         <div className="AddProductCatehead">
           <div className="AddProductCate1"></div>

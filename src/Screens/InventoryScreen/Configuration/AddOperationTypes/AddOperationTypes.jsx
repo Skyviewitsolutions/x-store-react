@@ -73,7 +73,7 @@ const AddOperationTypes = () => {
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     axios
-      .post(warehouseurl)
+      .post(warehouseurl , formData)
       .then((res) => {
         console.log(res, "response");
         if (res.data.status === true) {
@@ -86,9 +86,9 @@ const AddOperationTypes = () => {
         console.log(err, "error");
       });
     axios
-      .post(locationUrl)
+      .post(locationUrl , formData )
       .then((res) => {
-        console.log(res, "locationres");
+        console.log(res, "locationres" , formData);
         if (res.data.status === true) {
           setLocation(res.data.data);
         } else if (res.data.status === false) {
