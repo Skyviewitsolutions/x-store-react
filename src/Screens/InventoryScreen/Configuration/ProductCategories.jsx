@@ -27,7 +27,6 @@ const ProductCategories = () => {
   const formData = new FormData();
   formData.append("User_Authorization" , getAuthtoken);
   formData.append("User_AuthKey" , userAuth);
-
     axios
       .post(allProductCate , formData )
       .then((res) => {
@@ -51,7 +50,7 @@ const ProductCategories = () => {
   const deleteItem = (data) => {
     console.log(data,"data");
     const formData = new FormData();
-    formData.append("id", data);
+    formData.append("Id", data);
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
     axios

@@ -55,8 +55,8 @@ const InventoryProductsCard = (props) => {
       </div>
       <div className="ProductContent">
         <h6>{data.PRODUCT_NAME}</h6>
-        <p>Price: {data.PRODUCT_COST} SAR</p>
-        <p>On hand: {data.UNITS_MEASUREMENT}Units</p>
+        <p>Price: {data.COST_PRICE} SAR</p>
+        <p>On hand: {data.UNIT_OF_MEASURE}</p>
       </div>
   
       </div>

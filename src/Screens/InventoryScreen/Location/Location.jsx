@@ -19,11 +19,10 @@ const Location = () => {
   const url = endpoints.location.allLocation;
 
   const [Locationdetails, setLocationdetails] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const getLocation = () => {
-
-    const getAuthtoken = localStorage.getItem("authtoken");
-    const userAuth = localStorage.getItem("userAuth");
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -52,6 +51,8 @@ const Location = () => {
   const deleteItem = (data) => {
     const formData = new FormData();
     formData.append("Id", data);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
       .post(locationDeleteUrl, formData)
       .then((res) => {

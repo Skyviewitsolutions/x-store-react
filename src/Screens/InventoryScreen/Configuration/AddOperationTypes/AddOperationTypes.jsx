@@ -7,6 +7,7 @@ import { endpoints } from "../../../../services/endpoints";
 import "./AddOperationTypes.css";
 
 const AddOperationTypes = () => {
+
   const warehouseurl = endpoints.wareHouse.allWarehouse;
   const locationUrl = endpoints.location.allLocation;
   const [warehouse, setWareHouse] = useState([]);
@@ -23,10 +24,11 @@ const AddOperationTypes = () => {
   const [sourcelocation, setSourceLocation] = useState("");
   const [destination, setDestination] = useState("");
   const [operationWarehouse, setOperationwarehouse] = useState("");
-
+  const [barCode , setBarCode] = useState("");
   const [update, setUpdate] = useState();
 
   const save = () => {
+
     const formData = new FormData();
     formData.append("Operation_Type", operationType);
     formData.append("Type_Of_Operation", typeofoperation);
@@ -88,7 +90,7 @@ const AddOperationTypes = () => {
     axios
       .post(locationUrl , formData )
       .then((res) => {
-        console.log(res, "locationres" , formData);
+       
         if (res.data.status === true) {
           setLocation(res.data.data);
         } else if (res.data.status === false) {
@@ -113,6 +115,7 @@ const AddOperationTypes = () => {
       setSourceLocation(selectedData.DEFAULT_SOURCE_LOCATION);
       setDestination(selectedData.DEFAULT_DESTINATION);
       setOperationwarehouse(selectedData.WAREHOUSE_INFO);
+      setBarCode(selectedData.WAREHOUSE_BARCODE);
     }
   }, [selectedData]);
 
@@ -159,7 +162,7 @@ const AddOperationTypes = () => {
         });
     }
   };
-
+console.log(operationWarehouse,"operatioWarehouse here")
   return (
     <>
       <Navebar
@@ -206,7 +209,7 @@ const AddOperationTypes = () => {
             </div>
             <div className="operation">
               <p>Barcode</p>
-              <input type="text" />
+              <input type="text"  readOnly={true} value={barCode}/>
             </div>
           </div>
           <div className="type">
@@ -240,7 +243,7 @@ const AddOperationTypes = () => {
               value={sourcelocation}
               onChange={(e) => setSourceLocation(e.target.value)}
             >
-              <option></option>
+              <option value="">Select any one</option>
               {location.map((item, index) => {
                 return (
                   <>
@@ -258,7 +261,7 @@ const AddOperationTypes = () => {
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
             >
-              <option></option>
+              <option value="">Select any one</option>
               {location.map((item, index) => {
                 return (
                   <>

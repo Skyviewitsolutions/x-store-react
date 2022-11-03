@@ -102,7 +102,6 @@ const AddWarehouse = (props) => {
 
   useEffect(() => {
     if (selectedData) {
-      console.log(selectedData , "selectedData")
       setUpdate(true);
       setWarehousename(selectedData.WAREHOUSE_NAME);
       setShortname(selectedData.SHORT_NAME);

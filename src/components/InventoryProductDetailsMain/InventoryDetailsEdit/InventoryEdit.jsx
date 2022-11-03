@@ -30,7 +30,7 @@ const InventoryEdit = (props) => {
           <h5>Operations</h5>
           <div className="Editcontent1">
             <p>Routes</p>
-            <input type="checkbox" value={buy} onChange={() => setBuy(!buy)} />
+            <input type="checkbox" value={buy} onChange={() => setBuy(!buy)} checked={buy}/>
             <label>Buy</label>
           </div>
           <div className="Editcontent1">
@@ -38,6 +38,7 @@ const InventoryEdit = (props) => {
             <input
               type="checkbox"
               value={replenishOnOrder}
+              checked={replenishOnOrder}
               onChange={() => setReplenishOnOrder(!replenishOnOrder)}
             />
             <label>Replenish on Order (MTO)</label>
@@ -48,6 +49,7 @@ const InventoryEdit = (props) => {
               type="text"
               placeholder="0.00"
               value={customerLeadTime}
+             
               onChange={(e) => setCustomerLeadTime(e.target.value)}
             />
             <span>days</span>

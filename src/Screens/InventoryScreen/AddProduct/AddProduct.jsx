@@ -21,7 +21,6 @@ const AddProduct = () => {
   const [purchased , setPurchased] = useState(false)
   const [expensed , setExpensed] = useState(false);
   const [deduction , setDeduction] = useState(false)
-
   const [units, setUnits] = useState("Barell");
   const [cost, setCost] = useState("");
   const [salesPrice, setSalesPrice] = useState("");
@@ -57,8 +56,8 @@ const AddProduct = () => {
       toast("Cost is required !", { type: "warning" });
     } else if (salesPrice === "") {
       toast("Sales Price is reqiured !", { type: "warning" });
-    } else if (interRef === "") {
-      toast("InterRef field is required !", { type: "warning" });
+    } else if (units === "") {
+      toast("units field is required !", { type: "warning" });
     } else if (customerTax === "") {
       toast("Customer Tax is required", { type: "warning" });
     } 

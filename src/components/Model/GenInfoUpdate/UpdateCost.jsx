@@ -19,7 +19,7 @@ const UpdateCost = (props) => {
                <div className="div1">
                 <p>Change Standard Price</p>
                </div>
-               <div className="div2">
+               <div className="divtwo">
                 <h4>Change Price</h4>
                 </div>
                 <div className="cost">

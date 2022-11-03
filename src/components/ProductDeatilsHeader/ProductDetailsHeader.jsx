@@ -21,7 +21,7 @@ const ProductDetailsHeader = (props) => {
         <div className='DetailsMainheader'>
             <div className="Detaialsheader">
                 <div className="detailsText">
-                    <p>Products/{name}</p>
+                    <p>Products{name && `/${name}`}</p>
                     <div className="detailsbutton">
                         {isEdit === false && <button className='btn1' onClick={() => setIsEdit(true)}>Edit</button>}
                         {isEdit === true && <button className='btn1'onClick={save}>Save</button>}
@@ -29,7 +29,7 @@ const ProductDetailsHeader = (props) => {
                        { isEdit === true && <button className='btn2' onClick={RedirectToProduct}>Discard</button> }
                     </div>
                 </div>
-                <div className="deatailsdropdown">
+                {/* <div className="deatailsdropdown">
                     <div className="detailsIcons">
                         <p>Print</p>
                         <MdArrowDropDown size="20px" style={{ marginTop: "4px", color: "#666666" }} />
@@ -48,6 +48,7 @@ const ProductDetailsHeader = (props) => {
             <div className="detailsheader2">
                 <button className='btn3'>Update Quantity</button>
                 <button className='btn3'>Replenish</button>
+            </div> */}
             </div>
         </div>
     )

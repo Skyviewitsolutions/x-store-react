@@ -86,7 +86,7 @@ const InventoryProductDetailsMain = (props) => {
     <div className="MainContainer">
       <div className="Container">
         <div className="ContainerHeader">
-          <div className="div1"></div>
+          {/* <div className="div1"></div> */}
           <div className="div2" onClick={() => RedirectToEmpty("Hand")}>
             <FaCubes
               size="30px"
@@ -94,10 +94,10 @@ const InventoryProductDetailsMain = (props) => {
             />
             <div className="text">
               <p>0.000 Units</p>
-              <span>On Hand</span>
+              <span>Stock Hand</span>
             </div>
           </div>
-          <div className="div2" onClick={() => RedirectToEmpty("units")}>
+          {/* <div className="div2" onClick={() => RedirectToEmpty("units")}>
             <FaCubes
               size="30px"
               style={{ color: "#848484", marginTop: "5px" }}
@@ -144,7 +144,7 @@ const InventoryProductDetailsMain = (props) => {
             <div className="text2">
               <p>Puteway Rules</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="detailsbox">
           <div className="detailsheading">
@@ -210,7 +210,7 @@ const InventoryProductDetailsMain = (props) => {
         <div className="detailsbtn">
           <Nav variant="tabs" defaultActiveKey="/home">
             <Nav.Item
-              className="detailslink"
+              className={events === "generalInformation" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("generalInformation")}
             >
               <Nav.Link href="">General Information</Nav.Link>
@@ -268,7 +268,7 @@ const InventoryProductDetailsMain = (props) => {
       </div>
 
       {/* footer */}
-      <InventoryProductDetailsFooter />
+      {/* <InventoryProductDetailsFooter /> */}
     </div>
   );
 };

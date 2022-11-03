@@ -13,7 +13,6 @@ import { endpoints } from "../../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddProductCategories = (props) => {
-
   const [showAccount, setShowAccount] = useState(false);
   const navigate = useNavigate();
 
@@ -63,8 +62,11 @@ const AddProductCategories = (props) => {
   }, []);
   useEffect(() => {
     axios.post(pricediffUrl).then((res) => {
+      console.log(res, "priceDiff");
       if (res.data.status === true) {
-        setPriceDef(res.data.data);
+        const val = res.data?.data;
+        console.log(val, "vall");
+        setPriceDef(val);
       } else if (res.data.status === false) {
         toast(res.data.message, { type: "error" });
       }
@@ -72,12 +74,12 @@ const AddProductCategories = (props) => {
   }, []);
   useEffect(() => {
     const getAuthtoken = localStorage.getItem("authtoken");
-  const userAuth = localStorage.getItem("userAuth");
-  const formData = new FormData();
-  formData.append("User_Authorization" , getAuthtoken);
-  formData.append("User_AuthKey" , userAuth);
+    const userAuth = localStorage.getItem("userAuth");
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
 
-    axios.post(allParentCateurl , formData).then((res) => {
+    axios.post(allParentCateurl, formData).then((res) => {
       if (res.data.status === true) {
         setGetParentCate(res.data.data);
       } else if (res.data.status === false) {
@@ -88,11 +90,12 @@ const AddProductCategories = (props) => {
 
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
+  console.log(pricedif, "price");
 
   const formData = new FormData();
   formData.append("Name", name);
   formData.append("Parent_Category", parentCate);
-  formData.append("Price_Difference", pricedif);
+  formData.append("Price_Difference", pricedifAcc);
   formData.append("Income_Acc", incomeAcc);
   formData.append("Expense_Acc", expenseAcc);
   formData.append("Stock_In_Acc", stockIn);
@@ -102,16 +105,14 @@ const AddProductCategories = (props) => {
   formData.append("Force_Rem_Stra", removalStrategy);
   formData.append("Costing_Method", costing);
   formData.append("Inventory_Valuation", valuation);
-  formData.append("User_Authorization" , getAuthtoken);
-  formData.append("User_AuthKey" , userAuth);
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
 
   const save = () => {
     if (name === "") {
       toast("Product Category Name is Required!", { type: "warning" });
     } else if (parentCate === "") {
       toast("Product Category Is Required !", { type: "warning" });
-    } else if (productCateCode === "") {
-      toast("Product Category Code Is Required!", { type: "warning" });
     } else if (incomeAcc === "") {
       toast("Income Account Is Required!", { type: "warning" });
     } else if (expenseAcc === "") {
@@ -132,7 +133,7 @@ const AddProductCategories = (props) => {
       toast("Inventory Valuation Is Required!", { type: "warning" });
     } else {
       axios
-        .post(addProductCateUrl, formData,)
+        .post(addProductCateUrl, formData)
         .then((res) => {
           console.log(res, "responseresult");
           if (res.data.status == true) {
@@ -168,6 +169,12 @@ const AddProductCategories = (props) => {
       setRemovalStrategy(selectedData.FORCE_REMOVAL_STRATEGY);
       setCosting(selectedData.COSTING_METHOD);
       setValuation(selectedData.INVENTORY_VALUTION);
+      setPriceDifAcc(selectedData.PRICE_DIFFERENCE_ACCOUNT);
+      setStockIn(selectedData.STOCK_INPUT_ACCOUNT);
+      setStockOut(selectedData.STOCK_OUTPUT_ACCOUNT);
+      setStockVal(selectedData.STOCK_VALUATION_ACCOUNT);
+      setStockJournal(selectedData.STOCK_JOURNAL);
+      setValuation(selectedData.INVENTORY_VALUATION);
     }
   }, [selectedData]);
 
@@ -178,8 +185,6 @@ const AddProductCategories = (props) => {
       toast("Product Category Name is Required!", { type: "warning" });
     } else if (parentCate === "") {
       toast("Product Category Is Required !", { type: "warning" });
-    } else if (productCateCode === "") {
-      toast("Product Category Code Is Required!", { type: "warning" });
     } else if (incomeAcc === "") {
       toast("Income Account Is Required!", { type: "warning" });
     } else if (expenseAcc === "") {
@@ -193,16 +198,20 @@ const AddProductCategories = (props) => {
     } else {
       const formData = new FormData();
       formData.append("id", selectedData.CATEGORY_ID);
+      formData.append("Name", name);
       formData.append("Parent_Category", parentCate);
-      formData.append("name", name);
-      formData.append("Product_Category_Code", productCateCode);
-      formData.append("Income_Account", incomeAcc);
-      formData.append("Expense_Account", expenseAcc);
-      formData.append("Force_RemovalStrategy", removalStrategy);
+      formData.append("Price_Difference", pricedifAcc);
+      formData.append("Income_Acc", incomeAcc);
+      formData.append("Expense_Acc", expenseAcc);
+      formData.append("Stock_In_Acc", stockIn);
+      formData.append("Stock_Out_Acc", stockOut);
+      formData.append("Stock_Val_Acc", stockVal);
+      formData.append("Stock_Journal", stockJournal);
+      formData.append("Force_Rem_Stra", removalStrategy);
       formData.append("Costing_Method", costing);
       formData.append("Inventory_Valuation", valuation);
-      formData.append("User_Authorization" , getAuthtoken);
-      formData.append("User_AuthKey" , userAuth);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
 
       axios
         .post(productcateUpadteUrl, formData)
@@ -219,9 +228,14 @@ const AddProductCategories = (props) => {
         });
     }
   };
+  console.log(pricedif,"pricediff acc")
   return (
     <>
-      <Navebar showBelowMenu={true} title="Product Category"  save={update === true ? updateData : save} />
+      <Navebar
+        showBelowMenu={true}
+        title="Product Category"
+        save={update === true ? updateData : save}
+      />
       <div className="AddProductCategoriesContainer">
         <div className="AddProductCatehead">
           <div className="AddProductCate1"></div>
@@ -282,6 +296,7 @@ const AddProductCategories = (props) => {
                 <input
                   type="text"
                   value={productCateCode}
+                  readOnly={true}
                   onChange={(e) => setProductCateCode(e.target.value)}
                 />
               </div>
@@ -303,11 +318,11 @@ const AddProductCategories = (props) => {
                   value={pricedifAcc}
                   onChange={(e) => setPriceDifAcc(e.target.value)}
                 >
-                  <option value=""></option>
+                  <option value="">Please choose any one</option>
                   {pricedif.map((item, index) => {
                     return (
                       <>
-                        <option key={index} value={item.AMOUNT_NAME}>
+                        <option value={item.AMOUNT_NAME} key={index}>
                           {item.AMOUNT_NAME}
                         </option>
                       </>

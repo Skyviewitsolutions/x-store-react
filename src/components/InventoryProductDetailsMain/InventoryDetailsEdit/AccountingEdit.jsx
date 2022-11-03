@@ -6,6 +6,7 @@ import { Hail } from "@mui/icons-material";
 import { endpoints } from "../../../services/endpoints";
 
 const AccountingEdit = (props) => {
+
   const incomeaccUrl = endpoints.products.incomeAcoount;
   const expenseUrl = endpoints.products.expenseAccount;
     const priceUrl = endpoints.products.priceDifference;
@@ -156,7 +157,7 @@ const AccountingEdit = (props) => {
             {expense.map((item,index) => {
               return(
                 <>
-                <option value="110306001 " key={index}>{item.EXPENSE_NAME}</option>
+                <option value={item.EXPENSE_NAME} key={index}>{item.EXPENSE_NAME}</option>
                 </>
               )
             })}

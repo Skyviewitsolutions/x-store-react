@@ -129,6 +129,8 @@ const GeneralInformationEdit = (props) => {
     setDescription,
     purchased,
     setPurchased,
+    productBrand,
+    setProductBrand,
   } = props;
   
 
@@ -181,6 +183,7 @@ const GeneralInformationEdit = (props) => {
             <input
               type="text"
               value={interRef}
+              readOnly={true}
               onChange={(e) => setInterRef(e.target.value)}
             />
           </div>
@@ -190,8 +193,8 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent">
             <p> Product Brand</p>
-            <select>
-              <option></option>
+            <select value={productBrand} onChange={(e) => setProductBrand(e.target.value)}>
+              <option value="">Select Any One</option>
               {proBrand.map((item,index) => {
                 return(
                   <>

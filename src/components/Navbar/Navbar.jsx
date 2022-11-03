@@ -121,10 +121,10 @@ const Navebar = (props) => {
               className="col-sm-6 d-flex justify-content-center"
               style={{ width: "50%" }}
             >
-              <div class="input-box " className="search">
+              {/* <div class="input-box " className="search">
                 <input type="text" placeholder="Search ..." />
                 <span>{<FaSearchMinus />}</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

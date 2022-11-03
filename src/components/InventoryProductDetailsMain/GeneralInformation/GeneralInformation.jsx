@@ -9,7 +9,9 @@ const GeneralInformation = (props) => {
 
     const [showUpdateCost , setShowUpdateCost] = useState(false);
     const navigate = useNavigate();
-    const {productType,productCategory,interRef,salesPrice,customerTax,cost, unitOfMeasurement,purchaseUnitOfMeasuremnt,description}=props;
+    const {productType,productCategory,interRef,salesPrice,customerTax,cost,prodcuctCode , unitOfMeasurement,purchaseUnitOfMeasuremnt,description}=props;
+
+    console.log(props , "productCategory")
 
     const RedirectToUnit  = () => {
         navigate('/UnitPage');
@@ -24,11 +26,11 @@ const GeneralInformation = (props) => {
                 </div>
                 <div className="firstcontent">
                     <p> Product Category</p>
-                    <span style={{ color: "#1669a2" }}>{ productCategory}</span>
+                    <span style={{ color: "#1669a2" }}>{productCategory}</span>
                 </div>
                 <div className="firstcontent2">
                     <p>Product Code</p>
-                    <p>{interRef}</p>
+                    <p>{prodcuctCode}</p>
                 </div>
                 <h5>{description}</h5>
             </div>
