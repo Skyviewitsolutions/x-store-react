@@ -23,6 +23,10 @@ import axios from "axios";
 
 const InventoryProductDetailsMain = (props) => {
   const [events, setEvents] = useState("generalInformation");
+  const handleChange = (e) =>{
+    console.log(e.target.files);
+    setFiles(URL.createObjectURL(e.target.files[0]));
+}
   const {
     isEdit,
     productName,
@@ -56,6 +60,8 @@ const InventoryProductDetailsMain = (props) => {
     setBuy,
     replenishOnOrder,
     setReplenishOnOrder,
+    files,
+    setFiles
   } = props;
 
   const navigate = useNavigate();
@@ -201,9 +207,13 @@ const InventoryProductDetailsMain = (props) => {
               </div>
             </div>
             {isEdit === true && (
+              <>
               <div className="cameraimg">
-                <img src={camera} alt="camera" />
+                <label htmlFor="takePhoto"><img src={files ? files : camera } alt="camera" /></label>
+                <input type="file" id="takePhoto" onChange={handleChange}/>
               </div>
+                
+                </>
             )}
           </div>
         </div>
@@ -216,25 +226,25 @@ const InventoryProductDetailsMain = (props) => {
               <Nav.Link href="">General Information</Nav.Link>
             </Nav.Item>
             <Nav.Item
-              className="detailslink"
+               className={events === "variants" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("variants")}
             >
               <Nav.Link eventKey="link-1">Variants</Nav.Link>
             </Nav.Item>
             <Nav.Item
-              className="detailslink"
+               className={events === "Purchase" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("Purchase")}
             >
               <Nav.Link eventKey="link-2">Purchase</Nav.Link>
             </Nav.Item>
             <Nav.Item
-              className="detailslink"
+              className={events === "Inventory" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("Inventory")}
             >
               <Nav.Link eventKey="link-3">Inventory</Nav.Link>
             </Nav.Item>
             <Nav.Item
-              className="detailslink"
+               className={events === "Accounting" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("Accounting")}
             >
               <Nav.Link eventKey="link-4">Accounting</Nav.Link>

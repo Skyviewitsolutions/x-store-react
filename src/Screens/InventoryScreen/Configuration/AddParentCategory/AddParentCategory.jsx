@@ -139,7 +139,7 @@ const AddParentCategory = () => {
     <div>
       <Navebar showBelowMenu={true} title="Parent Category" save={save} />
       <div className="AddProductCategoriesContainer">
-        <div className="AddProductCatehead">
+        {/* <div className="AddProductCatehead">
           <div className="AddProductCate1"></div>
           <div className="AddProductCate2">
             <div className="AddProductcatehead1">
@@ -162,7 +162,7 @@ const AddParentCategory = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="AddProductCateMain">
           <div className="AddProductCatedetails">
             <div className="AddProductCatedetails1">

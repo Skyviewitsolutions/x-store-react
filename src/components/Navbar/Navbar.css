@@ -67,6 +67,17 @@
     padding: 8px 20px;
     font-weight: 600;
     transition: 0.3s;
+}
+.savebtn{
+    background-color:#0077b0;
+    border:none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
     margin-left: 10px;
 }
 .createbtn:hover{

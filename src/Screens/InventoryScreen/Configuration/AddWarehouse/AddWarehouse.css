@@ -42,7 +42,7 @@ margin-top: 15px;
     width: 90%;
     border: none;
     outline: none;
-    border-bottom: 2px solid rgba(46, 42, 42, 0.4);
+    border-bottom: 2px solid #cccccc;
     color: #000;
     font-size: 30px;
     margin-left: 20px;
@@ -71,7 +71,7 @@ margin-top: 15px;
 .textIn input{
     border: none;
     outline: none;
-    border-bottom: 3px solid #6a666a;
+    border-bottom: 1px solid #cccccc;
     width: 450px;
     margin-left: 5px;
 }
@@ -92,7 +92,7 @@ margin-top: 15px;
 }
 .Adddropdown select{
     border: none;
-    border-bottom: 3px solid #6a666a;
+    border-bottom: 1px solid #cccccc;
     width: 450px;
     outline: none;
 }

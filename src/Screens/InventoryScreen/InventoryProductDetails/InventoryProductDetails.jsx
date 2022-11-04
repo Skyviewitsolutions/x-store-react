@@ -47,7 +47,7 @@ const InventoryProductDetails = () => {
   const [assetType , setAssetType] = useState("110601001 مخزون قطع غيار")
   const [priceDifference , setPriceDifference] = useState("110306001 ضريبة القيمة المضافة على المشتريات")
   const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
-  const [img , setImg] = useState("");
+  const [files , setFiles] = useState("");
   const [productBrand  , setProductBrand] = useState("");
   const [prodcuctCode , setProductCode] = useState("")
 
@@ -79,7 +79,6 @@ const InventoryProductDetails = () => {
     setWeight(productdetails.PRODUCT_WEIGHT)
     setVolume(productdetails.PRODUCT_VOLUME)
     setBuy(productdetails.PRODUCT_BUY)
-    
     setReplenishOnOrder(productdetails.REPLENISH_ON_ORDER)
     setCustomerLeadTime(productdetails.CUSTOMER_LEAD_TIME)
     setDescriptionDeliveryOrder(productdetails.DESCIBTION_DETAIL_ORDER)
@@ -88,7 +87,7 @@ const InventoryProductDetails = () => {
     setIncomeAccount(productdetails.INCOME_ACCOUNT)
     setExpenceAccount(productdetails.EXPENSE_ACCOUNT)
     setAssetType(productdetails.EXPENSE_TYPE)
-    // setImg(productdetails.ChooseFile)
+    setFiles(productdetails.PRODUCT_IMAGE);
   },[productdetails])
    
 
@@ -97,7 +96,9 @@ const InventoryProductDetails = () => {
 
     if (productName === "") {
       toast("Product name required !", { type: "warning" });
-    } else if (cost === "") {
+    } else if(files === ""){
+      toast("Product Image is required!",{type:"warning"});
+    }else if (cost === "") {
       toast("Cost is required !", { type: "warning" });
     } else if (salesPrice === "") {
       toast("Sales Price is reqiured !", { type: "warning" });
@@ -112,7 +113,6 @@ const InventoryProductDetails = () => {
    
     else {
       const formData = new FormData();
-
       formData.append("Product_Name",productName)
       formData.append("Product_Type", productType);
       formData.append("Product_Category", productCategory);
@@ -142,6 +142,7 @@ const InventoryProductDetails = () => {
       formData.append('Expensed' , expensed)
       formData.append('Purchase' , purchased)
       formData.append('Deduction' , deduction)
+      formData.append('ChooseFile' , files);
       formData.append('ID' , id)
       formData.append("User_Authorization" , getAuthtoken);
       formData.append("User_AuthKey" , userAuth);

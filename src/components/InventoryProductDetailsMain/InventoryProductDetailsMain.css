@@ -59,13 +59,19 @@
 }
 .cameraimg{
     position: absolute;
-    right: 30px;
+    right: 15px;
     top:25px;
-    border: 1px solid #cccc;
+    display: flex;
+    flex-direction: column;
 }
 .cameraimg img{
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
+    border: 1px solid #cccc;
+}
+.cameraimg input{
+    margin-top: 5px;
+    width: 200px;
 }
 .detailsheading{
     width: 50%;
@@ -101,8 +107,10 @@
 }
 .navLinkActive{
     background-color: #0077b0;
-    color: #fff;
     font-size: 15px;
+}
+.nav-link:hover{
+    color: #fff !important;
 }
 .navLinkDeactive a.nav-link{
     color:#6f6f6f;
@@ -111,6 +119,9 @@
 .detailslink a.nav-link {
     color:#6f6f6f;
     font-size: 15px;
+}
+.nav-link {
+    color: #fff;
 }
 
 .proin{

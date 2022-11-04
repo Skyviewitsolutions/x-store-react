@@ -15,6 +15,7 @@ const Vendors = () => {
     <Navebar
         showBelowMenu={true}
         title="Vendors"
+        handleCreatePage={handleCreatePage}
       />
              <VendorsCard/>
              <VendorsCard/>

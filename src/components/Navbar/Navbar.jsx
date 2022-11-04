@@ -115,7 +115,7 @@ const Navebar = (props) => {
               <button className="createbtn" onClick={handleCreatePage} disabled={disabledCreate}>
                 Create
               </button>
-              <button className="createbtn" onClick={save}>Save</button>
+              <button className="savebtn" onClick={save}>Save</button>
             </div>
             <div
               className="col-sm-6 d-flex justify-content-center"

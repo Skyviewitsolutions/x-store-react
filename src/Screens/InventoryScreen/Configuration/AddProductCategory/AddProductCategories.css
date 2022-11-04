@@ -48,7 +48,7 @@
 
 .AddProductCatecontent input{
     border: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 1px solid #cccc;
     outline: none;
     margin-left: 20px;
     width: 600px;
@@ -69,7 +69,7 @@ width: 200px;
 color: #6a666a;
 font-size: 15px;
 font-weight: 600;
-margin-left: 20px;
+margin-left: 11px;
 margin-bottom: 8px;
 }
 .AddProductCateText p{
@@ -187,14 +187,14 @@ margin-bottom: 8px;
 }
 .force select{
     border: none;
-    border-bottom: 2px solid #6f6f6f;
+    border-bottom: 1px solid #cccc;
     outline: none;
     margin-left: 10px;
-    width: 400px;  
+    width: 331px;  
 }
 .InventoryValuation{
     width: 50%;
-    
+    margin-left: 45px;
 }
 .InventoryValuation h6{
     font-size: 18px;
@@ -215,7 +215,7 @@ margin-bottom: 8px;
 }
 .AddProductCate3dropdown select{
     border: none;
-    border-bottom: 2px solid #6f6f6f;
+    border-bottom: 1px solid #cccc;
     outline: none;
     margin-left: 10px;
     width: 400px; 

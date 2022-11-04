@@ -31,13 +31,13 @@
 .operation input{
     border: none;
     outline: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 1px solid #cccccc;
     width: 450px;
 }
 .operation select{
     border: none;
     outline: none;
-    border-bottom: 1px solid #cccc ;
+    border-bottom: 1px solid #cccccc ;
     width: 450px;
 }
 .type{

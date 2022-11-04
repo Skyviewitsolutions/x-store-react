@@ -24,7 +24,7 @@
 .Editfirstcontent select{
    border: none;
     margin-left: 40px;
-    border-bottom: 3px solid #6a666a;
+    border-bottom: 1px solid #cccc;
     width: 450px;
     outline: none;
 }
@@ -86,7 +86,7 @@
 .Editfirstcontent3 select{
     border: none;
      margin-left: 2px;
-     border-bottom: 3px solid #6a666a;
+     border-bottom: 1px solid #cccccc;
      width: 450px;
      outline: none;
  }

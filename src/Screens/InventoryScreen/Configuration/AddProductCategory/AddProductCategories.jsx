@@ -237,7 +237,7 @@ const AddProductCategories = (props) => {
         save={update === true ? updateData : save}
       />
       <div className="AddProductCategoriesContainer">
-        <div className="AddProductCatehead">
+        {/* <div className="AddProductCatehead">
           <div className="AddProductCate1"></div>
           <div className="AddProductCate2">
             <div className="AddProductcatehead1">
@@ -260,7 +260,7 @@ const AddProductCategories = (props) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="AddProductCateMain">
           <div className="AddProductCatedetails">
             <div className="AddProductCatedetails1">

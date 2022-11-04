@@ -42,7 +42,7 @@ const AddProduct = () => {
   const [assetType , setAssetType] = useState("110601001 مخزون قطع غيار")
   const [priceDifference , setPriceDifference] = useState("110306001 ضريبة القيمة المضافة على المشتريات")
   const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
-  const [img , setImg] = useState("");
+  const [files , setFiles] = useState("");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
 
@@ -98,6 +98,7 @@ const AddProduct = () => {
   formData.append('Expensed' , expensed)
   formData.append('perchased' , purchased)
   formData.append('Deduction' , deduction)
+  formData.append('ChooseFile' , files);
   formData.append("User_Authorization" , getAuthtoken);
   formData.append("User_AuthKey" , userAuth);
       axios
@@ -180,8 +181,8 @@ const AddProduct = () => {
         setPriceDifference={setPriceDifference}
         account={account}
         setAccount={setAccount}
-        img={img}
-        setImg={setImg}
+        files={files}
+        setFiles={setFiles}
       />
 
       {/* <Modal show={true}>
