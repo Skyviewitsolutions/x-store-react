@@ -33,7 +33,14 @@ const Warehouse = () => {
         if (res.data.status === true) {
           setWareHousedetails(res.data.data);
         } else if (res.data.status === false) {
-          toast(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -59,7 +66,14 @@ const Warehouse = () => {
           toast("Warehouse deleted successfully!", { type: "success" });
           getWarehouseList();
         } else if (res.data.status === false) {
-          toast(res.data.message, { type: "error" });
+          if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
         }
       })
       .catch((err) => {

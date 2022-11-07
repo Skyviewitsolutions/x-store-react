@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaList, FaRandom } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import DiffrentAccount from "../../../../components/Model/AddDiffrentAccount/DiffrentAccount";
 import Navebar from "../../../../components/Navbar/Navbar";
 import { endpoints } from "../../../../services/endpoints";
 
 const AddParentCategory = () => {
+  const navigate = useNavigate();
   const [showAccount, setShowAccount] = useState(false);
   const parentCateUrl = endpoints.parentCate.addParentCate;
   const incomeUrl = endpoints.products.incomeAcoount;
@@ -38,7 +40,14 @@ const AddParentCategory = () => {
       if (res.data.status === true) {
         setIncome(res.data.data);
       } else if (res.data.status === false) {
-        toast(res.data.message, { type: "error" });
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
       }
     });
   }, []);
@@ -48,7 +57,14 @@ const AddParentCategory = () => {
       if (res.data.status === true) {
         setExpense(res.data.data);
       } else if (res.data.status === false) {
-        toast(res.data.message, { type: "error" });
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
       }
     });
   }, []);
@@ -57,7 +73,14 @@ const AddParentCategory = () => {
       if (res.data.status === true) {
         setPriceDef(res.data.data);
       } else if (res.data.status === false) {
-        toast(res.data.message, { type: "error" });
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
       }
     });
   }, []);
@@ -72,7 +95,14 @@ const AddParentCategory = () => {
       if (res.data.status === true) {
         setGetParentCate(res.data.data);
       } else if (res.data.status === false) {
-        toast(res.data.message, { type: "error" });
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
       }
     });
   }, []);
@@ -126,7 +156,14 @@ const AddParentCategory = () => {
           if (res.data.status == true) {
             toast("Parent Category Added Successfully!", { type: "success" });
           } else if (res.data.status == false) {
-            toast(res.data.message, { type: "error" });
+          if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {

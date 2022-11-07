@@ -34,7 +34,14 @@ const ProductCategories = () => {
         if (res.data.status === true) {
           setProductCate(res.data.data);
         } else if (res.data.status === false) {
-          toast(res.data.message, { type: "warning" });
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -61,7 +68,14 @@ const ProductCategories = () => {
           getProductCate();
           toast("Product Category deleted Successfully !", { type: "success" });
         } else if (res.data.status === false) {
-          toast(res.data.message, { type: "error" });
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {

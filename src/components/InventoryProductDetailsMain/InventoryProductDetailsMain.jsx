@@ -23,14 +23,13 @@ import axios from "axios";
 
 const InventoryProductDetailsMain = (props) => {
   const [events, setEvents] = useState("generalInformation");
-  const handleChange = (e) =>{
-    console.log(e.target.files);
-    setFiles(URL.createObjectURL(e.target.files[0]));
-}
+  
   const {
     isEdit,
     productName,
     setProductName,
+    setProductImg,
+    productImg,
     productType,
     setProductType,
     productCategory,
@@ -63,6 +62,12 @@ const InventoryProductDetailsMain = (props) => {
     files,
     setFiles
   } = props;
+  console.log(productImg,"image");
+
+  const handleChange = (e) => {
+    setFiles(e.target.files[0]);
+    setProductImg(URL.createObjectURL(e.target.files[0]))
+  }
 
   const navigate = useNavigate();
 
@@ -206,15 +211,15 @@ const InventoryProductDetailsMain = (props) => {
                 <label htmlFor="deduction">Deduction</label>
               </div>
             </div>
-            {isEdit === true && (
-              <>
-              <div className="cameraimg">
-                <label htmlFor="takePhoto"><img src={files ? files : camera } alt="camera" /></label>
-                <input type="file" id="takePhoto" onChange={handleChange}/>
-              </div>
-                
-                </>
-            )}
+            <div className="cameraimg">
+                  <label htmlFor="takePhoto">
+                    <img
+                      src={productImg ? productImg : camera}
+                      alt="camera"
+                    />
+                  </label>
+                  {isEdit === true && (  <input type="file" id="takePhoto" onChange={handleChange} /> )}
+                </div>
           </div>
         </div>
         <div className="detailsbtn">

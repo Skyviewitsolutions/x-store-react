@@ -9,7 +9,7 @@ import Navebar from "../../../../components/Navbar/Navbar";
 import { endpoints } from "../../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 
@@ -20,6 +20,7 @@ const AddWarehouse = (props) => {
 
   const AddWarehouseUrl = endpoints.wareHouse.addWarehouse;
   const AllLoactionUrl = endpoints.location.allLocation;
+  const navigate = useNavigate();
   const [locationall, setLocationall] = useState([]);
   const [warehouseName, setWarehousename] = useState("");
   const [shortName, setShortname] = useState("");
@@ -64,7 +65,14 @@ const AddWarehouse = (props) => {
           if (res.data.status == true) {
             toast("Warehouse Added Sucessfully!", { type: "Success" });
           } else if (res.data.status === false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })      
         .catch((err) => {
@@ -147,7 +155,14 @@ const AddWarehouse = (props) => {
           if (res.data.status == true) {       
             toast("Warehouse Updated Sucessfully!", { type: "Success" });
           } else if (res.data.status === false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {

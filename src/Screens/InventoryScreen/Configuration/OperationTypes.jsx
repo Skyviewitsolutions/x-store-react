@@ -34,7 +34,14 @@ const OperationTypes = (props) => {
         if (res.data.status === true) {
           setOperationType(res.data.data);
         } else if (res.data.status === false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -63,7 +70,14 @@ const OperationTypes = (props) => {
         }
         else if(res.data.status === false)
         {
-            toast(res.data.message,{type:"error"});
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
     })
     .catch((err) => {

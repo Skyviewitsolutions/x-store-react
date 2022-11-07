@@ -10,7 +10,7 @@ import { endpoints } from "../../../../services/endpoints";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { SecurityUpdate } from "@mui/icons-material";
 
 
@@ -18,6 +18,7 @@ const AddLocation = () => {
   
   const AddLocUrl = endpoints.location.addLocation;
   const locationtypeUrl = endpoints.location.locationType;
+  const navigate = useNavigate();
   const [location, setLocation] = useState([]);
   const [locationName, setLocationName] = useState("");
   const [parentLocation, setParentLocation] = useState("");
@@ -64,7 +65,14 @@ const AddLocation = () => {
           if (res.data.status == true) {
             toast("Location Added Succesfully!", { type: "success" });
           } else if (res.data.status == false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {
@@ -146,7 +154,14 @@ const AddLocation = () => {
         }
         else if(res.data.status == false)
         {
-          toast(res.data.message,{type:"error"});
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {

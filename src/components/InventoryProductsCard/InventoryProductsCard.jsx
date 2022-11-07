@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { endpoints } from "../../services/endpoints";
 import axios from "axios";
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const InventoryProductsCard = (props) => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const InventoryProductsCard = (props) => {
   const redirectToProductdetails = (dta) => {
     navigate("/InventoryProductsDetails", { state: dta });
   };
-  const { data ,deleteRef ,setDeleteRef } = props;
+  const { data, deleteRef, setDeleteRef } = props;
   const [iconColor, setIconColor] = useState("#7478a1");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
@@ -24,41 +24,38 @@ const InventoryProductsCard = (props) => {
 
   const deleteProduct = (dta) => {
     const formData = new FormData();
-  formData.append("ID",dta.PRODUCT_ID);
-  formData.append("User_Authorization", getAuthtoken);
-  formData.append("User_AuthKey", userAuth);
-    axios.post(deleteUrl,formData)
-    .then((res) => {
-      console.log(res,'deleteresult');
-      if(res.data.status == true)
-      {
-        setDeleteRef(!deleteRef)
-       toast("Product Deleted Successfuly !",{type:"success"});
-      }
-      else if(res.data.status == false)
-      {
-        toast(res.data.message ,{type:"warning"});
-      }
-    })
-    .catch((err) => {
-      console.log(err,"error");
-    })
-  }
+    formData.append("ID", dta.PRODUCT_ID);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios
+      .post(deleteUrl, formData)
+      .then((res) => {
+        console.log(res, "deleteresult");
+        if (res.data.status == true) {
+          setDeleteRef(!deleteRef);
+          toast("Product Deleted Successfuly !", { type: "success" });
+        } else if (res.data.status == false) {
+          toast(res.data.message, { type: "warning" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  };
   return (
-    <div
-      className="ProductsContainer"
-  
-    >
-      <div className="ProductCon" onClick={() => redirectToProductdetails(data)}>
-      <div className="ProductsCamera">
-        <img src={Camera} alt="camera" />
-      </div>
-      <div className="ProductContent">
-        <h6>{data.PRODUCT_NAME}</h6>
-        <p>Price: {data.COST_PRICE} SAR</p>
-        <p>On hand: {data.UNIT_OF_MEASURE}</p>
-      </div>
-  
+    <div className="ProductsContainer">
+      <div
+        className="ProductCon"
+        onClick={() => redirectToProductdetails(data)}
+      >
+        <div className="ProductsCamera">
+          <img src={data.PRODUCT_IMAGE} alt="camera" />
+        </div>
+        <div className="ProductContent">
+          <h6>{data.PRODUCT_NAME}</h6>
+          <p>Price: {data.COST_PRICE} SAR</p>
+          <p>On hand: {data.UNIT_OF_MEASURE}</p>
+        </div>
       </div>
       <div className="deleteicon">
         <MdDelete
@@ -66,10 +63,10 @@ const InventoryProductsCard = (props) => {
           style={{ color: iconColor }}
           onMouseOver={() => setIconColor("#293391")}
           onMouseOut={() => setIconColor("#7478a1")}
-          onClick={() =>deleteProduct(data)}
+          onClick={() => deleteProduct(data)}
         />
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

@@ -46,7 +46,14 @@ const AddProductCategories = (props) => {
       if (res.data.status === true) {
         setIncome(res.data.data);
       } else if (res.data.status === false) {
-        toast(res.data.message, { type: "error" });
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
       }
     });
   }, []);
@@ -56,7 +63,14 @@ const AddProductCategories = (props) => {
       if (res.data.status === true) {
         setExpense(res.data.data);
       } else if (res.data.status === false) {
-        toast(res.data.message, { type: "error" });
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
       }
     });
   }, []);
@@ -68,7 +82,14 @@ const AddProductCategories = (props) => {
         console.log(val, "vall");
         setPriceDef(val);
       } else if (res.data.status === false) {
-        toast(res.data.message, { type: "error" });
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
       }
     });
   }, []);
@@ -139,7 +160,14 @@ const AddProductCategories = (props) => {
           if (res.data.status == true) {
             toast("Product Category Added Successfully!", { type: "success" });
           } else if (res.data.status == false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {
@@ -219,7 +247,14 @@ const AddProductCategories = (props) => {
           if (res.data.status === true) {
             toast("ProductCategory Updated Successfully!", { type: "success" });
           } else if (res.data.status === false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {
@@ -228,7 +263,6 @@ const AddProductCategories = (props) => {
         });
     }
   };
-  console.log(pricedif,"pricediff acc")
   return (
     <>
       <Navebar

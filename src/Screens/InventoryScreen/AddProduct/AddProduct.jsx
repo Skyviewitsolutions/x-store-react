@@ -8,9 +8,11 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { endpoints } from "../../../services/endpoints";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
 
+  const navigate = useNavigate();
   const url = endpoints.products.addProduct;
   
   const [isEdit, setIsEdit] = useState(true);
@@ -43,6 +45,7 @@ const AddProduct = () => {
   const [priceDifference , setPriceDifference] = useState("110306001 ضريبة القيمة المضافة على المشتريات")
   const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
   const [files , setFiles] = useState("");
+  const [productImg , setProductImg] = useState("");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
 
@@ -109,7 +112,14 @@ const AddProduct = () => {
             toast("Product Added Successfully" , {type : "success"})
           }
           else if(res.data.status === false){
-            toast(res.data.message , {type : "error"});
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {
@@ -183,6 +193,8 @@ const AddProduct = () => {
         setAccount={setAccount}
         files={files}
         setFiles={setFiles}
+        productImg={productImg}
+        setProductImg={setProductImg}
       />
 
       {/* <Modal show={true}>

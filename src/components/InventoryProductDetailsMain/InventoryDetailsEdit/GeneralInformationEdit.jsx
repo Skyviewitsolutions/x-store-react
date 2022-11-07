@@ -5,8 +5,10 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import axios from "axios";
 import { endpoints } from "../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const GeneralInformationEdit = (props) => {
+  const navigate = useNavigate();
   const [proCate, setProCate] = useState([]);
   const [uoms, setUoms] = useState([]);
   const [getPurchase , setGetPurchase] = useState([]);
@@ -22,7 +24,30 @@ const GeneralInformationEdit = (props) => {
 
   
   const protypeurl = endpoints.products.productType;
+  const handleCostPrice = (e) =>{
+  
+    const val = e.target.value;
+    // console.log(val , "cost")
+    // if(val > salesPrice){
+    //   toast("Cost price cannot be greater than sales price" ,{type : "warning"})
+    // }
+    // else {
+    //   setCost(val)
+    // }
+    setCost(val)
+  }
 
+  const handleSalesPrice = (e) =>{
+    const val = e.target.value;
+    // console.log(val , "sales")
+    // if(val < cost){
+    //   toast("Sales price cannot be less than cost price" , {type : "warning"})
+    // }
+    // else {
+    //   setSalesPrice(val)
+    // }
+    setSalesPrice(val)
+  }
   useEffect(() => {
     const formData = new FormData();
     formData.append("User_Authorization" , getAuthtoken);
@@ -34,7 +59,14 @@ const GeneralInformationEdit = (props) => {
         if (res.data.status == true) {
           setProCate(res.data.data);
         } else if (res.data.status == false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -52,7 +84,14 @@ const GeneralInformationEdit = (props) => {
         if (res.data.status == true) {
           setUoms(res.data.data);
         } else if (res.data.status == false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -70,7 +109,14 @@ const GeneralInformationEdit = (props) => {
         if (res.data.status == true) {
           setGetPurchase(res.data.data);
         } else if (res.data.status == false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -87,8 +133,17 @@ const GeneralInformationEdit = (props) => {
         console.log(res, "this is product");
         if (res.data.status === true) {
           setProductTypes(res.data.data);
-        } else if (res.data.status === false) {
+        }
+        else if (res.data.status === false) {
+          if(res.data.code === 3)
+          {
+            toast("session  expired , Please re-login",{type:"warning"});
+            navigate('/');
+            
+          }
+         else{
           toast(res.data.message);
+         }
         }
       })
       .catch((err) => {
@@ -219,7 +274,7 @@ const GeneralInformationEdit = (props) => {
               type="text"
               placeholder="1.0000 SAR"
               value={salesPrice}
-              onChange={(e) => setSalesPrice(e.target.value)}
+              onChange={(e) => handleSalesPrice(e)}
             />
             {/* <FaArrowRight
               size="20px"
@@ -251,7 +306,7 @@ const GeneralInformationEdit = (props) => {
               type="text"
               placeholder="0.0000 SAR per Units"
               value={cost}
-              onChange={(e) => setCost(e.target.value)}
+              onChange={(e) => handleCostPrice(e)}
               style={{
                 width: "450px",
                 border: "none",

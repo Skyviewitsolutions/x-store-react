@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import Navebar from "../../../../components/Navbar/Navbar";
 import { endpoints } from "../../../../services/endpoints";
@@ -10,6 +10,7 @@ const AddOperationTypes = () => {
 
   const warehouseurl = endpoints.wareHouse.allWarehouse;
   const locationUrl = endpoints.location.allLocation;
+  const navigate =  useNavigate();
   const [warehouse, setWareHouse] = useState([]);
   const [location, setLocation] = useState([]);
   const getAuthtoken = localStorage.getItem("authtoken");
@@ -62,7 +63,14 @@ const AddOperationTypes = () => {
           if (res.data.status == true) {
             toast("Operation Type Added successfully", { type: "Sucess" });
           } else if (res.data.status == false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {
@@ -81,7 +89,14 @@ const AddOperationTypes = () => {
         if (res.data.status === true) {
           setWareHouse(res.data.data);
         } else if (res.data.status === false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -94,7 +109,14 @@ const AddOperationTypes = () => {
         if (res.data.status === true) {
           setLocation(res.data.data);
         } else if (res.data.status === false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -153,7 +175,14 @@ const AddOperationTypes = () => {
           if (res.data.status == true) {
             toast("Opertaion Type Updated Successfully!", { type: "success" });
           } else if (res.data.status == false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {

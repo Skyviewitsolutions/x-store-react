@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { toast,ToastContainer} from 'react-toastify';
 import Navebar from '../../../components/Navbar/Navbar';
 import { endpoints } from '../../../services/endpoints';
@@ -8,6 +9,7 @@ import './ProductBrand.css';
 const ProductBrand = () => {
 
   const addProductBrandUrl = endpoints.productBrand.addProductBrand;
+  const navigate = useNavigate();
   const [brandCode , setBrandCode] = useState("");
   const [brandNameEn , setBrandNameEn] = useState("");
   const [brandNameAr , setBrandNameAr] = useState("");
@@ -42,7 +44,14 @@ const ProductBrand = () => {
         }
         else if(res.data.status === false)
         {
-          toast(res.data.message ,{type:"error"});
+          if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
         }
       })
     }

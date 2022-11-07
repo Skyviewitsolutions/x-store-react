@@ -3,7 +3,7 @@ import Navebar from '../../../components/Navbar/Navbar';
 import ProductDetailsHeader from '../../../components/ProductDeatilsHeader/ProductDetailsHeader';
 import InventoryProductDetailsMain from '../../../components/InventoryProductDetailsMain/InventoryProductDetailsMain';
 import InventoryProductDetailsFooter from '../../../components/InventoryProductDetailsFooter/InventoryProductDetailsFooter';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import {endpoints} from "../../../services/endpoints";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,6 +13,7 @@ const InventoryProductDetails = () => {
 
    const [isEdit , setIsEdit] = useState(false);
    const location = useLocation();
+   const navigate = useNavigate();
    const productdetails = location.state;
 
    console.log(productdetails , "productDetails here")
@@ -48,6 +49,7 @@ const InventoryProductDetails = () => {
   const [priceDifference , setPriceDifference] = useState("110306001 ضريبة القيمة المضافة على المشتريات")
   const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
   const [files , setFiles] = useState("");
+  const [productImg , setProductImg] = useState("");
   const [productBrand  , setProductBrand] = useState("");
   const [prodcuctCode , setProductCode] = useState("")
 
@@ -66,7 +68,7 @@ const InventoryProductDetails = () => {
     setPurchased(productdetails.PRODUCT_BUY)
     setExpensed(productdetails.PRODUCT_EXPENDED)
     setDeduction(productdetails.PRODUCT_DEDUCTION)
-    // setUnits(productdetails.UNIT_OF_MEASURE)
+    setUnits(productdetails.UNIT_OF_MEASURE)
     setProductBrand(productdetails.PRODUCT_BRAND)
     setProductCategory(productdetails.PRODUCT_CATEGORY);
     setCost(productdetails.COST_PRICE)
@@ -84,10 +86,11 @@ const InventoryProductDetails = () => {
     setDescriptionDeliveryOrder(productdetails.DESCIBTION_DETAIL_ORDER)
     setDescriptionForReceipt(productdetails.DESCRIPTION_FOR_RECEIPTS)
     setDescriptionInternalTranser(productdetails.DISCRIPTION_FOR_IT)
+    setPriceDifference(productdetails.PRICE_DIFFERENCE)
     setIncomeAccount(productdetails.INCOME_ACCOUNT)
     setExpenceAccount(productdetails.EXPENSE_ACCOUNT)
     setAssetType(productdetails.EXPENSE_TYPE)
-    setFiles(productdetails.PRODUCT_IMAGE);
+    setProductImg(productdetails.PRODUCT_IMAGE);
   },[productdetails])
    
 
@@ -155,7 +158,14 @@ const InventoryProductDetails = () => {
             toast("Product Updated Successfully" , {type : "success"})
           }
           else if(res.data.status === false){
-            toast(res.data.message , {type : "error"});
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {
@@ -226,6 +236,10 @@ const InventoryProductDetails = () => {
            setExpenceAccount={setExpenceAccount}
            setAssetType={setAssetType}
            setProductBrand={setProductBrand}
+           productImg={productImg}
+           setProductImg={setProductImg}
+           files={files}
+           setFiles={setFiles}
         />
 
         <ToastContainer />

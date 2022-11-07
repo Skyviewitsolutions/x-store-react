@@ -4,11 +4,12 @@ import Navebar from "../../../../components/Navbar/Navbar";
 import { endpoints } from "../../../../services/endpoints";
 import axios from "axios";
 import "./AddUomCate.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddUomCate = () => {
 
   const AddUomCateUrl = endpoints.UomCategory.addUomCate;
+  const navigate = useNavigate();
   const [uomCategory, setUomCategory] = useState("");
   const [update, setUpdate] = useState("");
   const getAuthtoken = localStorage.getItem("authtoken");
@@ -30,7 +31,14 @@ const AddUomCate = () => {
           if (res.data.status == true) {
             toast("Uom Category Added Successfully!", { type: "success" });
           } else if (res.data.status == false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
           }
         })
         .catch((err) => {
@@ -67,7 +75,14 @@ const AddUomCate = () => {
         if (res.data.status == true) {
           toast("Uom Category Updated Successfully!", { type: "success" });
         } else if (res.data.status == false) {
-          toast(res.data.message, { type: "error" });
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       });
     }

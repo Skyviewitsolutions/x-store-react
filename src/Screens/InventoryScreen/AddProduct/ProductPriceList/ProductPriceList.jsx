@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast,ToastContainer} from 'react-toastify';
 import Navebar from '../../../../components/Navbar/Navbar';
 import { endpoints } from '../../../../services/endpoints';
@@ -11,6 +12,7 @@ const ProductPriceList = () => {
   const PriceListUrl = endpoints.productPriceList.allPricelist;
   const CurrencyUrl  = endpoints.Currency.allCurrency;
   const addPriceListUrl = endpoints.productPriceList.addPriceList;
+  const navigate = useNavigate();
   const [productPrice , setProductPrice] = useState([]);
   const [currency , setCurrency] = useState([]);
   const [priceList , setPriceList] = useState("");
@@ -33,7 +35,14 @@ const ProductPriceList = () => {
     }
     else if(res.data.status === false)
     {
-      toast(res.data.message,{type:"error"})
+      if(res.data.code === 3)
+      {
+        toast("Session expired , Please re-login",{type:"warning"})
+        navigate('/');
+      }
+      else{
+       toast(res.data.message,{type:"error"});
+      }
     }
    })
    .catch((err) => {
@@ -51,7 +60,14 @@ const ProductPriceList = () => {
     }
     else if(res.data.status == false)
     {
-      toast(res.data.message);
+      if(res.data.code === 3)
+      {
+        toast("Session expired , Please re-login",{type:"warning"})
+        navigate('/');
+      }
+      else{
+       toast(res.data.message,{type:"error"});
+      }
     }
    })
    .catch((err) => {
@@ -103,7 +119,14 @@ const ProductPriceList = () => {
       }
       else if(res.data.status === false)
       {
-        toast(res.data.message , {type:"error"});
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
       }
     })
     .catch((err) => {

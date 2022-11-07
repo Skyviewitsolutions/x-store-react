@@ -6,6 +6,8 @@ import Sidebar from "../../../components/Sidebar/Sidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { endpoints } from "../../../services/endpoints";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-bootstrap";
 
 const InventoryProducts = () => {
   const [product, setProduct] = useState([]);
@@ -30,7 +32,15 @@ const InventoryProducts = () => {
           setAllProd(res.data.data);
           setProduct(res.data.data);
         } else if (res.data.status === false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.mrssage,{type:"error"});
+          }
+          
         }
       })
       .catch((err) => {
@@ -87,6 +97,7 @@ const InventoryProducts = () => {
               })}
             </div>
           </div>
+          <ToastContainer />
         </div>
         <div></div>
       </div>

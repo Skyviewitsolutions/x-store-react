@@ -6,11 +6,10 @@ import { endpoints } from '../../../services/endpoints';
 import { FiEdit } from 'react-icons/fi';
 import { MdDelete } from 'react-icons/md';
 import { toast,ToastContainer } from 'react-toastify';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 
 const UomCategories = () => {
-
   const [uomdetails , setUomdetails] = useState([]);
   const url = endpoints.UomCategory.allUomCate;
   const navigate = useNavigate();
@@ -32,7 +31,14 @@ const getUomCategory = () => {
     }
     else if(res.data.status ===  false) 
     {
-      alert(res.data.message);
+      if(res.data.code === 3)
+      {
+        toast("Session expired , Please re-login",{type:"warning"})
+        navigate('/');
+      }
+      else{
+       toast(res.data.message,{type:"error"});
+      }
     }
   })
   .catch((err) => {
@@ -64,7 +70,14 @@ const getUomCategory = () => {
     }
     else if(res.data.status === false) 
     {
-      toast(res.data.message,{type:"error"});
+      if(res.data.code === 3)
+      {
+        toast("Session expired , Please re-login",{type:"warning"})
+        navigate('/');
+      }
+      else{
+       toast(res.data.message,{type:"error"});
+      }
     }
   })
   .catch((err) => {

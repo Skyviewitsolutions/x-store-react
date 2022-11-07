@@ -4,12 +4,15 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import axios from "axios";
 import { Hail } from "@mui/icons-material";
 import { endpoints } from "../../../services/endpoints";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const AccountingEdit = (props) => {
 
   const incomeaccUrl = endpoints.products.incomeAcoount;
   const expenseUrl = endpoints.products.expenseAccount;
     const priceUrl = endpoints.products.priceDifference;
+    const navigate = useNavigate(); 
   const [income, setIncome] = useState([]);
   const [expense, setExpense] = useState([]);
   const [price , setPrice] = useState([]);
@@ -22,7 +25,14 @@ const AccountingEdit = (props) => {
         if (res.data.status == true) {
           setIncome(res.data.data);
         } else if (res.data.status == false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.mrssage,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -35,7 +45,14 @@ const AccountingEdit = (props) => {
         if (res.data.status == true) {
           setExpense(res.data.data);
         } else if (res.data.status == false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.mrssage,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -50,7 +67,14 @@ const AccountingEdit = (props) => {
         }
         else if(res.data.status == false)
         {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.mrssage,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -79,7 +103,14 @@ const AccountingEdit = (props) => {
         if (res.data.status == true) {
           setIncome(res.data.data);
         } else if (res.data.status == false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.mrssage,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -93,7 +124,14 @@ const AccountingEdit = (props) => {
         if (res.data.status == true) {
           setExpense(res.data.data);
         } else if (res.data.status == false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.mrssage,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -181,6 +219,7 @@ const AccountingEdit = (props) => {
             
           </select>
         </div>
+        <ToastContainer />
       </div>
     </div>
   );
