@@ -7,10 +7,119 @@ import SalesPurchase from "./SalesPurchase";
 import Invoicing from "./Invoicing";
 import camera from "../../../assets/Images/camera.png";
 import Navebar from "../../Navbar/Navbar"
+import { endpoints } from "../../../services/endpoints";
+import { toast } from "react-toastify";
 
 const AddVendors = () => {
     const [event, setEvent] = useState("Sales & Purchase");
+    const [showCompany , setShowCompany] = useState(false);
 
+  // -------------AddVendors UseState-----------
+  const AddVendors = endpoints.vendors.addVendors;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth")
+  const [addressType , setAddressType] = useState("");
+  const [vendorName , setVendorName] = useState("");
+  const [company , setCompany] = useState("");
+  const [street , setStreet] = useState("");
+  const [city , setCity] = useState("");
+  const [state , setState] = useState("");
+  const [zip , setZip] = useState("");
+  const [country , setCountry] = useState("");
+  const [taxId , setTaxId] = useState("");
+  const [workAddress , setWorkAddress] = useState("");
+  const [supplierType , setSupplieType] = useState("");
+  const [phone , SetPhone] = useState("");
+  const [mobile , setMobile] = useState("");
+  const [email , setEmail] = useState("");
+  const [webLink , setWebLink] = useState("");
+  const [salesPerson , setSalesPersons] = useState("");
+  const [salesPaymentTerms , setSalesPaymentTerms] = useState("");
+  const [purchasePaymentTerms , setPurchaseSalesPaymentTerms] = useState("");
+  const [priceList , setPriceList] = useState("");
+  const [supplierCurrency , setSupplierCurrency] = useState("");
+  const [fiscalPosition , setFiscal] = useState("");
+  const [refrence , setRefrence] = useState("");
+  const [industry , setIndustry] = useState("");
+  const [bank , setBank] = useState("");
+  const [accNumber , setAccNumber] = useState("");
+  const [accReceviable , setAccReceviable] = useState("");
+  const [accPayable , setAccPayable] = useState("")
+
+   const save = () => {
+    const formData = new FormData();
+    formData.append("Address_Type" , addressType);
+    formData.append("Name" , vendorName);
+    formData.append("Company" , company);
+    formData.append("Street" ,street);
+    formData.append("City" , city);
+    formData.append("State" , state);
+    formData.append("Zip" , zip);
+    formData.append("Country" , country);
+    formData.append("Phone" , phone);
+    formData.append("Mobile" , mobile);
+    formData.append("Email" , email);
+    formData.append("Suplier_Type" , supplierType);
+    formData.append("Website_Link" , webLink);
+    formData.append("Tax_ID" ,taxId);
+    formData.append("Work_Address" , workAddress);
+    formData.append("Sales_Person" , salesPerson);
+    formData.append("Payment_Terms" , salesPaymentTerms);
+    formData.append("Price_List" , priceList);
+    formData.append("Fiscal_Position" , fiscalPosition);
+    formData.append("Payment_Terms1" ,purchasePaymentTerms);
+    formData.append("Supplier_Currency" , supplierCurrency);
+    formData.append("Reference" , refrence);
+    formData.append("Industry" , industry);
+    formData.append("Bank" , bank);
+    formData.append("Account_Number" , accNumber);
+    formData.append("Account_Receivable" , accReceviable);
+    formData.append("Account_Payable" , accPayable);
+    formData.append("User_Authorization",getAuthtoken);
+    formData.append("User_AuthKey" ,userAuth)
+
+    if(vendorName === ""){
+      toast("Vendor name is required!" , {type:"warning"})
+    }else if(showCompany===true && company === ""){
+      toast("Comapny is required!",{type:"warning"})
+    }else if(street === "")
+    {
+      toast("Street is required!",{type:"warning"});
+    }else if(city === ""){
+      toast("City is required!",{type:"warning"});
+    }else if(state === ""){
+      toast("State is required !" ,{type:"warning"});
+    }else if(zip === ""){
+      toast("Zip code is required !",{type:"warning"});
+    }else if(country === ""){
+      toast("Country is required !",{type:"warning"});
+    }else if(taxId === ""){
+      toast("Tax Id is required !",{type:"warning"});
+    }else if(workAddress === ""){
+      toast("Work Address is required!",{type:"warning"});
+    }else if(supplierType === ""){
+      toast("Suppiler Type is required !",{type:"warning"});
+    }else if(phone === ""){
+      toast("Phone is required !" , {type:"warning"})
+    }else if(mobile === ""){
+      toast("Mobile is required !",{type:"warning"});    
+    }
+   }
+ 
+    
+
+    const handleIndividual = (e) => {
+     if(e.target.value === "individual")
+     {
+      setShowCompany(true);
+     }
+    }
+
+    const handleCompany = (e) => {
+      if(e.target.value === "company") {
+        setShowCompany(false)
+      }
+    }
   return (
     <div>
      <Navebar
@@ -54,11 +163,11 @@ const AddVendors = () => {
           <div className="VendorsDetails">
             <div className="radiobutton">
             <div className="IndCom">
-              <input type="radio" name="com" id='com'/>
+              <input type="radio" name="com" id='com' value="individual" onChange={(e) =>handleIndividual(e)}/>
               <label htmlFor="com">Individual</label>
               </div>
               <div className="com">
-              <input type="radio" name="com"  id='company'/>
+              <input type="radio" name="com"  id='company' value="company" onChange={(e) => handleCompany(e)}/>
               <label htmlFor="company">Company</label>
               </div>
               </div>
@@ -67,7 +176,7 @@ const AddVendors = () => {
               <input type="text" />
             </div>
             <div className="comselect">
-              <select>
+             {showCompany===true ? <select>
                 <option>Company</option>
                 <option>300048513700003 - 300048513700003</option>
                 <option>AALY ALQEMA EST. - 0305</option>
@@ -77,7 +186,7 @@ const AddVendors = () => {
                 <option>
                   Abandoned armor for furnishings - 310151424200003
                 </option>
-              </select>
+              </select>: null}
             </div>
             <div className="cameraimg">
                 <img src={camera} alt="camera" />

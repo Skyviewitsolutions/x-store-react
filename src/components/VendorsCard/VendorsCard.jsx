@@ -3,8 +3,9 @@ import { MdDelete } from 'react-icons/md'
 import vendor from "../../assets/Images/vendor.png";
 import './VendorsCard.css'
 
-const VendorsCard = () => {
+const VendorsCard = (props) => {
     const [iconColor, setIconColor] = useState("#7478a1");
+   const {data} = props;
   return (
     <div>
          <div
@@ -16,7 +17,8 @@ const VendorsCard = () => {
         <img src={vendor} alt="vendors" />
       </div>
       <div className="VendorsContent">
-        <h6>300048513700003</h6>
+        <h6>{data.VENDOR_NAME}</h6>
+        <p>{data.CITY}</p>
       </div>
   
       </div>

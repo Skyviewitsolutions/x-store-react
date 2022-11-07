@@ -82,7 +82,6 @@ export const endpoints = {
     updateOperationType: BASE_URL + "/OperationType/UpdateOperationType",
     deleteOperationType: BASE_URL + "/OperationType/DeleteOperationType",
   },
-
   authentication: {
     login: BASE_URL + "/UserLogin/login",
     signUp: BASE_URL + "/UserLogin/signup",
@@ -96,7 +95,13 @@ export const endpoints = {
     updateatrriute: BASE_URL + "/Attribute/UpdateAttribute",
     deleteattribute: BASE_URL + "/Attribute/DeleteAttribute",
   },
-
+  vendors:{
+    allVendors: BASE_URL + "/SalesDepartment/Vendors/GetAll",
+    addVendors: BASE_URL + "/SalesDepartment/Vendors/Add",
+    singleVendors: BASE_URL + "/SalesDepartment/Vendors/GetSingle",
+    updateVendors: BASE_URL + "/SalesDepartment/Vendors/Update",
+    deleteVendors: BASE_URL + "/SalesDepartment/Vendors/Delete",
+  },
   //----------- Accounting Api---------->
   PaymentTerms: {
     allPayment: BASE_URL + "/PaymentTerms/GetAllPaymentTerms",

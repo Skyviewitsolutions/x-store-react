@@ -109,7 +109,7 @@ const SalesNavbar = (props) => {
               <button className="createbtn" onClick={handleCreatePage}>
                 Create
               </button>
-              <button className="createbtn" onClick={save}>
+              <button className="savebtn" onClick={save}>
                 Save
               </button>
             </div>

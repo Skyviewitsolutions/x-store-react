@@ -98,7 +98,7 @@ const OperationTypes = (props) => {
   }
   
   const column = [
-    { label: "Operation Type", name: "OPERATION_TYPE" },
+    { label: "Operation Type", name: "OPERATION_NAME" },
     { label: "WareHouse", name: "WAREHOUSE_INFO" },
     {
       label: "Actions",
