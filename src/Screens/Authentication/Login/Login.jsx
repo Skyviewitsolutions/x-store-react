@@ -40,7 +40,7 @@ const Login = () => {
     }
     else if(password.length < 6)
     {
-      setPasswordError("Password must be gretar then 5 digit ")
+      setPasswordError("Password must be greater then 5 digit ")
     }
     else{
       setEmailError("");

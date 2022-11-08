@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast,ToastContainer} from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import { endpoints } from "../../../services/endpoints";
@@ -14,6 +14,10 @@ const AddAccGroup = () => {
   const [acc, setAcc] = useState("");
   const [bank , setBank] = useState([]);
   const [update , setUpdate] = useState("");
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+
+  const navigate = useNavigate();
 
   const AccGrpAddUrl = endpoints.AccountGroup.addAccGrp;
   const BankUrl = endpoints.BankAccount.allBank;
@@ -47,13 +51,22 @@ const AddAccGroup = () => {
       formData.append("Name", name);
       formData.append("Parent", parent);
       formData.append("Account", acc);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios
         .post(AccGrpAddUrl, formData)
         .then((res) => {
           if (res.data.status === true) {
             toast("Account Group Added Successfully", { type: "success" });
           } else if (res.data.status === false) {
-            toast(res.data.message, { type: "error" });
+            if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.mrssage,{type:"error"});
+          }
           }
         })
         .catch((err) => {
@@ -95,6 +108,8 @@ const AddAccGroup = () => {
         formData.append("Name", name);
         formData.append("Parent", parent);
         formData.append("Account", acc);
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         axios.post(updateAccGrpUrl,formData)
         .then((res) => {
             if(res.data.status === true)
@@ -103,7 +118,14 @@ const AddAccGroup = () => {
             }
             else if(res.data.status === false)
             {
-              toast(res.data.message , {type:"error"});
+              if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.mrssage,{type:"error"});
+          }
             }
            })
            .catch((err) => {

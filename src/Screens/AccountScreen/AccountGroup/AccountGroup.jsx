@@ -13,9 +13,16 @@ const AccountGroup = () => {
 
     const navigate = useNavigate();
     const [accGrp , setAccGrp] = useState([]);
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
     const AccGrpURL = endpoints.AccountGroup.allAccGrp;
+
     const getAccGrp = () => {
-        axios.post(AccGrpURL)
+
+        const formData = new FormData();
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
+        axios.post(AccGrpURL ,formData)
         .then((res) => {
             if(res.data.status === true)
             {
@@ -23,7 +30,14 @@ const AccountGroup = () => {
             }
             else if(res.data.status === false)
             {
-              alert(res.data.message);
+                if(res.data.code === 3)
+                {
+                  toast("Session expired , Please re-login",{type:"warning"})
+                  navigate('/');
+                }
+                else{
+                 toast(res.data.mrssage,{type:"error"});
+                }
             }
         })
         .catch((err) => {
@@ -38,6 +52,8 @@ const AccountGroup = () => {
     const delteAccGrpUrl = endpoints.AccountGroup.deleteAccGrp;
     const deleteItem = (data) => {
         const formData = new FormData();
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         formData.append("ID",data);
         axios.post(delteAccGrpUrl,formData)
         .then((res) => {
@@ -48,7 +64,14 @@ const AccountGroup = () => {
             }
             else if(res.data.status === false)
             {
-                toast(res.data.message,{type:"error"});
+                if(res.data.code === 3)
+                {
+                  toast("Session expired , Please re-login",{type:"warning"})
+                  navigate('/');
+                }
+                else{
+                 toast(res.data.mrssage,{type:"error"});
+                }
             }
         })
         .catch((err) => {

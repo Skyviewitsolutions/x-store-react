@@ -22,6 +22,7 @@ import InventoryProductDetailsFooter from "../InventoryProductDetailsFooter/Inve
 import axios from "axios";
 
 const InventoryProductDetailsMain = (props) => {
+  
   const [events, setEvents] = useState("generalInformation");
   
   const {

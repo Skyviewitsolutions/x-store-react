@@ -57,10 +57,10 @@ const InventoryProductsCard = (props) => {
           <p>On hand: {data.UNIT_OF_MEASURE}</p>
         </div>
       </div>
-      <div className="deleteicon">
+      <div className="deleteicon" >
         <MdDelete
           size={20}
-          style={{ color: iconColor }}
+          style={{ color: iconColor ,zIndex:10}}
           onMouseOver={() => setIconColor("#293391")}
           onMouseOut={() => setIconColor("#7478a1")}
           onClick={() => deleteProduct(data)}
