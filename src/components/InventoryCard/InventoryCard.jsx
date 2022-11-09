@@ -1,7 +1,9 @@
 import React from "react";
 import "./InventoryCard.css";
 
-const InventoryCard = () => {
+const InventoryCard = (props) => {
+
+  const {data} = props;
   return (
     <>
      
@@ -16,7 +18,7 @@ const InventoryCard = () => {
                   color: "#1669a2",
                 }}
               >
-                Receipts
+               {data.OPERATION_TYPE}
               </h5>
               <h6
                 style={{
@@ -25,11 +27,11 @@ const InventoryCard = () => {
                   color: "#1669a2",
                 }}
               >
-                RIYADH warehouse
+                {data.WAREHOUSE_NAME}
               </h6>
-              <button className="btnc">327 TO PROCESS</button>
+              <button className="btnc">0 TO PROCESS</button>
             </div>
-            <div className="b2">
+            {/* <div className="b2">
               <div style={{ height: "80px" }}></div>
 
               <div className="htxt">
@@ -46,7 +48,7 @@ const InventoryCard = () => {
                 <span className="txtclr">Back Orders</span>{" "}
                 <span className="txtclr2">3</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
          

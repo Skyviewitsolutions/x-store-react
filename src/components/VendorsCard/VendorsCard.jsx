@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import "./VendorsCard.css";
 import { endpoints } from "../../services/endpoints";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const VendorsCard = (props) => {
+
   const [iconColor, setIconColor] = useState("#7478a1");
   const { data } = props;
   const navigate = useNavigate();
@@ -22,12 +23,14 @@ const VendorsCard = (props) => {
   const deleteVendorUrl = endpoints.vendors.deleteVendors;
 
   const deleteVendor = (dta) => {
+  
        const formData = new FormData()
        formData.append("ID" ,dta.VENDOR_ID);
        formData.append("User_Authorization", getAuthtoken);
        formData.append("User_AuthKey", userAuth);
        axios.post(deleteVendorUrl,formData)
        .then((res) => {
+        console.log(res ,"resp")
         if (res.data.status == true) {
           toast("Vendor Deleted Successfuly !", { type: "success" });
         } else if (res.data.status == false) {
@@ -41,9 +44,9 @@ const VendorsCard = (props) => {
   }
 
   return (
-    <div onClick={() => renderToEditPage(data)}>
+    <div >
       <div className="VendorsContainer">
-        <div className="VendorsCon">
+        <div className="VendorsCon"  onClick={() => renderToEditPage(data)}>
           <div className="VendorsImg">
             <img src={data.VENDOR_PROFILE} alt="vendors" />
           </div>
@@ -55,13 +58,14 @@ const VendorsCard = (props) => {
         <div className="deleteicon">
           <MdDelete
             size={20}
-            style={{ color: iconColor }}
+            style={{ color: iconColor ,zIndex:10}}
             onMouseOver={() => setIconColor("#293391")}
             onMouseOut={() => setIconColor("#7478a1")}
             onClick={() => deleteVendor(data)}
           />
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

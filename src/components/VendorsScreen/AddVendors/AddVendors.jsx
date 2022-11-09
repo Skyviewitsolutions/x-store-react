@@ -14,6 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const AddVendors = () => {
+  
   const [event, setEvent] = useState("Sales & Purchase");
   const [showCompany, setShowCompany] = useState(false);
   const [isEdit, setIsEdit] = useState(false);

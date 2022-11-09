@@ -9,7 +9,7 @@ const GeneralInformation = (props) => {
 
     const [showUpdateCost , setShowUpdateCost] = useState(false);
     const navigate = useNavigate();
-    const {productType,productCategory,interRef,salesPrice,customerTax,cost,prodcuctCode , unitOfMeasurement,purchaseUnitOfMeasuremnt,description}=props;
+    const {productType,productCategory,interRef,salesPrice,customerTax,cost,prodcuctCode , unitOfMeasurement,purchaseUnitOfMeasuremnt,description ,  setProductCatCode}=props;
 
     console.log(props , "productCategory")
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navebar from "../../../components/Navbar/Navbar";
 import InventoryProductDetailsMain from "../../../components/InventoryProductDetailsMain/InventoryProductDetailsMain";
 import ProductDetailsHeader from "../../../components/ProductDeatilsHeader/ProductDetailsHeader";
@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { endpoints } from "../../../services/endpoints";
 import { useNavigate } from "react-router-dom";
+
 
 const AddProduct = () => {
 
@@ -48,9 +49,29 @@ const AddProduct = () => {
   const [productImg , setProductImg] = useState("");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
-
+  const [uniqueCode , setUniqueCode] = useState("");
+  const [productCatCode , setProductCatCode] = useState("");
   
 
+
+  const productCodeUrl = "https://xstore.skyviewads.com/ProductManagement/ProductManagement/Code";
+   
+  useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+     axios.post(productCodeUrl,formData)
+     .then((res) => {
+      if(res.data.status === true){
+        setUniqueCode(res.data.Present_Key)
+      }else if(res.data.status === false){
+        toast(res.data.message,{type:"error"})
+      }
+     })
+     .catch((err) => {
+      console.log(err , "error")
+     })
+  },[])
 
   const save = () => {
     if (productName === "") {
@@ -101,7 +122,9 @@ const AddProduct = () => {
   formData.append('Expensed' , expensed)
   formData.append('perchased' , purchased)
   formData.append('Deduction' , deduction)
+  formData.append('Product_Code' ,uniqueCode + productCatCode);
   formData.append('ChooseFile' , files);
+  formData.append("Present_Key" , uniqueCode);
   formData.append("User_Authorization" , getAuthtoken);
   formData.append("User_AuthKey" , userAuth);
       axios
@@ -129,6 +152,8 @@ const AddProduct = () => {
     }
   };
 
+  
+
   return (
     <div>
       <Navebar showBelowMenu={false} />
@@ -154,6 +179,7 @@ const AddProduct = () => {
         description={description}
         setDescription={setDescription}
         sold={sold}
+        uniqueCode={uniqueCode}
         setSold={setSold}
         purchased={purchased}
         setPurchased={setPurchased}
@@ -193,8 +219,10 @@ const AddProduct = () => {
         setAccount={setAccount}
         files={files}
         setFiles={setFiles}
+        setProductCatCode={setProductCatCode}
         productImg={productImg}
         setProductImg={setProductImg}
+        productCatCode={productCatCode}
       />
 
       {/* <Modal show={true}>

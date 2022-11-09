@@ -35,12 +35,12 @@ const Navebar = (props) => {
           />
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
-              <Nav.Link href="#home" className="navetext">
+              <Nav.Link href="/Inventory" className="navetext">
                 Overview
               </Nav.Link>
-              <Nav.Link href="/Inventory" className="navetext">
+              {/* <Nav.Link href="" className="navetext">
                 Operations
-              </Nav.Link>
+              </Nav.Link> */}
               <NavDropdown title="Master Data" id="collasible-nav-dropdown">
                 <NavDropdown.Item onClick={()=> navigate('/InventoryProducts')}>
                   Product

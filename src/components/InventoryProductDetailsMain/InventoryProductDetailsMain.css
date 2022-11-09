@@ -14,11 +14,13 @@
     background-color: #fff;
     border: 1px solid #cdd3d9;
 }
+
 .ContainerHeader{
     width: 100%;
     border-bottom: 1px solid #cdd3d9;
     display: flex;
     cursor: pointer;
+    justify-content: flex-end;
 }
 .div1{
     width: 10px;
@@ -29,7 +31,7 @@
     display: flex;
     padding: 2px 0px;
     padding-left: 10px;
-    border-right: 1px solid #cdd3d9;
+    border-left: 1px solid #cdd3d9;
 }
 .div2:hover{
     background-color: #f3efef;
@@ -106,8 +108,9 @@
     border-bottom: none;
 }
 .navLinkActive{
-    background-color: #0077b0;
+    background-color: #0077b0 !important;
     font-size: 15px;
+    color: white !important;
 }
 .nav-link:hover{
     color: #fff !important;
@@ -177,4 +180,9 @@
     width: 20px;
 }
 
+}
+
+
+th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDataTableHeadCell-root.tss-gm6zfk-MUIDataTableHeadCell-fixedHeader.css-1ygcj2i-MuiTableCell-root {
+    padding-left: 0px !important;
 }

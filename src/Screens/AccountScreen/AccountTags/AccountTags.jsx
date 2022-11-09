@@ -14,9 +14,14 @@ const AccountTags = () => {
 
   const [accountTag , setAccountTag] = useState([]);
   const AccountTagallUrl = endpoints.AccountTag.allAccountTag;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const getAccountTag = () => {
-    axios.post(AccountTagallUrl)
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(AccountTagallUrl , formData)
     .then((res) => {
         console.log(res,"response");
         if(res.data.status === true)
@@ -42,6 +47,8 @@ const AccountTags = () => {
 
   const deleteItem = (data) => {
    const formData = new FormData();
+   formData.append("User_Authorization", getAuthtoken);
+   formData.append("User_AuthKey", userAuth);
    formData.append("ID" , data);
    axios.post(accountTagUrl,formData)
    .then((res) => {

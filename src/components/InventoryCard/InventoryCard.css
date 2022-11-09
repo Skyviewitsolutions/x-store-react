@@ -1,57 +1,57 @@
-.container-fluid{
-    margin: 0px;
-    width:100%;
+.container-fluid {
+  margin: 0px;
+  width: 100%;
 }
 .box {
-    height: 180px;
+  height: 180px;
   border: 1px solid gray;
- border-left:5px solid #1669a2 ;
- display: flex;
- width: 100%;
+  border-left: 5px solid #1669a2;
+  display: flex;
+  width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
- .b1{
-    width: 172px;
-    height: 100%;
-   float: left;
-  
- }
-.b2{
-    width: 172px;
-    height: 100%;
-    float: left;
-    padding-right: 20px;
+.b1 {
+  width: 172px;
+  height: 100%;
+  float: left;
+  float: left;
 }
-
-.btnc{
-    background-color:#1669a2 ;
-    width:75%;
-    height: 35px;
-    text-align: center;
-    color: white;
-    margin-left: 10px;
-    border: none;
-    font-size: 14px;
-    margin-top: 20px;
-}
-.htxt{
-    display: flex;
-    justify-content: space-between;margin-left: 10px;
-
-}
-.txtclr{
-    color:#1669a2;
-    font-size: 14px;
-}
-.txtclr2{
-    color:gray ;
-    font-size: 12px;
-}
-.mainbox{
-    display:flex;
-  
+.b2 {
+  width: 172px;
+  height: 100%;
+  float: left;
+  padding-right: 20px;
 }
 
-.inventBox{
-    width: 350px;
-    margin: 15px auto;
+.btnc {
+  background-color: #1669a2;
+  width: 75%;
+  height: 35px;
+  text-align: center;
+  color: white;
+  margin-left: 10px;
+  border: none;
+  font-size: 14px;
+  margin-top: 20px;
+}
+.htxt {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+.txtclr {
+  color: #1669a2;
+  font-size: 14px;
+}
+.txtclr2 {
+  color: gray;
+  font-size: 12px;
+}
+.mainbox {
+  display: flex;
+}
+
+.inventBox {
+  width: 350px;
+  margin: 12px 10px;
 }

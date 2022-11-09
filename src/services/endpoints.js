@@ -102,6 +102,9 @@ export const endpoints = {
     updateVendors: BASE_URL + "/SalesDepartment/Vendors/Update",
     deleteVendors: BASE_URL + "/SalesDepartment/Vendors/Delete",
   },
+  overView:{
+      allOverview : BASE_URL + "/Inventory/Overview/GetAll",
+  },
   //----------- Accounting Api---------->
   PaymentTerms: {
     allPayment: BASE_URL + "/PaymentTerms/GetAllPaymentTerms",

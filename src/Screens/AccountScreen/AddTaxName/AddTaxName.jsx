@@ -18,6 +18,8 @@ const AddTaxName = () => {
     const [cost , setCost] = useState(false);
     const [update , setUpdate] = useState("");
     const addTaxNameUrl = endpoints.TaxName.addTaxName;
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
 
     const save = () => {
       if(taxName === "")
@@ -66,6 +68,8 @@ const AddTaxName = () => {
         formData.append("Tax_Group",taxGroup);
         formData.append("Affect_Base_Of",affect);
         formData.append("Include_In_Analytic",cost);
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         axios.post(addTaxNameUrl,formData)
         .then((res) => {
             if(res.data.status === true)
@@ -153,6 +157,8 @@ const AddTaxName = () => {
         formData.append("Tax_Group",taxGroup);
         formData.append("Affect_Base_Of",affect);
         formData.append("Include_In_Analytic",cost);
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         axios.post(updateTaxNameUrl,formData)
         .then((res) => {
             if(res.data.status === true)

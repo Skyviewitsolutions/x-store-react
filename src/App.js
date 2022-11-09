@@ -106,6 +106,8 @@ import ParentCategory from "./Screens/InventoryScreen/Configuration/ParentCatego
 import SalesTeam from "./Screens/SalesScreen/Orders/SalesTeam/SalesTeam";
 import ProductPriceList from "./Screens/InventoryScreen/AddProduct/ProductPriceList/ProductPriceList";
 import AddParentCategory from "./Screens/InventoryScreen/Configuration/AddParentCategory/AddParentCategory";
+import PurchasePriceLIst from "./Screens/PurchaseScreen/PurchasePriceList/PurchasePriceLIst";
+import AddPurchasePriceList from "./Screens/PurchaseScreen/PurchasePriceList/AddPurchasePriceList/AddPurchasePriceList";
 
 
 
@@ -222,6 +224,10 @@ const App = () => {
        <Route path="/Quotations" element={<Quotations/>} />
        <Route path="/SalesOrders" element={<SalesOrders/>}/>
        <Route path='/OrdersSalesTeam' element={<SalesTeam/>} />
+
+       {/* --------------------------------------Purchase Screens---------------------------- */}
+       <Route path="/PurchasePriceList" element={<PurchasePriceLIst/>} />
+       <Route path='/AddPurchasePriceList' element={<AddPurchasePriceList/>} />
       </Routes>
     </Router>
   </>)

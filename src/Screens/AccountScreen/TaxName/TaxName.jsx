@@ -16,10 +16,16 @@ const TaxName = () => {
   const navigate = useNavigate();
   const allTaxUrl = endpoints.TaxName.allTaxName;
   const [taxName, setTaxname] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const getTaxName = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+
     axios
-    .post(allTaxUrl)
+    .post(allTaxUrl , formData)
     .then((res) => {
       console.log(res, "response");
       if (res.data.status === true) {
@@ -42,6 +48,9 @@ const TaxName = () => {
   const deleteItem = (data) => {
     const formData = new FormData();
     formData.append("Id",data);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+
     axios.post(deleteTaxUrl,formData)
     .then((res) =>{
     if(res.data.status === true)

@@ -98,6 +98,7 @@ const GeneralInformationEdit = (props) => {
         console.log(err, "error");
       });
   }, []);
+  
   useEffect(() => {
     const formData = new FormData();
     formData.append("User_Authorization" , getAuthtoken);
@@ -182,14 +183,24 @@ const GeneralInformationEdit = (props) => {
     setCost,
     description,
     setDescription,
+    setProductCatCode,
     purchased,
+    productCatCode,
     setPurchased,
+    productCode,
     productBrand,
+    uniqueCode,
     setProductBrand,
+    setUnitOfMeasurement,
+    unitOfMeasurement,
   } = props;
   
-
-  console.log(productType, "productType");
+  const handleProductCategory = (e) =>{
+    setProductCategory(e.target.value)
+    const val = e.target.value;
+    const code = val.slice(0,4);
+    setProductCatCode(code)
+  }
 
   return (
     <div>
@@ -219,7 +230,7 @@ const GeneralInformationEdit = (props) => {
             <p> Product Category</p>
             <select
               value={productCategory}
-              onChange={(e) => setProductCategory(e.target.value)}
+              onChange={(e) => handleProductCategory(e)}
             >
               <option value=""></option>
               {proCate.map((item, index) => {
@@ -237,7 +248,7 @@ const GeneralInformationEdit = (props) => {
             <p>Product Code</p>
             <input
               type="text"
-              value={interRef}
+              value={uniqueCode + productCatCode}
               readOnly={true}
               onChange={(e) => setInterRef(e.target.value)}
             />
@@ -336,7 +347,7 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent3">
             <p>Purchase Unit of</p>
-            <select value={purchased} onChange={(e) => setPurchased(e.target.value)}>
+            <select value={unitOfMeasurement} onChange={(e) => setUnitOfMeasurement(e.target.value)}>
               {getPurchase.map((item, index) => {
                 return (
                   <>

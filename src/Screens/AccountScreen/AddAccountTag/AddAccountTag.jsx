@@ -10,6 +10,8 @@ import { useLocation } from "react-router-dom";
 const AddAccountTag = () => {
 
   const [selectedValue, setSelectedValue] = useState();
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   
   const options = [
     { name: "110101002 Zulfi Box", id: 1 },
@@ -40,8 +42,16 @@ const AddAccountTag = () => {
   formData.append("Tag_Name", tagName);
   formData.append("Applicability", aplicibility);
   formData.append("Accounts", JSON.stringify(account));
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
 
   const save = () => {
+    const formData = new FormData();
+    formData.append("Tag_Name", tagName);
+    formData.append("Applicability", aplicibility);
+    formData.append("Accounts", JSON.stringify(account));
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     if(tagName === "") 
     {
         toast("Tag Name is Required !" , {type:"warning"});
@@ -111,6 +121,8 @@ const AddAccountTag = () => {
       formData.append("Tag_Name" ,tagName);
       formData.append("Applicability" , aplicibility);
       formData.append("Accounts" ,JSON.stringify(account));
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth)
       axios.post(accountTagupdateUrl,formData)
       .then((res) => {
         if(res.data.status === true)

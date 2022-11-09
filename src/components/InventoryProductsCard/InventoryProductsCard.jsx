@@ -11,6 +11,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
 const InventoryProductsCard = (props) => {
+
   const navigate = useNavigate();
 
   const redirectToProductdetails = (dta) => {
@@ -23,6 +24,7 @@ const InventoryProductsCard = (props) => {
   const deleteUrl = endpoints.products.deleteProduct;
 
   const deleteProduct = (dta) => {
+    
     const formData = new FormData();
     formData.append("ID", dta.PRODUCT_ID);
     formData.append("User_Authorization", getAuthtoken);

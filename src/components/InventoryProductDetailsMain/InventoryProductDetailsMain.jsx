@@ -38,23 +38,27 @@ const InventoryProductDetailsMain = (props) => {
     units,
     setUnits,
     cost,
+    productCatCode,
     setCost,
     salesPrice,
     setSalesPrice,
     interRef,
     setInterRef,
+    productCode,
     customerTax,
     setCustomerTax,
     description,
     setDescription,
     sold,
     purchased,
+    uniqueCode,
     expensed,
     deduction,
     setSold,
     setPurchased,
     setExpensed,
     setDeduction,
+    setProductCatCode,
     productdetails,
     buy,
     setBuy,
@@ -63,7 +67,7 @@ const InventoryProductDetailsMain = (props) => {
     files,
     setFiles
   } = props;
-  console.log(productImg,"image");
+
 
   const handleChange = (e) => {
     setFiles(e.target.files[0]);
@@ -219,7 +223,7 @@ const InventoryProductDetailsMain = (props) => {
                       alt="camera"
                     />
                   </label>
-                  {isEdit === true && (  <input type="file" id="takePhoto" onChange={handleChange} /> )}
+                  {isEdit === true && (  <input type="file" id="takePhoto" onChange={handleChange} style={{visibility: "hidden"}}/> )}
                 </div>
           </div>
         </div>
@@ -229,31 +233,31 @@ const InventoryProductDetailsMain = (props) => {
               className={events === "generalInformation" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("generalInformation")}
             >
-              <Nav.Link href="">General Information</Nav.Link>
+              <Nav.Link href="" className={events === "generalInformation" ? "navLinkActive" : "navLinkDeactive"}>General Information</Nav.Link>
             </Nav.Item>
             <Nav.Item
-               className={events === "variants" ? "navLinkActive" : "navLinkDeactive"}
+              className={events === "variants" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("variants")}
             >
-              <Nav.Link eventKey="link-1">Variants</Nav.Link>
+              <Nav.Link eventKey="link-1"  className={events === "variants" ? "navLinkActive" : "navLinkDeactive"}>Variants</Nav.Link>
             </Nav.Item>
             <Nav.Item
                className={events === "Purchase" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("Purchase")}
             >
-              <Nav.Link eventKey="link-2">Purchase</Nav.Link>
+              <Nav.Link eventKey="link-2" className={events === "Purchase" ? "navLinkActive" : "navLinkDeactive"}>Purchase</Nav.Link>
             </Nav.Item>
             <Nav.Item
               className={events === "Inventory" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("Inventory")}
             >
-              <Nav.Link eventKey="link-3">Inventory</Nav.Link>
+              <Nav.Link eventKey="link-3" className={events === "Inventory" ? "navLinkActive" : "navLinkDeactive"}>Inventory</Nav.Link>
             </Nav.Item>
             <Nav.Item
                className={events === "Accounting" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("Accounting")}
             >
-              <Nav.Link eventKey="link-4">Accounting</Nav.Link>
+              <Nav.Link eventKey="link-4" className={events === "Accounting" ? "navLinkActive" : "navLinkDeactive"}>Accounting</Nav.Link>
             </Nav.Item>
           </Nav>
         </div>

@@ -26,7 +26,7 @@ const ProductDetailsHeader = (props) => {
                         {isEdit === false && <button className='btn1' onClick={() => setIsEdit(true)}>Edit</button>}
                         {isEdit === true && <button className='btn1'onClick={save}>Save</button>}
                        {isEdit === false && <button className='btn2' onClick={() => setIsEdit(true)}>Create</button> }
-                       { isEdit === true && <button className='btn2' onClick={RedirectToProduct}>Discard</button> }
+                       { isEdit === true && <button className='btn2' onClick={RedirectToProduct}>Cancel</button> }
                     </div>
                 </div>
                 {/* <div className="deatailsdropdown">
