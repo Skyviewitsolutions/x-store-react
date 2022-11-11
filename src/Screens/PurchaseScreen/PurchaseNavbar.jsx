@@ -33,14 +33,14 @@ const PurchaseNavbar = (props) => {
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
             <NavDropdown title="Orders" id="collasible-nav-dropdown">
-                <NavDropdown.Item >Requests for Quotation</NavDropdown.Item>
-                <NavDropdown.Item >Purchase Orders</NavDropdown.Item>
-                <NavDropdown.Item>Purchase Agreements</NavDropdown.Item>
+                <NavDropdown.Item  onClick={() => navigate('/RequestforQuotation')}>Requests for Quotation</NavDropdown.Item>
+                <NavDropdown.Item  onClick={() => navigate('/PurchaseOrder')}>Purchase Orders</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate('/PurchaseAgreement')}>Purchase Agreements</NavDropdown.Item>
                 <NavDropdown.Item>Vendors</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Products" id="collasible-nav-dropdown">
                 <NavDropdown.Item
-                // onClick={() => navigate('/InventoryProducts')}
+                onClick={() => navigate('/InventoryProducts')}
                 >
                   Product
                 </NavDropdown.Item>
@@ -50,10 +50,10 @@ const PurchaseNavbar = (props) => {
                 Reporting
               </Nav.Link>
               <NavDropdown title="Configuration" id="collasible-nav-dropdown">
-                <NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate('/PurchasePriceList')}>
                 Vendors Pricelists
                 </NavDropdown.Item>
-                <NavDropdown.Item>
+                <NavDropdown.Item  onClick={() => navigate('/PurchaseAgreementTypes')}>
                 Purchase Agreement Types
                 </NavDropdown.Item>
                 {/* <NavDropdown.Item onClick={() => navigate('/ProductBrand')}>ProductBrand</NavDropdown.Item> */}

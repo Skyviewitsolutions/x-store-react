@@ -1,0 +1,56 @@
+.reproductCon{
+    width:140%;
+    background-color: #fff;
+    position: relative;
+    margin-left: -20%;
+    padding-bottom: 4%;
+}
+.product_content{
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px
+}
+.product_content h1{
+    font-size: 25px;
+    color: #666666;
+    font-weight: 400;
+    margin-left: 50px;
+}
+.product_text{
+    width: 50%;
+}
+.pro_details{
+    display: flex;
+    align-items: center;
+}
+.pro_details p{
+    color: #666666;
+    font-size: 15px;
+    font-weight: bold;
+    width: 150px;
+    margin-bottom: 10px;
+}
+.pro_details input{
+    width:300px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.pro_details select{
+    width:300px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.Acccuticons{
+    top:10px;
+    right: 20px;
+   color: rgba(75, 74 , 74, 0.4);
+   cursor: pointer;
+}
+.pro_text2{
+    width: 50%;
+    margin-top: 42px;
+}

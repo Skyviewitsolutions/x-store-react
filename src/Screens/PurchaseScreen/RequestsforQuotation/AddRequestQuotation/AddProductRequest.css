@@ -1,0 +1,49 @@
+.addproduct_Con{
+    width: 100%;
+    padding: 15px 25px;
+}
+.add_productbtn{
+    border:none;
+    border: 1px solid #1669a2 ;
+    color: #000;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.add_productbtn:hover{
+    background-color:#036463;
+    color: #fff;
+}
+.addproduct_conditions{
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+.add_Part1{
+    width: 70%;
+}
+.add_Part1 input{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.add_part2 {
+   width: 30%;
+}
+.add_text{
+    display: flex;
+    align-items: center;
+}
+.add_text p{
+    width: 150px;
+    color: #666;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 0px;
+}

@@ -563,17 +563,19 @@ const AddVendors = () => {
           </div>
           <div className="Adddetails">
             <Nav variant="tabs" defaultActiveKey="/home">
-              <Nav.Item className="detailslink">
+              <Nav.Item className={event === "Sales & Purchase" ? "navLinkActive" : "navLinkDeactive"}>
                 <Nav.Link
                   eventKey="link-1"
+                  className={event === "Sales & Purchase" ? "navLinkActive" : "navLinkDeactive"}
                   onClick={() => setEvent("Sales & Purchase")}
                 >
                   Sales & Purchase
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item className="detailslink">
+              <Nav.Item className={event === "Invoicing" ? "navLinkActive" : "navLinkDeactive"}>
                 <Nav.Link
                   eventKey="link-1"
+                  className={event === "Invoicing" ? "navLinkActive" : "navLinkDeactive"}
                   onClick={() => setEvent("Invoicing")}
                 >
                   Invoicing

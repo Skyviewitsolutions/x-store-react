@@ -40,3 +40,13 @@
 .MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.tss-tlx3x1-MUIDataTableToolbar-root.css-hyum1k-MuiToolbar-root {
   display: none !important;
 }
+.MuiInputBase-root.MuiInputBase-colorPrimary.css-16c50h-MuiInputBase-root-MuiTablePagination-select {
+  margin-top: -10px !important;
+}
+.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar .MuiTablePagination-actions {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 20px;
+  margin-top: -17px !important;
+}

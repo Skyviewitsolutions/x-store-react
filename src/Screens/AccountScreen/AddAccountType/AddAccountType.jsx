@@ -15,6 +15,8 @@ const AddAccountType = () => {
    const [balance , setBalance] = useState(false);
    const [update,setUpdate] = useState("");
    const addAccTypeURL = endpoints.AccountType.addAccountType;
+   const getAuthtoken = localStorage.getItem("authtoken");
+   const userAuth = localStorage.getItem("userAuth");
 
    const save = () => {
    if(accType === "")
@@ -40,6 +42,8 @@ const AddAccountType = () => {
       formData.append("Internal_Grp",internal);
       formData.append("Bring_Account",balance);
       formData.append("Description" ,description);
+      formData.append("User_Authorization" , getAuthtoken);
+      formData.append("User_AuthKey" , userAuth);
       axios.post(addAccTypeURL,formData)
       .then((res) => {
          if(res.data.status === true)
@@ -92,11 +96,14 @@ const AddAccountType = () => {
    }
    else{
       const formData = new FormData();
+      formData.append("Id", selectedData.ACCOUNT_TYPE_ID);
       formData.append("Account_Type",accType);
       formData.append("Type",type);
       formData.append("Internal_Grp",internal);
       formData.append("Bring_Account",balance);
       formData.append("Description" ,description);
+      formData.append("User_Authorization" , getAuthtoken);
+      formData.append("User_AuthKey" , userAuth);
       axios.post(updateAccTypeUrl ,formData)
       .then((res) => {
          if(res.data.status === true)

@@ -12,11 +12,17 @@ import { endpoints } from "../../../services/endpoints";
 const AccountTypes = () => {
   const navigate = useNavigate();
   const [accType, setAccType] = useState([]);
+
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const allAccType = endpoints.AccountType.allAccountType;
 
   const getAccType = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .post(allAccType)
+      .post(allAccType , formData)
       .then((res) => {
         if (res.data.status === true) {
           setAccType(res.data.data);
@@ -38,6 +44,8 @@ const AccountTypes = () => {
   const deleteItem = (data) => {
     const formData = new FormData();
     formData.append("ID" ,data);
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios.post(deleteAcctypeUrl,formData)
     .then((res) => {
       getAccType();

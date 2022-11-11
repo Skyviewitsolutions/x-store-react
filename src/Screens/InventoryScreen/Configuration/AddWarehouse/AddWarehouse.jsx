@@ -238,7 +238,7 @@ const AddWarehouse = (props) => {
         <div className="detailsbtn">
           <Nav variant="tabs" defaultActiveKey="/home">
             <Nav.Item
-              className="detailslink"
+              className={events === "WarehouseConfig" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("WarehouseConfig")}
             >
               <Nav.Link href="">Warehouse Configuration</Nav.Link>

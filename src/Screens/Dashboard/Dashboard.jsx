@@ -133,6 +133,7 @@ const Dashboard = () => {
               text="Purchase"
               className="dash"
               bgColor="#7faac1"
+              onClick={() => navigate("/PurchasePriceList")}
             />
             <Card
               img={inventory}

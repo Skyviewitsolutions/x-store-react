@@ -14,8 +14,14 @@ const AccTaxGroup = () => {
     const [accTaxGrp , setAccTaxGrp] = useState([]);
     const allAccTaxGrpUrl = endpoints.AccountTaxGrp.allAccgrpTax;
 
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
+
     const getAccTaxGrp = () => {
-        axios.post(allAccTaxGrpUrl)
+        const formData = new FormData();
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
+        axios.post(allAccTaxGrpUrl , formData)
         .then((res) => {
             if(res.data.status === true)
             {
@@ -23,7 +29,14 @@ const AccTaxGroup = () => {
             }
             else if(res.data.status === false)
             {
-                alert(res.data.message);
+                if(res.data.code === 3)
+                {
+                  toast("Session expired , Please re-login",{type:"warning"})
+                  navigate('/');
+                }
+                else{
+                 toast(res.data.message,{type:"error"});
+                }
             }
         })
         .catch((err) => {
@@ -39,6 +52,8 @@ const AccTaxGroup = () => {
 
     const deleteItem = (data) => {
       const formData = new FormData();
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       formData.append("Id",data);
       axios.post(deleteAcctaxUrl,formData)
       .then((res) => {

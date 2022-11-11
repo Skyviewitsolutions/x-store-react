@@ -1,9 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import CustomTable from '../../../components/CustomTable/CustomTable'
 import PurchaseNavbar from '../PurchaseNavbar'
 
 const PurchasePriceLIst = () => {
 
+    const navigate = useNavigate();
+    const handleCreatePage = () => {
+      navigate("/AddPurchasePriceList");
+    };
+ 
     const data = [
         {
             id:1,
@@ -36,7 +42,7 @@ const PurchasePriceLIst = () => {
 
   return (
     <div>
-        <PurchaseNavbar  showBelowMenu={true} title="Venodr Pricelists"/>
+        <PurchaseNavbar  showBelowMenu={true} title="Venodr Pricelists" handleCreatePage={handleCreatePage}/>
         <CustomTable data={data} column={column}/>
     </div>
   )

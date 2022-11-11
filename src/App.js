@@ -108,6 +108,15 @@ import ProductPriceList from "./Screens/InventoryScreen/AddProduct/ProductPriceL
 import AddParentCategory from "./Screens/InventoryScreen/Configuration/AddParentCategory/AddParentCategory";
 import PurchasePriceLIst from "./Screens/PurchaseScreen/PurchasePriceList/PurchasePriceLIst";
 import AddPurchasePriceList from "./Screens/PurchaseScreen/PurchasePriceList/AddPurchasePriceList/AddPurchasePriceList";
+import PurchaseAgreementTypes from "./Screens/PurchaseScreen/Purchase Agreement Types/PurchaseAgreementTypes";
+import AddPurchaseAgreementTypes from "./Screens/PurchaseScreen/Purchase Agreement Types/AddPurchaseAgreementTypes/AddPurchaseAgreementTypes";
+import RequestforQuotation from "./Screens/PurchaseScreen/RequestsforQuotation/RequestforQuotation";
+import AddRequestQuotation from "./Screens/PurchaseScreen/RequestsforQuotation/AddRequestQuotation/AddRequestQuotation";
+import PurchaseOrder from "./Screens/PurchaseScreen/PurchasesOrder/PurchaseOrder";
+import AddPurchaseOrders from "./Screens/PurchaseScreen/PurchasesOrder/AddPurchaseOrders/AddPurchaseOrders";
+import PurchaseAgreement from "./Screens/PurchaseScreen/PurchaseAgreement/PurchaseAgreement";
+import AddPurchaseAgreement from "./Screens/PurchaseScreen/PurchaseAgreement/AddPurchaseAgreement/AddPurchaseAgreement";
+import PurchaseVendor from "./Screens/PurchaseScreen/PurchaseVendor";
 
 
 
@@ -228,6 +237,16 @@ const App = () => {
        {/* --------------------------------------Purchase Screens---------------------------- */}
        <Route path="/PurchasePriceList" element={<PurchasePriceLIst/>} />
        <Route path='/AddPurchasePriceList' element={<AddPurchasePriceList/>} />
+       <Route path='/PurchaseAgreementTypes' element={<PurchaseAgreementTypes/>} />
+       <Route path='/AddPurchaseAgreementType' element={<AddPurchaseAgreementTypes/>} />
+       <Route path='/RequestforQuotation' element={<RequestforQuotation/>} />
+       <Route path='/AddRequestQuotation' element={<AddRequestQuotation/>}  />
+       <Route path='/PurchaseOrder' element={<PurchaseOrder/>}  />
+       <Route path='/AddPurchaseOrders' element={<AddPurchaseOrders/>}/>
+       <Route path='/PurchaseAgreement' element={<PurchaseAgreement/>}/>
+       <Route path='/AddPurchaseAgreement' element={<AddPurchaseAgreement/>}/>
+       <Route path='/PurchaseVendor'  element={<PurchaseVendor/>} />
+       
       </Routes>
     </Router>
   </>)

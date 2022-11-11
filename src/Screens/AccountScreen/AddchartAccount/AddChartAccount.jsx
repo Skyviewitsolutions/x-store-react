@@ -21,6 +21,9 @@ const AddChartAccount = () => {
   const [deprecated, setDeprecated] = useState(false);
   const [centralized, setCentralized] = useState(false);
   const [update,setUpdate] = useState("");
+  
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const [selectedValue, setSelectedValue] = useState();
 
@@ -88,6 +91,8 @@ const AddChartAccount = () => {
     formData.append("Allow_Reconciliation", allowRec);
     formData.append("Deprecated", deprecated);
     formData.append("Centralized", centralized);
+    formData.append("User_Authorization" , getAuthtoken)
+    formData.append("User_AuthKey" , userAuth);
     if (code === "") {
       toast("Code is Required!", { type: "warning" });
     } else if (chartAccName === "") {
@@ -182,6 +187,8 @@ const AddChartAccount = () => {
       formData.append("Allow_Reconciliation", allowRec);
       formData.append("Deprecated", deprecated);
       formData.append("Centralized", centralized);
+      formData.append("User_Authorization" , getAuthtoken)
+      formData.append("User_AuthKey" , userAuth);
       axios.post(updateChartAccURL,formData)
       .then((res) => {
         console.log(res,"ressss")

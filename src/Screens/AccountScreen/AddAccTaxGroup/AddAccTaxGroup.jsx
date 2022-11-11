@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast,ToastContainer } from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import { endpoints } from '../../../services/endpoints';
@@ -13,6 +13,11 @@ const AddAccTaxGroup = () => {
    const [advTax , setAdvTax] = useState("");
    const [update,setUpdate] = useState("");
    const AddAccTaxGroupUrl = endpoints.AccountTaxGrp.addAccGrpTax;
+
+   const navigate = useNavigate();
+
+   const getAuthtoken = localStorage.getItem("authtoken");
+   const userAuth = localStorage.getItem("userAuth");
 
    const save = () => {
       if(name === "")
@@ -33,6 +38,8 @@ const AddAccTaxGroup = () => {
       }
       else{
        const formData = new FormData();
+       formData.append("User_Authorization", getAuthtoken);
+       formData.append("User_AuthKey", userAuth);
        formData.append("Name",name);
        formData.append("Payable",taxCurr);
        formData.append("Receivale",taxRec);
@@ -45,7 +52,14 @@ const AddAccTaxGroup = () => {
          }
          else if(res.data.status === false)
          {
-            toast(res.data.message,{type:"error"});
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
          }
        })
        .catch((err) => {
@@ -95,6 +109,8 @@ const AddAccTaxGroup = () => {
        formData.append("Payable",taxCurr);
        formData.append("Receivale",taxRec);
        formData.append("Advance_Tax_Payment_Account",advTax);
+       formData.append("User_Authorization", getAuthtoken);
+       formData.append("User_AuthKey", userAuth);
        axios.post(updateAccTaxGrp,formData)
        .then((res) => {
          console.log(res,"update AccTax")

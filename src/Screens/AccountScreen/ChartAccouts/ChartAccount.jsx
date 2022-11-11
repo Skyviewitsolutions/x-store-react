@@ -17,12 +17,18 @@ function ChartAccount(props) {
     navigate("/AddChartAccount");
   };
 
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+
   const [chartAcc, setChartAcc] = useState([]);
   const allChartAccUrl = endpoints.ChartAccount.allChartAcc;
 
   const getChartAcc = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken)
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .post(allChartAccUrl)
+      .post(allChartAccUrl,formData)
       .then((res) => {
         if (res.data.status === true) {
           setChartAcc(res.data.data);
@@ -44,6 +50,8 @@ function ChartAccount(props) {
 const deleteItem = (data) => {
 const formData = new FormData();
 formData.append("Id",data);
+formData.append("User_Authorization" , getAuthtoken)
+formData.append("User_AuthKey" , userAuth);
 axios.post(deleteChartAccURL,formData)
 .then((res) => {
   if(res.data.status === true)
