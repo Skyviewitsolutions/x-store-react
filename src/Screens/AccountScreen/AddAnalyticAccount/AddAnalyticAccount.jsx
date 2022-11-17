@@ -27,6 +27,8 @@ const AddAnalyticAccount = () => {
   const [getCorrency , setGetCorrency] = useState([]);
   const [getAnaAccType , setGetAnaAccType] = useState([]);
   const [update , setUpdate] = useState("");
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth"); 
 
   const options = [
     { name: "Gamal Abd Alla Ahmed", id: 1 },
@@ -54,7 +56,10 @@ const AddAnalyticAccount = () => {
   const getCurrencyUrl = endpoints.Currency.allCurrency;
   const getAnalyticAcctypeUrl = endpoints.AnalyticAccType.allAnalytictype;
   useEffect(() => {
-  axios.post(getCurrencyUrl)
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+  axios.post(getCurrencyUrl,formData)
   .then((res) => {
     if(res.data.status === true)
     {
@@ -68,7 +73,10 @@ const AddAnalyticAccount = () => {
   },[])
 
   useEffect(() => {
-    axios.post(getAnalyticAcctypeUrl)
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(getAnalyticAcctypeUrl ,formData)
     .then((res) => {
       if(res.data.status === true)
       {
@@ -137,6 +145,8 @@ const AddAnalyticAccount = () => {
       formData.append("Team_Name",team);
       formData.append("Administrator",administrator);
       formData.append("staff",staff);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios.post(analyticAccAddUrl,formData)
       .then((res) => {
         console.log(res,"AccountTagAdd");
@@ -235,6 +245,8 @@ const AddAnalyticAccount = () => {
       formData.append("Team_Name",team);
       formData.append("Administrator",administrator);
       formData.append("staff",staff);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios.post(updateAnnAcc,formData)
       .then((res) => {
         console.log(res,"AccountTagAdd");

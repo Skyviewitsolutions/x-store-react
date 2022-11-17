@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { endpoints } from '../../../../services/endpoints'
 import PurchaseNavbar from '../../PurchaseNavbar';
 import './AddPurchasePriceList.css'
@@ -10,10 +10,30 @@ import './AddPurchasePriceList.css'
 const AddPurchasePriceList = () => {
 
     const [getVendors , setGetVendors] = useState([])
+    const [getProduct , setGetProduct] = useState([]);
+    const [getCurrency , setGetCurrency] = useState([])
+
+    const [vendor , setVendor] = useState("")
+    const [vendorProductName , setVendorProductName] = useState("");
+    const [vendorProductCode , setVendorProductCode] = useState("");
+    const [leadtime , setLeadTime] = useState("");
+    const [product , setProduct] = useState("");
+    const [quantity , setQuantity] = useState("");
+    const [price , setPrice] = useState("");
+    const [currency , setCurrency] = useState("");
+    const [startDate , setStartDate] = useState("")
+    const [endDate , setEndDate] = useState("")
     const allVendorsUrl = endpoints.vendors.allVendors;
+    const allProducturl = endpoints.products.allProduct;
+    const allcurrencyurl = endpoints.Currency.allCurrency;
+    const AddVendorsPricelistUrl = endpoints.vendorPriceList.addvendorpricelist;
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
 
     useEffect(() => {
        const formData =  new FormData();
+       formData.append("User_Authorization", getAuthtoken);
+       formData.append("User_AuthKey", userAuth);
        axios.post(allVendorsUrl,formData)
        .then((res) => {
         if(res.data.status === true){
@@ -27,37 +47,135 @@ const AddPurchasePriceList = () => {
         console.log(err,"error")
        })
     },[])
+    useEffect(() => {
+       const formData =  new FormData();
+       formData.append("User_Authorization", getAuthtoken);
+       formData.append("User_AuthKey", userAuth);
+       axios.post(allProducturl,formData)
+       .then((res) => {
+        if(res.data.status === true){
+           setGetProduct(res.data.data);
+        }
+        else if(res.data.status === false){
+            toast(res.data.message ,{type:"error"});
+        }
+       })
+       .catch((err) => {
+        console.log(err,"error")
+       })
+    },[])
+    useEffect(() => {
+       const formData =  new FormData();
+       formData.append("User_Authorization", getAuthtoken);
+       formData.append("User_AuthKey", userAuth);
+       axios.post(allcurrencyurl,formData)
+       .then((res) => {
+        if(res.data.status === true){
+           setGetCurrency(res.data.data);
+        }
+        else if(res.data.status === false){
+            toast(res.data.message ,{type:"error"});
+        }
+       })
+       .catch((err) => {
+        console.log(err,"error")
+       })
+    },[])
+
+    const save = () => {
+        if(vendor === ""){
+            toast("Vendor is required ",{type:"warning"});
+        }
+        else if(vendorProductName === ""){
+            toast("Vendor Product Name is required ",{type:"warning"});
+        }
+        else if(vendorProductCode === ""){
+            toast("Vendor Product Code is required ",{type:"warning"});
+        }
+        else if(leadtime === ""){
+            toast("Delivery Lead Time is required ",{type:"warning"});
+        }
+        else if(product === ""){
+            toast("Product is required ",{type:"warning"});
+        }
+        else if(quantity === ""){
+            toast("Quantity is required ",{type:"warning"});
+        }
+        else if(price === ""){
+            toast("Price is required ",{type:"warning"});
+        }
+        else if(currency === ""){
+            toast("Currency is required ",{type:"warning"});
+        }
+        else if(startDate === ""){
+            toast("Start Date is required ",{type:"warning"});
+        }
+        else if(endDate === ""){
+            toast("End Date is required ",{type:"warning"});
+        }else {
+            const formData = new FormData();
+            formData.append("Vendor_ID",vendor);
+            formData.append("Vendor_Product_Name",vendorProductName)
+            formData.append("Vendor_Product_Code",vendorProductCode);
+            formData.append("Dilevery_LeadTime" , leadtime);
+            formData.append("Product_ID",product);
+            formData.append("Quantity",quantity);
+            formData.append("Price" , price);
+            formData.append("Currency" , currency);
+            formData.append("Start_Date" , startDate);
+            formData.append("End_Date" , endDate)
+            formData.append("User_Authorization", getAuthtoken);
+            formData.append("User_AuthKey", userAuth);
+            axios.post(AddVendorsPricelistUrl,formData)
+            .then((res) => {
+                if(res.data.status === true){
+                    toast("Venodr Pricelists added successfully",{type:"success"})
+                }else if(res.data.status === false){
+                    toast(res.data.message,{type:"error"})
+                }
+            })
+            .catch((err) => {
+                console.log(err,"error");
+            })
+        }
+    }
   return (
     <div>
-        <PurchaseNavbar  showBelowMenu={true} title="Venodr Pricelists"/>
+        <PurchaseNavbar  showBelowMenu={true} title="Venodr Pricelists" save={save}/>
        <div className="vendorsPriceListContainer">
             <div className="vendorsPart1">
                 <h1>Vendor</h1>
                 <div className="vendorstext">
                     <p>Vendor</p>
-                    <select>
+                    <select value={vendor} onChange={(e) => setVendor(e.target.value)}>
                         <option value="">Select any one</option>
-                        <option></option>
+                        {getVendors.map((item,index) => {
+                            return(
+                                <>
+                                 <option>{item.VENDOR_ID}</option>
+                                </>
+                            )
+                        })}
                     </select>
                 </div>
                 <div className="vendorstext">
                     <p>Vendor Product Name</p>
-                    <input type="text" />
-                </div>
+                    <input type="text" value={vendorProductName} onChange={(e) => setVendorProductName(e.target.value)}/>
+                </div> 
                 <div className="vendorstext">
                     <p>Vendor Product Code</p>
-                    <input type="text" />
+                    <input type="text" value={vendorProductCode} onChange={(e) => setVendorProductCode(e.target.value)}/>
                 </div>
-                <div className="vendorstext">
+                {/* <div className="vendorstext">
                     <p>Product Variant</p>
                     <select>
                         <option value="">Select any one</option>
                         <option></option>
                     </select>
-                </div>
+                </div> */}
                 <div className="leadtime">
                     <p>Delivery Lead Time</p>
-                    <input type="text" placeholder='1'/>
+                    <input type="text" placeholder='1' value={leadtime} onChange={(e) => setLeadTime(e.target.value)}/>
                     <span>days</span>
                 </div>
             </div>
@@ -65,31 +183,45 @@ const AddPurchasePriceList = () => {
                 <h1>Price List</h1>
             <div className="priceListtext">
                     <p>Product </p>
-                    <select>
+                    <select value={product} onChange={(e) => setProduct(e.target.value)}>
                         <option value="">Select any one</option>
-                        <option></option>
+                       
+                        {getProduct.map((item,index) => {
+                            return(
+                                <>
+                                 <option value={item.PRODUCT_ID}>{item.PRODUCT_ID}</option>
+                                </>
+                            )
+                        })}
                     </select>
                 </div>
                 <div className="pricetexts">
                     <p>Quantitye</p>
-                    <input type="text" placeholder='0.00'/>
+                    <input type="text" placeholder='0.00' value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
                 </div>
                 <div className="pricetexts">
                     <p>Price</p>
-                    <input type="text" placeholder='0.00'/>
-                    <select>
+                    <input type="text" placeholder='0.00' value={price} onChange={(e) => setPrice(e.target.value)}/>
+                    <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
                         <option>Select Currency</option>
-                        <option>SAR</option>
+                        {getCurrency.map((item,index) => {
+                            return(
+                                <>
+                                 <option value={item.CURRENCY}>{item.CURRENCY}</option>
+                                </>
+                            )
+                        })}
                     </select>
                 </div>
                 <div className="pricetexts">
-                    <p>Validity</p>
-                    <input type="date"/>
+                    <p>Valid Date</p>
+                    <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
                     <span style={{padding:"10px"}}>to</span>
-                    <input type="date" />
+                    <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
                 </div>
             </div>
        </div>
+       <ToastContainer />
     </div>
   )
 }

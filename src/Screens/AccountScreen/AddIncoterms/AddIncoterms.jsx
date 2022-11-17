@@ -11,12 +11,16 @@ const AddIncoterms = () => {
   const [code , setCode] = useState("");
   const [name , setName] = useState("");
   const [update , setUpdate] = useState("");
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const AddIncotermsUrl = endpoints.IncomeTerms.addIncomeTerms;
 
   const formData = new FormData();
   formData.append("Code" , code);
   formData.append("Income_Name" , name);
+  formData.append("User_Authorization" , getAuthtoken)
+  formData.append("User_AuthKey" , userAuth);
 
   const save = () => {
     if(code === "")
@@ -73,6 +77,8 @@ const AddIncoterms = () => {
       formData.append("Id" ,selectedData.ID);
       formData.append("Code" ,code);
       formData.append("Income_Name" ,name);
+      formData.append("User_Authorization" , getAuthtoken)
+      formData.append("User_AuthKey" , userAuth);
       axios.post(updateIncoTermsUrl,formData)
       .then((res) => {
        if(res.data.status === true)

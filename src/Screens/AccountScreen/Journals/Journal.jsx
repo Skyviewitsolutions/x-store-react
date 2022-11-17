@@ -16,10 +16,15 @@ const Journal = () => {
     navigate("/AddJournal");
   };
 const [journal , setJournal] = useState([]);
+const getAuthtoken = localStorage.getItem("authtoken");
+const userAuth = localStorage.getItem("userAuth");
 const allJournalUrl = endpoints.Journals.allJournals;
 
 const getAllJournal = () => {
-    axios.post(allJournalUrl)
+  const formData = new FormData();
+  formData.append("User_Authorization" , getAuthtoken)
+  formData.append("User_AuthKey" , userAuth);
+    axios.post(allJournalUrl , formData)
     .then((res) => {
         if(res.data.status === true)
         {
@@ -44,6 +49,8 @@ const deleteJournalUrl = endpoints.Journals.deleteJournals;
 const deleteItem = (data) => {
 const formData = new FormData();
 formData.append("ID" , data);
+formData.append("User_Authorization" , getAuthtoken)
+formData.append("User_AuthKey" , userAuth);
 axios.post(deleteJournalUrl,formData)
 .then((res) => {
     if(res.data.status === true)

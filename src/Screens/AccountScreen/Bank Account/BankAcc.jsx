@@ -17,13 +17,17 @@ const BankAcc = (props) => {
     const handleCreatePage = () => {
         navigate('/AddBankAcc')
     }
-  
+    const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
     const [bankAcc , setBankAcc] = useState([]);
 
     const allBankUrl = endpoints.BankAccount.allBank;
 
     const getAllBank = () => {
-        axios.post(allBankUrl)
+        const formData = new FormData();
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
+        axios.post(allBankUrl,formData)
         .then((res) => {
             if(res.data.status === true)
             {
@@ -48,6 +52,8 @@ const BankAcc = (props) => {
     const deleteItem = (data) => {
     const formData = new FormData();
     formData.append("ID" ,data);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios.post(deleteBankUrl,formData)
     .then((res) => {
         if(res.data.status === true)
@@ -67,7 +73,7 @@ const BankAcc = (props) => {
 
     const handleUpdate = (data) => {
     const val = bankAcc.filter((itm,index) => {
-        return itm.BANK_ID === data
+        return itm.ID === data
     })
     const orgValue = val[0];
     console.log(orgValue,"value")
@@ -80,7 +86,7 @@ const BankAcc = (props) => {
         { label :'Account Number', name:'ACCOUNT_NUMBER'},
         {
             label:"Action",
-            name:"BANK_ID",
+            name:"ID",
             options:{
                 customBodyRender:(value,tableMeta,updateValue) => {
                     return(

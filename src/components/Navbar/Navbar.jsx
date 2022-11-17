@@ -62,10 +62,6 @@ const Navebar = (props) => {
                 Reporting
               </Nav.Link>
               <NavDropdown title="Settings" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                  Warehouse Management
-                </NavDropdown.Item>
-
                 <NavDropdown.Item onClick={()=> navigate('/Warehouse')}>Warehouse</NavDropdown.Item>
                 <NavDropdown.Item  onClick={ () => navigate('/Location')}>Location</NavDropdown.Item>
                 {/* <NavDropdown.Item href="#action/3.4">Rules</NavDropdown.Item> */}
@@ -76,18 +72,15 @@ const Navebar = (props) => {
                 {/* <NavDropdown.Item href="#action/3.4">
                   Putaway Rules
                 </NavDropdown.Item> */}
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                  Product
-                </NavDropdown.Item>
                 <NavDropdown.Item  onClick = {() => navigate('/ProductCategories')}>
                   Product Categories
                 </NavDropdown.Item>
                 {/* <NavDropdown.Item  onClick={() => navigate('/Attributes')}>
                   Attributes
                 </NavDropdown.Item> */}
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
+                {/* <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Units of Measures{" "}
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item  onClick = {() => navigate('/UomCategories')}>
                   UOM Categories
                 </NavDropdown.Item>

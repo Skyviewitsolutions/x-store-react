@@ -11,7 +11,8 @@ const AddAssetUseStatus = () => {
   const [value , setValue] = useState("");
   const [name , setName] = useState("");
   const [update , setUpdate] = useState("");
-
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const allAddAssetUseStatus = endpoints.AssetUseStatus.addAssetUseStatus;
 
   const save = () => {
@@ -27,6 +28,8 @@ const AddAssetUseStatus = () => {
       const formData = new FormData();
       formData.append("Value",value);
       formData.append("Name",name);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios.post(allAddAssetUseStatus,formData)
       .then((res) => {
         if(res.data.status === true)
@@ -73,6 +76,8 @@ const AddAssetUseStatus = () => {
       formData.append("ID" ,selectedData.ID);
       formData.append("Value",value);
       formData.append("Name",name);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios.post(updateAssetUSURL,formData)
        .then((res) => {
          console.log(res,"update")

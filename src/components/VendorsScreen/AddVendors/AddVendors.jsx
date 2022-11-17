@@ -340,7 +340,7 @@ const AddVendors = () => {
 
   return (
     <div>
-      <Navebar showBelowMenu={true} title="Vendors" save={edit === true ? updateData : save } />
+      <Navebar showBelowMenu={true} title="Vendor" save={edit === true ? updateData : save } />
       <div className="AddVendorsCon">
         <div className="container">
           <div className="VendorsHeader">

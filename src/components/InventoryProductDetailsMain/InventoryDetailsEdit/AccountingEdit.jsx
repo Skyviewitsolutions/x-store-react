@@ -12,76 +12,12 @@ const AccountingEdit = (props) => {
   const incomeaccUrl = endpoints.products.incomeAcoount;
   const expenseUrl = endpoints.products.expenseAccount;
     const priceUrl = endpoints.products.priceDifference;
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
     const navigate = useNavigate(); 
   const [income, setIncome] = useState([]);
   const [expense, setExpense] = useState([]);
   const [price , setPrice] = useState([]);
-
-  useEffect(() => {
-    axios
-      .post(incomeaccUrl)
-      .then((res) => {
-        console.log(res, "incomeresult");
-        if (res.data.status == true) {
-          setIncome(res.data.data);
-        } else if (res.data.status == false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.mrssage,{type:"error"});
-          }
-        }
-      })
-      .catch((err) => {
-        console.log(err, "error");
-      });
-    axios
-      .post(expenseUrl)
-      .then((res) => {
-        console.log(res, "ExpenseResponse");
-        if (res.data.status == true) {
-          setExpense(res.data.data);
-        } else if (res.data.status == false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.mrssage,{type:"error"});
-          }
-        }
-      })
-      .catch((err) => {
-        console.log(err, "error");
-      });
-      axios.post(priceUrl)
-      .then((res) => {
-        console.log(res,'pricediffrence');
-        if(res.data.status == true)
-        {
-          setPrice(res.data.data);
-        }
-        else if(res.data.status == false)
-        {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.mrssage,{type:"error"});
-          }
-        }
-      })
-      .catch((err) => {
-        console.log(err,'error')
-      })
-  }, []);
-
   const {
     incomeAccount,
     setIncomeAccount,
@@ -96,8 +32,11 @@ const AccountingEdit = (props) => {
   } = props;
 
   useEffect(() => {
+    const formData = new FormData()
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
     axios
-      .post(incomeaccUrl)
+      .post(incomeaccUrl , formData)
       .then((res) => {
         console.log(res, "this is income");
         if (res.data.status == true) {
@@ -109,7 +48,7 @@ const AccountingEdit = (props) => {
             navigate('/');
           }
           else{
-           toast(res.data.mrssage,{type:"error"});
+           toast(res.data.message,{type:"error"});
           }
         }
       })
@@ -118,7 +57,7 @@ const AccountingEdit = (props) => {
       });
 
     axios
-      .post(expenseUrl)
+      .post(expenseUrl , formData)
       .then((res) => {
         console.log(res, "this is expense");
         if (res.data.status == true) {
@@ -130,7 +69,7 @@ const AccountingEdit = (props) => {
             navigate('/');
           }
           else{
-           toast(res.data.mrssage,{type:"error"});
+           toast(res.data.message,{type:"error"});
           }
         }
       })
@@ -185,33 +124,17 @@ const AccountingEdit = (props) => {
             })}
           </select>
         </div>
-
-        <div className="AccountingEditcontent">
-          <p>Asset/Expense Type</p>
-          <select
-            value={assetType}
-            onChange={(e) => setAssetType(e.target.value)}
-          >
-            {expense.map((item,index) => {
-              return(
-                <>
-                <option value={item.EXPENSE_NAME} key={index}>{item.EXPENSE_NAME}</option>
-                </>
-              )
-            })}
-          </select>
-        </div>
         <div className="AccountingEditcontent">
           <p>Price Difference Account</p>
           <select
             value={priceDifference}
             onChange={(e) => setPriceDifference(e.target.value)}
           >
-            {price.map((item,index) => {
+            {expense.map((item,index) => {
               return(
                 <>
-                <option value={item.AMOUNT_NAME} key={index}>
-                {item.AMOUNT_NAME}
+                <option value={item.EXPENSE_NAME} key={index}>
+                {item.EXPENSE_NAME}
             </option>
                 </>
               )

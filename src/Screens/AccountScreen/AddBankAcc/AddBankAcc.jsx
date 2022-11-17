@@ -21,6 +21,8 @@ const AddBankAcc = () => {
   const [update, setUpdate] = useState("");
 
   const addBankUrl = endpoints.BankAccount.addBank;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const save = () => {
     const formData = new FormData();
@@ -33,6 +35,8 @@ const AddBankAcc = () => {
     formData.append("Out_Payments", outgoingPay);
     formData.append("Post_At", postAt);
     formData.append("Bank_Feed", bankFeed);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     if (bankName === "") {
       toast("Bank Name is Required!", { type: "warning" });
     } else if (bankAcc === "") {
@@ -71,8 +75,11 @@ const AddBankAcc = () => {
   const CurrencyUrl = endpoints.Currency.allCurrency;
 
   useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
-      .post(CurrencyUrl)
+      .post(CurrencyUrl,formData)
       .then((res) => {
         if (res.data.status === true) {
           setCurr(res.data.data);
@@ -128,7 +135,7 @@ const AddBankAcc = () => {
       toast("Bank feed is Required!", { type: "warning" });
     } else{
       const formData = new FormData();
-      formData.append("ID",selectedData.BANK_ID);
+      formData.append("ID",selectedData.ID);
       formData.append("Bank_Account_Name",bankName);
       formData.append("Bank_Account",bankAcc);
       formData.append("Account_No",accNum);
@@ -138,6 +145,8 @@ const AddBankAcc = () => {
       formData.append("Out_Payments",outgoingPay);
       formData.append("Post_At",postAt);
     formData.append("Bank_Feed",bankFeed);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios.post(updateBank,formData)
     .then((res) => {
       console.log(res,"ressss")

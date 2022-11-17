@@ -15,9 +15,13 @@ const AssetTypes = () => {
 
     const [assetType , setAssetType] = useState([]);
     const allAseetTypeUrl = endpoints.AssetType.allAssettype;
-
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
     const getAssetType = () => {
-        axios.post(allAseetTypeUrl)
+        const formData = new FormData();
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
+        axios.post(allAseetTypeUrl , formData)
         .then((res) => {
             if(res.data.status === true){
               setAssetType(res.data.data);
@@ -39,6 +43,8 @@ const deleteAssetTypeUrl = endpoints.AssetType.deleteAssetType;
     const deleteItem = (data) =>  {
         const formData = new FormData();
         formData.append("ID",data);
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         axios.post(deleteAssetTypeUrl,formData)
         .then((res) => {
             if(res.data.status === true)

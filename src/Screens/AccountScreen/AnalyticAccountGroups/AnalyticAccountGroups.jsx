@@ -14,10 +14,16 @@ const AnalyticAccountGroups = () => {
     const navigate = useNavigate()
    
     const [analyticAccGrp , setAnalyticAccGrp] = useState([]);
+    
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");  
 
     const AnalyAccGrpUrl = endpoints.AnalyticAccGrp.allAnnAccGrp;
     const getAnalyticAccGrp = () => {
-        axios.post(AnalyAccGrpUrl)
+        const formData = new FormData();
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
+        axios.post(AnalyAccGrpUrl , formData)
         .then((res) => {
             if(res.data.status === true)
             {
@@ -42,6 +48,8 @@ const AnalyticAccountGroups = () => {
     const deleteItem = (data) => {
         const formData = new FormData();
         formData.append("Id",data);
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         axios.post(deleteAnnAccGrpUrl,formData)
         .then((res) => {
             if(res.data.status === true)

@@ -239,4 +239,12 @@ export const endpoints = {
     updateAnnTag: BASE_URL + "/AnalyticTag/UpdateAT",
     deleteAnnTag: BASE_URL + "/AnalyticTag/DeleteAT",
   },
+  // --------------------Purchase All Api-------------------------
+  vendorPriceList:{
+    allvendorpricelist : BASE_URL + "/Purchase/VendorPriceList/GetAll",
+    addvendorpricelist : BASE_URL + "/Purchase/VendorPriceList/Add",
+    singlevendorpricelist : BASE_URL + "/Purchase/VendorPriceList/GetSingle",
+    updatevendorpricelist : BASE_URL + "/Purchase/VendorPriceList/Update",
+    deletevendorpricelist : BASE_URL + "/Purchase/VendorPriceList/Delete"
+  }
 };

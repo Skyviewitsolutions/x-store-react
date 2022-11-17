@@ -12,12 +12,17 @@ import { endpoints } from '../../../services/endpoints'
 const AnalyticTag = () => {
 
     const navigate = useNavigate();
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth"); 
    
     const [analyTag , setAnalyTag] = useState([]);
     const analyTagUrl = endpoints.AnalyticTag.allAnnTag;
     
     const getAnalyTag = () => {
-        axios.post(analyTagUrl)
+        const formData = new FormData();
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
+        axios.post(analyTagUrl , formData)
         .then((res) => {
             if(res.data.status === true){
                 setAnalyTag(res.data.data);
@@ -40,6 +45,8 @@ const AnalyticTag = () => {
     const deleteItem = (data) => {
         const formData = new FormData();
         formData.append("ID",data);
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         axios.post(delteAnalyTag,formData)
         .then((res) => {
             if(res.data.status === true)

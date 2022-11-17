@@ -16,16 +16,10 @@ const AddPayment = () => {
   const [numOfDays, setNumberofDays] = useState("");
   const [dayOfMonth, setDayOfMonth] = useState("");
   const [update, setUpdate] = useState("");
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
-  const formData = new FormData();
 
-  formData.append("Payment_Terms", paymentTerms);
-  formData.append("Description_on_the_invoice", desInvoice);
-  formData.append("Terms", pay);
-  formData.append("Due_Type", dueType);
-  formData.append("Value", value);
-  formData.append("Number_Of_Days", numOfDays);
-  formData.append("Days_Of_Month", dayOfMonth);
 
   const save = () => {
     if (paymentTerms === "") {
@@ -43,6 +37,16 @@ const AddPayment = () => {
     } else if (dayOfMonth === "") {
       toast("Days of Month is Required!", { type: "warning" });
     } else {
+      const formData = new FormData();
+      formData.append("Payment_Terms", paymentTerms);
+      formData.append("Description_on_the_invoice", desInvoice);
+      formData.append("Terms", pay);
+      formData.append("Due_Type", dueType);
+      formData.append("Value", value);
+      formData.append("Number_Of_Days", numOfDays);
+      formData.append("Days_Of_Month", dayOfMonth);
+      formData.append("User_Authorization" , getAuthtoken)
+      formData.append("User_AuthKey" , userAuth);
       axios
         .post(addPaymentUrl, formData)
         .then((res) => {
@@ -102,6 +106,8 @@ const AddPayment = () => {
        formData.append("Value" , value);
        formData.append("Number_Of_Days",numOfDays);
        formData.append("Days_Of_Month",dayOfMonth);
+       formData.append("User_Authorization" , getAuthtoken)
+       formData.append("User_AuthKey" , userAuth);
        axios.post(paymentupdateUrl,formData)
        .then((res) => {
         if(res.data.status === true)

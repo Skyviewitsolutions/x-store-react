@@ -1,59 +1,72 @@
-.PurchaseEditContainer{
-    width: 100%;
-    padding: 50px 20px;
+
+.purchase_container{
+    padding: 15px 25px;
 }
-.PurchaseEditVariants{
+.purchase_Reordering{
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 15px;
+    padding: 15px 30px;
 }
-.PurchaseEditVariants p{
-    font-size: 15px;
-    margin-left: 30px;
-    color: #66667d;
-    font-weight: 700;
+.purchase_first{
+    width: 50%;
 }
-.PurchaseEditVariants2{
-    width: 100%;
-    height: 200px;
-    border-radius: 2px;
-    box-shadow: rgb(203, 205, 206) 3px 3px 6px 0px inset, rgba(224, 220, 220, 0.5) -3px -3px 6px 1px inset;
-}
-.PurchaseEditVariants2 p{
-    margin-left: 25px;
-    color: #468793;
-    font-size: 16px;
-    padding-top: 8px;
-}
-.PurchaseEditVariants3 h5{
-    color: #6f6f66;
-    margin-left: 35px;
-    padding-top: 30px;
+.purchase_first h1{
     font-size: 25px;
     font-weight: 400;
+    color: #666666;
 }
-.PurchaseEdittext{
+.purchase_radio{
     display: flex;
-   align-items: center;
 }
-.PurchaseEdittext p{
-    color: #6e6e6e;
-    font-size: 18px;
-    font-weight: 600;
-    margin-left: 35px;
+.purchase_radio p{
     width: 150px;
-    height: 19px;
-    margin-bottom: 0px;
+  color: #666666;
+  font-size: 15px;
+  font-weight: bold;  
+  margin-bottom: 10px;
 }
-.PurchaseEdittext input{
-    width: 15px;
+.content_radio{
+    display: flex;
+    align-items: center;
 }
-.PurchaseEdittext label{
-    margin-left: 10px;
+.purchase_des{
+    margin-top: 35px;
 }
-.PurchaseEditVariants3 p{
-    margin-left: 30px;
-    color: #6e6e6e;
+.purchase_des p{
+    color: #666666;
+    font-size: 15px;
+    font-weight: bold;  
+    margin-bottom: 10px;
+}
+.purchase_des input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    width: 500px;
+}
+.purchase_second{
+    width: 50%;
+}
+.purchase_second h1{
+    font-size: 25px;
+    font-weight: 400;
+    color: #666666;
+}
+.purchase_radio select{
+    width: 300px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.warning p{
+    color: #666666;
+    font-size: 15px;
+    font-weight: bold;  
+    margin-bottom: 10px;
+}
+.warning input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    width: 500px;
 }

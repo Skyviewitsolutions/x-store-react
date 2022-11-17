@@ -24,30 +24,7 @@ const GeneralInformationEdit = (props) => {
 
   
   const protypeurl = endpoints.products.productType;
-  const handleCostPrice = (e) =>{
   
-    const val = e.target.value;
-    // console.log(val , "cost")
-    // if(val > salesPrice){
-    //   toast("Cost price cannot be greater than sales price" ,{type : "warning"})
-    // }
-    // else {
-    //   setCost(val)
-    // }
-    setCost(val)
-  }
-
-  const handleSalesPrice = (e) =>{
-    const val = e.target.value;
-    // console.log(val , "sales")
-    // if(val < cost){
-    //   toast("Sales price cannot be less than cost price" , {type : "warning"})
-    // }
-    // else {
-    //   setSalesPrice(val)
-    // }
-    setSalesPrice(val)
-  }
   useEffect(() => {
     const formData = new FormData();
     formData.append("User_Authorization" , getAuthtoken);
@@ -202,6 +179,28 @@ const GeneralInformationEdit = (props) => {
     setProductCatCode(code)
   }
 
+
+  const handleCostPrice = (e) =>{
+  
+    const val = parseInt(e.target.value);
+    setCost(val)
+    console.log(typeof(salesPrice))
+    if(val > salesPrice){
+      toast("Cost price cannot be greater than sales price" ,{type : "warning"})
+    }
+  }
+
+  const handleSalesPrice = (e) =>{
+    const val = parseInt(e.target.value)
+    setSalesPrice(val)
+    
+    if(val < cost){
+      toast("Sales price cannot be less than cost price" , {type : "warning"})
+      setSalesPrice(0)
+    }
+    
+  }
+
   return (
     <div>
       <div className="GeneralInformationEditContainer">
@@ -282,7 +281,7 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Sales Price</p>
             <input
-              type="text"
+              type="number"
               placeholder="1.0000 SAR"
               value={salesPrice}
               onChange={(e) => handleSalesPrice(e)}
@@ -314,7 +313,7 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Cost</p>
             <input
-              type="text"
+              type="number"
               placeholder="0.0000 SAR per Units"
               value={cost}
               onChange={(e) => handleCostPrice(e)}

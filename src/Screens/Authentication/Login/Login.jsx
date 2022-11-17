@@ -8,6 +8,7 @@ import validator from 'validator';
 import axios from 'axios';
 import { endpoints } from '../../../services/endpoints';
 import { toast,ToastContainer} from 'react-toastify';
+import { Password } from '@mui/icons-material';
 
 
 const Login = () => {
@@ -78,6 +79,11 @@ const Login = () => {
     })
     }
   }
+
+
+
+  
+
   return (
     <div className="maindiv">
        <div className="LoginMaincontainer">
@@ -88,6 +94,7 @@ const Login = () => {
         <div className="Loginform">
           <label>Email</label><br/>
           <input type="email" required="Please Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+         
           <span style={{color:"red"}}>{emailError}</span>
         </div>
         <div className="Loginform">
@@ -96,6 +103,8 @@ const Login = () => {
           <input type={enablePassword ? "text" : "password"} required="Please Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} /> 
          {enablePassword ?<AiOutlineEyeInvisible size="37px" className="eye" onClick={() => setEnablepassword(false)}/> :  <AiOutlineEye size="38px" className="eye"  onClick={() => setEnablepassword(true)}/>} 
         
+
+         
           </div>
           <span style={{color:"red"}}>{passwordError}</span>
         </div>

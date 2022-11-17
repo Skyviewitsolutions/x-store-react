@@ -11,6 +11,8 @@ import { useLocation } from 'react-router-dom';
 const AddJournal = (props) => {
 
   const [events, setEvents] = useState("JournalEntires");
+  const getAuthtoken = localStorage.getItem("authtoken");
+const userAuth = localStorage.getItem("userAuth");
 
   const [journalName , setJournalName] = useState("");
   const [journalType , setJournalType] = useState("");
@@ -39,6 +41,8 @@ const AddJournal = (props) => {
   formData.append("Acc_Type_Allowd",acctypeAllow);
   formData.append("Acc_Allowd",accAllow);
   formData.append("Lock_Enteries",lockPost);
+  formData.append("User_Authorization" , getAuthtoken)
+  formData.append("User_AuthKey" , userAuth);
   
   if (journalName === "") {
     toast("journalName required !", { type: "warning" });
@@ -142,6 +146,8 @@ const AddJournal = (props) => {
       formData.append("Acc_Type_Allowd", acctypeAllow);
       formData.append("Acc_Allowd", accAllow);
       formData.append("Lock_Enteries", lockPost); 
+      formData.append("User_Authorization" , getAuthtoken)
+      formData.append("User_AuthKey" , userAuth);
       axios
         .post(updateJournalUrl, formData)
         .then((res) => {

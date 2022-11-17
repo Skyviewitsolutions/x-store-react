@@ -12,10 +12,15 @@ const DifferedExpenseType = () => {
  
   const navigate = useNavigate();
   const [defExType , setDefType] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const allDefExTypeUrl = endpoints.DefExpenseType.allDefExType;
 
   const getDefExType = () => {
-    axios.post(allDefExTypeUrl)
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(allDefExTypeUrl , formData)
     .then((res) => {
         if(res.data.status === true){
           setDefType(res.data.data);
@@ -39,6 +44,8 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
     const deleteItem = (data) =>  {
         const formData = new FormData();
         formData.append("ID",data);
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         axios.post(deleteDefExTypeUrl,formData)
         .then((res) => {
             if(res.data.status === true)

@@ -45,6 +45,6 @@
 @media only screen and (max-width:1000px){
     .addRequestCon{
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 }

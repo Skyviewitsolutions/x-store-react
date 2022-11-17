@@ -17,15 +17,19 @@ const AddCurrencies = () => {
   const [active , setActive] = useState(false);
   const [update , setUpdate] = useState("")
   const AddCurrenciesUrl = endpoints.Currency.addCurrency;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
+  
+  const save = () => {
   const formData = new FormData();
   formData.append("Currencys",currencies);
   formData.append("Currency_Unit",currenciesUnit);
   formData.append("Currency_Rate" , currenciesRate);
   formData.append("Currency_Subunit" , currenciesSubunit);
   formData.append("Active" , active);
-  
-  const save = () => {
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
     if(currencies === "")
     {
       toast("Currencies Is Required!",{type:"warning"});
@@ -113,6 +117,8 @@ const AddCurrencies = () => {
      formData.append("Currency_Rate" , currenciesRate);
      formData.append("Currency_Subunit" , currenciesSubunit);
      formData.append("Active" , active);
+     formData.append("User_Authorization", getAuthtoken);
+     formData.append("User_AuthKey", userAuth);
      axios.post(updateCurrenciesUrl,formData)
      .then((res) => {
       if(res.data.status === true)

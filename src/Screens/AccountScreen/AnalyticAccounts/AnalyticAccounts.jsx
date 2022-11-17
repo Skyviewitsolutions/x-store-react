@@ -15,10 +15,16 @@ const AnalyticAccounts = () => {
   const [analyticAcc, setAnayticAcc] = useState([]);
 
   const allAnalyticAccUrl = endpoints.AnalyticAcc.allAnaAcc;
+    
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth"); 
 
   const getAnalyticAcc = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
-      .post(allAnalyticAccUrl)
+      .post(allAnalyticAccUrl , formData)
       .then((res) => {
         if (res.data.status === true) {
           setAnayticAcc(res.data.data);
@@ -41,6 +47,8 @@ const AnalyticAccounts = () => {
 
     const formData = new FormData();
     formData.append("Id", data);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
       .post(AnnAccDeleteUrl, formData)
       .then((res) => {

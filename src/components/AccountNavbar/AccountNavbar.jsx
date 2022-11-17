@@ -4,6 +4,7 @@ import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaSearchMinus } from "react-icons/fa";
 import "./AccountNavbar.css";
 import { useNavigate } from "react-router-dom";
+import { IoMdLogOut } from "react-icons/io";
 
 const AccountNavbar = (props) => {
   const { showBelowMenu, handleCreatePage,title,save } = props;
@@ -143,6 +144,10 @@ const AccountNavbar = (props) => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
+          <div className="logout">
+              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}} onClick={() => navigate('/')}/>
+              <p>Logout</p>
+            </div>
         </Navbar>
       </div>
       {showBelowMenu === true && (
@@ -157,7 +162,7 @@ const AccountNavbar = (props) => {
               </button>
               <button className="savebtn" onClick={save}>Save</button>
             </div>
-            <div
+            {/* <div
               className="col-sm-6 d-flex justify-content-center"
               style={{ width: "50%" }}
             >
@@ -165,7 +170,7 @@ const AccountNavbar = (props) => {
                 <input type="text" placeholder="Search ..." />
                 <span>{<FaSearchMinus />}</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

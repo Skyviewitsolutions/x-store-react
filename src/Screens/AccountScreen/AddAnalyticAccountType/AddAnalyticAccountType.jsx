@@ -10,7 +10,8 @@ const AddAnalyticAccountType = () => {
 
   const [annAcctype , setAnAccType] = useState("");
   const [update , setUpdate] = useState("");
-
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const addAnAccTypeUrl = endpoints.AnalyticAccType.addAnAccType;
 
   const save = () => {
@@ -21,6 +22,8 @@ const AddAnalyticAccountType = () => {
     else{
       const formdata = new FormData();
       formdata.append("Analytic_Acc_Type",annAcctype);
+      formdata.append("User_Authorization", getAuthtoken);
+      formdata.append("User_AuthKey", userAuth);
       axios.post(addAnAccTypeUrl,formdata)
       .then((res) => {
         if(res.data.status === true)
@@ -59,8 +62,10 @@ const AddAnalyticAccountType = () => {
     }
     else{
       const formdata = new FormData();
-      formdata.append("ID" ,selectedData.ANALYTIC_ACCOUNT_TYPE_ID);
+      formdata.append("ID" ,selectedData.ID);
       formdata.append("Analytic_Acc_Type",annAcctype);
+      formdata.append("User_Authorization", getAuthtoken);
+      formdata.append("User_AuthKey", userAuth);
       axios.post(updateAnnAcctypeUrl,formdata)
       .then((res) => {
         console.log(res,"update AccTax")

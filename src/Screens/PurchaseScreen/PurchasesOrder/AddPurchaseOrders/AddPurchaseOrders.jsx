@@ -52,7 +52,7 @@ const AddPurchaseOrders = () => {
               </select>
             </div>
             <div className="reqQuotext">
-              <p>Purchase Agreement</p>
+              <p>Currency</p>
               <select>
                 <option value="">Select Any one</option>
                 <option>tesing</option>

@@ -9,6 +9,7 @@ import axios from 'axios';
 import { FiEdit } from 'react-icons/fi';
 import { MdDelete } from 'react-icons/md';
 import { toast,ToastContainer} from 'react-toastify';
+
 const PaymentTerms = (props) => {
 
   const navigate = useNavigate();
@@ -18,9 +19,15 @@ const PaymentTerms = (props) => {
   }
  const [payment , setPayment] = useState([]);
  const PaymentTermsUrl = endpoints.PaymentTerms.allPayment;
+ const getAuthtoken = localStorage.getItem("authtoken");
+ const userAuth = localStorage.getItem("userAuth");
 
  const getPaymentTerms = () => {
-  axios.post(PaymentTermsUrl)
+  const formData = new FormData();
+  formData.append("User_Authorization" , getAuthtoken)
+  formData.append("User_AuthKey" , userAuth);
+
+  axios.post(PaymentTermsUrl,formData)
   .then((res) => {
     if(res.data.status === true)
     {
@@ -44,6 +51,8 @@ const PaymentTerms = (props) => {
  const deleteItem = (data) => {
    const formData = new FormData()
    formData.append("Id", data);
+   formData.append("User_Authorization" , getAuthtoken)
+   formData.append("User_AuthKey" , userAuth);
    axios.post(paymentdeleteUrl , formData)
    .then((res) => {
     if(res.data.status === true)

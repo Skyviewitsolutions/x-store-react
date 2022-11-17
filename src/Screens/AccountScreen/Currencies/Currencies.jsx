@@ -17,10 +17,15 @@ const Currencies = () => {
 
   const [currencies, setCurrencies] = useState([]);
   const CurrenciesAllUrl = endpoints.Currency.allCurrency;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const getCurrencies = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
-    .post(CurrenciesAllUrl)
+    .post(CurrenciesAllUrl ,formData)
     .then((res) => {
       if (res.data.status === true) {
         setCurrencies(res.data.data);
@@ -42,6 +47,8 @@ const Currencies = () => {
   const deleteItem = (data) => {
     const formData = new FormData();
     formData.append("ID" , data);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios.post(deleteCurrenciesUrl,formData)
     .then((res) => {
       if(res.data.status === true)

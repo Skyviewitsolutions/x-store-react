@@ -1,23 +1,59 @@
 .VariantsContainer{
     width: 100%;
     padding: 10px 20px;
+    padding-bottom: 5%;
 }
-.Variants{
+.purchase{
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 15px;
 }
-.Variants p{
+.first_purchase{
+    width: 50%;
+}
+.content p{
+    width: 150px;
     font-size: 15px;
     margin-left: 30px;
     color: #66667d;
     font-weight: 700;
 }
-.Variants2{
+.content h1{
+    font-size: 14px;
+    color: #66667d;
+    font-weight: 500;
+}
+.content_purchase{
+    display: flex;
     width: 100%;
-    height: 200px;
-    border-radius: 2px;
-    box-shadow: rgb(203, 205, 206) 3px 3px 6px 0px inset, rgba(224, 220, 220, 0.5) -3px -3px 6px 1px inset;
+    margin-top: 30px;
+}
+.content_first{
+    width: 50%;
+}
+.content_first h1{
+    color: #66667d;
+    font-size: 25px;
+    font-weight: 400;
+}
+.reordering_purchase{
+    display: flex;
+    align-items: center;
+}
+.reordering_purchase p{
+    width: 200px;
+    color: #66667d;
+    font-size: 15px;
+    font-weight: bold;
+}
+.reordering_purchase span{
+    color: #66667d;
+    font-size: 15px;
+}
+.content_second{
+    width: 50%;
+}
+.content_second h1{
+    color: #66667d;
+    font-size: 25px;
+    font-weight: 400;
 }

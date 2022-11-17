@@ -11,7 +11,8 @@ const AddAnalyticTag = () => {
   const [analyDis , setAnalyDis] = useState(false);
   const [analAcc , setAnalAcc] = useState("");
   const [update , setUpdate] = useState("");
-
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const addAnnTag = endpoints.AnalyticTag.addAnnTag;
 
   const save = () => {
@@ -32,6 +33,8 @@ const AddAnalyticTag = () => {
       formData.append("Analytic_Tag",analyTag);
       formData.append("Analytic_Distribution",analyDis);
       formData.append("Analytic_Account",analAcc);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios.post(addAnnTag,formData)
       .then((res) => {
         if(res.data.status === true)
@@ -84,6 +87,8 @@ const AddAnalyticTag = () => {
       formData.append("Analytic_Tag",analyTag);
       formData.append("Analytic_Distribution",analyDis);
       formData.append("Analytic_Account",analAcc);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios.post(updateAnalTagUrl,formData)
       .then((res) => {
         if(res.data.status === true)

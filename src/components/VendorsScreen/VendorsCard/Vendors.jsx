@@ -9,9 +9,13 @@ import Navebar from '../../Navbar/Navbar';
 import VendorsCard from '../../VendorsCard/VendorsCard';
 import './Vendors.css';
 
+
 const Vendors = () => {
+
   const navigate = useNavigate();
   const [vendorsAll , setVendorsAll] = useState([]);
+  const [deActiveVendor , setDeActiveVendor] = useState([]);
+  const [activeVendor , setActiveVendor] = useState([])
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
   const vendorsAllUrl = endpoints.vendors.allVendors;
@@ -25,6 +29,18 @@ const Vendors = () => {
      
       if(res.data.status === true)
       {
+        const vendor = res.data.data;
+       
+        const deletedVendor = vendor.filter((itm,ind) =>{
+          return itm.VENDOR_STATUS === 'X'
+        });
+         setDeActiveVendor(deletedVendor);
+
+        const allVendor = vendor.filter((itm , index) => {
+          return itm.VENDOR_STATUS === null
+        });
+        setActiveVendor(allVendor);
+
         setVendorsAll(res.data.data);
       }
       else if(res.data.status === false)
@@ -46,6 +62,8 @@ const Vendors = () => {
     navigate("/AddVendors");
   };
 
+ 
+
   return (
     <div>
     <Navebar
@@ -54,11 +72,19 @@ const Vendors = () => {
         handleCreatePage={handleCreatePage}
       />
       <div className="vendor_Container">
-     {vendorsAll.map((item,index) => {      
+     {activeVendor.map((item,index) => {      
 
       return(
         <>
-         <VendorsCard data={item} />
+         <VendorsCard data={item} getVendors={getVendors}/>
+        </>
+      )
+     })}
+     {deActiveVendor.map((item,index) => {      
+
+      return(
+        <>
+         <VendorsCard data={item} getVendors={getVendors}/>
         </>
       )
      })}

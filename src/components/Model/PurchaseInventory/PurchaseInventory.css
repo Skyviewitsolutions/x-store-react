@@ -1,83 +1,92 @@
-.vendorsPriceListContainer{
+.ven_container{
+    width:150%;
+    background-color: #fff;
+    position: relative;
+    margin-left: -20%;
+    padding-bottom: 4%;
+}
+.vendors_Container{
     width: 100%;
     display: flex;
     padding: 15px 30px;
     margin-top: 30px;
     justify-content: space-between;
 }
-.vendorsPart1{
+.vendors_box{
     width: 50%;
 }
-.vendorstext{
+.vendors_text{
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
 
-.vendorsPart1 h1{
+.vendors_box h1{
     color: #666666;
     font-size: 25px;
     font-weight: 400;
+    margin-left: 45px;
 }
-.vendorstext p{
+.vendors_text p{
     color: #666666;
     margin-bottom: 0px; 
     font-size: 15px;
     font-weight: bold;
     width: 200px;
 }
-.vendorstext select{
+.vendors_text select{
     width: 500px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
 }
-.vendorstext input{
+.vendors_text input{
     width: 500px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;  
 }
-.leadtime{
+.lead_time{
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
-.leadtime p{
+.lead_time p{
     color: #666666;
     margin-bottom: 0px; 
     font-size: 15px;
     font-weight: bold;
     width: 200px;  
 }
-.leadtime input{
+.lead_time input{
     width: 250px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
 }
-.priceListPart2{
+.vendor_box2{
     width: 50%;
     padding-left: 17px;
 }
-.priceListPart2 h1{
+.vendor_box2 h1{
     color: #666666;
     font-size: 25px;
     font-weight: 400;
+    margin-left: 45px;
 }
-.leadtime select{
+.lead_time select{
     width: 250px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
     margin-left: 5px;
 }
-.priceListtext{
+.priceList_text{
     display: flex;
     align-items: center;
     margin-top: 10px;  
 }
-.priceListtext p{
+.priceList_text p{
     color: #666666;
     margin-bottom: 10px; 
     font-size: 15px;
@@ -95,14 +104,14 @@
     display: flex;
     align-items: center; 
 }
-.pricetexts p{
+.price_texts p{
     color: #666666;
     margin-bottom: 10px; 
     font-size: 15px;
     font-weight: bold;
     width: 150px; 
 }
-.pricetexts input{
+.price_texts input{
     width: 250px;
     border: none;
     outline: none;
@@ -115,12 +124,12 @@
     border-bottom: 1px solid #cccccc;
     margin-left: 5px;
 }
-.pricetexts span{
+.price_texts span{
     color: black;
     font-size: 15px;
 }
 
-@media screen and (max-width: 1000px){
+/* @media screen and (max-width: 1000px){
     .vendorsPriceListContainer{
      display: flex;
      flex-direction: column;
@@ -130,4 +139,4 @@
      margin-top: 40px;
      padding-left: 0px;
     }
- }
+ } */

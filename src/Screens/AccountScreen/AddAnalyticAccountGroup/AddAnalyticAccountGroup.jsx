@@ -13,7 +13,9 @@ const AddAnalyticAccountGroup = () => {
   const [parent , setParent] = useState("");
   const [description , setDescription] = useState("")
   const [update , setUpdate] = useState("");
-
+  
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");  
   const addAnnAccGrpUrl = endpoints.AnalyticAccGrp.addAnnAccGrp;
 
   const save = () => {
@@ -31,6 +33,8 @@ const AddAnalyticAccountGroup = () => {
     formData.append("Name",name);
     formData.append("Parent",parent);
     formData.append("Description",description);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios.post(addAnnAccGrpUrl,formData)
     .then((res) => {
       if(res.data.status === true)
@@ -78,6 +82,8 @@ const AddAnalyticAccountGroup = () => {
       formData.append("Name",name);
       formData.append("Parent",parent);
       formData.append("Description",description);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios.post(updateAnnAccUrl,formData)
        .then((res) => {
          console.log(res,"update")

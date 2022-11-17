@@ -2,6 +2,7 @@ import React from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaSearchMinus } from "react-icons/fa";
+import { IoMdLogOut } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 const PurchaseNavbar = (props) => {
@@ -36,7 +37,7 @@ const PurchaseNavbar = (props) => {
                 <NavDropdown.Item  onClick={() => navigate('/RequestforQuotation')}>Requests for Quotation</NavDropdown.Item>
                 <NavDropdown.Item  onClick={() => navigate('/PurchaseOrder')}>Purchase Orders</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/PurchaseAgreement')}>Purchase Agreements</NavDropdown.Item>
-                <NavDropdown.Item>Vendors</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate('/PurchaseVendor')}>Vendors</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Products" id="collasible-nav-dropdown">
                 <NavDropdown.Item
@@ -60,6 +61,10 @@ const PurchaseNavbar = (props) => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
+          <div className="logout">
+              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}} onClick={() => navigate('/')}/>
+              <p>Logout</p>
+            </div>
         </Navbar>
       </div>
       {showBelowMenu === true && (

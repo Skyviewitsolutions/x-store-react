@@ -7,10 +7,11 @@ import { endpoints } from "../../services/endpoints";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
+
 const VendorsCard = (props) => {
 
   const [iconColor, setIconColor] = useState("#7478a1");
-  const { data } = props;
+  const { data ,getVendors} = props;
   const navigate = useNavigate();
 
   const renderToEditPage = (dta) =>{
@@ -33,6 +34,7 @@ const VendorsCard = (props) => {
         console.log(res ,"resp")
         if (res.data.status == true) {
           toast("Vendor Deleted Successfuly !", { type: "success" });
+          getVendors();
         } else if (res.data.status == false) {
           toast(res.data.message, { type: "warning" });
         }
@@ -43,7 +45,32 @@ const VendorsCard = (props) => {
        
   }
 
-  return (
+  return (<>
+
+  {data.VENDOR_STATUS == "X" ? 
+    <div style={{opacity : 0.5}}>
+      <div className="VendorsContainer">
+        <div className="VendorsCon"  >
+          <div className="VendorsImg">
+            <img src={data.VENDOR_PROFILE} alt="vendors" />
+          </div>
+          <div className="VendorsContent">
+            <h6>{data.VENDOR_NAME}</h6>
+            <p>{data.CITY}</p>
+          </div>
+        </div>
+        <div className="deleteicon">
+          <MdDelete
+            size={20}
+            style={{ color:"#b70000" ,zIndex:10}}
+            onMouseOver={() => setIconColor("#293391")}
+            onMouseOut={() => setIconColor("#7478a1")}
+            
+          />
+        </div>
+      </div>
+      <ToastContainer/>
+    </div> : 
     <div >
       <div className="VendorsContainer">
         <div className="VendorsCon"  onClick={() => renderToEditPage(data)}>
@@ -64,10 +91,10 @@ const VendorsCard = (props) => {
             onClick={() => deleteVendor(data)}
           />
         </div>
-      </div>
+      </div> 
       <ToastContainer/>
-    </div>
-  );
+    </div> }
+    </>);
 };
 
 export default VendorsCard;

@@ -11,6 +11,8 @@ const AddJournalGroup = () => {
   const [jourrnalG , setJournalG] = useState("");
   const [excluded , setExcluded] = useState("");
   const [update , setUpdate] = useState("");
+  const getAuthtoken = localStorage.getItem("authtoken");
+const userAuth = localStorage.getItem("userAuth");
 
   const addJournalGURL = endpoints.JournalGroup.addJournalGroup;
 
@@ -29,7 +31,8 @@ const AddJournalGroup = () => {
       const formData = new FormData();
       formData.append("Journal_Group",jourrnalG);
       formData.append("Excluded_Journals",excluded);
-
+      formData.append("User_Authorization" , getAuthtoken)
+      formData.append("User_AuthKey" , userAuth);
       axios.post(addJournalGURL,formData)
       .then((res) => {
         console.log(res,"ressponsone")
@@ -77,6 +80,8 @@ const AddJournalGroup = () => {
         formData.append("ID",selectedData.JOURNAL_GROUP_ID);
         formData.append("Journal_Group",jourrnalG);
         formData.append("Excluded_Journals",excluded);
+        formData.append("User_Authorization" , getAuthtoken)
+        formData.append("User_AuthKey" , userAuth);
         axios.post(updateJournalGURL,formData)
         .then((res) => {
           if(res.data.status === true)

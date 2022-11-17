@@ -28,12 +28,17 @@ const AddDifferedType = () => {
 
   const [getJournal,setGetJournal] = useState([]);
   const [getAnalyticAcc , setGetAnayticAcc] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const getJournalUrl = endpoints.Journals.allJournals;
 
   const getAnalyticAccoun = endpoints.AnalyticAcc.allAnaAcc;
 
   useEffect(() => {
-   axios.post(getJournalUrl)
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+   axios.post(getJournalUrl,formData)
    .then((res) => {
     if(res.data.status === true)
     {
@@ -50,7 +55,10 @@ const AddDifferedType = () => {
   },[])
 
   useEffect(() => {
-    axios.post(getAnalyticAccoun)
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(getAnalyticAccoun,formData)
     .then((res) => {
      if(res.data.status === true)
      {
@@ -154,6 +162,8 @@ const save = () => {
        formData.append("Computation_Method",computation);
        formData.append("Auto_Creation",creation);
        formData.append("Accordance_Time",accordance);
+       formData.append("User_Authorization", getAuthtoken);
+       formData.append("User_AuthKey", userAuth);
       axios.post(addDefExTypeUrl,formData)
       .then((res) => {
         if(res.data.status === true)
@@ -287,6 +297,8 @@ const save = () => {
       formData.append("Computation_Method",computation);
       formData.append("Auto_Creation",creation);
       formData.append("Accordance_Time",accordance);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
        axios.post(updatedefExTypeUrl,formData)
        .then((res) => {
         if(res.data.status === true)

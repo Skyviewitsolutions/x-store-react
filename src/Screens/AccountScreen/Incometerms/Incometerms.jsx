@@ -15,8 +15,13 @@ const Incometerms = () => {
   const [incoTerms, setIncomeTerms] = useState([]);
   const IncoTermsUrl = endpoints.IncomeTerms.allIncomeTerms;
 
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const getIncometerms = ()=> {
-    axios.post(IncoTermsUrl)
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken)
+    formData.append("User_AuthKey" , userAuth);
+    axios.post(IncoTermsUrl,formData)
     .then((res) => {
         if(res.data.status === true)
         {
@@ -41,6 +46,8 @@ const Incometerms = () => {
   const deleteItem = (data) => {
     const formData = new FormData();
     formData.append("ID" , data);
+    formData.append("User_Authorization" , getAuthtoken)
+    formData.append("User_AuthKey" , userAuth);
     axios.post(deleteIncoTermsUrl,formData)
     .then((res) => {
       if(res.data.status === true)

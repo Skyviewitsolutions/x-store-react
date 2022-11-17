@@ -10,9 +10,14 @@ const JournalEntires = (props) => {
     const [curr , setCurr] = useState([]);
 
     const CurrencyUrl = endpoints.Currency.allCurrency;
+    const getAuthtoken = localStorage.getItem("authtoken");
+const userAuth = localStorage.getItem("userAuth");
 
     useEffect(() => {
-    axios.post(CurrencyUrl)
+      const formData = new FormData();
+      formData.append("User_Authorization" , getAuthtoken)
+      formData.append("User_AuthKey" , userAuth);
+    axios.post(CurrencyUrl , formData)
     .then((res) => {
       if(res.data.status === true)
       {

@@ -4,6 +4,7 @@ import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaSearchMinus } from "react-icons/fa";
 import "./SalesNavbar.css";
 import { useNavigate } from "react-router-dom";
+import { IoMdLogOut } from "react-icons/io";
 const SalesNavbar = (props) => {
   const { showBelowMenu, handleCreatePage, title, save } = props;
   const navigate = useNavigate();
@@ -97,6 +98,11 @@ const SalesNavbar = (props) => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
+          <div className="logout">
+              <IoMdLogOut
+               style={{ color: "white", marginRight: "10px",fontSize:"25px"}} onClick={() => navigate('/')}/>
+              <p>Logout</p>
+            </div>
         </Navbar>
       </div>
       {showBelowMenu === true && (

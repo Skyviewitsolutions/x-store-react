@@ -13,11 +13,16 @@ const AnalyticAccountType = () => {
   const navigate = useNavigate();
 
   const [anAccType, setAnAccType] = useState([]);
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const allAnAcctypeUrl = endpoints.AnalyticAccType.allAnalytictype;
 
   const getAnAccType = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
-      .post(allAnAcctypeUrl)
+      .post(allAnAcctypeUrl , formData)
       .then((res) => {
         if (res.data.status === true) {
           setAnAccType(res.data.data);
@@ -39,6 +44,8 @@ const AnalyticAccountType = () => {
   const deleteItem = (data) => {
     const formData = new FormData();
         formData.append("ID",data);
+        formData.append("User_Authorization", getAuthtoken);
+        formData.append("User_AuthKey", userAuth);
         axios.post(deleteAnnAcctypeUrl,formData)
         .then((res) => {
             console.log(res,"response Acc")
@@ -61,7 +68,7 @@ const AnalyticAccountType = () => {
   const handleUpdate = (data) => {
     console.log(data ,"value")
     const val = anAccType.filter((itm,index) => {
-      return itm.ANALYTIC_ACCOUNT_TYPE_ID == data
+      return itm.ID == data
     })
     const orgValue = val[0];
     console.log(orgValue,"irhhcbsdh")
@@ -72,7 +79,7 @@ const AnalyticAccountType = () => {
     { label: "Analytic Account Type", name: "ANALYTIC_ACCOUNT_TYPE" },
     { 
         label: "Action", 
-        name: "ANALYTIC_ACCOUNT_TYPE_ID" ,
+        name: "ID" ,
         options:{
             customBodyRender:(value, tableMeta, updateValue) => {
                 return(

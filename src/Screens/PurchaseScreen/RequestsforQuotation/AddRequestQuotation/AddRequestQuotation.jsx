@@ -5,6 +5,7 @@ import SalesPurchase from "../../../../components/VendorsScreen/AddVendors/Sales
 import PurchaseNavbar from "../../PurchaseNavbar";
 import AddProductRequest from "./AddProductRequest";
 import OtherInfo from "./OtherInfo";
+import './AddRequestQuotation.css'
 
 const AddRequestQuotation =(props)=> {
     const [events, setEvents] = useState("Products");
@@ -53,7 +54,7 @@ const AddRequestQuotation =(props)=> {
               </select>
             </div>
             <div className="reqQuotext">
-              <p>Purchase Agreement</p>
+              <p>Currency</p>
               <select>
                 <option value="">Select Any one</option>
                 <option>tesing</option>
