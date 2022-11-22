@@ -20,7 +20,7 @@ const CustomTable = (props) => {
 
   return(
     <>
-<div className='protab'>
+<div className='protab where_house_tb'>
       <MUIDataTable
         data={data}
         columns={column}

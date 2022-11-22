@@ -40,7 +40,6 @@
 }
 .atradio{
     display: flex;
-    align-items: center;
 }
 .atradio p{
     width: 200px;

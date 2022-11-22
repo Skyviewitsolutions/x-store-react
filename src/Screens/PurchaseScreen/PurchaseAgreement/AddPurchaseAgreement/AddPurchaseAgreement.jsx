@@ -8,6 +8,11 @@ const AddPurchaseAgreement = () => {
 
     const [events, setEvents] = useState("Products");
 
+    const [purchaseRep, setPurchaseRep] = useState("");
+    const [agreementType , setAgreementtype] = useState("");
+    const [vendor , setVendor] = useState("");
+    const [currency , setCurrency] = useState("");
+
   return (
     <div>
         <PurchaseNavbar

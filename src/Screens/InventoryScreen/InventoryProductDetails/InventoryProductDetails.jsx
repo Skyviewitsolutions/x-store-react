@@ -99,8 +99,6 @@ const InventoryProductDetails = () => {
 
     if (productName === "") {
       toast("Product name required !", { type: "warning" });
-    } else if(files === ""){
-      toast("Product Image is required!",{type:"warning"});
     }else if (cost === "") {
       toast("Cost is required !", { type: "warning" });
     } else if (salesPrice === "") {

@@ -48,7 +48,7 @@ const GeneralInformation = (props) => {
                 <div className="firstcontent3">
                     <p>Cost</p>
                     <span>{cost}</span>
-                    <span style={{ color: "#1669a2" }}>Update Cost</span>
+                    {/* <span style={{ color: "#1669a2" }}>Update Cost</span> */}
                 </div>
                 <div className="firstcontent3">
                     <p>Unit of Measure</p>

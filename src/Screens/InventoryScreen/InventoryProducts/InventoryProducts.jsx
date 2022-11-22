@@ -38,7 +38,7 @@ const InventoryProducts = () => {
             navigate('/');
           }
           else{
-           toast(res.data.mrssage,{type:"error"});
+           toast(res.data.message,{type:"error"});
           }
           
         }

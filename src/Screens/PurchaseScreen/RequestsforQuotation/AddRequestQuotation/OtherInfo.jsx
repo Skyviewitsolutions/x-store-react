@@ -1,6 +1,44 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { endpoints } from "../../../../services/endpoints";
 import "./OtherInfo.css";
+
+
 const OtherInfo = () => {
+
+  const [incoTerms , setIncoTerms] = useState([]);
+  const incoTermsUrl = endpoints.IncomeTerms.allIncomeTerms;
+  const navigate = useNavigate();
+
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+
+  useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+    axios.post(incoTermsUrl,formData)
+    .then((res) => {
+      if(res.data.status === true){
+        setIncoTerms(res.data.data)
+      }else if(res.data.status === false){
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err , "something went wrong");
+    })
+  },[])
+
   return (
     <div>
       <div className="OtherInfoCon">
@@ -13,9 +51,13 @@ const OtherInfo = () => {
             <p>Incoterm</p>
             <select>
               <option>Choose any one</option>
-              <option></option>
-              <option>Ex works</option>
-              <option>Free Carrier</option>
+             {incoTerms.map((item,index) => {
+              return(
+                <>
+                <option value={item.ID}>{item.INCOME_NAME}</option>
+                </>
+              )
+             })}
             </select>
           </div>
         </div>

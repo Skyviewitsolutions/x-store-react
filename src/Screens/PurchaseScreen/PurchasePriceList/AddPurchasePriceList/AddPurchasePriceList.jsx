@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { endpoints } from '../../../../services/endpoints'
 import PurchaseNavbar from '../../PurchaseNavbar';
@@ -9,9 +10,11 @@ import './AddPurchasePriceList.css'
 
 const AddPurchasePriceList = () => {
 
+    const navigate = useNavigate();
     const [getVendors , setGetVendors] = useState([])
     const [getProduct , setGetProduct] = useState([]);
-    const [getCurrency , setGetCurrency] = useState([])
+    const [getCurrency , setGetCurrency] = useState([]);
+    const [update , setUpdate] = useState([]);
 
     const [vendor , setVendor] = useState("")
     const [vendorProductName , setVendorProductName] = useState("");
@@ -40,7 +43,14 @@ const AddPurchasePriceList = () => {
            setGetVendors(res.data.data);
         }
         else if(res.data.status === false){
-            toast(res.data.message ,{type:"error"});
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
         }
        })
        .catch((err) => {
@@ -57,7 +67,14 @@ const AddPurchasePriceList = () => {
            setGetProduct(res.data.data);
         }
         else if(res.data.status === false){
-            toast(res.data.message ,{type:"error"});
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
         }
        })
        .catch((err) => {
@@ -74,7 +91,14 @@ const AddPurchasePriceList = () => {
            setGetCurrency(res.data.data);
         }
         else if(res.data.status === false){
-            toast(res.data.message ,{type:"error"});
+            if(res.data.code === 3)
+                {
+                  toast("Session expired , Please re-login",{type:"warning"})
+                  navigate('/');
+                }
+                else{
+                 toast(res.data.message,{type:"error"});
+                }
         }
        })
        .catch((err) => {
@@ -131,7 +155,14 @@ const AddPurchasePriceList = () => {
                 if(res.data.status === true){
                     toast("Venodr Pricelists added successfully",{type:"success"})
                 }else if(res.data.status === false){
-                    toast(res.data.message,{type:"error"})
+                    if(res.data.code === 3)
+                {
+                  toast("Session expired , Please re-login",{type:"warning"})
+                  navigate('/');
+                }
+                else{
+                 toast(res.data.message,{type:"error"});
+                }
                 }
             })
             .catch((err) => {
@@ -139,9 +170,101 @@ const AddPurchasePriceList = () => {
             })
         }
     }
+
+    const location = useLocation();
+    const selectedData = location.state;
+    console.log(selectedData , "selectedData here");
+
+    const updatePurchasePriceUrl = endpoints.vendorPriceList.updatevendorpricelist;
+
+    useEffect(() => {
+        if(selectedData)
+        {
+          setUpdate(true);
+          setVendor(selectedData.VENDOR_NAME);
+          setVendorProductName(selectedData.VENDOR_PRODUCT_NAME);
+          setVendorProductCode(selectedData.VENDOR_PRODUCT_CODE);
+          setLeadTime(selectedData.DILEVERY_LEADTIME);
+          setPrice(selectedData.PRODUCT_PRICE);
+          setCurrency(selectedData.VENDOR_CURRENCY);
+          setEndDate(selectedData.END_DATE);
+          setStartDate(selectedData.START_DATE);
+          setQuantity(selectedData.VENDOR_QUANTITY);
+          setProduct(selectedData.PRODUCT_NAME);
+        }
+      },[selectedData])
+    
+
+      const updateData = () => {
+
+        if(vendor === ""){
+            toast("Vendor is required ",{type:"warning"});
+        }
+        else if(vendorProductName === ""){
+            toast("Vendor Product Name is required ",{type:"warning"});
+        }
+        else if(vendorProductCode === ""){
+            toast("Vendor Product Code is required ",{type:"warning"});
+        }
+        else if(leadtime === ""){
+            toast("Delivery Lead Time is required ",{type:"warning"});
+        }
+        else if(product === ""){
+            toast("Product is required ",{type:"warning"});
+        }
+        else if(quantity === ""){
+            toast("Quantity is required ",{type:"warning"});
+        }
+        else if(price === ""){
+            toast("Price is required ",{type:"warning"});
+        }
+        else if(currency === ""){
+            toast("Currency is required ",{type:"warning"});
+        }
+        else if(startDate === ""){
+            toast("Start Date is required ",{type:"warning"});
+        }
+        else if(endDate === ""){
+            toast("End Date is required ",{type:"warning"});
+        }else {
+            const formData = new FormData();
+            formData.append("ID",selectedData.ID)
+            formData.append("Vendor_ID",vendor);
+            formData.append("Vendor_Product_Name",vendorProductName)
+            formData.append("Vendor_Product_Code",vendorProductCode);
+            formData.append("Dilevery_LeadTime" , leadtime);
+            formData.append("Product_ID",product);
+            formData.append("Quantity",quantity);
+            formData.append("Price" , price);
+            formData.append("Currency" , currency);
+            formData.append("Start_Date" , startDate);
+            formData.append("End_Date" , endDate)
+            formData.append("User_Authorization", getAuthtoken);
+            formData.append("User_AuthKey", userAuth);
+            axios.post(updatePurchasePriceUrl,formData)
+            .then((res) => {
+                if(res.data.status === true){
+                    toast("Venodr Pricelists updated successfully",{type:"success"})
+                }else if(res.data.status === false){
+                    if(res.data.code === 3)
+                {
+                  toast("Session expired , Please re-login",{type:"warning"})
+                  navigate('/');
+                }
+                else{
+                 toast(res.data.message,{type:"error"});
+                }
+                }
+            })
+            .catch((err) => {
+                console.log(err,"error");
+            })
+        }
+      }
+
   return (
     <div>
-        <PurchaseNavbar  showBelowMenu={true} title="Venodr Pricelists" save={save}/>
+        <PurchaseNavbar  showBelowMenu={true} title="Venodr Pricelists" save={update === true ? updateData : save}/>
        <div className="vendorsPriceListContainer">
             <div className="vendorsPart1">
                 <h1>Vendor</h1>
@@ -149,12 +272,15 @@ const AddPurchasePriceList = () => {
                     <p>Vendor</p>
                     <select value={vendor} onChange={(e) => setVendor(e.target.value)}>
                         <option value="">Select any one</option>
+                       
                         {getVendors.map((item,index) => {
-                            return(
-                                <>
-                                 <option>{item.VENDOR_ID}</option>
-                                </>
-                            )
+                            if(item.VENDOR_STATUS!="X"){
+                                return(
+                                    <>
+                                     <option value={item.VENDOR_ID}>{item.VENDOR_NAME}</option>
+                                    </>
+                                )   
+                            }
                         })}
                     </select>
                 </div>
@@ -189,7 +315,7 @@ const AddPurchasePriceList = () => {
                         {getProduct.map((item,index) => {
                             return(
                                 <>
-                                 <option value={item.PRODUCT_ID}>{item.PRODUCT_ID}</option>
+                                 <option value={item.PRODUCT_ID}>{item.PRODUCT_NAME}</option>
                                 </>
                             )
                         })}

@@ -333,7 +333,7 @@ const GeneralInformationEdit = (props) => {
                 return (
                   <>
                     <option value={item.UNITCATEGORY} key={index}>
-                      {item.UNITCATEGORY}
+                      {item.UNITNAME}
                     </option>
                   </>
                 );

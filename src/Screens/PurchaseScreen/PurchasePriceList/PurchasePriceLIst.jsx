@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { FiEdit } from 'react-icons/fi';
 import { MdDelete } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import CustomTable from '../../../components/CustomTable/CustomTable'
 import { endpoints } from '../../../services/endpoints';
 import PurchaseNavbar from '../PurchaseNavbar'
@@ -32,7 +32,14 @@ const PurchasePriceLIst = () => {
           if(res.data.status === true){
             setAllVenprice(res.data.data);
           }else if(res.data.status === false){
-            console.log(res.data.message);
+            if(res.data.code === 3)
+                {
+                  toast("Session expired , Please re-login",{type:"warning"})
+                  navigate('/');
+                }
+                else{
+                 toast(res.data.message,{type:"error"});
+                }
           }
         })
         .catch((err) => {
@@ -48,11 +55,13 @@ const PurchasePriceLIst = () => {
 
     const deleteItem = (data) => {
       const formData = new FormData();
-      formData.append("Vendor_ID",data);
+      formData.append("ID",data);
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
       axios.post(deletePurchaseurl,formData)
       .then((res) => {
+
+        console.log(res,"response")
           if(res.data.status === true)
           {
               getAllVendorPrice();
@@ -60,13 +69,30 @@ const PurchasePriceLIst = () => {
           }
           else if(res.data.status === false)
           {
-              toast(res.data.message,{type:"error"});
+            if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.mrssage,{type:"error"});
+            }
           }
       })
       .catch((err) => {
           console.log(err,"error");
       })
   }
+
+  const handleUpdate = (data) => {
+    console.log(data ,"value")
+    const val = allVenprice.filter((itm,index) => {
+      return itm.ID == data
+    })
+    const orgValue = val[0];
+    console.log(orgValue,"irhhcbsdh")
+    navigate("/AddPurchasePriceList" , {state:orgValue});   
+}
 
     const column  = [
         {title:"Vendor" , name:"VENDOR_PRODUCT_NAME"},
@@ -83,7 +109,7 @@ const PurchasePriceLIst = () => {
                   return(
                       <>
                        <div className="updtdlt">
-                      <FiEdit size={23} color="#4f434d"   style={{cursor:"pointer"}}/>
+                      <FiEdit size={23} color="#4f434d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
                       <MdDelete size={23} color="#4f434d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
                       </div>
                       </>
@@ -98,6 +124,7 @@ const PurchasePriceLIst = () => {
     <div>
         <PurchaseNavbar  showBelowMenu={true} title="Venodr Pricelists" handleCreatePage={handleCreatePage}/>
         <CustomTable data={allVenprice} column={column}/>
+        <ToastContainer/>
     </div>
   )
 }

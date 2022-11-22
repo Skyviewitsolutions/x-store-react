@@ -246,5 +246,22 @@ export const endpoints = {
     singlevendorpricelist : BASE_URL + "/Purchase/VendorPriceList/GetSingle",
     updatevendorpricelist : BASE_URL + "/Purchase/VendorPriceList/Update",
     deletevendorpricelist : BASE_URL + "/Purchase/VendorPriceList/Delete"
+  },
+  purchaseAgreementtype:{
+    allAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/GetAll",
+    addAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/Add",
+    updateAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/Update",
+    deleteAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/Delete",
+    singleAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/GetSingle",
+  },
+  requestQuotation:{
+    allRequestQuotation : BASE_URL + "/Purchase/RequestQuotation/GetAll",
+    addRequestQuotation : BASE_URL + "/Purchase/RequestQuotation/Add",
+    updatrRequestQuotation : BASE_URL + "/Purchase/RequestQuotation/Update",
+    deleteRequestQuotation :  BASE_URL + "/Purchase/RequestQuotation/Delete",
+    singleRequestQuotation : BASE_URL + "/Purchase/RequestQuotation/GetSingle",
+    getAllproductdetails : BASE_URL + "/Purchase/RequestQuotation/GetAllProductDetail",
+    addProductdetails : BASE_URL + "/Purchase/RequestQuotation/AddProduct",
   }
+
 };

@@ -235,12 +235,12 @@ const InventoryProductDetailsMain = (props) => {
             >
               <Nav.Link href="" className={events === "generalInformation" ? "navLinkActive" : "navLinkDeactive"}>General Information</Nav.Link>
             </Nav.Item>
-            <Nav.Item
+            {/* <Nav.Item
               className={events === "variants" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("variants")}
             >
               <Nav.Link eventKey="link-1"  className={events === "variants" ? "navLinkActive" : "navLinkDeactive"}>Variants</Nav.Link>
-            </Nav.Item>
+            </Nav.Item> */}
             <Nav.Item
                className={events === "Purchase" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("Purchase")}

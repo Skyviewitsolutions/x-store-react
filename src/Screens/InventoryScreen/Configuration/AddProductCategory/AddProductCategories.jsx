@@ -21,6 +21,9 @@ const AddProductCategories = (props) => {
   const pricediffUrl = endpoints.products.priceDifference;
   const expenseUrl = endpoints.products.expenseAccount;
   const allParentCateurl = endpoints.parentCate.allParentCate;
+
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
   const [getParentCate, setGetParentCate] = useState([]);
   const [pricedif, setPriceDef] = useState([]);
   const [income, setIncome] = useState([]);
@@ -42,7 +45,10 @@ const AddProductCategories = (props) => {
   const [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    axios.post(incomeUrl).then((res) => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(incomeUrl,formData).then((res) => {
       if (res.data.status === true) {
         setIncome(res.data.data);
       } else if (res.data.status === false) {
@@ -59,7 +65,10 @@ const AddProductCategories = (props) => {
   }, []);
 
   useEffect(() => {
-    axios.post(expenseUrl).then((res) => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(expenseUrl,formData).then((res) => {
       if (res.data.status === true) {
         setExpense(res.data.data);
       } else if (res.data.status === false) {
@@ -74,28 +83,8 @@ const AddProductCategories = (props) => {
       }
     });
   }, []);
+
   useEffect(() => {
-    axios.post(pricediffUrl).then((res) => {
-      console.log(res, "priceDiff");
-      if (res.data.status === true) {
-        const val = res.data?.data;
-        console.log(val, "vall");
-        setPriceDef(val);
-      } else if (res.data.status === false) {
-        if(res.data.code === 3)
-        {
-          toast("Session expired , Please re-login",{type:"warning"})
-          navigate('/');
-        }
-        else{
-         toast(res.data.message,{type:"error"});
-        }
-      }
-    });
-  }, []);
-  useEffect(() => {
-    const getAuthtoken = localStorage.getItem("authtoken");
-    const userAuth = localStorage.getItem("userAuth");
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -108,10 +97,6 @@ const AddProductCategories = (props) => {
       }
     });
   }, []);
-
-  const getAuthtoken = localStorage.getItem("authtoken");
-  const userAuth = localStorage.getItem("userAuth");
-  console.log(pricedif, "price");
 
   const formData = new FormData();
   formData.append("Name", name);
@@ -356,8 +341,8 @@ const AddProductCategories = (props) => {
                   {pricedif.map((item, index) => {
                     return (
                       <>
-                        <option value={item.AMOUNT_NAME} key={index}>
-                          {item.AMOUNT_NAME}
+                        <option value={item.EXPENSE_NAME} key={index}>
+                          {item.EXPENSE_NAME}
                         </option>
                       </>
                     );
