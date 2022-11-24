@@ -170,6 +170,10 @@ const GeneralInformationEdit = (props) => {
     setProductBrand,
     setUnitOfMeasurement,
     unitOfMeasurement,
+    purchaseUnitOfMeasuremnt,
+    setPurchaseUnitOfMeasurement,
+    barCode,
+    setBarcode,
   } = props;
   
   const handleProductCategory = (e) =>{
@@ -254,7 +258,7 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent2">
             <p>Barcode</p>
-            <input type="text" />
+            <input type="text" value={barCode} onChange={(e) => setBarcode(e.target.value)}/>
           </div>
           <div className="Editfirstcontent">
             <p> Product Brand</p>
@@ -328,12 +332,12 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent3">
             <p>Unit of Measure</p>
-            <select value={units} onChange={(e) => setUnits(e.target.value)}>
+            <select value={unitOfMeasurement} onChange={(e) => setUnitOfMeasurement(e.target.value)}>
               {uoms.map((item, index) => {
                 return (
                   <>
                     <option value={item.UNITCATEGORY} key={index}>
-                      {item.UNITNAME}
+                      {item.UNITCATEGORY}
                     </option>
                   </>
                 );
@@ -346,12 +350,12 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent3">
             <p>Purchase Unit of</p>
-            <select value={unitOfMeasurement} onChange={(e) => setUnitOfMeasurement(e.target.value)}>
+            <select value={purchaseUnitOfMeasuremnt} onChange={(e) => setPurchaseUnitOfMeasurement(e.target.value)}>
               {getPurchase.map((item, index) => {
                 return (
                   <>
-                    <option value= {item.UNITNAME} key={index}>
-                      {item.UNITNAME}
+                    <option value= {item.UNITCATEGORY} key={index}>
+                      {item.UNITCATEGORY}
                     </option>
                   </>
                 );

@@ -98,7 +98,7 @@ const AddAssetUseStatus = () => {
 
   return (
     <div>
-        <AccountNavbar showBelowMenu={true} title="Asset Use Status" save={update === true ? updateData : save}/>
+        <AccountNavbar showBelowMenu={true} title="Asset Use Status" save={update === true ? updateData : save} showCanelBtn={true}/>
         <div className="AddAssetUseStatusCon">
         <div className="AddAssetStatusContent">
              <div className="AddAssetStatusText">

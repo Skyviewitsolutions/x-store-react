@@ -138,9 +138,9 @@ const AddCurrencies = () => {
   
   return (
     <>
-    <AccountNavbar showBelowMenu={true} title="Currencies"save={update === true ? updateData : save}/>
+    <AccountNavbar showBelowMenu={true} title="Currencies"save={update === true ? updateData : save} showCanelBtn={true}/>
     <div className='AddCurrenciesCon'>
-       <div className="AddCurrencieshead">
+       {/* <div className="AddCurrencieshead">
         <div className="content">
           <FaMoneyBillAlt
             size="33px"
@@ -150,7 +150,7 @@ const AddCurrencies = () => {
             <p>Rates</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="AddCurrenciesdetails">
          <div className="Currenciesdetails1">
             <div className="currenciestext">

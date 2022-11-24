@@ -201,7 +201,15 @@ const AddVendors = () => {
       setVendorImg(VendorsDetails.VENDOR_PROFILE);
       setFiles(VendorsDetails.VENDOR_PROFILE)
       setEdit(true)
-
+      const url = VendorsDetails.VENDOR_PROFILE;
+      const fileName = "myFile.jpg";
+  
+      fetch(url).then(async (response) => {
+        const contentType = response.headers.get("content-type");
+        const blob = await response.blob();
+        const file = new File([blob], fileName, { contentType });
+        setFiles(file)
+      });
       if (VendorsDetails.ADDRESS_TYPE == 1) {
         setShowCompany(true);
       } else if (VendorsDetails.ADDRESS_TYPE == 0) {
@@ -340,7 +348,7 @@ const AddVendors = () => {
 
   return (
     <div>
-      <Navebar showBelowMenu={true} title="Vendor" save={edit === true ? updateData : save } />
+      <Navebar showBelowMenu={true} title="Vendor" save={edit === true ? updateData : save } showCanelBtn={true}/>
       <div className="AddVendorsCon">
         <div className="container">
           <div className="VendorsHeader">

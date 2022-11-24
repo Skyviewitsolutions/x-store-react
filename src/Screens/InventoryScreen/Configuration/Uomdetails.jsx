@@ -14,7 +14,7 @@ const Uomdetails = () => {
   }
   return (
     <div>
-        <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} />
+        <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} showCanelBtn={true}/>
     <div className='UomdetailsContainer'>
         <div className="uompart1">
           <div className="Uomcontent">

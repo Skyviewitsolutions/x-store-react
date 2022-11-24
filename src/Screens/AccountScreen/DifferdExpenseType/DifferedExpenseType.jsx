@@ -23,11 +23,20 @@ const DifferedExpenseType = () => {
     axios.post(allDefExTypeUrl , formData)
     .then((res) => {
         if(res.data.status === true){
-          setDefType(res.data.data);
+          var val = res.data.data;
+          val = val.reverse()
+          setDefType(val);
         }
         else if(res.data.status === false)
         {
-            toast(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
     })
     .catch((err) => {
@@ -55,7 +64,14 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
             }
             else if(res.data.status === false)
             {
-                toast(res.data.message,{type:"error"});
+              if(res.data.code === 3)
+              {
+                toast("Session expired , Please re-login",{type:"warning"})
+                navigate('/');
+              }
+              else{
+               toast(res.data.message,{type:"error"});
+              }
             }
         })
         .catch((err) => {

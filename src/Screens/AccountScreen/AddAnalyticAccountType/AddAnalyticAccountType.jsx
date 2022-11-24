@@ -86,7 +86,7 @@ const AddAnalyticAccountType = () => {
 
   return (
     <div>
-        <AccountNavbar showBelowMenu={true} title="Analytic Account Type" save={update === true ? updateData : save}/>
+        <AccountNavbar showBelowMenu={true} title="Analytic Account Type" save={update === true ? updateData : save} showCanelBtn={true}/>
         <div className="AddAccTyCon">
             <div className="AddAccTypeContent">
                 <p>Analytic Account Type</p>

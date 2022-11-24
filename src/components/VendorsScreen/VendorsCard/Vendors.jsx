@@ -30,8 +30,9 @@ const Vendors = () => {
       if(res.data.status === true)
       {
         const vendor = res.data.data;
+        var val = vendor.reverse();
        
-        const deletedVendor = vendor.filter((itm,ind) =>{
+        const deletedVendor = val.filter((itm,ind) =>{
           return itm.VENDOR_STATUS === 'X'
         });
          setDeActiveVendor(deletedVendor);

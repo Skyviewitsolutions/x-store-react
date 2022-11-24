@@ -177,7 +177,7 @@ const AddTaxName = () => {
     }
   return (
     <>
-    <AccountNavbar showBelowMenu={true} title="TaxName" save={update === true ? updateData : save}/>
+    <AccountNavbar showBelowMenu={true} title="Tax Name" save={update === true ? updateData : save} showCanelBtn={true}/>
     <div className='TaxNameCon'>
         <div className="TaxNamemain">
         <div className="TaxNamecontent">

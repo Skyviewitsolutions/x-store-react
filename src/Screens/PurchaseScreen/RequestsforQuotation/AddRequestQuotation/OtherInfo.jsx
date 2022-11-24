@@ -6,9 +6,9 @@ import { endpoints } from "../../../../services/endpoints";
 import "./OtherInfo.css";
 
 
-const OtherInfo = () => {
-
-  const [incoTerms , setIncoTerms] = useState([]);
+const OtherInfo = (props) => {
+  const {incoTerms,setIncoTerms,recepitDate,setRecepitDate,purchaseRep,setPurchaseRep,fisicalPosition,setFisicalPosition} = props
+  const [incoTermsAll , setIncoTermsAll] = useState([]);
   const incoTermsUrl = endpoints.IncomeTerms.allIncomeTerms;
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const OtherInfo = () => {
     axios.post(incoTermsUrl,formData)
     .then((res) => {
       if(res.data.status === true){
-        setIncoTerms(res.data.data)
+        setIncoTermsAll(res.data.data)
       }else if(res.data.status === false){
         if(res.data.code === 3)
         {
@@ -45,13 +45,13 @@ const OtherInfo = () => {
         <div className="otherInfotext">
           <div className="otherinfo">
             <p>Receipt Date</p>
-            <input type="date" />
+            <input type="date" value={recepitDate} onChange={(e) => setRecepitDate(e.target.value)} />
           </div>
           <div className="otherinfo">
             <p>Incoterm</p>
-            <select>
+            <select value={incoTerms} onChange={(e) => setIncoTerms(e.target.value)}>
               <option>Choose any one</option>
-             {incoTerms.map((item,index) => {
+             {incoTermsAll.map((item,index) => {
               return(
                 <>
                 <option value={item.ID}>{item.INCOME_NAME}</option>
@@ -64,24 +64,23 @@ const OtherInfo = () => {
         <div className="otherInfotext2">
           <div className="otherinfo">
             <p>Purchase Representative</p>
-            <select>
+            <select value={purchaseRep} onChange={(e) => setPurchaseRep(e.target.value)}>
               <option>Choose any one</option>
-              <option>Accountant-Ryd</option>
-              <option>Account 02</option>
-              <option>CRUH 01</option>
-              <option>CRUH 02</option>
-              <option>CRUH 03</option>
-              <option>CRUH 04</option>
-              <option>Data Entry</option>
+              <option value="Accountant-Ryd">Accountant-Ryd</option>
+              <option value="Account 02">Account 02</option>
+              <option value="CRUH 01">CRUH 01</option>
+              <option value="CRUH 02">CRUH 02</option>
+              <option value="CRUH 03">CRUH 03</option>
+              <option value="CRUH 04">CRUH 04</option>
+              <option value="Data Entry">Data Entry</option>
             </select>
           </div>
           <div className="otherinfo">
             <p>Fiscal Position</p>
-            <select>
+            <select value={fisicalPosition} onChange={(e) => setFisicalPosition(e.target.value)}>
               <option>Choose any one</option>
-              <option></option>
-              <option>Accountant-Ryd</option>
-              <option>Account 02</option>
+              <option value="Accountant-Ryd">Accountant-Ryd</option>
+              <option value="Account 02">Account 02</option>
             
             </select>
           </div>

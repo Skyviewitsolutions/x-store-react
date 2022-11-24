@@ -18,34 +18,36 @@ const AddProduct = () => {
   
   const [isEdit, setIsEdit] = useState(true);
   const [productName, setProductName] = useState("");
-  const [productType, setProductType] = useState("Consumable");
+  const [productType, setProductType] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [sold , setSold] = useState(false)
   const [purchased , setPurchased] = useState(false)
   const [expensed , setExpensed] = useState(false);
   const [deduction , setDeduction] = useState(false)
-  const [units, setUnits] = useState("Barell");
+  const [units, setUnits] = useState("");
   const [cost, setCost] = useState("");
   const [salesPrice, setSalesPrice] = useState("");
   const [interRef, setInterRef] = useState("");
   const [customerTax, setCustomerTax] = useState("");
   const [description, setDescription] = useState("");
-  const [unitOfMeasurement , setUnitOfMeasurement] = useState("meter");
-  const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("unit");
-  const [weight , setWeight] = useState("0");
-  const [volume , setVolume] = useState("0");
+  const [unitOfMeasurement , setUnitOfMeasurement] = useState("");
+  const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("");
+  const [weight , setWeight] = useState("");
+  const [volume , setVolume] = useState("");
   const [buy , setBuy] = useState(false)
   const [replenishOnOrder , setReplenishOnOrder] = useState(false)
   const [customerLeadTime , setCustomerLeadTime] = useState("");
   const [descriptionDeliveryOrder , setDescriptionDeliveryOrder] = useState("");
   const [descriptionInternalTranser , setDescriptionInternalTranser] = useState("")
   const [descriptionForReceipt , setDescriptionForReceipt] = useState("")
-  const [incomeAccount , setIncomeAccount] = useState("0")
-  const [expenseAccount , setExpenceAccount] = useState("SBI")
-  const [assetType , setAssetType] = useState("110601001 مخزون قطع غيار")
-  const [priceDifference , setPriceDifference] = useState("110306001 ضريبة القيمة المضافة على المشتريات")
-  const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
+  const [incomeAccount , setIncomeAccount] = useState("")
+  const [expenseAccount , setExpenceAccount] = useState("")
+  const [assetType , setAssetType] = useState("")
+  const [priceDifference , setPriceDifference] = useState("")
+  const [barcode , setBarcode] = useState("");
+  const [account , setAccount] = useState("");
   const [files , setFiles] = useState("");
+  const [productBrand  , setProductBrand] = useState("");
   const [productImg , setProductImg] = useState("");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
@@ -80,9 +82,7 @@ const AddProduct = () => {
       toast("Cost is required !", { type: "warning" });
     } else if (salesPrice === "") {
       toast("Sales Price is reqiured !", { type: "warning" });
-    } else if (units === "") {
-      toast("units field is required !", { type: "warning" });
-    } else if (customerTax === "") {
+    }  else if (customerTax === "") {
       toast("Customer Tax is required", { type: "warning" });
     } 
     else if(customerLeadTime === ""){
@@ -96,6 +96,7 @@ const AddProduct = () => {
   formData.append("Product_Name", productName);
   formData.append("Product_Type", productType);
   formData.append("Product_Category", productCategory);
+  formData.append('Product_Brand' , productBrand);
   formData.append("units", units);
   formData.append("Cost", cost);
   formData.append("Sales_Price", salesPrice);
@@ -124,6 +125,7 @@ const AddProduct = () => {
   formData.append('Deduction' , deduction)
   formData.append('Product_Code' ,uniqueCode + productCatCode);
   formData.append('ChooseFile' , files);
+  formData.append("Barcode" , barcode);
   formData.append("Present_Key" , uniqueCode);
   formData.append("User_Authorization" , getAuthtoken);
   formData.append("User_AuthKey" , userAuth);
@@ -218,11 +220,15 @@ const AddProduct = () => {
         account={account}
         setAccount={setAccount}
         files={files}
+        barcode={barcode}
+        setBarcode={setBarcode}
         setFiles={setFiles}
         setProductCatCode={setProductCatCode}
         productImg={productImg}
         setProductImg={setProductImg}
         productCatCode={productCatCode}
+        productBrand={productBrand}
+        setProductBrand={setProductBrand}
       />
 
       {/* <Modal show={true}>

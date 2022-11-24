@@ -117,6 +117,8 @@ import AddPurchaseOrders from "./Screens/PurchaseScreen/PurchasesOrder/AddPurcha
 import PurchaseAgreement from "./Screens/PurchaseScreen/PurchaseAgreement/PurchaseAgreement";
 import AddPurchaseAgreement from "./Screens/PurchaseScreen/PurchaseAgreement/AddPurchaseAgreement/AddPurchaseAgreement";
 import PurchaseVendor from "./Screens/PurchaseScreen/PurchaseVendor";
+import AccountVendor from "./Screens/AccountScreen/AccountVendor/AccountVendor";
+import AccountProduct from "./Screens/AccountScreen/AccountProduct/AccountProduct";
 
 
 
@@ -169,6 +171,8 @@ const App = () => {
        {/* --------Accounting Pages------------- */}
 
        <Route path='/AccountNavbar' element={<AccountNavbar/>}/>
+       <Route path='/AccountVendor' element={<AccountVendor/>} />
+       <Route path='/AccountProduct' element={<AccountProduct/>} />
        <Route path='PaymentTerms' element={<PaymentTerms/>}/>
        <Route path='AddPayment' element={<AddPayment/>} />
        <Route path='/ChartAccount' element={<ChartAccount/>} />

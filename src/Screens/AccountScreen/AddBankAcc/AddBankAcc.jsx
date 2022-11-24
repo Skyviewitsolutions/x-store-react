@@ -168,6 +168,7 @@ const AddBankAcc = () => {
         showBelowMenu={true}
         title="Bank Account"
         save={update === true ? updateData : save}
+        showCanelBtn={true}
       />
       <div className="AddBankCon">
         <div className="AddBanktext">
@@ -186,7 +187,7 @@ const AddBankAcc = () => {
                 value={accNum}
                 onChange={(e) => setAccNum(e.target.value)}
               >
-                <option value=""></option>
+                <option value="">select any one</option>
                 <option value="3608010777782">3608010777782</option>
                 <option value="3608010185812">3608010185812</option>
                 <option value="3608010419021">3608010419021</option>
@@ -217,7 +218,7 @@ const AddBankAcc = () => {
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
             >
-              <option></option>
+              <option>select any one</option>
               {curr.map((item, index) => {
                 return (
                   <>
@@ -272,7 +273,7 @@ const AddBankAcc = () => {
                 value={postAt}
                 onChange={(e) => setPostAt(e.target.value)}
               >
-                <option value=""></option>
+                <option value="">select any one</option>
                 <option value="Payment Validation">Payment Validation</option>
                 <option value="Bank Reconciliation">Bank Reconciliation</option>
               </select>

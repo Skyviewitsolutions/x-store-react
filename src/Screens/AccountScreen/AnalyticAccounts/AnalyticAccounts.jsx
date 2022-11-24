@@ -27,9 +27,18 @@ const AnalyticAccounts = () => {
       .post(allAnalyticAccUrl , formData)
       .then((res) => {
         if (res.data.status === true) {
-          setAnayticAcc(res.data.data);
+          var val = res.data.data;
+          val = val.reverse();
+          setAnayticAcc(val);
         } else if (res.data.status === false) {
-          toast(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -57,7 +66,14 @@ const AnalyticAccounts = () => {
           toast("Analytic Account deleted Successfully", { type: "success" });
         } else if(res.data.status === false)
         {
-          toast(res.data.message, { type: "error" });
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {

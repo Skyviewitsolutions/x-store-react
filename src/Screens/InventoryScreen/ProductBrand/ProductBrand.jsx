@@ -60,7 +60,7 @@ const ProductBrand = () => {
     <>
     <Navebar
     showBelowMenu={true}
-    title="ProductBrand"
+    title="Product Brand"
     save={save}
   />
     <div className='productBrandCon'>

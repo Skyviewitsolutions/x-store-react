@@ -123,7 +123,7 @@ const AddAccountType = () => {
 
   return (
     <>
-      <AccountNavbar showBelowMenu={true} title="Account Type" save={update === true ? updateData : save}/>
+      <AccountNavbar showBelowMenu={true} title="Account Type" save={update === true ? updateData : save} showCanelBtn={true}/>
       <div className="AddAccountCon">
          <div className="AddAccTypeFirst">
             <div className="AddAccContent">

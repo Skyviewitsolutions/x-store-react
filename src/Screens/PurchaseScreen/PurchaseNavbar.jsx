@@ -6,7 +6,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 const PurchaseNavbar = (props) => {
-  const { showBelowMenu, handleCreatePage, title, save } = props;
+  const { showBelowMenu, handleCreatePage,save , title,disabledCreate, showCanelBtn,} = props;
   const navigate = useNavigate();
   return (
     <>
@@ -74,9 +74,23 @@ const PurchaseNavbar = (props) => {
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
                 {title ? title : "Purchase"}
               </h5>
-              <button className="createbtn" onClick={handleCreatePage}>
-                Create
-              </button>
+              {showCanelBtn === true ? (
+                <button
+                  className="createbtn"
+                  onClick={() => navigate(-1)}
+                  disabled={disabledCreate}
+                >
+                  cancel
+                </button>
+              ) : (
+                <button
+                  className="createbtn"
+                  onClick={handleCreatePage}
+                  disabled={disabledCreate}
+                >
+                  create
+                </button>
+              )}
               <button className="savebtn" onClick={save}>
                 Save
               </button>

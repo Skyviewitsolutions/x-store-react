@@ -143,7 +143,7 @@ const AddAccountTag = () => {
 
   return (
     <div>
-      <AccountNavbar showBelowMenu={true} title="Account Tag" save={update === true ? updateData : save}/>
+      <AccountNavbar showBelowMenu={true} title="Account Tag" save={update === true ? updateData : save} showCanelBtn={true}/>
       <div className="AddAccountTagcon">
         <div className="AddAccountTagContent">
           <p>Tag Name</p>

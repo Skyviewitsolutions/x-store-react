@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
-import "./Products.css";
-import InventoryProductsCard from "../../../components/InventoryProductsCard/InventoryProductsCard";
-import Navebar from "../../../components/Navbar/Navbar";
-import Sidebar from "../../../components/Sidebar/Sidebar";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { endpoints } from "../../../services/endpoints";
-import { toast } from "react-toastify";
-import { ToastContainer } from "react-bootstrap";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
+import InventoryProductsCard from '../../../components/InventoryProductsCard/InventoryProductsCard';
+import Sidebar from '../../../components/Sidebar/Sidebar';
+import { endpoints } from '../../../services/endpoints';
 
-const InventoryProducts = () => {
-  const [product, setProduct] = useState([]);
+const AccountProduct = () => {
+
+    const [product, setProduct] = useState([]);
   const [allProd, setAllProd] = useState([]);
-  const [deActiveProduct, setDeActiveProduct] = useState([]);
-  const [activeProduct, setActiveProduct] = useState([]);
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
   const url = endpoints.products.allProduct;
@@ -27,31 +24,22 @@ const InventoryProducts = () => {
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     axios
-      .post(url, formData)
+      .post(url , formData)
       .then((res) => {
         console.log(res, "response");
         if (res.data.status === true) {
-          var pro = res.data.data;
-          var pro = pro.reverse();
-          const deleteProduct = pro.filter((itm, ind) => {
-            return itm.DELETE_STATUS === "X";
-          });
-          setDeActiveProduct(deleteProduct);
-
-          const allPro = pro.filter((itm, ind) => {
-            return itm.DELETE_STATUS === null;
-          });
-          setActiveProduct(allPro);
-
           setAllProd(res.data.data);
           setProduct(res.data.data);
         } else if (res.data.status === false) {
-          if (res.data.code === 3) {
-            toast("Session expired , Please re-login", { type: "warning" });
-            navigate("/");
-          } else {
-            toast(res.data.message, { type: "error" });
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
           }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
+          
         }
       })
       .catch((err) => {
@@ -79,13 +67,9 @@ const InventoryProducts = () => {
   }, [productCategory]);
 
   return (
-    <>
-      <div className="ProductsMainContainer">
-        <Navebar
-          showBelowMenu={true}
-          handleCreatePage={handleCreatePage}
-          title="Products"
-        />
+    <div>
+          <div className="ProductsMainContainer">
+          <AccountNavbar showBelowMenu={true} title="Vendor" handleCreatePage={handleCreatePage}/>
         <div className="ProductContainer">
           <div className="ProductSidebar">
             <Sidebar
@@ -95,18 +79,7 @@ const InventoryProducts = () => {
           </div>
           <div className="Product33Card">
             <div className="productcardcont">
-              {activeProduct.map((item, index) => {
-                return (
-                  <>
-                    <InventoryProductsCard
-                      data={item}
-                      setDeleteRef={setDeleteRef}
-                      deleteRef={deleteRef}
-                    />
-                  </>
-                );
-              })}
-              {deActiveProduct.map((item, index) => {
+              {product.map((item, index) => {
                 return (
                   <>
                     <InventoryProductsCard
@@ -123,8 +96,8 @@ const InventoryProducts = () => {
         </div>
         <div></div>
       </div>
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default InventoryProducts;
+export default AccountProduct

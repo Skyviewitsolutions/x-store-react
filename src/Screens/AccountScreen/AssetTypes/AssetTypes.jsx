@@ -24,11 +24,20 @@ const AssetTypes = () => {
         axios.post(allAseetTypeUrl , formData)
         .then((res) => {
             if(res.data.status === true){
-              setAssetType(res.data.data);
+                var val = res.data.data;
+                val = val.reverse();
+              setAssetType(val);
             }
             else if(res.data.status === false)
             {
-                toast(res.data.message,{type:"warning"});
+                if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
             }
         })
         .catch((err) => {

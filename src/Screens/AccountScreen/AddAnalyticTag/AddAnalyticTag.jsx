@@ -109,7 +109,7 @@ const AddAnalyticTag = () => {
 
   return (
     <>
-    <AccountNavbar showBelowMenu={true} title="Analytic Tag" save={update === true ? updateData : save} />
+    <AccountNavbar showBelowMenu={true} title="Analytic Tag" save={update === true ? updateData : save} showCanelBtn={true} />
     <div className="AddAnalyticTagCon">
        <div className="AddAnalyticTagContent">
         <p>Analytic Tag</p>

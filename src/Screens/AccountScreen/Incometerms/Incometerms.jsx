@@ -25,11 +25,20 @@ const Incometerms = () => {
     .then((res) => {
         if(res.data.status === true)
         {
-            setIncomeTerms(res.data.data);
+            var val = res.data.data;
+            val = val.reverse();
+            setIncomeTerms(val);
         }
         else if(res.data.status === false)
         {
-           alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
     })
     .catch((err) => {

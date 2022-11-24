@@ -27,6 +27,7 @@ const AddOperationTypes = () => {
   const [operationWarehouse, setOperationwarehouse] = useState("");
   const [barCode , setBarCode] = useState("");
   const [update, setUpdate] = useState();
+  const [filteredLocation , setFilteredLocation] = useState([])
 
   const save = () => {
 
@@ -191,13 +192,32 @@ const AddOperationTypes = () => {
         });
     }
   };
-console.log(operationWarehouse,"operatioWarehouse here")
+
+  
+  const handleWarehouseSelection = (e) =>{
+
+    setOperationwarehouse(e.target.value)
+    const selectedWareHouse = e.target.value ;
+    var selectedWareHouseDetails = warehouse.filter((itm,index) =>{
+      return itm.WAREHOUSE_NAME == selectedWareHouse
+    })
+
+    selectedWareHouseDetails = selectedWareHouseDetails[0];
+    const shortName = selectedWareHouseDetails.SHORT_NAME;
+    
+    var shortedLocation = location.filter((itm ,index) =>{
+      return itm.PARENT_LOCATION === shortName
+    })
+
+    setFilteredLocation(shortedLocation)
+  }
   return (
     <>
       <Navebar
         showBelowMenu={true}
         title="Operation Types"
         save={update === true ? updateData : save}
+        showCanelBtn={true}
       />
       <div className="AddOperatintypeContainer">
         <div className="Addoperationcontent">
@@ -222,9 +242,9 @@ console.log(operationWarehouse,"operatioWarehouse here")
               <p>WareHouse</p>
               <select
                 value={operationWarehouse}
-                onChange={(e) => setOperationwarehouse(e.target.value)}
+                onChange={(e) => handleWarehouseSelection(e)}
               >
-                <option value=""></option>
+                <option value="">select any one</option>
                 {warehouse.map((item, index) => {
                   return (
                     <>
@@ -248,7 +268,7 @@ console.log(operationWarehouse,"operatioWarehouse here")
                 value={typeofoperation}
                 onChange={(e) => setTypeOfOperation(e.target.value)}
               >
-                <option></option>
+               
                 <option>Receipt</option>
                 <option>Delivery</option>
                 <option>Internal Transfer</option>
@@ -273,7 +293,7 @@ console.log(operationWarehouse,"operatioWarehouse here")
               onChange={(e) => setSourceLocation(e.target.value)}
             >
               <option value="">Select any one</option>
-              {location.map((item, index) => {
+              {filteredLocation.map((item, index) => {
                 return (
                   <>
                     <option key={index} value={item.LOCATION_NAME}>
@@ -291,7 +311,7 @@ console.log(operationWarehouse,"operatioWarehouse here")
               onChange={(e) => setDestination(e.target.value)}
             >
               <option value="">Select any one</option>
-              {location.map((item, index) => {
+              {filteredLocation.map((item, index) => {
                 return (
                   <>
                     <option key={index} value={item.LOCATION_NAME}>

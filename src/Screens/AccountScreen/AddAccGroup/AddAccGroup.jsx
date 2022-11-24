@@ -135,7 +135,7 @@ const AddAccGroup = () => {
   }
   return (
     <>
-      <AccountNavbar showBelowMenu={true} title="Account Group" save={update === true ? updateData : save} />
+      <AccountNavbar showBelowMenu={true} title="Account Group" save={update === true ? updateData : save} showCanelBtn={true}/>
       <div className="AddAccGroupCon">
         <div className="AddAccgroupdetails">
           <div className="accgroupfirst">

@@ -320,7 +320,7 @@ const AddAssetType = () => {
   }
   return (
     <>
-      <AccountNavbar showBelowMenu={true} title="Asset Type" save={update === true ? updateData : save}/>
+      <AccountNavbar showBelowMenu={true} title="Asset Type" save={update === true ? updateData : save} showCanelBtn={true}/>
      
       <div className="AddAssetTypeCon">
         <div className="assetType">
@@ -332,7 +332,7 @@ const AddAssetType = () => {
             <div className="parentcat">
               <p>Parent Category</p>
               <select value={parentCate} onChange={(e) => setParentCate(e.target.value)}>
-                <option value=""></option>
+                <option value="">select any one</option>
                 <option value="The machine and equipments">The machine and equipments</option>
                 <option value="The Cars">The Cars</option>
                 <option value="Prehab houses">Prehab houses</option>
@@ -358,7 +358,7 @@ const AddAssetType = () => {
             <div className="assettext">
               <p>Journal</p>
               <select value={journal} onChange={(e) => setJournal(e.target.value)}>
-                <option value=""></option>
+                <option value="">select any one</option>
                 {
                   getJournal.map((itm,index) => {
                     return(
@@ -369,13 +369,12 @@ const AddAssetType = () => {
                   })
                  
                 }
-                 <option>testing</option>
               </select>
             </div>
             <div className="assettext">
               <p>Asset Account</p>
               <select value={assetAcc} onChange={(e) => setAssetAcc(e.target.value)}>
-                <option value=""></option>
+                <option value="">select any one</option>
                 <option value="110101001 Riyadh Management Found">110101001 Riyadh Management Found</option>
                 <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
                 <option value="110101003 Hoffuf Found">110101003 Hoffuf Found</option>
@@ -386,7 +385,7 @@ const AddAssetType = () => {
             <div className="assettext">
               <p>Depreciation Entries: Asset Account</p>
               <select value={assAcc} onChange={(e) => setAssAcc(e.target.value)}>
-                <option value=""></option>
+                <option value="">select any one</option>
                 <option value="110101001 Riyadh Management Found">110101001 Riyadh Management Found</option>
                 <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
                 <option value="110101003 Hoffuf Found">110101003 Hoffuf Found</option>
@@ -397,7 +396,7 @@ const AddAssetType = () => {
             <div className="assettext">
               <p>Depreciation Entries: Expense Accountt</p>
               <select value={expenceAcc} onChange={(e) => setExpenseAcc(e.target.value)} >
-                <option value=""></option>
+                <option value="">select any one</option>
                 <option value="110101001 Riyadh Management Found">110101001 Riyadh Management Found</option>
                 <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
                 <option value="110101003 Hoffuf Found">110101003 Hoffuf Found</option>
@@ -408,7 +407,7 @@ const AddAssetType = () => {
             <div className="assettext">
               <p>Analytic Account</p>
               <select value={analAcc} onChange={(e) => setAnnaAcc(e.target.value)}>
-                <option value=""></option>
+                <option value="">select any one</option>
                {
                 getAnalyticAcc.map((itm,index) => {
                   return(
@@ -457,7 +456,7 @@ const AddAssetType = () => {
             <div className="assettypeselect">
               <p>Automatic Creation</p>
               <select value={creation} onChange={(e) => setCreation(e.target.value)}>
-                <option value=""></option>
+                <option value="">select any one</option>
                 <option value="Invoice">Invoice</option>
                 <option value="Material Receipts">Material Receipts</option>
                 <option value="Purchase Order">Purchase Order</option>

@@ -97,7 +97,7 @@ const AddIncoterms = () => {
  }
   return (
     <div>
-        <AccountNavbar showBelowMenu={true} title="Income Terms" save={update === true ? updateData : save}/>
+        <AccountNavbar showBelowMenu={true} title="Income Terms" save={update === true ? updateData : save} showCanelBtn={true}/>
         <div className='AddIncotermsCon'>
            <div className="AddIncotermsContent">
              <div className="AddIncoText">

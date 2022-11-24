@@ -83,6 +83,25 @@ const AddProductCategories = (props) => {
       }
     });
   }, []);
+  useEffect(() => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(pricediffUrl,formData).then((res) => {
+      if (res.data.status === true) {
+        setPriceDef(res.data.data);
+      } else if (res.data.status === false) {
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const formData = new FormData();
@@ -254,6 +273,7 @@ const AddProductCategories = (props) => {
         showBelowMenu={true}
         title="Product Category"
         save={update === true ? updateData : save}
+        showCanelBtn={true}
       />
       <div className="AddProductCategoriesContainer">
         {/* <div className="AddProductCatehead">
@@ -341,8 +361,8 @@ const AddProductCategories = (props) => {
                   {pricedif.map((item, index) => {
                     return (
                       <>
-                        <option value={item.EXPENSE_NAME} key={index}>
-                          {item.EXPENSE_NAME}
+                        <option value={item.AMOUNT_NAME} key={index}>
+                          {item.AMOUNT_NAME}
                         </option>
                       </>
                     );
@@ -394,7 +414,6 @@ const AddProductCategories = (props) => {
                   onChange={(e) => setStockIn(e.target.value)}
                   value={stockIn}
                 >
-                  <option value=""></option>
                   <option value="100002 Bank">100002 Bank</option>
                   <option value="100003 Security Deposit">
                     100003 Security Deposit
@@ -419,7 +438,6 @@ const AddProductCategories = (props) => {
                   value={stockOut}
                   onChange={(e) => setStockOut(e.target.value)}
                 >
-                  <option value=""></option>
                   <option value="100002 Bank">100002 Bank</option>
                   <option value="100003 Security Deposit">
                     100003 Security Deposit
@@ -444,7 +462,6 @@ const AddProductCategories = (props) => {
                   value={stockVal}
                   onChange={(e) => setStockVal(e.target.value)}
                 >
-                  <option value=""></option>
                   <option value="100002 Bank">100002 Bank</option>
                   <option value="100003 Security Deposit">
                     100003 Security Deposit
@@ -469,7 +486,6 @@ const AddProductCategories = (props) => {
                   value={stockJournal}
                   onChange={(e) => setStockJournal(e.target.value)}
                 >
-                  <option value=""></option>
                   <option value="Customer Invoices (SAR)">
                     Customer Invoices (SAR)
                   </option>
@@ -500,7 +516,6 @@ const AddProductCategories = (props) => {
                   value={removalStrategy}
                   onChange={(e) => setRemovalStrategy(e.target.value)}
                 >
-                  <option value=""></option>
                   <option value="First in first out (FIFO)">
                     First in first out (FIFO)
                   </option>
@@ -518,7 +533,6 @@ const AddProductCategories = (props) => {
                   value={costing}
                   onChange={(e) => setCosting(e.target.value)}
                 >
-                  <option value=""></option>
                   <option value="Standard Price">Standard Price</option>
                   <option value="First in first out (FIFO)">
                     First in first out (FIFO)
@@ -532,7 +546,6 @@ const AddProductCategories = (props) => {
                   value={valuation}
                   onChange={(e) => setValuation(e.target.value)}
                 >
-                  <option value=""></option>
                   <option value="Manual">Manual</option>
                   <option value="Automated">Automated</option>
                 </select>

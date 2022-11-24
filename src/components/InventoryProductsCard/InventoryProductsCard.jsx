@@ -17,7 +17,7 @@ const InventoryProductsCard = (props) => {
   const redirectToProductdetails = (dta) => {
     navigate("/InventoryProductsDetails", { state: dta });
   };
-  const { data, deleteRef, setDeleteRef } = props;
+  const { data, deleteRef, setDeleteRef,getProduct } = props;
   const [iconColor, setIconColor] = useState("#7478a1");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
@@ -36,6 +36,7 @@ const InventoryProductsCard = (props) => {
         if (res.data.status == true) {
           setDeleteRef(!deleteRef);
           toast("Product Deleted Successfuly !", { type: "success" });
+          getProduct();
         } else if (res.data.status == false) {
           toast(res.data.message, { type: "warning" });
         }
@@ -45,7 +46,9 @@ const InventoryProductsCard = (props) => {
       });
   };
   return (
-    <div className="ProductsContainer">
+    <>
+    {data.DELETE_STATUS == "X" ?
+    <div className="ProductsContainer" style={{opacity : 0.5}}>
       <div
         className="ProductCon"
         onClick={() => redirectToProductdetails(data)}
@@ -62,14 +65,41 @@ const InventoryProductsCard = (props) => {
       <div className="deleteicon" >
         <MdDelete
           size={20}
-          style={{ color: iconColor ,zIndex:10}}
+          style={{ color: "#b70000" ,zIndex:10}}
           onMouseOver={() => setIconColor("#293391")}
           onMouseOut={() => setIconColor("#7478a1")}
           onClick={() => deleteProduct(data)}
         />
       </div>
       <ToastContainer />
+    </div>:
+    <div className="ProductsContainer" >
+    <div
+      className="ProductCon"
+      onClick={() => redirectToProductdetails(data)}
+    >
+      <div className="ProductsCamera">
+        <img src={data.PRODUCT_IMAGE} alt="camera" />
+      </div>
+      <div className="ProductContent">
+        <h6>{data.PRODUCT_NAME}</h6>
+        <p>Price: {data.COST_PRICE} SAR</p>
+        <p>On hand: {data.UNIT_OF_MEASURE}</p>
+      </div>
     </div>
+    <div className="deleteicon" >
+      <MdDelete
+        size={20}
+        style={{ color: iconColor ,zIndex:10}}
+        onMouseOver={() => setIconColor("#293391")}
+        onMouseOut={() => setIconColor("#7478a1")}
+        onClick={() => deleteProduct(data)}
+      />
+    </div>
+    <ToastContainer />
+  </div>
+    }
+    </>
   );
 };
 

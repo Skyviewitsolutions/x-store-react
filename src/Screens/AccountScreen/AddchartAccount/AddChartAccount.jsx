@@ -213,10 +213,11 @@ const AddChartAccount = () => {
         showBelowMenu={true}
         title="chart of Account"
         save={update === true ? updateData : save}
+        showCanelBtn={true}
       />
       <div className="Accmaincon">
         <div className="AddChartAccountContainer">
-          <div className="AddChartAccountHead">
+          {/* <div className="AddChartAccountHead">
             <div className="AddAccounthead1">
               <FaList
                 size="25px"
@@ -226,7 +227,7 @@ const AddChartAccount = () => {
                 <p>journal Item</p>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="AddChartAccountContent">
             <div className="AddAccountCon1">
               <p>Code</p>

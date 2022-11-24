@@ -25,7 +25,9 @@ const Uom = () => {
       .then((res) => {
         console.log(res, "uom");
         if (res.data.status === true) {
-          setUOM(res.data.data);
+          var val = res.data.data;
+          val = val.reverse()
+          setUOM(val);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {

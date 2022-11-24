@@ -32,7 +32,9 @@ const ProductCategories = () => {
       .then((res) => {
         console.log(res, "result");
         if (res.data.status === true) {
-          setProductCate(res.data.data);
+          var val = res.data.data;
+          val = val.reverse();
+          setProductCate(val);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {

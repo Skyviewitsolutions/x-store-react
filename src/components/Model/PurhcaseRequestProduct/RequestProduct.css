@@ -10,7 +10,6 @@
     padding: 15px 20px;
     display: flex;
     margin-top: 40px;
-    margin-bottom: 40px
 }
 .product_content h1{
     font-size: 25px;
@@ -53,4 +52,19 @@
 .pro_text2{
     width: 50%;
     margin-top: 42px;
+}
+.probtn{
+    margin: 21px 39px;
+}
+.btn{
+    background-color:#0077b0;
+    border:none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 33px;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-left: 10px;
 }

@@ -31,7 +31,9 @@ const Warehouse = () => {
       .then((res) => {
         console.log(res, "response");
         if (res.data.status === true) {
-          setWareHousedetails(res.data.data);
+          var val = res.data.data;
+          val = val.reverse()
+          setWareHousedetails(val);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {

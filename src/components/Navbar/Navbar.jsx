@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
 
 const Navebar = (props) => {
-  const { showBelowMenu, handleCreatePage,save , title,disabledCreate,} = props;
+  const { showBelowMenu, handleCreatePage,save , title,disabledCreate, showCanelBtn,} = props;
   const navigate = useNavigate();
 
   return (
@@ -55,12 +55,12 @@ const Navebar = (props) => {
                   Lots/Serial Numbers
                 </NavDropdown.Item> */}
               </NavDropdown>
-              <Nav.Link href="#link" className="navetext">
+              {/* <Nav.Link href="#link" className="navetext">
                 Warehouses Reports
               </Nav.Link>
               <Nav.Link href="#link" className="navetext">
                 Reporting
-              </Nav.Link>
+              </Nav.Link> */}
               <NavDropdown title="Settings" id="collasible-nav-dropdown">
                 <NavDropdown.Item onClick={()=> navigate('/Warehouse')}>Warehouse</NavDropdown.Item>
                 <NavDropdown.Item  onClick={ () => navigate('/Location')}>Location</NavDropdown.Item>
@@ -105,9 +105,24 @@ const Navebar = (props) => {
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
               {title ? title : "Inventory"}
               </h5>
-              <button className="createbtn" onClick={handleCreatePage} disabled={disabledCreate}>
-                Create
-              </button>
+             
+              {showCanelBtn === true ? (
+                <button
+                  className="createbtn"
+                  onClick={() => navigate(-1)}
+                  disabled={disabledCreate}
+                >
+                  cancel
+                </button>
+              ) : (
+                <button
+                  className="createbtn"
+                  onClick={handleCreatePage}
+                  disabled={disabledCreate}
+                >
+                  create
+                </button>
+              )}
               <button className="savebtn" onClick={save}>Save</button>
             </div>
             <div

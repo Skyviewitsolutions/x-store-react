@@ -28,11 +28,13 @@ const getAllJournal = () => {
     .then((res) => {
         if(res.data.status === true)
         {
-            setJournal(res.data.data);
+          var val = res.data.data;
+          val = val.reverse();
+            setJournal(val);
         }
         else if(res.data.status === false)
         {
-            alert(res.data.message);
+            toast(res.data.message,{type:"error"});
         }
     })
     .catch((err) => {

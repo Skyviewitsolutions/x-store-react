@@ -31,11 +31,13 @@ const BankAcc = (props) => {
         .then((res) => {
             if(res.data.status === true)
             {
-                setBankAcc(res.data.data);
+                var val = res.data.data;
+                val = val.reverse()
+                setBankAcc(val);
             }
             else if(res.data.status === false)
             {
-                alert(res.data.message);
+                toast(res.data.message,{type:"error"});
             }
         })
         .catch((err) => {

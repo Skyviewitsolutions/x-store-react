@@ -26,7 +26,9 @@ const AccountGroup = () => {
         .then((res) => {
             if(res.data.status === true)
             {
-                setAccGrp(res.data.data);
+                var val = res.data.data;
+                val = val.reverse();
+                setAccGrp(val);
             }
             else if(res.data.status === false)
             {

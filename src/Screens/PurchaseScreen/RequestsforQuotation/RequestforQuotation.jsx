@@ -1,6 +1,12 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { FiEdit } from 'react-icons/fi'
+import { MdDelete } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import CustomTable from '../../../components/CustomTable/CustomTable'
+import { endpoints } from '../../../services/endpoints'
 import PurchaseNavbar from '../PurchaseNavbar'
 import './AddRequestQuotation/AddRequestQuotation.css'
 
@@ -11,63 +17,63 @@ const RequestforQuotation = () => {
        navigate("/AddRequestQuotation");
      };
   
+     const [requestQuotationAll , setRequestQuotationAll] = useState([]);
+     const requestUrl = endpoints.requestQuotation.allRequestQuotation;
+     const getAuthtoken = localStorage.getItem("authtoken");
+     const userAuth = localStorage.getItem("userAuth");
 
-    const data = [
-        {
-             id:1,
-             refrence:"P03577",
-             orederDate:"23/10/2022 22:27:13",
-             vendor:"Akun Logistics",
-             purchaseRepresentive:"Account-Ryd",
-             sourceDocument:"",
-             total:"24,188.78 SR",
-             status:"Locked",
-        },
-        {
-             id:2,
-             refrence:"P03577",
-             orederDate:"23/10/2022 22:27:13",
-             vendor:"Akun Logistics",
-             purchaseRepresentive:"Account-Ryd",
-             sourceDocument:"",
-             total:"24,188.78 SR",
-             status:"Locked",
-        },
-        {
-             id:3,
-             refrence:"P03577",
-             orederDate:"23/10/2022 22:27:13",
-             vendor:"Akun Logistics",
-             purchaseRepresentive:"Account-Ryd",
-             sourceDocument:"",
-             total:"24,188.78 SR",
-             status:"Locked",
-        },
-        {
-             id:4,
-             refrence:"P03577",
-             orederDate:"23/10/2022 22:27:13",
-             vendor:"Akun Logistics",
-             purchaseRepresentive:"Account-Ryd",
-             sourceDocument:"",
-             total:"24,188.78 SR",
-             status:"Locked",
-        },
-    ]
+     useEffect(() => {
+          const formData = new FormData();
+          formData.append("User_Authorization" , getAuthtoken);
+          formData.append("User_AuthKey" , userAuth);
+          axios.post(requestUrl,formData)
+          .then((res) => {
+            if(res.data.status === true){
+              setRequestQuotationAll(res.data.data)
+            }else if(res.data.status === false){
+              if(res.data.code === 3)
+              {
+                toast("Session expired , Please re-login",{type:"warning"})
+                navigate('/');
+              }
+              else{
+               toast(res.data.message,{type:"error"});
+              }
+            }
+          })
+          .catch((err) => {
+            console.log(err , "something went wrong");
+          })
+     },[])
 
+   
     const column = [
-        {title:"Refrence" , name:"refrence"},
-        {title:"Order Date" , name:"orederDate"},
-        {title:"Vendor" , name:"vendor"},
-        {title:"Purchase Representative" , name:"purchaseRepresentive"},
-        {title:"Source Document" , name:"sourceDocument"},
-        {title:"Total" , name:"total"},
-        {title:"Status" , name:"status"}
+        {title:"Refrence" , name:"VENDOR_REFERENCE"},
+        {title:"Order Date" , name:"ORDER_DATE"},
+        {title:"Vendor" , name:"VENDOR_NAME"},
+        {title:"Purchase Representative" , name:"PURCHASE_REPRESENTATIVE"},
+        {
+          label:"Actions",
+          name:"ID",
+          options:{
+              customBodyRender:(value , tableMeta , updateValue) => {
+                  return(
+                      <>
+                       <div className="updtdlt">
+                      <FiEdit size={23} color="#4f434d"  style={{cursor:"pointer"}}/>
+                      <MdDelete size={23} color="#4f434d" style={{cursor:"pointer"}}/>
+                      </div>
+                      </>
+                      
+                  )
+              }
+          }
+      }
     ]
   return (
     <div>
         <PurchaseNavbar showBelowMenu={true} title="Requests for Quotation" handleCreatePage={handleCreatePage}/>
-        <CustomTable data={data} column={column}/>
+        <CustomTable data={requestQuotationAll} column={column}/>
     </div>
   )
 }

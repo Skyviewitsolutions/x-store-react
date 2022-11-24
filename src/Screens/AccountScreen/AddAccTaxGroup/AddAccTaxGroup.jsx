@@ -130,7 +130,7 @@ const AddAccTaxGroup = () => {
    }
   return (
     <div>
-        <AccountNavbar showBelowMenu={true} title="Account Tax Group" save={update === true ? updateData : save} />
+        <AccountNavbar showBelowMenu={true} title="Account Tax Group" save={update === true ? updateData : save} showCanelBtn={true}/>
         <div className='AddAccTaxGroupCon'>
            <div className="AddAccTaxGroupContent">
              <div className="AddAccTaxGroupText">

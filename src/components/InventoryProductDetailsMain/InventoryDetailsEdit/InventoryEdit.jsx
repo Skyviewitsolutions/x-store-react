@@ -13,6 +13,8 @@ const InventoryEdit = (props) => {
     setWeight,
     volume,
     setVolume,
+    responsible,
+    setResponsible,
     descriptionDeliveryOrder,
     setDescriptionDeliveryOrder,
     descriptionInternalTranser,
@@ -30,7 +32,12 @@ const InventoryEdit = (props) => {
           <h5>Operations</h5>
           <div className="Editcontent1">
             <p>Routes</p>
-            <input type="checkbox" value={buy} onChange={() => setBuy(!buy)} checked={buy}/>
+            <input
+              type="checkbox"
+              value={buy}
+              onChange={() => setBuy(!buy)}
+              checked={buy}
+            />
             <label>Buy</label>
           </div>
           <div className="Editcontent1">
@@ -49,7 +56,6 @@ const InventoryEdit = (props) => {
               type="text"
               placeholder="0.00"
               value={customerLeadTime}
-             
               onChange={(e) => setCustomerLeadTime(e.target.value)}
             />
             <span>days</span>
@@ -81,15 +87,14 @@ const InventoryEdit = (props) => {
           </div>
           <div className="Editcontent1">
             <p>Responsible</p>
-            <select>
-              <option>Administrator</option>
-              <option>Abd Alla Mohamed Ahmed</option>
-              <option>Abdel Hamid Ali Altawaita</option>
-              <option>Abdul Basit Abdul Ghani</option>
-              <option>Abdulmajeed Zidan Khan</option>
-              <option>Abdullah Mahyoub Moh</option>
-              <option>Abdullah Saad Mohsen Alghamdi</option>
-              <option>Search More..</option>
+            <select value={responsible} onChange={(e) => setResponsible(e.target.value)}>
+              <option value="Administrator">Administrator</option>
+              <option value="Abd Alla Mohamed Ahmed">Abd Alla Mohamed Ahmed</option>
+              <option value="Abdel Hamid Ali Altawaita">Abdel Hamid Ali Altawaita</option>
+              <option value="Abdul Basit Abdul Ghani">Abdul Basit Abdul Ghani</option>
+              <option value="Abdulmajeed Zidan Khan">Abdulmajeed Zidan Khan</option>
+              <option value="Abdullah Mahyoub Moh">Abdullah Mahyoub Moh</option>
+              <option value="Abdullah Saad Mohsen Alghamdi">Abdullah Saad Mohsen Alghamdi</option>
             </select>
             <FaExternalLinkAlt
               size="14px"

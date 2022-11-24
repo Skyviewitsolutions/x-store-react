@@ -127,7 +127,7 @@ const AddPayment = () => {
 
   return (
     <div>
-      <AccountNavbar showBelowMenu={true} title="Payment Terms" save={update === true ? updateData : save} />
+      <AccountNavbar showBelowMenu={true} title="Payment Terms" save={update === true ? updateData : save} showCanelBtn={true} />
       <div className="AddPaymentCon">
         <div className="AddPaytext">
           <p>Payment Terms</p>

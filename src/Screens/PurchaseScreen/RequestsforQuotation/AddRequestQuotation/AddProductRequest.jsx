@@ -11,20 +11,24 @@ import './AddProductRequest.css'
 const AddProductRequest = (props) => {
 
     const navigate = useNavigate()
+    const {vendor} = props;
 
 const [modalShow , setModalShow] = useState(false)
 const [productAll , setProductAll] = useState([]);
-
-const productUrl = endpoints.products.allProduct;
+const productUrl = endpoints.requestQuotation.getAllproductdetails;
+console.log(productUrl,"gfshdgfgad")
 const getAuthtoken = localStorage.getItem("authtoken");
 const userAuth = localStorage.getItem("userAuth");
+const vendorId = localStorage.getItem("varId");
 
 useEffect(() => {
     const formData = new FormData();
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
+    formData.append("Vendor_ID" , vendor)
     axios.post(productUrl,formData)
     .then((res) => {
+      console.log(res,"responscbdch")
       if(res.data.status === true){
         setProductAll(res.data.data)
       }else if(res.data.status === false){
@@ -41,19 +45,16 @@ useEffect(() => {
     .catch((err) => {
       console.log(err , "something went wrong");
     })
-
-
-},[])
+},[vendor])
 
 
 const column = [
-    {label:"No" , name:"PRODUCT_ID"},
+    {label:"VenID" , name:"VENDOR_ID"},
+    {label:"No" , name:"SERIAL_NO"},
     {label:"Product" , name:"PRODUCT_NAME"},
-    {label:"Description" , name:"DISCRIPTION_FOR_IT"},
-    {label:"Quantity" , name:"COST_PRICE"},
-    {label:"UOM" , name:"PURCHASE_UOM"},
-    {label:"Unit Price" , name:"COST_PRICE"},
-    {label:"Taxes" , name:"CUSTOMER_TAXES"},
+    {label:"Description" , name:"DESCRIPTION"},
+    {label:"Quantity" , name:"PRODUCT_QUANTITY"},
+    {label:"UOM" , name:"UNIT_OF_MEASUREMENT"},
 ]
 
   return (

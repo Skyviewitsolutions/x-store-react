@@ -30,7 +30,9 @@ const PurchaseAgreementTypes = () => {
    .then((res) => {
     console.log(res,"response")
      if(res.data.status === true){
-       setAllagreementtype(res.data.data);
+       var val = res.data.data;
+       val = val.reverse();
+       setAllagreementtype(val);
      }else if(res.data.status === false){
       if(res.data.code === 3)
       {

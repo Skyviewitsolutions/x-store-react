@@ -318,7 +318,7 @@ const save = () => {
 
   return (
     <>
-    <AccountNavbar showBelowMenu={true}  title="Differed Expense Type" save={update === true ? updateData : save}/>
+    <AccountNavbar showBelowMenu={true}  title="Differed Expense Type" save={update === true ? updateData : save} showCanelBtn={true}/>
     <div className="AddAssetTypeCon">
         <div className="assetType">
           <p>Deferred Expense Type</p>

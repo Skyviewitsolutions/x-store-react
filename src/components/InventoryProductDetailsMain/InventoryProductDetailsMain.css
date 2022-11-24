@@ -137,7 +137,11 @@
     border-bottom: 3px solid #6666;
 }
 
-@media only screen and (max-width:1000px)
+input[type="checkbox"][readonly] {
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px)
 {
    .proin{
     border: none;

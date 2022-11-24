@@ -32,7 +32,9 @@ const Location = () => {
       .then((res) => {
         console.log(res, "response location");
         if (res.data.status === true) {
-          setLocationdetails(res.data.data);
+          var val = res.data.data;
+          val = val.reverse();
+          setLocationdetails(val);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {

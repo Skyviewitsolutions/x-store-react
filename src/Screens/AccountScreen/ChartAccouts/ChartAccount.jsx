@@ -31,9 +31,18 @@ function ChartAccount(props) {
       .post(allChartAccUrl,formData)
       .then((res) => {
         if (res.data.status === true) {
-          setChartAcc(res.data.data);
+          var val = res.data.data;
+          val = val.reverse()
+          setChartAcc(val);
         } else if (res.data.status === false) {
-          alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -61,7 +70,14 @@ axios.post(deleteChartAccURL,formData)
   }
   else if(res.data.status === false)
   {
-      toast(res.data.message,{type:"error"});
+    if(res.data.code === 3)
+    {
+      toast("Session expired , Please re-login",{type:"warning"})
+      navigate('/');
+    }
+    else{
+     toast(res.data.message,{type:"error"});
+    }
   }
 })
 .catch((err) => {

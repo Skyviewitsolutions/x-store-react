@@ -182,6 +182,7 @@ const InventoryProductDetailsMain = (props) => {
                   onChange={() => setSold(!sold)}
                   checked={sold}
                   id="sold"
+                  readOnly={isEdit === false ? true : false}
                 />
                 <label htmlFor="sold">Sold</label>
               </div>
@@ -192,6 +193,7 @@ const InventoryProductDetailsMain = (props) => {
                   onChange={() => setPurchased(!purchased)}
                   checked={purchased}
                   id="purchased"
+                  readOnly={isEdit === false ? true : false}
                 />
                 <label htmlFor="purchased">Purchased</label>
               </div>
@@ -202,6 +204,7 @@ const InventoryProductDetailsMain = (props) => {
                   onChange={() => setExpensed(!expensed)}
                   checked={expensed}
                   id="expensed"
+                  readOnly={isEdit === false ? true : false}
                 />
                 <label htmlFor="expensed">Expensed</label>
               </div>
@@ -212,6 +215,7 @@ const InventoryProductDetailsMain = (props) => {
                   onChange={() => setDeduction(!deduction)}
                   checked={deduction}
                   id="deduction"
+                  readOnly={isEdit === false ? true : false}
                 />
                 <label htmlFor="deduction">Deduction</label>
               </div>
@@ -223,7 +227,7 @@ const InventoryProductDetailsMain = (props) => {
                       alt="camera"
                     />
                   </label>
-                  {isEdit === true && (  <input type="file" id="takePhoto" onChange={handleChange} style={{visibility: "hidden"}}/> )}
+                  {isEdit === true && (  <input type="file" id="takePhoto" onChange={handleChange} style={{visibility: "hidden"}} accept="image/png, image/gif, image/jpeg"/> )}
                 </div>
           </div>
         </div>

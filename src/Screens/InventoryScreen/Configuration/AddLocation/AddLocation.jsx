@@ -176,9 +176,10 @@ const AddLocation = () => {
         showBelowMenu={true}
         save={update === true ? updateData : save}
         title="Location"
+        showCanelBtn={true}
       />
       <div className="AddlocationCon">
-        <div className="AddLocationhead">
+        {/* <div className="AddLocationhead">
           <div className="AddLocation2">
             <div className="head1">
               <FaRandom
@@ -208,7 +209,7 @@ const AddLocation = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="AddLocationmain">
           <div className="AddLocationinput">
             <h5>Location Name</h5>

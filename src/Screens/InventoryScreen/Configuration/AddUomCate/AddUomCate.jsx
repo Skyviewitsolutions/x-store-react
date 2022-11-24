@@ -93,6 +93,7 @@ const AddUomCate = () => {
         showBelowMenu={true}
         save={update === true ? updateData : save}
         title="UOM Category"
+        showCanelBtn={true}
       />
       <div className="AddUomCateCon">
         <div className="AddUomCateContent">

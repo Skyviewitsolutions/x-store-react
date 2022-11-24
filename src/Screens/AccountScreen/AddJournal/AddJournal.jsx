@@ -167,7 +167,7 @@ const userAuth = localStorage.getItem("userAuth");
 
    return (
     <>
-     <AccountNavbar showBelowMenu={true} title = "Journal" save={update === true ? updateData : save}/>
+     <AccountNavbar showBelowMenu={true} title = "Journal" save={update === true ? updateData : save} showCanelBtn={true}/>
     <div className="JournalMainCon">
         <div className="JournalContainer">
             <p>Journal Name</p>

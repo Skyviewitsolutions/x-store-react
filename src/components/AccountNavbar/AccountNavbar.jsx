@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
 
 const AccountNavbar = (props) => {
-  const { showBelowMenu, handleCreatePage,title,save } = props;
+  const { showBelowMenu, handleCreatePage,save , title,disabledCreate, showCanelBtn,} = props;
   const navigate = useNavigate();
 
   return (
@@ -35,14 +35,14 @@ const AccountNavbar = (props) => {
           />
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
-              <Nav.Link href="#home" className="Accnavetext">
+              {/* <Nav.Link href="#home" className="Accnavetext">
                 OverView
               </Nav.Link>
               <Nav.Link href="/Inventory" className="Accnavetext">
                 Customers
-              </Nav.Link>
+              </Nav.Link> */}
               <NavDropdown title="Vendors" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="/InventoryProducts">
+                {/* <NavDropdown.Item href="/InventoryProducts">
                   Bills
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/InventoryVarient">
@@ -53,27 +53,25 @@ const AccountNavbar = (props) => {
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">
                   Payment
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">
+                </NavDropdown.Item> */}
+                <NavDropdown.Item onClick={ () => navigate('/AccountProduct')}>
                   Product
                 </NavDropdown.Item>
-                <NavDropdown.Item  onClick={ () => navigate('/Vendors')}>
+                <NavDropdown.Item  onClick={ () => navigate('/AccountVendor')}>
                   vendors
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#link" className="Accnavetext">
+              {/* <Nav.Link href="#link" className="Accnavetext">
                 Accounting
               </Nav.Link>
               <Nav.Link href="#link" className="Accnavetext">
                 Reporting
-              </Nav.Link>
+              </Nav.Link> */}
               <NavDropdown title="Settings" id="collasible-nav-dropdown" >
                 <div className="Configcls">
                 <NavDropdown.Item  href="">
                  Setting
                 </NavDropdown.Item>
-
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>Invoicing</NavDropdown.Item>
                 <NavDropdown.Item  onClick={ () => navigate('/PaymentTerms')}>Payment Terms</NavDropdown.Item>
                 <NavDropdown.Item  onClick = {()=> navigate('/TaxName')}>Taxes</NavDropdown.Item>
                 {/* <NavDropdown.Item  onClick={()=> navigate('/Fisical')}>
@@ -85,9 +83,7 @@ const AccountNavbar = (props) => {
                 <NavDropdown.Item href="#action/3.4"  onClick={ () => navigate('/Journal')}>
                   Journals
                 </NavDropdown.Item>
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                  Payments
-                </NavDropdown.Item>
+              
                 {/* <NavDropdown.Item >
                   Add a Bank Account
                 </NavDropdown.Item> */}
@@ -97,30 +93,21 @@ const AccountNavbar = (props) => {
                 {/* <NavDropdown.Item  onClick = {() => navigate('/AccPaymentCard')}>
                 Payment Acquirers
                 </NavDropdown.Item> */}
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                 Accounting                                                     
-                </NavDropdown.Item>
+
                 <NavDropdown.Item  onClick={() => navigate('/Currencies')}>
                 Currencies
                 </NavDropdown.Item>
                 <NavDropdown.Item  onClick={()=> navigate('/ChartAccount')}>Chart of Accounts</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/JournalGroup')}>Journal Group</NavDropdown.Item>
                 {/* <NavDropdown.Item >Reconciliation Models</NavDropdown.Item> */}
-                <NavDropdown.Item >Account Defaults</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AccountTypes')}>Account Types</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AccountTags')}>Account Tags</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AccountGroup')}>Account Groups</NavDropdown.Item>
                 <NavDropdown.Item  onClick={() => navigate('/AccTaxGroup')}>Account Tax Groups</NavDropdown.Item>
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                Management
-                </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AssetTypes')}>Asset Type</NavDropdown.Item>
                 {/* <NavDropdown.Item>Asset Upgrade</NavDropdown.Item> */}
                 <NavDropdown.Item onClick={() => navigate('/AssetUseStatus')}>Asset Use Status</NavDropdown.Item>
                 <NavDropdown.Item  onClick={() => navigate('/DifferedExpenseType')}>Deferred Expense Types</NavDropdown.Item>
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                Analytic Accounting
-                </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AnalyticAccounts')}>Analytic Accounts</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AnalyticTag')}>Analytic Tags</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/AnalyticAccountGroup')}>Analytic Account Groups</NavDropdown.Item>
@@ -157,9 +144,23 @@ const AccountNavbar = (props) => {
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
               {title ? title : "Inventory"}
               </h5>
-              <button className="createbtn" onClick={handleCreatePage}>
-                Create
-              </button>
+              {showCanelBtn === true ? (
+                <button
+                  className="createbtn"
+                  onClick={() => navigate(-1)}
+                  disabled={disabledCreate}
+                >
+                  cancel
+                </button>
+              ) : (
+                <button
+                  className="createbtn"
+                  onClick={handleCreatePage}
+                  disabled={disabledCreate}
+                >
+                  create
+                </button>
+              )}
               <button className="savebtn" onClick={save}>Save</button>
             </div>
             {/* <div

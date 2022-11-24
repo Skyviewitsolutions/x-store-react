@@ -27,11 +27,20 @@ const AnalyticAccountGroups = () => {
         .then((res) => {
             if(res.data.status === true)
             {
-                setAnalyticAccGrp(res.data.data);
+                var val = res.data;
+                val = val.reverse()
+                setAnalyticAccGrp(val);
             }
             else if(res.data.status === false)
             {
-                toast(res.data.message,{type:"warning"});
+                if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
             }
         })
         .catch((err) => {
@@ -59,7 +68,14 @@ const AnalyticAccountGroups = () => {
             }
             else if(res.data.status === false)
             {
-                toast(res.data.message,{type:"error"});
+                if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
             }
         })
         .catch((err) => {

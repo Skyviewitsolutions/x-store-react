@@ -104,9 +104,9 @@ const AddAnalyticAccountGroup = () => {
 
   return (
     <div>
-        <AccountNavbar showBelowMenu={true} title="Analytic Account Group" save={update === true ? updateData : save}/>
+        <AccountNavbar showBelowMenu={true} title="Analytic Account Group" save={update === true ? updateData : save} showCanelBtn={true}/>
       <div className='AddAnalyticAccountGroupCon'>
-       <div className="AddAnalyticAccountGrouphead">
+       {/* <div className="AddAnalyticAccountGrouphead">
         <div className="AddAnalyticAccountGroupcontent">
           <FaBars
             size="33px"
@@ -117,7 +117,7 @@ const AddAnalyticAccountGroup = () => {
             <p>Account</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="AddAnalyticAccountGroupdetails">
             <div className="AddAnalyticAccountGroupfirst">
                 <div className="AddAnalyticAccountGrouptext1">

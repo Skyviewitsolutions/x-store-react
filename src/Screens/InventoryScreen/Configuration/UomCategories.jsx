@@ -27,7 +27,9 @@ const getUomCategory = () => {
     console.log(res,"response");
     if(res.data.status === true)
     {
-      setUomdetails(res.data.data);
+      var val = res.data.data;
+      val = val.reverse();
+      setUomdetails(val);
     }
     else if(res.data.status ===  false) 
     {

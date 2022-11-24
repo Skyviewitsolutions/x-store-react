@@ -20,38 +20,40 @@ const InventoryProductDetails = () => {
 
   //  all usestate data here ;
   const [productName, setProductName] = useState("");
-  const [productType, setProductType] = useState("Consumable");
+  const [productType, setProductType] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [sold , setSold] = useState(false)
   const [purchased , setPurchased] = useState(false)
   const [expensed , setExpensed] = useState(false);
   const [deduction , setDeduction] = useState(false)
   const [id , setId] = useState("");
-  const [units, setUnits] = useState("Barell");
+  const [units, setUnits] = useState("");
   const [cost, setCost] = useState("");
   const [salesPrice, setSalesPrice] = useState("");
   const [interRef, setInterRef] = useState("");
   const [customerTax, setCustomerTax] = useState("");
   const [description, setDescription] = useState("");
-  const [unitOfMeasurement , setUnitOfMeasurement] = useState("meter");
-  const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("unit");
-  const [weight , setWeight] = useState("0");
-  const [volume , setVolume] = useState("0");
+  const [unitOfMeasurement , setUnitOfMeasurement] = useState("");
+  const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("");
+  const [weight , setWeight] = useState("");
+  const [volume , setVolume] = useState("");
+  const [responsible , setResponsible] = useState("")
   const [buy , setBuy] = useState(false)
   const [replenishOnOrder , setReplenishOnOrder] = useState(false)
   const [customerLeadTime , setCustomerLeadTime] = useState("");
   const [descriptionDeliveryOrder , setDescriptionDeliveryOrder] = useState("");
   const [descriptionInternalTranser , setDescriptionInternalTranser] = useState("")
   const [descriptionForReceipt , setDescriptionForReceipt] = useState("")
-  const [incomeAccount , setIncomeAccount] = useState("0")
-  const [expenseAccount , setExpenceAccount] = useState("SBI")
-  const [assetType , setAssetType] = useState("110601001 مخزون قطع غيار")
-  const [priceDifference , setPriceDifference] = useState("110306001 ضريبة القيمة المضافة على المشتريات")
-  const [account , setAccount] = useState("110306001 ضريبة القيمة المضافة على المشتريات");
+  const [incomeAccount , setIncomeAccount] = useState("")
+  const [expenseAccount , setExpenceAccount] = useState("")
+  const [assetType , setAssetType] = useState("")
+  const [priceDifference , setPriceDifference] = useState("")
+  const [account , setAccount] = useState("");
   const [files , setFiles] = useState("");
   const [productImg , setProductImg] = useState("");
   const [productBrand  , setProductBrand] = useState("");
-  const [prodcuctCode , setProductCode] = useState("")
+  const [prodcuctCode , setProductCode] = useState("");
+  const [barcode , setBarcode] = useState("");
 
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
@@ -81,6 +83,7 @@ const InventoryProductDetails = () => {
     setWeight(productdetails.PRODUCT_WEIGHT)
     setVolume(productdetails.PRODUCT_VOLUME)
     setBuy(productdetails.PRODUCT_BUY)
+    setResponsible(productdetails.PRODUCT_RESPONSIBLE)
     setReplenishOnOrder(productdetails.REPLENISH_ON_ORDER)
     setCustomerLeadTime(productdetails.CUSTOMER_LEAD_TIME)
     setDescriptionDeliveryOrder(productdetails.DESCIBTION_DETAIL_ORDER)
@@ -91,6 +94,18 @@ const InventoryProductDetails = () => {
     setExpenceAccount(productdetails.EXPENSE_ACCOUNT)
     setAssetType(productdetails.EXPENSE_TYPE)
     setProductImg(productdetails.PRODUCT_IMAGE);
+    setBarcode(productdetails.PRODUCT_BARCODE);
+
+    const url = productdetails.PRODUCT_IMAGE;
+    const fileName = "myFile.jpg";
+
+    fetch(url).then(async (response) => {
+      const contentType = response.headers.get("content-type");
+      const blob = await response.blob();
+      const file = new File([blob], fileName, { contentType });
+      setFiles(file)
+    });
+
   },[productdetails])
    
 
@@ -99,6 +114,8 @@ const InventoryProductDetails = () => {
 
     if (productName === "") {
       toast("Product name required !", { type: "warning" });
+    } else if(files === ""){
+      toast("Product Image is required!",{type:"warning"});
     }else if (cost === "") {
       toast("Cost is required !", { type: "warning" });
     } else if (salesPrice === "") {
@@ -120,6 +137,7 @@ const InventoryProductDetails = () => {
       formData.append("units", units);
       formData.append("Cost", cost);
       formData.append("Sales_Price", salesPrice);
+      formData.append("Barcode" , barcode);
       formData.append("internal_Reference", interRef);
       formData.append("Customer_Taxes", customerTax);
       formData.append("Internal_Notes", description);
@@ -127,6 +145,7 @@ const InventoryProductDetails = () => {
       formData.append('Purchase_UOM' , purchaseUnitOfMeasuremnt)
       formData.append('Weight' , weight)
       formData.append('Volume' , volume)
+      formData.append('Responsible' , responsible)
       formData.append('Buy' , buy)
       formData.append('Replenish_On_Order' , replenishOnOrder)
       formData.append('Customer_Lead_Time' , customerLeadTime)
@@ -137,6 +156,7 @@ const InventoryProductDetails = () => {
       formData.append('Expense_Account' ,expenseAccount)
       formData.append("Expense_Type" , assetType)
       formData.append('Price_Difference' , priceDifference)
+      formData.append('Product_Brand' , productBrand);
       formData.append('Account' , account);
       formData.append('Sold' , sold)
       formData.append('Purchase' , purchased)
@@ -200,6 +220,8 @@ const InventoryProductDetails = () => {
            customerLeadTime={customerLeadTime}
            weight={weight}
            volume={volume}
+           responsible={responsible}
+           setResponsible={setResponsible}
            descriptionDeliveryOrder={descriptionDeliveryOrder}
            descriptionForReceipt={descriptionForReceipt}
            descriptionInternalTranser={descriptionInternalTranser}
@@ -234,6 +256,8 @@ const InventoryProductDetails = () => {
            setExpenceAccount={setExpenceAccount}
            setAssetType={setAssetType}
            setProductBrand={setProductBrand}
+           barcode={barcode}
+           setBarcode={setBarcode}
            productImg={productImg}
            setProductImg={setProductImg}
            files={files}

@@ -179,9 +179,10 @@ const AddWarehouse = (props) => {
         showBelowMenu={true}
         save={update === true ? updateData : save}
         title="WareHouse"
+        showCanelBtn={true}
       />
       <div className="AddwareHouseContainer">
-        <div className="AddWareHouseHead">
+        {/* <div className="AddWareHouseHead">
           <div className="head2">
             <HiOutlineRefresh
               size="33px"
@@ -191,7 +192,7 @@ const AddWarehouse = (props) => {
               <p>Routes</p>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="Createcontent">
           <p>Warehouse</p>
           <input
@@ -221,7 +222,7 @@ const AddWarehouse = (props) => {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               >
-                <option value=""></option>
+                <option value="">Choose any one</option>
                 {locationall.map((item, index) => {
                   return (
                     <>

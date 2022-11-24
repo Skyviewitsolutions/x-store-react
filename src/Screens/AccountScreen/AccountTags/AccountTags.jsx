@@ -26,11 +26,20 @@ const AccountTags = () => {
         console.log(res,"response");
         if(res.data.status === true)
         {
-            setAccountTag(res.data.data);
+          var val = res.data.data;
+          val = val.reverse();
+            setAccountTag(val);
         }
         else if(res.data.status === false)
         {
-            alert(res.data.message);
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
     })
     .catch((err) => {

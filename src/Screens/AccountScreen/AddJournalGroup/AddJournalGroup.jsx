@@ -100,7 +100,7 @@ const userAuth = localStorage.getItem("userAuth");
   }
    return (
     <>
-    <AccountNavbar showBelowMenu={true} title="Journal Group" save={update === true ? updateData : save}/>
+    <AccountNavbar showBelowMenu={true} title="Journal Group" save={update === true ? updateData : save} showCanelBtn={true}/>
     <div className='AddJournalGroupCon'>
       <div className="JournaalGroupContent">
         <p>Journal Group</p>

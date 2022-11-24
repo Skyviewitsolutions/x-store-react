@@ -266,9 +266,9 @@ const AddAnalyticAccount = () => {
   }
   return (
     <div>
-        <AccountNavbar showBelowMenu={true} title="Analytic Account" save={update === true ? updateData : save}/>
+        <AccountNavbar showBelowMenu={true} title="Analytic Account" save={update === true ? updateData : save} showCanelBtn={true}/>
         <div className="AddAnalyticCon">
-        <div className="AddAnalytichead">
+        {/* <div className="AddAnalytichead">
         <div className="Analyticcontent">
           <TbCurrencyDollar
             size="33px"
@@ -278,7 +278,7 @@ const AddAnalyticAccount = () => {
             <p>Rates</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="Analyticmain">
       <div className="Analyticdetails">
         <p>Analytic Account</p>
@@ -293,7 +293,6 @@ const AddAnalyticAccount = () => {
           <div className="Analyticselect">
             <p>Customer</p>
             <select value={customer} onChange={(e) => setCustomer(e.target.value)}>
-              <option value=""></option>
               <option value="110">110</option>
               <option value="13103">13103</option>
               <option value="Aad Saud Alshaibani Alotaibi">Aad Saud Alshaibani Alotaibi</option>
@@ -330,7 +329,6 @@ const AddAnalyticAccount = () => {
           <div className="Analyticselect">
             <p>Administrator</p>
             <select value={administrator} onChange={(e) => setAdministrator(e.target.value)}>
-              <option value=""></option>
               <option value="110">110</option>
               <option value="13103">13103</option>
               <option value="Aad Saud Alshaibani Alotaibi">Aad Saud Alshaibani Alotaibi</option>
@@ -355,7 +353,6 @@ const AddAnalyticAccount = () => {
         <div className="Analyticselect">
             <p>Group</p>
             <select value={group} onChange={(e) => setGroup(e.target.value)}>
-              <option value=""></option>
               <option value="Macca Projects">Macca Projects</option>
               <option value="Yanbae Projects">Yanbae Projects</option>
               <option value="ِِAl Ahsa Projects">ِِAl Ahsa Projects</option>
@@ -366,7 +363,6 @@ const AddAnalyticAccount = () => {
         <div className="Analyticselect">
             <p>Currency</p>
             <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
-            <option value=""></option>
               {getCorrency.map((item,index) => {
                 return(
                   <>
@@ -379,7 +375,6 @@ const AddAnalyticAccount = () => {
         <div className="Analyticselect">
             <p>Analytic Account Type</p>
             <select value={analyticAccType} onChange={(e) => setAnayticAccType(e.target.value)}>
-              <option></option>
               {getAnaAccType.map((item,index) => {
                 return(
                   <>
