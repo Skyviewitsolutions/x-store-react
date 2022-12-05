@@ -119,6 +119,20 @@ import AddPurchaseAgreement from "./Screens/PurchaseScreen/PurchaseAgreement/Add
 import PurchaseVendor from "./Screens/PurchaseScreen/PurchaseVendor";
 import AccountVendor from "./Screens/AccountScreen/AccountVendor/AccountVendor";
 import AccountProduct from "./Screens/AccountScreen/AccountProduct/AccountProduct";
+import Department from "./Screens/EmplyoeeScreen/Department/Department";
+import AddDepartment from "./Screens/EmplyoeeScreen/Department/AddDepartment/AddDepartment";
+import HeadDepartment from "./Screens/EmplyoeeScreen/HeadDepartment/HeadDepartment";
+import AddHeadDepartment from "./Screens/EmplyoeeScreen/HeadDepartment/AddHeadDepartment/AddHeadDepartment";
+import JobPosition from "./Screens/EmplyoeeScreen/JobPosition/JobPosition";
+import AddJobPosition from "./Screens/EmplyoeeScreen/JobPosition/AddJobPosition/AddJobPosition";
+import AddQuotation from "./Screens/SalesScreen/Orders/Quotations/AddQuotation/AddQuotation";
+import AddEmployee from "./Screens/EmplyoeeScreen/AddEmployee/AddEmployee";
+import Manager from "./Screens/EmplyoeeScreen/Manager/Manager";
+import AddManager from "./Screens/EmplyoeeScreen/Manager/AddManager/AddManager";
+import AddCustomer from "./Screens/SalesScreen/Customer/AddCustomer/AddCustomer";
+import AddSalesOrders from "./Screens/SalesScreen/Orders/SalesOrders/AddSalesOrders/AddSalesOrders";
+import Customer from "./Screens/SalesScreen/Customer/Customer";
+import AddWorkAddress from "./Screens/EmplyoeeScreen/AddEmployee/WorkAddress/AddWorkAddress";
 
 
 
@@ -187,7 +201,7 @@ const App = () => {
        <Route path='/Incometerms' element={<Incometerms/>} />
        <Route path='/AddIncoTerms' element={<AddIncoterms/>} />
        <Route path='/AccPaymentCard' element={<AccPaymentCard/>} />
-       <Route path="/Currencies" element={<Currencies/>} />
+       <Route path="/Currencies" element={<Currencies/>} /> 
        <Route path="/AddCurrencies" element={<AddCurrencies/>} />
       <Route path="/TaxName" element={<TaxName/>} />
       <Route path="/AddTaxName" element={<AddTaxName/>}/>
@@ -237,6 +251,12 @@ const App = () => {
        <Route path="/Quotations" element={<Quotations/>} />
        <Route path="/SalesOrders" element={<SalesOrders/>}/>
        <Route path='/OrdersSalesTeam' element={<SalesTeam/>} />
+       <Route path='/Customer' element={<Customer/>} />
+       <Route path='/AddCustomer' element={<AddCustomer/>} />
+       <Route path='/AddQuotation' element={<AddQuotation/>} />
+       <Route path='/AddSalesOrders' element={<AddSalesOrders/>} />
+       <Route path='/AddSalesAttribute' element={<AddSalesAttribute/>} />
+  
 
        {/* --------------------------------------Purchase Screens---------------------------- */}
        <Route path="/PurchasePriceList" element={<PurchasePriceLIst/>} />
@@ -250,8 +270,20 @@ const App = () => {
        <Route path='/PurchaseAgreement' element={<PurchaseAgreement/>}/>
        <Route path='/AddPurchaseAgreement' element={<AddPurchaseAgreement/>}/>
        <Route path='/PurchaseVendor'  element={<PurchaseVendor/>} />
+     
        
-       
+       {/* -------------------------------------Employee Screens-------------------------------- */}
+       <Route path='/AddEmployee' element={<AddEmployee/>} />
+       <Route path='/Manager' element={<Manager/>} />
+       <Route path='/AddManager' element={<AddManager/>} />
+       <Route path='/Department' element={<Department/>} />
+       <Route path='/AddDepartment' element={<AddDepartment/>} />
+       <Route path='/HeadDepartment' element={<HeadDepartment/>} />
+       <Route path='/AddHeadDepartment' element={<AddHeadDepartment/>} />
+       <Route path='/JobPosition' element={<JobPosition/>} />
+       <Route path='/AddJobPosition' element={<AddJobPosition/>} />
+       <Route path='/AddWorkAddress' element={<AddWorkAddress/>}/>
+      
       </Routes>
     </Router>
   </>)

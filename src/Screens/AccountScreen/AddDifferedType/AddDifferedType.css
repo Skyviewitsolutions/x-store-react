@@ -17,7 +17,7 @@
     width: 600px;
     outline: none;
     border: none;
-    border-bottom: 3px solid #666666;
+   border-bottom: 1px solid #CCCCCC;
 }
 .assetTypetextbox{
     width: 100%;
@@ -105,7 +105,7 @@
     width: 400px;
     border: none;
     outline:"none";
-    border-bottom: 3px solid #666666;
+   border-bottom: 1px solid #cccccc;
 }
 .assettypedetails2{
     width: 50%;
@@ -155,7 +155,7 @@
     width: 400px;
     border:none;
     outline: none;
-    border-bottom: 3px solid #666666;
+   border-bottom: 1px solid #cccccc;
 }
 .AssettypeAddiDepri{
     width: 100%;

@@ -1,0 +1,69 @@
+.cus_saleCon{
+    width: 100%;
+    padding: 10px 20px;
+}
+.cus_salesdetails{
+    width: 100%;
+    display: flex;
+}
+.cus_detailsfirst{
+    width:50%;
+}
+.cus_detailsfirst h3{
+    color: #6f6f6f;
+    font-size: 22px;
+    font-weight: 400;
+}
+.cus_content{
+    display: flex;
+    align-items: center;
+}
+.cus_content p{
+    width: 150px;
+    color: #6a666a;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+
+}
+.cus_content select{
+    width: 450px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc; 
+}
+.cus_content input{
+    width: 450px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc; 
+}
+.cus_detailssecond{
+    width: 50%;
+}
+.cus_detailssecond h3{
+    color: #6f6f6f;
+    font-size: 22px;
+    font-weight: 400;
+}
+.customer_salesfisc{
+    display: flex;
+    width: 100%;
+    margin-top:3%;
+}
+.customer_fisical{
+    width: 50%;
+}
+.customer_fisical h3{
+    color: #6f6f6f;
+    font-size: 22px;
+    font-weight: 400;
+}
+.customer_misc{
+    width: 50%;
+}
+.customer_misc h3{
+    color: #6f6f6f;
+    font-size: 22px;
+    font-weight: 400;
+}

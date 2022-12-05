@@ -11,52 +11,7 @@ import './AddProductRequest.css'
 const AddProductRequest = (props) => {
 
     const navigate = useNavigate()
-    const {vendor} = props;
-
-const [modalShow , setModalShow] = useState(false)
-const [productAll , setProductAll] = useState([]);
-const productUrl = endpoints.requestQuotation.getAllproductdetails;
-console.log(productUrl,"gfshdgfgad")
-const getAuthtoken = localStorage.getItem("authtoken");
-const userAuth = localStorage.getItem("userAuth");
-const vendorId = localStorage.getItem("varId");
-
-useEffect(() => {
-    const formData = new FormData();
-    formData.append("User_Authorization" , getAuthtoken);
-    formData.append("User_AuthKey" , userAuth);
-    formData.append("Vendor_ID" , vendor)
-    axios.post(productUrl,formData)
-    .then((res) => {
-      console.log(res,"responscbdch")
-      if(res.data.status === true){
-        setProductAll(res.data.data)
-      }else if(res.data.status === false){
-        if(res.data.code === 3)
-        {
-          toast("Session expired , Please re-login",{type:"warning"})
-          navigate('/');
-        }
-        else{
-         toast(res.data.message,{type:"error"});
-        }
-      }
-    })
-    .catch((err) => {
-      console.log(err , "something went wrong");
-    })
-},[vendor])
-
-
-const column = [
-    {label:"VenID" , name:"VENDOR_ID"},
-    {label:"No" , name:"SERIAL_NO"},
-    {label:"Product" , name:"PRODUCT_NAME"},
-    {label:"Description" , name:"DESCRIPTION"},
-    {label:"Quantity" , name:"PRODUCT_QUANTITY"},
-    {label:"UOM" , name:"UNIT_OF_MEASUREMENT"},
-]
-
+    const { modalShow, setModalShow,serialNo,setSerialNo,productdet,setProductDet,description,setDescription,quantity,setQuantity,uomdet,setUomdet,vendorId,setVendorId,save,vendor,column,productAll,saveProduct,} = props;
   return (
     <div>
         <div className="addproduct_Con">
@@ -85,7 +40,9 @@ const column = [
             </div>
 
         </div>
-        <RequestProduct modalShow={modalShow} setModalShow={setModalShow}/>
+       
+        <RequestProduct {...props}/>
+
     </div>
   )
 }

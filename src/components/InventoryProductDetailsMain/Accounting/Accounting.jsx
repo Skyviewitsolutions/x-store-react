@@ -17,11 +17,11 @@ const {incomeAccount,expenseAccount,assetType,priceDifference} = props;
         <p>Expense Account</p>
         <span>{expenseAccount}</span>
         </div>
-        <div className="firstcontent3">
+        {/* <div className="firstcontent3">
         <p>Asset/Expense Type</p>
         <span>{assetType}</span>
         </div>
-        
+         */}
         <div className="firstcontent3">
         <p>Price Difference</p>
         <span>{priceDifference}</span>

@@ -31,13 +31,13 @@
 .AddTaxinput input{
     border: none;
     outline: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 1px solid #cccccc;
     width: 400px;
 }
 .AddTaxinput select{
     outline: none;
     border: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 1px solid #cccccc;
     width: 400px;  
 }
 .TaxNamecontent2{
@@ -58,7 +58,7 @@
 .AddTaxammount input{
     outline: none;
     border: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 1px solid #cccccc;
     width: 400px;
 }
 .TaxAdvance{
@@ -96,7 +96,7 @@
 .Advanceinput select{
     border: none;
     outline: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 1px solid #cccccc;
     width: 400px; 
 }
 .Advancecheckbox{

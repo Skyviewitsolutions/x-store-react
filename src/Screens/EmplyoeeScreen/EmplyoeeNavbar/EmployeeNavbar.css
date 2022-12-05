@@ -1,0 +1,77 @@
+.container-fluid{
+    margin: 0px;
+    padding: 0px;
+}
+
+.AccnavCont{
+    background-color: var(--red);
+}
+.AccNavbar{
+    width: 100%;
+    background-color: #1669a2;
+    /* background: var(--red); */
+    color: white;
+}
+.Accnavetext{
+    color: white !important;
+    font-size:14px!important;
+}
+
+.Configcls{
+    height: 80vh;
+    overflow-y: scroll;
+}
+.navetext:hover{
+
+    background-color: #053352;
+}
+.Acchead{
+    height: 100px;
+    width: 100%;
+    background-color:white;
+    border-bottom: 1px solid gray;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.search{
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+   height: 35px;
+   border-bottom: 1px solid black;
+}
+
+.search input{
+    width: 94%;
+    outline: none;
+    border: none;
+
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    cursor: pointer;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+
+    background-color: #1669a2;
+    color: #fff !important;
+}
+.navbar-light .navbar-nav .nav-link:active{
+
+    background-color: #1669a2;
+    color: #fff !important;
+}
+.ACCcreatebtn{
+    background-color:#1669a2;
+    border:none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.ACCcreatebtn:hover{
+    background-color:#036463;
+}
+

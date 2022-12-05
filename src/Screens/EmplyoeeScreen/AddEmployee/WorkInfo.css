@@ -1,0 +1,21 @@
+.workInfo_con{
+    width: 100%;
+    padding: 10px 20px;
+}
+.workInfo_content{
+    display: flex;
+    align-items: center;
+}
+.workInfo_content p{
+    width: 150px;
+    color: #666666;
+    font-size: 15px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.workInfo_content select{
+    width: 400px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+}

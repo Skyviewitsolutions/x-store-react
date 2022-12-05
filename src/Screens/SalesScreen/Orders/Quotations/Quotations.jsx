@@ -8,7 +8,7 @@ const Quotations = () => {
   const navigate = useNavigate();
 
     const handleCreatePage = () => {
-
+         navigate('/AddQuotation')
     }
     const data = [
         {

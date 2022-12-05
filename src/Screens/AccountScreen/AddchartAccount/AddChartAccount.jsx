@@ -27,33 +27,33 @@ const AddChartAccount = () => {
 
   const [selectedValue, setSelectedValue] = useState();
 
-  const options = [
-    { name: "VAT Goods Purchases-STD (Purchases)", id: 1 },
-    { name: "Purchasing", id: 2 },
-    { name: "Purchasing", id: 2 },
-    { name: "Purchasing", id: 3 },
-    { name: "Sales VAT-STD (Sales)", id: 4 },
-    { name: "Sales VAT-Zero Rated (Sales)", id: 5 },
-  ];
-  const option = [
-    { name: "Operating Activities", id: 1 },
-    { name: "Financing Activities", id: 2 },
-    { name: "Investing & Extraordinary Activities", id: 3 },
-  ];
-  const onSelect1 = (selectedList, selectedItem) => {
-    setDefTax(selectedList);
-  };
+  // const options = [
+  //   { name: "VAT Goods Purchases-STD (Purchases)", id: 1 },
+  //   { name: "Purchasing", id: 2 },
+  //   { name: "Purchasing", id: 2 },
+  //   { name: "Purchasing", id: 3 },
+  //   { name: "Sales VAT-STD (Sales)", id: 4 },
+  //   { name: "Sales VAT-Zero Rated (Sales)", id: 5 },
+  // ];
+  // const option = [
+  //   { name: "Operating Activities", id: 1 },
+  //   { name: "Financing Activities", id: 2 },
+  //   { name: "Investing & Extraordinary Activities", id: 3 },
+  // ];
+  // const onSelect1 = (selectedList, selectedItem) => {
+  //   setDefTax(selectedList);
+  // };
 
-  const onRemove1 = (selectedList, removedItem) => {
-    setDefTax(selectedList);
-  };
-  const onSelect2 = (selectedList, selectedItem) => {
-    setTag(selectedList);
-  };
+  // const onRemove1 = (selectedList, removedItem) => {
+  //   setDefTax(selectedList);
+  // };
+  // const onSelect2 = (selectedList, selectedItem) => {
+  //   setTag(selectedList);
+  // };
 
-  const onRemove2 = (selectedList, removedItem) => {
-    setTag(selectedList);
-  };
+  // const onRemove2 = (selectedList, removedItem) => {
+  //   setTag(selectedList);
+  // };
 
   const addChartAccc = endpoints.ChartAccount.addChartAcc;
 
@@ -211,7 +211,7 @@ const AddChartAccount = () => {
     <>
       <AccountNavbar
         showBelowMenu={true}
-        title="chart of Account"
+        title="Chart of Account"
         save={update === true ? updateData : save}
         showCanelBtn={true}
       />
@@ -262,27 +262,40 @@ const AddChartAccount = () => {
                 </option>
               </select>
             </div>
-            <div className="AddChartAccountMultiselect">
+            <div className="AddAccountCon1">
               <p>Default Taxes</p>
-              <Multiselect
+
+              <select value={defTax} onChange={(e) => setDefTax(e.target.value)}>
+                <option>Choose any one</option>
+                <option value="VAT Goods Purchases-STD (Purchases)">VAT Goods Purchases-STD (Purchases)</option>
+                <option value="Purchasing">Purchasing</option>
+                <option value="Sales VAT-STD (Sales)">Sales VAT-STD (Sales)</option>
+                <option value="Sales VAT-Zero Rated (Sales)">Sales VAT-Zero Rated (Sales)</option>
+              </select>
+              {/* <Multiselect
                 className="AddChartAccmultiselect"
                 options={options} // Options to display in the dropdown
                 selectedValues={defTax} // Preselected value to persist in dropdown
                 onSelect={onSelect1} // Function will trigger on select event
                 onRemove={onRemove1} // Function will trigger on remove event
                 displayValue="name" // Property name to display in the dropdown options
-              />
+              /> */}
             </div>
-            <div className="AddChartAccountMultiselect">
+            <div className="AddAccountCon1">
               <p>Tags</p>
-              <Multiselect
+              <select value={tag} onChange={(e) => setTag(e.target.value)}>
+                <option value="Operating Activities">Operating Activities</option>
+                <option value="Financing Activities">Financing Activities</option>
+                <option value="Investing & Extraordinary Activities">Investing & Extraordinary Activities</option>
+              </select>
+              {/* <Multiselect
                 className="AddChartAccmultiselect"
                 options={option} // Options to display in the dropdown
                 selectedValues={tag} // Preselected value to persist in dropdown
                 onSelect={onSelect2} // Function will trigger on select event
                 onRemove={onRemove2} // Function will trigger on remove event
                 displayValue="name" // Property name to display in the dropdown options
-              />
+              /> */}
             </div>
             <div className="AddAccountCon1">
               <p>Group</p>

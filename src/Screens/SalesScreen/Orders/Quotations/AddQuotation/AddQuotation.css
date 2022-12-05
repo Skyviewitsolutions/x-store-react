@@ -1,0 +1,43 @@
+.quotation_Container{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    padding-top: 30px;
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px;
+}
+.quotation_content{
+    width: 100%;
+    display: flex;
+    padding: 10px 35px;
+}
+.quotation_firstCon{
+    width: 50%;
+}
+.quotation_details{
+    display: flex;
+    align-items: center;
+}
+.quotation_details p{
+    width: 150px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.quotation_details select{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.quotation_secondCon{
+    width: 50%;
+}
+.quotation_details input{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}

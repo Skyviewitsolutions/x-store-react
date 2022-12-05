@@ -2,18 +2,11 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import './Destination.css'
 
-const Destination = () => {
+const Destination = (props) => {
 
-    const contriesApi = "https://api.first.org/data/v1/countries";
-  useEffect(() =>{
-    axios.get(contriesApi)
-    .then((res) => {
-        console.log(res,"response countries");
-    })
-    .catch((err) => {
-        console.log(err,"error");
-    })
-  },[])
+  const {state,setState,countries,setCountries,zipTo, zipfrom,setZipTo,setZipFrom} = props;
+
+
   return (
     <div>
         <div className="descon">
@@ -22,13 +15,13 @@ const Destination = () => {
         </div>
         <div className="desselect">
             <p>Countries</p>
-          <input type="text" />
+          <input type="text" value={countries} onChange={(e) => setCountries(e.target.value)}/>
           {/* <div className="mutiselectbox">
           </div> */}
         </div>
         <div className="desselect">
             <p>State</p>
-          <input type="text" />
+          <input type="text" value={state} onChange={(e) => setState(e.target.value)}/>
           {/* <div className="mutiselectbox">
           </div> */}
         </div>
@@ -36,13 +29,13 @@ const Destination = () => {
            <div className="zipbox1">
             <div className="Zipfrom">
             <p>Zip From</p>
-            <input type="text" />
+            <input type="text" value={zipfrom} onChange={(e) => setZipFrom(e.target.value)}/>
             </div>
            </div>
            <div className="zipbox2">
             <div className="Zipfrom">
             <p>Zip To</p>
-            <input type="text" />
+            <input type="text" value={zipTo} onChange={(e) => setZipTo(e.target.value)}/>
             </div>
            </div>
           </div>

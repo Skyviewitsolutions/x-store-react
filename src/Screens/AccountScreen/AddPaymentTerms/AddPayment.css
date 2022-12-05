@@ -18,7 +18,7 @@
     border: none;
     outline: none;
     width: 500px;
-    border-bottom: 2px solid #666666;
+    border-bottom: 1px solid #cccccc;
 }
 .AddPayDes p{
     margin-top: 30px;

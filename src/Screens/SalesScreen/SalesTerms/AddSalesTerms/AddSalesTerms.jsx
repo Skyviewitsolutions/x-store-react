@@ -24,7 +24,7 @@ const AddSalesTerms = () => {
   return (
     
     <div>
-        <SalesNavbar  showBelowMenu={true}  title="Sales Teams"/>
+        <SalesNavbar  showBelowMenu={true}  title="Sales Teams" showCanelBtn={true}/>
       <div className="SalesTeamMainCon">
         <div className="SalesTeamCon">
         <div className="salesTeamName">

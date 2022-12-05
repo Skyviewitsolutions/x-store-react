@@ -9,7 +9,7 @@ const SalesOrders = () => {
   const navigate = useNavigate();
 
   const handleCreatePage = () => {
-
+       navigate('/AddSalesOrders')
   }
   const data = [
       {

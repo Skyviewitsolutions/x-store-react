@@ -1,16 +1,31 @@
 import React, { useState } from 'react'
+import CustomTable from '../../CustomTable/CustomTable'
 import PurchaseInventory from '../../Model/PurchaseInventory/PurchaseInventory'
 import './PurchaseEdit.css'
 
 const PurchaseEdit = () => {
   const [modalShow , setModalShow] = useState(false)
+
+  const [purchaseDetails , setPurchaseDetails] = useState([])
+
+
+  const column = [
+    { label :'Name', name:'vendorProductName'},
+    { label :'currency', name:'vendorCurrency'},
+    { label :'Quantity', name:'vendorQuantity'},
+    { label :'Price', name:'vendorPrice'},
+    
+  ]
+
   return (
    <>
    <div className="purchase_container">
+   <CustomTable data={purchaseDetails} column={column}/>
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>
-       <div className="purchase_Reordering">
+       {/* <div className="purchase_Reordering">
               <div className="purchase_first">
                 <h1>Reordering</h1>
+                
                 <div className="purchase_radio">
                             <p>Procurement</p>
                             <div className="radio">
@@ -57,8 +72,8 @@ const PurchaseEdit = () => {
                           <input type="text" />
                         </div>
               </div>
-            </div>
-            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow}/>
+            </div> */}
+            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails}/>
           </div>
    </>
   )

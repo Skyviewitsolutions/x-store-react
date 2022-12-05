@@ -46,6 +46,7 @@ const AddProduct = () => {
   const [priceDifference , setPriceDifference] = useState("")
   const [barcode , setBarcode] = useState("");
   const [account , setAccount] = useState("");
+  const [responsible , setResponsible] = useState("")
   const [files , setFiles] = useState("");
   const [productBrand  , setProductBrand] = useState("");
   const [productImg , setProductImg] = useState("");
@@ -100,30 +101,29 @@ const AddProduct = () => {
   formData.append("units", units);
   formData.append("Cost", cost);
   formData.append("Sales_Price", salesPrice);
-  formData.append("internal_Reference", interRef);
+  formData.append("Internal_Notes", interRef);
   formData.append("Customer_Taxes", customerTax);
   formData.append("description", description);
   formData.append('Unit_Of_Measure' , unitOfMeasurement)
   formData.append('Purchase_UOM' , purchaseUnitOfMeasuremnt)
-  formData.append('weight' , weight)
-  formData.append('volume' , volume)
-  formData.append('buy' , buy)
-  formData.append('replenish_on_order' , replenishOnOrder)
-  formData.append('customer_lead_time' , customerLeadTime)
-  formData.append('description_for_delivery_order' , descriptionDeliveryOrder)
-  formData.append('description_for_receipts' , descriptionForReceipt)
-  formData.append('description_for_internal_transfer' , descriptionInternalTranser)
-  formData.append("income_account" , incomeAccount)
-  formData.append('expense_account' ,expenseAccount)
-  formData.append("asset_type" , assetType)
-  formData.append('price_differnce' , priceDifference)
-  formData.append('account' , account);
+  formData.append('Weight' , weight)
+  formData.append('Volume' , volume)
+  formData.append('Buy' , buy)
+  formData.append('Replenish_On_Order' , replenishOnOrder)
+  formData.append('Customer_Lead_Time' , customerLeadTime)
+  formData.append('Description_for_Delivery_Order' , descriptionDeliveryOrder)
+  formData.append('Description_for_Receipts' , descriptionForReceipt)
+  formData.append('Description_for_Internal_Transfer' , descriptionInternalTranser)
+  formData.append("Income_Account" , incomeAccount)
+  formData.append('Expense_Account' ,expenseAccount)
+  formData.append('Price_Difference' , priceDifference)
+  formData.append('Account' , account);
   formData.append('Sold' , sold)
   formData.append('Purchase' , purchased)
   formData.append('Expensed' , expensed)
-  formData.append('perchased' , purchased)
   formData.append('Deduction' , deduction)
   formData.append('Product_Code' ,uniqueCode + productCatCode);
+  formData.append('Responsible' ,responsible)
   formData.append('ChooseFile' , files);
   formData.append("Barcode" , barcode);
   formData.append("Present_Key" , uniqueCode);
@@ -229,6 +229,8 @@ const AddProduct = () => {
         productCatCode={productCatCode}
         productBrand={productBrand}
         setProductBrand={setProductBrand}
+        responsible={responsible}
+        setResponsible={setResponsible}
       />
 
       {/* <Modal show={true}>

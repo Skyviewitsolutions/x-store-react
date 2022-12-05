@@ -1,0 +1,57 @@
+.other_Container{
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+}
+.other_Sales{
+    width: 50%;
+}
+
+.other_details{
+    display: flex;
+    align-items: center;
+}
+.other_Sales h3{
+
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}
+.other_details p{
+    width: 150px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.other_details select{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.other_details input{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.other_checkbox{
+    display: flex;
+    align-items: center;
+}
+.other_checkbox p{
+    width: 150px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.other_Invoicing{
+    width: 50%;
+}
+.other_Invoicing h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}

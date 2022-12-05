@@ -24,7 +24,7 @@
 .Editfirstcontent select{
    border: none;
     margin-left: 40px;
-    border-bottom: 1px solid #cccc;
+    border-bottom:1px solid #cccc;
     width: 450px;
     outline: none;
 }

@@ -7,11 +7,13 @@ import { endpoints } from '../../../services/endpoints';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../../components/Loader/Loader';
 
 const InventoryScreen = () => {
 
   const [getOverview , setGetOverview] = useState([])
   const getAllOverviewUrl = endpoints.overView.allOverview;
+  const [loading , setLoading] = useState(false);
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
   const navigate = useNavigate();
@@ -20,8 +22,10 @@ const InventoryScreen = () => {
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
+    setLoading(true)
     axios.post(getAllOverviewUrl,formData)
     .then((res) => {
+      setLoading(false)
       if(res.data.status === true){
         setGetOverview(res.data.data)
       }else if(res.data.status === false){
@@ -36,6 +40,7 @@ const InventoryScreen = () => {
       }
     })
   .catch((err) => {
+    setLoading(true)
     console.log(err , "error")
   })
     

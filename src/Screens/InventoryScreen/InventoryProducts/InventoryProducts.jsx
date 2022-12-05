@@ -8,10 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { endpoints } from "../../../services/endpoints";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-bootstrap";
+import Loader from "../../../components/Loader/Loader";
 
 const InventoryProducts = () => {
   const [product, setProduct] = useState([]);
   const [allProd, setAllProd] = useState([]);
+  const [loading , setLoading] = useState(false)
   const [deActiveProduct, setDeActiveProduct] = useState([]);
   const [activeProduct, setActiveProduct] = useState([]);
   const getAuthtoken = localStorage.getItem("authtoken");
@@ -26,9 +28,11 @@ const InventoryProducts = () => {
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
+    setLoading(true)
     axios
       .post(url, formData)
       .then((res) => {
+        setLoading(false)
         console.log(res, "response");
         if (res.data.status === true) {
           var pro = res.data.data;
@@ -55,6 +59,7 @@ const InventoryProducts = () => {
         }
       })
       .catch((err) => {
+        setLoading(false)
         console.log(err, "error");
       });
   };
@@ -120,6 +125,7 @@ const InventoryProducts = () => {
             </div>
           </div>
           <ToastContainer />
+          {loading === true && <Loader/>}
         </div>
         <div></div>
       </div>

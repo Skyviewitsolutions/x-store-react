@@ -1,162 +1,145 @@
-.ven_container{
-    width:150%;
+.purchase_main{
+    width:140%;
     background-color: #fff;
     position: relative;
     margin-left: -20%;
     padding-bottom: 4%;
 }
-.vendorsPriceListContainer{
+.purchase_con{
     width: 100%;
     display: flex;
-    padding: 15px 30px;
-    margin-top: 30px;
-    justify-content: space-between;
+    padding: 20px 25px;
 }
-.vendors_box{
+.purchase_firstcontent{
     width: 50%;
 }
-.vendorstext{
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.vendors_box h1{
+.purchase_firstcontent h3{
     color: #666666;
     font-size: 25px;
     font-weight: 400;
-    margin-left: 46px;
 }
-.vendors_text p{
-    color: #666666;
-    margin-bottom: 0px; 
-    font-size: 15px;
-    font-weight: bold;
+.purchase_content{
+    display: flex;
+    align-items: center;
+}
+.purchase_content p{
     width: 200px;
-}
-.vendors_text select{
-    width: 500px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #cccccc;
-}
-.vendors_text input{
-    width: 500px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #cccccc;  
-}
-.lead_time{
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-.lead_time p{
     color: #666666;
-    margin-bottom: 0px; 
     font-size: 15px;
-    font-weight: bold;
-    width: 162px;  
+    font-weight: 500;
+    margin-bottom: 5px;
 }
-.lead_time input{
-    width: 250px;
-    border: none;
+.purchase_content select{
+    width: 350px;
     outline: none;
+    border: none;
     border-bottom: 1px solid #cccccc;
 }
-.vendor_box2{
-    width: 50%;
-    padding-left: 17px;
+
+.purchase_content input{
+    width: 350px !important;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccccc;
 }
-.vendor_box2 h1{
+.purchase_dltime{
+    display: flex;
+}
+.purchase_dltime p{
+    width: 200px !important;
+    color: #666666 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+.purchase_dltime input{
+    width: 150px !important;
+    outline: none !important;
+    border: none !important;
+    border-bottom: 1px solid #cccccc !important;
+}
+.purchase_secondContent{
+    width: 50%;
+    margin-left: 26px;
+}
+.purchase_secondContent h3{
     color: #666666;
     font-size: 25px;
     font-weight: 400;
-    margin-left: 46px;
 }
-.lead_time select{
-    width: 250px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #cccccc;
-    margin-left: 5px;
-}
-.priceList_text{
-    display: flex;
-    align-items: center;
-    margin-top: 10px;  
-}
-.priceList_text p{
-    color: #666666;
-    margin-bottom: 10px; 
-    font-size: 15px;
-    font-weight: bold;
-    width: 150px;  
-
-}
-.priceListtext select{
-    width: 500px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #cccccc;
-}
-.pricetexts{
-    display: flex;
-    align-items: center; 
-}
-.price_texts p{
-    color: #666666;
-    margin-bottom: 10px; 
-    font-size: 15px;
-    font-weight: bold;
-    width: 150px; 
-}
-.price_texts input{
-    width: 250px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #cccccc;
-}
-.pricetexts select{
-    width: 250px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #cccccc;
-    margin-left: 5px;
-}
-.price_texts span{
-    color: black;
-    font-size: 15px;
-}
-
-.price_texts{
+.purchase_pr{
     display: flex;
     align-items: center;
 }
-.price_texts p{
+.purchase_pr p{
+    width: 150px;
     color: #666666;
-    margin-bottom: 10px; 
     font-size: 15px;
-    font-weight: bold;
-    width: 129px; 
+    font-weight: 500;
+    margin-bottom: 5px;
 }
 
-.price_texts input{
-    width: 250px;
-    border: none;
+.purchase_pr input{
+    width: 200px ;
     outline: none;
-    border-bottom: 1px solid #cccccc;
+    border: none ;
+    border-bottom: 1px solid #cccccc ;
 }
 
-/* @media screen and (max-width: 1000px){ p{
-    .vendorsPriceListContainer{
+.purchase_price{
+    display: flex;
+    align-items: center;
+}
+.purchase_price p{
+    width: 150px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.purchase_price input{
+    width: 150px ;
+    outline: none;
+    border: none ;
+    border-bottom: 1px solid #cccccc ;
+}
+.purchase_price select{
+    width: 200px ;
+    outline: none;
+    border: none ;
+    border-bottom: 1px solid #cccccc ;
+    margin-left: 5px;
+}
+.purchase_val{
+    display: flex;
+    align-items: center;
 
-     display: flex;
-     flex-direction: column;
-    }
-    .priceListPart2{
-     width: 100%;
-     margin-top: 40px;
-     padding-left: 0px;
-    }
- } */
+}
+.purchase_val P{
+    width: 150px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.purchase_val input{
+    width: 150px ;
+    outline: none;
+    border: none ;
+    border-bottom: 1px solid #cccccc ;
+}
+.purchase_val span{
+    margin: 10px;
+}
+.pur_btn{
+    background-color: #0077b0;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-left: 40px;
+}

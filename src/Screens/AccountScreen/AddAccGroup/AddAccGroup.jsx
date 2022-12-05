@@ -23,7 +23,10 @@ const AddAccGroup = () => {
   const BankUrl = endpoints.BankAccount.allBank;
 
   useEffect(() =>  {
-   axios.post(BankUrl)
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+   axios.post(BankUrl,formData)
    .then((res) => {
     if(res.data.status === true)
     {

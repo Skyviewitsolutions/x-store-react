@@ -193,6 +193,7 @@ const InventoryProductDetails = () => {
     }
   }
 
+
   return (
     <div>
         <Navebar />

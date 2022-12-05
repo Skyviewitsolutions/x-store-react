@@ -39,6 +39,8 @@ const OtherInfo = (props) => {
     })
   },[])
 
+  console.log(fisicalPosition,"fico")
+
   return (
     <div>
       <div className="OtherInfoCon">
@@ -50,7 +52,8 @@ const OtherInfo = (props) => {
           <div className="otherinfo">
             <p>Incoterm</p>
             <select value={incoTerms} onChange={(e) => setIncoTerms(e.target.value)}>
-              <option>Choose any one</option>
+
+              <option value="">Choose any one</option>
              {incoTermsAll.map((item,index) => {
               return(
                 <>
@@ -78,10 +81,10 @@ const OtherInfo = (props) => {
           <div className="otherinfo">
             <p>Fiscal Position</p>
             <select value={fisicalPosition} onChange={(e) => setFisicalPosition(e.target.value)}>
-              <option>Choose any one</option>
+              <option value="">Choose any one</option>
               <option value="Accountant-Ryd">Accountant-Ryd</option>
               <option value="Account 02">Account 02</option>
-            
+               
             </select>
           </div>
         </div>

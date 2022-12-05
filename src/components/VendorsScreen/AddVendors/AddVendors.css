@@ -18,7 +18,7 @@
 }
 .VendorsHeader{
     width: 100%;
-    border-bottom: 1px solid #cdd3d9;
+    border-bottom: 1px solid #CCCCCC;
     display: flex;
     cursor: pointer;
     justify-content: flex-end;
@@ -84,7 +84,7 @@ margin-bottom: 5px;
     width: 500px;
     outline: none;
     border: none;
-    border-bottom:1px solid #6f6f6f;
+border-bottom: 1px solid #cccccc;
 }
 .comselect{
     margin-top: 5px;
@@ -94,7 +94,7 @@ margin-bottom: 5px;
     width: 500px;
     outline: none;
     border: none;
-    border-bottom: 1px solid #6f6f6f;
+    border-bottom: 1px solid #cccccc;
 }
 .VendorsDetails2{
     width: 100%;
@@ -127,7 +127,7 @@ margin-bottom: 5px;
     width: 450px;
     border: none;
     outline: none;
-    border-bottom: 1px solid #6f6f6f;
+   border-bottom: 1px solid #cccccc;
 }
 .vendorstextcheckbox{
     display: flex;
@@ -148,7 +148,7 @@ margin-bottom: 5px;
     width: 450px;
     border: none;
     outline: none;
-    border-bottom: 1px solid #6f6f6f;
+   border-bottom: 1px solid #cccccc;
 }
 .Vendorsbox2{
     width: 50%;

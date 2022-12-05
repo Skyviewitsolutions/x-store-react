@@ -13,22 +13,22 @@ const AddAccountTag = () => {
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
   
-  const options = [
-    { name: "110101002 Zulfi Box", id: 1 },
-    { name: "110101001 Riyadh Management Fund", id: 2 },
-    { name: "110101005 Bisha Box", id: 2 },
-    { name: "110101006 Yanbu Fund", id: 3 },
-    { name: "110101009 Jeddah Fund", id: 4 },
-  ];
+  // const options = [
+  //   { name: "110101002 Zulfi Box", id: 1 },
+  //   { name: "110101001 Riyadh Management Fund", id: 2 },
+  //   { name: "110101005 Bisha Box", id: 2 },
+  //   { name: "110101006 Yanbu Fund", id: 3 },
+  //   { name: "110101009 Jeddah Fund", id: 4 },
+  // ];
 
-  const onSelect = (selectedList, selectedItem) => {
-  setSelectedValue(selectedList);
-   console.log(selectedList,"selectedlist here");
-  };
+  // const onSelect = (selectedList, selectedItem) => {
+  // setSelectedValue(selectedList);
+  //  console.log(selectedList,"selectedlist here");
+  // };
 
-  const onRemove = (selectedList, removedItem) => {
-    setSelectedValue(selectedList);
-  };
+  // const onRemove = (selectedList, removedItem) => {
+  //   setSelectedValue(selectedList);
+  // };
 
 
   const AddAccountTag = endpoints.AccountTag.addAccountTag;
@@ -157,9 +157,15 @@ const AddAccountTag = () => {
             <option value="Taxes" >Taxes</option>
           </select>
         </div>
-        <div className="multiselectcontent">
+        <div className="AddAccountTagContent">
           <p>Accounts</p>
-          <Multiselect
+          <select value={account} onChange={(e) => setAccount(e.target.value)}>
+            <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
+            <option value="110101001 Riyadh Management Fund">110101001 Riyadh Management Fund</option>
+            <option value="110101005 Bisha Box">110101005 Bisha Box</option>
+            <option value="110101006 Yanbu Fund">110101006 Yanbu Fund</option>
+          </select>
+          {/* <Multiselect
             className="Addmultiselect"
             // value={account}
             // onChange={(e) => setAccount(e.target.value)}
@@ -168,7 +174,7 @@ const AddAccountTag = () => {
             onSelect={onSelect} // Function will trigger on select event
             onRemove={onRemove} // Function will trigger on remove event
             displayValue="name" // Property name to display in the dropdown options
-          />
+          /> */}
         </div>
         <ToastContainer />
       </div>

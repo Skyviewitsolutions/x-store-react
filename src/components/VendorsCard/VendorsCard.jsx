@@ -65,7 +65,6 @@ const VendorsCard = (props) => {
             style={{ color:"#b70000" ,zIndex:10}}
             onMouseOver={() => setIconColor("#293391")}
             onMouseOut={() => setIconColor("#7478a1")}
-            
           />
         </div>
       </div>
@@ -96,5 +95,16 @@ const VendorsCard = (props) => {
     </div> }
     </>);
 };
-
 export default VendorsCard;
+
+
+
+
+
+
+
+
+
+
+
+

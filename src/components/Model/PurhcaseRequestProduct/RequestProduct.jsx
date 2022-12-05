@@ -9,14 +9,8 @@ import { endpoints } from "../../../services/endpoints";
 import "./RequestProduct.css";
 
 export const RequestProduct = (props) => {
-  const { modalShow, setModalShow } = props;
+  const { modalShow, setModalShow,serialNo,setSerialNo,productdet,setProductDet,description,setDescription,quantity,setQuantity,uomdet,setUomdet,vendorId,setVendorId,saveProduct} = props;
   const navigate = useNavigate();
-  const [serialNo , setSerialNo] = useState("")
-  const [productdet , setProductDet] = useState("")
-  const [description , setDescription] = useState("")
-  const [quantity , setQuantity] = useState("")
-  const [uomdet , setUomdet] = useState("")
-  const [vendorId , setVendorId] = useState("")
   const [productAll, setProductAll] = useState([]);
   const [uomAll, setUomAll] = useState([]);
 
@@ -25,45 +19,9 @@ export const RequestProduct = (props) => {
 
   const producrUrl = endpoints.products.allProduct;
   const uomUrl = endpoints.UOM.allUOM;
-  const productDetailsUrl = endpoints.requestQuotation.addProductdetails;
 
-  const save = () => {
-    if(serialNo === ""){
-      toast("No is required" ,{type:'warning'})
-    }else if(vendorId === ""){
-      toast("Vendor Id is required",{type:"warning"})
-    }else if(productdet === ""){
-      toast("Product is required" ,{type:'warning'})
-    }else if(description === ""){
-      toast("Description is required" ,{type:"warning"})
-    }else if(quantity === ""){
-      toast("Quantity is required",{type:"warning"})
-    }else if(uomdet === ""){
-      toast("UOM is required",{type:"warning"})
-    }else{
-      const formData = new FormData()
-      formData.append("Vendor_ID",vendorId);
-      formData.append("Number",serialNo);
-      formData.append("Product_ID" , productdet);
-      formData.append("UOM" , uomdet);
-      formData.append("Description" , description);
-      formData.append("Qty" , quantity);
-      formData.append("User_Authorization", getAuthtoken);
-      formData.append("User_AuthKey", userAuth);
-      axios.post(productDetailsUrl , formData)
-      .then((res) => {
-        if(res.data.status === true){
-          toast("Product Details Added successfully" ,{type:"warning"})
-        }else if(res.data.status === false){
-          toast(res.data.data ,{type:"error"})
-        }
-      })
-      .catch((err) => {
-        console.log(err,"error")
-      })
-    }
 
-  };
+  
 
   useEffect(() => {
     const formData = new FormData();
@@ -164,7 +122,7 @@ export const RequestProduct = (props) => {
                 </select>
               </div>
               <div className="probtn">
-                <button className="btn" onClick={save}>
+                <button className="btn" onClick={saveProduct}>
                   Save
                 </button>
               </div>

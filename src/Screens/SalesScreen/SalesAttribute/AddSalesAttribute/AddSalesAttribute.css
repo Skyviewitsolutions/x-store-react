@@ -1,6 +1,5 @@
 .AddAtrributeCon{
     width: 100%;
-    background-color:#f8f8f8;
     padding: 15px 30px;
 }
 .AddAtrributemain{
@@ -21,11 +20,12 @@
     font-size: 17px;
     font-weight: 600;
     color: #6a6666;
+    margin-bottom: 4px;
 }
 .Attributename input{
-    width: 80%;
+    width: 500px;
     border: none;
-    border-bottom: 3px solid #6a6666;
+   border-bottom: 1px solid #cccccc;
     outline: none;
 
 }
@@ -108,5 +108,11 @@
     width: 90%;
     outline: none;
     border: none;
-    border-bottom: 2px solid #6a6666 ;
+ border-bottom: 1px solid #cccccc;
+} 
+
+.AddAttributebox p {
+    color : #0095b4;
+    font-size: 16px ;
+
 }

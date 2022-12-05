@@ -150,7 +150,7 @@ const AddVendors = () => {
         .post(AddVendors, formData)
         .then((res) => {
           if (res.data.status === true) {
-            toast("Vendors Added Is Successfully !", { type: "success" });
+            toast("Vendors is Added Successfully !", { type: "success" });
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });

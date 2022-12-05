@@ -12,7 +12,7 @@
     width: 800px;
     border: none;
     outline: none;
-    border-bottom: 2px solid #666666;
+   border-bottom: 1px solid #cccccc;
 }
 .AddBankConbox{
     width: 100%;

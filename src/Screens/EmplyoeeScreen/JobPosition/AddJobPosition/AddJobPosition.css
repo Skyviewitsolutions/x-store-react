@@ -1,0 +1,85 @@
+.AddOperatintypeContainer_department{
+    width: 98%;
+    border: 1px solid #cccc;
+    padding-bottom:10%;
+    padding-top: 30px;
+    margin: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 40px;
+}
+.Addoperationcontent_department
+{
+    width: 100%;
+    display: flex;
+}
+.operationcon1_department{
+    width: 60%;
+}
+.operation_department{
+    display: flex;
+   align-items: center;
+}
+.operation_department_1{
+    display: flex;
+   align-items: center;
+}
+.operation_department p {
+    width: 200px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.operation_department_1 p {
+    width: 200px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.operation_department input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+    width: 615px;
+    margin-bottom: 10px;
+}
+.operation_department_1 input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+    width: 450px;
+    margin-bottom: 10px;
+}
+.operation_department select{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    /* width: 474px; */
+    width: 221%;
+  
+}
+.operation_department_1 select{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    /* width: 474px; */
+    width: 70%;
+  
+}
+
+.type_department{
+    width: 50%;
+}
+
+
+
+@media screen and (max-width: 1000px){
+    .Addoperationcontent
+    {
+       display: flex;
+       flex-direction: column;
+    }
+}

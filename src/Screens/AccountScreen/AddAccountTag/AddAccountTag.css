@@ -11,26 +11,27 @@
     width: 100%;
     display: flex;
     align-items: center;
+    margin: auto;
 }
 .AddAccountTagContent p{
     color:#6f6f6f;
     font-size: 16px;
     margin-left: 19px;
-    margin-bottom: -6px;
+    margin-bottom: 5px;
     font-weight: 500;
     width: 150px;
 }
 .AddAccountTagContent input{
     border: none;
     outline: none;
-    border-bottom:3px solid #6f6f6f;
-    width: 80%;
+    border-bottom:1px solid #cccccc;
+    width: 50%;
 }
 .AddAccountTagContent select{
     border: none;
     outline: none;
-    border-bottom:3px solid #6f6f6f;
-    width: 80%;
+    border-bottom:1px solid #cccccc;
+    width: 50%;
 }
 .multiselectcontent{
   display: flex;

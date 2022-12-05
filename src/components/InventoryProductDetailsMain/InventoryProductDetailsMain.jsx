@@ -65,10 +65,12 @@ const InventoryProductDetailsMain = (props) => {
     replenishOnOrder,
     setReplenishOnOrder,
     files,
-    setFiles
+    setFiles,
+  
+
   } = props;
 
-
+console.log(props.priceDifference,"price")
   const handleChange = (e) => {
     setFiles(e.target.files[0]);
     setProductImg(URL.createObjectURL(e.target.files[0]))
@@ -108,7 +110,7 @@ const InventoryProductDetailsMain = (props) => {
               size="30px"
               style={{ color: "#848484", marginTop: "5px" }}
             />
-            <div className="text">
+            <div className="text_units">
               <p>0.000 Units</p>
               <span>Stock Hand</span>
             </div>
@@ -195,7 +197,7 @@ const InventoryProductDetailsMain = (props) => {
                   id="purchased"
                   readOnly={isEdit === false ? true : false}
                 />
-                <label htmlFor="purchased">Purchased</label>
+                <label htmlFor="purchased">VendorList</label>
               </div>
               <div>
                 <input

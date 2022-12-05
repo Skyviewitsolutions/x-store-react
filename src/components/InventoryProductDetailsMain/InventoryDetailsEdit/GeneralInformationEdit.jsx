@@ -253,7 +253,7 @@ const GeneralInformationEdit = (props) => {
               type="text"
               value={uniqueCode + productCatCode}
               readOnly={true}
-              onChange={(e) => setInterRef(e.target.value)}
+              // onChange={(e) => setInterRef(e.target.value)}
             />
           </div>
           <div className="Editfirstcontent2">

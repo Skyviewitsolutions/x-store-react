@@ -24,20 +24,21 @@
     border: none;
     outline: none;
     width:800px;
-    border-bottom: 3px solid #666666;
+   border-bottom: 1px solid #cccccc;
 }
 .AddAnalyticTagChecbox{
     display: flex;
     align-items: center; 
 }
 .AddAnalyticTagChecbox label{
-    width: 200px;
+    width: 160px;
     color: #666666;
     font-size: 15px;
     font-weight: 500;
     margin-left: 40px;
     margin-bottom: 0px;
     margin-top: 10px;
+    
 }
 .AddAnalyticTagChecbox input{
     width: 20px;

@@ -1,0 +1,96 @@
+.employee_maniContainer {
+  width: 100%;
+  background-color: #f3f5f7;
+  padding: 10px 10px;
+  flex: 1;
+  height: 500px;
+  overflow-y: scroll;
+  padding-right: 12px;
+}
+.employee_container {
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin-top: 5px;
+  background-color: #fff;
+  border: 1px solid #cdd3d9;
+  padding: 15px 20px;
+}
+.emp_details {
+  width: 100%;
+  display: flex;
+}
+.emp_content {
+  width: 70%;
+}
+.emp_Name input {
+  font-size: 30px;
+  margin-left: 35px;
+  width: 600px;
+  margin-top: 18px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #cccc;
+}
+.emp_job input {
+  font-size: 24px;
+  margin-left: 35px;
+  width: 600px;
+  margin-top: 18px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #cccc;
+}
+.employee_img {
+  width: 30%;
+}
+.employee_img img {
+  height: 150px;
+  width: 150px;
+  float: right;
+  margin-right: 15%;
+}
+.emp_persanalContent{
+    width: 100%;
+    display: flex;
+    padding: 5px 30px;
+}
+.emp_work{
+    width: 50%;
+}
+.emp_mob{
+    display: flex;
+    align-items: center;
+}
+.emp_mob p{
+    width: 150px;
+    color: #666666;
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.emp_mob input{
+    width: 350px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+}
+.emp_dep{
+    width: 50%;
+}
+.emp_select{
+    display: flex;
+    align-items: center;
+}
+.emp_select p{
+    width: 150px;
+    color: #666666;
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.emp_select select{
+    width: 350px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+}

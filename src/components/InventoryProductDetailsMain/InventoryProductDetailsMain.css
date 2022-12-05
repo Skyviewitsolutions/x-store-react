@@ -36,14 +36,14 @@
 .div2:hover{
     background-color: #f3efef;
 }
-.text p{
+.text_units p{
     color: #1669a2;
     font-size: 18px;
-    margin-left: 19px;
     font-weight: 600;
     margin-bottom: -7px;
+    margin-left: 15px;
 }
-.text span{
+.text_units span{
   font-size: 15px;
   padding-left: 20px;
   color: #6f6f6f;

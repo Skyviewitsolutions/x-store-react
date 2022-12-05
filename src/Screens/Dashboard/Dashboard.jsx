@@ -161,6 +161,7 @@ const Dashboard = () => {
               text="Employee"
               className="dash"
               bgColor="#248e91"
+              onClick={() => navigate("/Department")}
             />
             <Card
               img={attendance}

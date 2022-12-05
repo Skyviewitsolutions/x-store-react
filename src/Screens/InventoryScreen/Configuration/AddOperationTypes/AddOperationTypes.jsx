@@ -274,7 +274,7 @@ const AddOperationTypes = () => {
                 <option>Internal Transfer</option>
               </select>
             </div>
-            <div className="show">
+            <div className="text">
               <p>Show Detailed Operations</p>
               <input
                 type="checkbox"

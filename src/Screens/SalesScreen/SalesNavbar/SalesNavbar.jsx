@@ -6,7 +6,7 @@ import "./SalesNavbar.css";
 import { useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
 const SalesNavbar = (props) => {
-  const { showBelowMenu, handleCreatePage, title, save } = props;
+  const { showBelowMenu, handleCreatePage, title, save ,showCanelBtn,disabledCreate} = props;
   const navigate = useNavigate();
   return (
     <>
@@ -37,7 +37,7 @@ const SalesNavbar = (props) => {
                 <NavDropdown.Item  onClick={() => navigate("/Quotations")}>Quotations</NavDropdown.Item>
                 <NavDropdown.Item  onClick={() => navigate("/SalesOrders")}>Orders</NavDropdown.Item>
                 <NavDropdown.Item>Sales Teams</NavDropdown.Item>
-                <NavDropdown.Item>Customers</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate("/Customer")}>Customers</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="To Invoice" id="collasible-nav-dropdown">
                 <NavDropdown.Item  onClick={() => navigate("/OrderstoInvoice")}>Orders to Invoice</NavDropdown.Item>
@@ -112,12 +112,24 @@ const SalesNavbar = (props) => {
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
                 {title ? title : "Sales"}
               </h5>
-              <button className="createbtn" onClick={handleCreatePage}>
-                Create
-              </button>
-              <button className="savebtn" onClick={save}>
-                Save
-              </button>
+              {showCanelBtn === true ? (
+                <button
+                  className="createbtn"
+                  onClick={() => navigate(-1)}
+                  disabled={disabledCreate}
+                >
+                  cancel
+                </button>
+              ) : (
+                <button
+                  className="createbtn"
+                  onClick={handleCreatePage}
+                  disabled={disabledCreate}
+                >
+                  create
+                </button>
+              )}
+              <button className="savebtn" onClick={save}>Save</button>
             </div>
             {/* <div
               className="col-sm-6 d-flex justify-content-center"

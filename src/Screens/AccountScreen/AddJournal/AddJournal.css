@@ -16,7 +16,7 @@
     width: 500px;
     border: none;
     outline: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 1px solid #cccc;
 }
 .Journalinput{
     display: flex;
@@ -33,7 +33,7 @@
     width: 500px;
     border: none;
     outline: none;
-    border-bottom: 3px solid #666666;
+    border-bottom: 1px solid #cccc;
 }
 
 @media screen and (max-width:1000px){

@@ -1,0 +1,46 @@
+.hrsettings_container{
+    padding: 15px 20px;
+}
+.hrSettings_details{
+    width: 100%;
+    display: flex;
+}
+.hr_status{
+    width: 50%;
+}
+.hr_status h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400; 
+}
+.hr_user{
+    display: flex;
+    align-items: center;
+}
+.hr_user p{
+    width: 200px; 
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.hr_user select{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+    width: 400px;
+}
+.hr_user input{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+    width: 400px;
+}
+.hr_attendance{
+    width: 50%;
+}
+.hr_attendance h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;  
+}

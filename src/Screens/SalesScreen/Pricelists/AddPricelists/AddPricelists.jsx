@@ -37,6 +37,7 @@ axios.post(CurrencyUrl)
         <SalesNavbar
         showBelowMenu={true}
         title="PriceLists"
+        showCanelBtn={true}
       />
         <div className="PricelistMainCon">
             <div className="PricelistCon">

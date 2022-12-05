@@ -177,11 +177,11 @@ export const endpoints = {
     deleteChartAcc: BASE_URL + "/ChartsOfAccount/DeleteCrtAcc",
   },
   AccountGroup: {
-    allAccGrp: BASE_URL + "/AccountGroup/GetAllACCGrp",
-    addAccGrp: BASE_URL + "/AccountGroup/AddACCGrp",
-    singleAccGrp: BASE_URL + "/AccountGroup/GetSingleACCGrp",
-    updateAccGrp: BASE_URL + "/AccountGroup/UpdateACCGrp",
-    deleteAccGrp: BASE_URL + "/AccountGroup/DeleteACCGrp",
+    allAccGrp: BASE_URL + "/AccountDepartment/AccountGroup/GetAllACCGrp",
+    addAccGrp: BASE_URL + "/AccountDepartment/AccountGroup/AddACCGrp",
+    singleAccGrp: BASE_URL + "/AccountDepartment/AccountGroup/GetSingleACCGrp",
+    updateAccGrp: BASE_URL + "/AccountDepartment/AccountGroup/UpdateACCGrp",
+    deleteAccGrp: BASE_URL + "/AccountDepartment/AccountGroup/DeleteACCGrp",
   },
   AccountTaxGrp: {
     allAccgrpTax: BASE_URL + "/AccountTaxGroup/GetAllAccTaxGrp",
@@ -262,6 +262,50 @@ export const endpoints = {
     singleRequestQuotation : BASE_URL + "/Purchase/RequestQuotation/GetSingle",
     getAllproductdetails : BASE_URL + "/Purchase/RequestQuotation/GetAllProductDetail",
     addProductdetails : BASE_URL + "/Purchase/RequestQuotation/AddProduct",
-  }
+    deleteProductdetails : BASE_URL + "/Purchase/RequestQuotation/DeleteProduct"
+  },
+  agreementType:{
+    allAgreement : BASE_URL + "/Purchase/PurchaseAgreement/GetAll",
+    addAgreement : BASE_URL + "/Purchase/PurchaseAgreement/Add",
+    updateAgreement : BASE_URL + "/Purchase/PurchaseAgreement/Update",
+    deleteAgreement : BASE_URL + "/Purchase/PurchaseAgreement/Delete",
+    productdeletepurchase : BASE_URL + "/Purchase/PurchaseAgreement/DeleteProduct",
+    addProductdetailsPurchase : BASE_URL + "/Purchase/PurchaseAgreement/AddProduct"
+  },
+  purchaseOrders:{
+    allProductDetails : BASE_URL + "/Purchase/PurchaseOrders/GetAllProductDetail",
+    addProductdetails : BASE_URL + "/Purchase/PurchaseOrders/AddProduct",
+    allpurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/GetAll",
+    addpurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/Add",
+    updatepurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/Update",
+    deleteProductdetails : BASE_URL + "/Purchase/RequestQuotation/DeleteProduct"
+  },
 
+  // --------------------------------Sales All Api----------------------------------------
+
+  attribute:{
+      allsalesattribute : BASE_URL + "/SalesDepartment/Attribute/GetAll",
+      addsalesattribute : BASE_URL + "/SalesDepartment/Attribute/Add",
+      updatesalesattribute : BASE_URL + "/SalesDepartment/Attribute/Update",
+      deletesalesattribute : BASE_URL + "/SalesDepartment/Attribute/Delete",
+      singleattribute : BASE_URL + "/SalesDepartment/Attribute/GetSingle"
+  },
+  shippingMethod:{
+    allShipping: BASE_URL + "/SalesDepartment/ShippingMethod/GetAll",
+    addShipping: BASE_URL + "/SalesDepartment/ShippingMethod/Add",
+    updatShipping : BASE_URL + "/SalesDepartment/ShippingMethod/Update",
+    deleteShipping : BASE_URL + "/SalesDepartment/ShippingMethod/Delete"
+  },
+  customer:{
+    allCustomer : BASE_URL + "/SalesDepartment/Customers/GetAll",
+    addCustomer : BASE_URL + "/SalesDepartment/Customers/Add",
+    singleCustomer : BASE_URL + "/SalesDepartment/Customers/GetSingle",
+    updateCustomer : BASE_URL + "/SalesDepartment/Customers/Update",
+    deleteCustomer : BASE_URL + "/SalesDepartment/Customers/Delete"
+  },
+
+  // -------------------------------------Employee------------------------------
+   manager:{
+    allmanager : BASE_URL + "/Employee/HeadManager/GetAll"
+   }
 };

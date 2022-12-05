@@ -77,7 +77,6 @@ const AccountingEdit = (props) => {
         console.log(err, "error");
       });
   }, []);
-
   return (
     <div className="AccountingContainer">
       <div className="acc1">

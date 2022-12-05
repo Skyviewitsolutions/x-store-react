@@ -1,0 +1,98 @@
+.privateinfo_con{
+   padding: 10px 25px;
+}
+.privateinfo_details{
+    width: 100%;
+    display: flex;
+}
+.privateinfo_contact{
+    width: 50%;
+}
+.privateinfo_contact h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}
+.private_det{
+    display: flex;
+    align-items: center;
+}
+.private_det p{
+    width: 200px; 
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.private_det select{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+    width: 400px;
+}
+.private_det input{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccc;
+    width: 400px;
+}
+.privateinfo_citizen{
+    width: 50%;
+}
+.privateinfo_citizen h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}
+.privateinfo_status{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+.private_mat{
+    width: 50%;
+}
+.private_mat h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}
+.private_dep{
+    width: 50%;
+}
+.private_dep h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}
+.privateinfo_em{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+}
+.private_emergency{
+    width: 50%;
+}
+.private_emergency h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}
+.private_work{
+    width: 50%;
+}
+.private_work h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}
+.privateinfo_enducation{
+    width: 100%;
+    margin-top: 10px;
+}
+.privateinfo_enducation h3{
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+}
