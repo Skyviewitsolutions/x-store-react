@@ -57,7 +57,7 @@ const EmployeeNavbar = (props) => {
                 <NavDropdown.Item onClick={() => navigate('/Manager')}>
                   Manager
                 </NavDropdown.Item>
-                <NavDropdown.Item href="">
+                <NavDropdown.Item onClick={() => navigate('/WorkAddress')}>
                   Work Address
                 </NavDropdown.Item>
                 <NavDropdown.Item>

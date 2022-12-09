@@ -1,26 +1,72 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
+import { endpoints } from '../../../services/endpoints'
 import CustomTable from '../../CustomTable/CustomTable'
 import PurchaseInventory from '../../Model/PurchaseInventory/PurchaseInventory'
 import './PurchaseEdit.css'
 
-const PurchaseEdit = () => {
+const PurchaseEdit = (props) => {
+
+
+  
+  const navigate = useNavigate();
   const [modalShow , setModalShow] = useState(false)
+  const userAuth = localStorage.getItem("userAuth");
+  const getAuthtoken = localStorage.getItem("authtoken");
 
   const [purchaseDetails , setPurchaseDetails] = useState([])
 
+  const [singleVendorList , setSingleVendorList] = useState([]);
+  const vendorListUrl = endpoints.products.vendorListsingle;
+
+  const getSingleVendorList = () => {
+    const formData = new FormData()
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+   
+    axios
+    .post(vendorListUrl, formData)
+    .then((res) => {
+      console.log(res, "response");
+      if(res.data.status === true){
+        setSingleVendorList(res.data.data)
+      }
+      else if(res.data.status === false){
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err, "error");
+      toast("something went wrong" , {type : "error"})
+    });
+  }
+
+  useEffect(() => {
+    getSingleVendorList()
+  },[])
+
 
   const column = [
-    { label :'Name', name:'vendorProductName'},
-    { label :'currency', name:'vendorCurrency'},
-    { label :'Quantity', name:'vendorQuantity'},
-    { label :'Price', name:'vendorPrice'},
+    { label :'Name', name:'VENDOR_PNAME'},
+    { label :'currency', name:'VAL_CURRENCY'},
+    { label :'Quantity', name:'VQTY'},
+    { label :'Price', name:'VPRICE'},
     
   ]
 
   return (
    <>
    <div className="purchase_container">
-   <CustomTable data={purchaseDetails} column={column}/>
+   <CustomTable data={singleVendorList} column={column}/>
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>
        {/* <div className="purchase_Reordering">
               <div className="purchase_first">
@@ -72,8 +118,9 @@ const PurchaseEdit = () => {
                           <input type="text" />
                         </div>
               </div>
-            </div> */}
-            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails}/>
+            </div> */} 
+            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props}/>
+            <ToastContainer />
           </div>
    </>
   )

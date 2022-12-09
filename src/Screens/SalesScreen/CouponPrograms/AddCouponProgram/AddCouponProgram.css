@@ -1,0 +1,19 @@
+.coupon_generate{
+    width: 100%;
+    border-bottom: 1px solid #cccc;
+}
+.generatebtn{
+    background: none;
+    border: none;
+    color:#1669a2;
+    border:none;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.generatebtn:hover{
+    background-color: rgba(255, 250, 250, 0.8);
+}

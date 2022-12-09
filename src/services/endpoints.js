@@ -16,6 +16,10 @@ export const endpoints = {
       BASE_URL + "/ProductManagement/ProductDifferentPrice/GetAllPDP",
     productUnitAll: BASE_URL + "/ProductsXM/ProductsUnitsAll",
     productType: BASE_URL + "/ProductsXM/GetAllProductType",
+    vendorListAllProduct : BASE_URL + "/ProductManagement/ProductManagement/GetAllVendorList",
+    vendorListAdd : BASE_URL + "/ProductManagement/ProductManagement/AddVendorList",
+    vendorListdelete :  BASE_URL + "/ProductManagement/ProductManagement/DelVendorList",
+    vendorListsingle : BASE_URL + "/ProductManagement/ProductManagement/GetSingleVendorList",
   },
   productBrand: {
     allProductBrand: BASE_URL + "/ProductManagement/ProductBrand/GetAll",
@@ -288,7 +292,12 @@ export const endpoints = {
       addsalesattribute : BASE_URL + "/SalesDepartment/Attribute/Add",
       updatesalesattribute : BASE_URL + "/SalesDepartment/Attribute/Update",
       deletesalesattribute : BASE_URL + "/SalesDepartment/Attribute/Delete",
-      singleattribute : BASE_URL + "/SalesDepartment/Attribute/GetSingle"
+      singleattribute : BASE_URL + "/SalesDepartment/Attribute/GetSingle",
+      addValue : BASE_URL + "/SalesDepartment/Attribute/AddValue",
+      allValue : BASE_URL + "/SalesDepartment/Attribute/GetAllValue",
+      singleValue : BASE_URL + "/SalesDepartment/Attribute/GetValueID" ,
+      deleteValue : BASE_URL + "/SalesDepartment/Attribute/DeleteValue"
+
   },
   shippingMethod:{
     allShipping: BASE_URL + "/SalesDepartment/ShippingMethod/GetAll",
@@ -301,11 +310,46 @@ export const endpoints = {
     addCustomer : BASE_URL + "/SalesDepartment/Customers/Add",
     singleCustomer : BASE_URL + "/SalesDepartment/Customers/GetSingle",
     updateCustomer : BASE_URL + "/SalesDepartment/Customers/Update",
-    deleteCustomer : BASE_URL + "/SalesDepartment/Customers/Delete"
+    deleteCustomer : BASE_URL + "/SalesDepartment/Customers/Delete",
+  },
+  promotionProgram:{
+    allPromotion:BASE_URL + "/SalesDepartment/Promotion/GetAll",
+    addPromotion : BASE_URL + "/SalesDepartment/Promotion/Add" ,
+    singlePromotion :  BASE_URL + "/SalesDepartment/Promotion/GetSingle",
+    updatePromotion : BASE_URL + "/SalesDepartment/Promotion/Update",
+    deletePromotion : BASE_URL + "/SalesDepartment/Promotion/Delete",
+    getById : BASE_URL + "/SalesDepartment/Promotion/GetByID",
   },
 
   // -------------------------------------Employee------------------------------
    manager:{
-    allmanager : BASE_URL + "/Employee/HeadManager/GetAll"
+    allmanager : BASE_URL + "/Employee/HeadManager/GetAll",
+    addmanager : BASE_URL + "/Employee/HeadManager/Add",
+    updateManager : BASE_URL + "/Employee/HeadManager/Update",
+    deleteManager : BASE_URL + "/Employee/HeadManager/Delete",
+    singleManager : BASE_URL + "/Employee/HeadManager/GetSingle",
+
+   },
+   department :{
+    allDepartment : BASE_URL + "/Employee/Deparment/GetAll",
+    addDepartment : BASE_URL + "/Employee/Deparment/Add",
+    singleDepartment : BASE_URL + "/Employee/Deparment/GetSingle",
+    updateDepartment : BASE_URL + "/Employee/Deparment/Update",
+    deleteDepartment : BASE_URL + "/Employee/Deparment/Delete",
+
+   },
+   workAddress : {
+    allWorkAddres : BASE_URL + "/Employee/WorkAddress/GetAll",
+    addWorkAddress : BASE_URL + "/Employee/WorkAddress/Add" ,
+    singleWorkAddress : BASE_URL + "/Employee/WorkAddress/Add",
+    upadteWorkAddress : BASE_URL + "/Employee/WorkAddress/Update" ,
+    deleteWorkAddress : BASE_URL + "/Employee/WorkAddress/Delete"  
+   },
+   headDepartment : {
+    allHeaddepartment : BASE_URL + "/Employee/HeadDepartment/GetAll",
+    addHeaddepartment : BASE_URL + "/Employee/HeadDepartment/Add",
+    singleHeaddepartment : BASE_URL +"/Employee/HeadDepartment/GetSingle",
+    updateHeaddepartment : BASE_URL + "/Employee/HeadDepartment/Update",
+    deleteHeaddepartment : BASE_URL + "/Employee/HeadDepartment/Delete"
    }
 };

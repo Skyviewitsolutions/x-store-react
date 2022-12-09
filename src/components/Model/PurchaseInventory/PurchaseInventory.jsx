@@ -1,16 +1,53 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import { useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import { MdOutlineCancel } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { endpoints } from '../../../services/endpoints';
 
 import './PurchaseInventory.css'
 const PurchaseInventory = (props) => {
+    const navigate = useNavigate()
 
-    const {modalShow , setModalShow,purchaseDetails,setPurchaseDetails} = props;
+    const {modalShow , setModalShow,purchaseDetails,setPurchaseDetails,getSingleVendorList,setSelectedVID} = props;
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
+
+    const addVndorListUrl = endpoints.products.vendorListAdd;
 
     const [purchase , setPurchase] = useState({});
-
-
     const [allVendor , setAllVendor] = useState([]);
+    const getVendorUrl = endpoints.vendors.allVendors;
+
+    useEffect(() => {
+         const formData = new FormData()
+         formData.append("User_Authorization" , getAuthtoken);
+         formData.append("User_AuthKey" , userAuth);
+         axios
+         .post(getVendorUrl, formData)
+         .then((res) => {
+           console.log(res, "response");
+           if(res.data.status === true){
+                 setAllVendor(res.data.data)
+           }
+           else if(res.data.status === false){
+             if(res.data.code === 3)
+             {
+               toast("Session expired , Please re-login",{type:"warning"})
+               navigate('/');
+             }
+             else{
+              toast(res.data.message,{type:"error"});
+             }
+           }
+         })
+         .catch((err) => {
+           console.log(err, "error");
+           toast("something went wrong" , {type : "error"})
+         });
+    },[])
 
     const [vendor , setVendor] = useState("")
     const [vendorProductName , setVendorProductName] = useState("")
@@ -23,6 +60,73 @@ const PurchaseInventory = (props) => {
     const [vendorDate2 , setVendorDate2] = useState("")
 
     const save = () => {
+
+        if(vendor === ""){
+            toast("Vendor Name is Required !",{type:"warning"})
+        }
+      else  if(vendorProductName === ""){
+            toast("Vendor Product Name is Required !",{type:"warning"})
+        }
+      else  if(vendorProductCode === ""){
+            toast("Vendor Product Code is Required !",{type:"warning"})
+        }
+      else  if(vendorLeadTime === ""){
+            toast("vendor Lead Time is Required !",{type:"warning"})
+        }
+      else  if(vendorQuantity === ""){
+            toast("vendor Quantity is Required !",{type:"warning"})
+        }
+      else  if(vendorPrice === ""){
+            toast("vendor Price is Required !",{type:"warning"})
+        }
+      else  if(vendorCurrency === ""){
+            toast("vendor Currency is Required !",{type:"warning"})
+        }
+      else  if(vendorDate1 === ""){
+            toast("vendor Date1 is Required !",{type:"warning"})
+        }
+      else  if(vendorDate2 === ""){
+            toast("vendor Date2 is Required !",{type:"warning"})
+        }else{
+            const formData = new FormData()
+            formData.append("User_Authorization" , getAuthtoken);
+            formData.append("User_AuthKey" , userAuth);
+            formData.append("Vendor_ID" ,vendor);
+            formData.append("V_ProductName" ,vendorProductName);
+            formData.append("V_ProductCode" ,vendorProductCode);
+            formData.append("V_DeleveryLeadTime" ,vendorLeadTime);
+            formData.append("V_Quantity" ,vendorQuantity);
+            formData.append("V_Price" ,vendorPrice);
+            formData.append("V_Currency" ,vendorCurrency);
+            formData.append("V_StartDate" ,vendorDate1);
+            formData.append("V_EndDate" ,vendorDate2);
+            axios
+              .post(addVndorListUrl, formData)
+              .then((res) => {
+                console.log(res, "response");
+                if(res.data.status === true){
+                    setSelectedVID(res.data.code)
+                    getSingleVendorList();
+                  toast("Vendor List Added Successfully" , {type : "success"})
+                  setModalShow(false)
+                }
+                else if(res.data.status === false){
+                  if(res.data.code === 3)
+                  {
+                    toast("Session expired , Please re-login",{type:"warning"})
+                    navigate('/');
+                  }
+                  else{
+                   toast(res.data.message,{type:"error"});
+                  }
+                }
+              })
+              .catch((err) => {
+                console.log(err, "error");
+                toast("something went wrong" , {type : "error"})
+              });
+          
+        }
 
         const data  = {
             vendor : vendor,
@@ -39,7 +143,7 @@ const PurchaseInventory = (props) => {
             return [ ...item , data]
             
         })
-        setModalShow(false)
+       
     }
 
 
@@ -53,9 +157,17 @@ const PurchaseInventory = (props) => {
                      <div className="purchase_content">
                         <p>Vendor</p>
                         <select value={vendor} onChange={(e) => setVendor(e.target.value)}>
-                            <option  value="Testing">Testing</option>
-                            <option value="Testing">Testing</option>
-                            <option value="Testing">Testing</option>
+                            {allVendor.map((item,index) => {
+                                return(
+                                    
+                                    <>
+                                    {item.VENDOR_STATUS != 'X' && 
+                                    <option value={item.VENDOR_ID}>{item.VENDOR_NAME}</option>
+                                }
+                                    </>
+                                )
+                            })}
+                          
                         </select>
                      </div>
                      <div className="purchase_content">

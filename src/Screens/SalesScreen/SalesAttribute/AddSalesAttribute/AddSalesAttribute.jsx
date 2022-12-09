@@ -1,18 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Nav } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { endpoints } from "../../../../services/endpoints";
 import SalesNavbar from "../../SalesNavbar/SalesNavbar";
 import "./AddSalesAttribute.css";
+import AddValues from "./AddValues";
 
 const AddSalesAttribute = () => {
-
-
-  const AddAttributeUrl = endpoints.Attribute.addallattribute;
+  const [events, setEvents] = useState("Pricing");
+  const [isEdit, setIsEdit] = useState(false);
   const [attributeName, setAttributename] = useState("");
   const [variablCreationmode, setVariableCreationmode] = useState("");
   const [attributeValues, setAttributeValues] = useState("");
+  const [attributeColor, setAttributeColor] = useState("");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
   const [update, setUpdate] = useState("");
@@ -20,7 +22,6 @@ const AddSalesAttribute = () => {
   const addAttributeUrl = endpoints.attribute.addsalesattribute;
 
   const formData = new FormData();
-
 
   const save = () => {
     if (attributeName === "") {
@@ -31,8 +32,7 @@ const AddSalesAttribute = () => {
       toast("Attriute Value is Required !", { type: "warning" });
     } else {
       formData.append("Attribute_Name", attributeName);
-      formData.append("Variable_CreationMode", variablCreationmode);
-      formData.append("Attribute_Values", attributeValues);
+      formData.append("Display_Type", variablCreationmode);
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
       axios
@@ -71,15 +71,11 @@ const AddSalesAttribute = () => {
       toast("Attribute Name is Required !", { type: "warning" });
     } else if (variablCreationmode === "") {
       toast("Variable Creation Mode is required !", { type: "warning" });
-    } else if (attributeValues === "") {
-      toast("Attriute Value is Required !", { type: "warning" });
     } else {
       const formData = new FormData();
-
       formData.append("ID", selectedData.ID);
       formData.append("Attribute_Name", attributeName);
-      formData.append("Variable_CreationMode", variablCreationmode);
-      formData.append("Attribute_Values", attributeValues);
+      formData.append("Display_Type", variablCreationmode);
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
       axios
@@ -105,61 +101,82 @@ const AddSalesAttribute = () => {
         title="Attribute"
         save={update === true ? updateData : save}
         showCanelBtn={true}
-        
       />
       <div className="AddAtrributeCon">
         <div className="AddAtrributemain">
           <div className="AddAttributedetails">
             <div className="Attributename">
               <p>Attribute Name</p>
-              <input type="text"  value={attributeName}
-                onChange={(e) => setAttributename(e.target.value)}/>
+              <input
+                type="text"
+                value={attributeName}
+                onChange={(e) => setAttributename(e.target.value)}
+              />
             </div>
-            </div>
-            <div className="variable">
-              <p>Variable creation mode</p>
-              <div className="radio" name="variable">
-                <div>
-                  <input type="radio" name="variable"  onChange={() => setVariableCreationmode("Instantly")}
-                    checked={variablCreationmode === "Instantly" ? true : false}/>{" "}
-                  <label>Instantly</label>
-                </div>
-                <div>
-                  <input type="radio" name="variable"  onChange={() => setVariableCreationmode("Dynamically")}
-                    checked={
-                      variablCreationmode === "Dynamically" ? true : false
-                    }/>
-                  <label>Dynamically</label>
-                </div>
-                <div>
-                  <input type="radio" name="variable"  onChange={() => setVariableCreationmode("Never")}
-                    checked={variablCreationmode === "Never" ? true : false} />
-                  <label>Never</label>
-                </div>
+          </div>
+          <div className="variable">
+            <p>Display Type</p>
+            <div className="radio" name="variable">
+              <div>
+                <input
+                  type="radio"
+                  name="variable"
+                  onChange={() => setVariableCreationmode("Radio")}
+                  checked={variablCreationmode === "Radio" ? true : false}
+                />{" "}
+                <label>Radio</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="variable"
+                  onChange={() => setVariableCreationmode("Select")}
+                  checked={variablCreationmode === "Select" ? true : false}
+                />
+                <label>Select</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="variable"
+                  onChange={() => setVariableCreationmode("Color")}
+                  checked={variablCreationmode === "Color" ? true : false}
+                />
+                <label>Color</label>
               </div>
             </div>
-            <div className="Attributename">
+          </div>
+          {/* <div className="Attributename">
             <p>Attribute Values</p>
             <input type="text"  value={attributeValues}
               onChange={(e) => setAttributeValues(e.target.value)}/>
+          </div> */}
+          <div className="detailsbtn">
+            <Nav variant="tabs" defaultActiveKey="/home">
+              <Nav.Item
+                className="detailslink"
+                onClick={() => setEvents("Pricing")}
+              >
+                <Nav.Link href="">Pricing</Nav.Link>
+              </Nav.Item>
+            </Nav>
           </div>
+          <div className="GeneralInformation">
+            {events === "Pricing" && isEdit === false && (
+              <AddValues
+                variablCreationmode={variablCreationmode}
+                setVariableCreationmode={setVariableCreationmode}
+                attributeValues={attributeValues}
+                setAttributeValues={setAttributeValues}
+                attributeColor={attributeColor}
+                setAttributeColor={setAttributeColor}
+              />
+            )}
           </div>
-      
-          {/* <div className='AddValues'>
-        <div className="AddAttributes">
-        <div className="AddAttributeContent1">
-            <p>Values</p>
         </div>
-        </div>
-        <div className="AddAtrributebox">
-             <p>Add Line</p>
-         
-        </div>
-    </div> */}
-        </div>
-        <ToastContainer />
       </div>
-  
+      <ToastContainer />
+    </div>
   );
 };
 

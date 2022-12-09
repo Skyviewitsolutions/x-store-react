@@ -1,0 +1,137 @@
+.addproMainCon{
+    width: 100%;
+    background-color: #f3f5f7;
+    padding: 10px 10px;
+    flex: 1;
+    height: 500px;
+    overflow-y: scroll;
+}
+.addproCon{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin-top: 5px;
+    background-color: #fff;
+    border: 1px solid #cdd3d9;
+    padding: 39px 25px; 
+}
+.proprogramName{
+    width: 100%;
+
+}
+.proprogramName p{
+    color: #666666;
+    font-size: 15px;
+    font-weight: bold;
+}
+.proprogramName input{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+    font-size: 20px;
+}
+.program_content{
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+}
+.program_conditions{
+    width: 50%;
+}
+.program_conditions h3{
+    color: #666666; 
+    font-size: 25px;
+    font-weight: 400;
+}
+.program_text{
+    display: flex;
+    align-items: center;
+}
+.program_text p{
+    width: 200px;
+    color: #666666;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+.program_text select{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+}
+.program_text input{
+    width: 300px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+}
+.program_validity{
+    width: 50%;
+}
+.program_validity h3{
+    color: #666666; 
+    font-size: 25px;
+    font-weight: 400;
+}
+.program_quantity{
+    width: 100%;
+}
+.program_minimum{
+    display: flex;
+    align-items: center;
+}
+.program_minimum p{
+    width: 200px;
+    color: #666666;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.program_minimum input{
+    width: 200px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+}
+
+.program_minimum select{
+    width: 200px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+    margin-left: 5px;
+}
+.promo_Code{
+display: flex;
+align-items: center;
+margin-top: 15px;
+}
+.promo_Code p{
+    width: 200px;
+    color: #666666;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.promo_radio span{
+    margin-left:8px;
+    color: #666;
+    font-size: 14px;
+}
+.program_rewards{
+    width: 100%;
+    display: flex;
+}
+.pro_reward h3{
+    color: #666666; 
+    font-size: 25px;
+    font-weight: 400;
+}
+.pro_reward{
+    width: 50%;
+}
+.pro_discount{
+    width: 50%;
+}

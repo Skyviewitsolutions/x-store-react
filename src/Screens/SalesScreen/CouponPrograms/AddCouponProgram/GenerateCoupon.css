@@ -1,0 +1,90 @@
+.generate_maincon{
+    width:140%;
+    background-color: #fff;
+    position: relative;
+    margin-left: -20%;
+    padding-bottom: 4%;
+}
+.generate_con {
+    width: 100%;
+    padding: 20px 30px;
+}
+.generate_type{
+    display: flex;
+}
+.generate_type p{
+    color:#6f6f6f;
+    font-size: 15px;
+    width: 200px;
+    margin-bottom: 7px;
+    font-weight: 500;
+}
+.renerate_radio{
+    display: flex;
+    align-items: center;
+}
+.renerate_radio label{
+    color: #6f6f6f;
+    font-size: 15px;
+    width: 228px;
+    margin-bottom: 7px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+.number_coupon{
+    display: flex;
+    align-items: center;
+}
+.number_coupon p{
+    color:#6f6f6f;
+    font-size: 15px;
+    width: 200px;
+    margin-bottom: 7px;
+    font-weight: 500;
+}
+.number_coupon input{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+.Cancel_icons{
+    position: absolute;
+    top:10px;
+    right:-145px;
+   color: rgba(75, 74 , 74, 0.4);
+   cursor: pointer;
+}
+.generate_heading{
+    width: 100%;
+    border-bottom: 1px solid #cccc;
+}
+.generate_heading h3{
+    font-size: 22px;
+    color: #666666;
+    font-weight: 400;
+  padding: 8px 25px;
+}
+.generate_btn{
+    width: 100%;
+    border-top: 1px solid #cccc;
+}
+.btn_gen{
+    background-color: #0077b0;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 33px;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.number_coupon select{
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}

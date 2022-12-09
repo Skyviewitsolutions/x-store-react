@@ -1,19 +1,22 @@
 import React from 'react'
 import './WorkInfo.css'
-const WorkInfo = () => {
+const WorkInfo = (props) => {
+
+  const {workAddr , setWorkAddr} = props
+  
   return (
     <div>
        <div className="workInfo_con">
            <div className="workInfo_content">
               <p>Work Address</p>
-             <select>
-              <option> </option>
-              <option>Akun Market</option>
-              <option>abdullah alsanee</option>
-              <option>hisham</option>
+             <select value={workAddr} onChange={(e) => setWorkAddr(e.target.value)}>
+  
+              <option value="Akun Market">Akun Market</option>
+              <option value="abdullah alsanee">abdullah alsanee</option>
+              <option value="hisham">hisham</option>
              </select>
            </div>
-           <div className="workInfo_content">
+           {/* <div className="workInfo_content">
               <p>Coach</p>
              <select>
               <option> </option>
@@ -46,7 +49,7 @@ const WorkInfo = () => {
               <option>CRUH 03</option>
               <option>CRUH 04</option>
              </select>
-           </div>
+           </div> */}
        </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify'
 import './PrivateInfo.css'
 const PrivateInfo = (props) => {
 
-    const {materialStatus , setMaterialStatus} = props 
+    const {materialStatus , setMaterialStatus,address,setAddress,email,setEmail,phone,setPhone,bankName , setBankName,accNumber , setAccNumber ,homeWork , setHomeWork , nationality , setNationality , identyNo , setIdentyNo , passNo , setPassNo , gender , setGender , pob , setPob , dob , setDob , cob , setCob ,spouseName , setSpouseName , spouseBirth , setSpouseBirth , children , setChildren , emgContact , setEmgContact , emgPhone , setEmgPhone , visaNo , setVisaNo , workPermit , setWorkPermit ,visaExp , setVisaExp , certificate , setCertificate , fieldStudy , setFieldStudy , school , setSchool  } = props 
   
 
     const handleMaterialStatus = (e) => {
@@ -19,81 +19,81 @@ const PrivateInfo = (props) => {
                     <h3>Private Contact</h3>
                     <div className="private_det">
                         <p>Address</p>
-                        <select>
+                        <select value={address} onChange={(e) => setAddress(e.target.value)}>
                             <option> </option>
-                            <option>abdullah alsanee</option>
-                            <option>hisham</option>
-                            <option> mav</option>
+                            <option value="abdullah alsanee">abdullah alsanee</option>
+                            <option value="hisham">hisham</option>
+                            <option value="mav"> mav</option>
                         </select>
                     </div>
                     <div className="private_det">
                         <p>Email</p>
-                        <input type="text" />
+                        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Phone</p>
-                        <input type="text" />
+                        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Bank Name</p>
-                        <input type="text" />
+                        <input type="text" value={bankName} onChange={(e) => setBankName(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Bank Account Number</p>
-                        <select>
+                        <select value={accNumber} onChange={(e) => setAccNumber(e.target.value)}>
                             <option> </option>
-                            <option>abdullah alsanee</option>
-                            <option>hisham</option>
-                            <option> mav</option>
+                            <option value="abdullah alsanee">abdullah alsanee</option>
+                            <option value="hisham">hisham</option>
+                            <option value="mav"> mav</option>
                         </select>
                     </div>
                     <div className="private_det">
                         <p>Km Home-Work</p>
-                        <input type="text" />
+                        <input type="text"value={homeWork} onChange={(e) => setHomeWork(e.target.value)} />
                     </div>
                 </div>
                 <div className="privateinfo_citizen">
                     <h3>Citizenship</h3>
                 <div className="private_det">
                         <p>Nationality (Country)</p>
-                        <select>
+                        <select value={nationality} onChange={(e) => setNationality(e.target.value)}>
                             <option> </option>
-                            <option>India</option>
-                            <option>Afghanistan</option>
-                            <option>Albania</option>
+                            <option value="India">India</option>
+                            <option value="Afghanistan">Afghanistan</option>
+                            <option value="Albania">Albania</option>
                         </select>
                     </div>
                     <div className="private_det">
                         <p>Identification No</p>
-                        <input type="text" />
+                        <input type="text" value={identyNo} onChange={(e) => setIdentyNo(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Passport No</p>
-                        <input type="text" />
+                        <input type="text" value={passNo} onChange={(e) => setPassNo(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Gender</p>
-                        <select>
+                        <select value={gender} onChange={(e) => setGender(e.target.value)}>
                             <option> </option>
-                            <option>Male</option>
-                            <option>Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
                     <div className="private_det">
                         <p>Date of Birth</p>
-                        <input type="date" />
+                        <input type="date" value={dob} onChange={(e) => setDob(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Place of Birth</p>
-                        <input type="text" />
+                        <input type="text" value={pob} onChange={(e) => setPob(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Country of Birth</p>
-                        <select>
-                            <option> </option>
-                            <option>India</option>
-                            <option>American Samoa</option>
-                            <option>Albania</option>
+                        <select value={cob} onChange={(e) => setCob(e.target.value)}>
+                            <option value=""> </option>
+                            <option value="India">India</option>
+                            <option value="American Samoa">American Samoa</option>
+                            <option value="Albania">Albania</option>
                         </select>
                     </div>
 
@@ -118,11 +118,11 @@ const PrivateInfo = (props) => {
                     (<>
                      <div className="private_det">
                         <p>Spouse Complete Name</p>
-                        <input type="text" />
+                        <input type="text" value={spouseName} onChange={(e) => setSpouseName(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Spouse Birthdate</p>
-                        <input type="date" />
+                        <input type="date" value={spouseBirth} onChange={(e) => setSpouseBirth(e.target.value)}/>
                     </div></>
                     )}
                    
@@ -133,7 +133,7 @@ const PrivateInfo = (props) => {
                     <h3>Dependant</h3>
                     <div className="private_det">
                         <p>Number of Children</p>
-                       <input type="text" placeholder='0' />
+                       <input type="text" placeholder='0' value={children} onChange={(e) => setChildren(e.target.value)}/>
                     </div>
 
                 </div>
@@ -143,26 +143,26 @@ const PrivateInfo = (props) => {
                     <h3>Emergency</h3>
                     <div className="private_det">
                         <p>Emergency Contact</p>
-                       <input type="text"  />
+                       <input type="text"  value={emgContact} onChange={(e) => setEmgContact(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Emergency Phone</p>
-                       <input type="text"  />
+                       <input type="text"  value={emgPhone} onChange={(e) => setEmgPhone(e.target.value)}/>
                     </div>
                 </div>
                 <div className="private_work">
                     <h3>Work Permit</h3>
                     <div className="private_det">
                         <p>Visa No</p>
-                       <input type="text"  />
+                       <input type="text"  value={visaNo} onChange={(e) => setVisaNo(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Work Permit No</p>
-                       <input type="text"  />
+                       <input type="text"  value={workPermit} onChange={(e) => setWorkPermit(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>Visa Expire Date</p>
-                       <input type="date"  />
+                       <input type="date"  value={visaExp} onChange={(e) => setVisaExp(e.target.value)}/>
                     </div>
                 </div>
             </div>
@@ -170,20 +170,20 @@ const PrivateInfo = (props) => {
                 <h3>Education</h3>
                 <div className="private_det">
                         <p>Certificate Level</p>
-                      <select>
-                        <option> </option>
-                        <option>Bachelor</option>
-                        <option>Master</option>
-                        <option>Other</option>
+                      <select value={certificate} onChange={(e) => setCertificate(e.target.value)}>
+                        <option value=""> </option>
+                        <option value="Bachelor">Bachelor</option>
+                        <option  value="Master">Master</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                     <div className="private_det">
                         <p>Field of Study</p>
-                       <input type="text"  />
+                       <input type="text"  value={fieldStudy} onChange={(e) => setFieldStudy(e.target.value)}/>
                     </div>
                     <div className="private_det">
                         <p>School</p>
-                       <input type="text"  />
+                       <input type="text" value={school} onChange={(e) => setSchool(e.target.value)} />
                     </div>
             </div>
         </div>

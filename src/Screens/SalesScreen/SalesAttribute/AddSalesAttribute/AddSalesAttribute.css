@@ -9,7 +9,6 @@
 }
 .AddAttributedetails{
     width: 100%;
-    padding: 10px 15px;
 }
 .Attributename{
     display: flex;
@@ -31,6 +30,7 @@
 }
 .variable{
     display: flex;
+    margin-top: 20px;
 }
 .variable p{
     width: 200px;

@@ -1,6 +1,9 @@
 import React from 'react'
 import './HrSettings.css'
-const HrSettings = () => {
+
+const HrSettings = (props) => {
+
+    const {relatedUser , setRelatedUser ,regNo ,setRegNo,pinCode,setPinCode,badgeId,setBadgeId} = props;
   return (
     <div>
         <div className="hrsettings_container">
@@ -9,28 +12,28 @@ const HrSettings = () => {
                     <h3>Status</h3>
                     <div className="hr_user">
                         <p>Related User</p>
-                        <select>
-                            <option>Account 02</option>
-                            <option>Accountant-Ryd</option>
-                            <option>CRUH 01</option>
-                            <option>CRUH 02</option>
-                            <option>CRUH 03</option>
+                        <select value={relatedUser} onChange={(e) => setRelatedUser(e.target.value)}>
+                            <option value="Account 02">Account 02</option>
+                            <option value="Accountant-Ryd">Accountant-Ryd</option>
+                            <option value="CRUH 01">CRUH 01</option>
+                            <option value="CRUH 02">CRUH 02</option>
+                            <option value="CRUH 03">CRUH 03</option>
                         </select>
                     </div>
                     <div className="hr_user">
                         <p>Registration Number of the Employee</p>
-                        <input type="text" />
+                        <input type="text" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
                     </div>
                 </div>
                 <div className="hr_attendance">
                     <h3>Attendance</h3>
                     <div className="hr_user">
                         <p>Pin Code</p>
-                        <input type="text" />
+                        <input type="text" value={pinCode} onChange={(e) => setPinCode(e.target.value)}/>
                     </div>
                     <div className="hr_user">
                         <p>Badge ID</p>
-                        <input type="text" />
+                        <input type="text" value={badgeId} onChange={(e) => setBadgeId(e.target.value)}/>
                     </div>
                 </div>
            </div>

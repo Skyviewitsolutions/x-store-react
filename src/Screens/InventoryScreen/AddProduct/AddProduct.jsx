@@ -54,6 +54,7 @@ const AddProduct = () => {
   const userAuth = localStorage.getItem("userAuth");
   const [uniqueCode , setUniqueCode] = useState("");
   const [productCatCode , setProductCatCode] = useState("");
+  const [selectedVID , setSelectedVID] = useState("") ;
   
 
 
@@ -127,6 +128,7 @@ const AddProduct = () => {
   formData.append('ChooseFile' , files);
   formData.append("Barcode" , barcode);
   formData.append("Present_Key" , uniqueCode);
+  formData.append("Vendor_ID" ,selectedVID)
   formData.append("User_Authorization" , getAuthtoken);
   formData.append("User_AuthKey" , userAuth);
       axios
@@ -231,6 +233,8 @@ const AddProduct = () => {
         setProductBrand={setProductBrand}
         responsible={responsible}
         setResponsible={setResponsible}
+        selectedVID={selectedVID}
+        setSelectedVID={setSelectedVID}
       />
 
       {/* <Modal show={true}>

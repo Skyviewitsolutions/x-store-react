@@ -1,4 +1,5 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./Screens/Authentication/Login/Login";
 import SignUp from "./Screens/Authentication/SignUp/SignUp";
 import ForgetPassword from "./Screens/Authentication/ForgetPassword/ForgetPassword";
@@ -133,6 +134,11 @@ import AddCustomer from "./Screens/SalesScreen/Customer/AddCustomer/AddCustomer"
 import AddSalesOrders from "./Screens/SalesScreen/Orders/SalesOrders/AddSalesOrders/AddSalesOrders";
 import Customer from "./Screens/SalesScreen/Customer/Customer";
 import AddWorkAddress from "./Screens/EmplyoeeScreen/AddEmployee/WorkAddress/AddWorkAddress";
+import AddPromotionProgram from "./Screens/SalesScreen/PromotionPrograms/AddPromotionPrograms/AddPromotionProgram";
+import AddCouponProgram from "./Screens/SalesScreen/CouponPrograms/AddCouponProgram/AddCouponProgram";
+import Testing from "./Screens/SalesScreen/Testing";
+import WorkAddress from "./Screens/EmplyoeeScreen/AddEmployee/WorkAddress/WorkAddress";
+import AllCoupon from "./Screens/SalesScreen/CouponPrograms/AllCoupon";
 
 
 
@@ -246,7 +252,9 @@ const App = () => {
        <Route path="/Pricelists" element={<Pricelists/>} /> 
        <Route path="/AddPricelists" element={<AddPricelists/>}/>
        <Route path="/PromotionPrograms" element={<PromotionPrograms/>}/>
+       <Route path='/AddPromotionProgram' element={<AddPromotionProgram/>} />
        <Route path="/CouponPrograms" element={<CouponPrograms/>} />
+       <Route path="/AddCouponPrograms" element={<AddCouponProgram/>} />
        <Route path="/OrderstoInvoice" element={<OrderstoInvoice/>} />
        <Route path="/Quotations" element={<Quotations/>} />
        <Route path="/SalesOrders" element={<SalesOrders/>}/>
@@ -282,8 +290,10 @@ const App = () => {
        <Route path='/AddHeadDepartment' element={<AddHeadDepartment/>} />
        <Route path='/JobPosition' element={<JobPosition/>} />
        <Route path='/AddJobPosition' element={<AddJobPosition/>} />
-       <Route path='/AddWorkAddress' element={<AddWorkAddress/>}/>
-      
+       <Route path='/WorkAddress' element={<WorkAddress/>}/>
+       <Route path='/AddWorkAddress' element={<AddWorkAddress/>} />
+      <Route path='/Testing' element={<Testing/>} />
+      <Route path='/AllCoupon' element={<AllCoupon/>} />
       </Routes>
     </Router>
   </>)

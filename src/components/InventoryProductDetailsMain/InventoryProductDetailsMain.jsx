@@ -66,6 +66,8 @@ const InventoryProductDetailsMain = (props) => {
     setReplenishOnOrder,
     files,
     setFiles,
+    selectedVID,
+    setSelectedVID,
   
 
   } = props;
@@ -197,7 +199,7 @@ console.log(props.priceDifference,"price")
                   id="purchased"
                   readOnly={isEdit === false ? true : false}
                 />
-                <label htmlFor="purchased">VendorList</label>
+                <label htmlFor="purchased">Purchased</label>
               </div>
               <div>
                 <input
@@ -241,17 +243,17 @@ console.log(props.priceDifference,"price")
             >
               <Nav.Link href="" className={events === "generalInformation" ? "navLinkActive" : "navLinkDeactive"}>General Information</Nav.Link>
             </Nav.Item>
-            {/* <Nav.Item
+            <Nav.Item
               className={events === "variants" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("variants")}
             >
               <Nav.Link eventKey="link-1"  className={events === "variants" ? "navLinkActive" : "navLinkDeactive"}>Variants</Nav.Link>
-            </Nav.Item> */}
+            </Nav.Item>
             <Nav.Item
                className={events === "Purchase" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("Purchase")}
             >
-              <Nav.Link eventKey="link-2" className={events === "Purchase" ? "navLinkActive" : "navLinkDeactive"}>Purchase</Nav.Link>
+              <Nav.Link eventKey="link-2" className={events === "Purchase" ? "navLinkActive" : "navLinkDeactive"}>VendorList</Nav.Link>
             </Nav.Item>
             <Nav.Item
               className={events === "Inventory" ? "navLinkActive" : "navLinkDeactive"}
@@ -283,7 +285,7 @@ console.log(props.priceDifference,"price")
             <GeneralInformationEdit {...props} />
           )}
           {events === "variants" && isEdit === true && <VariantsEdit />}
-          {events === "Purchase" && isEdit === true && <PurchaseEdit />}
+          {events === "Purchase" && isEdit === true && <PurchaseEdit {...props}/>}
           {events === "Inventory" && isEdit === true && (
             <InventoryEdit {...props} />
           )}

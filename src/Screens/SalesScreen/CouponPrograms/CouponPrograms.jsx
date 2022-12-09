@@ -1,10 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import CustomTable from '../../../components/CustomTable/CustomTable'
 import SalesNavbar from '../SalesNavbar/SalesNavbar'
 
 const CouponPrograms = () => {
-    const handleCreatePage = () => {
 
+    const navigate = useNavigate();
+
+    const handleCreatePage = () => {
+        navigate('/AddCouponPrograms')
     }
     const data = [
         {
@@ -20,7 +24,7 @@ const CouponPrograms = () => {
             name:"ID",
             options:{
                 customBodyRender:(value, tableMeta, updateValue) => {
-                    return(
+                    return( 
                         <>
                         <div style={{display:"flex",alignItems:"center",marginLeft:"20px"}}>
                         <input type="checkbox" checked={true}/>
