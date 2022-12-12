@@ -174,6 +174,8 @@ const GeneralInformationEdit = (props) => {
     setPurchaseUnitOfMeasurement,
     barCode,
     setBarcode,
+    proCode,
+    setProCode,
   } = props;
   
   const handleProductCategory = (e) =>{
@@ -181,6 +183,7 @@ const GeneralInformationEdit = (props) => {
     const val = e.target.value;
     const code = val.slice(0,4);
     setProductCatCode(code)
+    setProCode(uniqueCode+code)
   }
 
 
@@ -251,7 +254,7 @@ const GeneralInformationEdit = (props) => {
             <p>Product Code</p>
             <input
               type="text"
-              value={uniqueCode + productCatCode}
+              value={proCode}
               readOnly={true}
               // onChange={(e) => setInterRef(e.target.value)}
             />
@@ -276,8 +279,8 @@ const GeneralInformationEdit = (props) => {
           <h5>Internal Notes</h5>
           <textarea
             placeholder="This note is only for internal purposes."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={interRef}
+            onChange={(e) => setInterRef(e.target.value)}
             style={{ width: "450px", border: "none", outline: "none" }}
           />
         </div>
@@ -351,7 +354,7 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Purchase Unit of</p>
             <select value={purchaseUnitOfMeasuremnt} onChange={(e) => setPurchaseUnitOfMeasurement(e.target.value)}>
-              {getPurchase.map((item, index) => {
+              {uoms.map((item, index) => {
                 return (
                   <>
                     <option value= {item.UNITCATEGORY} key={index}>

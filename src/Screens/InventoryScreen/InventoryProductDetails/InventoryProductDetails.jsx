@@ -45,7 +45,7 @@ const InventoryProductDetails = () => {
   const [descriptionInternalTranser , setDescriptionInternalTranser] = useState("")
   const [descriptionForReceipt , setDescriptionForReceipt] = useState("")
   const [incomeAccount , setIncomeAccount] = useState("")
-  const [expenseAccount , setExpenceAccount] = useState("")
+  const [expenseAccount , setExpenseAccount] = useState("")
   const [assetType , setAssetType] = useState("")
   const [priceDifference , setPriceDifference] = useState("")
   const [account , setAccount] = useState("");
@@ -54,6 +54,7 @@ const InventoryProductDetails = () => {
   const [productBrand  , setProductBrand] = useState("");
   const [prodcuctCode , setProductCode] = useState("");
   const [barcode , setBarcode] = useState("");
+  const [proCode , setProCode] = useState("")
 
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
@@ -76,7 +77,7 @@ const InventoryProductDetails = () => {
     setCost(productdetails.COST_PRICE)
     setSalesPrice(productdetails.SALES_PRICE)
     setCustomerTax(productdetails.CUSTOMER_TAXES)
-    setProductCode(productdetails.PRODUCT_CODE)
+    setProCode(productdetails.PRODUCTS_CODE_1)
     setDescription(productdetails.INTERNAL_NOTES)
     setUnitOfMeasurement(productdetails.UNIT_OF_MEASURE)
     setPurchaseUnitOfMeasurement(productdetails.PURCHASE_UOM)
@@ -86,15 +87,16 @@ const InventoryProductDetails = () => {
     setResponsible(productdetails.PRODUCT_RESPONSIBLE)
     setReplenishOnOrder(productdetails.REPLENISH_ON_ORDER)
     setCustomerLeadTime(productdetails.CUSTOMER_LEAD_TIME)
-    setDescriptionDeliveryOrder(productdetails.DESCIBTION_DETAIL_ORDER)
+    setDescriptionDeliveryOrder(productdetails.DISCRIPTION_FORDILEVERY_ORDER)
     setDescriptionForReceipt(productdetails.DESCRIPTION_FOR_RECEIPTS)
     setDescriptionInternalTranser(productdetails.DISCRIPTION_FOR_IT)
     setPriceDifference(productdetails.PRICE_DIFFERENCE)
     setIncomeAccount(productdetails.INCOME_ACCOUNT)
-    setExpenceAccount(productdetails.EXPENSE_ACCOUNT)
+    setExpenseAccount(productdetails.EXPENSE_ACCOUNT)
     setAssetType(productdetails.EXPENSE_TYPE)
     setProductImg(productdetails.PRODUCT_IMAGE);
     setBarcode(productdetails.PRODUCT_BARCODE);
+
 
     const url = productdetails.PRODUCT_IMAGE;
     const fileName = "myFile.jpg";
@@ -193,6 +195,7 @@ const InventoryProductDetails = () => {
     }
   }
 
+  console.log(purchaseUnitOfMeasuremnt,"purchase UOM")
 
   return (
     <div>
@@ -254,7 +257,7 @@ const InventoryProductDetails = () => {
            setDescriptionForReceipt={setDescriptionForReceipt}
            setDescriptionInternalTranser={ setDescriptionInternalTranser}
            setIncomeAccount={setIncomeAccount}
-           setExpenceAccount={setExpenceAccount}
+           setExpenseAccount={setExpenseAccount}
            setAssetType={setAssetType}
            setProductBrand={setProductBrand}
            barcode={barcode}
@@ -263,6 +266,9 @@ const InventoryProductDetails = () => {
            setProductImg={setProductImg}
            files={files}
            setFiles={setFiles}
+           proCode={proCode}
+           setProCode={setProCode}
+           productId = {id}
         />
 
         <ToastContainer />

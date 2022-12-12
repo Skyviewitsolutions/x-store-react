@@ -1,34 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Purchase.css";
 import { MdArrowDropDown } from "react-icons/md";
 import { borderBottom } from "@mui/system";
-const Purchase = () => {
+import axios from "axios";
+import { toast } from "react-toastify";
+import CustomTable from "../../CustomTable/CustomTable";
+import { endpoints } from "../../../services/endpoints";
+import { useNavigate } from "react-router-dom";
+const Purchase = (props) => {
+
+  const navigate = useNavigate()
+
+  const {purchaseDetails,setPurchaseDetails,getSingleVendorList,setSelectedVID,productId} = props;
+  const [allVenList , setAllVenList] = useState([]);
+  const userAuth = localStorage.getItem("userAuth");
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const vendorListsAllUrl = endpoints.products.vendorListAllProduct;
+
+  const getAllVendorlist = () => {
+    const formData = new FormData()
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+    formData.append("ID" ,productId);
+    axios
+    .post(vendorListsAllUrl, formData)
+    .then((res) => {
+      console.log(res, "all vendorlist");
+      if(res.data.status === true){
+        setAllVenList(res.data.data)
+      }
+      else if(res.data.status === false){
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        // else{
+        //  toast(res.data.message,{type:"error"});
+        // }
+      }
+    })
+    .catch((err) => {
+      console.log(err, "error");
+      toast("something went wrong" , {type : "error"})
+    });
+  }
+
+  useEffect(() => {
+    getAllVendorlist()
+  },[])
+
+  const column2 = [
+    { label :'Name', name:'VENDOR_NAME'},
+    { label :'currency', name:'VENDOR_CURRENCY'},
+    { label :'UOM', name:'UNIT_OF_MEASURE'},
+    { label :'Price', name:'VENDOR_PRICE'},
+    
+  ]
+
   return (
     <div className="VariantsContainer">
-      <table class="table">
-        <thead style={{ color: "#666666" }}>
-          <tr>
-            <th scope="col">Vendor</th>
-            <th scope="col">Subtracted</th>
-            <th scope="col">Agreement</th>
-            <th scope="col">Currency</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Unit Of Measure</th>
-            <th scope="col">Price</th>
-          </tr>
-        </thead>
-        <tbody className="table_body">
-          <tr>
-            <td>Baja Industrial Company</td>
-            <td></td>
-            <td></td>
-            <td>Sar</td>
-            <td>0.00</td>
-            <td>unit</td>
-            <td>9.800</td>
-          </tr>
-        </tbody>
-      </table>
+   <CustomTable data={allVenList} column={column2}/>
       <div className="content_purchase">
         <div className="content_first">
           <h1>Reordering</h1>

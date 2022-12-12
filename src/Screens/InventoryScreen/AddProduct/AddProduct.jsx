@@ -55,6 +55,7 @@ const AddProduct = () => {
   const [uniqueCode , setUniqueCode] = useState("");
   const [productCatCode , setProductCatCode] = useState("");
   const [selectedVID , setSelectedVID] = useState("") ;
+  const [proCode , setProCode] = useState(productCatCode+uniqueCode)
   
 
 
@@ -92,9 +93,7 @@ const AddProduct = () => {
     }
    
     else {
-
-      const formData = new FormData();
-
+  const formData = new FormData()
   formData.append("Product_Name", productName);
   formData.append("Product_Type", productType);
   formData.append("Product_Category", productCategory);
@@ -123,7 +122,7 @@ const AddProduct = () => {
   formData.append('Purchase' , purchased)
   formData.append('Expensed' , expensed)
   formData.append('Deduction' , deduction)
-  formData.append('Product_Code' ,uniqueCode + productCatCode);
+  formData.append('Product_Code' ,proCode);
   formData.append('Responsible' ,responsible)
   formData.append('ChooseFile' , files);
   formData.append("Barcode" , barcode);
@@ -214,7 +213,7 @@ const AddProduct = () => {
         incomeAccount={incomeAccount}
         setIncomeAccount={setIncomeAccount}
         expenseAccount={expenseAccount}
-        setExpenceAccount={setExpenceAccount}
+        setExpenseAccount={setExpenceAccount}
         assetType={assetType}
         setAssetType={setAssetType}
         priceDifference={priceDifference}
@@ -235,6 +234,9 @@ const AddProduct = () => {
         setResponsible={setResponsible}
         selectedVID={selectedVID}
         setSelectedVID={setSelectedVID}
+        proCode={proCode}
+        setProCode={setProCode}
+      
       />
 
       {/* <Modal show={true}>

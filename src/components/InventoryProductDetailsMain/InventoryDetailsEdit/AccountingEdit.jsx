@@ -22,7 +22,7 @@ const AccountingEdit = (props) => {
     incomeAccount,
     setIncomeAccount,
     expenseAccount,
-    setExpenceAccount,
+    setExpenseAccount,
     assetType,
     setAssetType,
     priceDifference,
@@ -87,6 +87,7 @@ const AccountingEdit = (props) => {
             value={incomeAccount}
             onChange={(e) => setIncomeAccount(e.target.value)}
           >
+             <option value="">Select Any One</option>
             {income.map((item, index) => {
               return (
                 <>
@@ -110,8 +111,10 @@ const AccountingEdit = (props) => {
           <p>Expense Account</p>
           <select
             value={expenseAccount}
-            onChange={(e) => setExpenceAccount(e.target.value)}
-          >
+            onChange={(e) => setExpenseAccount(e.target.value)}
+          >   
+          <option value="">Select Any One</option>
+          
             {expense.map((item, index) => {
               return (
                 <>
@@ -129,6 +132,7 @@ const AccountingEdit = (props) => {
             value={priceDifference}
             onChange={(e) => setPriceDifference(e.target.value)}
           >
+            <option value="">Select Any One</option>
             {expense.map((item,index) => {
               return(
                 <>

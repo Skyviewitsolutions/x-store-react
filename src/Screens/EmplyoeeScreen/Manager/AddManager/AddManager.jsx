@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Nav } from 'react-bootstrap';
 import HrSettings from '../../AddEmployee/HrSettings';
 import PrivateInfo from '../../AddEmployee/PrivateInfo';
@@ -15,10 +15,33 @@ const AddManager = () => {
   const navigate = useNavigate()
     const [event, setEvent] = useState("WorkInfo");
     const [files , setFiles] = useState("");
+    const [allHeadDep , setAllHeadDep] = useState([]);
 
     const addManagerUrl = endpoints.manager.addmanager; 
     const getAuthtoken = localStorage.getItem("authtoken");
     const userAuth = localStorage.getItem("userAuth");
+    const allHeadUrl = endpoints.headDepartment.allHeaddepartment;
+
+    const getHead = () => {
+      const formData = new FormData();
+      formData.append("User_Authorization" , getAuthtoken);
+      formData.append("User_AuthKey" , userAuth);
+      axios.post(allHeadUrl,formData)
+      .then((res) => {
+        if(res.data.status === true){
+         setAllHeadDep(res.data.data)
+        }else if(res.data.status === false){
+          toast(res.data.message,{type:"error"})
+        }
+      })
+      .catch((err) => {
+        console.log(err,"something went wrong")
+      })
+    }
+
+    useEffect(() => {
+   getHead()
+    },[])
 
     // -----------------------------Manager Add useState----------------------------
 
@@ -136,7 +159,7 @@ const AddManager = () => {
         toast("Manager Image is required !",{type:"warning"})
       }else{
          const formData = new FormData();
-         formData.append("Manager_Name" , manager);
+         formData.append("Manager_Name" , empName);
          formData.append("Work_Mobile" , workmobile);
          formData.append("Department_ID" , department);
          formData.append("Work_Phone" , workphone);
@@ -247,11 +270,14 @@ const AddManager = () => {
               <div className="emp_select">
                 <p>Department</p>
                 <select value={department} onChange={(e) => setDepartment(e.target.value)}>
-                  <option> </option>
-                  <option value="HEAD OFFICE / Administration">HEAD OFFICE / Administration</option>
-                  <option value="STORE-RUH 01 / BackStore (WHB)">STORE-RUH 01 / BackStore (WHB)</option>
-                  <option value="STORE-RUH 01 / Bakery">STORE-RUH 01 / Bakery</option>
-                  <option value="STORE-RUH 01 / Camera">STORE-RUH 01 / Camera</option>
+                  <option value="">Choose Any One</option>
+                  {allHeadDep.map((item,ind) => {
+                  return(
+                    <>
+                    <option value={item.ID}>{item.DEPARTMENT_NAME}</option>
+                    </>
+                  )
+                })}
                 </select>
               </div>
               <div className="emp_select">
@@ -322,7 +348,7 @@ const AddManager = () => {
           </div>
         </div>
         </div>
-        <ToastContainer /> 
+        <ToastContainer/> 
     </div>
   )
 }

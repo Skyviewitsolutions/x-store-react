@@ -35,7 +35,7 @@ const AllCoupon = () => {
         .catch((err) => {
           console.log(err, "something went wrong");
         });
-    })
+    },[])
 
   
   return (

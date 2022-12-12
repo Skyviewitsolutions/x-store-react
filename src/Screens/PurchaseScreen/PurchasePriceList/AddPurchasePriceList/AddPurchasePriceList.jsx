@@ -174,6 +174,7 @@ const AddPurchasePriceList = () => {
     const location = useLocation();
     const selectedData = location.state;
     console.log(selectedData , "selectedData here");
+    
 
     const updatePurchasePriceUrl = endpoints.vendorPriceList.updatevendorpricelist;
 

@@ -1,0 +1,49 @@
+.attribute_valuesmain{
+    width:140%;
+    background-color: #fff;
+    position: relative;
+    margin-left: -20%;
+    padding-bottom: 4%;
+}
+.att_value_con{
+    width: 100%;
+    padding: 20px 25px;
+}
+.att_contents{
+    display: flex;
+    align-items: center;
+}
+.att_contents p{
+    width: 200px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.att_contents input{
+    width: 350px !important;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+}
+.color_pickers {
+     display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.color_pickers p{
+    width: 200px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.color_pickers input {
+    width: 31px !important;
+    border-radius: 50%;
+    height: 30px !important;
+    border: none !important;
+    position: relative;
+    top: -2px;
+    left: -2px;
+}

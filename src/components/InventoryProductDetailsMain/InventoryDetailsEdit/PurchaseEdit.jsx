@@ -9,8 +9,7 @@ import './PurchaseEdit.css'
 
 const PurchaseEdit = (props) => {
 
-
-  
+  const {productId} = props
   const navigate = useNavigate();
   const [modalShow , setModalShow] = useState(false)
   const userAuth = localStorage.getItem("userAuth");
@@ -19,7 +18,9 @@ const PurchaseEdit = (props) => {
   const [purchaseDetails , setPurchaseDetails] = useState([])
 
   const [singleVendorList , setSingleVendorList] = useState([]);
+  const [allVendorList , setAllVendorList] = useState([]);
   const vendorListUrl = endpoints.products.vendorListsingle;
+  const vendorListsAllUrl = endpoints.products.vendorListAllProduct;
 
   const getSingleVendorList = () => {
     const formData = new FormData()
@@ -29,7 +30,7 @@ const PurchaseEdit = (props) => {
     axios
     .post(vendorListUrl, formData)
     .then((res) => {
-      console.log(res, "response");
+      console.log(res, "single vendorlists");
       if(res.data.status === true){
         setSingleVendorList(res.data.data)
       }
@@ -39,9 +40,9 @@ const PurchaseEdit = (props) => {
           toast("Session expired , Please re-login",{type:"warning"})
           navigate('/');
         }
-        else{
-         toast(res.data.message,{type:"error"});
-        }
+        // else{
+        //  toast(res.data.message,{type:"error"});
+        // }
       }
     })
     .catch((err) => {
@@ -50,9 +51,45 @@ const PurchaseEdit = (props) => {
     });
   }
 
+  const getAllVendorlist = () => {
+    const formData = new FormData()
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+    formData.append("ID" ,productId);
+    axios
+    .post(vendorListsAllUrl, formData)
+    .then((res) => {
+      console.log(res, "all vendorlist");
+      if(res.data.status === true){
+        setAllVendorList(res.data.data)
+      }
+      else if(res.data.status === false){
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        // else{
+        //  toast(res.data.message,{type:"error"});
+        // }
+      }
+    })
+    .catch((err) => {
+      console.log(err, "error");
+      toast("something went wrong" , {type : "error"})
+    });
+  }
   useEffect(() => {
-    getSingleVendorList()
+    if(productId != ""){
+      getAllVendorlist()
+    }else{
+      getSingleVendorList()
+    }
+   
+   
   },[])
+  
+  console.log(singleVendorList,"single nhjs")
 
 
   const column = [
@@ -62,11 +99,20 @@ const PurchaseEdit = (props) => {
     { label :'Price', name:'VPRICE'},
     
   ]
+  const column2 = [
+    { label :'Name', name:'VENDOR_NAME'},
+    { label :'currency', name:'VENDOR_CURRENCY'},
+    { label :'UOM', name:'UNIT_OF_MEASURE'},
+    { label :'Price', name:'VENDOR_PRICE'},
+    
+  ]
 
   return (
    <>
    <div className="purchase_container">
-   <CustomTable data={singleVendorList} column={column}/>
+    {productId != "" ? <CustomTable data={allVendorList} column={column2}/> : <CustomTable data={singleVendorList} column={column}/>
+    }
+  
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>
        {/* <div className="purchase_Reordering">
               <div className="purchase_first">
