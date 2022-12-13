@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./variantsModel.css";
 import { Modal } from "react-bootstrap";
 import Multiselect from "multiselect-react-dropdown";
 
-
-
 const VariantModal = (props) => {
 
   const { showModal, setShowModal } = props;
+  const [allAttribute , setAllAttribute] = useState([])
 
   const options = [
     { name: "VAT Goods Purchases-STD (Purchases)", id: 1 },
@@ -23,6 +22,31 @@ const VariantModal = (props) => {
 
   const onRemove1 = (selectedList, removedItem) => {
   };
+  
+
+  const getAllAttribute = () =>{
+
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios
+      .post(singleAddLineUrl, formData)
+      .then((res) => {
+        if (res.data.status === true) {
+          setAllAddLine(res.data.data);
+        } else if (res.data.status === false) {
+          // toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error here");
+      });
+  }
+
+
+  useEffect(() =>{
+    getAllAttribute()
+  },[])
  
   return (
     <>
