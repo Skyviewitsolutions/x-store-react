@@ -11,13 +11,14 @@ const AccountingEdit = (props) => {
 
   const incomeaccUrl = endpoints.products.incomeAcoount;
   const expenseUrl = endpoints.products.expenseAccount;
-    const priceUrl = endpoints.products.priceDifference;
-    const getAuthtoken = localStorage.getItem("authtoken");
-    const userAuth = localStorage.getItem("userAuth");
-    const navigate = useNavigate(); 
+  const priceUrl = endpoints.products.priceDifference;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+  const navigate = useNavigate();
   const [income, setIncome] = useState([]);
   const [expense, setExpense] = useState([]);
-  const [price , setPrice] = useState([]);
+  const [price, setPrice] = useState([]);
+
   const {
     incomeAccount,
     setIncomeAccount,
@@ -27,28 +28,24 @@ const AccountingEdit = (props) => {
     setAssetType,
     priceDifference,
     setPriceDifference,
-    account,
-    setAccount,
   } = props;
 
   useEffect(() => {
-    const formData = new FormData()
-    formData.append("User_Authorization" , getAuthtoken);
-    formData.append("User_AuthKey" , userAuth);
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
     axios
-      .post(incomeaccUrl , formData)
+      .post(incomeaccUrl, formData)
       .then((res) => {
         console.log(res, "this is income");
         if (res.data.status == true) {
           setIncome(res.data.data);
         } else if (res.data.status == false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.message,{type:"error"});
+          if (res.data.code === 3) {
+            toast("Session expired , Please re-login", { type: "warning" });
+            navigate("/");
+          } else {
+            toast(res.data.message, { type: "error" });
           }
         }
       })
@@ -57,19 +54,17 @@ const AccountingEdit = (props) => {
       });
 
     axios
-      .post(expenseUrl , formData)
+      .post(expenseUrl, formData)
       .then((res) => {
         console.log(res, "this is expense");
         if (res.data.status == true) {
           setExpense(res.data.data);
         } else if (res.data.status == false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.message,{type:"error"});
+          if (res.data.code === 3) {
+            toast("Session expired , Please re-login", { type: "warning" });
+            navigate("/");
+          } else {
+            toast(res.data.message, { type: "error" });
           }
         }
       })
@@ -87,9 +82,11 @@ const AccountingEdit = (props) => {
             value={incomeAccount}
             onChange={(e) => setIncomeAccount(e.target.value)}
           >
+             <option value="">Select any one</option>
             {income.map((item, index) => {
               return (
                 <>
+                  
                   <option value={item.PRODUCT_INCOME_NAME} key={index}>
                     {item.PRODUCT_INCOME_NAME}
                   </option>
@@ -112,6 +109,7 @@ const AccountingEdit = (props) => {
             value={expenseAccount}
             onChange={(e) => setExpenceAccount(e.target.value)}
           >
+             <option value="">Select any one</option>
             {expense.map((item, index) => {
               return (
                 <>
@@ -129,16 +127,16 @@ const AccountingEdit = (props) => {
             value={priceDifference}
             onChange={(e) => setPriceDifference(e.target.value)}
           >
-            {expense.map((item,index) => {
-              return(
+             <option value="">Select any one</option>
+            {expense.map((item, index) => {
+              return (
                 <>
-                <option value={item.EXPENSE_NAME} key={index}>
-                {item.EXPENSE_NAME}
-            </option>
+                  <option value={item.EXPENSE_NAME} key={index}>
+                    {item.EXPENSE_NAME}
+                  </option>
                 </>
-              )
+              );
             })}
-            
           </select>
         </div>
         <ToastContainer />

@@ -88,6 +88,7 @@ const InventoryEdit = (props) => {
           <div className="Editcontent1">
             <p>Responsible</p>
             <select value={responsible} onChange={(e) => setResponsible(e.target.value)}>
+            <option value="">Select any one</option>
               <option value="Administrator">Administrator</option>
               <option value="Abd Alla Mohamed Ahmed">Abd Alla Mohamed Ahmed</option>
               <option value="Abdel Hamid Ali Altawaita">Abdel Hamid Ali Altawaita</option>

@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const GeneralInformationEdit = (props) => {
+
   const navigate = useNavigate();
   const [proCate, setProCate] = useState([]);
   const [uoms, setUoms] = useState([]);
@@ -16,10 +17,8 @@ const GeneralInformationEdit = (props) => {
   const [proBrand , setProBrand] = useState([]);
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
-
   const productCategoryurl = endpoints.productCategory.allProductCate;
   const productBrandUrl = endpoints.productBrand.allProductBrand;
-
   const uomsurl = endpoints.UOM.allUOM;
 
   
@@ -202,8 +201,8 @@ const GeneralInformationEdit = (props) => {
       toast("Sales price cannot be less than cost price" , {type : "warning"})
       setSalesPrice(0)
     }
-    
   }
+
 
   return (
     <div>
@@ -215,6 +214,7 @@ const GeneralInformationEdit = (props) => {
               value={productType}
               onChange={(e) => setProductType(e.target.value)}
             >
+              <option value="">Select any one</option>
               {proTypes.map((item, index) => {
                 return (
                   <>
@@ -235,7 +235,7 @@ const GeneralInformationEdit = (props) => {
               value={productCategory}
               onChange={(e) => handleProductCategory(e)}
             >
-              <option value=""></option>
+               <option value="">Select any one</option>
               {proCate.map((item, index) => {
                 return (
                   <>
@@ -251,7 +251,7 @@ const GeneralInformationEdit = (props) => {
             <p>Product Code</p>
             <input
               type="text"
-              value={uniqueCode + productCatCode}
+              value={productCode}
               readOnly={true}
               // onChange={(e) => setInterRef(e.target.value)}
             />
@@ -333,6 +333,7 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Unit of Measure</p>
             <select value={unitOfMeasurement} onChange={(e) => setUnitOfMeasurement(e.target.value)}>
+            <option value="">Select any one</option>
               {uoms.map((item, index) => {
                 return (
                   <>
@@ -351,6 +352,7 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Purchase Unit of</p>
             <select value={purchaseUnitOfMeasuremnt} onChange={(e) => setPurchaseUnitOfMeasurement(e.target.value)}>
+            <option value="">Select any one</option>
               {getPurchase.map((item, index) => {
                 return (
                   <>

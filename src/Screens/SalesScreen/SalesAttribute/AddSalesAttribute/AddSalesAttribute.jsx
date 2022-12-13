@@ -9,6 +9,7 @@ import "./AddSalesAttribute.css";
 import AddValues from "./AddValues";
 
 const AddSalesAttribute = () => {
+  
   const [events, setEvents] = useState("Pricing");
   const [isEdit, setIsEdit] = useState(false);
   const [attributeName, setAttributename] = useState("");

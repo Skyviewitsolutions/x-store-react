@@ -72,7 +72,6 @@ const InventoryProductDetailsMain = (props) => {
 
   } = props;
 
-console.log(props.priceDifference,"price")
   const handleChange = (e) => {
     setFiles(e.target.files[0]);
     setProductImg(URL.createObjectURL(e.target.files[0]))
@@ -291,6 +290,7 @@ console.log(props.priceDifference,"price")
           )}
           {events === "Accounting" && isEdit === true && (
             <AccountingEdit {...props} />
+
           )}
         </div>
       </div>

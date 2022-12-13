@@ -9,8 +9,6 @@ import './PurchaseEdit.css'
 
 const PurchaseEdit = (props) => {
 
-
-  
   const navigate = useNavigate();
   const [modalShow , setModalShow] = useState(false)
   const userAuth = localStorage.getItem("userAuth");
@@ -29,7 +27,7 @@ const PurchaseEdit = (props) => {
     axios
     .post(vendorListUrl, formData)
     .then((res) => {
-      console.log(res, "response");
+      console.log(res, "my response here");
       if(res.data.status === true){
         setSingleVendorList(res.data.data)
       }
@@ -40,7 +38,7 @@ const PurchaseEdit = (props) => {
           navigate('/');
         }
         else{
-         toast(res.data.message,{type:"error"});
+        //  toast(res.data.message,{type:"error"});
         }
       }
     })
@@ -66,8 +64,8 @@ const PurchaseEdit = (props) => {
   return (
    <>
    <div className="purchase_container">
-   <CustomTable data={singleVendorList} column={column}/>
-   <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>
+  {singleVendorList.length !== 0 &&  <CustomTable data={singleVendorList} column={column}/> }
+   <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Vendor</button>
        {/* <div className="purchase_Reordering">
               <div className="purchase_first">
                 <h1>Reordering</h1>

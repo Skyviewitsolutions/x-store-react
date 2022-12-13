@@ -10,72 +10,75 @@ import "react-toastify/dist/ReactToastify.css";
 import { endpoints } from "../../../services/endpoints";
 import { useNavigate } from "react-router-dom";
 
-
 const AddProduct = () => {
-
+  
   const navigate = useNavigate();
   const url = endpoints.products.addProduct;
-  
+
   const [isEdit, setIsEdit] = useState(true);
   const [productName, setProductName] = useState("");
   const [productType, setProductType] = useState("");
   const [productCategory, setProductCategory] = useState("");
-  const [sold , setSold] = useState(false)
-  const [purchased , setPurchased] = useState(false)
-  const [expensed , setExpensed] = useState(false);
-  const [deduction , setDeduction] = useState(false)
+  const [sold, setSold] = useState(false);
+  const [purchased, setPurchased] = useState(false);
+  const [expensed, setExpensed] = useState(false);
+  const [deduction, setDeduction] = useState(false);
   const [units, setUnits] = useState("");
   const [cost, setCost] = useState("");
   const [salesPrice, setSalesPrice] = useState("");
   const [interRef, setInterRef] = useState("");
   const [customerTax, setCustomerTax] = useState("");
   const [description, setDescription] = useState("");
-  const [unitOfMeasurement , setUnitOfMeasurement] = useState("");
-  const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("");
-  const [weight , setWeight] = useState("");
-  const [volume , setVolume] = useState("");
-  const [buy , setBuy] = useState(false)
-  const [replenishOnOrder , setReplenishOnOrder] = useState(false)
-  const [customerLeadTime , setCustomerLeadTime] = useState("");
-  const [descriptionDeliveryOrder , setDescriptionDeliveryOrder] = useState("");
-  const [descriptionInternalTranser , setDescriptionInternalTranser] = useState("")
-  const [descriptionForReceipt , setDescriptionForReceipt] = useState("")
-  const [incomeAccount , setIncomeAccount] = useState("")
-  const [expenseAccount , setExpenceAccount] = useState("")
-  const [assetType , setAssetType] = useState("")
-  const [priceDifference , setPriceDifference] = useState("")
-  const [barcode , setBarcode] = useState("");
-  const [account , setAccount] = useState("");
-  const [responsible , setResponsible] = useState("")
-  const [files , setFiles] = useState("");
-  const [productBrand  , setProductBrand] = useState("");
-  const [productImg , setProductImg] = useState("");
+  const [unitOfMeasurement, setUnitOfMeasurement] = useState("");
+  const [purchaseUnitOfMeasuremnt, setPurchaseUnitOfMeasurement] = useState("");
+  const [weight, setWeight] = useState("");
+  const [volume, setVolume] = useState("");
+  const [buy, setBuy] = useState(false);
+  const [replenishOnOrder, setReplenishOnOrder] = useState(false);
+  const [customerLeadTime, setCustomerLeadTime] = useState("");
+  const [descriptionDeliveryOrder, setDescriptionDeliveryOrder] = useState("");
+  const [descriptionInternalTranser, setDescriptionInternalTranser] =
+    useState("");
+  const [descriptionForReceipt, setDescriptionForReceipt] = useState("");
+  const [incomeAccount, setIncomeAccount] = useState("");
+  const [expenseAccount, setExpenceAccount] = useState("");
+  const [assetType, setAssetType] = useState("");
+  const [priceDifference, setPriceDifference] = useState("");
+  const [barcode, setBarcode] = useState("");
+  const [account, setAccount] = useState("");
+  const [responsible, setResponsible] = useState("");
+  const [files, setFiles] = useState("");
+  const [productBrand, setProductBrand] = useState("");
+  const [productImg, setProductImg] = useState("");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
-  const [uniqueCode , setUniqueCode] = useState("");
-  const [productCatCode , setProductCatCode] = useState("");
-  const [selectedVID , setSelectedVID] = useState("") ;
-  
+  const [uniqueCode, setUniqueCode] = useState("");
+  const [productCatCode, setProductCatCode] = useState("");
+  const [selectedVID, setSelectedVID] = useState("");
+  const [productCode, setProductCode] = useState(productCode);
 
+  console.log(productCode , "product code");
 
-  const productCodeUrl = "https://xstore.skyviewads.com/ProductManagement/ProductManagement/Code";
-   
+  const productCodeUrl =
+    "https://xstore.skyviewads.com/ProductManagement/ProductManagement/Code";
+
   useEffect(() => {
     const formData = new FormData();
-    formData.append("User_Authorization" , getAuthtoken);
-    formData.append("User_AuthKey" , userAuth);
-     axios.post(productCodeUrl,formData)
-     .then((res) => {
-      if(res.data.status === true){
-        setUniqueCode(res.data.Present_Key)
-      }else if(res.data.status === false){
-        toast(res.data.message,{type:"error"})
-      }
-     })
-     .catch((err) => {
-      console.log(err , "error")
-     })
-  },[])
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios
+      .post(productCodeUrl, formData)
+      .then((res) => {
+        if (res.data.status === true) {
+          setUniqueCode(res.data.Present_Key);
+        } else if (res.data.status === false) {
+          toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  }, []);
 
   const save = () => {
     if (productName === "") {
@@ -84,79 +87,112 @@ const AddProduct = () => {
       toast("Cost is required !", { type: "warning" });
     } else if (salesPrice === "") {
       toast("Sales Price is reqiured !", { type: "warning" });
-    }  else if (customerTax === "") {
+    } else if (customerTax === "") {
       toast("Customer Tax is required", { type: "warning" });
-    } 
-    else if(customerLeadTime === ""){
-      toast("Customer lead time is required" , {type : "warning"})
-    }
-   
-    else {
-
+    } else if (customerLeadTime === "") {
+      toast("Customer lead time is required", { type: "warning" });
+    } else if (productType === "") {
+      toast("Product type is required", { type: "warning" });
+    } else if (productCategory === "") {
+      toast("product category is required", { type: "warning" });
+    // } else if (units === "") {
+    //   toast("unit is required", { type: "warning" });
+    } else if (cost === "") {
+      toast("cost is required", { type: "warning" });
+    } else if (salesPrice === "") {
+      toast("sales price is required", { type: "warning" });
+    } else if (customerTax === "") {
+      toast("customer tax is required", { type: "warning" });
+    } else if (description === "") {
+      toast("description is required", { type: "warning" });
+    } else if (unitOfMeasurement === "") {
+      toast("unit of measurement is required", { type: "warning" });
+    } else if (purchaseUnitOfMeasuremnt === "") {
+      toast("purchase unit of measurement", { type: "warning" });
+    } else if (weight === "") {
+      toast("weight is required", { type: "warning" });
+    } else if (volume === "") {
+      toast("volume is required", { type: "warning" });
+    } else if (customerLeadTime === "") {
+      toast("customer lead time is required", { type: "warning" });
+    } else if (incomeAccount === "") {
+      toast("Income account is required", { type: "warning" });
+    } else if (expenseAccount === "") {
+      toast("Expense account is required", { type: "warning" });
+    // } else if (assetType === "") {
+    //   toast("assetType is required", { type: "warning" });
+    } else if (priceDifference === "") {
+      toast("price difference is required", { type: "warning" });
+    } else if (productBrand === "") {
+      toast("product brand is required", { type: "warning" });
+    } else if (productImg === "") {
+      toast("product image is required", { type: "warning" });
+    } else {
       const formData = new FormData();
 
-  formData.append("Product_Name", productName);
-  formData.append("Product_Type", productType);
-  formData.append("Product_Category", productCategory);
-  formData.append('Product_Brand' , productBrand);
-  formData.append("units", units);
-  formData.append("Cost", cost);
-  formData.append("Sales_Price", salesPrice);
-  formData.append("Internal_Notes", interRef);
-  formData.append("Customer_Taxes", customerTax);
-  formData.append("description", description);
-  formData.append('Unit_Of_Measure' , unitOfMeasurement)
-  formData.append('Purchase_UOM' , purchaseUnitOfMeasuremnt)
-  formData.append('Weight' , weight)
-  formData.append('Volume' , volume)
-  formData.append('Buy' , buy)
-  formData.append('Replenish_On_Order' , replenishOnOrder)
-  formData.append('Customer_Lead_Time' , customerLeadTime)
-  formData.append('Description_for_Delivery_Order' , descriptionDeliveryOrder)
-  formData.append('Description_for_Receipts' , descriptionForReceipt)
-  formData.append('Description_for_Internal_Transfer' , descriptionInternalTranser)
-  formData.append("Income_Account" , incomeAccount)
-  formData.append('Expense_Account' ,expenseAccount)
-  formData.append('Price_Difference' , priceDifference)
-  formData.append('Account' , account);
-  formData.append('Sold' , sold)
-  formData.append('Purchase' , purchased)
-  formData.append('Expensed' , expensed)
-  formData.append('Deduction' , deduction)
-  formData.append('Product_Code' ,uniqueCode + productCatCode);
-  formData.append('Responsible' ,responsible)
-  formData.append('ChooseFile' , files);
-  formData.append("Barcode" , barcode);
-  formData.append("Present_Key" , uniqueCode);
-  formData.append("Vendor_ID" ,selectedVID)
-  formData.append("User_Authorization" , getAuthtoken);
-  formData.append("User_AuthKey" , userAuth);
+      formData.append("Product_Name", productName);
+      formData.append("Product_Type", productType);
+      formData.append("Product_Category", productCategory);
+      formData.append("Product_Brand", productBrand);
+      formData.append("units", units);
+      formData.append("Cost", cost);
+      formData.append("Sales_Price", salesPrice);
+      formData.append("Internal_Notes", interRef);
+      formData.append("Customer_Taxes", customerTax);
+      formData.append("description", description);
+      formData.append("Unit_Of_Measure", unitOfMeasurement);
+      formData.append("Purchase_UOM", purchaseUnitOfMeasuremnt);
+      formData.append("Weight", weight);
+      formData.append("Volume", volume);
+      formData.append("Buy", buy);
+      formData.append("Replenish_On_Order", replenishOnOrder);
+      formData.append("Customer_Lead_Time", customerLeadTime);
+      formData.append(
+        "Description_for_Delivery_Order",
+        descriptionDeliveryOrder
+      );
+      formData.append("Description_for_Receipts", descriptionForReceipt);
+      formData.append(
+        "Description_for_Internal_Transfer",
+        descriptionInternalTranser
+      );
+      formData.append("Income_Account", incomeAccount);
+      formData.append("Expense_Account", expenseAccount);
+      formData.append("Price_Difference", priceDifference);
+      formData.append("Account", account);
+      formData.append("Sold", sold);
+      formData.append("Purchase", purchased);
+      formData.append("Expensed", expensed);
+      formData.append("Deduction", deduction);
+      formData.append("Product_Code", productCode);
+      formData.append("Responsible", responsible);
+      formData.append("ChooseFile", files);
+      formData.append("Barcode", barcode);
+      formData.append("Present_Key", uniqueCode);
+      formData.append("Vendor_ID", selectedVID);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
       axios
         .post(url, formData)
         .then((res) => {
-          console.log(res, "response");
-          if(res.data.status === true){
-            toast("Product Added Successfully" , {type : "success"})
-          }
-          else if(res.data.status === false){
-            if(res.data.code === 3)
-            {
-              toast("Session expired , Please re-login",{type:"warning"})
-              navigate('/');
-            }
-            else{
-             toast(res.data.message,{type:"error"});
+         
+          if (res.data.status === true) {
+            toast("Product Added Successfully", { type: "success" });
+          } else if (res.data.status === false) {
+            if (res.data.code === 3) {
+              toast("Session expired , Please re-login", { type: "warning" });
+              navigate("/");
+            } else {
+              toast(res.data.message, { type: "error" });
             }
           }
         })
         .catch((err) => {
           console.log(err, "error");
-          toast("something went wrong" , {type : "error"})
+          toast("something went wrong", { type: "error" });
         });
     }
   };
-
-  
 
   return (
     <div>
@@ -181,6 +217,7 @@ const AddProduct = () => {
         customerTax={customerTax}
         setCustomerTax={setCustomerTax}
         description={description}
+        productCode={productCode}
         setDescription={setDescription}
         sold={sold}
         uniqueCode={uniqueCode}
