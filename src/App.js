@@ -154,6 +154,7 @@ const App = () => {
         <Route path="/ForgetPassword" element={<ForgetPassword/>} />
         <Route path="/OtpPage" element={<Otp/>} />
         <Route path="/ChangePassword" element={<ChangePassword/>} />
+
         {/* inside projects */}
         <Route path="/Dashboard" element={<Dashboard/>} />
         <Route path="/Inventory" element={<InventoryScreen/>} />
@@ -178,14 +179,14 @@ const App = () => {
         <Route path='/WarehouseConfig' element={<WarehouseConfig/>}/>
         <Route path='/AddLocation' element={<AddLocation/>}/>
         <Route path='/AddProductCategories' element={<AddProductCategories/>}/>
-       <Route path='/AddRoute' element={<AddRoute/>} />
-       <Route path='/AddAttribute' element={<AddAtrribute/>} />
-       <Route path="/AddOperationTypes" element={<AddOperationTypes/>} />
-       <Route path='/AddPutwayRules' element={<AddPutwayRules/>} />
-       <Route path='/ProductBrand' element={<ProductBrand/>} />
-       <Route path="/AddParentCategory" element={<AddParentCategory/>}/>
-       <Route path='/ParentCategory' element={<ParentCategory/>} />
-       <Route path='/ProductPrice' element={<ProductPriceList/>} />
+        <Route path='/AddRoute' element={<AddRoute/>} />
+        <Route path='/AddAttribute' element={<AddAtrribute/>} />
+        <Route path="/AddOperationTypes" element={<AddOperationTypes/>} />
+        <Route path='/AddPutwayRules' element={<AddPutwayRules/>} />
+        <Route path='/ProductBrand' element={<ProductBrand/>} />
+        <Route path="/AddParentCategory" element={<AddParentCategory/>}/>
+        <Route path='/ParentCategory' element={<ParentCategory/>} />
+        <Route path='/ProductPrice' element={<ProductPriceList/>} />
   
 
        {/* --------Accounting Pages------------- */}
@@ -279,7 +280,6 @@ const App = () => {
        <Route path='/AddPurchaseAgreement' element={<AddPurchaseAgreement/>}/>
        <Route path='/PurchaseVendor'  element={<PurchaseVendor/>} />
      
-       
        {/* -------------------------------------Employee Screens-------------------------------- */}
        <Route path='/AddEmployee' element={<AddEmployee/>} />
        <Route path='/Manager' element={<Manager/>} />
@@ -294,6 +294,8 @@ const App = () => {
        <Route path='/AddWorkAddress' element={<AddWorkAddress/>} />
       <Route path='/Testing' element={<Testing/>} />
       <Route path='/AllCoupon' element={<AllCoupon/>} />
+
+
       </Routes>
     </Router>
   </>)

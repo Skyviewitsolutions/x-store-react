@@ -3,7 +3,7 @@ import "./ProductDetailsInventory.css";
 
 const ProductDetailsInventory = (props) => {
 
-  const {buy,replenishOnOrder,customerLeadTime,weight,volume,descriptionDeliveryOrder,descriptionForReceipt,descriptionInternalTranser,setBuy,setReplenishOnOrder} = props;
+  const {buy,replenishOnOrder,customerLeadTime,weight,volume,descriptionDeliveryOrder,descriptionForReceipt,descriptionInternalTranser,setBuy,setReplenishOnOrder,responsible} = props;
   return (
     <div className="InventoryContainer">
       <div className="Inventory1">
@@ -38,7 +38,7 @@ const ProductDetailsInventory = (props) => {
           </div>
           <div className="content1">
             <p>Responsible</p>
-            <span style={{ color: "#00878f" }}>Administrator</span>
+            <span style={{ color: "#00878f" }}>{responsible}</span>
           </div>
         </div>
         <div>

@@ -9,7 +9,7 @@ const GeneralInformation = (props) => {
 
     const [showUpdateCost , setShowUpdateCost] = useState(false);
     const navigate = useNavigate();
-    const {productType,productCategory,interRef,salesPrice,customerTax,cost,prodcuctCode , unitOfMeasurement,purchaseUnitOfMeasuremnt,description ,  setProductCatCode}=props;
+    const {productType,productCategory,interRef,salesPrice,customerTax,cost,productCatCode ,proCode, unitOfMeasurement,purchaseUnitOfMeasuremnt,description ,  setProductCatCode,uniqueCode}=props;
 
     console.log(props , "productCategory")
 
@@ -30,9 +30,9 @@ const GeneralInformation = (props) => {
                 </div>
                 <div className="firstcontent2">
                     <p>Product Code</p>
-                    <p>{prodcuctCode}</p>
+                    <p>{proCode}</p>
                 </div>
-                <h5>{description}</h5>
+                <h5>{interRef}</h5>
             </div>
             <div className="part2">
                 <div className="firstcontent3">

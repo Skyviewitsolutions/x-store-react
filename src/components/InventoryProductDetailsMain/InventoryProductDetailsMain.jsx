@@ -273,7 +273,7 @@ const InventoryProductDetailsMain = (props) => {
             <GeneralInformation {...props} />
           )}
           {events === "variants" && isEdit === false && <Variants />}
-          {events === "Purchase" && isEdit === false && <Purchase />}
+          {events === "Purchase" && isEdit === false && <Purchase {...props}/>}
           {events === "Inventory" && isEdit === false && (
             <ProductDetailsInventory {...props} />
           )}

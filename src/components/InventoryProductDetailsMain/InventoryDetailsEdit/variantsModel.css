@@ -1,0 +1,31 @@
+.varBox {
+    display: flex;
+    width: 100%;
+    padding: 6px 0px;
+    align-items: center;
+}
+
+.varBox h6{
+    width: 150px;
+}
+
+.varBox select{
+    width: 350px;
+}
+
+.varCont {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.varCont button{
+    width: 100px;
+    padding: 6px 15px;
+    border-radius: 2px;
+    background: #0077b0;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}

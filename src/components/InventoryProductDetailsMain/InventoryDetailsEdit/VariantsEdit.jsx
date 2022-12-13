@@ -7,12 +7,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button, Table } from "react-bootstrap";
 import { useEffect } from "react";
+import VariantModal from "./VariantModal";
+
 
 const VariantsEdit = () => {
+
   const navigate = useNavigate();
 
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
+  const [showModal , setShowModal] = useState(false);
   const [attributesValues, setAttributeValues] = useState([]);
 
   const allattValUrl = endpoints.attribute.allValue;
@@ -68,11 +72,12 @@ const VariantsEdit = () => {
           </tbody>
         </Table>
       </div>
-      <Button variant="outline-info">Add Line</Button>
+      <Button variant="outline-info" onClick={() => setShowModal(true)}>Add Line</Button>
       <p className="VariantsEditContainerp">
         Warning: adding or deleting attributes will delete and recreate existing
         variants and lead to the loss of their possible customizations.
       </p>
+      <VariantModal showModal={showModal} setShowModal={setShowModal}/>
     </div>
   );
 };

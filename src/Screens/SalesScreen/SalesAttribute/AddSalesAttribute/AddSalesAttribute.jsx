@@ -25,12 +25,12 @@ const AddSalesAttribute = () => {
   const formData = new FormData();
 
   const save = () => {
+    
     if (attributeName === "") {
       toast("Attribute Name is Required !", { type: "warning" });
     } else if (variablCreationmode === "") {
       toast("Variable Creation Mode is required !", { type: "warning" });
-    } else if (attributeValues === "") {
-      toast("Attriute Value is Required !", { type: "warning" });
+   
     } else {
       formData.append("Attribute_Name", attributeName);
       formData.append("Display_Type", variablCreationmode);
@@ -43,7 +43,7 @@ const AddSalesAttribute = () => {
           if (res.data.status === true) {
             toast("Attribute Added Successfully", { type: "success" });
           } else if (res.data.status === false) {
-            toast(res.data.message, { ype: "error" });
+            toast(res.data.message, { type: "error" });
           }
         })
         .catch((err) => {

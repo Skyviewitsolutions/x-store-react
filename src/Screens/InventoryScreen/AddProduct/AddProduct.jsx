@@ -11,7 +11,6 @@ import { endpoints } from "../../../services/endpoints";
 import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
-  
   const navigate = useNavigate();
   const url = endpoints.products.addProduct;
 
@@ -55,9 +54,7 @@ const AddProduct = () => {
   const [uniqueCode, setUniqueCode] = useState("");
   const [productCatCode, setProductCatCode] = useState("");
   const [selectedVID, setSelectedVID] = useState("");
-  const [productCode, setProductCode] = useState(productCode);
-
-  console.log(productCode , "product code");
+  const [proCode, setProCode] = useState(productCatCode + uniqueCode);
 
   const productCodeUrl =
     "https://xstore.skyviewads.com/ProductManagement/ProductManagement/Code";
@@ -91,45 +88,8 @@ const AddProduct = () => {
       toast("Customer Tax is required", { type: "warning" });
     } else if (customerLeadTime === "") {
       toast("Customer lead time is required", { type: "warning" });
-    } else if (productType === "") {
-      toast("Product type is required", { type: "warning" });
-    } else if (productCategory === "") {
-      toast("product category is required", { type: "warning" });
-    // } else if (units === "") {
-    //   toast("unit is required", { type: "warning" });
-    } else if (cost === "") {
-      toast("cost is required", { type: "warning" });
-    } else if (salesPrice === "") {
-      toast("sales price is required", { type: "warning" });
-    } else if (customerTax === "") {
-      toast("customer tax is required", { type: "warning" });
-    } else if (description === "") {
-      toast("description is required", { type: "warning" });
-    } else if (unitOfMeasurement === "") {
-      toast("unit of measurement is required", { type: "warning" });
-    } else if (purchaseUnitOfMeasuremnt === "") {
-      toast("purchase unit of measurement", { type: "warning" });
-    } else if (weight === "") {
-      toast("weight is required", { type: "warning" });
-    } else if (volume === "") {
-      toast("volume is required", { type: "warning" });
-    } else if (customerLeadTime === "") {
-      toast("customer lead time is required", { type: "warning" });
-    } else if (incomeAccount === "") {
-      toast("Income account is required", { type: "warning" });
-    } else if (expenseAccount === "") {
-      toast("Expense account is required", { type: "warning" });
-    // } else if (assetType === "") {
-    //   toast("assetType is required", { type: "warning" });
-    } else if (priceDifference === "") {
-      toast("price difference is required", { type: "warning" });
-    } else if (productBrand === "") {
-      toast("product brand is required", { type: "warning" });
-    } else if (productImg === "") {
-      toast("product image is required", { type: "warning" });
     } else {
       const formData = new FormData();
-
       formData.append("Product_Name", productName);
       formData.append("Product_Type", productType);
       formData.append("Product_Category", productCategory);
@@ -164,7 +124,7 @@ const AddProduct = () => {
       formData.append("Purchase", purchased);
       formData.append("Expensed", expensed);
       formData.append("Deduction", deduction);
-      formData.append("Product_Code", productCode);
+      formData.append("Product_Code", proCode);
       formData.append("Responsible", responsible);
       formData.append("ChooseFile", files);
       formData.append("Barcode", barcode);
@@ -175,7 +135,6 @@ const AddProduct = () => {
       axios
         .post(url, formData)
         .then((res) => {
-         
           if (res.data.status === true) {
             toast("Product Added Successfully", { type: "success" });
           } else if (res.data.status === false) {
@@ -194,6 +153,7 @@ const AddProduct = () => {
     }
   };
 
+  
   return (
     <div>
       <Navebar showBelowMenu={false} />
@@ -217,7 +177,6 @@ const AddProduct = () => {
         customerTax={customerTax}
         setCustomerTax={setCustomerTax}
         description={description}
-        productCode={productCode}
         setDescription={setDescription}
         sold={sold}
         uniqueCode={uniqueCode}
@@ -251,7 +210,7 @@ const AddProduct = () => {
         incomeAccount={incomeAccount}
         setIncomeAccount={setIncomeAccount}
         expenseAccount={expenseAccount}
-        setExpenceAccount={setExpenceAccount}
+        setExpenseAccount={setExpenceAccount}
         assetType={assetType}
         setAssetType={setAssetType}
         priceDifference={priceDifference}
@@ -272,6 +231,8 @@ const AddProduct = () => {
         setResponsible={setResponsible}
         selectedVID={selectedVID}
         setSelectedVID={setSelectedVID}
+        proCode={proCode}
+        setProCode={setProCode}
       />
 
       {/* <Modal show={true}>
