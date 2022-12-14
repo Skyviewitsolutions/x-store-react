@@ -193,6 +193,7 @@ const AddWarehouse = (props) => {
             </div>
           </div>
         </div> */}
+        <div className="main_ware">
         <div className="Createcontent">
           <p>Warehouse</p>
           <input
@@ -235,6 +236,7 @@ const AddWarehouse = (props) => {
               </select>
             </div>
           </div>
+        </div>
         </div>
         <div className="detailsbtn">
           <Nav variant="tabs" defaultActiveKey="/home">

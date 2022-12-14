@@ -91,9 +91,9 @@ const Uom = () => {
   };
 
   const column = [
-    { label: "Unit of Measure", name: "UNITNAME" },
-    { label: "Category", name: "UNITCATEGORY" },
-    { label: "Type", name: "UNITTYPE" },
+    { label: "Unit of Measure", name: "UNIT_OF_MEASUREMENT" },
+    { label: "Category", name: "UOM_CATEGORY" },
+    { label: "Type", name: "UOM_TYPE" },
     {
       label: "Actions",
       name: "ID",

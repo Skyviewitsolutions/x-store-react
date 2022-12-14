@@ -180,7 +180,6 @@ margin-bottom: 8px;
 .force p{
     color:#6f6f6f;
     font-size: 16px;
-    margin-left: 3px;
     font-weight: 600;
     margin-bottom: 8px;
     width: 200px;
@@ -194,7 +193,6 @@ margin-bottom: 8px;
 }
 .InventoryValuation{
     width: 50%;
-    margin-left: 45px;
 }
 .InventoryValuation h6{
     font-size: 18px;
@@ -218,7 +216,7 @@ margin-bottom: 8px;
     border-bottom: 1px solid #cccc;
     outline: none;
     margin-left: 10px;
-    width: 400px; 
+    width: 330px; 
 }
 .AddProductCateEmptybox{
     width: 50%;
@@ -238,13 +236,12 @@ margin-bottom: 8px;
 }
 .AccountStock{
     width: 50%;
-    padding: 15px 15px;
+    /* padding: 15px 15px; */
 }
-.AccountStock h5{
+.AccountStock h6{
     color: #6c757d;
-    font-size: 22px;
-    margin-left: 10px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 500;
 }
 .stockdropdown{
     display: flex;
@@ -253,8 +250,7 @@ margin-bottom: 8px;
 }
 .stockdropdown p{
     color:#6f6f6f;
-    font-size: 16px;
-    margin-left: 3px;
+    font-size: 15px;
     font-weight: 600;
     margin-bottom: -10px;
     width: 200px;
@@ -265,8 +261,24 @@ margin-bottom: 8px;
     outline: none;
     width: 331px; 
 }
-
-
+.logistics_cl{
+    display: flex;
+    align-items: center;
+}
+.logistics_cl p{
+    color:#6f6f6f;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: -10px;
+    width: 200px;
+}
+.logistics_cl select{
+      border: none;
+    border-bottom: 1px solid #cccc;
+    outline: none;
+    margin-left: 10px;
+    width: 331px; 
+}
 @media (min-width: 768px) and (max-width: 1024px)
 {
     .AddProductCateText p{

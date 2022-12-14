@@ -96,7 +96,7 @@ const getUomCategory = () => {
   navigate("/AddUomCate" , {state:orgValue});
  }
   const column = [
-    {label : 'Unit of Measure Category', name: "UNIT_NAME"},
+    {label : 'Unit of Measure Category', name: "UOM_CATEGORY"},
     {
       label:"Actions",
       name:"ID",

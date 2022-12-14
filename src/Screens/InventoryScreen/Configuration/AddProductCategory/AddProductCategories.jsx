@@ -510,7 +510,7 @@ const AddProductCategories = (props) => {
           <div className="AddProductdetailscontent3">
             <div className="Logistics">
               <h6>Logistics</h6>
-              <div className="force">
+              <div className="logistics_cl">
                 <p>Force Removal Strategy</p>
                 <select
                   value={removalStrategy}

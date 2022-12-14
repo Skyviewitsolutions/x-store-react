@@ -144,6 +144,117 @@ input[type="checkbox"][readonly] {
 
   @media (min-width: 768px) and (max-width: 1024px)
 {
+    .MainContainer{
+        height: auto;
+    }
+   .proin{
+    border: none;
+   } 
+   .div2 {
+    display: flex;
+    padding: 2px 12px;
+    border-left: 1px solid #cdd3d9;
+}
+   .hello{
+    size:20px;
+   }
+   .div1{
+    display: none !important;
+   }
+   .text p{
+    font-size: 14px;
+   }
+   .text span {
+    font-size: 13px !important;
+    padding-left: 20px;
+}
+.text2 p {
+    font-size: 15px;
+}
+.firstcontent3 span {
+    font-size: 13px;
+    margin-left: 13px;
+}
+.firstcontent3 p {
+    font-size: 14px;
+    width: 150px;
+}
+.detailsheading p {
+    font-size: 30px;
+}
+.detailsinput label {
+    font-size: 14px;
+}
+
+.detailsinput input {
+    width: 20px;
+}
+
+}
+
+
+th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDataTableHeadCell-root.tss-gm6zfk-MUIDataTableHeadCell-fixedHeader.css-1ygcj2i-MuiTableCell-root {
+    padding-left: 0px !important;
+}
+  @media (min-width: 820px) and (max-width: 1180px)
+{
+    .MainContainer{
+        height: auto;
+    }
+   .proin{
+    border: none;
+   } 
+   .div2 {
+    display: flex;
+    padding: 2px 12px;
+    border-left: 1px solid #cdd3d9;
+}
+   .hello{
+    size:20px;
+   }
+   .div1{
+    display: none !important;
+   }
+   .text p{
+    font-size: 14px;
+   }
+   .text span {
+    font-size: 13px !important;
+    padding-left: 20px;
+}
+.text2 p {
+    font-size: 15px;
+}
+.firstcontent3 span {
+    font-size: 13px;
+    margin-left: 13px;
+}
+.firstcontent3 p {
+    font-size: 14px;
+    width: 150px;
+}
+.detailsheading p {
+    font-size: 30px;
+}
+.detailsinput label {
+    font-size: 14px;
+}
+
+.detailsinput input {
+    width: 20px;
+}
+
+}
+
+
+th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDataTableHeadCell-root.tss-gm6zfk-MUIDataTableHeadCell-fixedHeader.css-1ygcj2i-MuiTableCell-root {
+    padding-left: 0px !important;
+}
+  @media (min-width: 912px) and (max-width: 1368px)
+{
+    .MainContainer{
+        height: auto;
+    }
    .proin{
     border: none;
    } 

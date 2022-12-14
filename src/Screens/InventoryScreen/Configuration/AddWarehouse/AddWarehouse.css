@@ -29,7 +29,7 @@
     width: 170px;
 }
 .Createcontent{
-    padding-left: 20px;
+    /* padding-left: 20px; */
 }
 .Createcontent p{
 font-size: 16px;
@@ -39,7 +39,7 @@ margin-left: 15px;
 margin-top: 15px;
 }
 .Createcontent input{
-    width: 90%;
+    width: 97%;
     border: none;
     outline: none;
     border-bottom: 2px solid #cccccc;
@@ -50,16 +50,14 @@ margin-top: 15px;
 .shortname{
     width: 100%;
     display: flex;
-    padding:20px 20px;
+    justify-content: space-between;
+    padding:20px 17px;
 }
-.Addcontent{
-    width: 50%;
-}
+
 .textIn{
     display: flex;
     align-items: center;
     margin-bottom: 8px;
-    margin-left: 17px;
 }
 .textIn p{
     color: #6a666a;
@@ -72,11 +70,7 @@ margin-top: 15px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
-    width: 450px;
-    margin-left: 5px;
-}
-.Addcontent2{
-    width: 50%;
+    width: 400px;
 }
 .Adddropdown{
     display: flex;
@@ -93,7 +87,7 @@ margin-top: 15px;
 .Adddropdown select{
     border: none;
     border-bottom: 1px solid #cccccc;
-    width: 450px;
+    width: 400px;
     outline: none;
 }
 
@@ -133,7 +127,7 @@ margin-top: 15px;
     .shortname {
         display: flex;
         flex-direction: column;
-        margin-left: 30px;
+        margin-left: 20px;
     }
 
 }

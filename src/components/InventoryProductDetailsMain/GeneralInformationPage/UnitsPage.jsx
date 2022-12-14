@@ -15,27 +15,27 @@ const UnitPage = () => {
   const [unitCategory, setUnitcategory] = useState("");
   const [unitType, setUnitType] = useState("");
   const [uomcate, setUomCate] = useState([]);
-  const [rounding, setRounding] = useState("");
+  const [value, setValue] = useState("");
   const [update, setUpdate] = useState();
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
 
   const formData = new FormData();
   formData.append("UnitName", unitName);
-  formData.append("UnitCategory", unitCategory);
+  formData.append("UnitCategoryID", unitCategory);
   formData.append("UnitType", unitType);
-  formData.append("Rounding_Precisio", rounding);
+  formData.append("Value", value);
   formData.append("User_Authorization", getAuthtoken);
   formData.append("User_AuthKey", userAuth);
 
   const save = () => {
     if (unitName === "") {
-      toast("Unit Name is Required!", { type: "warning" });
+      toast("Unit  is Required!", { type: "warning" });
     } else if (unitCategory === "") {
       toast("Unit Category is Required!", { type: "warning" });
     } else if (unitType === "") {
       toast("Unit type is Required!", { type: "warning" });
-    } else if (rounding === "") {
+    } else if (value === "") {
       toast("Rounding Precisio is Required!,", { type: "warning" });
     } else {
       axios
@@ -76,34 +76,34 @@ const UnitPage = () => {
 
   const location = useLocation();
   const selectedData = location.state;
+  console.log(selectedData,"selectedData here")
 
   const UomUpdateUrl = endpoints.UOM.updateUOM;
 
   useEffect(() => {
     if (selectedData) {
       setUpdate(true);
-      setUnitName(selectedData.UNITNAME);
-      setUnitType(selectedData.UNITTYPE);
-      setUnitcategory(selectedData.UNITCATEGORY);
-      setRounding(selectedData.ROUNDING_PRECISIO);
+      setUnitName(selectedData.UNIT_OF_MEASUREMENT);
+      setUnitType(selectedData.UOM_TYPE);
+      setUnitcategory(selectedData.UOM_CATEGORY_ID);
+      setValue(selectedData.UOM_VALUE);
     }
   }, [selectedData]);
 
   const updateData = () => {
     if (unitName === "") {
-      toast("Unit Name is Required!", { type: "warning" });
+      toast("Unit is Required!", { type: "warning" });
     } else if (unitCategory === "") {
       toast("Unit Category is Required!", { type: "warning" });
     } else if (unitType === "") {
       toast("Unit type is Require!", { type: "warning" });
     } else {
       const formData = new FormData();
-
       formData.append("id", selectedData.ID);
       formData.append("UnitName", unitName);
       formData.append("UnitType", unitType);
-      formData.append("UnitCategory", unitCategory);
-      formData.append("Rounding_Precisio", rounding);
+      formData.append("UnitCategoryID", unitCategory);
+      formData.append("Value", value);
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
 
@@ -147,12 +147,12 @@ const UnitPage = () => {
               onChange={(e) => setUnitcategory(e.target.value)}
               value={unitCategory}
             >
-              <option></option>
+             <option value="">Choose any one</option>
               {uomcate.map((item, index) => {
                 return (
                   <>
-                    <option key={index} value={item.UNIT_NAME}>
-                      {item.UNIT_NAME}
+                    <option key={index} value={item.ID}>
+                      {item.UOM_CATEGORY}
                     </option>
                   </>
                 );
@@ -182,8 +182,8 @@ const UnitPage = () => {
             <input
               type="text"
               placeholder="0.00010"
-              value={rounding}
-              onChange={(e) => setRounding(e.target.value)}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
             />
           </div>
           <div className="unitcheckbox">
