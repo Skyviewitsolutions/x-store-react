@@ -129,5 +129,10 @@ margin-top: 15px;
         flex-direction: column;
         margin-left: 20px;
     }
-
+.textIn {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    margin-left: -16px;
+} 
 }
