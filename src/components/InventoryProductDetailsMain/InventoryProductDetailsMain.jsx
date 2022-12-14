@@ -20,6 +20,7 @@ import camera from "../../assets/Images/camera.png";
 import { useNavigate } from "react-router-dom";
 import InventoryProductDetailsFooter from "../InventoryProductDetailsFooter/InventoryProductDetailsFooter";
 import axios from "axios";
+import ProductBarcode from "./ProductBarcode/ProductBarcode";
 
 const InventoryProductDetailsMain = (props) => {
   
@@ -266,6 +267,12 @@ const InventoryProductDetailsMain = (props) => {
             >
               <Nav.Link eventKey="link-4" className={events === "Accounting" ? "navLinkActive" : "navLinkDeactive"}>Accounting</Nav.Link>
             </Nav.Item>
+            <Nav.Item
+               className={events === "ProductBarcode" ? "navLinkActive" : "navLinkDeactive"}
+              onClick={() => setEvents("ProductBarcode")}
+            >
+              <Nav.Link eventKey="link-4" className={events === "ProductBarcode" ? "navLinkActive" : "navLinkDeactive"}>Product Barcode</Nav.Link>
+            </Nav.Item>
           </Nav>
         </div>
         <div className="GeneralInformation">
@@ -290,6 +297,10 @@ const InventoryProductDetailsMain = (props) => {
           )}
           {events === "Accounting" && isEdit === true && (
             <AccountingEdit {...props} />
+
+          )}
+          {events === "ProductBarcode" && isEdit === true && (
+          <ProductBarcode />
 
           )}
         </div>

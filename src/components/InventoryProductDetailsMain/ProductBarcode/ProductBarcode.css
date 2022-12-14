@@ -1,0 +1,18 @@
+.barcode_container{
+    padding: 15px 25px;
+}
+.barcode_btn{
+    border: 1px solid #1669a2;
+    color: #1669a2;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.barcode_btn:hover{
+    background-color: #1669a2;
+    color: #fff;
+}
+   

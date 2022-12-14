@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./variantsModel.css";
 import { Modal } from "react-bootstrap";
 import Multiselect from "multiselect-react-dropdown";
+import axios from "axios";
+import { endpoints } from "../../../services/endpoints";
+import { MdOutlineCancel } from "react-icons/md";
 
 const VariantModal = (props) => {
 
   const { showModal, setShowModal } = props;
   const [allAttribute , setAllAttribute] = useState([])
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
 
   const options = [
     { name: "VAT Goods Purchases-STD (Purchases)", id: 1 },
@@ -23,6 +28,7 @@ const VariantModal = (props) => {
   const onRemove1 = (selectedList, removedItem) => {
   };
   
+  const allattValUrl = endpoints.attribute.allValue;
 
   const getAllAttribute = () =>{
 
@@ -30,10 +36,10 @@ const VariantModal = (props) => {
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     axios
-      .post(singleAddLineUrl, formData)
+      .post(allattValUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          setAllAddLine(res.data.data);
+          console(res.data.data);
         } else if (res.data.status === false) {
           // toast(res.data.message, { type: "error" });
         }
@@ -72,7 +78,12 @@ const VariantModal = (props) => {
               />
             </div>
                
-            <button>Save</button>
+         <div className="bar_btn">
+                    <button className='barcode_btns'>Save</button>
+                </div>
+                 <div onClick={() => setShowModal(false)}>
+            <MdOutlineCancel size="25px" className="Acccuticons" />
+          </div>
           </div>
         </div>
       </Modal>

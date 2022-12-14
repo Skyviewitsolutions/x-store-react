@@ -27,10 +27,9 @@
     border-right: 1px solid #cdd3d9;
 }
 .div2{
-    width:15%;
+    /* width:15%; */
     display: flex;
-    padding: 2px 0px;
-    padding-left: 10px;
+    padding: 2px 4px;
     border-left: 1px solid #cdd3d9;
 }
 .div2:hover{
@@ -65,11 +64,13 @@
     top:25px;
     display: flex;
     flex-direction: column;
+   
 }
 .cameraimg img{
     height: 150px;
     width: 150px;
     border: 1px solid #cccc;
+    cursor: pointer;
 }
 .cameraimg input{
     margin-top: 5px;
@@ -113,7 +114,7 @@
     color: white !important;
 }
 .nav-link:hover{
-    color: #fff !important;
+    color: #000 !important;
 }
 .navLinkDeactive a.nav-link{
     color:#6f6f6f;
@@ -146,9 +147,11 @@ input[type="checkbox"][readonly] {
    .proin{
     border: none;
    } 
-   .div2{
-    padding-left: 5px;
-   }
+   .div2 {
+    display: flex;
+    padding: 2px 12px;
+    border-left: 1px solid #cdd3d9;
+}
    .hello{
     size:20px;
    }

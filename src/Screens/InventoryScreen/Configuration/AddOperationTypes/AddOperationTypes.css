@@ -43,11 +43,11 @@
 .type{
     width: 50%;
 }
-.text{
+.texts{
     display: flex;
    align-items: center;  
 }
-.text p{
+.texts p{
     width: 200px;
     font-size: 15px;
     color: #666666;
@@ -55,7 +55,7 @@
     font-weight: 600;
     margin-bottom: 7px;
 }
-.text input{
+.texts input{
     width: 20px;
 }
 .location{

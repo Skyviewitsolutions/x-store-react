@@ -1,6 +1,11 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
+import CustomerCard from '../../../components/Customer/CustomerCard'
 import CustomTable from '../../../components/CustomTable/CustomTable'
+import ManagerCard from '../../../components/ManagerCard/ManagerCard'
+import { endpoints } from '../../../services/endpoints'
 import EmployeeNavbar from '../EmplyoeeNavbar/EmployeeNavbar'
 
 const Manager = () => {
@@ -10,27 +15,72 @@ const Manager = () => {
         navigate('/AddManager');
       }
 
-    const data = [
-        {
-            id:1,
-          managerName:"Shuaub Zafar "  ,
-          jobPosition:"Managing Director"
-        },{
-            id:2,
-            managerName:"Zubair Sir",
-            jobPosition:"Chief Excecutive Officer"
-        },
-    ]
+      const [loading , setLoading] = useState(false)
+      const [deActiveManager, setDeActiveManager] = useState([]);
+      const [activeManager, setActiveManager] = useState([]);
+      const getAuthtoken = localStorage.getItem("authtoken");
+      const userAuth = localStorage.getItem("userAuth");
+     const [allManager , setAllManager] = useState([])
+     const allManagerUrl = endpoints.manager.allmanager;
 
-    const column =[
-        {title:"Manager Name", name:"managerName"},
-        {title:"Job Position", name:"jobPosition"},
+  const getAllManager = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    setLoading(true)
+    axios
+      .post(allManagerUrl, formData)
+      .then((res) => {
+        setLoading(false)
+        console.log(res,"response")
+        if (res.data.status === true) {
+          const customer = res.data.data;
+          var val = customer.reverse();
+          const deletedVendor = val.filter((itm, ind) => {
+            return itm.DELETE_STATUS === "X";
+          });
+          setDeActiveManager(deletedVendor);
 
-    ]
+          const allCustomer = customer.filter((itm, index) => {
+            return itm.DELETE_STATUS === null;
+           
+          });
+           console.log(allCustomer,"val here")
+           setActiveManager(allCustomer);
+          setAllManager(res.data.data);
+        } else if (res.data.status === false) {
+          toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        setLoading(false)
+        console.log("something went wrong", err);
+      });
+  }
+
+  useEffect(() => {
+    getAllManager()
+  },[])
+
   return (
     <div>
         <EmployeeNavbar showBelowMenu={true} title="Manager" handleCreatePage={handleCreatePage}/>
-        <CustomTable data={data} column={column} />
+        {activeManager.map((item,ind) => {
+          return(
+            <>
+             <ManagerCard getAllManager={getAllManager} data={item}/>
+            </>
+          )
+        })}
+        {deActiveManager.map((item,ind) => {
+          return(
+            <>
+             <ManagerCard getAllManager={getAllManager} data={item}/>
+            </>
+          )
+        })}
+       
+        <ToastContainer />
     </div>
   )
 }

@@ -6,6 +6,7 @@ import Navebar from "../../../../components/Navbar/Navbar";
 import { endpoints } from "../../../../services/endpoints";
 import "./AddOperationTypes.css";
 
+
 const AddOperationTypes = () => {
 
   const warehouseurl = endpoints.wareHouse.allWarehouse;
@@ -274,7 +275,7 @@ const AddOperationTypes = () => {
                 <option>Internal Transfer</option>
               </select>
             </div>
-            <div className="text">
+            <div className="texts">
               <p>Show Detailed Operations</p>
               <input
                 type="checkbox"

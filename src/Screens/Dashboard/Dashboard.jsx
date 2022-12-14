@@ -72,7 +72,7 @@ const Dashboard = () => {
       <div className="container-fluid main">
         <div className="containers">
           <div className="dashCont">
-            <Card
+            {/* <Card
               img={Discuss}
               text="Discuss"
               className="dash"
@@ -85,11 +85,30 @@ const Dashboard = () => {
               bgColor="#c2b871"
             />
             <Card
-              img={Contact}
-              text="Contact"
+              img={payroll}
+              text="Payroll"
               className="dash"
-              bgColor="#259093"
+              bgColor="#cc6786"
             />
+             <Card
+              img={attendance}
+              text="Attendance"
+              className="dash"
+              bgColor="#82acc2"
+            />
+            <Card
+              img={timeOff}
+              text="Time Off"
+              className="dash"
+              bgColor="#c2b870"
+            />
+              <Card
+              img={loan}
+              text="Loan"
+              className="dash"
+              bgColor="#bcb377"
+            />
+           
             <Card
               img={User}
               text="User Audit"
@@ -115,27 +134,14 @@ const Dashboard = () => {
               className="dash"
               bgColor="#bd6882"
             />
-            <Card
-              img={Coc}
-              text="Sales"
-              className="dash"
-              bgColor="#484d93"
-              onClick={() => navigate('/sales_teams')}
-            />
+           
             <Card
               img={purchaseCon}
               text="Purchase Contract"
               className="dash"
               bgColor="#b43d7a"
-            />
-            <Card
-              img={purchase}
-              text="Purchase"
-              className="dash"
-              bgColor="#7faac1"
-              onClick={() => navigate("/PurchasePriceList")}
-            />
-            <Card
+            /> */}
+             <Card
               img={inventory}
               text="Inventory"
               className="dash"
@@ -149,13 +155,22 @@ const Dashboard = () => {
               bgColor="#d78d61"
               onClick={() => navigate("/ChartAccount")}
             />
-
-            <Card
-              img={payroll}
-              text="Payroll"
+             <Card
+              img={Coc}
+              text="Sales"
               className="dash"
-              bgColor="#cc6786"
+              bgColor="#484d93"
+              onClick={() => navigate('/sales_teams')}
             />
+            <Card
+              img={purchase}
+              text="Purchase"
+              className="dash"
+              bgColor="#7faac1"
+              onClick={() => navigate("/PurchasePriceList")}
+            />
+          
+            
             <Card
               img={employee}
               text="Employee"
@@ -163,30 +178,20 @@ const Dashboard = () => {
               bgColor="#248e91"
               onClick={() => navigate("/Department")}
             />
-            <Card
-              img={attendance}
-              text="Attendance"
-              className="dash"
-              bgColor="#82acc2"
-            />
-            <Card
-              img={timeOff}
-              text="Time Off"
-              className="dash"
-              bgColor="#c2b870"
-            />
+           
             <Card
               img={expenses}
               text="Expenses"
               className="dash"
               bgColor="#737573"
             />
-            <Card
-              img={loan}
-              text="Loan"
+             <Card
+              img={Contact}
+              text="Contacts"
               className="dash"
-              bgColor="#bcb377"
+              bgColor="#cc6d89"
             />
+          
           </div>
         </div>
         <div className="arrowicon">

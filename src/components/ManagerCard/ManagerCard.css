@@ -1,0 +1,70 @@
+.manager_container{
+    height: 100px;
+    width: 314px;
+    margin: 20px 30px;
+    /* margin-left: 60px;
+    margin-top: 10px; */
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+  }
+  .manager_con{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .manager_img {
+    height: 100px;
+    width: 10%;
+  }
+  
+  .manager_img img {
+    width: 65px;
+    margin: 12px 10px;
+  }
+  
+  .manager_contents {
+    width: 75%;
+    margin: 10px 10px;
+    padding-left: 15px;
+  }
+  
+  .manager_contents h6 {
+    font-size: 15px;
+    color: #000;
+    margin-top: 5px;
+    margin-bottom: 1%;
+    margin-left: 10px;
+  }
+  
+  .manager_contents p {
+    color: gray;
+    font-size: 15px;
+    margin-bottom: 0%;
+    margin-left: 10px;
+  }
+  .deleteicon {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 10;
+  }
+  @media only screen and (max-width: 1000px) {
+    .manager_container {
+      width: 303px;
+      margin-left: 21px;
+    }
+  }
+  @media only screen and (max-width: 820px) {
+    .manager_container {
+      width: 230px;
+      margin-left: 15px;
+    }
+    .manager_container {
+      width: 66%;
+    }
+  }
+  

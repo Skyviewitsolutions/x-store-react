@@ -10,7 +10,10 @@
 }
 
 .varBox select{
-    width: 350px;
+    width: 500px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
 }
 
 .varCont {

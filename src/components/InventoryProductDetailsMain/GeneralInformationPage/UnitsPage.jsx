@@ -178,7 +178,7 @@ const UnitPage = () => {
             </select>
           </div>
           <div className="unitcontent">
-            <p>Rounding Precisio</p>
+            <p>Value</p>
             <input
               type="text"
               placeholder="0.00010"

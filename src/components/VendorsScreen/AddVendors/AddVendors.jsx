@@ -351,7 +351,7 @@ const AddVendors = () => {
       <Navebar showBelowMenu={true} title="Vendor" save={edit === true ? updateData : save } showCanelBtn={true}/>
       <div className="AddVendorsCon">
         <div className="container">
-          <div className="VendorsHeader">
+          {/* <div className="VendorsHeader">
             <div className="VendorsIcons">
               <RiShoppingCartFill
                 size="25px"
@@ -382,7 +382,7 @@ const AddVendors = () => {
                 <span>Vendors Bills</span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="VendorsDetails">
             <div className="radiobutton">
               <div className="IndCom">
