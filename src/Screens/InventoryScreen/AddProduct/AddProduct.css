@@ -4,3 +4,10 @@
     height: 400px;
     /* margin-left: -400px; */
 }
+@media only screen and (max-width: 1000px){
+
+.Editfirstcontent2 input {
+    width: 241px
+
+;
+}}

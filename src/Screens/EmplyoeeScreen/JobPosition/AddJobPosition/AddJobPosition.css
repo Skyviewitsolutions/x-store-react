@@ -66,7 +66,11 @@
     outline: none;
     border-bottom: 1px solid #cccc;
     /* width: 474px; */
-    width: 70%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+    /* width: 474px; */
+    width: 614px;
   
 }
 

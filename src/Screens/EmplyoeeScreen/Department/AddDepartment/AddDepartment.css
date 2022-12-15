@@ -43,7 +43,7 @@
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
-    width: 615px;
+    width: 652px !important;
     margin-bottom: 10px;
 }
 .operation_department_1 input{
