@@ -354,5 +354,15 @@ export const endpoints = {
     singleHeaddepartment : BASE_URL +"/Employee/HeadDepartment/GetSingle",
     updateHeaddepartment : BASE_URL + "/Employee/HeadDepartment/Update",
     deleteHeaddepartment : BASE_URL + "/Employee/HeadDepartment/Delete"
+   },
+
+   jobposition :{
+    getAlljobposition:BASE_URL+ "/Employee/Designation/GetAll",
+    getsinglejobposition:BASE_URL+ "/Employee/Designation/GetSingle",
+    Addemployeejobposition :BASE_URL+"/Employee/Designation/Add",
+    Employeeupdatejobposition:BASE_URL+ "/Employee/Designation/Update",
+    Employeedeletejobposition:BASE_URL+ "/Employee/Designation/Delete",
    }
+
+
 };

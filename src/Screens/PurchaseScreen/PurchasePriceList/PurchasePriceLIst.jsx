@@ -90,10 +90,12 @@ const PurchasePriceLIst = () => {
     const val = allVenprice.filter((itm,index) => {
       return itm.ID == data
     })
+
     const orgValue = val[0];
     console.log(orgValue,"irhhcbsdh")
     navigate("/AddPurchasePriceList" , {state:orgValue});   
-}
+
+  }
 
     const column  = [
         {title:"Vendor" , name:"VENDOR_PRODUCT"},
