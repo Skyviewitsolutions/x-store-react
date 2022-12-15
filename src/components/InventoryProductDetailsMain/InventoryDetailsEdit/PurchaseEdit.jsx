@@ -80,7 +80,7 @@ const PurchaseEdit = (props) => {
     });
   }
   useEffect(() => {
-    if(productId != ""){
+    if(productId){
       getAllVendorlist()
     }else{
       getSingleVendorList()
@@ -106,10 +106,12 @@ const PurchaseEdit = (props) => {
     
   ]
 
+  console.log(productId , "productId")
+
   return (
    <>
    <div className="purchase_container">
-    {productId != "" ? <CustomTable data={allVendorList} column={column2}/> : <CustomTable data={singleVendorList} column={column}/>
+    {productId  ?  <CustomTable data={allVendorList} column={column2}/> : <CustomTable data={singleVendorList} column={column}/>
     }
   
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>

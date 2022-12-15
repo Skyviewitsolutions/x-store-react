@@ -11,6 +11,7 @@ import { endpoints } from "../../../services/endpoints";
 import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
+  
   const navigate = useNavigate();
   const url = endpoints.products.addProduct;
 

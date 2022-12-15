@@ -9,26 +9,24 @@ import { Button, Table } from "react-bootstrap";
 import { useEffect } from "react";
 import VariantModal from "./VariantModal";
 
-
 const VariantsEdit = () => {
-
   const navigate = useNavigate();
 
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
-  const [showModal , setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [attributesValues, setAttributeValues] = useState([]);
 
   const allattValUrl = endpoints.attribute.allValue;
 
   const GetAllAttribute = () => {
+    
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     axios
       .post(allattValUrl, formData)
       .then((res) => {
-        
         if (res.data.status === true) {
           setAttributeValues(res.data.data);
         } else if (res.data.status === false) {
@@ -72,12 +70,14 @@ const VariantsEdit = () => {
           </tbody>
         </Table>
       </div>
-      <Button variant="outline-info" onClick={() => setShowModal(true)}>Add Line</Button>
+      <Button variant="outline-info" onClick={() => setShowModal(true)}>
+        Add Line
+      </Button>
       <p className="VariantsEditContainerp">
         Warning: adding or deleting attributes will delete and recreate existing
         variants and lead to the loss of their possible customizations.
       </p>
-      <VariantModal showModal={showModal} setShowModal={setShowModal}/>
+      <VariantModal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

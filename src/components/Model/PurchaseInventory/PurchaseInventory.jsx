@@ -6,9 +6,10 @@ import { MdOutlineCancel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { endpoints } from "../../../services/endpoints";
-
 import "./PurchaseInventory.css";
+
 const PurchaseInventory = (props) => {
+
   const navigate = useNavigate();
 
   const {
@@ -19,6 +20,7 @@ const PurchaseInventory = (props) => {
     getSingleVendorList,
     setSelectedVID,
   } = props;
+
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
 
@@ -29,13 +31,14 @@ const PurchaseInventory = (props) => {
   const getVendorUrl = endpoints.vendors.allVendors;
 
   useEffect(() => {
+
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     axios
       .post(getVendorUrl, formData)
       .then((res) => {
-        console.log(res, "response");
+       
         if (res.data.status === true) {
           setAllVendor(res.data.data);
         } else if (res.data.status === false) {
@@ -51,6 +54,7 @@ const PurchaseInventory = (props) => {
         console.log(err, "error");
         toast("something went wrong", { type: "error" });
       });
+
   }, []);
 
   const [vendor, setVendor] = useState("");
