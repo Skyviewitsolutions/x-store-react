@@ -12,14 +12,17 @@ export const endpoints = {
       BASE_URL + "/ProductManagement/ProductManagement/DeleteProduct",
     incomeAcoount: BASE_URL + "/AccountDepartment/ProductIncome/GetAllPI",
     expenseAccount: BASE_URL + "/AccountDepartment/ExpenseAccount/GetAllExp",
-    priceDifference:
-      BASE_URL + "/ProductManagement/ProductDifferentPrice/GetAllPDP",
+    priceDifference:BASE_URL + "/ProductManagement/ProductDifferentPrice/GetAllPDP",
     productUnitAll: BASE_URL + "/ProductsXM/ProductsUnitsAll",
     productType: BASE_URL + "/ProductsXM/GetAllProductType",
     vendorListAllProduct : BASE_URL + "/ProductManagement/ProductManagement/GetAllVendorList",
     vendorListAdd : BASE_URL + "/ProductManagement/ProductManagement/AddVendorList",
     vendorListdelete :  BASE_URL + "/ProductManagement/ProductManagement/DelVendorList",
     vendorListsingle : BASE_URL + "/ProductManagement/ProductManagement/GetSingleVendorList",
+    ProductBarcodeAll : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/GetAll",
+    ProductBarcodeAdd : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/Add",
+    ProductBarcodeDelete : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/Add",
+    ProductBarcodeSingle : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/GetSingle"
   },
   productBrand: {
     allProductBrand: BASE_URL + "/ProductManagement/ProductBrand/GetAll",

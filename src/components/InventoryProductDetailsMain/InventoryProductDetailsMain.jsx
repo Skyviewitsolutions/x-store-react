@@ -300,7 +300,7 @@ const InventoryProductDetailsMain = (props) => {
 
           )}
           {events === "ProductBarcode" && isEdit === true && (
-          <ProductBarcode />
+          <ProductBarcode {...props}/>
 
           )}
         </div>

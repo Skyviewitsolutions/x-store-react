@@ -48,7 +48,8 @@ const VendorsCard = (props) => {
   return (<>
 
   {data.VENDOR_STATUS == "X" ? 
-    <div style={{opacity : 0.5}}>
+    <div style={{opacity : 0.5}} className="vendor_card">
+      <div className="yf_card">
       <div className="VendorsContainer">
         <div className="VendorsCon"  >
           <div className="VendorsImg">
@@ -67,6 +68,7 @@ const VendorsCard = (props) => {
             onMouseOut={() => setIconColor("#7478a1")}
           />
         </div>
+      </div>
       </div>
       <ToastContainer/>
     </div> : 

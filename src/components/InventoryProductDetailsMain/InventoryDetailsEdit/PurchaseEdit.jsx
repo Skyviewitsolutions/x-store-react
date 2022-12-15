@@ -102,7 +102,6 @@ const PurchaseEdit = (props) => {
   const column2 = [
     { label :'Name', name:'VENDOR_NAME'},
     { label :'currency', name:'VENDOR_CURRENCY'},
-    { label :'UOM', name:'UNIT_OF_MEASURE'},
     { label :'Price', name:'VENDOR_PRICE'},
     
   ]

@@ -160,12 +160,12 @@ const InventoryProductDetails = () => {
       formData.append("units", units);
       formData.append("Cost", cost);
       formData.append("Sales_Price", salesPrice);
-      formData.append("Barcode", barcode);
+      formData.append("Product_BrandID", barcode);
       formData.append("internal_Reference", interRef);
       formData.append("Customer_Taxes", customerTax);
       formData.append("Internal_Notes", description);
-      formData.append("Unit_Of_Measure", unitOfMeasurement);
-      formData.append("Purchase_UOM", purchaseUnitOfMeasuremnt);
+      formData.append("UOM_ID", unitOfMeasurement);
+      formData.append("Purchase_UOMID", purchaseUnitOfMeasuremnt);
       formData.append("Weight", weight);
       formData.append("Volume", volume);
       formData.append("Responsible", responsible);

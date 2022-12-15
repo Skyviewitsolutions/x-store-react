@@ -8,4 +8,12 @@
     overflow-y: scroll;
     /* height: 500px; */
 }
-
+.tss-1vd39vz-MUIDataTableBodyCell-stackedCommon {
+    display: block;
+}
+@media (max-width: 899.95px)
+{
+.tss-1y3wvy9-MUIDataTableBodyCell-stackedParent {
+    display: inherit;
+  
+}}

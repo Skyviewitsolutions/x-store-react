@@ -241,7 +241,7 @@ const GeneralInformationEdit = (props) => {
               {proCate.map((item, index) => {
                 return (
                   <>
-                    <option key={index} value={item.CATEGORY_NAME}>
+                    <option key={index} value={item.CATEGORY_ID}>
                       {item.CATEGORY_NAME}
                     </option>
                   </>
@@ -269,7 +269,7 @@ const GeneralInformationEdit = (props) => {
               {proBrand.map((item,index) => {
                 return(
                   <>
-                  <option value={item.BRAND_NAME_ENGLISH}>{item.BRAND_NAME_ENGLISH}</option>
+                  <option value={item.BRAND_ID}>{item.BRAND_NAME_ENGLISH}</option>
                   </>
                 )
               })}
@@ -300,14 +300,14 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent3">
             <p
-              style={{ color: "#6a666a", fontSize: "17px", fontWeight: "500" }}
+              style={{ color: "#6a666a", fontSize: "14px", fontWeight: "500" }}
             >
               Customer Taxes
             </p>
             <input
               type="text"
               style={{
-                width: "450px",
+                width: "400px",
                 outline: "none",
                 border: "none",
                 borderBottom: "1px solid #cccc",
@@ -324,7 +324,7 @@ const GeneralInformationEdit = (props) => {
               value={cost}
               onChange={(e) => handleCostPrice(e)}
               style={{
-                width: "450px",
+                width: "400px",
                 border: "none",
                 outline: "none",
                 borderBottom: "1px solid #cccc",
@@ -339,8 +339,8 @@ const GeneralInformationEdit = (props) => {
               {uoms.map((item, index) => {
                 return (
                   <>
-                    <option value={item.UNITCATEGORY} key={index}>
-                      {item.UNITCATEGORY}
+                    <option value={item.ID} key={index}>
+                      {item.UNIT_OF_MEASUREMENT}
                     </option>
                   </>
                 );
@@ -357,8 +357,8 @@ const GeneralInformationEdit = (props) => {
               {uoms.map((item, index) => {
                 return (
                   <>
-                    <option value= {item.UNITCATEGORY} key={index}>
-                      {item.UNITCATEGORY}
+                    <option value= {item.ID} key={index}>
+                      {item.UNIT_OF_MEASUREMENT}
                     </option>
                   </>
                 );
@@ -369,7 +369,7 @@ const GeneralInformationEdit = (props) => {
               style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
             /> */}
           </div>
-          <p style={{ color: "#6a666a", fontSize: "17px", fontWeight: "500" }}>
+          <p style={{ color: "#6a666a", fontSize: "14px", fontWeight: "500" }}>
             Measure
           </p>
         </div>

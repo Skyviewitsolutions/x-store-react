@@ -97,10 +97,10 @@ const InventoryEdit = (props) => {
               <option value="Abdullah Mahyoub Moh">Abdullah Mahyoub Moh</option>
               <option value="Abdullah Saad Mohsen Alghamdi">Abdullah Saad Mohsen Alghamdi</option>
             </select>
-            <FaExternalLinkAlt
+            {/* <FaExternalLinkAlt
               size="14px"
               style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
-            />
+            /> */}
           </div>
         </div>
         <div className="EditDescription">

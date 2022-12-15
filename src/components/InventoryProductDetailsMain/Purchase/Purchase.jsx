@@ -53,7 +53,6 @@ const Purchase = (props) => {
   const column2 = [
     { label :'Name', name:'VENDOR_NAME'},
     { label :'currency', name:'VENDOR_CURRENCY'},
-    { label :'UOM', name:'UNIT_OF_MEASURE'},
     { label :'Price', name:'VENDOR_PRICE'},
     
   ]
@@ -61,7 +60,7 @@ const Purchase = (props) => {
   return (
     <div className="VariantsContainer">
    <CustomTable data={allVenList} column={column2}/>
-      <div className="content_purchase">
+      {/* <div className="content_purchase">
         <div className="content_first">
           <h1>Reordering</h1>
           <div className="reordering_purchase">
@@ -88,7 +87,7 @@ const Purchase = (props) => {
             <span>No message</span>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -28,7 +28,7 @@
 
 }
 .inputText select{
-    width: 450px;
+    width: 350px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc; 
@@ -64,7 +64,7 @@
     font-weight: 400;
 }
 .inputText input{
-    width: 450px;
+    width: 350px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc; 

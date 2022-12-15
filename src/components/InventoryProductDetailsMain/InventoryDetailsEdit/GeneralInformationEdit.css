@@ -17,7 +17,7 @@
 .Editfirstcontent p{
     width: 120px;
     color: #6a666a;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 0px;
 }
@@ -35,7 +35,7 @@
 }
 .Editfirstcontent2 p{
     color: #6a666a;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 0px;
     width: 150px;
@@ -50,7 +50,7 @@
 .Editpart1 h5{
     color: #877d6f;
     margin-top: 45px;
-    font-size: 31px;
+    font-size: 30px;
     font-weight: 400;
 }
 .Editpart1 span{
@@ -68,26 +68,27 @@
 }
 .Editfirstcontent3 p{
         color: #6a666a;
-        font-size: 15px;
+        font-size: 14px;
         width: 200px;
         font-weight: 600;
         margin-bottom: 0px;
 }
 .Editfirstcontent3 input{
     border: none;
+    outline: none;
     border-bottom: 1px solid #cccccc;
-    width: 100px;
+    width: 400px;
 }
 .Editfirstcontent3 span{
     color: #916f6f;
-    font-size: 15px;  
+    font-size: 14px;  
     margin-left: 20px;
 }
 .Editfirstcontent3 select{
     border: none;
      margin-left: 2px;
      border-bottom: 1px solid #cccccc;
-     width: 450px;
+     width: 400px;
      outline: none;
  }
 

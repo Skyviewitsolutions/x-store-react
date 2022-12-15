@@ -8,9 +8,8 @@
      width: 50%;
      margin-left: 37px;
  }
- .EditInventory1 h5{
-     color: #666666;
-     margin-top: 30px;
+ .OperatinEdit h5{
+     color: #6a666a;
      font-size: 25px;
      font-weight: 400; 
  }
@@ -21,10 +20,10 @@
      margin-bottom: 1px;
  }
  .Editcontent1 p{
-     width: 200px;
-     color: #6a666a;
-     font-size: 15px;
-     font-weight: 700;
+     width: 150px;
+ color: #6a666a;
+    font-size: 14px;
+    font-weight: 600;
      margin-bottom: 0px;
  }
  .Editcontent1 input{
@@ -33,7 +32,7 @@
  .Editcontent1 label{
      color: #666666;
      font-size: 14px;
-     font-weight: 500px;
+     font-weight: 600px;
      margin-bottom: 4px;
      margin-left: 5px;
  }
@@ -47,20 +46,20 @@
     margin-bottom: 1px;
  }
  .Editcontent2 p{
-    width: 200px;
-    color: #6a666a;
-    font-size: 15px;
-    font-weight: 700;
+    width: 150px;
+     color: #6a666a;
+    font-size: 14px;
+    font-weight: 600;
     margin-bottom: 0px;
 }
 .Editcontent2 input{
-    width: 150px;
+    width: 250px;
     outline: none;
     border: none;
     border-bottom: 1px solid #cccccc;
 }
 .Editcontent2 label{
-    color: #666666;
+    color: #6a666a;
     font-size: 14px;
     font-weight: 500px;
     margin-bottom: 4px;
@@ -71,7 +70,7 @@
     font-size: 16px;
 }
  .EditLogistics h5{
-     color: #666666;
+     color: #6a666a;
      margin-top: 30px;
      font-size: 25px;
      font-weight: 400; 
@@ -80,13 +79,13 @@
      width: 50%;
  }
  .EditInventory2 h5{
-     color: #666666;
+     color:#6a666a;
      margin-top: 30px;
      font-size: 23px;
      font-weight: 400; 
  }
  .EditDescription h5{
-    color: #666666;
+    color:#6a666a;
     margin-top: 45px;
     font-size: 25px;
     font-weight: 400; 
@@ -95,12 +94,11 @@
  .EditDescription textarea{
     border: none;
     border-bottom: 1px solid #cccccc;
-    width:196% ;
+    width:150% ;
     outline: none;
  }
  .Editcontent1 select{
     border: none;
-    margin-left: 3px;
     border-bottom: 1px solid #cccccc;
     width: 450px;
     outline: none;

@@ -1,6 +1,6 @@
 .VendorsContainer {
     height: 100px;
-    width: 314px;
+    /* width: 314px; */
     margin: 20px 30px;
     /* margin-left: 60px;
     margin-top: 10px; */
@@ -22,8 +22,8 @@
   }
   
   .VendorsImg img {
-    width: 65px;
-    margin: 12px 10px;
+     width: 65px;
+  padding: 20px 4px;
   }
   
   .VendorsContent {
@@ -51,6 +51,17 @@
     top: 5px;
     right: 10px;
     z-index: 10;
+  }
+  .vendor_Container >div {
+      width: 33.33%;
+  }
+  .vendor_Container .VendorsContainer {
+      width: 100%;
+      padding: 10px;
+  }
+  .vendor_Container >div {
+      width: 30%;
+      margin: 1%;
   }
   @media only screen and (max-width: 1000px) {
     .VendorsContainer {
