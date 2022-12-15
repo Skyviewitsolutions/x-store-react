@@ -58,7 +58,7 @@ const InventoryProductsCard = (props) => {
         </div>
         <div className="ProductContent">
           <h6>{data.PRODUCT_NAME}</h6>
-          <p>Price: {data.COST_PRICE} SAR</p>
+          <p>Price: {data.SALES_PRICE} SAR</p>
           <p>On hand: {data.UNIT_OF_MEASURE}</p>
         </div>
       </div>
@@ -83,7 +83,7 @@ const InventoryProductsCard = (props) => {
       </div>
       <div className="ProductContent">
         <h6>{data.PRODUCT_NAME}</h6>
-        <p>Price: {data.COST_PRICE} SAR</p>
+        <p>Price: {data.SALES_PRICE} SAR</p>
         <p>On hand: {data.UNIT_OF_MEASURE}</p>
       </div>
     </div>

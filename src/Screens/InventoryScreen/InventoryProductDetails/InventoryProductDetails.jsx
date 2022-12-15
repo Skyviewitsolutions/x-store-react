@@ -67,16 +67,16 @@ const InventoryProductDetails = () => {
     setPurchased(productdetails.PRODUCT_BUY);
     setExpensed(productdetails.PRODUCT_EXPENDED);
     setDeduction(productdetails.PRODUCT_DEDUCTION);
-    setUnits(productdetails.UNIT_OF_MEASURE);
-    setProductBrand(productdetails.PRODUCT_BRAND);
-    setProductCategory(productdetails.PRODUCT_CATEGORY);
+    setUnits(productdetails.UOM_ID);
+    setProductBrand(productdetails.PRODUCT_BRAND_ID);
+    setProductCategory(productdetails.PRODUCT_CATEGORY_ID);
     setCost(productdetails.COST_PRICE)
     setSalesPrice(productdetails.SALES_PRICE)
     setCustomerTax(productdetails.CUSTOMER_TAXES)
     setProCode(productdetails.PRODUCTS_CODE_1)
     setDescription(productdetails.INTERNAL_NOTES)
-    setUnitOfMeasurement(productdetails.UNIT_OF_MEASURE)
-    setPurchaseUnitOfMeasurement(productdetails.PURCHASE_UOM)
+    setUnitOfMeasurement(productdetails.UOM_ID)
+    setPurchaseUnitOfMeasurement(productdetails.PURCHASE_UOM_ID)
     setWeight(productdetails.PRODUCT_WEIGHT)
     setVolume(productdetails.PRODUCT_VOLUME)
     setBuy(productdetails.PRODUCT_BUY)
