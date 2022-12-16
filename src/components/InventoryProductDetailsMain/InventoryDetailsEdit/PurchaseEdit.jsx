@@ -7,6 +7,7 @@ import CustomTable from '../../CustomTable/CustomTable'
 import PurchaseInventory from '../../Model/PurchaseInventory/PurchaseInventory'
 import './PurchaseEdit.css'
 
+
 const PurchaseEdit = (props) => {
 
   const {productId} = props
@@ -23,6 +24,7 @@ const PurchaseEdit = (props) => {
   const vendorListsAllUrl = endpoints.products.vendorListAllProduct;
 
   const getSingleVendorList = () => {
+
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
@@ -51,7 +53,9 @@ const PurchaseEdit = (props) => {
     });
   }
 
+
   const getAllVendorlist = () => {
+
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);

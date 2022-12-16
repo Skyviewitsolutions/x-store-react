@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { endpoints } from "../../../services/endpoints";
 import { useNavigate } from "react-router-dom";
 
+
 const AddProduct = () => {
   
   const navigate = useNavigate();
@@ -79,6 +80,7 @@ const AddProduct = () => {
   }, []);
 
   const save = () => {
+    
     if (productName === "") {
       toast("Product name required !", { type: "warning" });
     } else if (cost === "") {

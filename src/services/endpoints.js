@@ -300,8 +300,8 @@ export const endpoints = {
       allValue : BASE_URL + "/SalesDepartment/Attribute/GetAllValue",
       singleValue : BASE_URL + "/SalesDepartment/Attribute/GetValueID" ,
       deleteValue : BASE_URL + "/SalesDepartment/Attribute/DeleteValue"
-
   },
+  
   shippingMethod:{
     allShipping: BASE_URL + "/SalesDepartment/ShippingMethod/GetAll",
     addShipping: BASE_URL + "/SalesDepartment/ShippingMethod/Add",

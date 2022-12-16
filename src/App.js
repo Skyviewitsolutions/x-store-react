@@ -144,6 +144,7 @@ import AllCoupon from "./Screens/SalesScreen/CouponPrograms/AllCoupon";
 
 const App = () => {
  
+
   return(<>
     <Router>
       <Routes>
@@ -238,10 +239,12 @@ const App = () => {
       <Route path='/AddAnalyticAccountType' element={<AddAnalyticAccountType/>} />
 
       {/* -------------------------Vendors---------------------------------- */}
+      
       <Route path="/Vendors" element={<Vendors/>} />
       <Route path="/AddVendors" element={<AddVendors/>} />
 
      {/* ------------------------------------SalesScreen------------------------ */}
+
        <Route path="/sales_teams" element={<SalesTerms/>} />
        <Route path="/AddSalesTeam" element={<AddSalesTerms/>}/>
        <Route path="/shipping_methods" element={<ShippingMethods/>}/>

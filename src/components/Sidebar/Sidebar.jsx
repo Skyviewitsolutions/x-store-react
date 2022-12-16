@@ -22,6 +22,7 @@ const Sidebar = (props) => {
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     axios.post(productCateUrl,formData).then((res) => {
+      console.log(res , "product category response")
       if (res.data.status === true) {
         setProductCate(res.data.data);
       } else if (res.data.status === false) {

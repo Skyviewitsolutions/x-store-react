@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
 
 const Navebar = (props) => {
+  
   const { showBelowMenu, handleCreatePage,save , title,disabledCreate, showCanelBtn,} = props;
   const navigate = useNavigate();
 

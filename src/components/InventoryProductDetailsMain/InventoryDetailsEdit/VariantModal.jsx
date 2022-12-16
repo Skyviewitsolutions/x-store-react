@@ -7,6 +7,7 @@ import { endpoints } from "../../../services/endpoints";
 import { MdOutlineCancel } from "react-icons/md";
 
 const VariantModal = (props) => {
+
   const { showModal, setShowModal } = props;
   const [allAttribute, setAllAttribute] = useState([]);
   const [allAttributeValue, setAllAttributeValue] = useState([]);
@@ -28,6 +29,7 @@ const VariantModal = (props) => {
   const allAttributeUrl = endpoints.attribute.allsalesattribute;
 
   const getAllAttribute = () => {
+
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -46,28 +48,26 @@ const VariantModal = (props) => {
       });
   };
 
-  const getAttributeValues = () => {
+
+  const getAttributeValues = (id) => {
 
     setAttributeValue([])
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
+    formData.append("ID" , id)
 
     axios
       .post(attributeValueUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
           const val = res.data.data;
-          console.log(val , "selected value here")
-          setAllAttributeValue(val);
-
           for(var i = 0 ; i < val.length ; i++){
             const dta = {
-              name : val[i].value,
-              id : val[i].A_ID ,
-              color : val[i].COLOR
+              name : val[i].ATTRIBUTE_VALUE,
+              id : val[i].ID ,
+              color : val[i].ATTRIBUT_COLOR
             }
-
             setAllAttributeValue((itm) =>{
               return [...itm , dta]
             })
@@ -81,31 +81,29 @@ const VariantModal = (props) => {
 
   useEffect(() => {
     getAllAttribute();
-    getAttributeValues();
   }, []);
 
   // writing code  for getting the values part here;
 
-  const attributeValueUrl = endpoints.attribute.allValue;
+  const attributeValueUrl = endpoints.attribute.singleValue;
 
   const handleSelectedAttribute = (e) => {
     const val = e.target.value;
-    setSelectedAttribute(val);
-
-    const filterAttributeValue = allAttributeValue.filter((itm, ind) => {
-      return itm.id == val;
-    });
-
-    setAttributeValue(filterAttributeValue);
+    getAttributeValues(val)
+    setSelectedAttributeValue([])
   };
 
+ 
   const onSelect = (selectedList, selectedItem) => {
-    console.log(selectedList , "selectedList")
+    setSelectedAttributeValue(selectedList)
   };
 
   const onRemove = (selectedList, removedItem) => {
-
+    setSelectedAttributeValue(selectedList)
   };
+
+
+  console.log(allAttributeValue , "allattribute value here")
 
   return (
     <>
@@ -135,7 +133,7 @@ const VariantModal = (props) => {
               <h6>Value</h6>
               <Multiselect
                 className="AddChartAccmultiselect"
-                options={attributeValue}
+                options={allAttributeValue}
                 onSelect={onSelect}
                 onRemove={onRemove}
                 displayValue="name"
