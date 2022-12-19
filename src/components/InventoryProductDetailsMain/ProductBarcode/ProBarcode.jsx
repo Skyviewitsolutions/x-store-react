@@ -9,7 +9,7 @@ import Barcode from "../../Model/BarcodeModal/Barcode";
 import "./ProductBarcode.css";
 
 
-const ProductBarcode = (props) => {
+const ProBarcode = (props) => {
 
   const navigate = useNavigate();
   const { productId } = props;
@@ -23,29 +23,7 @@ const ProductBarcode = (props) => {
   const singleProductBarcodeUrl = endpoints.products.ProductBarcodeSingle;
 
 
-  const getProBarcode = () => {
-
-    const formData = new FormData();
-    formData.append("User_Authorization", getAuthtoken);
-    formData.append("User_AuthKey", userAuth);
-    axios
-      .post(allProductBarcodeUrl, formData)
-      .then((res) => {
-        console.log(res, "all here");
-        if (res.data.status === true) {
-          setAllBarcode(res.data.data);
-        } else if (res.data.status === false) {
-          if (res.data.code === 3) {
-            toast("Session expired , Please re-login", { type: "warning" });
-            navigate("/");
-          }
-        }
-      })
-      .catch((err) => {
-        console.log(err, "error");
-        toast("something went wrong", { type: "error" });
-      });
-  };
+ 
 
   const getSingleBarcode = () => {
 
@@ -53,12 +31,13 @@ const ProductBarcode = (props) => {
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     formData.append("Product_ID", productId);
+    console.log(productId,"bar")
     axios
       .post(singleProductBarcodeUrl, formData)
       .then((res) => {
 
         if (res.data.status === true) {
-          setAllBarcode(res.data.data);
+            setSingleProBarcode(res.data.data);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -74,12 +53,9 @@ const ProductBarcode = (props) => {
   };
 
   useEffect(() => {
-    if (productId) {
+
       getSingleBarcode();
-    }
-    else {
-      getProBarcode();
-    }
+  
   }, []);
 
   const column = [
@@ -97,26 +73,14 @@ const ProductBarcode = (props) => {
   return (
     <div>
       <div className="barcode_container">
-        {!productId  ? (
-          <CustomTable data={allBarcode} column={column} />
-        ) : (
-          <CustomTable data={allBarcode} column={column2} />
-        )}
-        <button className="barcode_btn" onClick={() => setModalShow(true)}>
-          Add Line
-        </button>
-        <Barcode
-          modalShow={modalShow}
-          setModalShow={setModalShow}
-          proBarcodeAll={proBarcodeAll}
-          setProBarcodeAll={setProBarcodeAll}
-          getProBarcode={getProBarcode}
-          {...props}
-        />
+      
+          <CustomTable data={singleProBarcode} column={column2} />
+        
+       
       </div>
       <ToastContainer />
     </div>
   );
 };
 
-export default ProductBarcode;
+export default ProBarcode;

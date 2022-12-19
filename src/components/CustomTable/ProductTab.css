@@ -8,9 +8,28 @@
     overflow-y: scroll;
     /* height: 500px; */
 }
+/* td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium.tss-1qtl85h-MUIDataTableBodyCell-root.tss-1y3wvy9-MUIDataTableBodyCell-stackedParent.tss-iwylj0-MUIDataTableBodyCell-responsiveStackedSmallParent.css-1ex1afd-MuiTableCell-root {
+    padding: 0px !important;
+}
 .tss-1vd39vz-MUIDataTableBodyCell-stackedCommon {
     display: block;
 }
+.SizeMedium.MuiButtonBase-root.tss-1fbujeu-MUIDataTableHeadCell-toolButton.css-1w1rijm-MuiButtonBase-root-MuiButton-root {
+    padding: 0px !important;
+}
+button.MuiButton-root.MuiButton-Primary.MuiButton-sizeMedium.MuiButton-SizeMedium.MuiButtonBase-root.tss-1fbujeu-MUIDataTableHeadCell-toolButton.css-1w1rijm-MuiButtonBase-root-MuiButton-root {
+    padding: 0px !important;
+}
+
+p{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+} */
+.css-1bigob2{
+    padding: 0px;
+}
+
+
 @media (max-width: 899.95px)
 {
 .tss-1y3wvy9-MUIDataTableBodyCell-stackedParent {

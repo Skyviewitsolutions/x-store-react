@@ -226,7 +226,6 @@ const AddLocation = () => {
                 value={parentLocation}
                 onChange={(e) => setParentLocation(e.target.value)}
               >
-                <option value=""></option>
                 <option value="AFWH">AFWH</option>
                 <option value="AFWH/Stock">AFWH/Stock</option>
                 <option value="AFWH/Stock/Diesel">AFWH/Stock/Diesel</option>
@@ -244,7 +243,6 @@ const AddLocation = () => {
                   value={locationType}
                   onChange={(e) => setLocationType(e.target.value)}
                 >
-                  <option value=""></option>
                   {location.map((item, index) => {
                     return (
                       <>
@@ -280,7 +278,6 @@ const AddLocation = () => {
                   value={removel}
                   onChange={(e) => setRemovel(e.target.value)}
                 >
-                  <option value=""></option>
                   <option value="First in first out(FIFO)">
                     First in first out(FIFO)
                   </option>

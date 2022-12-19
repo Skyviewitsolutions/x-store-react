@@ -22,7 +22,7 @@
     justify-content: flex-start;
 }
 
-.varCont button{
+.var_btns{
     width: 100px;
     padding: 6px 15px;
     border-radius: 2px;

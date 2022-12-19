@@ -26,9 +26,9 @@ const PurchaseEdit = (props) => {
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
-   
+    formData.append("ID" ,productId);
     axios
-    .post(vendorListUrl, formData)
+    .post(vendorListsAllUrl, formData)
     .then((res) => {
       console.log(res, "single vendorlists");
       if(res.data.status === true){
@@ -55,9 +55,9 @@ const PurchaseEdit = (props) => {
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
-    formData.append("ID" ,productId);
+  
     axios
-    .post(vendorListsAllUrl, formData)
+    .post(vendorListUrl, formData)
     .then((res) => {
       console.log(res, "all vendorlist");
       if(res.data.status === true){
@@ -81,9 +81,9 @@ const PurchaseEdit = (props) => {
   }
   useEffect(() => {
     if(productId){
-      getAllVendorlist()
-    }else{
       getSingleVendorList()
+    }else{
+      getAllVendorlist()
     }
    
    

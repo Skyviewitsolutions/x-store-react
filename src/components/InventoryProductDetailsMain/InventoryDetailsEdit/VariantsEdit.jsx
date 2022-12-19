@@ -70,9 +70,7 @@ const VariantsEdit = () => {
           </tbody>
         </Table>
       </div>
-      <Button variant="outline-info" onClick={() => setShowModal(true)}>
-        Add Line
-      </Button>
+      <button className="varients_btns" onClick={() => setShowModal(true)}>Add Line</button>
       <p className="VariantsEditContainerp">
         Warning: adding or deleting attributes will delete and recreate existing
         variants and lead to the loss of their possible customizations.

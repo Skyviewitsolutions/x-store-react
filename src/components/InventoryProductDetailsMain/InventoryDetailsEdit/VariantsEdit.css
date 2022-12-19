@@ -39,4 +39,15 @@
 .VariantsEditContainerp{
     color: rgb(175, 174, 174);
     margin-top: 18px;
+} 
+.varients_btns{
+background-color: #0077b0;
+border: none;
+color: #fff;
+font-size: 15px;
+text-transform: uppercase;
+margin: auto;
+padding: 8px 20px;
+font-weight: 600;
+transition: 0.3s;
 }

@@ -11,6 +11,7 @@ import { ToastContainer } from "react-bootstrap";
 import Loader from "../../../components/Loader/Loader";
 
 const InventoryProducts = () => {
+
   const [product, setProduct] = useState([]);
   const [allProd, setAllProd] = useState([]);
   const [loading , setLoading] = useState(false)
@@ -73,15 +74,26 @@ const InventoryProducts = () => {
   };
 
   useEffect(() => {
+
     if (productCategory === "all") {
       getProduct();
     } else {
-      const filterProduct = allProd.filter((itm, ind) => {
-        return itm.PRODUCT_CATEGORY == productCategory;
+      
+      const filterActiveProduct = allProd.filter((itm, ind) => {
+        return itm.PRODUCT_CATEGORY == productCategory && itm.DELETE_STATUS === null
       });
-      setProduct(filterProduct);
+
+      setActiveProduct(filterActiveProduct);
+
+      const filterDeactiveProduct = allProd.filter((itm , ind) =>{
+        return itm.PRODUCT_CATEGORY == productCategory && itm.DELETE_STATUS === "X"
+      })
+
+      setDeActiveProduct(filterDeactiveProduct)
+
     }
   }, [productCategory]);
+
 
   return (
     <>

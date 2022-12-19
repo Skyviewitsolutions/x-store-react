@@ -219,7 +219,6 @@ const InventoryProductDetails = () => {
     }
   }
 
-  console.log(purchaseUnitOfMeasuremnt,"purchase UOM")
 
   return (
     <div>
