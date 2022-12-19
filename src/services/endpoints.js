@@ -1,6 +1,8 @@
 const BASE_URL = "https://xstore.skyviewads.com";
 
+
 export const endpoints = {
+
   products: {
     addProduct: BASE_URL + "/ProductManagement/ProductManagement/AddProduct",
     allProduct: BASE_URL + "/ProductManagement/ProductManagement/GetAllProduct",
@@ -112,7 +114,9 @@ export const endpoints = {
   overView:{
       allOverview : BASE_URL + "/Inventory/Overview/GetAll",
   },
+
   //----------- Accounting Api---------->
+
   PaymentTerms: {
     allPayment: BASE_URL + "/PaymentTerms/GetAllPaymentTerms",
     addPayment: BASE_URL + "/PaymentTerms/AddPaymentTerms",
@@ -211,6 +215,7 @@ export const endpoints = {
     updateAssetUseStatus: BASE_URL + "/AssetUseStatus/UpdateAUS",
     deleteAssetUseStatus: BASE_URL + "/AssetUseStatus/DeleteAUS",
   },
+  
   AnalyticAccType: {
     allAnalytictype: BASE_URL + "/AnalyticType/GetAllAnAccType",
     addAnAccType: BASE_URL + "/AnalyticType/AddAnAccType",
@@ -218,6 +223,7 @@ export const endpoints = {
     updateAnAccType: BASE_URL + "/AnalyticType/UpdateAnAccType",
     deleteAnAccType: BASE_URL + "/AnalyticType/DeleteAnAccType",
   },
+
   AnalyticAcc: {
     allAnaAcc: BASE_URL + "/AnalyticAccount/GetAllAnalyticAccount",
     addAnaAcc: BASE_URL + "/AnalyticAccount/AddAnalyticAccount",
@@ -225,6 +231,7 @@ export const endpoints = {
     updateAnaAcc: BASE_URL + "/AnalyticAccount/UpdateAnalyticAccount",
     deleteAnaAcc: BASE_URL + "/AnalyticAccount/DeleteAnalyticAccount",
   },
+
   DefExpenseType: {
     allDefExType: BASE_URL + "/DeferedExpType/GetAllDefferedType",
     addDefExType: BASE_URL + "/DeferedExpType/AddDefferedType",
@@ -232,6 +239,7 @@ export const endpoints = {
     updateDefExType: BASE_URL + "/DeferedExpType/UpdateDefferedType",
     deleteDefExType: BASE_URL + "/DeferedExpType/DeleteDefferedType",
   },
+
   AnalyticAccGrp: {
     allAnnAccGrp: BASE_URL + "/AnalyticAccGrp/GetAllAnalyticAccGrp",
     addAnnAccGrp: BASE_URL + "/AnalyticAccGrp/AddAnalyticAccGrp",
@@ -239,6 +247,7 @@ export const endpoints = {
     updateAnnAccGrp: BASE_URL + "/AnalyticAccGrp/UpdateAnalyticAccGrp",
     deleteAnnAccGrp: BASE_URL + "/AnalyticAccGrp/DeleteAnalyticAccGrp",
   },
+
   AnalyticTag: {
     allAnnTag: BASE_URL + "/AnalyticTag/GetAllAT",
     addAnnTag: BASE_URL + "/AnalyticTag/AddAT",
@@ -246,7 +255,9 @@ export const endpoints = {
     updateAnnTag: BASE_URL + "/AnalyticTag/UpdateAT",
     deleteAnnTag: BASE_URL + "/AnalyticTag/DeleteAT",
   },
+
   // --------------------Purchase All Api-------------------------
+
   vendorPriceList:{
     allvendorpricelist : BASE_URL + "/Purchase/VendorPriceList/GetAll",
     addvendorpricelist : BASE_URL + "/Purchase/VendorPriceList/Add",
@@ -254,6 +265,7 @@ export const endpoints = {
     updatevendorpricelist : BASE_URL + "/Purchase/VendorPriceList/Update",
     deletevendorpricelist : BASE_URL + "/Purchase/VendorPriceList/Delete"
   },
+
   purchaseAgreementtype:{
     allAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/GetAll",
     addAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/Add",
@@ -261,6 +273,7 @@ export const endpoints = {
     deleteAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/Delete",
     singleAgreementtype : BASE_URL + "/Purchase/PurchaseAgreementType/GetSingle",
   },
+
   requestQuotation:{
     allRequestQuotation : BASE_URL + "/Purchase/RequestQuotation/GetAll",
     addRequestQuotation : BASE_URL + "/Purchase/RequestQuotation/Add",
@@ -271,6 +284,7 @@ export const endpoints = {
     addProductdetails : BASE_URL + "/Purchase/RequestQuotation/AddProduct",
     deleteProductdetails : BASE_URL + "/Purchase/RequestQuotation/DeleteProduct"
   },
+
   agreementType:{
     allAgreement : BASE_URL + "/Purchase/PurchaseAgreement/GetAll",
     addAgreement : BASE_URL + "/Purchase/PurchaseAgreement/Add",
@@ -279,6 +293,7 @@ export const endpoints = {
     productdeletepurchase : BASE_URL + "/Purchase/PurchaseAgreement/DeleteProduct",
     addProductdetailsPurchase : BASE_URL + "/Purchase/PurchaseAgreement/AddProduct"
   },
+
   purchaseOrders:{
     allProductDetails : BASE_URL + "/Purchase/PurchaseOrders/GetAllProductDetail",
     addProductdetails : BASE_URL + "/Purchase/PurchaseOrders/AddProduct",
@@ -308,6 +323,7 @@ export const endpoints = {
     updatShipping : BASE_URL + "/SalesDepartment/ShippingMethod/Update",
     deleteShipping : BASE_URL + "/SalesDepartment/ShippingMethod/Delete"
   },
+
   customer:{
     allCustomer : BASE_URL + "/SalesDepartment/Customers/GetAll",
     addCustomer : BASE_URL + "/SalesDepartment/Customers/Add",
@@ -315,6 +331,7 @@ export const endpoints = {
     updateCustomer : BASE_URL + "/SalesDepartment/Customers/Update",
     deleteCustomer : BASE_URL + "/SalesDepartment/Customers/Delete",
   },
+
   promotionProgram:{
     allPromotion:BASE_URL + "/SalesDepartment/Promotion/GetAll",
     addPromotion : BASE_URL + "/SalesDepartment/Promotion/Add" ,
@@ -325,22 +342,23 @@ export const endpoints = {
   },
 
   // -------------------------------------Employee------------------------------
+
    manager:{
     allmanager : BASE_URL + "/Employee/HeadManager/GetAll",
     addmanager : BASE_URL + "/Employee/HeadManager/Add",
     updateManager : BASE_URL + "/Employee/HeadManager/Update",
     deleteManager : BASE_URL + "/Employee/HeadManager/Delete",
     singleManager : BASE_URL + "/Employee/HeadManager/GetSingle",
-
    },
+
    department :{
     allDepartment : BASE_URL + "/Employee/Deparment/GetAll",
     addDepartment : BASE_URL + "/Employee/Deparment/Add",
     singleDepartment : BASE_URL + "/Employee/Deparment/GetSingle",
     updateDepartment : BASE_URL + "/Employee/Deparment/Update",
     deleteDepartment : BASE_URL + "/Employee/Deparment/Delete",
-
    },
+
    workAddress : {
     allWorkAddres : BASE_URL + "/Employee/WorkAddress/GetAll",
     addWorkAddress : BASE_URL + "/Employee/WorkAddress/Add" ,
@@ -348,6 +366,7 @@ export const endpoints = {
     upadteWorkAddress : BASE_URL + "/Employee/WorkAddress/Update" ,
     deleteWorkAddress : BASE_URL + "/Employee/WorkAddress/Delete"  
    },
+
    headDepartment : {
     allHeaddepartment : BASE_URL + "/Employee/HeadDepartment/GetAll",
     addHeaddepartment : BASE_URL + "/Employee/HeadDepartment/Add",

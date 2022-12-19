@@ -73,9 +73,7 @@ const PurchaseEdit = (props) => {
           toast("Session expired , Please re-login",{type:"warning"})
           navigate('/');
         }
-        // else{
-        //  toast(res.data.message,{type:"error"});
-        // }
+      
       }
     })
     .catch((err) => {
