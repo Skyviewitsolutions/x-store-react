@@ -18,10 +18,12 @@ const Purchase = (props) => {
   const vendorListsAllUrl = endpoints.products.vendorListAllProduct;
 
   const getAllVendorlist = () => {
+
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
     formData.append("ID" ,productId);
+    console.log(productId , 'ss')
     axios
     .post(vendorListsAllUrl, formData)
     .then((res) => {

@@ -141,7 +141,7 @@ const VariantModal = (props) => {
             </div>
 
             <div className="bar_btn">
-              <button className="barcode_btns">Save</button>
+              <button className="var_btns">Save</button>
             </div>
             <div onClick={() => setShowModal(false)}>
               <MdOutlineCancel size="25px" className="Acccuticons" />

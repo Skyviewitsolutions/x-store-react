@@ -6,6 +6,7 @@ import axios from "axios";
 import { endpoints } from "../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Barcode from "../../Model/BarcodeModal/Barcode";
 
 const GeneralInformationEdit = (props) => {
 
@@ -170,7 +171,7 @@ const GeneralInformationEdit = (props) => {
     unitOfMeasurement,
     purchaseUnitOfMeasuremnt,
     setPurchaseUnitOfMeasurement,
-    barCode,
+    barcode,
     setBarcode,
     proCode,
     setProCode,
@@ -204,6 +205,8 @@ const GeneralInformationEdit = (props) => {
       setSalesPrice(0)
     }
   }
+
+  console.log(barcode , "barcode");
 
 
   return (
@@ -260,7 +263,7 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent2">
             <p>Barcode</p>
-            <input type="text" value={barCode} onChange={(e) => setBarcode(e.target.value)}/>
+            <input type="text" value={barcode} onChange={(e) => setBarcode(e.target.value)}/>
           </div>
           <div className="Editfirstcontent">
             <p> Product Brand</p>

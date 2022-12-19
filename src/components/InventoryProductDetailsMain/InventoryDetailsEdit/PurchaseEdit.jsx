@@ -23,18 +23,20 @@ const PurchaseEdit = (props) => {
   const vendorListUrl = endpoints.products.vendorListsingle;
   const vendorListsAllUrl = endpoints.products.vendorListAllProduct;
 
+
   const getSingleVendorList = () => {
 
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
+    formData.append("ID" ,productId);
    
     axios
-    .post(vendorListUrl, formData)
+    .post(vendorListsAllUrl, formData)
     .then((res) => {
-      console.log(res, "single vendorlists");
+      console.log(res, "all vendorlist");
       if(res.data.status === true){
-        setSingleVendorList(res.data.data)
+        setAllVendorList(res.data.data)
       }
       else if(res.data.status === false){
         if(res.data.code === 3)
@@ -59,9 +61,9 @@ const PurchaseEdit = (props) => {
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
-    formData.append("ID" ,productId);
+  
     axios
-    .post(vendorListsAllUrl, formData)
+    .post(vendorListUrl, formData)
     .then((res) => {
       console.log(res, "all vendorlist");
       if(res.data.status === true){
@@ -83,9 +85,9 @@ const PurchaseEdit = (props) => {
   }
   useEffect(() => {
     if(productId){
-      getAllVendorlist()
-    }else{
       getSingleVendorList()
+    }else{
+      getAllVendorlist()
     }
    
    
@@ -113,7 +115,7 @@ const PurchaseEdit = (props) => {
   return (
    <>
    <div className="purchase_container">
-    {productId  ?  <CustomTable data={allVendorList} column={column2}/> : <CustomTable data={singleVendorList} column={column}/>
+    {productId  ?  <CustomTable data={allVendorList} column={column2}/> : <CustomTable data={allVendorList} column={column}/>
     }
   
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>

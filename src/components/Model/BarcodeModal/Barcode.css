@@ -38,6 +38,9 @@
     border: none;
     border-bottom: 1px solid #cccccc;
 }
+.bar_btn {
+    margin-top: 10px;
+}
 .barcode_btns{
     background-color: #0077b0;
     border: none;
@@ -48,5 +51,6 @@
     padding: 8px 20px;
     font-weight: 600;
     transition: 0.3s;
-    margin-left: 30px;
+    margin-left: 25px;
+   
 }

@@ -12,6 +12,12 @@ const Uomdetails = () => {
   const handleCreatePage = () => {
     navigate('/Add')
   }
+
+  const [Uom , setUom] = useState("")
+  const [category , setCategory] = useState("")
+  const [type , setType] = useState("")
+  const [active , setActive] = useState("")
+  
   return (
     <div>
         <Navebar showBelowMenu={true} handleCreatePage={handleCreatePage} showCanelBtn={true}/>

@@ -5,6 +5,7 @@ import { Modal } from "react-bootstrap";
 import { MdOutlineCancel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { endpoints } from "../../../services/endpoints";
 import "./Barcode.css";
 const Barcode = (props) => {
@@ -13,9 +14,9 @@ const Barcode = (props) => {
   const {
     modalShow,
     setModalShow,
-    proBarcodeAll,
-    setProBarcodeAll,
-    getSingleBarcode,
+    barcodeDetails,
+    setBarcodeDetails,
+    getProBarcode,
     setUnitOfMeasurement,
     unitOfMeasurement,
   } = props;
@@ -77,8 +78,8 @@ const Barcode = (props) => {
         .then((res) => {
           console.log(res, "response barcode");
           if (res.data.status === true) {
-            setUnitOfMeasurement(res.data.code);
-            getSingleBarcode();
+            setUom(res.data.code);
+            getProBarcode();
             toast(res.data.message, { type: "success" });
             setModalShow(false);
           } else if (res.data.status === false) {
@@ -100,7 +101,7 @@ const Barcode = (props) => {
       barcodeDes: barcodeDes,
       uom: uom,
     };
-    setProBarcodeAll((item) => {
+    setBarcodeDetails((item) => {
       return [...item, data];
     });
   };

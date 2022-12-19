@@ -145,7 +145,7 @@ input[type="checkbox"][readonly] {
   @media (min-width: 768px) and (max-width: 1024px)
 {
     .MainContainer{
-        height: auto;
+     height: auto;
     }
 
    .div2 {

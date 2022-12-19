@@ -8,7 +8,8 @@ import CustomTable from "../../CustomTable/CustomTable";
 import Barcode from "../../Model/BarcodeModal/Barcode";
 import "./ProductBarcode.css";
 
-const ProductBarcode = (props) => {
+
+const ProBarcode = (props) => {
 
   const navigate = useNavigate();
   const { productId } = props;
@@ -21,28 +22,8 @@ const ProductBarcode = (props) => {
   const allProductBarcodeUrl = endpoints.products.ProductBarcodeAll;
   const singleProductBarcodeUrl = endpoints.products.ProductBarcodeSingle;
 
-  const getProBarcode = () => {
-    const formData = new FormData();
-    formData.append("User_Authorization", getAuthtoken);
-    formData.append("User_AuthKey", userAuth);
-    axios
-      .post(allProductBarcodeUrl, formData)
-      .then((res) => {
-        console.log(res, "all here");
-        if (res.data.status === true) {
-          setAllBarcode(res.data.data);
-        } else if (res.data.status === false) {
-          if (res.data.code === 3) {
-            toast("Session expired , Please re-login", { type: "warning" });
-            navigate("/");
-          }
-        }
-      })
-      .catch((err) => {
-        console.log(err, "error");
-        toast("something went wrong", { type: "error" });
-      });
-  };
+
+ 
 
   const getSingleBarcode = () => {
 
@@ -50,17 +31,19 @@ const ProductBarcode = (props) => {
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     formData.append("Product_ID", productId);
+    console.log(productId,"bar")
     axios
       .post(singleProductBarcodeUrl, formData)
       .then((res) => {
-        console.log(res, "single data");
+
         if (res.data.status === true) {
-          setAllBarcode(res.data.data);
+            setSingleProBarcode(res.data.data);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
             navigate("/");
           }
+          toast(res.data.message, { type: "error" });
         }
       })
       .catch((err) => {
@@ -70,11 +53,9 @@ const ProductBarcode = (props) => {
   };
 
   useEffect(() => {
-    if (productId) {
+
       getSingleBarcode();
-    } else {
-      getProBarcode();
-    }
+  
   }, []);
 
   const column = [
@@ -88,29 +69,18 @@ const ProductBarcode = (props) => {
     { label: "UOM", name: "UNIT_OF_MEASUREMENT" },
   ];
 
+  console.log(allBarcode  , "all barcode here")
   return (
     <div>
       <div className="barcode_container">
-        {productId != "" ? (
-          <CustomTable data={allBarcode} column={column} />
-        ) : (
-          <CustomTable data={allBarcode} column={column2} />
-        )}
-        <button className="barcode_btn" onClick={() => setModalShow(true)}>
-          Add Line
-        </button>
-        <Barcode
-          modalShow={modalShow}
-          setModalShow={setModalShow}
-          proBarcodeAll={proBarcodeAll}
-          setProBarcodeAll={setProBarcodeAll}
-          getSingleBarcode={getSingleBarcode}
-          {...props}
-        />
+      
+          <CustomTable data={singleProBarcode} column={column2} />
+        
+       
       </div>
       <ToastContainer />
     </div>
   );
 };
 
-export default ProductBarcode;
+export default ProBarcode;

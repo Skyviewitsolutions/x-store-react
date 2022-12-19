@@ -59,6 +59,9 @@ const InventoryProductDetails = () => {
   const userAuth = localStorage.getItem("userAuth");
   const updateUrl = endpoints.products.updateProduct;
 
+  console.log(productdetails , "produtDetalsi");
+
+
   useEffect(() => {
     setProductName(productdetails.PRODUCT_NAME);
     setId(productdetails.PRODUCT_ID);
@@ -79,6 +82,7 @@ const InventoryProductDetails = () => {
     setPurchaseUnitOfMeasurement(productdetails.PURCHASE_UOM_ID)
     setWeight(productdetails.PRODUCT_WEIGHT)
     setVolume(productdetails.PRODUCT_VOLUME)
+    setInterRef(productdetails.INTERNAL_NOTES)
     setBuy(productdetails.PRODUCT_BUY)
     setResponsible(productdetails.PRODUCT_RESPONSIBLE)
     setReplenishOnOrder(productdetails.REPLENISH_ON_ORDER)
@@ -218,8 +222,7 @@ const InventoryProductDetails = () => {
         });
     }
   }
-
-  console.log(purchaseUnitOfMeasuremnt,"purchase UOM")
+  console.log(barcode , "barcode");
 
   return (
     <div>

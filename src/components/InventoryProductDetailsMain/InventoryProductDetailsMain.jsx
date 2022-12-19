@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import InventoryProductDetailsFooter from "../InventoryProductDetailsFooter/InventoryProductDetailsFooter";
 import axios from "axios";
 import ProductBarcode from "./ProductBarcode/ProductBarcode";
+import ProBarcode from "./ProductBarcode/ProBarcode";
 
 const InventoryProductDetailsMain = (props) => {
   
@@ -301,6 +302,10 @@ const InventoryProductDetailsMain = (props) => {
           )}
           {events === "ProductBarcode" && isEdit === true && (
           <ProductBarcode {...props}/>
+
+          )}
+          {events === "ProductBarcode" && isEdit === false && (
+          <ProBarcode {...props}/>
 
           )}
         </div>

@@ -39,7 +39,8 @@
 
 .updtdlt{
     display: flex;
-    justify-content: space-around;
+    padding: 10px;
+    /* justify-content: space-around; */
     align-items: center;
     width: 100px;
 }
