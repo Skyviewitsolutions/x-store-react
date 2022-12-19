@@ -1,23 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Variants.css";
 import { MdArrowDropDown } from "react-icons/md";
+import CustomTable from "../../CustomTable/CustomTable";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { endpoints } from "../../../services/endpoints";
+import { useNavigate } from "react-router-dom";
 
-const Variants = () => {
+const Variants = (props) => {
+  
+  const navigate = useNavigate();
+  const {productId} = props
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+  const [singleVarients , setSingleVarients] = useState([])
+  const singleVarientsUrl = endpoints.products.ProductSingleVariens
+  const  getSingleVarients = () => {
+    const formData = new FormData();
+     formData.append("User_Authorization", getAuthtoken);
+     formData.append("User_AuthKey", userAuth);
+     formData.append("Product_ID" ,productId)
+     axios
+       .post(singleVarientsUrl, formData)
+       .then((res) => {
+         console.log(res,"resssfjvj")
+         if (res.data.status === true) {
+           setSingleVarients(res.data.data);
+         } else if (res.data.status === false) {
+           if (res.data.code === 3) {
+             toast("Session expired , Please re-login", { type: "warning" });
+             navigate("/");
+           } else {
+             // toast(res.data.message, { type: "error" });
+           }
+         }
+       })
+       .catch((err) => {
+         console.log(err, "error");
+       });
+   }
+
+   useEffect(() => {
+    getSingleVarients()
+   })
+   const column2 = [
+    { label :'Attribute', name:'SALESATTRIBUTE_NAME'},
+  { label :'Value', name:'SALESATTRIBUTEVALUE_VALUE'},
+]
   return (
     <div className="VariantsContainer">
-      <div className="Variants">
-        <div className="VariantsContent1">
-          <p>Attributes</p>
-          <MdArrowDropDown
-            size="25px"
-            style={{ marginTop: "5px", color: "#212529" }}
-          />
-        </div>
-        <div className="Variantscontent2">
-          <p>Values</p>
-        </div>
-      </div>
-      <div className="Variants2"></div>
+      <CustomTable data={singleVarients}  column={column2}/>
+     <ToastContainer/>
+     
     </div>
   );
 };

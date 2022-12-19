@@ -170,7 +170,7 @@ const GeneralInformationEdit = (props) => {
     unitOfMeasurement,
     purchaseUnitOfMeasuremnt,
     setPurchaseUnitOfMeasurement,
-    barCode,
+    barcode,
     setBarcode,
     proCode,
     setProCode,
@@ -260,7 +260,7 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent2">
             <p>Barcode</p>
-            <input type="text" value={barCode} onChange={(e) => setBarcode(e.target.value)}/>
+            <input type="text" value={barcode} onChange={(e) => setBarcode(e.target.value)}/>
           </div>
           <div className="Editfirstcontent">
             <p> Product Brand</p>

@@ -5,107 +5,93 @@ import Multiselect from "multiselect-react-dropdown";
 import axios from "axios";
 import { endpoints } from "../../../services/endpoints";
 import { MdOutlineCancel } from "react-icons/md";
+import { toast } from "react-toastify";
+
 
 const VariantModal = (props) => {
-  const { showModal, setShowModal } = props;
-  const [allAttribute, setAllAttribute] = useState([]);
-  const [allAttributeValue, setAllAttributeValue] = useState([]);
-  const [attributeValue, setAttributeValue] = useState([]);
-  const [selectedAttribute, setSelectedAttribute] = useState("");
+
+  const {
+    showModal,
+    setShowModal,
+    setSalesPrice,
+    varientsDetails,
+    setVarientsDetails,
+    GetAllAttribute,
+    attributeName,
+    setAttributeName,
+    attributeVal,
+    setAttributeVal,
+    allAttribute,
+    allAttributeValue,
+    getAttributeValues,
+    attributeId ,
+    setAttributeId ,
+    attributeValId ,
+    setAttributeValId
+  } = props;
+
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
-  const [selectedAttributeValue , setSelectedAttributeValue] = useState([])
-
-  const options = [
-    { name: "VAT Goods Purchases-STD (Purchases)", id: 1 },
-    { name: "Purchasing", id: 2 },
-    { name: "Purchasing", id: 2 },
-    { name: "Purchasing", id: 3 },
-    { name: "Sales VAT-STD (Sales)", id: 4 },
-    { name: "Sales VAT-Zero Rated (Sales)", id: 5 },
-  ];
-
-  const allAttributeUrl = endpoints.attribute.allsalesattribute;
-
-  const getAllAttribute = () => {
-    const formData = new FormData();
-    formData.append("User_Authorization", getAuthtoken);
-    formData.append("User_AuthKey", userAuth);
-    axios
-      .post(allAttributeUrl, formData)
-      .then((res) => {
-        if (res.data.status === true) {
-          const val = res.data.data;
-          setAllAttribute(val);
-        } else if (res.data.status === false) {
-          // toast(res.data.message, { type: "error" });
-        }
-      })
-      .catch((err) => {
-        console.log(err, "error here");
-      });
-  };
-
-  const getAttributeValues = () => {
-
-    setAttributeValue([])
-    const formData = new FormData();
-    formData.append("User_Authorization", getAuthtoken);
-    formData.append("User_AuthKey", userAuth);
-
-    axios
-      .post(attributeValueUrl, formData)
-      .then((res) => {
-        if (res.data.status === true) {
-          const val = res.data.data;
-          console.log(val , "selected value here")
-          setAllAttributeValue(val);
-
-          for(var i = 0 ; i < val.length ; i++){
-            const dta = {
-              name : val[i].value,
-              id : val[i].A_ID ,
-              color : val[i].COLOR
-            }
-
-            setAllAttributeValue((itm) =>{
-              return [...itm , dta]
-            })
-          }
-        }
-      })
-      .catch((err) => {
-        console.log(err, "this is the error ");
-      });
-  };
-
-  useEffect(() => {
-    getAllAttribute();
-    getAttributeValues();
-  }, []);
-
-  // writing code  for getting the values part here;
-
-  const attributeValueUrl = endpoints.attribute.allValue;
 
   const handleSelectedAttribute = (e) => {
-    const val = e.target.value;
-    setSelectedAttribute(val);
+    const name = e.target.value;
 
-    const filterAttributeValue = allAttributeValue.filter((itm, ind) => {
-      return itm.id == val;
+    var id = allAttribute.filter((itm,ind) =>{
+      return itm.ATTRIBUTE_NAME === name;
+    })
+    var id = id[0].ID;
+   
+    getAttributeValues(id);
+    setAttributeName(name);
+    
+  };
+
+  const addVarientsUrl = endpoints.products.ProductAddVarients;
+
+  const save = () => {
+    const formData = new FormData();
+    formData.append("SalesAttribute_ID", attributeName);
+    formData.append("SalesAttributeValue_ID", attributeVal);
+    formData.append("Price", setSalesPrice);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios
+      .post(addVarientsUrl, formData)
+      .then((res) => {
+        if (res.data.status === true) {
+          toast(res.data.message, { type: "success" });
+          GetAllAttribute();
+          setShowModal(false);
+        } else if (res.data.status === false) {
+          toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "eroor");
+      });
+    const data = {
+      attributeName: attributeName,
+      attributeVal: attributeVal,
+    };
+    setVarientsDetails((item) => {
+      return [...item, data];
     });
-
-    setAttributeValue(filterAttributeValue);
   };
 
-  const onSelect = (selectedList, selectedItem) => {
-    console.log(selectedList , "selectedList")
-  };
 
-  const onRemove = (selectedList, removedItem) => {
+  const handleSelectedAttributeVal = (e) =>{
+    const value = e.target.value;
+    setAttributeVal(value)
+    
+    var id = allAttributeValue.filter((itm,ind) =>{
+      return itm.VARIANTS_VALUE == value
+    })
 
-  };
+    id = id[0].VARIANTS_ID;
+    setAttributeValId(id)
+  }
+
+console.log(attributeVal , "attribute Val here");
 
   return (
     <>
@@ -117,13 +103,13 @@ const VariantModal = (props) => {
               <select
                 name=""
                 id=""
-                value={selectedAttribute}
+                value={attributeName}
                 onChange={(e) => handleSelectedAttribute(e)}
               >
                 {allAttribute.map((itm, ind) => {
                   return (
                     <>
-                      <option value={itm.ID} key={ind}>
+                      <option value={itm.ATTRIBUTE_NAME} key={ind}>
                         {itm.ATTRIBUTE_NAME}
                       </option>
                     </>
@@ -133,17 +119,27 @@ const VariantModal = (props) => {
             </div>
             <div className="varBox">
               <h6>Value</h6>
-              <Multiselect
-                className="AddChartAccmultiselect"
-                options={attributeValue}
-                onSelect={onSelect}
-                onRemove={onRemove}
-                displayValue="name"
-              />
+              <select
+                value={attributeVal}
+                onChange={(e) => handleSelectedAttributeVal(e)}
+              >
+                <option value=""></option>
+                {allAttributeValue.map((itm, ind) => {
+                  return (
+                    <>
+                      <option value={itm.ATTRIBUTE_VALUE}>
+                        {itm.ATTRIBUTE_VALUE}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
             </div>
 
             <div className="bar_btn">
-              <button className="var_btns">Save</button>
+              <button className="var_btns" onClick={save}>
+                Save
+              </button>
             </div>
             <div onClick={() => setShowModal(false)}>
               <MdOutlineCancel size="25px" className="Acccuticons" />

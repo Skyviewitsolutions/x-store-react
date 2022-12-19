@@ -280,7 +280,7 @@ const InventoryProductDetailsMain = (props) => {
           {events === "generalInformation" && isEdit === false && (
             <GeneralInformation {...props} />
           )}
-          {events === "variants" && isEdit === false && <Variants />}
+          {events === "variants" && isEdit === false && <Variants {...props}/>}
           {events === "Purchase" && isEdit === false && <Purchase {...props}/>}
           {events === "Inventory" && isEdit === false && (
             <ProductDetailsInventory {...props} />
@@ -291,7 +291,7 @@ const InventoryProductDetailsMain = (props) => {
           {events === "generalInformation" && isEdit === true && (
             <GeneralInformationEdit {...props} />
           )}
-          {events === "variants" && isEdit === true && <VariantsEdit />}
+          {events === "variants" && isEdit === true && <VariantsEdit {...props} />}
           {events === "Purchase" && isEdit === true && <PurchaseEdit {...props}/>}
           {events === "Inventory" && isEdit === true && (
             <InventoryEdit {...props} />

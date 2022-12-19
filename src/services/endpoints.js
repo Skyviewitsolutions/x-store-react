@@ -22,7 +22,12 @@ export const endpoints = {
     ProductBarcodeAll : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/GetAll",
     ProductBarcodeAdd : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/Add",
     ProductBarcodeDelete : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/Add",
-    ProductBarcodeSingle : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/GetSingle"
+    ProductBarcodeSingle : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/GetSingle",
+    ProductAllVarients : BASE_URL + "/ProductManagement/ProductVariants/GetAll",
+    ProductAddVarients : BASE_URL + "/ProductManagement/ProductVariants/Add",
+    ProductSingleVariens : BASE_URL + "/ProductManagement/ProductVariants/GetSingle",
+    ProductUpdateVarients : BASE_URL + "/ProductManagement/ProductVariants/Update",
+    ProductDeleteVarients : BASE_URL + "/ProductManagement/ProductVariants/Delete"
   },
   productBrand: {
     allProductBrand: BASE_URL + "/ProductManagement/ProductBrand/GetAll",
