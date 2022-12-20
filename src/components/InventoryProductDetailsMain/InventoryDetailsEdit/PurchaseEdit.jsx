@@ -35,6 +35,10 @@ const PurchaseEdit = (props) => {
   const [vendorCurrency, setVendorCurrency] = useState("");
   const [vendorDate1, setVendorDate1] = useState("");
   const [vendorDate2, setVendorDate2] = useState("");
+  const [venodrId , setVendorId] = useState("");
+  const [selectedVendorListId , setSelectedVendorListId] = useState("")
+  const [updatedVendorList , setUpdtedVendorList] = useState(false)
+  
 
 
 
@@ -149,9 +153,66 @@ const PurchaseEdit = (props) => {
     })
   }
 
-  const handleUpdate = () =>{
+  // --------------------updated VendorList--------------------------------------
 
+  const updatedVendorListUrl = endpoints.products.vendorListUpdate
+
+  const handleUpdate = (id) =>{
+   setModalShow(true);
+
+   var selectedVendorlist = allVendorList.filter((itm , ind) => {
+    return itm.ID == id
+   })
+   setSelectedVendorListId(id)
+  console.log(selectedVendorlist,"here id")
+
+  selectedVendorlist = selectedVendorlist[0];
+  setVendorProductName(selectedVendorlist.VENDOR_PNAME);
+  setVendorProductCode(selectedVendorlist.VENDOR_PCODE);
+  setVendorLeadTime(selectedVendorlist.DELI_LEADTIME);
+  setVendorQuantity(selectedVendorlist.VQTY);
+  setVendorPrice(selectedVendorlist.VPRICE)
+  setVendorCurrency(selectedVendorlist.VAL_CURRENCY);
+  setVendorDate1(selectedVendorlist.START_DATE);
+  setVendorDate2(selectedVendorlist.END_DATE);
+  setVendor(selectedVendorlist.VID)
+  setUpdtedVendorList(true)
   }
+
+ const updateSelectedVendorlist = () => {
+
+  const formData = new FormData();
+  formData.append("ID" , selectedVendorListId);
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
+  formData.append("User_AuthKey", userAuth);
+  formData.append("Vendor_ID", vendor);
+  formData.append("V_ProductName", vendorProductName);
+  formData.append("V_ProductCode", vendorProductCode);
+  formData.append("V_DeleveryLeadTime", vendorLeadTime);
+  formData.append("V_Quantity", vendorQuantity);
+  formData.append("V_Price", vendorPrice);
+  formData.append("V_Currency", vendorCurrency);
+  formData.append("V_StartDate", vendorDate1);
+  formData.append("V_EndDate", vendorDate2);
+  axios
+  .post(updatedVendorListUrl, formData)
+  .then((res) => {
+    if (res.data.status) {
+      toast("Varients updated successfully", { type: "success" });
+      setModalShow(false);
+      getAllVendorlist();
+    } else if (res.data.status === false) {
+      toast(res.data.message, { type: "warning" });
+    }
+  })
+  .catch((err) => {
+    console.log(err, "this is the error");
+  });
+
+
+ }
+
 
   const column = [
     { label :'Name', name:'VENDOR_PNAME'},
@@ -159,7 +220,7 @@ const PurchaseEdit = (props) => {
     { label :'Quantity', name:'VQTY'},
     { label :'Price', name:'VPRICE'},
     { label: "Action",
-    name: "VENDORLIST_ID",
+    name: "ID",
     options: {
       customBodyRender: (value, tableMeta, updateValue) => {
         return (
@@ -252,7 +313,7 @@ const PurchaseEdit = (props) => {
                         </div>
               </div>
             </div> */} 
-            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props} vendor={vendor} setVendor={setVendor} vendorProductName={vendorProductName} setVendorProductName={setVendorProductName} vendorProductCode={vendorProductCode} setVendorProductCode={setVendorProductCode} vendorLeadTime={vendorLeadTime} setVendorLeadTime={setVendorLeadTime} vendorQuantity={vendorQuantity} setVendorQuantity={setVendorQuantity} vendorPrice={vendorPrice} setVendorPrice={setVendorPrice} vendorCurrency={vendorCurrency} setVendorCurrency={setVendorCurrency} vendorDate1={vendorDate1} setVendorDate1={setVendorDate1} vendorDate2={vendorDate2} setVendorDate={setVendorDate2} />
+            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props} vendor={vendor} setVendor={setVendor} vendorProductName={vendorProductName} setVendorProductName={setVendorProductName} vendorProductCode={vendorProductCode} setVendorProductCode={setVendorProductCode} vendorLeadTime={vendorLeadTime} setVendorLeadTime={setVendorLeadTime} vendorQuantity={vendorQuantity} setVendorQuantity={setVendorQuantity} vendorPrice={vendorPrice} setVendorPrice={setVendorPrice} vendorCurrency={vendorCurrency} setVendorCurrency={setVendorCurrency} vendorDate1={vendorDate1} setVendorDate1={setVendorDate1} vendorDate2={vendorDate2} setVendorDate={setVendorDate2} updateSelectedVendorlist={updateSelectedVendorlist} updatedVendorList={updatedVendorList} setUpdtedVendorList={setUpdtedVendorList}/>
 
             <ToastContainer />
           </div>

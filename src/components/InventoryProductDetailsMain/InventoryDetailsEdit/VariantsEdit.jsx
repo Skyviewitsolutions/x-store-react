@@ -33,15 +33,13 @@ const VariantsEdit = (props) => {
   const [updateVarients, setUpdateVarients] = useState(false);
   const [attributeVal, setAttributeVal] = useState("");
   const [selectedVarientsId, setSelectedVarientsId] = useState("");
-  const [loading , setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const allattValUrl = endpoints.products.ProductAllVarients;
   const singleVarientsUrl = endpoints.products.ProductSingleVariens;
   const updateVrientUrl = endpoints.products.ProductUpdateVarients;
 
-
   const GetAllAttribute = () => {
-
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -49,10 +47,10 @@ const VariantsEdit = (props) => {
       .post(allattValUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          var val = res.data.data ;
-          val = val.filter((itm,ind) =>{
-            return itm.DELETE_STATUS != "X"
-          })
+          var val = res.data.data;
+          val = val.filter((itm, ind) => {
+            return itm.DELETE_STATUS != "X";
+          });
           setAttributeValues(val);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
@@ -69,7 +67,6 @@ const VariantsEdit = (props) => {
   };
 
   const getSingleVarients = () => {
-
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -78,11 +75,11 @@ const VariantsEdit = (props) => {
       .post(singleVarientsUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          var val = res.data.data ;
+          var val = res.data.data;
 
-          val = val.filter((itm,index) =>{
-          return itm.DELETE_STATUS  != "X"
-          })
+          val = val.filter((itm, index) => {
+            return itm.DELETE_STATUS != "X";
+          });
           setSingleVarients(val);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
@@ -131,7 +128,6 @@ const VariantsEdit = (props) => {
   };
 
   const getAllAttribute = () => {
-
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -156,19 +152,19 @@ const VariantsEdit = (props) => {
     formData.append("User_AuthKey", userAuth);
     formData.append("ID", id);
 
-    setLoading(true)
+    setLoading(true);
 
     axios
       .post(attributeValueUrl, formData)
       .then((res) => {
-        setLoading(false)
+        setLoading(false);
         if (res.data.status === true) {
           const val = res.data.data;
           setAllAttributeValue(val);
         }
       })
       .catch((err) => {
-        setLoading(false)
+        setLoading(false);
         console.log(err, "this is the error ");
       });
   };
@@ -193,13 +189,11 @@ const VariantsEdit = (props) => {
     setAttributeValId(seletedAttribute.SALESATTRIBUTEVALUE_ID);
     getAttributeValues(seletedAttribute.SALES_ATTRIBUTE_ID);
     setUpdateVarients(true);
-
   };
 
   // updating selected varients;
 
   const updateSelectedVarients = () => {
-
     const formData = new FormData();
     formData.append("ID", selectedVarientsId);
     formData.append("User_Authorization", getAuthtoken);
@@ -267,7 +261,13 @@ const VariantsEdit = (props) => {
         <CustomTable data={attributesValues} column={column1} />
       )}
 
-      <button className="varients_btns" onClick={() => setShowModal(true)}>
+      <button
+        className="varients_btns"
+        onClick={() => {
+          setShowModal(true);
+          setUpdateVarients(false);
+        }}
+      >
         Add Line
       </button>
 

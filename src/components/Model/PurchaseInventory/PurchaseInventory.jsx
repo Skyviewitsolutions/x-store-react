@@ -21,7 +21,7 @@ const PurchaseInventory = (props) => {
     setSelectedVID,
     vendor ,
     setVendor ,
-    vendorProductName,setVendorProductName, vendorProductCode , setVendorProductCode , vendorLeadTime , setVendorLeadTime , vendorQuantity , setVendorQuantity , vendorPrice , setVendorPrice , vendorCurrency , setVendorCurrency , vendorDate1 , setVendorDate1 , vendorDate2 , setVendorDate2
+    vendorProductName,setVendorProductName, vendorProductCode , setVendorProductCode , vendorLeadTime , setVendorLeadTime , vendorQuantity , setVendorQuantity , vendorPrice , setVendorPrice , vendorCurrency , setVendorCurrency , vendorDate1 , setVendorDate1 , vendorDate2 , setVendorDate2,updateSelectedVendorlist,updatedVendorList,setUpdtedVendorList
   } = props;
 
   const getAuthtoken = localStorage.getItem("authtoken");
@@ -233,8 +233,8 @@ const PurchaseInventory = (props) => {
             </div>
           </div>
           <div className="pu_btn">
-            <button className="pur_btn" onClick={save}>
-              Save
+            <button className="pur_btn" onClick={updatedVendorList ? updateSelectedVendorlist :save}>
+              {updatedVendorList ? "update" : "save"}
             </button>
           </div>
           <div onClick={() => setModalShow(false)}>

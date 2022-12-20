@@ -19,6 +19,15 @@ const Barcode = (props) => {
     getProBarcode,
     setUnitOfMeasurement,
     unitOfMeasurement,
+    uom,
+    setUom,
+    barcode,
+    setBarcode,
+    barcodeDes,
+    setBarcodeDes,
+    updateBarcode,
+    setUpdateBarcode,
+    updateProductBarcode,
   } = props;
 
 
@@ -55,9 +64,7 @@ const Barcode = (props) => {
       });
   }, []);
 
-  const [barcode, setBarcode] = useState("");
-  const [barcodeDes, setBarcodeDes] = useState("");
-  const [uom, setUom] = useState("");
+
 
   const save = () => {
     if (barcode === "") {
@@ -79,9 +86,9 @@ const Barcode = (props) => {
           console.log(res, "response barcode");
           if (res.data.status === true) {
             setUom(res.data.code);
-            getProBarcode();
             toast(res.data.message, { type: "success" });
             setModalShow(false);
+            getProBarcode();
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -129,7 +136,7 @@ const Barcode = (props) => {
                     <>
                       {itm.DELETE_STATUS != "X" && (
                         <>
-                          <option value={itm.ID}>{itm.UOM_CATEGORY}</option>
+                          <option value={itm.ID}>{itm.UNIT_OF_MEASUREMENT}</option>
                         </>
                       )}
                     </>
@@ -139,7 +146,7 @@ const Barcode = (props) => {
             </div>
           </div>
           <div className="bar_btn">
-            <button className="barcode_btns" onClick={save}>Save</button>
+            <button className="barcode_btns" onClick={updateBarcode ? updateProductBarcode :save}>{updateBarcode ? "update" : "save"}</button>
           </div>
           <div onClick={() => setModalShow(false)}>
             <MdOutlineCancel size="25px" className="Acccuticons" />

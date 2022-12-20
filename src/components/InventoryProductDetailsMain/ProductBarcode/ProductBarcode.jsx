@@ -24,6 +24,14 @@ const ProductBarcode = (props) => {
   const allProductBarcodeUrl = endpoints.products.ProductBarcodeAll;
   const singleProductBarcodeUrl = endpoints.products.ProductBarcodeSingle;
 
+   // creating useState for the model;
+   const [barcode, setBarcode] = useState("");
+   const [barcodeDes, setBarcodeDes] = useState("");
+   const [uom, setUom] = useState("");
+   const [selectedBarcodeId , setSelectedBarcodeId] = useState("");
+   const [updateBarcode , setUpdateBarcode] = useState(false)
+
+
   const getProBarcode = () => {
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
@@ -67,7 +75,7 @@ const ProductBarcode = (props) => {
         }
       })
       .catch((err) => {
-        console.log(err, "error");
+
         toast("something went wrong", { type: "error" });
       });
   };
@@ -80,10 +88,81 @@ const ProductBarcode = (props) => {
     }
   }, []);
 
+  const deleteBarcodeUrl = endpoints.products.ProductBarcodeDelete
+
+  const deleteItem = (data) => {
+    const formData = new FormData();
+    formData.append("ID" , data);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(deleteBarcodeUrl,formData)
+    .then((res) => {
+      if(res.data.status === true)
+      {
+        getProBarcode();
+        toast("Product Barcode Deleted Successfully!" ,{type:"success"});
+      }
+      else if(res.data.message === false)
+      {
+        toast(res.data.message,{type:"error"});
+      }
+    })
+    .catch((err) => {
+       console.log(err,"error");
+    })
+  }
+
+
+  // ---------------Update Bracode------------------
+
+  const barcodeUpdateUrl = endpoints.products.ProductBarcodeUpdate
+
+  const handleUpdate = (id) => {
+    setModalShow(true);
+
+    var seletedProductBarcode = allBarcode.filter((itm,ind) => {
+      return itm.ID == id
+    })  
+    setSelectedBarcodeId(id)
+    console.log(seletedProductBarcode,"barcode id")
+
+    seletedProductBarcode = seletedProductBarcode[0];
+    setBarcode(seletedProductBarcode.BARCODE);
+    setBarcodeDes(seletedProductBarcode.BARCODE_DESCRIPTION);
+    setUom(seletedProductBarcode.UOM_ID);
+    setUpdateBarcode(true)
+  }
+
+  const updateProductBarcode = () => {
+    const formData = new FormData();
+     formData.append("ID" ,selectedBarcodeId);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("User_AuthKey", userAuth);
+      formData.append("Barcode", barcode);
+      formData.append("Barcode_Discription", barcodeDes);
+      formData.append("UOM_ID", uom);
+      axios
+      .post(barcodeUpdateUrl, formData)
+      .then((res) => {
+        if (res.data.status) {
+          toast("Product Barcode updated successfully", { type: "success" });
+          setModalShow(false);
+          getProBarcode();
+        } else if (res.data.status === false) {
+          toast(res.data.message, { type: "warning" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "this is the error");
+      });
+    
+      
+  }
+
   const column = [
     { label: "Barcode", name: "BARCODE" },
     { label: "Barcode Description", name: "BARCODE_DESCRIPTION" },
-    { label: "UOM", name: "UOM" },
+    { label: "UOM", name: "UNIT_OF_MEASUREMENT" },
     {
       label: "Action",
       name: "ID",
@@ -95,13 +174,13 @@ const ProductBarcode = (props) => {
                 <FiEdit
                   size={23}
                   color="#4f4e4d"
-                  // onClick={() => handleUpdate(value)}
+                  onClick={() => handleUpdate(value)}
                   style={{ cursor: "pointer" }}
                 />
                 <MdDelete
                   size={23}
                   color="4f4e4d"
-                  // onClick={() => deleteItem(value)}
+                  onClick={() => deleteItem(value)}
                   style={{ cursor: "pointer" }}
                 />
               </div>
@@ -160,7 +239,17 @@ const ProductBarcode = (props) => {
           proBarcodeAll={proBarcodeAll}
           setProBarcodeAll={setProBarcodeAll}
           getSingleBarcode={getSingleBarcode}
+          getProBarcode={getProBarcode}
           {...props}
+          barcode={barcode}
+          setBarcode={setBarcode}
+          uom={uom}
+          setUom={setUom}
+          barcodeDes={barcodeDes}
+          setBarcodeDes={setBarcodeDes}
+          updateProductBarcode={updateProductBarcode}
+          updateBarcode={updateBarcode}
+          setUpdateBarcode={setUpdateBarcode}
         />
       </div>
       <ToastContainer />
