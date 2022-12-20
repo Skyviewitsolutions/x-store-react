@@ -22,12 +22,27 @@ const PurchaseEdit = (props) => {
 
   const [singleVendorList , setSingleVendorList] = useState([]);
   const [allVendorList , setAllVendorList] = useState([]);
+
+
+  // creating useState for the model;
+
+  const [vendor, setVendor] = useState("");
+  const [vendorProductName, setVendorProductName] = useState("");
+  const [vendorProductCode, setVendorProductCode] = useState("");
+  const [vendorLeadTime, setVendorLeadTime] = useState("");
+  const [vendorQuantity, setVendorQuantity] = useState("");
+  const [vendorPrice, setVendorPrice] = useState("");
+  const [vendorCurrency, setVendorCurrency] = useState("");
+  const [vendorDate1, setVendorDate1] = useState("");
+  const [vendorDate2, setVendorDate2] = useState("");
+
+
+
   const vendorListUrl = endpoints.products.vendorListsingle;
-  const vendorListsAllUrl = endpoints.products.vendorListAllProduct;
+  const singleVendorListUrl = endpoints.products.vendorListAllProduct;
   const deleteUrl = endpoints.products.vendorListdelete;
 
   
-
   const getSingleVendorList = () => {
 
     const formData = new FormData()
@@ -36,9 +51,9 @@ const PurchaseEdit = (props) => {
     formData.append("ID" ,productId);
    
     axios
-    .post(vendorListsAllUrl, formData)
+    .post(singleVendorListUrl, formData)
     .then((res) => {
-      console.log(res, "all vendorlist");
+      
       if(res.data.status === true){
         const val = res.data.data;
         const filteredVendorList = val.filter((itm,ind) =>{
@@ -143,7 +158,7 @@ const PurchaseEdit = (props) => {
     { label :'currency', name:'VAL_CURRENCY'},
     { label :'Quantity', name:'VQTY'},
     { label :'Price', name:'VPRICE'},
-   { label: "Action",
+    { label: "Action",
     name: "VENDORLIST_ID",
     options: {
       customBodyRender: (value, tableMeta, updateValue) => {
@@ -174,7 +189,7 @@ const PurchaseEdit = (props) => {
     { label :'Name', name:'VENDOR_NAME'},
     { label :'currency', name:'VENDOR_CURRENCY'},
     { label :'Price', name:'VENDOR_PRICE'},
-    
+   
   ]
 
   console.log(productId , "productId")
@@ -237,7 +252,8 @@ const PurchaseEdit = (props) => {
                         </div>
               </div>
             </div> */} 
-            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props}/>
+            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props} vendor={vendor} setVendor={setVendor} vendorProductName={vendorProductName} setVendorProductName={setVendorProductName} vendorProductCode={vendorProductCode} setVendorProductCode={setVendorProductCode} vendorLeadTime={vendorLeadTime} setVendorLeadTime={setVendorLeadTime} vendorQuantity={vendorQuantity} setVendorQuantity={setVendorQuantity} vendorPrice={vendorPrice} setVendorPrice={setVendorPrice} vendorCurrency={vendorCurrency} setVendorCurrency={setVendorCurrency} vendorDate1={vendorDate1} setVendorDate1={setVendorDate1} vendorDate2={vendorDate2} setVendorDate={setVendorDate2} />
+
             <ToastContainer />
           </div>
    </>

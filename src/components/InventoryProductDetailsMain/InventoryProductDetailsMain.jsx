@@ -23,6 +23,7 @@ import axios from "axios";
 import ProductBarcode from "./ProductBarcode/ProductBarcode";
 import ProBarcode from "./ProductBarcode/ProBarcode";
 
+
 const InventoryProductDetailsMain = (props) => {
   
   const [events, setEvents] = useState("generalInformation");

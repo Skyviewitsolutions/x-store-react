@@ -6,6 +6,8 @@ import axios from "axios";
 import { endpoints } from "../../../services/endpoints";
 import { MdOutlineCancel } from "react-icons/md";
 import { toast } from "react-toastify";
+import Loader from "../../Loader/Loader";
+
 
 const VariantModal = (props) => {
 
@@ -36,6 +38,7 @@ const VariantModal = (props) => {
   const userAuth = localStorage.getItem("userAuth");
 
   const handleSelectedAttribute = (e) => {
+
     const name = e.target.value;
 
     var id = allAttribute.filter((itm, ind) => {
@@ -90,7 +93,9 @@ const VariantModal = (props) => {
       return itm.ATTRIBUTE_VALUE == value;
     });
 
-    id = id[0].VARIANTS_ID;
+    console.log(id ,"idd")
+
+    id = id[0].ID;
     setAttributeValId(id);
     setAttributeVal(value);
   };

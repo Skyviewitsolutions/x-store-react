@@ -10,6 +10,7 @@ import { Button, Table } from "react-bootstrap";
 import { useEffect } from "react";
 import VariantModal from "./VariantModal";
 import CustomTable from "../../CustomTable/CustomTable";
+import Loader from "../../Loader/Loader";
 
 const VariantsEdit = (props) => {
   const navigate = useNavigate();
@@ -32,12 +33,15 @@ const VariantsEdit = (props) => {
   const [updateVarients, setUpdateVarients] = useState(false);
   const [attributeVal, setAttributeVal] = useState("");
   const [selectedVarientsId, setSelectedVarientsId] = useState("");
+  const [loading , setLoading] = useState(false)
 
   const allattValUrl = endpoints.products.ProductAllVarients;
   const singleVarientsUrl = endpoints.products.ProductSingleVariens;
   const updateVrientUrl = endpoints.products.ProductUpdateVarients;
 
+
   const GetAllAttribute = () => {
+
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -45,8 +49,11 @@ const VariantsEdit = (props) => {
       .post(allattValUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          console.log(res.data.data , "heeef")
-          setAttributeValues(res.data.data);
+          var val = res.data.data ;
+          val = val.filter((itm,ind) =>{
+            return itm.DELETE_STATUS != "X"
+          })
+          setAttributeValues(val);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -62,6 +69,7 @@ const VariantsEdit = (props) => {
   };
 
   const getSingleVarients = () => {
+
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -70,7 +78,12 @@ const VariantsEdit = (props) => {
       .post(singleVarientsUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          setSingleVarients(res.data.data);
+          var val = res.data.data ;
+
+          val = val.filter((itm,index) =>{
+          return itm.DELETE_STATUS  != "X"
+          })
+          setSingleVarients(val);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -118,6 +131,7 @@ const VariantsEdit = (props) => {
   };
 
   const getAllAttribute = () => {
+
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -142,15 +156,19 @@ const VariantsEdit = (props) => {
     formData.append("User_AuthKey", userAuth);
     formData.append("ID", id);
 
+    setLoading(true)
+
     axios
       .post(attributeValueUrl, formData)
       .then((res) => {
+        setLoading(false)
         if (res.data.status === true) {
           const val = res.data.data;
           setAllAttributeValue(val);
         }
       })
       .catch((err) => {
+        setLoading(false)
         console.log(err, "this is the error ");
       });
   };
@@ -176,12 +194,12 @@ const VariantsEdit = (props) => {
     getAttributeValues(seletedAttribute.SALES_ATTRIBUTE_ID);
     setUpdateVarients(true);
 
-    console.log(seletedAttribute, "seleted attribute here");
   };
 
   // updating selected varients;
 
   const updateSelectedVarients = () => {
+
     const formData = new FormData();
     formData.append("ID", selectedVarientsId);
     formData.append("User_Authorization", getAuthtoken);
@@ -196,7 +214,7 @@ const VariantsEdit = (props) => {
         if (res.data.status) {
           toast("Varients updated successfully", { type: "success" });
           setShowModal(false);
-          getAllAttribute();
+          GetAllAttribute();
         } else if (res.data.status === false) {
           toast(res.data.message, { type: "warning" });
         }
@@ -270,6 +288,7 @@ const VariantsEdit = (props) => {
         attributeVal={attributeVal}
         setAttributeVal={setAttributeVal}
         allAttribute={allAttribute}
+        loading={loading}
         setAllAttribute={allAttribute}
         allAttributeValue={allAttributeValue}
         updateVarients={updateVarients}
@@ -281,6 +300,7 @@ const VariantsEdit = (props) => {
         setAttributeValId={setAttributeValId}
         attributeValId={attributeValId}
       />
+      {loading && <Loader />}
     </div>
   );
 };

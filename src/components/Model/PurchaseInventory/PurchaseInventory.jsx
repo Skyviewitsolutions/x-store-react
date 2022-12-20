@@ -19,6 +19,9 @@ const PurchaseInventory = (props) => {
     setPurchaseDetails,
     getSingleVendorList,
     setSelectedVID,
+    vendor ,
+    setVendor ,
+    vendorProductName,setVendorProductName, vendorProductCode , setVendorProductCode , vendorLeadTime , setVendorLeadTime , vendorQuantity , setVendorQuantity , vendorPrice , setVendorPrice , vendorCurrency , setVendorCurrency , vendorDate1 , setVendorDate1 , vendorDate2 , setVendorDate2
   } = props;
 
   const getAuthtoken = localStorage.getItem("authtoken");
@@ -26,8 +29,8 @@ const PurchaseInventory = (props) => {
 
   const addVndorListUrl = endpoints.products.vendorListAdd;
 
-  const [purchase, setPurchase] = useState({});
   const [allVendor, setAllVendor] = useState([]);
+
   const getVendorUrl = endpoints.vendors.allVendors;
 
   useEffect(() => {
@@ -57,15 +60,7 @@ const PurchaseInventory = (props) => {
 
   }, []);
 
-  const [vendor, setVendor] = useState("");
-  const [vendorProductName, setVendorProductName] = useState("");
-  const [vendorProductCode, setVendorProductCode] = useState("");
-  const [vendorLeadTime, setVendorLeadTime] = useState("");
-  const [vendorQuantity, setVendorQuantity] = useState("");
-  const [vendorPrice, setVendorPrice] = useState("");
-  const [vendorCurrency, setVendorCurrency] = useState("");
-  const [vendorDate1, setVendorDate1] = useState("");
-  const [vendorDate2, setVendorDate2] = useState("");
+ 
 
   const save = () => {
     if (vendor === "") {

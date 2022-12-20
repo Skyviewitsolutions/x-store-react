@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-bootstrap";
 import Loader from "../../../components/Loader/Loader";
 
+
 const InventoryProducts = () => {
 
   const [product, setProduct] = useState([]);

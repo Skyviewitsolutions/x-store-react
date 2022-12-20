@@ -8,6 +8,7 @@ import axios from "axios";
 import { endpoints } from "../../../services/endpoints";
 import { ToastContainer, toast } from "react-toastify";
 
+
 const InventoryProductDetails = () => {
   
   const [isEdit, setIsEdit] = useState(false);
