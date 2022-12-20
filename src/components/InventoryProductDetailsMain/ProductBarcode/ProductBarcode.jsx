@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { endpoints } from "../../../services/endpoints";
 import CustomTable from "../../CustomTable/CustomTable";
+import { MdArrowDropDown, MdDelete } from "react-icons/md";
 import Barcode from "../../Model/BarcodeModal/Barcode";
 import "./ProductBarcode.css";
+import { FiEdit } from "react-icons/fi";
+
 
 const ProductBarcode = (props) => {
 
@@ -53,7 +56,7 @@ const ProductBarcode = (props) => {
     axios
       .post(singleProductBarcodeUrl, formData)
       .then((res) => {
-        console.log(res, "single data");
+      
         if (res.data.status === true) {
           setAllBarcode(res.data.data);
         } else if (res.data.status === false) {
@@ -81,11 +84,63 @@ const ProductBarcode = (props) => {
     { label: "Barcode", name: "BARCODE" },
     { label: "Barcode Description", name: "BARCODE_DESCRIPTION" },
     { label: "UOM", name: "UOM" },
+    {
+      label: "Action",
+      name: "ID",
+      options: {
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return (
+            <>
+              <div className="updtdlt">
+                <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  // onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
+                <MdDelete
+                  size={23}
+                  color="4f4e4d"
+                  // onClick={() => deleteItem(value)}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
+            </>
+          );
+        },
+      },
+    },
   ];
   const column2 = [
     { label: "Barcode", name: "BARCODE" },
     { label: "Barcode Description", name: "BARCODE_DESCRIPTION" },
     { label: "UOM", name: "UNIT_OF_MEASUREMENT" },
+    {
+      label: "Action",
+      name: "ID",
+      options: {
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return (
+            <>
+              <div className="updtdlt">
+                <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  // onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
+                <MdDelete
+                  size={23}
+                  color="4f4e4d"
+                  // onClick={() => deleteItem(value)}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
+            </>
+          );
+        },
+      },
+    },
   ];
 
   return (

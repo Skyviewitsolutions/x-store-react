@@ -1,11 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { MdDelete } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import { endpoints } from '../../../services/endpoints'
 import CustomTable from '../../CustomTable/CustomTable'
 import PurchaseInventory from '../../Model/PurchaseInventory/PurchaseInventory'
 import './PurchaseEdit.css'
+import { FiEdit } from "react-icons/fi";
 
 
 const PurchaseEdit = (props) => {
@@ -22,7 +24,9 @@ const PurchaseEdit = (props) => {
   const [allVendorList , setAllVendorList] = useState([]);
   const vendorListUrl = endpoints.products.vendorListsingle;
   const vendorListsAllUrl = endpoints.products.vendorListAllProduct;
+  const deleteUrl = endpoints.products.vendorListdelete;
 
+  
 
   const getSingleVendorList = () => {
 
@@ -36,7 +40,11 @@ const PurchaseEdit = (props) => {
     .then((res) => {
       console.log(res, "all vendorlist");
       if(res.data.status === true){
-        setAllVendorList(res.data.data)
+        const val = res.data.data;
+        const filteredVendorList = val.filter((itm,ind) =>{
+          return itm.DEL_STATUS != "X"
+        })
+        setSingleVendorList(filteredVendorList)
       }
       else if(res.data.status === false){
         if(res.data.code === 3)
@@ -67,7 +75,14 @@ const PurchaseEdit = (props) => {
     .then((res) => {
       console.log(res, "all vendorlist");
       if(res.data.status === true){
-        setAllVendorList(res.data.data)
+
+
+        const val = res.data.data;
+        const filteredVendorList = val.filter((itm,ind) =>{
+          return itm.DEL_STATUS != "X"
+        })
+        
+        setAllVendorList(filteredVendorList)
       }
       else if(res.data.status === false){
         if(res.data.code === 3)
@@ -95,12 +110,64 @@ const PurchaseEdit = (props) => {
   
   console.log(singleVendorList,"single nhjs")
 
+  const deleteVendorlistUrl = endpoints.products.vendorListdelete;
+
+  const deleteItem = (data) => {
+    const formData = new FormData();
+    formData.append("ID" , data);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(deleteVendorlistUrl,formData)
+    .then((res) => {
+      if(res.data.status === true)
+      {
+        getAllVendorlist();
+        toast("VendorList Deleted Successfully!" ,{type:"success"});
+      }
+      else if(res.data.message === false)
+      {
+        toast(res.data.message,{type:"error"});
+      }
+    })
+    .catch((err) => {
+       console.log(err,"error");
+    })
+  }
+
+  const handleUpdate = () =>{
+
+  }
 
   const column = [
     { label :'Name', name:'VENDOR_PNAME'},
     { label :'currency', name:'VAL_CURRENCY'},
     { label :'Quantity', name:'VQTY'},
     { label :'Price', name:'VPRICE'},
+   { label: "Action",
+    name: "VENDORLIST_ID",
+    options: {
+      customBodyRender: (value, tableMeta, updateValue) => {
+        return (
+          <>
+            <div className="updtdlt">
+            <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
+              <MdDelete
+                size={23}
+                color="4f4e4d"
+                onClick={() => deleteItem(value)}
+                style={{cursor:"pointer"}}
+              />
+            </div>
+          </>
+        );
+      },
+    },
+  }
     
   ]
   const column2 = [
@@ -115,7 +182,7 @@ const PurchaseEdit = (props) => {
   return (
    <>
    <div className="purchase_container">
-    {productId  ?  <CustomTable data={allVendorList} column={column2}/> : <CustomTable data={allVendorList} column={column}/>
+    {productId  ?  <CustomTable data={singleVendorList} column={column2}/> : <CustomTable data={allVendorList} column={column}/>
     }
   
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>

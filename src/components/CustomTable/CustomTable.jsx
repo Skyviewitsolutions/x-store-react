@@ -6,7 +6,6 @@ import './ProductTab.css'
 const CustomTable = (props) => {
 
   const {data,column} = props
-    console.log(data);
     // const columns = [
     //     { label: 'Title', name: 'title' },
     //     { label: 'Author', name: 'authors' },

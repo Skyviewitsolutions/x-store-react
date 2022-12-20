@@ -10,6 +10,7 @@ import {useNavigate } from 'react-router-dom';
 
 
 const UomCategories = () => {
+  
   const [uomdetails , setUomdetails] = useState([]);
   const url = endpoints.UomCategory.allUomCate;
   const navigate = useNavigate();

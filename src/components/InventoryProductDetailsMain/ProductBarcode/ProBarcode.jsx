@@ -13,7 +13,6 @@ const ProBarcode = (props) => {
 
   const navigate = useNavigate();
   const { productId } = props;
-  const [modalShow, setModalShow] = useState(false);
   const userAuth = localStorage.getItem("userAuth");
   const getAuthtoken = localStorage.getItem("authtoken");
   const [proBarcodeAll, setProBarcodeAll] = useState([]);
@@ -23,7 +22,7 @@ const ProBarcode = (props) => {
   const singleProductBarcodeUrl = endpoints.products.ProductBarcodeSingle;
 
 
- 
+
 
   const getSingleBarcode = () => {
 

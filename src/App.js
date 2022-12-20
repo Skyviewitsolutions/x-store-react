@@ -148,9 +148,11 @@ const App = () => {
   return(<>
     <Router>
       <Routes>
+
         {/* ----------------Inventory----------------- */}
         
         {/* <Route path="/" element={<SignUp/>}/> */}
+
         <Route path="/" element={<Login/>}/>
         <Route path="/ForgetPassword" element={<ForgetPassword/>} />
         <Route path="/OtpPage" element={<Otp/>} />
@@ -188,7 +190,6 @@ const App = () => {
         <Route path="/AddParentCategory" element={<AddParentCategory/>}/>
         <Route path='/ParentCategory' element={<ParentCategory/>} />
         <Route path='/ProductPrice' element={<ProductPriceList/>} />
-  
 
        {/* --------Accounting Pages------------- */}
 
