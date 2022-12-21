@@ -63,7 +63,7 @@ const PurchaseEdit = (props) => {
         const filteredVendorList = val.filter((itm,ind) =>{
           return itm.DEL_STATUS != "X"
         })
-        setSingleVendorList(filteredVendorList)
+        setAllVendorList(filteredVendorList)
       }
       else if(res.data.status === false){
         if(res.data.code === 3)
@@ -163,6 +163,7 @@ const PurchaseEdit = (props) => {
    var selectedVendorlist = allVendorList.filter((itm , ind) => {
     return itm.ID == id
    })
+   console.log(allVendorList,"all vendor")
    setSelectedVendorListId(id)
   console.log(selectedVendorlist,"here id")
 
@@ -250,6 +251,31 @@ const PurchaseEdit = (props) => {
     { label :'Name', name:'VENDOR_NAME'},
     { label :'currency', name:'VENDOR_CURRENCY'},
     { label :'Price', name:'VENDOR_PRICE'},
+    { label: "Action",
+    name: "ID",
+    options: {
+      customBodyRender: (value, tableMeta, updateValue) => {
+        return (
+          <>
+            <div className="updtdlt">
+            <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
+              <MdDelete
+                size={23}
+                color="4f4e4d"
+                onClick={() => deleteItem(value)}
+                style={{cursor:"pointer"}}
+              />
+            </div>
+          </>
+        );
+      },
+    },
+  }
    
   ]
 
@@ -258,7 +284,7 @@ const PurchaseEdit = (props) => {
   return (
    <>
    <div className="purchase_container">
-    {productId  ?  <CustomTable data={singleVendorList} column={column2}/> : <CustomTable data={allVendorList} column={column}/>
+    {productId  ?  <CustomTable data={allVendorList} column={column2}/> : <CustomTable data={allVendorList} column={column}/>
     }
   
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>
@@ -313,7 +339,7 @@ const PurchaseEdit = (props) => {
                         </div>
               </div>
             </div> */} 
-            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props} vendor={vendor} setVendor={setVendor} vendorProductName={vendorProductName} setVendorProductName={setVendorProductName} vendorProductCode={vendorProductCode} setVendorProductCode={setVendorProductCode} vendorLeadTime={vendorLeadTime} setVendorLeadTime={setVendorLeadTime} vendorQuantity={vendorQuantity} setVendorQuantity={setVendorQuantity} vendorPrice={vendorPrice} setVendorPrice={setVendorPrice} vendorCurrency={vendorCurrency} setVendorCurrency={setVendorCurrency} vendorDate1={vendorDate1} setVendorDate1={setVendorDate1} vendorDate2={vendorDate2} setVendorDate={setVendorDate2} updateSelectedVendorlist={updateSelectedVendorlist} updatedVendorList={updatedVendorList} setUpdtedVendorList={setUpdtedVendorList}/>
+            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props} vendor={vendor} setVendor={setVendor} vendorProductName={vendorProductName} setVendorProductName={setVendorProductName} vendorProductCode={vendorProductCode} setVendorProductCode={setVendorProductCode} vendorLeadTime={vendorLeadTime} setVendorLeadTime={setVendorLeadTime} vendorQuantity={vendorQuantity} setVendorQuantity={setVendorQuantity} vendorPrice={vendorPrice} setVendorPrice={setVendorPrice} vendorCurrency={vendorCurrency} setVendorCurrency={setVendorCurrency} vendorDate1={vendorDate1} setVendorDate1={setVendorDate1} vendorDate2={vendorDate2} setVendorDate2={setVendorDate2} updateSelectedVendorlist={updateSelectedVendorlist} updatedVendorList={updatedVendorList} setUpdtedVendorList={setUpdtedVendorList}/>
 
             <ToastContainer />
           </div>

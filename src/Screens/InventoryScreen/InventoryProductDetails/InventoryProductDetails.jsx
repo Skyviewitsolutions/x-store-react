@@ -110,6 +110,8 @@ const InventoryProductDetails = () => {
     });
   }, [productdetails]);
 
+  console.log(productdetails,"update product")
+
   const updateData = () => {
     if (productName === "") {
       toast("Product name required !", { type: "warning" });
@@ -161,7 +163,7 @@ const InventoryProductDetails = () => {
       const formData = new FormData();
       formData.append("Product_Name", productName);
       formData.append("Product_Type", productType);
-      formData.append("Product_Category", productCategory);
+      formData.append("Product_CategoryID", productCategory);
       formData.append("units", units);
       formData.append("Cost", cost);
       formData.append("Sales_Price", salesPrice);
@@ -199,6 +201,7 @@ const InventoryProductDetails = () => {
       formData.append("Deduction", deduction);
       formData.append("ChooseFile", files);
       formData.append("ID", id);
+      formData.append("Vendor_ID", 2)
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
 

@@ -24,7 +24,7 @@ export const endpoints = {
     vendorListUpdate : BASE_URL + "/ProductManagement/ProductManagement/UpdateVendorlist",
     ProductBarcodeAll : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/GetAll",
     ProductBarcodeAdd : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/Add",
-    ProductBarcodeDelete : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/Add",
+    ProductBarcodeDelete : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/Delete",
     ProductBarcodeSingle : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/GetSingle",
     ProductBarcodeUpdate : BASE_URL + "/ProductManagement/ProductAdditionalBarcode/Update",
     ProductAllVarients : BASE_URL + "/ProductManagement/ProductVariants/GetAll",

@@ -73,14 +73,16 @@ const VariantsEdit = (props) => {
     formData.append("Product_ID", productId);
     axios
       .post(singleVarientsUrl, formData)
+     
       .then((res) => {
+        console.log(res,"single varients")
         if (res.data.status === true) {
           var val = res.data.data;
 
           val = val.filter((itm, index) => {
             return itm.DELETE_STATUS != "X";
           });
-          setSingleVarients(val);
+          setAttributeValues(val);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -179,7 +181,7 @@ const VariantsEdit = (props) => {
     var seletedAttribute = attributesValues.filter((itm, ind) => {
       return itm.ID == id;
     });
-
+   console.log(seletedAttribute,"attr here")
     setSelectedVarientsId(id);
 
     seletedAttribute = seletedAttribute[0];
@@ -252,11 +254,37 @@ const VariantsEdit = (props) => {
   const column2 = [
     { label: "Attribute", name: "SALESATTRIBUTE_NAME" },
     { label: "Value", name: "SALESATTRIBUTEVALUE_VALUE" },
+    {
+      label: "Action",
+      name: "ID",
+      options: {
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return (
+            <>
+              <div className="updtdlt">
+                <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
+                <MdDelete
+                  size={23}
+                  color="4f4e4d"
+                  onClick={() => deleteItem(value)}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
+            </>
+          );
+        },
+      },
+    },
   ];
   return (
     <div className="VariantsEditContainer">
       {productId ? (
-        <CustomTable data={singleVarients} column={column2} />
+        <CustomTable data={attributesValues} column={column2} />
       ) : (
         <CustomTable data={attributesValues} column={column1} />
       )}

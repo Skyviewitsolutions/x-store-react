@@ -41,7 +41,11 @@ const ProductBarcode = (props) => {
       .then((res) => {
         console.log(res, "all here");
         if (res.data.status === true) {
-          setAllBarcode(res.data.data);
+          var val = res.data.data;
+          val = val.filter((itm ,ind) => {
+            return itm.DELETE_STATUS != "X";
+          });
+          setAllBarcode(val);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -66,7 +70,11 @@ const ProductBarcode = (props) => {
       .then((res) => {
       
         if (res.data.status === true) {
-          setAllBarcode(res.data.data);
+          var val = res.data.data;
+          val = val.filter((itm ,ind) => {
+            return itm.DELETE_STATUS != "X";
+          });
+          setAllBarcode(val);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -205,13 +213,13 @@ const ProductBarcode = (props) => {
                 <FiEdit
                   size={23}
                   color="#4f4e4d"
-                  // onClick={() => handleUpdate(value)}
+                  onClick={() => handleUpdate(value)}
                   style={{ cursor: "pointer" }}
                 />
                 <MdDelete
                   size={23}
                   color="4f4e4d"
-                  // onClick={() => deleteItem(value)}
+                  onClick={() => deleteItem(value)}
                   style={{ cursor: "pointer" }}
                 />
               </div>
