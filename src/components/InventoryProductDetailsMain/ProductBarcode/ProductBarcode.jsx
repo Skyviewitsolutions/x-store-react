@@ -156,6 +156,7 @@ const ProductBarcode = (props) => {
           toast("Product Barcode updated successfully", { type: "success" });
           setModalShow(false);
           getProBarcode();
+          getSingleBarcode()
         } else if (res.data.status === false) {
           toast(res.data.message, { type: "warning" });
         }

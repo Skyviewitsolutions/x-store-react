@@ -65,3 +65,25 @@ td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium.tss-1qtl85h-MUIDa
 .tss-iwylj0-MUIDataTableBodyCell-responsiveStackedSmallParent {
   padding-left: 0px;
 }
+.MuiTablePagination-selectLabel .css-pdct74-MuiTablePagination-selectLabel {
+  margin-top: 0;
+  margin-bottom: 0px !important;
+}
+.css-pdct74-MuiTablePagination-selectLabel {
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+p#\:rj\: {
+  margin-bottom: 0px !important;
+  
+}
+
+table tbody td{
+  padding-left: 0px !important;
+}

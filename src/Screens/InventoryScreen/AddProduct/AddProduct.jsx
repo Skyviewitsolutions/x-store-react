@@ -30,6 +30,8 @@ const AddProduct = () => {
   const [interRef, setInterRef] = useState("");
   const [customerTax, setCustomerTax] = useState("");
   const [description, setDescription] = useState("");
+  const [unitOfMeasurementId , setUnitOfMeasurementId] = useState("");
+  const [purchaseUnitOfMeasuremntId , setPurchaseUnitOfMeasurementId] = useState("");
   const [unitOfMeasurement, setUnitOfMeasurement] = useState("");
   const [purchaseUnitOfMeasuremnt, setPurchaseUnitOfMeasurement] = useState("");
   const [weight, setWeight] = useState("");
@@ -103,8 +105,8 @@ const AddProduct = () => {
       formData.append("Internal_Notes", interRef);
       formData.append("Customer_Taxes", customerTax);
       formData.append("description", description);
-      formData.append("UOM_ID", unitOfMeasurement);
-      formData.append("Purchase_UOMID", purchaseUnitOfMeasuremnt);
+      formData.append("UOM_ID", unitOfMeasurementId);
+      formData.append("Purchase_UOMID", purchaseUnitOfMeasuremntId);
       formData.append("Weight", weight);
       formData.append("Volume", volume);
       formData.append("Buy", buy);
@@ -132,7 +134,7 @@ const AddProduct = () => {
       formData.append("ChooseFile", files);
       formData.append("Barcode", barcode);
       formData.append("Present_Key", uniqueCode);
-      formData.append("Vendor_ID", selectedVID);
+      // formData.append("Vendor_ID", selectedVID);
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
       axios
@@ -234,6 +236,10 @@ const AddProduct = () => {
         setResponsible={setResponsible}
         selectedVID={selectedVID}
         setSelectedVID={setSelectedVID}
+        unitOfMeasurementId={unitOfMeasurementId}
+        purchaseUnitOfMeasuremntId={purchaseUnitOfMeasuremntId}
+        setUnitOfMeasurementId={setUnitOfMeasurementId}
+        setPurchaseUnitOfMeasurementId={setPurchaseUnitOfMeasurementId}
         proCode={proCode}
         setProCode={setProCode}
       />
@@ -245,6 +251,7 @@ const AddProduct = () => {
         </Modal> */}
       <ToastContainer />
       {/* <ProductCategoryPopup /> */}
+      
     </div>
   );
 };

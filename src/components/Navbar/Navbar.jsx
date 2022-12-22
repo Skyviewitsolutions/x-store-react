@@ -36,7 +36,7 @@ const Navebar = (props) => {
           />
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
-              <Nav.Link href="/Inventory" className="navetext">
+              <Nav.Link href="/Inventory" className="navetext overview_font">
                 Overview
               </Nav.Link>
               {/* <Nav.Link href="" className="navetext">
@@ -123,8 +123,9 @@ const Navebar = (props) => {
                 >
                   create
                 </button>
+               
               )}
-              <button className="savebtn" onClick={save}>Save</button>
+              {showCanelBtn === true && <button className="savebtn" onClick={save}>Save</button> }
             </div>
             <div
               className="col-sm-6 d-flex justify-content-center"

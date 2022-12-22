@@ -29,12 +29,14 @@ const InventoryProductDetails = () => {
   const [id, setId] = useState("");
   const [units, setUnits] = useState("");
   const [cost, setCost] = useState("");
-  const [salesPrice, setSalesPrice] = useState("");
+  const [salesPrice, setSalesPrice] = useState(0);
   const [interRef, setInterRef] = useState("");
   const [customerTax, setCustomerTax] = useState("");
   const [description, setDescription] = useState("");
   const [unitOfMeasurement , setUnitOfMeasurement] = useState("");
   const [purchaseUnitOfMeasuremnt , setPurchaseUnitOfMeasurement] = useState("");
+  const [unitOfMeasurementId , setUnitOfMeasurementId] = useState("");
+  const [purchaseUnitOfMeasuremntId , setPurchaseUnitOfMeasurementId] = useState("");
   const [weight , setWeight] = useState("");
   const [volume , setVolume] = useState("");
   const [responsible , setResponsible] = useState("")
@@ -61,6 +63,7 @@ const InventoryProductDetails = () => {
   const updateUrl = endpoints.products.updateProduct;
 
   console.log(productdetails , "produtDetalsi");
+ 
 
 
   useEffect(() => {
@@ -79,8 +82,10 @@ const InventoryProductDetails = () => {
     setCustomerTax(productdetails.CUSTOMER_TAXES)
     setProCode(productdetails.PRODUCTS_CODE_1)
     setDescription(productdetails.INTERNAL_NOTES)
-    setUnitOfMeasurement(productdetails.UOM_ID)
-    setPurchaseUnitOfMeasurement(productdetails.PURCHASE_UOM_ID)
+    setUnitOfMeasurement(productdetails.UNIT_OF_MEASURE)
+    setUnitOfMeasurementId(productdetails.UOM_ID)
+    setPurchaseUnitOfMeasurement(productdetails.PURCHASE_UOM)
+    setPurchaseUnitOfMeasurementId(productdetails.PURCHASE_UOM_ID)
     setWeight(productdetails.PRODUCT_WEIGHT)
     setVolume(productdetails.PRODUCT_VOLUME)
     setInterRef(productdetails.INTERNAL_NOTES)
@@ -167,12 +172,12 @@ const InventoryProductDetails = () => {
       formData.append("units", units);
       formData.append("Cost", cost);
       formData.append("Sales_Price", salesPrice);
-      formData.append("Product_BrandID", barcode);
+      formData.append("Barcode", barcode);
       formData.append("internal_Reference", interRef);
       formData.append("Customer_Taxes", customerTax);
       formData.append("Internal_Notes", description);
-      formData.append("UOM_ID", unitOfMeasurement);
-      formData.append("Purchase_UOMID", purchaseUnitOfMeasuremnt);
+      formData.append("UOM_ID", unitOfMeasurementId);
+      formData.append("Purchase_UOMID", purchaseUnitOfMeasuremntId);
       formData.append("Weight", weight);
       formData.append("Volume", volume);
       formData.append("Responsible", responsible);
@@ -192,7 +197,7 @@ const InventoryProductDetails = () => {
       formData.append("Expense_Account", expenseAccount);
       formData.append("Expense_Type", assetType);
       formData.append("Price_Difference", priceDifference);
-      formData.append("Product_Brand", productBrand);
+      formData.append("Product_BrandID", productBrand);
       formData.append("Account", account);
       formData.append("Sold", sold);
       formData.append("Purchase", purchased);
@@ -200,8 +205,8 @@ const InventoryProductDetails = () => {
       formData.append("Purchase", purchased);
       formData.append("Deduction", deduction);
       formData.append("ChooseFile", files);
+      formData.append("Product_Code", proCode);
       formData.append("ID", id);
-      formData.append("Vendor_ID", 2)
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
 
@@ -298,6 +303,10 @@ const InventoryProductDetails = () => {
            files={files}
            setFiles={setFiles}
            proCode={proCode}
+           unitOfMeasurementId={unitOfMeasurementId}
+           purchaseUnitOfMeasuremntId={purchaseUnitOfMeasuremntId}
+           setUnitOfMeasurementId={setUnitOfMeasurementId}
+           setPurchaseUnitOfMeasurementId={setPurchaseUnitOfMeasurementId}
            setProCode={setProCode}
            productId = {id}
         />

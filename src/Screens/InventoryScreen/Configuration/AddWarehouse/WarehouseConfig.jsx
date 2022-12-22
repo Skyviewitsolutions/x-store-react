@@ -38,7 +38,7 @@ const WarehouseConfig = (props) => {
         <div className="manufacturure">
             <p>Manufacture</p>
             <select value={manufacture} onChange={(e) => setManufacture(e.target.value)}>
-              <option value=""></option>
+              <option value="">Select any one</option>
               <option value="Manufacture (1 step)">Manufacture (1 step)</option>
               <option value="Pick components and then manufacture (2 steps)">Pick components and then manufacture (2 steps)</option>
               <option value="Pick components, manufacture and then store products (3 steps)">Pick components, manufacture and then store products (3 steps)Pick components, manufacture and then store products (3 steps)</option>

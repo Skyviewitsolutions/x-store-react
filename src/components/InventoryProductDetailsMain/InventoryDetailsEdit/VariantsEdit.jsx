@@ -211,6 +211,7 @@ const VariantsEdit = (props) => {
           toast("Varients updated successfully", { type: "success" });
           setShowModal(false);
           GetAllAttribute();
+          getSingleVarients()
         } else if (res.data.status === false) {
           toast(res.data.message, { type: "warning" });
         }

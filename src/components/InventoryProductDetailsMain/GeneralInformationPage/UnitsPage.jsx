@@ -130,6 +130,7 @@ const UnitPage = () => {
         showBelowMenu={true}
         save={update === true ? updateData : save}
         title="Units of Measure "
+        showCanelBtn={true}
       />
       <div className="UnitContainer">
         <div className="unitpart1">

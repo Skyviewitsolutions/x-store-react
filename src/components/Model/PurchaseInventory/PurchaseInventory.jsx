@@ -17,6 +17,7 @@ const PurchaseInventory = (props) => {
     setModalShow,
     purchaseDetails,
     setPurchaseDetails,
+    getAllVendorlist,
     getSingleVendorList,
     setSelectedVID,
     vendor ,
@@ -101,6 +102,7 @@ const PurchaseInventory = (props) => {
           if (res.data.status === true) {
             setSelectedVID(res.data.code);
             getSingleVendorList();
+            getAllVendorlist()
             toast("Vendor List Added Successfully", { type: "success" });
             setModalShow(false);
           } else if (res.data.status === false) {

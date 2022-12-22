@@ -17,6 +17,8 @@ const GeneralInformation = (props) => {
         navigate('/UnitPage');
     }
 
+   
+
     return (
         <div className='GeneralInformationContainer'>
             <div className="part1">
@@ -37,7 +39,7 @@ const GeneralInformation = (props) => {
             <div className="part2">
                 <div className="firstcontent3">
                     <p>Sales Price</p>
-                    <span>{salesPrice}</span>
+                    <span>{salesPrice && salesPrice.toFixed(2)}</span>
                     {/* <FaArrowRight size="20px" style={{ color: "#1669a2", marginLeft: "10px" }} />
                     <span>Extra Prices</span> */}
                 </div>
@@ -47,7 +49,7 @@ const GeneralInformation = (props) => {
                 </div>
                 <div className="firstcontent3">
                     <p>Cost</p>
-                    <span>{cost}</span>
+                    <span>{cost && cost.toFixed(2)}</span>
                     {/* <span style={{ color: "#1669a2" }}>Update Cost</span> */}
                 </div>
                 <div className="firstcontent3">
@@ -55,10 +57,10 @@ const GeneralInformation = (props) => {
                     <span style={{ color: "#1669a2" }} >{unitOfMeasurement}</span>
                 </div>
                 <div className="firstcontent3">
-                    <p>Purchase Unit of</p>
+                    <p>Purchase Unit of Measure</p>
                     <span style={{ color: "#1669a2" }} >{purchaseUnitOfMeasuremnt}</span>
                 </div>
-                <p  className="custext">Measure</p>
+             
 
             </div>
              <UpdateCost showUpdateCost={showUpdateCost} setShowUpdateCost={setShowUpdateCost}/>

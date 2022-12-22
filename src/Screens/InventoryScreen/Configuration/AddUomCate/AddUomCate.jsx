@@ -54,7 +54,7 @@ const AddUomCate = () => {
   useEffect(() => {
     if (selectedData) {
       setUpdate(true);
-      setUomCategory(selectedData.UNIT_NAME);
+      setUomCategory(selectedData.UOM_CATEGORY);
     }
   }, [selectedData]);
 

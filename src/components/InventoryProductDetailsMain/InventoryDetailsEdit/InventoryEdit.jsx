@@ -106,7 +106,7 @@ const InventoryEdit = (props) => {
         <div className="EditDescription">
           <h5>Description for Delivery Orders</h5>
           <textarea
-            placeholder="this note is added to delivery orders"
+            placeholder="This note is added to delivery orders"
             value={descriptionDeliveryOrder}
             onChange={(e) => setDescriptionDeliveryOrder(e.target.value)}
           ></textarea>

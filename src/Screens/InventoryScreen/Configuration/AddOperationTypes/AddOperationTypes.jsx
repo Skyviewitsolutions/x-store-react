@@ -257,10 +257,10 @@ const AddOperationTypes = () => {
                 })}
               </select>
             </div>
-            <div className="operation">
+            {/* <div className="operation">
               <p>Barcode</p>
               <input type="text"  readOnly={true} value={barCode}/>
-            </div>
+            </div> */}
           </div>
           <div className="type">
             <div className="operation">

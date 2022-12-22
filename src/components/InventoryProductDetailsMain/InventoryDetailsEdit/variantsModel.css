@@ -32,3 +32,12 @@
     outline: none;
     border: none;
 }
+
+@media only screen and (min-width:768px) and (max-width:992px){
+    .modal.show .modal-dialog {
+        transform: none;
+        margin: 0px;
+        left: 30px;
+        
+    }
+}

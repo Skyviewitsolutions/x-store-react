@@ -63,7 +63,7 @@ const AddWarehouse = (props) => {
         .then((res) => {
           console.log(res,"response warehouse")
           if (res.data.status == true) {
-            toast("Warehouse Added Sucessfully!", { type: "Success" });
+            toast("Warehouse Added Sucessfully!", { type: "success" });
           } else if (res.data.status === false) {
             if(res.data.code === 3)
             {
@@ -178,7 +178,7 @@ const AddWarehouse = (props) => {
       <Navebar
         showBelowMenu={true}
         save={update === true ? updateData : save}
-        title="WareHouse"
+        title="Warehouse"
         showCanelBtn={true}
       />
       <div className="AddwareHouseContainer">
@@ -214,9 +214,6 @@ const AddWarehouse = (props) => {
                 readOnly={update === true ? true : false}
               />
             </div>
-
-          </div>
-          <div className="Addcontent2">
             <div className="Adddropdown">
               <p>Address</p>
               <select
@@ -235,6 +232,10 @@ const AddWarehouse = (props) => {
                 })}
               </select>
             </div>
+
+          </div>
+          <div className="Addcontent2">
+            
           </div>
         </div>
         </div>

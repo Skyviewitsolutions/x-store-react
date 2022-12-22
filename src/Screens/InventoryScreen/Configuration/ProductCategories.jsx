@@ -127,7 +127,7 @@ const ProductCategories = () => {
   ];
 
   return (
-    <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
+    <div style={{ width: "100vw", height: "100vh", overflow: "hidden" ,overflowY:"scroll" }}>
       <Navebar
         showBelowMenu={true}
         handleCreatePage={handleCreatePage}

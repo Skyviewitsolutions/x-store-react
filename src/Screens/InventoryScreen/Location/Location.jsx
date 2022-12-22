@@ -11,7 +11,6 @@ import { MdDelete } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
 
 const Location = () => {
-
   const navigate = useNavigate();
   const handleCreatePage = () => {
     navigate("/AddLocation");
@@ -26,7 +25,7 @@ const Location = () => {
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
-    
+
     axios
       .post(url, formData)
       .then((res) => {
@@ -36,13 +35,11 @@ const Location = () => {
           val = val.reverse();
           setLocationdetails(val);
         } else if (res.data.status === false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.message,{type:"error"});
+          if (res.data.code === 3) {
+            toast("Session expired , Please re-login", { type: "warning" });
+            navigate("/");
+          } else {
+            toast(res.data.message, { type: "error" });
           }
         }
       })
@@ -70,13 +67,11 @@ const Location = () => {
           getLocation();
           toast("Location deleted Successfully", { type: "success" });
         } else if (res.data.status === false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.message,{type:"error"});
+          if (res.data.code === 3) {
+            toast("Session expired , Please re-login", { type: "warning" });
+            navigate("/");
+          } else {
+            toast(res.data.message, { type: "error" });
           }
         }
       })
@@ -97,6 +92,7 @@ const Location = () => {
 
   const column = [
     { label: "Location", name: "LOCATION_NAME" },
+    { label: "Removal stratagy", name: "REMOVAL_STRATAGY" },
     { label: "Location Type", name: "LOCATION_TYPE" },
     {
       label: "Actions",

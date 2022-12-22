@@ -5,7 +5,7 @@
 }
 .protab{
     max-width: 100%;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     /* height: 500px; */
 }
 /* td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium.tss-1qtl85h-MUIDataTableBodyCell-root.tss-1y3wvy9-MUIDataTableBodyCell-stackedParent.tss-iwylj0-MUIDataTableBodyCell-responsiveStackedSmallParent.css-1ex1afd-MuiTableCell-root {
@@ -25,10 +25,15 @@ p{
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 } */
+.tss-1qtl85h-MUIDataTableBodyCell-root.tss-1vd39vz-MUIDataTableBodyCell-stackedCommon {
+    margin-left: 20px !important;
+}
 .css-1bigob2{
     padding: 0px;
 }
-
+p#\:rj\: {
+    margin-bottom: 0px !important;
+}
 
 @media (max-width: 899.95px)
 {
@@ -36,3 +41,9 @@ p{
     display: inherit;
   
 }}
+@media only screen and (min-width:768px) and (max-width:1024px){
+    .tss-1qtl85h-MUIDataTableBodyCell-root.tss-1ej321f-MUIDataTableBodyCell-cellHide.tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader.tss-1vd39vz-MUIDataTableBodyCell-stackedCommon {
+
+        display: none !important;
+    }
+}

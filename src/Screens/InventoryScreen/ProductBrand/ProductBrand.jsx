@@ -62,6 +62,7 @@ const ProductBrand = () => {
     showBelowMenu={true}
     title="Product Brand"
     save={save}
+    showCanelBtn={true}
   />
     <div className='productBrandCon'>
       <div className="productbrandtext">

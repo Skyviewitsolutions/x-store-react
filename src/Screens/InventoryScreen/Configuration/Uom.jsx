@@ -27,7 +27,10 @@ const Uom = () => {
         if (res.data.status === true) {
           var val = res.data.data;
           val = val.reverse()
-          setUOM(val);
+          const filterUom = val.filter((itm,ind) =>{
+            return itm.DELETE_STATUS != "X"
+          })
+          setUOM(filterUom);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {
@@ -129,7 +132,7 @@ const Uom = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
       <Navebar
-        showBelowMenu={true}
+       showBelowMenu={true}
         handleCreatePage={handleCreatePage}
         title="Units of Measure"
       />

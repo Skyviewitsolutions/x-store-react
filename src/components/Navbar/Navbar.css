@@ -96,6 +96,9 @@
     font-weight: 500;
     margin-bottom: 0px;
 }
+.overview_font{
+    font-size: 16px !important;
+}
 
 @media (min-width: 768px) and (max-width: 1024px){
     .logout {

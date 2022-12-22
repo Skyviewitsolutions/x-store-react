@@ -32,7 +32,12 @@ const OperationTypes = (props) => {
       .post(alloperationUrl , formData)
       .then((res) => {
         if (res.data.status === true) {
-          setOperationType(res.data.data);
+          var val = res.data.data;
+          val = val.reverse()
+          const filterOperation = val.filter((itm,ind) =>{
+            return itm.DELETE_STATUS != "X"
+          })
+          setOperationType(filterOperation);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {
@@ -128,13 +133,18 @@ const OperationTypes = (props) => {
     },
   ];
   return (
-    <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
+    <div style={{ width: "100vw", height: "100vh", overflowX: "hidden",overflowY:"scroll" }}>
       <Navebar
         showBelowMenu={true}
         handleCreatePage={handleCreatePage}
         title="Operation Types"
       />
-      <CustomTable data={opertaionType} column={column} />
+        <div className="container-fluid PROVAR">
+        <div className="Main">
+        <CustomTable data={opertaionType} column={column} />
+        </div>
+        </div>
+     
       <ToastContainer />
     </div>
   );

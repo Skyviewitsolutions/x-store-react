@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Barcode from "../../Model/BarcodeModal/Barcode";
 
+
 const GeneralInformationEdit = (props) => {
 
   const navigate = useNavigate();
@@ -171,6 +172,10 @@ const GeneralInformationEdit = (props) => {
     unitOfMeasurement,
     purchaseUnitOfMeasuremnt,
     setPurchaseUnitOfMeasurement,
+    unitOfMeasurementId ,
+    setUnitOfMeasurementId ,
+    purchaseUnitOfMeasuremntId ,
+    setPurchaseUnitOfMeasurementId ,
     barcode,
     setBarcode,
     proCode,
@@ -188,7 +193,7 @@ const GeneralInformationEdit = (props) => {
 
   const handleCostPrice = (e) =>{
   
-    const val = parseInt(e.target.value);
+    const val = (e.target.value);
     setCost(val)
     console.log(typeof(salesPrice))
     if(val > salesPrice){
@@ -197,7 +202,7 @@ const GeneralInformationEdit = (props) => {
   }
 
   const handleSalesPrice = (e) =>{
-    const val = parseInt(e.target.value)
+    const val = (e.target.value)
     setSalesPrice(val)
     
     if(val < cost){
@@ -206,8 +211,33 @@ const GeneralInformationEdit = (props) => {
     }
   }
 
-  console.log(barcode , "barcode");
+  const handleUnitOfMeasurement = (e) =>{
 
+      const name = e.target.value;
+      setUnitOfMeasurement(name)
+      var filterData = uoms.filter((itm,ind) =>{
+        return itm.UNIT_OF_MEASUREMENT == name
+      })
+
+      filterData = filterData[0];
+      const id = filterData.ID
+      setUnitOfMeasurementId(id);
+
+  }
+
+  const handlePurchaseUnitOfMeasuremnt = (e) =>{
+
+    const name = e.target.value;
+      setPurchaseUnitOfMeasurement(name)
+      var filterData = uoms.filter((itm,ind) =>{
+        return itm.UNIT_OF_MEASUREMENT == name
+      })
+
+      console.log(filterData , "dd")
+      filterData = filterData[0];
+      const id = filterData.ID
+      setPurchaseUnitOfMeasurementId(id);
+  }
 
   return (
     <div>
@@ -290,7 +320,7 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Sales Price</p>
             <input
-              type="number"
+              type="text"
               placeholder="1.0000 SAR"
               value={salesPrice}
               onChange={(e) => handleSalesPrice(e)}
@@ -322,7 +352,7 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Cost</p>
             <input
-              type="number"
+              type="text"
               placeholder="0.0000 SAR per Units"
               value={cost}
               onChange={(e) => handleCostPrice(e)}
@@ -337,12 +367,12 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent3">
             <p>Unit of Measure</p>
-            <select value={unitOfMeasurement} onChange={(e) => setUnitOfMeasurement(e.target.value)}>
+            <select value={unitOfMeasurement}  onChange={(e) => handleUnitOfMeasurement(e)}>
             <option value="">Select any one</option>
               {uoms.map((item, index) => {
                 return (
                   <>
-                    <option value={item.ID} key={index}>
+                    <option value={item.UNIT_OF_MEASUREMENT} key={index}>
                       {item.UNIT_OF_MEASUREMENT}
                     </option>
                   </>
@@ -355,12 +385,13 @@ const GeneralInformationEdit = (props) => {
             /> */}
           </div>
           <div className="Editfirstcontent3">
-            <p>Purchase Unit of</p>
-            <select value={purchaseUnitOfMeasuremnt} onChange={(e) => setPurchaseUnitOfMeasurement(e.target.value)}>
+            <p>Purchase Unit of Measure</p>
+            <select value={purchaseUnitOfMeasuremnt} onChange={(e) => handlePurchaseUnitOfMeasuremnt(e)}>
+            <option value="">Select any one</option>
               {uoms.map((item, index) => {
                 return (
                   <>
-                    <option value= {item.ID} key={index}>
+                    <option value= {item.UNIT_OF_MEASUREMENT} key={index}>
                       {item.UNIT_OF_MEASUREMENT}
                     </option>
                   </>
@@ -372,9 +403,6 @@ const GeneralInformationEdit = (props) => {
               style={{ color: "#79757d", marginLeft: "8px", marginTop: "10px" }}
             /> */}
           </div>
-          <p style={{ color: "#6a666a", fontSize: "14px", fontWeight: "500" }}>
-            Measure
-          </p>
         </div>
       </div>
       <ToastContainer />

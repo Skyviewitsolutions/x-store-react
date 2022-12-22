@@ -57,13 +57,13 @@ const PurchaseEdit = (props) => {
     axios
     .post(singleVendorListUrl, formData)
     .then((res) => {
-      
+       
       if(res.data.status === true){
         const val = res.data.data;
         const filteredVendorList = val.filter((itm,ind) =>{
           return itm.DEL_STATUS != "X"
         })
-        setAllVendorList(filteredVendorList)
+        setSingleVendorList(filteredVendorList)
       }
       else if(res.data.status === false){
         if(res.data.code === 3)
@@ -123,11 +123,8 @@ const PurchaseEdit = (props) => {
     }else{
       getAllVendorlist()
     }
-   
-   
   },[])
   
-  console.log(singleVendorList,"single nhjs")
 
   const deleteVendorlistUrl = endpoints.products.vendorListdelete;
 
@@ -163,9 +160,7 @@ const PurchaseEdit = (props) => {
    var selectedVendorlist = allVendorList.filter((itm , ind) => {
     return itm.ID == id
    })
-   console.log(allVendorList,"all vendor")
    setSelectedVendorListId(id)
-  console.log(selectedVendorlist,"here id")
 
   selectedVendorlist = selectedVendorlist[0];
   setVendorProductName(selectedVendorlist.VENDOR_PNAME);
@@ -178,6 +173,28 @@ const PurchaseEdit = (props) => {
   setVendorDate2(selectedVendorlist.END_DATE);
   setVendor(selectedVendorlist.VID)
   setUpdtedVendorList(true)
+  }
+
+
+  const handleUpdate2 = (id) =>{
+    var selectedVendorlist = singleVendorList.filter((itm , ind) => {
+      return itm.ID == id
+     })
+
+     setModalShow(true);
+     console.log(selectedVendorlist , "selected vendor list")
+     setSelectedVendorListId(id)
+     selectedVendorlist = selectedVendorlist[0];
+     setVendorProductName(selectedVendorlist.VENDOR_PRODUCTNAME);
+     setVendorProductCode(selectedVendorlist.VENDOR_PRODUCTCODE);
+     setVendorLeadTime(selectedVendorlist.DELIVERY_LEADTIME);
+     setVendorQuantity(selectedVendorlist.QUANTITY);
+     setVendorPrice(selectedVendorlist.VENDOR_PRICE)
+     setVendorCurrency(selectedVendorlist.VENDOR_CURRENCY);
+     setVendorDate1(selectedVendorlist.START_DATE);
+     setVendorDate2(selectedVendorlist.END_DATE);
+     setVendor(selectedVendorlist.VENDOR_ID)
+     setUpdtedVendorList(true)
   }
 
  const updateSelectedVendorlist = () => {
@@ -203,6 +220,7 @@ const PurchaseEdit = (props) => {
       toast("Varients updated successfully", { type: "success" });
       setModalShow(false);
       getAllVendorlist();
+      getSingleVendorList()
     } else if (res.data.status === false) {
       toast(res.data.message, { type: "warning" });
     }
@@ -210,9 +228,9 @@ const PurchaseEdit = (props) => {
   .catch((err) => {
     console.log(err, "this is the error");
   });
-
-
  }
+
+ console.log(allVendorList,"all here now")
 
 
   const column = [
@@ -221,7 +239,7 @@ const PurchaseEdit = (props) => {
     { label :'Quantity', name:'VQTY'},
     { label :'Price', name:'VPRICE'},
     { label: "Action",
-    name: "ID",
+       name: "ID",
     options: {
       customBodyRender: (value, tableMeta, updateValue) => {
         return (
@@ -248,6 +266,7 @@ const PurchaseEdit = (props) => {
     
   ]
   const column2 = [
+
     { label :'Name', name:'VENDOR_NAME'},
     { label :'currency', name:'VENDOR_CURRENCY'},
     { label :'Price', name:'VENDOR_PRICE'},
@@ -261,7 +280,7 @@ const PurchaseEdit = (props) => {
             <FiEdit
                   size={23}
                   color="#4f4e4d"
-                  onClick={() => handleUpdate(value)}
+                  onClick={() => handleUpdate2(value)}
                   style={{ cursor: "pointer" }}
                 />
               <MdDelete
@@ -279,12 +298,11 @@ const PurchaseEdit = (props) => {
    
   ]
 
-  console.log(productId , "productId")
 
   return (
    <>
    <div className="purchase_container">
-    {productId  ?  <CustomTable data={allVendorList} column={column2}/> : <CustomTable data={allVendorList} column={column}/>
+    {productId  ?  <CustomTable data={singleVendorList} column={column2}/> : <CustomTable data={allVendorList} column={column}/>
     }
   
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>
@@ -339,7 +357,7 @@ const PurchaseEdit = (props) => {
                         </div>
               </div>
             </div> */} 
-            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props} vendor={vendor} setVendor={setVendor} vendorProductName={vendorProductName} setVendorProductName={setVendorProductName} vendorProductCode={vendorProductCode} setVendorProductCode={setVendorProductCode} vendorLeadTime={vendorLeadTime} setVendorLeadTime={setVendorLeadTime} vendorQuantity={vendorQuantity} setVendorQuantity={setVendorQuantity} vendorPrice={vendorPrice} setVendorPrice={setVendorPrice} vendorCurrency={vendorCurrency} setVendorCurrency={setVendorCurrency} vendorDate1={vendorDate1} setVendorDate1={setVendorDate1} vendorDate2={vendorDate2} setVendorDate2={setVendorDate2} updateSelectedVendorlist={updateSelectedVendorlist} updatedVendorList={updatedVendorList} setUpdtedVendorList={setUpdtedVendorList}/>
+            <PurchaseInventory modalShow={modalShow} setModalShow={setModalShow} purchaseDetails={purchaseDetails} setPurchaseDetails={setPurchaseDetails} getSingleVendorList={getSingleVendorList} {...props} vendor={vendor} setVendor={setVendor} vendorProductName={vendorProductName} setVendorProductName={setVendorProductName} vendorProductCode={vendorProductCode} setVendorProductCode={setVendorProductCode} vendorLeadTime={vendorLeadTime} setVendorLeadTime={setVendorLeadTime} vendorQuantity={vendorQuantity} setVendorQuantity={setVendorQuantity} vendorPrice={vendorPrice} setVendorPrice={setVendorPrice} vendorCurrency={vendorCurrency} setVendorCurrency={setVendorCurrency} vendorDate1={vendorDate1} setVendorDate1={setVendorDate1} vendorDate2={vendorDate2} setVendorDate2={setVendorDate2} updateSelectedVendorlist={updateSelectedVendorlist} updatedVendorList={updatedVendorList} setUpdtedVendorList={setUpdtedVendorList} getAllVendorlist={getAllVendorlist}/>
 
             <ToastContainer />
           </div>

@@ -30,7 +30,10 @@ const getUomCategory = () => {
     {
       var val = res.data.data;
       val = val.reverse();
-      setUomdetails(val);
+      const filterUomCate = val.filter((itm,ind) =>{
+        return itm.DELETE_STATUS != "X"
+      })
+      setUomdetails(filterUomCate);
     }
     else if(res.data.status ===  false) 
     {

@@ -130,6 +130,7 @@ const Warehouse = () => {
         showBelowMenu={true}
         handleCreatePage={handleCreatePage}
         title="Warehouse"
+        showCancel={false}
       />
       <CustomTable column={column} data={WareHousedetails} />
       <ToastContainer />

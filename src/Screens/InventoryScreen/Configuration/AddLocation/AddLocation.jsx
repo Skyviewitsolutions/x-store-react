@@ -20,6 +20,7 @@ const AddLocation = () => {
   const locationtypeUrl = endpoints.location.locationType;
   const navigate = useNavigate();
   const [location, setLocation] = useState([]);
+  const [alllocation, setAllLocation] = useState([]);
   const [locationName, setLocationName] = useState("");
   const [parentLocation, setParentLocation] = useState("");
   const [locationType, setLocationType] = useState("");
@@ -109,13 +110,12 @@ const AddLocation = () => {
       setScapLocation(JSON.parse(selectedData.SCRAP_LOCATION));
       setReturnLocation(JSON.parse(selectedData.RETURN_LOCATION));
       setRemovel(selectedData.REMOVAL_STRATAGY);
-      setNotes(selectedData.NOTES)
+      setNotes(selectedData.LOCATION_INFO)
     }
 
     console.log(selectedData , "selectedData here");
   }, [selectedData]);
 
-  console.log(locationType, "locationTypehere");
 
   const locationupdateUrl = endpoints.location.updateLocation;
 
@@ -170,6 +170,42 @@ const AddLocation = () => {
       });
     }
   };
+
+  const parentLocationUrl = endpoints.location.allLocation;
+
+  const getAllLocation = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+    axios.post(parentLocationUrl,formData)
+    .then((res) => {
+     
+      if(res.data.status == true)
+      {
+        setAllLocation(res.data.data)
+      }
+      else if(res.data.status == false)
+      {
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.message,{type:"error"});
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err,"error");
+      toast("Something went wrong", {type:"error"});
+    });
+
+  }
+
+  useEffect(() => {
+    getAllLocation()
+  })
   return (
     <>
       <Navebar
@@ -226,15 +262,14 @@ const AddLocation = () => {
                 value={parentLocation}
                 onChange={(e) => setParentLocation(e.target.value)}
               >
-                <option value="AFWH">AFWH</option>
-                <option value="AFWH/Stock">AFWH/Stock</option>
-                <option value="AFWH/Stock/Diesel">AFWH/Stock/Diesel</option>
-                <option value="AFWH/Stock/Oil">AFWH/Stock/Oil</option>
-                <option value="BAPMS">BAPMS</option>
-                <option value="BAPMS/Al Baha Store for Projects">
-                  BAPMS/Al Baha Store for Projects
-                </option>
-                <option value="BAWH">BAWH</option>
+                <option value="">select any one</option>
+              {alllocation.map((itm,ind) => {
+                return(
+                  <>
+                  <option value={itm.LOCATION_NAME}>{itm.LOCATION_NAME}</option>
+                  </>
+                )
+              })}
               </select>
               <h4>Additional Information</h4>
               <div className="Addlocationcontent">
@@ -243,6 +278,7 @@ const AddLocation = () => {
                   value={locationType}
                   onChange={(e) => setLocationType(e.target.value)}
                 >
+                  <option>Select any one</option>
                   {location.map((item, index) => {
                     return (
                       <>
@@ -278,6 +314,7 @@ const AddLocation = () => {
                   value={removel}
                   onChange={(e) => setRemovel(e.target.value)}
                 >
+                  <option value="">select any one</option>
                   <option value="First in first out(FIFO)">
                     First in first out(FIFO)
                   </option>

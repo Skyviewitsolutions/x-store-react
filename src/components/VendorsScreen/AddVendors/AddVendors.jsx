@@ -443,7 +443,7 @@ const AddVendors = () => {
               <label htmlFor="takePhoto">
                 <img src={vendorImg ? vendorImg : camera} alt="camera" />
               </label>
-              <input type="file" id="takePhoto" onChange={handleChange} />
+              <input type="file" id="takePhoto" style={{visibility: "hidden"}} accept="image/png, image/gif, image/jpeg" onChange={handleChange} />
             </div>
           </div>
           <div className="VendorsDetails2">

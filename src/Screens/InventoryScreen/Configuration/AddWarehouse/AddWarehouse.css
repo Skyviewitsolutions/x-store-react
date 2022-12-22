@@ -5,7 +5,7 @@
     padding-bottom: 5%;
     flex: 1;
     /* height: 500px; */
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 .AddWareHouseHead{
@@ -78,7 +78,7 @@ margin-top: 15px;
     margin-bottom: 8px;
 }
 .Adddropdown p{
-    width: 120px;
+    width: 150px;
     color: #6a666a;
     font-size: 15px;
     font-weight: 600;

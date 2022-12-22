@@ -72,6 +72,7 @@
     width: 100px;
     border: 1px solid #cccc;
     cursor: pointer;
+    /* margin-left: 40%; */
 }
 .cameraimg input{
     margin-top: 5px;
@@ -192,9 +193,6 @@ input[type="checkbox"][readonly] {
 }
 
 
-th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDataTableHeadCell-root.tss-gm6zfk-MUIDataTableHeadCell-fixedHeader.css-1ygcj2i-MuiTableCell-root {
-    padding-left: 0px !important;
-}
   @media (min-width: 820px) and (max-width: 1180px)
 {
     .MainContainer{
@@ -231,6 +229,7 @@ th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDa
 }
 .detailsheading p {
     font-size: 30px;
+    color: #6a666a;
 }
 .detailsinput label {
     font-size: 14px;
@@ -243,9 +242,7 @@ th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDa
 }
 
 
-th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDataTableHeadCell-root.tss-gm6zfk-MUIDataTableHeadCell-fixedHeader.css-1ygcj2i-MuiTableCell-root {
-    padding-left: 0px !important;
-}
+
   @media (min-width: 912px) and (max-width: 1368px)
 {
     .MainContainer{
@@ -282,6 +279,7 @@ th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDa
 }
 .detailsheading p {
     font-size: 30px;
+    color: #6a666a;
 }
 .detailsinput label {
     font-size: 14px;
@@ -294,6 +292,3 @@ th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDa
 }
 
 
-th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium.tss-10syd3x-MUIDataTableHeadCell-root.tss-gm6zfk-MUIDataTableHeadCell-fixedHeader.css-1ygcj2i-MuiTableCell-root {
-    padding-left: 0px !important;
-}
