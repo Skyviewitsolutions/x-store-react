@@ -83,6 +83,39 @@ axios.get(getTesting)
 })
     },[])
 
+
+    // ----------------------------testing multiselect-------------------------------
+
+    const multiSelectUrl = "https://xstore.skyviewads.com/Testing/AddTest"
+    const getMultiselect = () => {
+
+      const arr = [
+        "Manisha","Anshika","12345","Sar"
+      ]
+      const formData = new FormData
+      formData.append("Array_Value",arr)
+      formData.append("Array_Name","that")
+      formData.append("Amount","1213")
+      formData.append("Qty","test")
+      
+      axios.post(multiSelectUrl,formData)
+      .then((res) => {
+        if(res.data.status === true){
+          toast(res.data.message,{type:"success"})
+        }
+        else if(res.data.status === false){
+          toast(res.data.message,{type:"error"})
+        }
+      })
+      .catch((err) => {
+        console.log(err,"error")
+      })
+    }
+
+    useEffect(() => {
+      getMultiselect()
+    },[])
+
   return (
     <div>
         <div className="main_test">

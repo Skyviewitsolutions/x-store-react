@@ -27,7 +27,11 @@ const Incometerms = () => {
         {
             var val = res.data.data;
             val = val.reverse();
-            setIncomeTerms(val);
+            const filterIncometerm = val.filter((itm,ind) => {
+              return itm.DELETE_STATUS != "X"
+            })
+            setIncomeTerms(filterIncometerm);
+          
         }
         else if(res.data.status === false)
         {

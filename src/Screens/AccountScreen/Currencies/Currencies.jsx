@@ -29,8 +29,11 @@ const Currencies = () => {
     .then((res) => {
       if (res.data.status === true) {
         var val = res.data.data;
-        val = val.reverse()
-        setCurrencies(val);
+        val = val.reverse();
+        const filterCurrency = val.filter((itm,ind) => {
+          return itm.DELETE_STATUS != "X"
+        })
+        setCurrencies(filterCurrency);
       } else if (res.data.status === false) {
         if(res.data.code === 3)
         {

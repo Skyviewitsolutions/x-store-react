@@ -308,7 +308,7 @@ const AddLocation = () => {
               </div>
              
               <h4>Logistics</h4>
-              <div className="Addlocationcontent">
+              <div className="Addlocationcontents">
                 <p>Removal Strategy</p>
                 <select
                   value={removel}

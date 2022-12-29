@@ -166,12 +166,12 @@ const AddAccGroup = () => {
             <div className="acctext">
               <p>Account</p>
               <select value={acc} onChange={(e) => setAcc(e.target.value)}> 
-                <option value=""></option>
+                <option value="">choose any one</option>
                 {
                  bank.map((itm,index) => {
                 return(
                     <>
-                    <option value="Bank">{itm.BANK_ACCOUNT_NAME}</option>
+                    <option value={itm.BANK_ACCOUNT_NAME}>{itm.BANK_ACCOUNT_NAME}</option>
                     </>
                 )
                  })
@@ -179,12 +179,12 @@ const AddAccGroup = () => {
               </select>
             </div>
           </div>
-          <div className="accgroupsecond">
+          {/* <div className="accgroupsecond">
             <p>Hierarchy</p>
             <div className="accgroupalertbox">
               <p>No hierarchy position.</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <ToastContainer/>
       </div>

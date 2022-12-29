@@ -11,14 +11,14 @@
     align-items: center;
 }
 .FirstContent p{
-    font-size: 15px;
-    color: #66666f;
-    font-weight: 500;
+    font-size: 14px;
+    color: #6a6a6a;
+    font-weight: 600;
     width: 150px;
-    margin-top: 0px;
+    margin-bottom: 0px;
 }
 .FirstContent input{
-    width: 500px;
+    width: 400px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc;
@@ -31,14 +31,14 @@
     align-items: center;  
 }
 .SecondContent p{
-    font-size: 15px;
-    color: #66666f;
-    font-weight: 500;
+    font-size: 14px;
+    color: #6a6a6a;
+    font-weight: 600;
     width: 200px;
     margin-top: 0px;
 }
 .SecondContent select{
-    width: 500px;
+    width: 400px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc;   
@@ -48,5 +48,14 @@
     {
         display: flex;
         flex-direction: column;
+    }
+    .journalENtiresFirst{
+        width: 100%;
+      }
+    .journalEntiresSecond{
+        width: 100%;
+    }
+    .SecondContent select{
+        width: 350px;
     }
 }

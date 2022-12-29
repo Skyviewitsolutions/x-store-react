@@ -33,7 +33,11 @@ function ChartAccount(props) {
         if (res.data.status === true) {
           var val = res.data.data;
           val = val.reverse();
-          setChartAcc(val);
+
+          const filterAccount = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+          setChartAcc(filterAccount);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });

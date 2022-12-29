@@ -61,7 +61,7 @@ const AddAnalyticTag = () => {
   {
    setUpdate(true);
    setAnalyTag(selectedData.ANALYTIC_TAG);
-   setAnalyDis(selectedData.ACCOUNT_GROUP_NAME);
+   setAnalyDis(selectedData.ANALYTIC_DISTRIBUTION);
    setAnalAcc(selectedData.ANALYTIC_ACCOUNT);
   }
   },[selectedData])

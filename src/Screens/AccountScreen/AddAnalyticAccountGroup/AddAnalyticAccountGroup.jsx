@@ -142,12 +142,12 @@ const AddAnalyticAccountGroup = () => {
                   <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
                 </div>
             </div>
-            <div className="AddAnalyticAccountGroupsecond">
+            {/* <div className="AddAnalyticAccountGroupsecond">
                 <p>Hierarchy</p>
                 <div className="AddAnalyticAccountGroupalertbox">
                     <p>No hierarchy position.</p>
                 </div>
-            </div>
+            </div> */}
         </div>
       </div>
       <ToastContainer/>

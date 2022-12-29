@@ -26,7 +26,10 @@ const AssetTypes = () => {
             if(res.data.status === true){
                 var val = res.data.data;
                 val = val.reverse();
-              setAssetType(val);
+                const filterassetType = val.filter((itm,ind) => {
+                    return itm.DELETE_STATUS != "X"
+                  })
+              setAssetType(filterassetType);
             }
             else if(res.data.status === false)
             {

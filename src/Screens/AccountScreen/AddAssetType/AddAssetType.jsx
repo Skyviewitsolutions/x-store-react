@@ -16,8 +16,8 @@ const AddAssetType = () => {
   const [journal , setJournal] = useState("");
   const [assetAcc , setAssetAcc] = useState("");
   const [assAcc , setAssAcc] = useState("");
-  const [expenceAcc , setExpenseAcc] = useState("");
-  const [analAcc , setAnnaAcc] = useState("");
+  const [expenceAcc , setExpenceAcc] = useState("");
+  const [annalAcc , setAnnalAcc] = useState("");
   const [time , setTime] = useState("");
   const [num , setNum] = useState("");
   const [every , setEvery] = useState("");
@@ -106,7 +106,7 @@ const AddAssetType = () => {
     {
       toast("Exense Account Is Required!",{type:"warning"});
     }
-    else if(analAcc === "")
+    else if(annalAcc === "")
     {
       toast("Analyic Account Is Required!",{type:"warning"});
     }
@@ -158,7 +158,7 @@ const AddAssetType = () => {
        formData.append("Dep_Asset_Account",assAcc);
        formData.append("Dep_Expense_Account",expenceAcc);
        formData.append("Number_Of_Enteries",num);
-       formData.append("Analytic_Account",analAcc);
+       formData.append("Analytic_Account",annalAcc);
        formData.append("One_Entery_Every",every);
        formData.append("Auto_Confirm_Assets",auto);
        formData.append("Group_Jr_Enteries",group);
@@ -199,8 +199,8 @@ const AddAssetType = () => {
       setJournal(selectedData.JOURNAL_INFORMATION);
       setAssetAcc(selectedData.ASSET_ACCOUNT);
       setAssAcc(selectedData.ASSETS_EXPENSE_ACCOUNT);
-      setExpenseAcc(selectedData.ASSETS_EXPENSE_ACCOUNT1);
-      setAnnaAcc(selectedData.ANALYTI_ACCOUNT);
+      setExpenceAcc(selectedData.ASSET_EXPENSE_ACCOUNT);
+      setAnnalAcc(selectedData.ANALYTI_ACCOUNT);
       setTime(selectedData.TIME_METHOD);
       setNum(selectedData.NUMBER_OF_ENTERIES);
       setEvery(selectedData.ONE_ENTERY_EVERY);
@@ -239,7 +239,7 @@ const AddAssetType = () => {
     {
       toast("Exense Account Is Required!",{type:"warning"});
     }
-    else if(analAcc === "")
+    else if(annalAcc === "")
     {
       toast("Analyic Account Is Required!",{type:"warning"});
     }
@@ -292,7 +292,7 @@ const AddAssetType = () => {
       formData.append("Dep_Asset_Account",assAcc);
       formData.append("Dep_Expense_Account",expenceAcc);
       formData.append("Number_Of_Enteries",num);
-      formData.append("Analytic_Account",analAcc);
+      formData.append("Analytic_Account",annalAcc);
       formData.append("One_Entery_Every",every);
       formData.append("Auto_Confirm_Assets",auto);
       formData.append("Group_Jr_Enteries",group);
@@ -345,12 +345,12 @@ const AddAssetType = () => {
               <input type="checkbox" value={virtual} onChange={() => setVirtual(!virtual)} checked={virtual} id="virtual"/>
             </div>
           </div>
-          <div className="assettypebox">
+          {/* <div className="assettypebox">
             <p>Hierarchy</p>
             <div className="assetalertbox">
               <p>No hierarchy position.</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="assetTypedetails">
           <div className="assetdetails1">
@@ -394,8 +394,8 @@ const AddAssetType = () => {
               </select>
             </div>
             <div className="assettext">
-              <p>Depreciation Entries: Expense Accountt</p>
-              <select value={expenceAcc} onChange={(e) => setExpenseAcc(e.target.value)} >
+              <p>Depreciation Entries: Expense Account</p>
+              <select value={expenceAcc} onChange={(e) => setExpenceAcc(e.target.value)} >
                 <option value="">select any one</option>
                 <option value="110101001 Riyadh Management Found">110101001 Riyadh Management Found</option>
                 <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
@@ -406,7 +406,7 @@ const AddAssetType = () => {
             </div>
             <div className="assettext">
               <p>Analytic Account</p>
-              <select value={analAcc} onChange={(e) => setAnnaAcc(e.target.value)}>
+              <select value={annalAcc} onChange={(e) => setAnnalAcc(e.target.value)}>
                 <option value="">select any one</option>
                {
                 getAnalyticAcc.map((itm,index) => {

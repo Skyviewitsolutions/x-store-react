@@ -30,7 +30,10 @@ const getAllJournal = () => {
         {
           var val = res.data.data;
           val = val.reverse();
-            setJournal(val);
+          const filterJournal = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+            setJournal(filterJournal);
         }
         else if(res.data.status === false)
         {

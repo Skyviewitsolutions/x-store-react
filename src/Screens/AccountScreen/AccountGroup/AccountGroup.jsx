@@ -28,7 +28,10 @@ const AccountGroup = () => {
             {
                 var val = res.data.data;
                 val = val.reverse();
-                setAccGrp(val);
+                const filterAccGrp = val.filter((itm,ind) => {
+                    return itm.DELETE_STATUS != "X"
+                  })
+                setAccGrp(filterAccGrp);
             }
             else if(res.data.status === false)
             {

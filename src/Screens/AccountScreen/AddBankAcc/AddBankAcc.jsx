@@ -211,8 +211,7 @@ const AddBankAcc = () => {
                 onChange={(e) => setBank(e.target.value)}
               />
             </div>
-          </div>
-          <div className="AddBankAccSecondText">
+            <div className="BankAc">
             <p>Currency</p>
             <select
               value={currency}
@@ -228,6 +227,8 @@ const AddBankAcc = () => {
               })}
             </select>
           </div>
+          </div>
+         
         </div>
         <div className="Addbankbox2">
           <div className="Paymenttype">

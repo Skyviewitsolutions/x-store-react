@@ -59,7 +59,7 @@
 }
 .purchase_secondContent{
     width: 50%;
-    margin-left: 26px;
+    margin-left: 20px;
 }
 .purchase_secondContent h3{
     color: #666666;
@@ -79,7 +79,7 @@
 }
 
 .purchase_pr input{
-    width: 200px ;
+    width: 150px ;
     outline: none;
     border: none ;
     border-bottom: 1px solid #cccccc ;
@@ -103,7 +103,7 @@
     border-bottom: 1px solid #cccccc ;
 }
 .purchase_price select{
-    width: 200px ;
+    width: 180px ;
     outline: none;
     border: none ;
     border-bottom: 1px solid #cccccc ;
@@ -141,13 +141,30 @@
     padding: 8px 20px;
     font-weight: 600;
     transition: 0.3s;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 @media only screen and (min-width:769px) and (max-width:992px) {
+    .purchase_firstcontent{
+        width: 100%;
+    }
+    .purchase_secondContent{
+        width: 100%;
+        margin-left: 0px;
+    }
     .purchase_con{
         display: flex;
         flex-direction:column;
     }
+    .pur_btn {
+        margin-left: 25px;
+    }
+    .purchase_price select {
+        width: 180px;
+    }
+    .purchase_pr input {
+        width: 150px;
+    }
+    
     
 }

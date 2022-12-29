@@ -69,11 +69,23 @@
     outline: none;
     border-bottom: 1px solid #cccccc; 
 }
-@media screen and (max-width:1000px) {
+@media (min-width:768px) and (max-width:1024px) {
     .SalesContent1{
         flex-direction: column;
     }
     .SalesContent2{
         flex-direction: column;
+    }
+    .Sales{
+        width: 100%;
+    }
+    .Purchase {
+        width: 100%;
+    }
+    .Fisical{
+        width: 100%;
+    }
+    .Misc{
+        width: 100%;
     }
 }

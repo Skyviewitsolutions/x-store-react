@@ -137,7 +137,7 @@
     margin-top: 18px;
     border: none;
     outline: none;
-    border-bottom: 2px solid #6666;
+    border-bottom: 3px solid #6666;
 }
 
 input[type="checkbox"][readonly] {

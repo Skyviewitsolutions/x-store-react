@@ -1,52 +1,63 @@
-.AddAssetTypeCon{
+.AddDiffered_TypeCon{
     width: 100%;
     border: 1px solid #cccc;
     margin-top:10px;
     padding: 25px 40px;
     padding-bottom: 20px;
 }
-.assetType{
+.Diff_Type{
     width: 100%;
+    display: flex;
 }
-.assetType p {
+.Diff_Type p {
+    width: 200px;
     font-size: 15px;
-    color: black;
+    color: #6a6a6a;
+    font-weight:500;
     margin-bottom: 0px;
 }
-.assetType input{
+.Diff_Type input{
     width: 600px;
     outline: none;
     border: none;
-   border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccc;
 }
-.assetTypetextbox{
+.DiffTypetextbox{
     width: 100%;
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
-.assetTypeparent{
+.DiffTypeparent{
     width: 70%;
 }
-.parentcat{
+.Diff_parentcat{
     display: flex;
     align-items: center;
 }
-.parentcat label{
-    width: 150px;
+.Diff_parentcat p{
+    width: 200px;
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 0px;
+    color: #6a6a6a;
 }
-.parentcat input{
+.Diff_parentcat label{
+    width: 200px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    color: #6a6a6a;
+}
+.Diff_parentcat input{
     width: 20px;
     height: 15px;
 
 }
-.parentcat select{
+.Diff_parentcat select{
     outline:none;
     border: none;
-    width: 700px;
+    width: 600px;
     border-bottom: 1px solid #cccc;
 }
 .assettypebox{
@@ -55,197 +66,180 @@
     padding: 20px 25px;
     margin-left: 30px;
 }
-.assettypebox p{
-    color: #666666;
-    font-size: 18px;
-    font-weight: 500;;
-    margin-bottom: 0px;
-}
-.assetalertbox{
-    width: 100%;
-    padding: 20px 10px;
-    background: #d1ecf1;
-    border-radius: 4px;
-}
-.assetalertbox p{
-    color: #666666;
-    font-size: 15px;
-    font-weight: 500;
-    margin-left: 40px;
-    margin-bottom: 0px;   
-}
-.assetTypedetails{
+
+.Diff_details{
     width: 100%;
     display: flex;
     align-items: center;
     margin-top: 7px;
 }
-.assetdetails1{
+.Diff_details1{
     width: 50%;
 }
-.assetdetails1 p{
+.Diff_details1 p{
     font-size: 25px;
-    color: #666666;
+    color: #6a6a6a;
     font-weight: 400;
     margin-bottom: 0px;
 }
-.assettext{
+.Diff_text{
     display: flex;
     align-items: center;
 
 }
-.assettext p {
+.Diff_text p {
     width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
 }
-.assettext select{
+.Diff_text select{
     width: 400px;
     border: none;
     outline:"none";
-   border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccc;
 }
-.assettypedetails2{
+.Diff_details2{
     width: 50%;
     margin-left: 30px;
 }
-.assettypedetails2 p{
+.Diff_details2 p{
     font-size: 25px;
     color: #666666;
     font-weight: 400;
     margin-bottom: 0px; 
     margin-top: 10px;
 }
-.assetradio{
+.diff_radio{
     display: flex;
     align-items: center;
 }
-.assetradio p{
+.diff_radio p{
     width: 200px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
 }
-.assetradio input{
+.diff_radio input{
     width: 16px;
     margin-left: 20px;
     height: 15px;
 
 }
-.assetradio label{
+.diff_radio label{
     margin-left: 10px;
     color: #666666;
     font-size: 16px;
 }
-.assettext2{
+.diff_text2{
     display: flex;
     align-items: center;
 }
-.assettext2 p{
+.diff_text2 p{
     width: 200px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
 }
-.assettext2 input{
+.diff_text2 input{
     width: 400px;
     border:none;
     outline: none;
-   border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccc  ;
 }
-.AssettypeAddiDepri{
+.Diff_AddiDepri{
     width: 100%;
     margin-top: 20px;
     display: flex;
     align-items: center;
 }
-.Additional{
+.Diff_Additional{
     width: 50%;
 }
-.Additional p{
+.Diff_Additional p{
     font-size: 25px;
-    color: #666666;
+    color: #6a6a6a;
     font-weight: 400;
     margin-bottom: 0px; 
     margin-top: 10px;
 }
-.assettypecheckbox{
+.Diff_typecheckbox{
     display: flex;
     align-items: center;
 }
-.assettypecheckbox label{
+.Diff_typecheckbox label{
     width: 200px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
+    color:#6a6a6a
 }
-.assettypecheckbox input{
+.Diff_typecheckbox input{
     width: 20px;
     height: 15px;
 
 }
-.assettypeselect{
+.Diff_typeselect{
     display: flex;
     align-items: center;
 }
-.assettypeselect p{
+.Diff_typeselect p{
     width: 200px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
+    color: #6a6a6a;
 }
-.assettypeselect select{
+.Diff_typeselect select{
     outline: none;
     border: none;
     width: 400px;
     border-bottom: 1px solid #cccc;
 }
-.Depreciation{
+.Dif_Depreciation{
     width: 50%;
 }
-.Depreciation p{
+.Dif_Depreciation p{
     font-size: 25px;
-    color: #666666;
+    color: #6a6a6a;
     font-weight: 400;
-    margin-bottom: 0px; 
-    margin-top: 10px;
 }
-.distradio{
+.dif_distradio{
     display: flex;
     align-items: center; 
 }
-.distradio p{
+.dif_distradio p{
     width: 200px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
 }
-.distradio input{
+.dif_distradio input{
     width: 16px;
     margin-left: 20px;
 }
-.distradio label{
+.dif_distradio label{
     margin-left: 10px;
-    color: #666666;
+    color: #6a6a6a;
     font-size: 16px;
 }
-.depcheckbox{
+.deff_checkbox{
 display: flex;
 align-items: center;
 }
-.depcheckbox label{
+.deff_checkbox label{
     width: 200px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
+    color: #6a6a6a;
 }
-.depcheckbox input{
+.deff_checkbox input{
     width: 50px;
 }

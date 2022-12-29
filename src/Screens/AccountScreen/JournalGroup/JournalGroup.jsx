@@ -24,7 +24,10 @@ const JournalGroup = () => {
         if (res.data.status === true) {
           var val = res.data.data;
           val = val.reverse();
-          setJournalGroup(val);
+          const filterJournalGrp = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+          setJournalGroup(filterJournalGrp);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {

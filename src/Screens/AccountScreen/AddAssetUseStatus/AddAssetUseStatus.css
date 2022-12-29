@@ -16,7 +16,7 @@ margin-top: 40px;
 }
 .AddAssetStatusText p{
     color: #666666;
-    width: 300px;
+    width: 150px;
     font-size: 16px;
     font-weight: 500;
     margin-left: 40px;
@@ -26,6 +26,6 @@ margin-top: 40px;
 .AddAssetStatusText input{
     border: none;
     outline: none;
-    width:500px;
+    width:400px;
    border-bottom: 1px solid #cccccc
 }

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { propTypes } from 'react-bootstrap/esm/Image';
+import { toast, ToastContainer } from 'react-toastify';
 import { endpoints } from '../../../../services/endpoints';
 import './JournalEntires.css';
 
@@ -8,6 +9,8 @@ const JournalEntires = (props) => {
   const {
     shortCode,setShortCode,nextNum,setNextNum,debitAcc,setDebitAcc,creditAcc,setCreditAcc,currency,setCurrency} =props
     const [curr , setCurr] = useState([]);
+
+    console.log(currency,"currency here")
 
     const CurrencyUrl = endpoints.Currency.allCurrency;
     const getAuthtoken = localStorage.getItem("authtoken");
@@ -21,11 +24,15 @@ const userAuth = localStorage.getItem("userAuth");
     .then((res) => {
       if(res.data.status === true)
       {
-       setCurr(res.data.data);
+        var val = res.data.data;
+        const filterJournal = val.filter((itm,ind) => {
+          return itm.DELETE_STATUS != "X"
+        })
+       setCurr(filterJournal);
       }
       else if(res.data.status === false)
       {
-        alert(res.data.message);
+        toast(res.data.message,{type:"error"});
       }
     })
     .catch((err) => {
@@ -71,7 +78,7 @@ const userAuth = localStorage.getItem("userAuth");
         <div className="SecondContent">
         <p>Currency</p>
             <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
-                <option value=""></option>
+                <option value="">Choose any one</option>
                 {
                   curr.map((item,index) => {
                     return(
@@ -85,6 +92,7 @@ const userAuth = localStorage.getItem("userAuth");
         </div>
        
        </div>
+       <ToastContainer/>
     </div>
   )
 }

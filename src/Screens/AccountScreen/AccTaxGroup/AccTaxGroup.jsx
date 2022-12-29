@@ -27,7 +27,10 @@ const AccTaxGroup = () => {
             {
                 var val = res.data.data;
                 val = val.reverse();
-                setAccTaxGrp(val);
+                const filterAccTaxGrp = val.filter((itm,ind) => {
+                    return itm.DELETE_STATUS != "X"
+                  })
+                setAccTaxGrp(filterAccTaxGrp);
             }
             else if(res.data.status === false)
             {

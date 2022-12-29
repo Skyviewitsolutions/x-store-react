@@ -318,7 +318,7 @@ const AddProductCategories = (props) => {
                   value={parentCate}
                   className="prntSlt"
                 >
-                  <option value=""></option>
+                  <option value="">Select any one</option>
                   {getParentCate.map((item, index) => {
                     return (
                       <>
@@ -375,7 +375,7 @@ const AddProductCategories = (props) => {
                   value={incomeAcc}
                   onChange={(e) => setIncomeAcc(e.target.value)}
                 >
-                  <option value=""></option>
+                  <option value="">Select any one</option>
                   {income.map((item, index) => {
                     return (
                       <>
@@ -393,7 +393,7 @@ const AddProductCategories = (props) => {
                   value={expenseAcc}
                   onChange={(e) => setExpenseAcc(e.target.value)}
                 >
-                  <option value=""></option>
+                   <option value="">Select any one</option>
                   {expense.map((item, index) => {
                     return (
                       <>
@@ -414,6 +414,7 @@ const AddProductCategories = (props) => {
                   onChange={(e) => setStockIn(e.target.value)}
                   value={stockIn}
                 >
+                   <option value="">Select any one</option>
                   <option value="100002 Bank">100002 Bank</option>
                   <option value="100003 Security Deposit">
                     100003 Security Deposit
@@ -438,6 +439,7 @@ const AddProductCategories = (props) => {
                   value={stockOut}
                   onChange={(e) => setStockOut(e.target.value)}
                 >
+                   <option value="">Select any one</option>
                   <option value="100002 Bank">100002 Bank</option>
                   <option value="100003 Security Deposit">
                     100003 Security Deposit
@@ -462,6 +464,7 @@ const AddProductCategories = (props) => {
                   value={stockVal}
                   onChange={(e) => setStockVal(e.target.value)}
                 >
+                   <option value="">Select any one</option>
                   <option value="100002 Bank">100002 Bank</option>
                   <option value="100003 Security Deposit">
                     100003 Security Deposit
@@ -486,6 +489,7 @@ const AddProductCategories = (props) => {
                   value={stockJournal}
                   onChange={(e) => setStockJournal(e.target.value)}
                 >
+                   <option value="">Select any one</option>
                   <option value="Customer Invoices (SAR)">
                     Customer Invoices (SAR)
                   </option>
@@ -516,6 +520,7 @@ const AddProductCategories = (props) => {
                   value={removalStrategy}
                   onChange={(e) => setRemovalStrategy(e.target.value)}
                 >
+                   <option value="">Select any one</option>
                   <option value="First in first out (FIFO)">
                     First in first out (FIFO)
                   </option>
@@ -533,6 +538,7 @@ const AddProductCategories = (props) => {
                   value={costing}
                   onChange={(e) => setCosting(e.target.value)}
                 >
+                   <option value="">Select any one</option>
                   <option value="Standard Price">Standard Price</option>
                   <option value="First in first out (FIFO)">
                     First in first out (FIFO)
@@ -546,6 +552,7 @@ const AddProductCategories = (props) => {
                   value={valuation}
                   onChange={(e) => setValuation(e.target.value)}
                 >
+                   <option value="">Select any one</option>
                   <option value="Manual">Manual</option>
                   <option value="Automated">Automated</option>
                 </select>

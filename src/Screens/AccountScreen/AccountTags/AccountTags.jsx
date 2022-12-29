@@ -28,7 +28,11 @@ const AccountTags = () => {
         {
           var val = res.data.data;
           val = val.reverse();
-            setAccountTag(val);
+           
+            const filterAccTag = val.filter((itm,ind) => {
+              return itm.DELETE_STATUS != "X"
+            })
+            setAccountTag(filterAccTag);
         }
         else if(res.data.status === false)
         {

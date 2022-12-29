@@ -35,7 +35,7 @@
     margin-top: 20px;
 }
 .AddAnalyticAccountGroupfirst{
-    width: 50%; 
+    width: 100%; 
 }
 .AddAnalyticAccountGrouptext1{
     display: flex;
@@ -53,13 +53,13 @@
 .AddAnalyticAccountGrouptext1 input{
     border: none;
     outline: none;
-    width: 700px;
+    width: 500px;
     border-bottom: 1px solid #cccc;
 }
 .AddAnalyticAccountGrouptext1 select{
     border: none;
     outline: none;
-    width: 700px;
+    width: 500px;
     border-bottom: 1px solid #cccc; 
 }
 .AddAnalyticAccountGroupsecond{
@@ -74,7 +74,7 @@
     font-weight: 500;;
     margin-bottom: 0px;
 }
-.AddAnalyticAccountGroupalertbox{
+/* .AddAnalyticAccountGroupalertbox{
     width: 100%;
     padding: 20px 10px;
     background: #d1ecf1;
@@ -86,4 +86,4 @@
     font-weight: 500;
     margin-left: 40px;
     margin-bottom: 0px;   
-}
+} */

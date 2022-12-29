@@ -185,14 +185,14 @@ const userAuth = localStorage.getItem("userAuth");
             <div className="detailsbtn">
           <Nav variant="tabs" defaultActiveKey="/home" >
             <Nav.Item
-              className="detailslink"
+              className={events === "JournalEntires" ? "navLinkActive" : "navLinkDeactive"}
               onClick={ ()=> setEvents("JournalEntires")}>
-              <Nav.Link href="">Journal Entires</Nav.Link>
+              <Nav.Link href=""  className={events === "JournalEntires" ? "navLinkActive" : "navLinkDeactive"}>Journal Entires</Nav.Link>
             </Nav.Item>
             <Nav.Item
-              className="detailslink"
+               className={events === "AdvanceSetting" ? "navLinkActive" : "navLinkDeactive"}
               onClick={ ()=> setEvents("AdvanceSetting")}>
-              <Nav.Link eventKey="link-1">Advance Settings</Nav.Link>
+              <Nav.Link eventKey="link-1" className={events === "AdvanceSetting" ? "navLinkActive" : "navLinkDeactive"}>Advance Settings</Nav.Link>
             </Nav.Item>
           </Nav>
         </div>

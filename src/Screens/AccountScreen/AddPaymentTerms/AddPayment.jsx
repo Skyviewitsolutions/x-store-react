@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Placeholder } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
@@ -129,6 +130,7 @@ const AddPayment = () => {
     <div>
       <AccountNavbar showBelowMenu={true} title="Payment Terms" save={update === true ? updateData : save} showCanelBtn={true} />
       <div className="AddPaymentCon">
+        <div className="paymentCon">
         <div className="AddPaytext">
           <p>Payment Terms</p>
           <input
@@ -139,23 +141,21 @@ const AddPayment = () => {
         </div>
         <div className="AddPayDes">
           <p>Description on the Invoice</p>
-          <span>Payment term explanation for the customer...</span>
           <input
             type="text"
             value={desInvoice}
             onChange={(e) => setDesInvoice(e.target.value)}
+            placeholder="Payment term explanation for the customer..."
           />
         </div>
         <div className="AddPayTerms">
           <p>Terms</p>
-          <span>
-            The last line's computation type should be "Balance" to ensure that
-            the whole amount will be allocated..
-          </span>
           <input
             type="text"
             value={pay}
             onChange={(e) => setPay(e.target.value)}
+            placeholder="The last line's computation type should be Balance to ensure that
+            the whole amount will be allocated.."
           />
         </div>
         <div
@@ -223,6 +223,7 @@ const AddPayment = () => {
           </div>
           <ToastContainer />
         </div>
+      </div>
       </div>
     </div>
   );

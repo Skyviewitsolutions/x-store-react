@@ -32,8 +32,11 @@ const BankAcc = (props) => {
             if(res.data.status === true)
             {
                 var val = res.data.data;
-                val = val.reverse()
-                setBankAcc(val);
+                val = val.reverse();
+                const filterBankAcc = val.filter((itm,ind) => {
+                    return itm.DELETE_STATUS != "X"
+                  })
+                setBankAcc(filterBankAcc);
             }
             else if(res.data.status === false)
             {

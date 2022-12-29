@@ -27,7 +27,11 @@ const AccountTypes = () => {
         if (res.data.status === true) {
           var val = res.data.data;
           val = val.reverse()
-          setAccType(val);
+         
+          const filterAcctype = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+          setAccType(filterAcctype);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {

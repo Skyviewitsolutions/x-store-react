@@ -12,11 +12,12 @@
     align-items: center;
 }
 .AddAccContent p{
-    color:#6f6f6f;
+    color:#6a6a6a;
     font-size: 16px;
     margin-left: 19px;
-    margin-bottom: -6px;
-    width: 170px;
+    margin-bottom: 5px;
+    width: 200px;
+    font-weight: 500;
 }
 .AddAccContent input{
     border: none;
@@ -30,8 +31,8 @@
 border-bottom: 1px solid #cccccc;    width: 500px;
 }
 .des h3{
-    font-size: 25px;
-    color: #666666;
+    font-size: 20px;
+    color: #6a6a6a;
     font-weight: 400;
     margin-left: 18px;
     margin-top: 10px;
@@ -50,16 +51,17 @@ border-bottom: 1px solid #cccccc;    width: 500px;
     display: flex;
     align-items: center;
 }
-.AddAccTypecheckbox p{
-    color:#6f6f6f;
+.AddAccTypecheckbox label{
+    color:#6a6a6a;
     font-size: 16px;
     margin-left: 19px;
-    margin-bottom: -6px;
-    width: 170px;
+    margin-bottom: 5px;
+    width: 200px;
+    font-weight: 500;
 }
-.AddAccTypecheckbox input{
+/* .AddAccTypecheckbox input{
     width: 25px;
-}
+} */
 
 @media screen and (max-width: 1000px)
 {
@@ -68,5 +70,8 @@ border-bottom: 1px solid #cccccc;    width: 500px;
     }
     .des input{
         width: 400px;
+    }
+    .AddAccTypeFirst {
+        width: 100%;
     }
 }

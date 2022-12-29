@@ -263,7 +263,7 @@ const AddOperationTypes = () => {
             </div> */}
           </div>
           <div className="type">
-            <div className="operation">
+            <div className="operation_type">
               <p>Opeation Type</p>
               <select
                 value={typeofoperation}

@@ -3,8 +3,8 @@
     padding: 20px 20px;
 }
 .AdvanceSettingContent p{
-    color: #a59999;
-    font-size: 25px;
+    color: #6a6a6a;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 0px;
 }
@@ -18,15 +18,15 @@
 }
 .AdvanceSettinginput p{
     width: 200px;
-    font-size: 15px;
-    color: #666666;
-    font-weight: 500;
+    font-size: 14px;
+    color: #6a6a6a;
+    font-weight: 600;
     margin-bottom: 5px;
 }
 .AdvanceSettinginput select{
     border: none;
     outline: none;
-    width: 400px;
+    width: 350px;
     border-bottom: 1px solid #cccccc;
 }
 .Advancemultiselect{

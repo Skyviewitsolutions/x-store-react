@@ -25,7 +25,10 @@ const DifferedExpenseType = () => {
         if(res.data.status === true){
           var val = res.data.data;
           val = val.reverse()
-          setDefType(val);
+          const filterDiffExType = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+          setDefType(filterDiffExType);
         }
         else if(res.data.status === false)
         {

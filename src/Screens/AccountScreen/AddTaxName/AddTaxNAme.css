@@ -122,6 +122,15 @@
     display: flex;
     flex-direction: column;
 }
+.TaxNamecontent2{
+    width: 100%;
+}
+.TaxNamecontent{
+    width: 100%;
+}
+.Taxadvance1 {
+    width: 100%;
+}
 .TaxAdvance{
     display: flex;
     flex-direction: column;

@@ -29,7 +29,10 @@ const AssetUseStatus = () => {
             {
                 var val = res.data.data;
                 val = val.reverse();
-                setAssetUseStatus(val);
+                const filterAssUseStatus = val.filter((itm,ind) => {
+                    return itm.DELETE_STATUS != "X"
+                  })
+                setAssetUseStatus(filterAssUseStatus);
             }
             else if(res.data.status === false)
             {

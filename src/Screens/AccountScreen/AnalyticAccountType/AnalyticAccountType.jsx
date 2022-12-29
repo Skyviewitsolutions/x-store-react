@@ -27,7 +27,10 @@ const AnalyticAccountType = () => {
         if (res.data.status === true) {
           var val = res.data.data;
           val = val.reverse()
-          setAnAccType(val);
+          const filterAnAcctype = val.filter((itm,ind) => {
+            return  itm.DELETE_STATUS != "X"
+          })
+          setAnAccType(filterAnAcctype);
         } else if (res.data.status === false) {
           if(res.data.code === 3)
           {

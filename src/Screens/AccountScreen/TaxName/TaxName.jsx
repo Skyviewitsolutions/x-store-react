@@ -31,7 +31,10 @@ const TaxName = () => {
       if (res.data.status === true) {
         var val = res.data.data;
         val = val.reverse();
-        setTaxname(val);
+        const filterTaxname = val.filter((itm,ind) => {
+          return itm.DELETE_STATUS != "X"
+        })
+        setTaxname(filterTaxname);
       } else if (res.data.status === false) {
         if(res.data.code === 3)
         {

@@ -31,7 +31,7 @@
 .operation input{
     border: none;
     outline: none;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 2px solid #666666;
     width: 450px;
 }
 .operation select{
@@ -39,6 +39,24 @@
     outline: none;
     border-bottom: 1px solid #cccccc ;
     width: 450px;
+}
+.operation_type{
+    display: flex;
+    align-items: center;
+}
+.operation_type p{
+    width: 200px;
+    font-size: 15px;
+    color: #666666;
+    margin-left: 50px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.operation_type select{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #666666 ;
+    width: 400px;
 }
 .type{
     width: 50%;
@@ -74,5 +92,14 @@
     {
        display: flex;
        flex-direction: column;
+    }
+    .operationcon1{
+        width: 100%;
+    }
+    .type{
+        width: 100%;
+    }
+    .operation_type select{
+        width: 450px;
     }
 }

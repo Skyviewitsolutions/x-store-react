@@ -23,6 +23,6 @@
 .AddUomCateContent input{
     border: none;
     outline: none;
-   border-bottom: 1px solid #cccccc;
+   border-bottom: 2px solid #6f6f6f;
     width: 500px;
 }

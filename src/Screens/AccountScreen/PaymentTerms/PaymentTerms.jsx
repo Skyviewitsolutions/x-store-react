@@ -33,7 +33,10 @@ const PaymentTerms = (props) => {
     {
       var val = res.data.data;
       val = val.reverse()
-      setPayment(val)
+      const filterpayment = val.filter((itm,ind) => {
+        return itm.DELETE_STATUS != "X"
+      })
+      setPayment(filterpayment)
     }
     else if(res.data.status === false)
     {

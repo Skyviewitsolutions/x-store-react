@@ -28,9 +28,9 @@
     margin-bottom: -6px;
     width: 170px;
 }
-.Createcontent{
-    /* padding-left: 20px; */
-}
+/* .Createcontent{
+    padding-left: 20px;
+} */
 .Createcontent p{
 font-size: 16px;
 color: #6f6f6f;
@@ -42,7 +42,7 @@ margin-top: 15px;
     width: 97%;
     border: none;
     outline: none;
-    border-bottom: 2px solid #cccccc;
+    border-bottom: 2px solid #6a666a;
     color: #000;
     font-size: 30px;
     margin-left: 20px;
@@ -69,7 +69,7 @@ margin-top: 15px;
 .textIn input{
     border: none;
     outline: none;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 2px solid #6a666a;
     width: 400px;
 }
 .Adddropdown{

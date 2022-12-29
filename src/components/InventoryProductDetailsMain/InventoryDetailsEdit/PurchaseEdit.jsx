@@ -48,7 +48,7 @@ const PurchaseEdit = (props) => {
 
   
   const getSingleVendorList = () => {
-
+    console.log("getSIngle")
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
@@ -77,14 +77,14 @@ const PurchaseEdit = (props) => {
       }
     })
     .catch((err) => {
-      console.log(err, "error");
-      toast("something went wrong" , {type : "error"})
+      // console.log(err, "error");
+      // toast("something went wrong" , {type : "error"})
     });
   }
 
 
   const getAllVendorlist = () => {
-
+console.log("getAll")
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
