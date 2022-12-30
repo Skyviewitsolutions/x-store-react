@@ -139,6 +139,7 @@ import AddCouponProgram from "./Screens/SalesScreen/CouponPrograms/AddCouponProg
 import Testing from "./Screens/SalesScreen/Testing";
 import WorkAddress from "./Screens/EmplyoeeScreen/AddEmployee/WorkAddress/WorkAddress";
 import AllCoupon from "./Screens/SalesScreen/CouponPrograms/AllCoupon";
+import DeletePopup from "./components/Model/DeletePopup/DeletePopup";
 
 
 const App = () => {
@@ -297,6 +298,7 @@ const App = () => {
        <Route path='/AddWorkAddress' element={<AddWorkAddress/>} />
       <Route path='/Testing' element={<Testing/>} />
       <Route path='/AllCoupon' element={<AllCoupon/>} />
+
 
 
       </Routes>

@@ -8,10 +8,15 @@ import axios from "axios";
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { toast,ToastContainer } from "react-toastify";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 
 const OperationTypes = (props) => {
 
   const navigate = useNavigate();
+
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const handleCreatePage = () => {
     navigate("/AddOperationTypes");
@@ -70,6 +75,9 @@ const OperationTypes = (props) => {
        
         if(res.data.status === true)
         {
+          setShow(false)
+          setDeleteConfirm(false)
+          setSelectedData("")
           getOperationType();
             toast("Operation Type deleted Successfully",{type:"success"});
         }
@@ -90,6 +98,12 @@ const OperationTypes = (props) => {
     })
    
   }
+
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
 
   const handleUpdate = (data) => {
      const val = opertaionType.filter((itm,index) => {
@@ -122,7 +136,10 @@ const OperationTypes = (props) => {
                 <MdDelete
                   size={23}
                   color="#4f4e4d"
-                  onClick={ () => deleteItem(value)}
+                  onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}
                   style={{cursor:"pointer"}}
                 />
               </div>
@@ -142,6 +159,9 @@ const OperationTypes = (props) => {
         <div className="container-fluid PROVAR">
         <div className="Main">
         <CustomTable data={opertaionType} column={column} />
+        <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
         </div>
         </div>
      

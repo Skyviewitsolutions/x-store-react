@@ -9,12 +9,18 @@ import { endpoints } from "../../../services/endpoints";
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 
 const Location = () => {
   const navigate = useNavigate();
   const handleCreatePage = () => {
     navigate("/AddLocation");
   };
+
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
+  
   const url = endpoints.location.allLocation;
 
   const [Locationdetails, setLocationdetails] = useState([]);
@@ -64,6 +70,9 @@ const Location = () => {
       .then((res) => {
         console.log(res, "deleteLoaction");
         if (res.data.status === true) {
+          setShow(false)
+          setDeleteConfirm(false)
+          setSelectedData("")
           getLocation();
           toast("Location deleted Successfully", { type: "success" });
         } else if (res.data.status === false) {
@@ -79,6 +88,12 @@ const Location = () => {
         console.log(err, "error");
       });
   };
+
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
 
   const handleUpdate = (data) => {
     const val = Locationdetails.filter((itm, index) => {
@@ -111,7 +126,10 @@ const Location = () => {
                 <MdDelete
                   size={23}
                   color="#4f4e4d"
-                  onClick={() => deleteItem(value)}
+                  onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}
                   style={{ cursor: "pointer" }}
                 />
               </div>
@@ -138,7 +156,11 @@ const Location = () => {
           </div> */}
           <div className="Right">
             <CustomTable data={Locationdetails} column={column} />
+            <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
           </div>
+          
         </div>
         <ToastContainer />
       </div>

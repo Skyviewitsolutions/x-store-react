@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import vendor from "../../assets/Images/vendor.png";
 import { useNavigate } from "react-router-dom";
@@ -6,9 +6,14 @@ import "./VendorsCard.css";
 import { endpoints } from "../../services/endpoints";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import DeletePopup from "../Model/DeletePopup/DeletePopup";
 
 
 const VendorsCard = (props) => {
+
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const [iconColor, setIconColor] = useState("#7478a1");
   const { data ,getVendors} = props;
@@ -34,6 +39,9 @@ const VendorsCard = (props) => {
         console.log(res ,"resp")
         if (res.data.status == true) {
           toast("Vendor Deleted Successfuly !", { type: "success" });
+          setShow(false)
+          setDeleteConfirm(false)
+          setSelectedData("")
           getVendors();
         } else if (res.data.status == false) {
           toast(res.data.message, { type: "warning" });
@@ -44,6 +52,12 @@ const VendorsCard = (props) => {
       });
        
   }
+
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteVendor(selectedData);
+    }
+  }, [deleteConfirm]);
 
   return (<>
 
@@ -89,10 +103,16 @@ const VendorsCard = (props) => {
             style={{ color: iconColor ,zIndex:10}}
             onMouseOver={() => setIconColor("#293391")}
             onMouseOut={() => setIconColor("#7478a1")}
-            onClick={() => deleteVendor(data)}
+            onClick={() => {
+              setShow(true);
+              setSelectedData(data)
+            }}
           />
         </div>
       </div> 
+      <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer/>
     </div> }
     </>);

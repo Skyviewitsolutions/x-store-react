@@ -7,11 +7,15 @@ import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { endpoints } from "../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 
 const Uom = () => {
   const UOMapiurl = endpoints.UOM.allUOM;
   const [UOM, setUOM] = useState();
   const navigate = useNavigate();
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
@@ -66,6 +70,9 @@ const Uom = () => {
       .then((res) => {
         console.log(res, "this is the delete res");
         if (res.data.status === true) {
+          setShow(false)
+          setDeleteConfirm(false)
+          setSelectedData("")
           getList();
           toast("UOM deleted successfully", { type: "success" });
         } else if (res.data.status === false) {
@@ -83,6 +90,12 @@ const Uom = () => {
         console.log(err, "error");
       });
   };
+
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
 
   const handleUpdate = (data) => {
     const val = UOM.filter((itm, index) => {
@@ -114,7 +127,10 @@ const Uom = () => {
                 <MdDelete
                   size={23}
                   color="#4f4e4d"
-                  onClick={() => deleteItem(value)}
+                  onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}
                   style={{ cursor: "pointer" }}
                 />
               </div>
@@ -137,6 +153,9 @@ const Uom = () => {
         title="Units of Measure"
       />
       <CustomTable data={UOM} column={column} />
+      <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer />
     </div>
   );

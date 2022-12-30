@@ -7,6 +7,7 @@ import { endpoints } from "../../../services/endpoints";
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 
 
 const Warehouse = () => {
@@ -15,6 +16,10 @@ const Warehouse = () => {
   const handleCreatePage = () => {
     navigate("/AddWarehouse");
   };
+
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const url = endpoints.wareHouse.allWarehouse;
 
@@ -54,6 +59,7 @@ const Warehouse = () => {
     getWarehouseList();
   }, []);
 
+
   const WarehousedeleteUrl = endpoints.wareHouse.deleteWarehouse;
   const deleteItem = (data) => {
     const formData = new FormData();
@@ -66,6 +72,9 @@ const Warehouse = () => {
         console.log(res, "warehousedelete");
         if (res.data.status === true) {
           toast("Warehouse deleted successfully!", { type: "success" });
+          setShow(false)
+          setDeleteConfirm(false)
+          setSelectedData("")
           getWarehouseList();
         } else if (res.data.status === false) {
           if(res.data.code === 3)
@@ -82,6 +91,11 @@ const Warehouse = () => {
         console.log(err, "error");
       });
   };
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
 
   const handleUpdate = (data) => {
     const val = WareHousedetails.filter((itm, index) => {
@@ -114,7 +128,10 @@ const Warehouse = () => {
                 <MdDelete
                   size={23}
                   color="#4f4e4d"
-                  onClick={() => deleteItem(value)}
+                  onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}
                   style={{ cursor: "pointer" }}
                 />
               </div>
@@ -133,6 +150,9 @@ const Warehouse = () => {
         showCancel={false}
       />
       <CustomTable column={column} data={WareHousedetails} />
+      <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer />
     </div>
   );

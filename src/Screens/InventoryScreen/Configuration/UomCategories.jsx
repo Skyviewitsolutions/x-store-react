@@ -7,6 +7,7 @@ import { FiEdit } from 'react-icons/fi';
 import { MdDelete } from 'react-icons/md';
 import { toast,ToastContainer } from 'react-toastify';
 import {useNavigate } from 'react-router-dom';
+import DeletePopup from '../../../components/Model/DeletePopup/DeletePopup';
 
 
 const UomCategories = () => {
@@ -16,7 +17,10 @@ const UomCategories = () => {
   const navigate = useNavigate();
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
-
+  
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 const getUomCategory = () => {
 
   const formData = new FormData();
@@ -71,8 +75,12 @@ const getUomCategory = () => {
 
     if(res.data.status === true)
     {
-      getUomCategory()
+      
       toast("Uom Category deleted Successfully!",{type:"success"});
+      setShow(false)
+      setDeleteConfirm(false)
+      setSelectedData("")
+      getUomCategory()
     }
     else if(res.data.status === false) 
     {
@@ -90,6 +98,12 @@ const getUomCategory = () => {
     console.log(err,"error");
   });
  }
+
+ useEffect(() => {
+  if (deleteConfirm) {
+    deleteItem(selectedData);
+  }
+}, [deleteConfirm]);
 
  const handleUpdate = (data) => {
   const val = uomdetails.filter((itm,index) => {
@@ -110,7 +124,10 @@ const getUomCategory = () => {
             <>
             <div className="updtdlt">
               <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
-              <MdDelete size={23} color="4f4e4d"  onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
+              <MdDelete size={23} color="4f4e4d"    onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}  style={{cursor:"pointer"}}/>
             </div>
             </>
           )
@@ -128,6 +145,9 @@ const getUomCategory = () => {
          <Navebar showBelowMenu={true} title="Units of Measure Categories" handleCreatePage = {handleCreatePage} />
         
             <CustomTable  data={uomdetails} column={column} />
+            <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
             <ToastContainer />
     </div>
   )
