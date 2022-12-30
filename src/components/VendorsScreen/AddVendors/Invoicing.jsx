@@ -1,6 +1,7 @@
 import React from 'react'
 import './Invoicing.css'
 
+
 const Invoicing = (props) => {
   
     const {bank,setBank,accNumber,setAccNumber,accReceviable,setAccReceviable,accPayable,setAccPayable} = props;
@@ -15,7 +16,7 @@ const Invoicing = (props) => {
                 </div>
                 <div className="banktext">
                     <p>Account Number</p>
-                    <input type="text" value={accNumber} onChange={(e) => setAccNumber(e.target.value)}/>
+                    <input type="number" min="1" value={accNumber} onChange={(e) => setAccNumber(e.target.value)}/>
                 </div>
             </div>
             <div className="Accounting">

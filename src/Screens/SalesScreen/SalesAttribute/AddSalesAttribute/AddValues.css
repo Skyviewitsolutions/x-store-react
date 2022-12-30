@@ -7,12 +7,13 @@ table{
 }
 .btn_add{
     /* width: 150px; */
-    color: #1669a2;
+    background-color: #1669a2;
     font-size: 15px;
     padding: 10px 15px;
     border: none;
-    background: #ffff;
+    color: #ffff;
     font-weight: 700;
+    margin-top: 10px;
 }
 .tbl_value{
     width: 100%;
@@ -40,4 +41,7 @@ table{
     position: relative;
     top: -2px;
     left: -2px;
+}
+.value_tbl{
+    margin-top: 10px;
 }

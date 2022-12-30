@@ -46,7 +46,7 @@ const SalesPurchase = (props) => {
                     <p>Payment Terms</p>
                     <select value={purchasePaymentTerms} onChange={(e) => setPurchaseSalesPaymentTerms(e.target.value)} >
                     <option value="">Choose any one</option>
-                        <option value="Immediat Payment">Immediat Payment</option>
+                        <option value="Immediat Payment">Immediate Payment</option>
                         <option value="15 Days">15 Days</option>
                         <option value="21 Days">21 Days</option>
                         <option value="30 Days">30 Days</option>
@@ -70,7 +70,7 @@ const SalesPurchase = (props) => {
                     <p>Fiscal Position</p>
                     <select value={fiscalPosition} onChange={(e) => setFiscalPosition(e.target.value)}>
                         <option value="">Choose any one</option>
-                        <option value="Immediat Payment">Immediat Payment</option>
+                        <option value="Immediat Payment">Immediate Payment</option>
                     </select>
                 </div>
             </div>

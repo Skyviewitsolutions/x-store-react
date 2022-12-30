@@ -90,7 +90,7 @@ const AddValues = (props) => {
   ];
 
   return (
-    <div>
+    <div className="value_tbl">
       <CustomTable column={column} data={allAddLine} />
       <button className="btn_add" onClick={() => setModalShow(true)}>
         Add Line

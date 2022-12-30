@@ -29,7 +29,7 @@
     margin-top: 10px;
 }
 .assetTypeparent{
-    width: 70%;
+    width: 100%;
 }
 .parentcat{
     display: flex;
@@ -37,14 +37,14 @@
 }
 .parentcat p{
     width: 200px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     color: #6a6a6a;
 }
 .parentcat label{
     width: 200px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     color: #6a6a6a;
@@ -68,7 +68,7 @@
 }
 .assettypebox p{
     color: #6a6a6a;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;;
     margin-bottom: 0px;
 }
@@ -149,7 +149,8 @@
 .assetradio label{
     margin-left: 10px;
     color: #666666;
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 500;
 }
 .assettext2{
     display: flex;
@@ -244,7 +245,8 @@
 .distradio label{
     margin-left: 10px;
     color: #6a6a6a;
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 500;
 }
 .depcheckbox{
 display: flex;
@@ -263,5 +265,52 @@ align-items: center;
 }
 
 @media (min-width:768px) and (max-width:1024px) {
+    .AddAssetTypeCon {
+        padding: 20px;
+    }
+    .assetTypeparent{
+        width: 100%;
+    }
+    .assetTypedetails{
+        flex-direction: column;
+    }
+    .assetdetails1{
+        width: 100%;
+    }
+    .Depreciation{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .assettypedetails2{
+        width: 100%;
+        margin-left:0px;
+    }
+    .AssettypeAddiDepri{
+        flex-direction: column;
+    }
+    .Additional {
+        width: 100%;
+    }
+    .assetradio p {
+        width: 300px;
+    }
+    .assettext2 p {
+        width: 300px;
+    }
+    .assettypecheckbox label {
+        width: 300px;
+    }
+    .assettypeselect p {
+        width: 300px;
+    }
+    .assettypeselect p {
+        width: 300px;
+    }
+    .depcheckbox label {
+        width: 300px;
+    }
+    .distradio p {
+        width: 300px;
+    }
     
 }

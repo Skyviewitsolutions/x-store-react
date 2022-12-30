@@ -6,12 +6,10 @@ import Navebar from "../../../../components/Navbar/Navbar";
 import { endpoints } from "../../../../services/endpoints";
 import "./AddOperationTypes.css";
 
-
 const AddOperationTypes = () => {
-
   const warehouseurl = endpoints.wareHouse.allWarehouse;
   const locationUrl = endpoints.location.allLocation;
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
   const [warehouse, setWareHouse] = useState([]);
   const [location, setLocation] = useState([]);
   const getAuthtoken = localStorage.getItem("authtoken");
@@ -26,12 +24,11 @@ const AddOperationTypes = () => {
   const [sourcelocation, setSourceLocation] = useState("");
   const [destination, setDestination] = useState("");
   const [operationWarehouse, setOperationwarehouse] = useState("");
-  const [barCode , setBarCode] = useState("");
+  const [barCode, setBarCode] = useState("");
   const [update, setUpdate] = useState();
-  const [filteredLocation , setFilteredLocation] = useState([])
+  const [filteredLocation, setFilteredLocation] = useState([]);
 
   const save = () => {
-
     const formData = new FormData();
     formData.append("Operation_Type", operationType);
     formData.append("Type_Of_Operation", typeofoperation);
@@ -65,13 +62,11 @@ const AddOperationTypes = () => {
           if (res.data.status == true) {
             toast("Operation Type Added successfully", { type: "Sucess" });
           } else if (res.data.status == false) {
-            if(res.data.code === 3)
-            {
-              toast("Session expired , Please re-login",{type:"warning"})
-              navigate('/');
-            }
-            else{
-             toast(res.data.message,{type:"error"});
+            if (res.data.code === 3) {
+              toast("Session expired , Please re-login", { type: "warning" });
+              navigate("/");
+            } else {
+              toast(res.data.message, { type: "error" });
             }
           }
         })
@@ -85,19 +80,17 @@ const AddOperationTypes = () => {
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     axios
-      .post(warehouseurl , formData)
+      .post(warehouseurl, formData)
       .then((res) => {
         console.log(res, "response");
         if (res.data.status === true) {
           setWareHouse(res.data.data);
         } else if (res.data.status === false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.message,{type:"error"});
+          if (res.data.code === 3) {
+            toast("Session expired , Please re-login", { type: "warning" });
+            navigate("/");
+          } else {
+            toast(res.data.message, { type: "error" });
           }
         }
       })
@@ -105,19 +98,16 @@ const AddOperationTypes = () => {
         console.log(err, "error");
       });
     axios
-      .post(locationUrl , formData )
+      .post(locationUrl, formData)
       .then((res) => {
-       
         if (res.data.status === true) {
           setLocation(res.data.data);
         } else if (res.data.status === false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.message,{type:"error"});
+          if (res.data.code === 3) {
+            toast("Session expired , Please re-login", { type: "warning" });
+            navigate("/");
+          } else {
+            toast(res.data.message, { type: "error" });
           }
         }
       })
@@ -140,6 +130,8 @@ const AddOperationTypes = () => {
       setDestination(selectedData.DEFAULT_DESTINATION);
       setOperationwarehouse(selectedData.WAREHOUSE_INFO);
       setBarCode(selectedData.WAREHOUSE_BARCODE);
+
+      handleWarehouseSelection(selectedData.WAREHOUSE_INFO);
     }
   }, [selectedData]);
 
@@ -170,20 +162,18 @@ const AddOperationTypes = () => {
       formData.append("Default_Destination", destination);
       formData.append("User_Authorization", getAuthtoken);
       formData.append("User_AuthKey", userAuth);
-      
+
       axios
         .post(operationUpdateUrl, formData)
         .then((res) => {
           if (res.data.status == true) {
             toast("Opertaion Type Updated Successfully!", { type: "success" });
           } else if (res.data.status == false) {
-            if(res.data.code === 3)
-            {
-              toast("Session expired , Please re-login",{type:"warning"})
-              navigate('/');
-            }
-            else{
-             toast(res.data.message,{type:"error"});
+            if (res.data.code === 3) {
+              toast("Session expired , Please re-login", { type: "warning" });
+              navigate("/");
+            } else {
+              toast(res.data.message, { type: "error" });
             }
           }
         })
@@ -194,24 +184,35 @@ const AddOperationTypes = () => {
     }
   };
 
-  
-  const handleWarehouseSelection = (e) =>{
+  const handleWarehouseSelection = (val) => {
 
-    setOperationwarehouse(e.target.value)
-    const selectedWareHouse = e.target.value ;
-    var selectedWareHouseDetails = warehouse.filter((itm,index) =>{
-      return itm.WAREHOUSE_NAME == selectedWareHouse
-    })
+    setOperationwarehouse(val);
+    const selectedWareHouse = val;
+    console.log(selectedWareHouse, warehouse ,"hchsd")
+    if (warehouse.length != 0 ) {
+      var selectedWareHouseDetails = warehouse.filter((itm, index) => {
+        return itm.WAREHOUSE_NAME == selectedWareHouse;
+      });
 
-    selectedWareHouseDetails = selectedWareHouseDetails[0];
-    const shortName = selectedWareHouseDetails.SHORT_NAME;
-    
-    var shortedLocation = location.filter((itm ,index) =>{
-      return itm.PARENT_LOCATION === shortName
-    })
+      selectedWareHouseDetails = selectedWareHouseDetails[0];
+      const shortName = selectedWareHouseDetails?.SHORT_NAME;
 
-    setFilteredLocation(shortedLocation)
-  }
+      var shortedLocation = location.filter((itm, index) => {
+        return itm.PARENT_LOCATION === shortName;
+      });
+
+      setFilteredLocation(shortedLocation);
+    }
+  };
+
+
+  useEffect(() =>{
+    if(operationWarehouse){
+      handleWarehouseSelection(operationWarehouse)
+    }
+   
+  },[operationWarehouse,warehouse ,location])
+
   return (
     <>
       <Navebar
@@ -243,7 +244,7 @@ const AddOperationTypes = () => {
               <p>WareHouse</p>
               <select
                 value={operationWarehouse}
-                onChange={(e) => handleWarehouseSelection(e)}
+                onChange={(e) => handleWarehouseSelection(e.target.value)}
               >
                 <option value="">select any one</option>
                 {warehouse.map((item, index) => {
@@ -269,7 +270,6 @@ const AddOperationTypes = () => {
                 value={typeofoperation}
                 onChange={(e) => setTypeOfOperation(e.target.value)}
               >
-               
                 <option>Receipt</option>
                 <option>Delivery</option>
                 <option>Internal Transfer</option>

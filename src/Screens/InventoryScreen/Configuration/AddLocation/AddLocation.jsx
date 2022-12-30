@@ -255,9 +255,8 @@ const AddLocation = () => {
               onChange={(e) => setLocationName(e.target.value)}
             />
           </div>
-          <div className="AddLocationdetails">
-            <div className="Locationdetails1">
-              <p>Parent Location</p>
+          <div className="parent_loc">
+          <p>Parent Location</p>
               <select
                 value={parentLocation}
                 onChange={(e) => setParentLocation(e.target.value)}
@@ -271,6 +270,9 @@ const AddLocation = () => {
                 )
               })}
               </select>
+          </div>
+          <div className="AddLocationdetails">
+            <div className="Locationdetails1">
               <h4>Additional Information</h4>
               <div className="Addlocationcontent">
                 <p>Location Type</p>

@@ -64,7 +64,11 @@ const UnitPage = () => {
       .then((res) => {
         console.log(res, "UOmCateResponse");
         if (res.data.status == true) {
-          setUomCate(res.data.data);
+          var val = res.data.data;
+          const filterUom = val.filter((itm,ind) =>{
+            return itm.DELETE_STATUS != "X"
+          })
+          setUomCate(filterUom);
         } else if (res.data.status == false) {
           alert(res.data.message);
         }

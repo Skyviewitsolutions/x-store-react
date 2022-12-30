@@ -29,7 +29,7 @@
     margin-top: 10px;
 }
 .DiffTypeparent{
-    width: 70%;
+    width: 100%;
 }
 .Diff_parentcat{
     display: flex;
@@ -37,14 +37,14 @@
 }
 .Diff_parentcat p{
     width: 200px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     color: #6a6a6a;
 }
 .Diff_parentcat label{
     width: 200px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     color: #6a6a6a;
@@ -240,6 +240,62 @@ align-items: center;
     margin-top: 10px;
     color: #6a6a6a;
 }
-.deff_checkbox input{
+/* .deff_checkbox input{
     width: 50px;
+} */
+
+@media (min-width:768px) and (max-width:1024px) {
+    .Diff_Type p {
+        width: 300px;
+    }
+    .Diff_parentcat p {
+        width: 300px;
+    }
+    .Diff_parentcat label {
+        width: 250px;
+    }
+    .Diff_details{
+        flex-direction: column;
+    }
+    .Diff_details1{
+        width: 100%;
+    }
+    .Diff_details2{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .Diff_AddiDepri{
+        flex-direction: column;
+    }
+    .Diff_Additional {
+        width: 100%;
+    }
+    .Dif_Depreciation {
+        width: 100%;
+        margin-top: 15px;
+    }
+    .diff_radio p{
+        width: 300px;
+    }
+    .diff_radio input {
+        margin-left: 0px;
+    }
+    .diff_text2 p{
+        width: 300px;
+    }
+    .Diff_typecheckbox label {
+        width: 300px;
+    }
+    .Diff_typeselect p{
+        width: 300px;
+    }
+    .dif_distradio p{
+        width: 300px;
+    }
+    .deff_checkbox label {
+        width: 300px;
+    }
+    .dif_distradio input {
+        margin-left: 0px;
+    }
 }

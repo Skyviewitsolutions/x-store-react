@@ -127,6 +127,8 @@ border-bottom: 1px solid #cccccc;
     width: 350px;
     border: none;
     outline: none;
+    font-size: 15px;
+    color: #CCCCCC;
    border-bottom: 1px solid #cccccc;
 }
 .vendorstextcheckbox{
@@ -157,6 +159,46 @@ border-bottom: 1px solid #cccccc;
 .Adddetails{
     margin-top: 15px;
 }
+.phone_sty{
+    margin-left: 5px;
+}
+
+.react-tel-input {
+    font-family: 'Roboto',sans-serif;
+    font-size: 15px;
+    position: relative;
+    width: 100%;
+    border: none !important;
+    margin-left: 20px;
+}
+.react-tel-input .form-control {
+    position: relative;
+    font-size: 14px;
+    letter-spacing: .01rem;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 48px;
+    margin-left: 2px;
+    background: #FFFFFF;
+    border-radius: 0px;
+    line-height: 25px;
+    height: 35px;
+    width: 350px !important;
+    outline: none;
+    border: none !important;
+    border-bottom:1px solid #CCCCCC !important;
+}
+.react-tel-input .flag-dropdown {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+     background-color: transparent !important;
+    border:none !important;
+    border-radius:0px;
+}
+
+
 @media (min-width: 1400px){
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     max-width: 1450px;

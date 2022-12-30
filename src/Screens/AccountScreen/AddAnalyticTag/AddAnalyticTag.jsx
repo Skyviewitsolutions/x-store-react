@@ -115,13 +115,13 @@ const AddAnalyticTag = () => {
         <p>Analytic Tag</p>
         <input type="text" value={analyTag} onChange={(e) => setAnalyTag(e.target.value)}/>
        </div>
-       <div className="AddAnalyticTagChecbox">
-        <label htmlFor='analyDis'>Analytic Distribution</label>
-        <input type="checkbox" value={analyDis} onChange={() => setAnalyDis(!analyDis)} checked={analyDis} id='analyDis'/>
-       </div>
        <div className="AddAnalyticTagContent">
         <p>Analytic Account</p>
         <input type="text" value={analAcc} onChange={(e) => setAnalAcc(e.target.value)}/>
+       </div>
+       <div className="AddAnalyticTagChecbox">
+        <label htmlFor='analyDis'>Analytic Distribution</label>
+        <input type="checkbox" value={analyDis} onChange={() => setAnalyDis(!analyDis)} checked={analyDis} id='analyDis'/>
        </div>
        <ToastContainer/>
         </div>

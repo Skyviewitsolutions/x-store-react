@@ -191,6 +191,28 @@
   outline: none;
   border-bottom: 1px solid #cccc;
 }
+
+.parent_loc{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.parent_loc p{
+    width: 150px;
+  color: #6a666a;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+.parent_loc select{
+    border: none;
+  border-bottom: 1px solid #cccc;
+  outline: none;
+  margin-left: 15px;
+  width: 500px !important;
+  color: #666666;
+}
 /* .Addlocationcontent input{
   border: none;
   border-bottom: 1px solid #cccc;
@@ -199,5 +221,11 @@
   width: 500px !important;
   color: #666666;
 } */
+
+@media (min-width:768px) and (max-width:1024px) {
+ .Locationdetails1{
+  width: 100%;
+ }
+}
 
 

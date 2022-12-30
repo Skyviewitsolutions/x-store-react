@@ -44,7 +44,7 @@
     width: 500px;
     border: none;
     outline: none;
-   border-bottom: 1p solid #cccccc;
+   border-bottom: 1px solid #cccccc;
     margin-top: 24px;
 }
 .AnalyticContent{
@@ -117,6 +117,21 @@
     .AnalyticContent{
         display: flex;
         flex-direction: column;
+    }
+    .Analyticfirst{
+        width: 100%;
+    }
+    .AnaylticContentSecond {
+        width: 100%;
+    }
+    .AnalyticMulti p{
+        width: 200px;
+    }
+    .Analyticselect p{
+        width: 200px;
+    }
+    .AnalyticInputcontent p{
+        width: 200px;
     }
 
 }

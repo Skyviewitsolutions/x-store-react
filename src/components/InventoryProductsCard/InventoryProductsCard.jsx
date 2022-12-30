@@ -51,7 +51,7 @@ const InventoryProductsCard = (props) => {
     <div className="ProductsContainer" style={{opacity : 0.5}}>
       <div
         className="ProductCon"
-        onClick={() => redirectToProductdetails(data)}
+       
       >
         <div className="ProductsCamera">
           <img src={data.PRODUCT_IMAGE} alt="camera" />
@@ -68,7 +68,7 @@ const InventoryProductsCard = (props) => {
           style={{ color: "#b70000" ,zIndex:10}}
           onMouseOver={() => setIconColor("#293391")}
           onMouseOut={() => setIconColor("#7478a1")}
-          onClick={() => deleteProduct(data)}
+         
         />
       </div>
       <ToastContainer />

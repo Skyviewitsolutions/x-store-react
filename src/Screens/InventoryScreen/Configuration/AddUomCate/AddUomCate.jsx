@@ -29,6 +29,7 @@ const AddUomCate = () => {
         .post(AddUomCateUrl, formData)
         .then((res) => {
           if (res.data.status == true) {
+            
             toast("Uom Category Added Successfully!", { type: "success" });
           } else if (res.data.status == false) {
             if(res.data.code === 3)

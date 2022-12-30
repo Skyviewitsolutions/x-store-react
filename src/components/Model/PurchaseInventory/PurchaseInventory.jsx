@@ -197,7 +197,8 @@ const PurchaseInventory = (props) => {
               <div className="purchase_pr">
                 <p>Quantity</p>
                 <input
-                  type="text"
+                  type="number"
+                  min="1"
                   value={vendorQuantity}
                   onChange={(e) => setVendorQuantity(e.target.value)}
                 />
@@ -205,7 +206,8 @@ const PurchaseInventory = (props) => {
               <div className="purchase_price">
                 <p>Price</p>
                 <input
-                  type="text"
+                  type="number"
+                  min="1"
                   value={vendorPrice}
                   onChange={(e) => setVendorPrice(e.target.value)}
                 />

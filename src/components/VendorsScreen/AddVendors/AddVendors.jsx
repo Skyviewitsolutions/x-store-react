@@ -12,9 +12,11 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import validator from "validator";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const AddVendors = () => {
-  
   const [event, setEvent] = useState("Sales & Purchase");
   const [showCompany, setShowCompany] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -58,8 +60,8 @@ const AddVendors = () => {
   const [accPayable, setAccPayable] = useState("");
   const [vendorImg, setVendorImg] = useState("");
   const [id, setId] = useState("");
-  const [updated , setUpdated] = useState(true);
-  const [edit , setEdit] = useState(false)
+  const [updated, setUpdated] = useState(true);
+  const [edit, setEdit] = useState(false);
 
   const save = () => {
     if (vendorName === "") {
@@ -90,7 +92,10 @@ const AddVendors = () => {
       toast("Mobile is required !", { type: "warning" });
     } else if (email === "") {
       toast("Email is required !", { type: "warning" });
-    } else if (salesPerson === "") {
+    } else if (!validator.isEmail(email)) {
+      toast("InValid Email !", { type: "warning" });
+    }
+     else if (salesPerson === "") {
       toast("Sales Person is required !", { type: "warning" });
     } else if (salesPaymentTerms === "") {
       toast("Sales Payment Terms is requierd !", { type: "warning" });
@@ -199,23 +204,23 @@ const AddVendors = () => {
       setAccReceviable(VendorsDetails.ACCOUNT_RECEIPT);
       setAccPayable(VendorsDetails.ACCOUNT_PAYABLE);
       setVendorImg(VendorsDetails.VENDOR_PROFILE);
-      setFiles(VendorsDetails.VENDOR_PROFILE)
-      setEdit(true)
+      setFiles(VendorsDetails.VENDOR_PROFILE);
+      setEdit(true);
       const url = VendorsDetails.VENDOR_PROFILE;
       const fileName = "myFile.jpg";
-  
+
       fetch(url).then(async (response) => {
         const contentType = response.headers.get("content-type");
         const blob = await response.blob();
         const file = new File([blob], fileName, { contentType });
-        setFiles(file)
+        setFiles(file);
       });
       if (VendorsDetails.ADDRESS_TYPE == 1) {
         setShowCompany(true);
       } else if (VendorsDetails.ADDRESS_TYPE == 0) {
         setShowCompany(false);
       }
-      setUpdated(false)
+      setUpdated(false);
     }
   }, [VendorsDetails]);
 
@@ -248,6 +253,8 @@ const AddVendors = () => {
       toast("Mobile is required !", { type: "warning" });
     } else if (email === "") {
       toast("Email is required !", { type: "warning" });
+    } else if (!validator.isEmail(email)) {
+      toast("Invaild Email !", { type: "warning" });
     } else if (salesPerson === "") {
       toast("Sales Person is required !", { type: "warning" });
     } else if (salesPaymentTerms === "") {
@@ -348,7 +355,12 @@ const AddVendors = () => {
 
   return (
     <div>
-      <Navebar showBelowMenu={true} title="Vendor" save={edit === true ? updateData : save } showCanelBtn={true}/>
+      <Navebar
+        showBelowMenu={true}
+        title="Vendor"
+        save={edit === true ? updateData : save}
+        showCanelBtn={true}
+      />
       <div className="AddVendorsCon">
         <div className="container">
           {/* <div className="VendorsHeader">
@@ -443,7 +455,13 @@ const AddVendors = () => {
               <label htmlFor="takePhoto">
                 <img src={vendorImg ? vendorImg : camera} alt="camera" />
               </label>
-              <input type="file" id="takePhoto" style={{visibility: "hidden"}} accept="image/png, image/gif, image/jpeg" onChange={handleChange} />
+              <input
+                type="file"
+                id="takePhoto"
+                style={{ visibility: "hidden" }}
+                accept="image/png, image/gif, image/jpeg"
+                onChange={handleChange}
+              />
             </div>
           </div>
           <div className="VendorsDetails2">
@@ -492,7 +510,8 @@ const AddVendors = () => {
               <div className="vendorstextinput">
                 <p>Tax Id</p>
                 <input
-                  type="text"
+                  type="number"
+                  min="1"
                   value={taxId}
                   onChange={(e) => setTaxId(e.target.value)}
                 />
@@ -522,24 +541,36 @@ const AddVendors = () => {
               </div>
               <div className="vendorstextinput">
                 <p>Phone</p>
-                <input
-                  type="text"
+                {/* <input
+                  type="number"
                   value={phone}
                   onChange={(e) => SetPhone(e.target.value)}
+                /> */}
+                <PhoneInput
+                  country={"in"}
+                  value={phone}
+                  onChange={(e) => SetPhone(e)}
+                  containerClass="phone_sty"
                 />
               </div>
               <div className="vendorstextinput">
                 <p>Mobile</p>
-                <input
-                  type="text"
+                {/* <input
+                  type="number"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
+                /> */}
+                <PhoneInput
+                  country={"in"}
+                  value={mobile}
+                  onChange={(e) => setMobile(e)}
+                  containerClass="phone_sty"
                 />
               </div>
               <div className="vendorstextinput">
                 <p>Email</p>
                 <input
-                  type="text"
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -547,7 +578,8 @@ const AddVendors = () => {
               <div className="vendorstextinput">
                 <p>Website Link</p>
                 <input
-                  type="text"
+                  type="url"
+                  placeholder="e.g. https://xstore-front.skyviewads.com/"
                   value={webLink}
                   onChange={(e) => setWebLink(e.target.value)}
                 />
@@ -571,19 +603,35 @@ const AddVendors = () => {
           </div>
           <div className="Adddetails">
             <Nav variant="tabs" defaultActiveKey="/home">
-              <Nav.Item className={event === "Sales & Purchase" ? "navLinkActive" : "navLinkDeactive"}>
+              <Nav.Item
+                className={
+                  event === "Sales & Purchase"
+                    ? "navLinkActive"
+                    : "navLinkDeactive"
+                }
+              >
                 <Nav.Link
                   eventKey="link-1"
-                  className={event === "Sales & Purchase" ? "navLinkActive" : "navLinkDeactive"}
+                  className={
+                    event === "Sales & Purchase"
+                      ? "navLinkActive"
+                      : "navLinkDeactive"
+                  }
                   onClick={() => setEvent("Sales & Purchase")}
                 >
                   Sales & Purchase
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item className={event === "Invoicing" ? "navLinkActive" : "navLinkDeactive"}>
+              <Nav.Item
+                className={
+                  event === "Invoicing" ? "navLinkActive" : "navLinkDeactive"
+                }
+              >
                 <Nav.Link
                   eventKey="link-1"
-                  className={event === "Invoicing" ? "navLinkActive" : "navLinkDeactive"}
+                  className={
+                    event === "Invoicing" ? "navLinkActive" : "navLinkDeactive"
+                  }
                   onClick={() => setEvent("Invoicing")}
                 >
                   Invoicing
