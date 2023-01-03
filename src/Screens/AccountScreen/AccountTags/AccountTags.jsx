@@ -7,10 +7,15 @@ import { useNavigate } from "react-router-dom";
 import { toast,ToastContainer } from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import CustomTable from "../../../components/CustomTable/CustomTable";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 import { endpoints } from "../../../services/endpoints";
 import "./AccountTags.css";
 const AccountTags = () => {
   const navigate = useNavigate();
+
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const [accountTag , setAccountTag] = useState([]);
   const AccountTagallUrl = endpoints.AccountTag.allAccountTag;
@@ -67,6 +72,9 @@ const AccountTags = () => {
    .then((res) => {
     if(res.data.status === true)
     {
+      setShow(false)
+      setDeleteConfirm(false)
+      setSelectedData("")
       getAccountTag();
       toast("Account Tag Deleted Successfully!" ,{type:"success"});
     }
@@ -79,6 +87,14 @@ const AccountTags = () => {
     console.log(err,"error");
    })
   }
+
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
+
+  
     const handleUpdate = (data) => {
       const val = accountTag.filter((itm,index) => {
         return itm.ACCOUNT_TAG_ID == data
@@ -101,7 +117,10 @@ const AccountTags = () => {
               <div className="updtdlt">
                 <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
                 <MdDelete size={23} color="4f4e4d"
-                 onClick={() => deleteItem(value)}
+                  onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}
                  style={{cursor:"pointer"}}
                 />
               </div>
@@ -123,6 +142,9 @@ const AccountTags = () => {
         handleCreatePage={handleCreatePage}
       />
       <CustomTable data={accountTag} column={column} />
+      <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer />
     </div>
   );

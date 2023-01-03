@@ -19,7 +19,7 @@ const AddWarehouse = (props) => {
   const [isEdit, setIsEdit] = useState(false);
 
   const AddWarehouseUrl = endpoints.wareHouse.addWarehouse;
-  const AllLoactionUrl = endpoints.location.allLocation;
+  const AllWorkAddrUrl = endpoints.workAddress.allWorkAddres;
   const navigate = useNavigate();
   const [locationall, setLocationall] = useState([]);
   const [warehouseName, setWarehousename] = useState("");
@@ -89,12 +89,16 @@ const AddWarehouse = (props) => {
     formData.append("User_Authorization" , getAuthtoken)
     formData.append("User_AuthKey" , userAuth);
     axios
-      .post(AllLoactionUrl , formData)
+      .post(AllWorkAddrUrl , formData)
       .then((res) => {
-        console.log(res, "locationresult");
+        console.log(res, "address");
         if (res.data.status === true) {
-          
-          setLocationall(res.data.data);
+        
+          const val = res.data.data;
+          const filterAddr = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+          setLocationall(filterAddr);
         } else if (res.data.status === false) {
           toast(res.data.message);
         }
@@ -224,8 +228,8 @@ const AddWarehouse = (props) => {
                 {locationall.map((item, index) => {
                   return (
                     <>
-                      <option value={item.LOCATION_NAME}>
-                        {item.LOCATION_NAME}
+                      <option value={item.WORK_NAME}>
+                        {item.WORK_NAME}
                       </option>
                     </>
                   );
@@ -239,13 +243,13 @@ const AddWarehouse = (props) => {
           </div>
         </div>
         </div>
-        <div className="detailsbtn">
+        <div className="details_btns">
           <Nav variant="tabs" defaultActiveKey="/home">
             <Nav.Item
               className={events === "WarehouseConfig" ? "navLinkActive" : "navLinkDeactive"}
               onClick={() => setEvents("WarehouseConfig")}
             >
-              <Nav.Link href="">Warehouse Configuration</Nav.Link>
+              <Nav.Link>Warehouse Configuration</Nav.Link>
             </Nav.Item>
           </Nav>
         </div>

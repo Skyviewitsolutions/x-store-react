@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast,ToastContainer} from 'react-toastify'
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import CustomTable from '../../../components/CustomTable/CustomTable'
+import DeletePopup from '../../../components/Model/DeletePopup/DeletePopup'
 import { endpoints } from '../../../services/endpoints'
 
 const AssetUseStatus = () => {
@@ -13,6 +14,10 @@ const AssetUseStatus = () => {
     const  handleCreatePage = () => {
         navigate('/AddAssetUseStatus');
     }
+
+    const [show , setShow] = useState(false)
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
+    const [selectedData, setSelectedData] = useState("");
    
     const [assetUseStatus , setAssetUseStatus] = useState([]);
     const getAuthtoken = localStorage.getItem("authtoken");
@@ -64,6 +69,9 @@ const AssetUseStatus = () => {
             console.log(res,"response Acc")
             if(res.data.status === true)
             {
+                setShow(false)
+                setDeleteConfirm(false)
+                setSelectedData("")
                 getAssetType();
                 toast("Asset Use Status deleted Successfully!",{type:"success"})
             }
@@ -82,6 +90,12 @@ const AssetUseStatus = () => {
     useEffect(() => {
         getAssetType();
     },[])
+
+    useEffect(() => {
+        if (deleteConfirm) {
+          deleteItem(selectedData);
+        }
+      }, [deleteConfirm]);
 
     const handleUpdate = (data) => {
         console.log(data ,"value")
@@ -104,7 +118,10 @@ const AssetUseStatus = () => {
                     return(
                         <>
                         <FiEdit size={23} color="#4f434d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
-                        <MdDelete size={23} color="#4f434d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
+                        <MdDelete size={23} color="#4f434d" onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}  style={{cursor:"pointer"}}/>
                         </>
                     )
                 }
@@ -115,6 +132,9 @@ const AssetUseStatus = () => {
     <div>
         <AccountNavbar showBelowMenu={true}  handleCreatePage={handleCreatePage} title="Asset Use Status"/> 
         <CustomTable data={assetUseStatus} column={column} />
+        <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
         <ToastContainer/>
     </div>
   )

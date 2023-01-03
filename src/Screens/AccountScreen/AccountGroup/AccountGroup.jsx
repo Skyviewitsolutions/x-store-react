@@ -7,11 +7,16 @@ import {useNavigate } from 'react-router-dom'
 import { toast,ToastContainer } from 'react-toastify'
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import CustomTable from '../../../components/CustomTable/CustomTable'
+import DeletePopup from '../../../components/Model/DeletePopup/DeletePopup'
 import { endpoints } from '../../../services/endpoints'
 
 const AccountGroup = () => {
 
     const navigate = useNavigate();
+
+    const [show , setShow] = useState(false)
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
+    const [selectedData, setSelectedData] = useState("");
     const [accGrp , setAccGrp] = useState([]);
     const getAuthtoken = localStorage.getItem("authtoken");
     const userAuth = localStorage.getItem("userAuth");
@@ -64,6 +69,9 @@ const AccountGroup = () => {
         .then((res) => {
             if(res.data.status === true)
             {
+                setShow(false)
+                setDeleteConfirm(false)
+                setSelectedData("")
                 getAccGrp();
                 toast("Account Group deleted Successfully",{type:"success"});
             }
@@ -83,6 +91,12 @@ const AccountGroup = () => {
             console.log(err,"error");
         })
     }
+
+    useEffect(() => {
+        if (deleteConfirm) {
+          deleteItem(selectedData);
+        }
+      }, [deleteConfirm]);
 
     const handleUpdate = (data) => {
         console.log(data ,"value")
@@ -107,7 +121,10 @@ const AccountGroup = () => {
                     <>
                      <div className="updtdlt">
                         <FiEdit size={23} color="#4f434d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
-                        <MdDelete size={23} color="#4f434d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
+                        <MdDelete size={23} color="#4f434d"  onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}  style={{cursor:"pointer"}}/>
                     </div>
                     </>
                  )
@@ -123,6 +140,9 @@ const AccountGroup = () => {
     <>
     <AccountNavbar showBelowMenu={true}  handleCreatePage={handleCreatePage}  title="Account Group"/>
     <CustomTable data={accGrp} column={column}/>
+    <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
     <ToastContainer/>
     </>
   )

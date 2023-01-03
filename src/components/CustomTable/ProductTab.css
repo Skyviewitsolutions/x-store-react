@@ -35,6 +35,14 @@ p#\:rj\: {
     margin-bottom: 0px !important;
 }
 
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.tss-8ai1ls-MUIDataTableToolbarSelect-deleteIcon.css-i4bv87-MuiSvgIcon-root {
+    display: none !important;
+}
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.tss-1dqj55d-MUIDataTableToolbarSelect-root.css-1ps6pg7-MuiPaper-root {
+    display: none !important;
+}
+
+
 @media (max-width: 899.95px)
 {
 .tss-1y3wvy9-MUIDataTableBodyCell-stackedParent {

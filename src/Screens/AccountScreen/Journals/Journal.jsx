@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast,ToastContainer } from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import CustomTable from "../../../components/CustomTable/CustomTable";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 import Navebar from "../../../components/Navbar/Navbar";
 import { endpoints } from "../../../services/endpoints";
 import "./Journals.css";
@@ -15,6 +16,11 @@ const Journal = () => {
   const handleCreatePage = () => {
     navigate("/AddJournal");
   };
+
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
+
 const [journal , setJournal] = useState([]);
 const getAuthtoken = localStorage.getItem("authtoken");
 const userAuth = localStorage.getItem("userAuth");
@@ -60,6 +66,9 @@ axios.post(deleteJournalUrl,formData)
 .then((res) => {
     if(res.data.status === true)
     {
+      setShow(false)
+      setDeleteConfirm(false)
+        setSelectedData("")
         getAllJournal();
         toast("Journals Is Deleted Successfully!",{type:"success"})
     }
@@ -72,6 +81,11 @@ axios.post(deleteJournalUrl,formData)
     console.log(err,"error");
 })
 }
+useEffect(() => {
+  if (deleteConfirm) {
+    deleteItem(selectedData);
+  }
+}, [deleteConfirm]);
 const handleUpdate = (data) =>{
   console.log(data ,"value")
     const val = journal.filter((itm,index) => {
@@ -94,7 +108,10 @@ const handleUpdate = (data) =>{
                     <>
                     <div className="updtdlt">
                         <FiEdit size={23} color="#4f434d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
-                        <MdDelete size={23} color="#4f434d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
+                        <MdDelete size={23} color="#4f434d" onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}  style={{cursor:"pointer"}}/>
                     </div>
                     </>
                 )
@@ -109,6 +126,9 @@ const handleUpdate = (data) =>{
         handleCreatePage={handleCreatePage}
         title="Journal"
       />
+       <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <CustomTable data={journal} column={column} />
       <ToastContainer/>
     </div>

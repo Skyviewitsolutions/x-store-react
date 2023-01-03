@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./Screens/Authentication/Login/Login";
 import SignUp from "./Screens/Authentication/SignUp/SignUp";
@@ -140,10 +140,21 @@ import Testing from "./Screens/SalesScreen/Testing";
 import WorkAddress from "./Screens/EmplyoeeScreen/AddEmployee/WorkAddress/WorkAddress";
 import AllCoupon from "./Screens/SalesScreen/CouponPrograms/AllCoupon";
 import DeletePopup from "./components/Model/DeletePopup/DeletePopup";
+import {GetAllData} from "./Helper/ApiHelper";
+import $ from "jquery";
 
 
 const App = () => {
  
+  // const AllData = await GetAllData()
+
+  // console.log(AllData,"all data here")
+
+  // useEffect(() => {
+  //   $('input:required').each(function(){
+  //     $(this).prevAll('label').first().append('<span style="color:red">*</span>');
+  // });
+  // },[])
 
   return(<>
     <Router>

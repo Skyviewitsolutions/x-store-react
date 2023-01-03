@@ -127,8 +127,8 @@ border-bottom: 1px solid #cccccc;
     width: 350px;
     border: none;
     outline: none;
-    font-size: 15px;
-    color: #CCCCCC;
+    /* font-size: 15px;
+    color: #CCCCCC; */
    border-bottom: 1px solid #cccccc;
 }
 .vendorstextcheckbox{
@@ -212,9 +212,9 @@ border-bottom: 1px solid #cccccc;
     .VendorsDetails2{
         flex-direction: column;
     }
-    .cameraimg img {
+    /* .cameraimg img {
         margin-left: 40%;
-    }
+    } */
     .vendorsbox1 {
         width: 100%;
     }

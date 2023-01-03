@@ -115,8 +115,8 @@
     font-size: 15px;
     color: white !important;
 }
-.nav-link:hover{
-    color: #000 !important;
+.nav-link:active{
+    color: #fff !important;
 }
 .navLinkDeactive a.nav-link{
     color:#6f6f6f;
@@ -139,7 +139,9 @@
     outline: none;
     border-bottom: 3px solid #6666;
 }
-
+.nav-tabs .nav-link{
+    border: none !important;
+}
 input[type="checkbox"][readonly] {
     pointer-events: none;
   }

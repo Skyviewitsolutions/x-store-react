@@ -15,6 +15,9 @@ const AnalyticTag = () => {
     const getAuthtoken = localStorage.getItem("authtoken");
     const userAuth = localStorage.getItem("userAuth"); 
    
+      const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
     const [analyTag , setAnalyTag] = useState([]);
     const analyTagUrl = endpoints.AnalyticTag.allAnnTag;
     
@@ -27,7 +30,11 @@ const AnalyticTag = () => {
             if(res.data.status === true){
                 var val = res.data.data;
                 val = val.reverse()
-                setAnalyTag(val);
+                const filterAcc = val.filter((itm,ind) =>{
+                    return itm.DELETE_STATUS != "X"
+                  })
+            
+                setAnalyTag(filterAcc);
             }
             else if(res.data.status === false)
             {
@@ -60,12 +67,22 @@ const AnalyticTag = () => {
         .then((res) => {
             if(res.data.status === true)
             {
+                setShow(false)
+                setDeleteConfirm(false)
+                setSelectedData("")
                 getAnalyTag();
                 toast("Analytic Tag deleted Successfully",{type:"success"});
             }
             else if(res.data.status === false)
             {
-                toast(res.data.message,{type:"error"});
+                if(res.data.code === 3)
+                {
+                  toast("Session expired , Please re-login",{type:"warning"})
+                  navigate('/');
+                }
+                else{
+                 toast(res.data.message,{type:"error"});
+                }
             }
         })
         .catch((err) => {

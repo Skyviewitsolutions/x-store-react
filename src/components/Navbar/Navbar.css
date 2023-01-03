@@ -83,6 +83,9 @@
 .createbtn:hover{
     background-color:#036463;
 }
+.savebtn:hover{
+    background-color:#036463;
+}
 .logout{
     position:absolute;
     right: 20px;
@@ -90,6 +93,7 @@
     display: flex;
     align-items: center;
     margin-top: 5px;
+    cursor: pointer;
 }
 .logout p{
     font-size: 15px;

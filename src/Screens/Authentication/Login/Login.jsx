@@ -95,7 +95,7 @@ const Login = () => {
           <label>Email</label><br/>
           <input type="email" required="Please Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
          
-          <span style={{color:"red"}}>{emailError}</span>
+          <span style={{color:"red",marginLeft:"3px"}}>{emailError}</span>
         </div>
         <div className="Loginform">
           <label>Password</label><br/>

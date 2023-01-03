@@ -31,7 +31,7 @@ const PurchaseEdit = (props) => {
   const [vendorProductCode, setVendorProductCode] = useState("");
   const [vendorLeadTime, setVendorLeadTime] = useState("");
   const [vendorQuantity, setVendorQuantity] = useState("");
-  const [vendorPrice, setVendorPrice] = useState("");
+  const [vendorPrice, setVendorPrice] = useState(0);
   const [vendorCurrency, setVendorCurrency] = useState("");
   const [vendorDate1, setVendorDate1] = useState("");
   const [vendorDate2, setVendorDate2] = useState("");
@@ -230,14 +230,32 @@ console.log("getAll")
   });
  }
 
- console.log(allVendorList,"all here now")
-
 
   const column = [
     { label :'Name', name:'VENDOR_PNAME'},
     { label :'currency', name:'VAL_CURRENCY'},
     { label :'Quantity', name:'VQTY'},
-    { label :'Price', name:'VPRICE'},
+    { label :'Price', name:'VPRICE',
+    options: {
+      customBodyRender: (value, tableMeta, updateValue) => {
+        var price ;
+        if(typeof(value) == "string"){
+          price = parseFloat(value).toFixed(2);
+        }
+        else {
+          price = value.toFixed(2)
+        }
+        console.log(value , "value")
+        return (
+          <>
+            <div className="updtdlt">
+            <span>{price} </span>
+            </div>
+          </>
+        );
+      },
+    }, 
+  },
     { label: "Action",
        name: "ID",
     options: {
@@ -269,7 +287,27 @@ console.log("getAll")
 
     { label :'Name', name:'VENDOR_NAME'},
     { label :'currency', name:'VENDOR_CURRENCY'},
-    { label :'Price', name:'VENDOR_PRICE'},
+    { label :'Price', name:'VENDOR_PRICE' ,
+    options: {
+      customBodyRender: (value, tableMeta, updateValue) => {
+        var price ;
+        if(typeof(value) == "string"){
+          price = parseFloat(value).toFixed(2);
+        }
+        else {
+          price = value.toFixed(2)
+        }
+        console.log(value , "value")
+        return (
+          <>
+            <div className="updtdlt">
+            <span>{price} </span>
+            </div>
+          </>
+        );
+      },
+    }, 
+  },
     { label: "Action",
     name: "ID",
     options: {

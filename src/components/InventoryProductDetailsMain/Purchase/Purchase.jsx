@@ -55,7 +55,24 @@ const Purchase = (props) => {
   const column2 = [
     { label :'Name', name:'VENDOR_NAME'},
     { label :'currency', name:'VENDOR_CURRENCY'},
-    { label :'Price', name:'VENDOR_PRICE'},
+    { label :'Price', name:'VENDOR_PRICE', options: {
+      customBodyRender: (value, tableMeta, updateValue) => {
+        var price ;
+        if(typeof(value) == "string"){
+          price = parseFloat(value).toFixed(2);
+        }
+        else {
+          price = value.toFixed(2)
+        }
+        console.log(value , "value")
+        return (
+          <>
+            <div className="updtdlt">
+            <span>{price} </span>
+            </div>
+          </>
+        );
+      }}}
     
   ]
 

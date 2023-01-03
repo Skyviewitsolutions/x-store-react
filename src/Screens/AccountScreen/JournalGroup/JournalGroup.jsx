@@ -6,9 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { toast,ToastContainer} from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import CustomTable from "../../../components/CustomTable/CustomTable";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 import { endpoints } from "../../../services/endpoints";
 const JournalGroup = () => {
   const navigate = useNavigate();
+
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
   const [JournalGroup, setJournalGroup] = useState([]);
 
   const allJournalUrl = endpoints.JournalGroup.allJournalGroup;
@@ -59,6 +64,9 @@ const JournalGroup = () => {
     .then((res) => {
       if(res.data.status === true)
       {
+        setShow(false)
+        setDeleteConfirm(false)
+        setSelectedData("")
         getJournal();
         toast("Journal Group Deleted Successfully!" ,{type:"success"});
       }
@@ -79,6 +87,12 @@ const JournalGroup = () => {
     })
   }
 
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
+
   const handleUpdate = (data) => {
    const val = JournalGroup.filter((itm,index) => {
     return itm.JOURNAL_GROUP_ID == data
@@ -98,7 +112,10 @@ const JournalGroup = () => {
           return (
             <>
               <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
-              <MdDelete size={23} color="4f4e4d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
+              <MdDelete size={23} color="4f4e4d" onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}  style={{cursor:"pointer"}}/>
             </>
           );
         },
@@ -117,6 +134,9 @@ const JournalGroup = () => {
         title="Journal Group"
       />
       <CustomTable column={column} data={JournalGroup} />
+      <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer/>
     </div>
   );

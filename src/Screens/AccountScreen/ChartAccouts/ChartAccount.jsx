@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import CustomTable from "../../../components/CustomTable/CustomTable";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 import Navebar from "../../../components/Navbar/Navbar";
 import { endpoints } from "../../../services/endpoints";
 import "./ChartAccount.css";
@@ -16,6 +17,11 @@ function ChartAccount(props) {
   const handleCreatePage = () => {
     navigate("/AddChartAccount");
   };
+
+  
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
@@ -68,6 +74,9 @@ function ChartAccount(props) {
       .post(deleteChartAccURL, formData)
       .then((res) => {
         if (res.data.status === true) {
+          setShow(false)
+          setDeleteConfirm(false)
+          setSelectedData("")
           getChartAcc();
           toast("Chart Of Account Is Deleted Successfully!", {
             type: "success",
@@ -85,6 +94,12 @@ function ChartAccount(props) {
         console.log(err, "error");
       });
   };
+
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
 
   const handleUpdate = (data) => {
     console.log(data, "value");
@@ -117,7 +132,10 @@ function ChartAccount(props) {
               <MdDelete
                 size={23}
                 color="#4f434d"
-                onClick={() => deleteItem(value)}
+                onClick={() => {
+                  setShow(true);
+                  setSelectedData(value)
+                }}
                 style={{ cursor: "pointer" }}
               />
             </>
@@ -134,6 +152,9 @@ function ChartAccount(props) {
         title="Chart of Account"
       />
       <CustomTable data={chartAcc} column={column} />
+      <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer />
     </div>
   );

@@ -92,8 +92,8 @@ const Navebar = (props) => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-          <div className="logout">
-              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}} onClick={() => navigate('/')}/>
+          <div className="logout"  onClick={() => navigate('/')}>
+              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}}/>
               <p>Logout</p>
             </div>
         </Navbar>

@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { FiEdit } from 'react-icons/fi'
 import { MdDelete } from 'react-icons/md'
 import { toast,ToastContainer} from 'react-toastify';
+import DeletePopup from '../../../components/Model/DeletePopup/DeletePopup'
 
 const BankAcc = (props) => {
 
@@ -17,6 +18,10 @@ const BankAcc = (props) => {
     const handleCreatePage = () => {
         navigate('/AddBankAcc')
     }
+
+    const [show , setShow] = useState(false)
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
+    const [selectedData, setSelectedData] = useState("");
     const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
     const [bankAcc , setBankAcc] = useState([]);
@@ -63,6 +68,9 @@ const BankAcc = (props) => {
     .then((res) => {
         if(res.data.status === true)
         {
+            setShow(false)
+            setDeleteConfirm(false)
+            setSelectedData("")
             getAllBank();
             toast("Bank Account Is Deleted Successfully!",{type:"success"})
         }
@@ -75,6 +83,13 @@ const BankAcc = (props) => {
         console.log(err,"error");
     })
     }
+
+    useEffect(() => {
+        if (deleteConfirm) {
+          deleteItem(selectedData);
+        }
+      }, [deleteConfirm]);
+    
 
     const handleUpdate = (data) => {
     const val = bankAcc.filter((itm,index) => {
@@ -98,7 +113,10 @@ const BankAcc = (props) => {
                         <>
                         <div className="updtdlt">
                         <FiEdit size={23} color="#4f434d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
-                        <MdDelete size={23} color="#4f434d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
+                        <MdDelete size={23} color="#4f434d" onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }} style={{cursor:"pointer"}}/>
                     </div>
                         </>
                     )
@@ -110,6 +128,9 @@ const BankAcc = (props) => {
     <>
      <AccountNavbar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Bank Account"/>
     <CustomTable  data={bankAcc} column={column}/>
+    <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
     <ToastContainer/>
     </>
   )

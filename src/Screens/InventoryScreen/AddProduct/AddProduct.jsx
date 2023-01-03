@@ -142,6 +142,9 @@ const AddProduct = () => {
         .then((res) => {
           if (res.data.status === true) {
             toast("Product Added Successfully", { type: "success" });
+            setTimeout(() => {
+              navigate('/InventoryProducts')
+            }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });

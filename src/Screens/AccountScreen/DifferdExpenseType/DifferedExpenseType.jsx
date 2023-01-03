@@ -84,7 +84,7 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
     const handleUpdate = (data) => {
       console.log(data ,"value")
       const val = defExType.filter((itm,index) => {
-        return itm.ASSET_TYPE_ID == data
+        return itm.ID == data
       })
       const orgValue = val[0];
       console.log(orgValue,"irhhcbsdh")
@@ -98,7 +98,7 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
         {label:"Computation Method" , name:"COMPUTATION_METHOD"},
         {
           label:"Action",
-          name:"ASSET_TYPE_ID",
+          name:"ID",
           options:{
               customBodyRender:(value,tableMeta,updateValue) => {
                   return(

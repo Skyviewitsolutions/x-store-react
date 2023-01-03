@@ -6,11 +6,18 @@ import { useNavigate } from "react-router-dom";
 import { toast,ToastContainer} from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import CustomTable from "../../../components/CustomTable/CustomTable";
+import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 import { endpoints } from "../../../services/endpoints";
 import Currencies from "../Currencies/Currencies";
 import "./Incometerms.css";
 const Incometerms = () => {
+
+
   const navigate = useNavigate();
+
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const [incoTerms, setIncomeTerms] = useState([]);
   const IncoTermsUrl = endpoints.IncomeTerms.allIncomeTerms;
@@ -66,6 +73,10 @@ const Incometerms = () => {
       if(res.data.status === true)
       {
         toast("Income Terms IS deleted Succesfully!",{type:"success"})
+        setShow(false)
+        setDeleteConfirm(false)
+        setSelectedData("")
+        getIncometerms()
       }
       else if(res.data.status === false)
       {
@@ -76,6 +87,12 @@ const Incometerms = () => {
       console.log(err,"error");
     })
   }
+
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
 
   const handleUpdate = (data) => {
   const val = incoTerms.filter((itm,index) => {
@@ -106,7 +123,10 @@ const Incometerms = () => {
                 <MdDelete
                   size={23}
                   color="4f4e4d"
-                  onClick={() => deleteItem(value)}
+                  onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}
                   style={{cursor:"pointer"}}
                 />
               </div>
@@ -129,6 +149,9 @@ const Incometerms = () => {
         
       />
       <CustomTable data={incoTerms} column={column} />
+      <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer/>
     </>
   );
