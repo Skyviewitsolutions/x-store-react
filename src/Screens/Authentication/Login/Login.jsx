@@ -62,8 +62,11 @@ const Login = () => {
       {
         const authtoken = res.data.User_Authorization;
         const userAuth = res.data.User_AuthKey;
+        const loginTime = res.data.data[0].LoginTime;
         localStorage.setItem("authtoken",authtoken);
         localStorage.setItem("userAuth" , userAuth);
+        localStorage.setItem("UserEmail" ,email)
+        localStorage.setItem("loginTime",loginTime)
         setIsLoading(false);
         navigate('/Dashboard');
       }

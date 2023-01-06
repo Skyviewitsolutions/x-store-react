@@ -9,6 +9,7 @@ import { endpoints } from '../../../../services/endpoints'
 import PurchaseNavbar from '../../PurchaseNavbar'
 import AddProductRequest from '../../RequestsforQuotation/AddRequestQuotation/AddProductRequest'
 import PurchaseAgreeProduct from './PurchaseAgreeProduct'
+import './AddPurchaseAgreement.css'
 
 const AddPurchaseAgreement = () => {
     
@@ -362,9 +363,10 @@ const column = [
   return (
     <div>
         <PurchaseNavbar
-        showBelowMenu={true}
-        title="Purchase Agreements"
-        save={update === true ? updateData : save}
+    showBelowMenu={true}
+    title="Purchase Agreements"
+    save={update === true ? updateData : save} 
+    showCanelBtn={true}
       />
       <div className="addRequestQuoContainer">
         <div className="addRequestCon">

@@ -1,13 +1,15 @@
 import { fabClasses } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import { endpoints } from "../../../services/endpoints";
 import "./AddBankAcc.css";
 
 const AddBankAcc = () => {
+
+  const navigate = useNavigate()
   const [bankName, setBankName] = useState("");
   const [bankAcc, setBankAcc] = useState("");
   const [bank, setBank] = useState("");
@@ -61,6 +63,9 @@ const AddBankAcc = () => {
         .then((res) => {
           if (res.data.status == true) {
             toast("Bank Added Sucessfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/BankAcc')
+            }, 1000);
           } else if (res.data.status === false) {
             toast(res.data.message, { type: "error" });
           }
@@ -82,7 +87,12 @@ const AddBankAcc = () => {
       .post(CurrencyUrl,formData)
       .then((res) => {
         if (res.data.status === true) {
-          setCurr(res.data.data);
+
+          const val = res.data.data;
+          const filterBankAcc = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+          setCurr(filterBankAcc);
         } else if (res.data.status === false) {
           alert(res.data.message);
         }
@@ -151,7 +161,10 @@ const AddBankAcc = () => {
     .then((res) => {
       console.log(res,"ressss")
       if (res.data.status == true) {
-        toast("Bank Updated Sucessfully!", { type: "Success" });
+        toast("Bank Updated Sucessfully!", { type: "success" });
+        setTimeout(() => {
+          navigate('/BankAcc')
+        }, 1000);
       } else if (res.data.status === false) {
         toast(res.data.message, { type: "error" });
       }
@@ -261,7 +274,7 @@ const AddBankAcc = () => {
                 type="checkbox"
                 value={outgoingPay}
                 onChange={() => setOutgoingPay(!outgoingPay)}
-                checked={outgoingPay}
+                checked={outgoingPay == true}
               />
               <span>Manual</span>
             </div>

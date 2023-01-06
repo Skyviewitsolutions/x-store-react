@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { toast,ToastContainer} from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import { endpoints } from '../../../services/endpoints';
 import './AddAnalyticTag.css'
 const AddAnalyticTag = () => {
 
+  const navigate = useNavigate()
   const [ analyTag , setAnalyTag] = useState("");
   const [analyDis , setAnalyDis] = useState(false);
   const [analAcc , setAnalAcc] = useState("");
@@ -40,10 +41,20 @@ const AddAnalyticTag = () => {
         if(res.data.status === true)
         {
           toast("Analytic Tag Added Successfully",{type:"success"});
+          setTimeout(() => {
+            navigate('/AnalyticTag')
+           }, 1000);
         }
         else if(res.data.status === false)
         {
-          toast(res.data.message,{type:"error"});
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) =>{
@@ -83,7 +94,7 @@ const AddAnalyticTag = () => {
     }
     else{
       const formData = new FormData()
-      formData.append("ID",selectedData.ANALYTIC_TAG_ID);
+      formData.append("ID",selectedData.ID);
       formData.append("Analytic_Tag",analyTag);
       formData.append("Analytic_Distribution",analyDis);
       formData.append("Analytic_Account",analAcc);
@@ -94,10 +105,20 @@ const AddAnalyticTag = () => {
         if(res.data.status === true)
         {
           toast("Analytic Tag Updated Successfully",{type:"success"});
+           setTimeout(() => {
+            navigate('/AnalyticTag')
+           }, 1000);
         }
         else if(res.data.status === false)
         {
-          toast(res.data.message,{type:"error"});
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) =>{

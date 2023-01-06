@@ -5,9 +5,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { endpoints } from "../../../services/endpoints";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const UnitPage = () => {
+
+  const navigate = useNavigate()
   
   const AddUOMUrl = endpoints.UOM.addUOM;
   const UomCateURL = endpoints.products.productUnitAll;
@@ -44,6 +46,9 @@ const UnitPage = () => {
           console.log(res, "UOMResponse");
           if (res.data.status == true) {
             toast("UOM Added Successfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/Uom')
+            }, 1000);
           } else if (res.data.status == false) {
             toast(res.data.message, { type: "error" });
           }
@@ -117,6 +122,9 @@ const UnitPage = () => {
           console.log(res, "response");
           if (res.data.status == true) {
             toast("UOM Updated Successfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/Uom')
+            }, 1000);
           } else if (res.data.status == false) {
             toast(res.data.message, { type: "error" });
           }

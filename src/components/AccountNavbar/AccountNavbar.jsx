@@ -5,11 +5,37 @@ import { FaSearchMinus } from "react-icons/fa";
 import "./AccountNavbar.css";
 import { useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
+import { endpoints } from "../../services/endpoints";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const AccountNavbar = (props) => {
   const { showBelowMenu, handleCreatePage,save , title,disabledCreate, showCanelBtn,} = props;
   const navigate = useNavigate();
+  const logotUrl = endpoints.authentication.logout;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+  const userEmails = localStorage.getItem("UserEmail");
+  const userLoginTime = localStorage.getItem("loginTime");
+  const logout = () => {
 
+    const formData = new FormData()
+    formData.append("email",userEmails);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("LoginTime", userLoginTime);
+    axios.post(logotUrl,formData)
+    .then((res) => {
+   if(res.data.status === true){
+    toast(res.data.message,{type:"success"})
+    setTimeout(() => {
+      navigate('/')
+    }, 1000);
+   }
+    })
+    .catch((err) => {
+      console.log(err,"eror")
+    })
+  }
   return (
     <>
       <div className="container-fluid AccnavCont">
@@ -69,9 +95,6 @@ const AccountNavbar = (props) => {
               </Nav.Link> */}
               <NavDropdown title="Settings" id="collasible-nav-dropdown" >
                 <div className="Configcls">
-                <NavDropdown.Item  href="">
-                 Setting
-                </NavDropdown.Item>
                 <NavDropdown.Item  onClick={ () => navigate('/PaymentTerms')}>Payment Terms</NavDropdown.Item>
                 <NavDropdown.Item  onClick = {()=> navigate('/TaxName')}>Taxes</NavDropdown.Item>
                 {/* <NavDropdown.Item  onClick={()=> navigate('/Fisical')}>
@@ -131,8 +154,8 @@ const AccountNavbar = (props) => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-          <div className="logout">
-              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}} onClick={() => navigate('/')}/>
+          <div className="logout"  onClick={logout}>
+              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}}/>
               <p>Logout</p>
             </div>
         </Navbar>
@@ -144,6 +167,7 @@ const AccountNavbar = (props) => {
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
               {title ? title : "Inventory"}
               </h5>
+            
               {showCanelBtn === true ? (
                 <button
                   className="createbtn"
@@ -160,8 +184,9 @@ const AccountNavbar = (props) => {
                 >
                   create
                 </button>
+               
               )}
-              <button className="savebtn" onClick={save}>Save</button>
+             {showCanelBtn === true && <button className="savebtn" onClick={save}>Save</button> }
             </div>
             {/* <div
               className="col-sm-6 d-flex justify-content-center"
@@ -173,6 +198,7 @@ const AccountNavbar = (props) => {
               </div>
             </div> */}
           </div>
+          <ToastContainer />
         </div>
       )}
     </>

@@ -51,12 +51,10 @@ const AddWarehouse = (props) => {
       toast("ShortName is required !", { type: "warning" });
     } else if (address === "") {
       toast("Adress is required !", { type: "warning" });
-    } else if (buy === "") {
-      toast("Buy to resupply is required !", { type: "warning" });
-    } else if (resupply === "") {
-      toast("Resupply Subcontractors is required !", {type: "warning"});
-    } else if (menufactureResupply === "") {
-      toast("Manufacture to Resupply is required !", {type: "warning"});
+    } else if (buy == false && resupply == false && menufactureResupply == false) {
+      toast("please select any resupply !", { type: "warning" });
+    } else if (manufacture === "") {
+      toast("manufacture is required !", { type: "warning" });
     } else {
       axios
         .post(AddWarehouseUrl, formData,)
@@ -64,6 +62,9 @@ const AddWarehouse = (props) => {
           console.log(res,"response warehouse")
           if (res.data.status == true) {
             toast("Warehouse Added Sucessfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/Warehouse')
+            }, 1000);
           } else if (res.data.status === false) {
             if(res.data.code === 3)
             {
@@ -157,7 +158,10 @@ const AddWarehouse = (props) => {
         .post(updateUrl, formData)
         .then((res) => {
           if (res.data.status == true) {       
-            toast("Warehouse Updated Sucessfully!", { type: "Success" });
+            toast("Warehouse Updated Sucessfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/Warehouse')
+            }, 1000);
           } else if (res.data.status === false) {
             if(res.data.code === 3)
             {

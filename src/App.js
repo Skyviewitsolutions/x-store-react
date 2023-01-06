@@ -142,6 +142,7 @@ import AllCoupon from "./Screens/SalesScreen/CouponPrograms/AllCoupon";
 import DeletePopup from "./components/Model/DeletePopup/DeletePopup";
 import {GetAllData} from "./Helper/ApiHelper";
 import $ from "jquery";
+import AddAccVendor from "./Screens/AccountScreen/AccountVendor/AddAccVendor";
 
 
 const App = () => {
@@ -207,7 +208,7 @@ const App = () => {
        <Route path='/AccountNavbar' element={<AccountNavbar/>}/>
        <Route path='/AccountVendor' element={<AccountVendor/>} />
        <Route path='/AccountProduct' element={<AccountProduct/>} />
-       <Route path='PaymentTerms' element={<PaymentTerms/>}/>
+       <Route path='/PaymentTerms' element={<PaymentTerms/>}/>
        <Route path='AddPayment' element={<AddPayment/>} />
        <Route path='/ChartAccount' element={<ChartAccount/>} />
        <Route path='/AddChartAccount' element={<AddChartAccount/>} />
@@ -249,6 +250,7 @@ const App = () => {
       <Route path='/AddAnalyticAccountGroup' element={<AddAnalyticAccountGroup/>} />
       <Route path='/AnalyticAccountType' element={<AnalyticAccountType/>} />
       <Route path='/AddAnalyticAccountType' element={<AddAnalyticAccountType/>} />
+      <Route path='/AddAccVendor' element={<AddAccVendor/>} />
 
       {/* -------------------------Vendors---------------------------------- */}
       

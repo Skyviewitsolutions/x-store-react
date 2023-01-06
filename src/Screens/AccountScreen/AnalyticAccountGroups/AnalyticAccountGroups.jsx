@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast,ToastContainer} from 'react-toastify'
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import CustomTable from '../../../components/CustomTable/CustomTable'
+import DeletePopup from '../../../components/Model/DeletePopup/DeletePopup'
 import { endpoints } from '../../../services/endpoints'
 
 const AnalyticAccountGroups = () => {
@@ -17,6 +18,10 @@ const AnalyticAccountGroups = () => {
     
     const getAuthtoken = localStorage.getItem("authtoken");
     const userAuth = localStorage.getItem("userAuth");  
+
+    const [show , setShow] = useState(false)
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
+    const [selectedData, setSelectedData] = useState("");
 
     const AnalyAccGrpUrl = endpoints.AnalyticAccGrp.allAnnAccGrp;
     const getAnalyticAccGrp = () => {
@@ -67,6 +72,9 @@ const AnalyticAccountGroups = () => {
         .then((res) => {
             if(res.data.status === true)
             {
+                setShow(false)
+                setDeleteConfirm(false)
+                setSelectedData("")
                 getAnalyticAccGrp();
                 toast("Analytic Account Group deleted Successfully",{type:"success"});
             }
@@ -86,6 +94,12 @@ const AnalyticAccountGroups = () => {
             console.log(err,"error");
         })
     }
+
+    useEffect(() => {
+        if (deleteConfirm) {
+          deleteItem(selectedData);
+        }
+      }, [deleteConfirm]);
 
     const handleUpdate = (data) => {
         console.log(data ,"value")
@@ -108,7 +122,10 @@ const AnalyticAccountGroups = () => {
                         <>
                          <div className="updtdlt">
                         <FiEdit size={23} color="#4f434d" onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
-                        <MdDelete size={23} color="#4f434d"  onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
+                        <MdDelete size={23} color="#4f434d" onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}  style={{cursor:"pointer"}}/>
                         </div>
                         </>
                         
@@ -128,6 +145,9 @@ const AnalyticAccountGroups = () => {
     <div>
         <AccountNavbar showBelowMenu={true}  handleCreatePage={handleCreatePage} title="Analytic Account Group"/>
         <CustomTable  data={analyticAccGrp} column={column}/>
+        <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
         <ToastContainer/>
     </div>
   )

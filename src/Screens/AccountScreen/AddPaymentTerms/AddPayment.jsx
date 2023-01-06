@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Placeholder } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import { endpoints } from "../../../services/endpoints";
 import "./AddPayment.css";
 
 const AddPayment = () => {
+
+  const navigate = useNavigate()
   const addPaymentUrl = endpoints.PaymentTerms.addPayment;
   const [paymentTerms, setPaymentTerms] = useState("");
   const [desInvoice, setDesInvoice] = useState("");
@@ -54,6 +56,9 @@ const AddPayment = () => {
           console.log(res, "AddPayment");
           if (res.data.status === true) {
             toast("Payment Terms is Added Successfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/PaymentTerms')
+             }, 1000);
           } else if (res.data.status === false) {
             toast(res.data.message, { type: "success" });
           }
@@ -114,6 +119,9 @@ const AddPayment = () => {
         if(res.data.status === true)
         {
           toast("Payment Terms is updated Successfully !",{type:"success"})
+          setTimeout(() => {
+            navigate('/PaymentTerms')
+           }, 1000);
         }
         else if(res.data.status === false)
         {

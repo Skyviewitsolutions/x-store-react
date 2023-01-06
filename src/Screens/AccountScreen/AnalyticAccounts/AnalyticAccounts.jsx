@@ -112,9 +112,6 @@ const AnalyticAccounts = () => {
     { label: "Name", name: "ANALYTIC_ACCOUNT" },
     { label: "Reference", name: "ANALYTIC_REFERENCE" },
     { label: "Customer", name: "ANALYTIC_CUSTOMER" },
-    { label: "Debit", name: "EXCLUDED_JOURNALS" },
-    { label: "Credit", name: "EXCLUDED_JOURNALS" },
-    { label: "Balance", name: "EXCLUDED_JOURNALS" },
     {
       label: "Action",
       name: "ID",

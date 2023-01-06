@@ -216,6 +216,9 @@ const InventoryProductDetails = () => {
          
           if (res.data.status === true) {
             toast("Product Updated Successfully", { type: "success" });
+            setTimeout(() => {
+              navigate('/InventoryProducts')
+            }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -308,6 +311,7 @@ const InventoryProductDetails = () => {
            setUnitOfMeasurementId={setUnitOfMeasurementId}
            setPurchaseUnitOfMeasurementId={setPurchaseUnitOfMeasurementId}
            setProCode={setProCode}
+           setProductCategory={setProductCategory}
            productId = {id}
         />
 

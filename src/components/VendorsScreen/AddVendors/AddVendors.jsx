@@ -156,6 +156,9 @@ const AddVendors = () => {
         .then((res) => {
           if (res.data.status === true) {
             toast("Vendors is Added Successfully !", { type: "success" });
+            setTimeout(() => {
+              navigate('/Vendors')
+            }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -362,7 +365,7 @@ const AddVendors = () => {
         showCanelBtn={true}
       />
       <div className="AddVendorsCon">
-        <div className="container">
+        <div className="Ven_container">
           {/* <div className="VendorsHeader">
             <div className="VendorsIcons">
               <RiShoppingCartFill

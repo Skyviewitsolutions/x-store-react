@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast,ToastContainer} from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import { endpoints } from '../../../services/endpoints';
@@ -8,6 +8,7 @@ import './AddAssetUseStatus.css'
 
 const AddAssetUseStatus = () => {
 
+  const navigate = useNavigate()
   const [value , setValue] = useState("");
   const [name , setName] = useState("");
   const [update , setUpdate] = useState("");
@@ -35,10 +36,20 @@ const AddAssetUseStatus = () => {
         if(res.data.status === true)
         {
           toast("Asset Use Status Added Successfully!",{type:"success"});
+          setTimeout(() => {
+            navigate('/AssetUseStatus')
+          }, (1000));
         }
         else if(res.data.status === false)
         {
-          toast(res.data.message,{type:"error"});
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -84,10 +95,20 @@ const AddAssetUseStatus = () => {
          if(res.data.status === true)
          {
            toast("Aseet use Status is updated Successfully !",{type:"success"})
+           setTimeout(() => {
+            navigate('/AssetUseStatus')
+          }, (1000));
          }
          else if(res.data.status === false)
          {
-           toast(res.data.message , {type:"error"});
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
          }
         })
         .catch((err) => {

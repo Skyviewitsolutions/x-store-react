@@ -44,7 +44,7 @@ const InventoryScreen = () => {
     console.log(err , "error")
   })
     
-  })
+  },[])
   return (
   <>
   <div className="inveScren">

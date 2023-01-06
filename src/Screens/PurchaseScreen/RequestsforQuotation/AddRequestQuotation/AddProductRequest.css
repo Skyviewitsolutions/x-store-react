@@ -12,6 +12,7 @@
     padding: 8px 20px;
     font-weight: 600;
     transition: 0.3s;
+    margin-top: 10px;
 }
 
 .add_productbtn:hover{

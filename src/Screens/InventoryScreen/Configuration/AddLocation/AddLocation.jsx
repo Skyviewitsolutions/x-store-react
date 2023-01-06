@@ -65,6 +65,9 @@ const AddLocation = () => {
           console.log(res, "locationResult");
           if (res.data.status == true) {
             toast("Location Added Succesfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/Location')
+            }, 1000);
           } else if (res.data.status == false) {
             if(res.data.code === 3)
             {
@@ -151,6 +154,9 @@ const AddLocation = () => {
         if(res.data.status == true)
         {
           toast("Location Updated Successfully!" , {type:"success"})
+          setTimeout(() => {
+            navigate('/Location')
+          }, 1000);
         }
         else if(res.data.status == false)
         {

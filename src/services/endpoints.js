@@ -103,6 +103,7 @@ export const endpoints = {
     signUp: BASE_URL + "/UserLogin/signup",
     changePassword: BASE_URL + "/UserLogin/ChangePassword",
     forgatPassword: BASE_URL + "/UserLogin/ForgatPassword",
+    logout : BASE_URL + "/UserLogin/Logout",
   },
   Attribute: {
     allattribute: BASE_URL + "/Attribute/GetAllAttribute",

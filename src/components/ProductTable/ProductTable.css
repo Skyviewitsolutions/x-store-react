@@ -3,10 +3,8 @@
 .MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.tss-tlx3x1-MUIDataTableToolbar-root.css-hyum1k-MuiToolbar-root {
     display: none !important;
 }
-.protab{
+.product_table{
     max-width: 100%;
-    overflow-y: scroll;
-    height: 500px;
 }
 /* td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium.tss-1qtl85h-MUIDataTableBodyCell-root.tss-1y3wvy9-MUIDataTableBodyCell-stackedParent.tss-iwylj0-MUIDataTableBodyCell-responsiveStackedSmallParent.css-1ex1afd-MuiTableCell-root {
     padding: 0px !important;
@@ -53,11 +51,6 @@ p#\:r15\: {
     display: none !important;
 }
 
-.tss-1akey0g-MUIDataTableHeadCell-data {
-    display: inline-block !important;
-    font-weight: bold !important;
-    color: #6a6a6a !important;
-}
 
 @media (max-width: 899.95px)
 {

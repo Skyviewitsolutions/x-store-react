@@ -392,7 +392,8 @@ const column = [
       <PurchaseNavbar
         showBelowMenu={true}
         title="Purchase Orders"
-        save={update === true ? updateData : save}
+        save={update === true ? updateData : save} 
+        showCanelBtn={true}
       />
       <div className="addRequestQuoContainer">
         <div className="addRequestCon">

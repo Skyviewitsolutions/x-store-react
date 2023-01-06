@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast,ToastContainer } from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import { endpoints } from '../../../services/endpoints';
 import './AddTaxNAme.css';
+
 const AddTaxName = () => {
 
+    const navigate = useNavigate()
     const [taxName , setTaxname] = useState("");
     const [taxScope , setTaxscope] = useState("");
     const [taxComputation , setTaxComputation] = useState("");
@@ -75,6 +77,9 @@ const AddTaxName = () => {
             if(res.data.status === true)
             {
              toast("Tax Name Added Successfully",{type:"success"});
+             setTimeout(() => {
+              navigate('/TaxName')
+             }, 1000);
             }
             else if(res.data.status === false)
             {
@@ -164,6 +169,9 @@ const AddTaxName = () => {
             if(res.data.status === true)
             {
               toast("TaxName is updated Successfully !",{type:"success"})
+              setTimeout(() => {
+                navigate('/TaxName')
+               }, 1000);
             }
             else if(res.data.status === false)
             {
@@ -209,7 +217,7 @@ const AddTaxName = () => {
             </div>
             <div className="AddTaxammount">
             <p>Amount</p>
-            <input type="text" value={ammount} onChange={(e) => setAmmount(e.target.value)}/>
+            <input type="number" min="0"value={ammount} onChange={(e) => setAmmount(e.target.value)}/>
             <span>%</span>
             </div>
             </div>

@@ -49,6 +49,9 @@ const AddAccTaxGroup = () => {
          if(res.data.status === true)
          {
             toast("Accout Tax Group Added Successfully",{type:"success"});
+            setTimeout(() => {
+               navigate('/AccTaxGroup')
+            }, 1000);
          }
          else if(res.data.status === false)
          {
@@ -117,6 +120,9 @@ const AddAccTaxGroup = () => {
          if(res.data.status === true)
          {
            toast("Account Tax Group is updated Successfully !",{type:"success"})
+           setTimeout(() => {
+            navigate('/AccTaxGroup')
+         }, 1000);
          }
          else if(res.data.status === false)
          {

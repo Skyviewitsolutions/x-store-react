@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  vertical-align:center;
   height: 100vh;
   /* width: 100%; */
   /* background-color: #857a82; */
@@ -23,7 +24,7 @@
   }
   
   .row {
-    margin-left: 10%;
+    /* margin-left: 10%; */
     width: 90%;
     margin: auto;
     display: flex;
@@ -35,7 +36,7 @@
     
      display: flex;
      flex-wrap: wrap;
-    margin-left: 16px;
+    /* margin-left: 16px; */
   }
   .cardd {
     width: 100px;
@@ -46,7 +47,6 @@
   }
 
   .Dash{
-   
     height: 90px;
     width: 90px;
     margin: auto;
@@ -57,7 +57,7 @@
   transition: 0.2s;
 }
    
-    @media only screen and (max-width: 1000px) {
+    @media (min-width:768px)  and (max-width: 1020px) {
       .containers {
       text-align: center;
       width: 90%;
@@ -77,6 +77,12 @@
       margin: auto;
       margin-left: 25px;
     }
+    .dash_tiles .col-lg-2.col-md-3 {
+    text-align: center;
+}
+.dash_tiles .col-sm-1.cardd {
+    margin: 25px auto;
+}
   }
   
 
@@ -127,3 +133,5 @@
     }
     
   }
+
+  

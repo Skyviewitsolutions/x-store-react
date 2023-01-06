@@ -27,13 +27,13 @@
     width: 200px;
 }
 .reqQuotext select{
-   width: 400px;
+   width: 350px;
    border: none;
    outline: none;
    border-bottom: 1px solid #cccc;
 }
 .reqQuotext input{
-    width: 400px;
+    width: 350px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc;

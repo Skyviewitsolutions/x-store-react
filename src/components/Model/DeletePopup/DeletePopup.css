@@ -2,22 +2,25 @@
     border:none !important;
 } */
 
-button.btn.btn-secondary {
+.delete_modal button.btn.btn-secondary {
     margin-left: auto !important;
 }
 
-.modal-footer {
+.delete_modal .modal-footer {
 display: flex !important;
     justify-content: space-between !important;
 }
-.modal {
+.delete_modal .modal {
     --bs-modal-margin: 12.75rem !important;
 }
-.btn_delte:hover{
+ .delete_modal .btn_delte:hover{
     background-color: #6a6a6a;
     color: #fff;
 
 }
-.modal-header {
+ .delete_modal .modal-header {
     justify-content: flex-start !important;
+}
+.delete_modal.modal.show .modal-dialog {
+    top: 30% !important;
 }

@@ -1,14 +1,15 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { FaBars } from 'react-icons/fa'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { toast,ToastContainer} from 'react-toastify'
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import { endpoints } from '../../../services/endpoints'
 import './AddAnalyticAccountGroup.css'
 
 const AddAnalyticAccountGroup = () => {
-
+  
+  const navigate = useNavigate()
   const [name , setName] = useState("");
   const [parent , setParent] = useState("");
   const [description , setDescription] = useState("")
@@ -40,10 +41,21 @@ const AddAnalyticAccountGroup = () => {
       if(res.data.status === true)
       {
         toast("Analytic Account Group Added Successfully",{type:"success"});
+        setTimeout(() => {
+          navigate('/AnalyticAccountGroup')
+        }, 1000);
       }
       else if(res.data.status === false)
       {
         toast(res.data.message,{type:"error"});
+        if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
       }
     })
     .catch((err) => {
@@ -90,10 +102,20 @@ const AddAnalyticAccountGroup = () => {
          if(res.data.status === true)
          {
            toast("Aseet use Status is updated Successfully !",{type:"success"})
+           setTimeout(() => {
+            navigate('/AnalyticAccountGroup')
+          }, 1000);
          }
          else if(res.data.status === false)
          {
-           toast(res.data.message , {type:"error"});
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
          }
         })
         .catch((err) => {

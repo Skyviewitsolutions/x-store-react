@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { endpoints } from "../../../services/endpoints";
 import { useNavigate } from "react-router-dom";
+import ProductTable from "../../ProductTable/ProductTable";
 
 const Variants = (props) => {
   
@@ -49,7 +50,7 @@ const Variants = (props) => {
 ]
   return (
     <div className="VariantsContainer">
-      <CustomTable data={singleVarients}  column={column2}/>
+      <ProductTable data={singleVarients}  column={column2}/>
      <ToastContainer/>
      
     </div>

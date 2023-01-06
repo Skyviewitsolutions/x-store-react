@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import CustomTable from "../../CustomTable/CustomTable";
 import { endpoints } from "../../../services/endpoints";
 import { useNavigate } from "react-router-dom";
+import ProductTable from "../../ProductTable/ProductTable";
 const Purchase = (props) => {
 
   const navigate = useNavigate()
@@ -78,7 +79,7 @@ const Purchase = (props) => {
 
   return (
     <div className="VariantsContainer">
-   <CustomTable data={allVenList} column={column2}/>
+   <ProductTable data={allVenList} column={column2}/>
       {/* <div className="content_purchase">
         <div className="content_first">
           <h1>Reordering</h1>

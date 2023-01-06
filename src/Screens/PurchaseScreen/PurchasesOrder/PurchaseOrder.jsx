@@ -29,7 +29,12 @@ const PurchaseOrder = () => {
       .then((res) => {
         setLoading(false);
         if (res.data.status === true) {
-          setAllPurchaseOrder(res.data.data);
+          var val = res.data.data;
+          val = val.reverse()
+          const filterPurchaseOr = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != 'X'
+          })
+          setAllPurchaseOrder(filterPurchaseOr);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });

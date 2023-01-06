@@ -8,6 +8,7 @@ import CustomTable from '../../CustomTable/CustomTable'
 import PurchaseInventory from '../../Model/PurchaseInventory/PurchaseInventory'
 import './PurchaseEdit.css'
 import { FiEdit } from "react-icons/fi";
+import ProductTable from '../../ProductTable/ProductTable'
 
 
 const PurchaseEdit = (props) => {
@@ -340,7 +341,7 @@ console.log("getAll")
   return (
    <>
    <div className="purchase_container">
-    {productId  ?  <CustomTable data={singleVendorList} column={column2}/> : <CustomTable data={allVendorList} column={column}/>
+    {productId  ?  <ProductTable data={singleVendorList} column={column2}/> : <ProductTable data={allVendorList} column={column}/>
     }
   
    <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>

@@ -3,13 +3,42 @@ import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaSearchMinus } from "react-icons/fa";
 import "./Navbar.css";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
+import { endpoints } from "../../services/endpoints";
+import axios from "axios";
+import { toast,ToastContainer} from "react-toastify";
 
 const Navebar = (props) => {
   
   const { showBelowMenu, handleCreatePage,save , title,disabledCreate, showCanelBtn,} = props;
   const navigate = useNavigate();
+
+  const logotUrl = endpoints.authentication.logout;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+  const userEmails = localStorage.getItem("UserEmail");
+  const userLoginTime = localStorage.getItem("loginTime");
+  
+  const logout = () => {
+
+    const formData = new FormData()
+    formData.append("email",userEmails);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("LoginTime", userLoginTime);
+    axios.post(logotUrl,formData)
+    .then((res) => {
+   if(res.data.status === true){
+    toast(res.data.message,{type:"success"})
+    setTimeout(() => {
+      navigate('/')
+    }, 1000);
+   }
+    })
+    .catch((err) => {
+      console.log(err,"eror")
+    })
+  }
 
   return (
     <>
@@ -92,7 +121,7 @@ const Navebar = (props) => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-          <div className="logout"  onClick={() => navigate('/')}>
+          <div className="logout"  onClick={logout}>
               <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}}/>
               <p>Logout</p>
             </div>
@@ -139,6 +168,7 @@ const Navebar = (props) => {
           </div>
         </div>
       )}
+      <ToastContainer/>
     </>
   );
 };

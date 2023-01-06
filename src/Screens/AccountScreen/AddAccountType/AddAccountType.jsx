@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast,ToastContainer} from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import { endpoints } from '../../../services/endpoints';
@@ -8,6 +8,7 @@ import './AddAccountType.css';
 
 const AddAccountType = () => {
    
+   const navigate = useNavigate()
    const [accType , setAccType] = useState("");
    const [type, setType] = useState("");
    const [internal , setInternal] = useState("");
@@ -49,6 +50,9 @@ const AddAccountType = () => {
          if(res.data.status === true)
          {
             toast("Account Type Added Successfully!",{type:"success"});
+            setTimeout(() => {
+               navigate('/AccountTypes')
+            }, 1000);
          }
          else if(res.data.status === false)
          {
@@ -109,6 +113,9 @@ const AddAccountType = () => {
          if(res.data.status === true)
          {
            toast("Account Type is updated Successfully !",{type:"success"})
+           setTimeout(() => {
+            navigate('/AccountTypes')
+         }, 1000);
          }
          else if(res.data.status === false)
          {

@@ -3,6 +3,7 @@
     display: flex;
     margin-top: 10px;
     justify-content: space-between;
+    padding: 10px 30px;
 }
 .BankAccount{
     width: 50%;

@@ -7,12 +7,13 @@ import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import { endpoints } from '../../../services/endpoints';
 import { toast,ToastContainer } from 'react-toastify';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 const AddJournal = (props) => {
-
+   
+  const navigate = useNavigate()
   const [events, setEvents] = useState("JournalEntires");
   const getAuthtoken = localStorage.getItem("authtoken");
-const userAuth = localStorage.getItem("userAuth");
+  const userAuth = localStorage.getItem("userAuth");
 
   const [journalName , setJournalName] = useState("");
   const [journalType , setJournalType] = useState("");
@@ -74,6 +75,9 @@ const userAuth = localStorage.getItem("userAuth");
         .then((res) => {
           if (res.data.status == true) {
             toast("Journals Added Sucessfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/Journal')
+            }, 1000);
           } else if (res.data.status === false) {
             toast(res.data.message, { type: "error" });
           }
@@ -153,7 +157,10 @@ const userAuth = localStorage.getItem("userAuth");
         .then((res) => {
           console.log(res,"ressss")
           if (res.data.status == true) {
-            toast("Journal Updated Sucessfully!", { type: "Success" });
+            toast("Journal Updated Sucessfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/Journal')
+            }, 1000);
           } else if (res.data.status === false) {
             toast(res.data.message, { type: "error" });
           }

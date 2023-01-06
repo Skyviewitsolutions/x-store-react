@@ -33,25 +33,23 @@ const AddRequestQuotation = (props) => {
 const [modalShow , setModalShow] = useState(false)
 const [productAll , setProductAll] = useState([]);
 
-const [serialNo , setSerialNo] = useState("")
 const [productdet , setProductDet] = useState("")
 const [description , setDescription] = useState("")
 const [quantity , setQuantity] = useState("")
 const [uomdet , setUomdet] = useState("")
-const [venId , setVendId] = useState("") 
-const productUrl = endpoints.requestQuotation.getAllproductdetails;
-const productDetailsUrl = endpoints.requestQuotation.addProductdetails;
+const productDetailsUrl = endpoints.requestQuotation.getAllproductdetails;
+const addProductUrl = endpoints.requestQuotation.addProductdetails;
 const getAuthtoken = localStorage.getItem("authtoken");
 const userAuth = localStorage.getItem("userAuth");
 const vendorId = localStorage.getItem("varId");
 
 const getAllproductdetails = () => {
-  if(vendor != ""){
+  
     const formData = new FormData();
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
-    formData.append("Vendor_ID" , vendor)
-    axios.post(productUrl,formData)
+   
+    axios.post(productDetailsUrl,formData)
     .then((res) => {
       console.log(res,"responscbdch")
       if(res.data.DELETE_STATUS != "X"){
@@ -70,19 +68,19 @@ const getAllproductdetails = () => {
     .catch((err) => {
       console.log(err , "something went wrong");
     })
-  }
+  
 }
 
 useEffect(() => {
   getAllproductdetails()
-},[vendor])
+},[])
+
+
+
 
  const saveProduct = () => {
-  if(serialNo === ""){
-    toast("No is required" ,{type:'warning'})
-  }else if(vendorId === ""){
-    toast("Vendor Id is required",{type:"warning"})
-  }else if(productdet === ""){
+ 
+ if(productdet === ""){
     toast("Product is required" ,{type:'warning'})
   }else if(description === ""){
     toast("Description is required" ,{type:"warning"})
@@ -92,18 +90,17 @@ useEffect(() => {
     toast("UOM is required",{type:"warning"})
   }else{
     const formData = new FormData()
-    formData.append("Vendor_ID",vendorId);
-    formData.append("Number",serialNo);
     formData.append("Product_ID" , productdet);
-    formData.append("UOM" , uomdet);
+    formData.append("UOM_ID" , uomdet);
     formData.append("Description" , description);
     formData.append("Qty" , quantity);
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
-    axios.post(productDetailsUrl , formData)
+    axios.post(addProductUrl , formData)
     .then((res) => {
       if(res.data.status === true){
-        toast("Product Details Added successfully" ,{type:"warning"})
+        toast("Product Details Added successfully" ,{type:"success"})
+        setModalShow(false)
         getAllproductdetails()
       }else if(res.data.status === false){
         toast(res.data.data ,{type:"error"})
@@ -148,6 +145,8 @@ const deleteItem = (data) => {
     console.log(err,"error");
 })
  }
+
+ console.log(productAll,"sdhfhfgh")
 const column = [
     {label:"VenID" , name:"VENDOR_ID"},
     {label:"No" , name:"SERIAL_NO"},
@@ -415,9 +414,10 @@ const column = [
   return (
     <div>
       <PurchaseNavbar
-        showBelowMenu={true}
-        title="Requests for Quotation"
-        save={update === true ? updateData : save}
+      showBelowMenu={true}
+      title="Requests for Quotation"
+      save={update === true ? updateData : save} 
+      showCanelBtn={true}
       />
       <div className="addRequestQuoContainer">
         <div className="addRequestCon">
@@ -564,7 +564,7 @@ const column = [
           </Nav>
         </div>
         <div className="Warehouse">
-          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setSerialNo={setSerialNo} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet} setVendId={setVendId} venId={venId}  setVendor={setVendor} serialNo={serialNo} productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem}/>}
+          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem}/>}
           {events === "Other Information" && <OtherInfo recepitDate={recepitDate} setRecepitDate={setRecepitDate} incoTerms={incoTerms} setIncoTerms={setIncoTerms} purchaseRep={purchaseRep} setPurchaseRep={setPurchaseRep} fisicalPosition={fisicalPosition} setFisicalPosition={setFisicalPosition}/>}
         </div>
       </div>

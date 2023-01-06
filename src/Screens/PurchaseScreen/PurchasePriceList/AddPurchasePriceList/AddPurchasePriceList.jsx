@@ -40,7 +40,11 @@ const AddPurchasePriceList = () => {
        axios.post(allVendorsUrl,formData)
        .then((res) => {
         if(res.data.status === true){
-           setGetVendors(res.data.data);
+            const val = res.data.data;
+            const filterVendor = val.filter((itm,ind) => {
+                return itm.DELETE_STATUS != 'X'
+            })
+           setGetVendors(filterVendor);
         }
         else if(res.data.status === false){
             if(res.data.code === 3)
@@ -64,7 +68,11 @@ const AddPurchasePriceList = () => {
        axios.post(allProducturl,formData)
        .then((res) => {
         if(res.data.status === true){
-           setGetProduct(res.data.data);
+            const val = res.data.data;
+            const filterProduct = val.filter((itm,ind) => {
+                return itm.DELETE_STATUS != 'X'
+            })
+           setGetProduct(filterProduct);
         }
         else if(res.data.status === false){
             if(res.data.code === 3)
@@ -88,7 +96,12 @@ const AddPurchasePriceList = () => {
        axios.post(allcurrencyurl,formData)
        .then((res) => {
         if(res.data.status === true){
-           setGetCurrency(res.data.data);
+
+            const val = res.data.data;
+            const filterCurrency = val.filter((itm,ind) => {
+                return itm.DELETE_STATUS != 'X'
+            })
+           setGetCurrency(filterCurrency);
         }
         else if(res.data.status === false){
             if(res.data.code === 3)
@@ -154,6 +167,9 @@ const AddPurchasePriceList = () => {
             .then((res) => {
                 if(res.data.status === true){
                     toast("Venodr Pricelists added successfully",{type:"success"})
+                    setTimeout(() => {
+                        navigate('/PurchasePriceList')
+                    }, 1000);
                 }else if(res.data.status === false){
                     if(res.data.code === 3)
                 {
@@ -182,16 +198,16 @@ const AddPurchasePriceList = () => {
         if(selectedData)
         {
           setUpdate(true);
-          setVendor(selectedData.VENDOR_NAME);
-          setVendorProductName(selectedData.VENDOR_PRODUCT_NAME);
+          setVendor(selectedData.VENDOR_ID);
+          setVendorProductName(selectedData.VENDOR_PRODUCT);
           setVendorProductCode(selectedData.VENDOR_PRODUCT_CODE);
           setLeadTime(selectedData.DILEVERY_LEADTIME);
-          setPrice(selectedData.PRODUCT_PRICE);
+          setPrice(selectedData.VENDOR_PRICE);
           setCurrency(selectedData.VENDOR_CURRENCY);
           setEndDate(selectedData.END_DATE);
           setStartDate(selectedData.START_DATE);
           setQuantity(selectedData.VENDOR_QUANTITY);
-          setProduct(selectedData.PRODUCT_NAME);
+          setProduct(selectedData.PRODUCT_ID);
         }
       },[selectedData])
     
@@ -246,6 +262,9 @@ const AddPurchasePriceList = () => {
             .then((res) => {
                 if(res.data.status === true){
                     toast("Venodr Pricelists updated successfully",{type:"success"})
+                    setTimeout(() => {
+                        navigate('/PurchasePriceList')
+                    }, 1000);
                 }else if(res.data.status === false){
                     if(res.data.code === 3)
                 {
@@ -265,7 +284,10 @@ const AddPurchasePriceList = () => {
 
   return (
     <div>
-        <PurchaseNavbar  showBelowMenu={true} title="Venodr Pricelists" save={update === true ? updateData : save}/>
+        <PurchaseNavbar  showBelowMenu={true}
+        title="Purchase PriceList"
+        save={update === true ? updateData : save} 
+        showCanelBtn={true}/>
        <div className="vendorsPriceListContainer">
             <div className="vendorsPart1">
                 <h1>Vendor</h1>
@@ -326,7 +348,7 @@ const AddPurchasePriceList = () => {
                     <p>Quantitye</p>
                     <input type="text" placeholder='0.00' value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
                 </div>
-                <div className="pricetexts">
+                <div className="price_currency">
                     <p>Price</p>
                     <input type="text" placeholder='0.00' value={price} onChange={(e) => setPrice(e.target.value)}/>
                     <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
@@ -340,7 +362,7 @@ const AddPurchasePriceList = () => {
                         })}
                     </select>
                 </div>
-                <div className="pricetexts">
+                <div className="valid_date">
                     <p>Valid Date</p>
                     <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
                     <span style={{padding:"10px"}}>to</span>

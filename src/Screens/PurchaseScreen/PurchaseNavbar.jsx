@@ -1,13 +1,43 @@
+import axios from "axios";
 import React from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaSearchMinus } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { endpoints } from "../../services/endpoints";
 
 const PurchaseNavbar = (props) => {
   const { showBelowMenu, handleCreatePage,save , title,disabledCreate, showCanelBtn,} = props;
   const navigate = useNavigate();
+
+   const logotUrl = endpoints.authentication.logout;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+  const userEmails = localStorage.getItem("UserEmail");
+  const userLoginTime = localStorage.getItem("loginTime");
+  
+  const logout = () => {
+
+    const formData = new FormData()
+    formData.append("email",userEmails);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("LoginTime", userLoginTime);
+    axios.post(logotUrl,formData)
+    .then((res) => {
+   if(res.data.status === true){
+    toast(res.data.message,{type:"success"})
+    setTimeout(() => {
+      navigate('/')
+    }, 1000);
+   }
+    })
+    .catch((err) => {
+      console.log(err,"eror")
+    })
+  }
+
   return (
     <>
       <div className="container-fluid navCont">
@@ -61,8 +91,8 @@ const PurchaseNavbar = (props) => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-          <div className="logout">
-              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}} onClick={() => navigate('/')}/>
+          <div className="logout"  onClick={logout}>
+              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}}/>
               <p>Logout</p>
             </div>
         </Navbar>
@@ -74,7 +104,7 @@ const PurchaseNavbar = (props) => {
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
                 {title ? title : "Purchase"}
               </h5>
-              {showCanelBtn === true ? (
+               {showCanelBtn === true ? (
                 <button
                   className="createbtn"
                   onClick={() => navigate(-1)}
@@ -90,10 +120,9 @@ const PurchaseNavbar = (props) => {
                 >
                   create
                 </button>
+               
               )}
-              <button className="savebtn" onClick={save}>
-                Save
-              </button>
+               {showCanelBtn === true && <button className="savebtn" onClick={save}>Save</button> }
             </div>
             {/* <div
               className="col-sm-6 d-flex justify-content-center"
@@ -105,6 +134,7 @@ const PurchaseNavbar = (props) => {
               </div>
             </div> */}
           </div>
+          <ToastContainer/>
         </div>
       )}
     </>

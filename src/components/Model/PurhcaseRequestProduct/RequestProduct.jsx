@@ -31,7 +31,11 @@ export const RequestProduct = (props) => {
       .post(producrUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          setProductAll(res.data.data);
+          const val = res.data.data;
+          const filterProduct = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != 'X'
+          })
+          setProductAll(filterProduct);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -45,6 +49,7 @@ export const RequestProduct = (props) => {
         console.log(err, "something went wrong");
       });
   }, []);
+
   useEffect(() => {
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
@@ -53,7 +58,11 @@ export const RequestProduct = (props) => {
       .post(uomUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          setUomAll(res.data.data);
+          const val = res.data.data;
+          const filterUOM = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != 'X'
+          })
+          setUomAll(filterUOM);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -75,14 +84,6 @@ export const RequestProduct = (props) => {
           <div className="product_content">
             <div className="product_text">
               <h1>Product Details</h1>
-              <div className="pro_details">
-                <p>No.</p>
-                <input type="text" value={serialNo} onChange={(e) => setSerialNo(e.target.value)}/>
-              </div>
-              <div className="pro_details">
-                <p>Vendor Id</p>
-                <input type="text" value={vendorId} onChange={(e) => setVendorId(e.target.value)}/>
-              </div>
               <div className="pro_details">
                 <p>Product</p>
                 <select value={productdet} onChange={(e) => setProductDet(e.target.value)}>
@@ -115,14 +116,14 @@ export const RequestProduct = (props) => {
                   {uomAll.map((item, index) => {
                     return (
                       <>
-                        <option value={item.UNITNAME}>{item.UNITNAME}</option>
+                        <option value={item.UOM_CATEGORY_ID}>{item.UNIT_OF_MEASUREMENT}</option>
                       </>
                     );
                   })}
                 </select>
               </div>
               <div className="probtn">
-                <button className="btn" onClick={saveProduct}>
+                <button className="product_save" onClick={saveProduct}>
                   Save
                 </button>
               </div>

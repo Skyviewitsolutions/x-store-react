@@ -29,8 +29,10 @@ const AddUomCate = () => {
         .post(AddUomCateUrl, formData)
         .then((res) => {
           if (res.data.status == true) {
-            
             toast("Uom Category Added Successfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/UomCategories')
+            }, 1000);
           } else if (res.data.status == false) {
             if(res.data.code === 3)
             {
@@ -75,6 +77,9 @@ const AddUomCate = () => {
       axios.post(UomCateupdateUrl, formData).then((res) => {
         if (res.data.status == true) {
           toast("Uom Category Updated Successfully!", { type: "success" });
+          setTimeout(() => {
+            navigate('/UomCategories')
+          }, 1000);
         } else if (res.data.status == false) {
           if(res.data.code === 3)
           {

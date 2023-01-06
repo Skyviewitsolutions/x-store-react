@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast,ToastContainer} from 'react-toastify'
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import CustomTable from '../../../components/CustomTable/CustomTable'
+import DeletePopup from '../../../components/Model/DeletePopup/DeletePopup'
 import { endpoints } from '../../../services/endpoints'
 
 const DifferedExpenseType = () => {
@@ -15,6 +16,11 @@ const DifferedExpenseType = () => {
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
   const allDefExTypeUrl = endpoints.DefExpenseType.allDefExType;
+
+  
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const getDefExType = () => {
     const formData = new FormData();
@@ -62,6 +68,9 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
         .then((res) => {
             if(res.data.status === true)
             {
+              setShow(false)
+              setDeleteConfirm(false)
+              setSelectedData("")
               getDefExType();
                 toast("Defered Expense type deleted Successfully",{type:"success"});
             }
@@ -81,6 +90,13 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
             console.log(err,"error");
         })
     }
+
+    useEffect(() => {
+      if (deleteConfirm) {
+        deleteItem(selectedData);
+      }
+    }, [deleteConfirm]);
+    
     const handleUpdate = (data) => {
       console.log(data ,"value")
       const val = defExType.filter((itm,index) => {
@@ -105,7 +121,10 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
                       <>
                       <div className="updtdlt">
                       <FiEdit size={23} color="#4f434d"onClick={() => handleUpdate(value)}  style={{cursor:"pointer"}}/>
-                      <MdDelete size={23} color="#4f434d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}/>
+                      <MdDelete size={23} color="#4f434d" onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}  style={{cursor:"pointer"}}/>
                   </div>
                       </>
                   )
@@ -121,6 +140,9 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
     <div>
            <AccountNavbar showBelowMenu={true} handleCreatePage={handleCreatePage} title="Differed Expense Type"/>
            <CustomTable data={defExType} column={column}/>
+           <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
            <ToastContainer/>
     </div>
   )

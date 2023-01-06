@@ -1,4 +1,4 @@
-.AddPATContainer{
+.Add_Container{
     width: 90%;
     border: 1px solid #cccc;
     display: flex;
@@ -8,72 +8,89 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     margin-top: 40px;
 }
-.addpatCon{
+.addpat_Con{
     width: 100%;
     display: flex;
     padding: 15px 20px;
 }
-.agrementType{
+.agrements{
     width: 50%;
 }
-.attext{
+.at_text{
     display: flex;
     align-items: center;
 }
-.agrementType h1{
+.agrements h1{
     color: #666666;
     font-size: 25px;
     font-weight: 400;
 }
-.attext p{
+.at_text p{
     width: 200px;
     color: #666666;
     font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 15px;
+    font-weight: 600;
+    margin-bottom: 0px;
 }
-.attext input{
+.at_text input{
     width: 400px;
     border: none;
     outline: none;
     border-bottom: 1px solid #ccc;
 }
-.atradio{
+.ats_radio{
     display: flex;
+    margin-top: 20px;
 }
-.atradio p{
+.ats_radio p{
     width: 200px;
     color: #666666;
     font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 0px;
 }
-.asradio{
+.att_radio{
     display: flex;
 }
-.asradio span{
+.att_radio span{
     color: #8b8b8b;
-    margin-left: 5px;
+    margin-left: 10px;
+    font-size: 15px;
 
 }
-.datafor{
+.data_quo{
     width: 50%;
+    margin-left: 15px;
 }
-.datafor h1{
+.data_quo h1{
     color: #666666;
     font-size: 25px;
     font-weight: 400;
 }
-.dataradio{
+.datas_radio {
+    margin-top: 10px;
     display: flex;
 }
-.dataradio p{
+.datas_radio p{
     width: 150px;
     color: #666666;
     font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-weight: 600;
 }
+.radio_pur{
+    display: flex;
+    flex-direction: column;
+}
+.ass_radio{
+display: flex;    
+}
+.ass_radio span{
+    margin-left: 10px;
+    color: #666666;
+    font-size: 15px;
+}
+
+
 @media screen and (max-width: 1000px){
    .addpatCon{
     display: flex;

@@ -163,6 +163,9 @@ const AddProductCategories = (props) => {
           console.log(res, "responseresult");
           if (res.data.status == true) {
             toast("Product Category Added Successfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/ProductCategories')
+            }, 1000);
           } else if (res.data.status == false) {
             if(res.data.code === 3)
             {
@@ -250,6 +253,9 @@ const AddProductCategories = (props) => {
         .then((res) => {
           if (res.data.status === true) {
             toast("ProductCategory Updated Successfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/ProductCategories')
+            }, 1000);
           } else if (res.data.status === false) {
             if(res.data.code === 3)
             {
@@ -330,7 +336,7 @@ const AddProductCategories = (props) => {
                   })}
                 </select>
               </div>
-              <div className="AddProductCatecontent">
+             {update === true &&  <div className="AddProductCatecontent">
                 <p>Product Category Code</p>
                 <input
                   type="text"
@@ -338,7 +344,7 @@ const AddProductCategories = (props) => {
                   readOnly={true}
                   onChange={(e) => setProductCateCode(e.target.value)}
                 />
-              </div>
+              </div> }
             </div>
 
             {/* <div className="AddProductdetails2">

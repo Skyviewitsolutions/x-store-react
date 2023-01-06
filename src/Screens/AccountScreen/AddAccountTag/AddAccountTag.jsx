@@ -5,13 +5,15 @@ import Multiselect from "multiselect-react-dropdown";
 import { endpoints } from "../../../services/endpoints";
 import { toast,ToastContainer } from "react-toastify";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddAccountTag = () => {
 
   const [selectedValue, setSelectedValue] = useState();
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
+
+  const navigate = useNavigate()
   
   // const options = [
   //   { name: "110101002 Zulfi Box", id: 1 },
@@ -70,7 +72,10 @@ const AddAccountTag = () => {
             console.log(res,"AccountTagAdd");
             if(res.data.status === true)
             {
-                toast("Account Tag Added Successfully" , {type:"Success"})
+                toast("Account Tag Added Successfully" , {type:"success"})
+                setTimeout(() => {
+                  navigate('/AccountTags')
+                }, 1000);
             }
             else if(res.data.status === false)
             {
@@ -128,6 +133,9 @@ const AddAccountTag = () => {
         if(res.data.status === true)
         {
           toast("Account Tag is updated Successfully !",{type:"success"})
+          setTimeout(() => {
+            navigate('/AccountTags')
+          }, 1000);
         }
         else if(res.data.status === false)
         {

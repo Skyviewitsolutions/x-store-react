@@ -9,6 +9,7 @@ import { MdArrowDropDown, MdDelete } from "react-icons/md";
 import Barcode from "../../Model/BarcodeModal/Barcode";
 import "./ProductBarcode.css";
 import { FiEdit } from "react-icons/fi";
+import ProductTable from "../../ProductTable/ProductTable";
 
 
 const ProductBarcode = (props) => {
@@ -235,9 +236,9 @@ const ProductBarcode = (props) => {
     <div>
       <div className="barcode_container">
         {productId != "" ? (
-          <CustomTable data={allBarcode} column={column} />
+          <ProductTable data={allBarcode} column={column} />
         ) : (
-          <CustomTable data={allBarcode} column={column2} />
+          <ProductTable data={allBarcode} column={column2} />
         )}
         <button className="barcode_btn" onClick={() => setModalShow(true)}>
           Add Line

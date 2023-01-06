@@ -150,7 +150,7 @@ const OperationTypes = (props) => {
     },
   ];
   return (
-    <div style={{ width: "100vw", height: "100vh", overflowX: "hidden",overflowY:"scroll" }}>
+    <div style={{ width: "100vw"}}>
       <Navebar
         showBelowMenu={true}
         handleCreatePage={handleCreatePage}

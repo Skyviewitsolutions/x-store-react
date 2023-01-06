@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { endpoints } from "../../../services/endpoints";
 import CustomTable from "../../CustomTable/CustomTable";
 import Barcode from "../../Model/BarcodeModal/Barcode";
+import ProductTable from "../../ProductTable/ProductTable";
 import "./ProductBarcode.css";
 
 
@@ -73,7 +74,7 @@ const ProBarcode = (props) => {
     <div>
       <div className="barcode_container">
       
-          <CustomTable data={singleProBarcode} column={column2} />
+          <ProductTable data={singleProBarcode} column={column2} />
         
        
       </div>

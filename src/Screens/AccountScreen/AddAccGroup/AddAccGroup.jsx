@@ -8,6 +8,8 @@ import { endpoints } from "../../../services/endpoints";
 import "./AddAccGrup.css";
 
 const AddAccGroup = () => {
+
+  const navigate = useNavigate()
   const [codePre, setCodePre] = useState("");
   const [name, setName] = useState("");
   const [parent, setParent] = useState("");
@@ -16,9 +18,6 @@ const AddAccGroup = () => {
   const [update , setUpdate] = useState("");
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
-
-  const navigate = useNavigate();
-
   const AccGrpAddUrl = endpoints.AccountGroup.addAccGrp;
   const BankUrl = endpoints.BankAccount.allBank;
 
@@ -61,6 +60,9 @@ const AddAccGroup = () => {
         .then((res) => {
           if (res.data.status === true) {
             toast("Account Group Added Successfully", { type: "success" });
+            setTimeout(() => {
+              navigate('/AccountGroup')
+            }, 1000);
           } else if (res.data.status === false) {
             if(res.data.code === 3)
           {
@@ -118,6 +120,9 @@ const AddAccGroup = () => {
             if(res.data.status === true)
             {
               toast("Account Group is updated Successfully !",{type:"success"})
+              setTimeout(() => {
+                navigate('/AccountGroup')
+              }, 1000);
             }
             else if(res.data.status === false)
             {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast,ToastContainer } from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import { endpoints } from '../../../services/endpoints';
@@ -8,6 +8,7 @@ import './AddJournalGroup.css';
 
 const AddJournalGroup = () => {
 
+  const navigate = useNavigate()
   const [jourrnalG , setJournalG] = useState("");
   const [excluded , setExcluded] = useState("");
   const [update , setUpdate] = useState("");
@@ -39,6 +40,9 @@ const userAuth = localStorage.getItem("userAuth");
        if(res.data.status === true)
        {
         toast("Journal Group Added Successfully",{type:"success"});
+        setTimeout(() => {
+          navigate('/JournalGroup')
+        }, 1000);
        }
        else if(res.data.status === false)
        {
@@ -87,6 +91,9 @@ const userAuth = localStorage.getItem("userAuth");
           if(res.data.status === true)
           {
             toast("Journal Group is updated Successfully !",{type:"success"})
+            setTimeout(() => {
+              navigate('/JournalGroup')
+            }, 1000);
           }
           else if(res.data.status === false)
           {

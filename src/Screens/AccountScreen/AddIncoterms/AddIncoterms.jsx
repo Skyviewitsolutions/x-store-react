@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast,ToastContainer } from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import { endpoints } from '../../../services/endpoints';
 import './AddIncoterms.css'
 
 const AddIncoterms = () => {
+
+  const navigate = useNavigate()
   const [code , setCode] = useState("");
   const [name , setName] = useState("");
   const [update , setUpdate] = useState("");
@@ -37,6 +39,9 @@ const AddIncoterms = () => {
         if(res.data.status === true)
         {
           toast("Income Terms Added Successfully" , {type:"success"});
+          setTimeout(() => {
+            navigate('/Incometerms')
+          }, 1000);
         }
         else if(res.data.status === false)
         {
@@ -84,6 +89,9 @@ const AddIncoterms = () => {
        if(res.data.status === true)
        {
         toast("Income Terms is Updated Successfully !",{type:"success"});
+        setTimeout(() => {
+          navigate('/Incometerms')
+        }, 1000);
        }
        else if(res.data.status === false)
        {

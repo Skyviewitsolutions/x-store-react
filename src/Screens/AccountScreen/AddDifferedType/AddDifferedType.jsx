@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast,ToastContainer } from 'react-toastify';
 import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar'
 import { endpoints } from '../../../services/endpoints';
 import './AddDifferedType.css'
 
 const AddDifferedType = () => {
+
+  const navigate = useNavigate()
   const [defExType , setDefExType] = useState("");
   const [parentCate , setParentCate] = useState("");
   const [virtual , setVirtual] = useState(false);
@@ -46,7 +48,14 @@ const AddDifferedType = () => {
     }
     else if(res.data.status === false)
     {
-      toast(res.data.message,{type:"error"});
+      if(res.data.code === 3)
+      {
+        toast("Session expired , Please re-login",{type:"warning"})
+        navigate('/');
+      }
+      else{
+       toast(res.data.message,{type:"error"});
+      }
     }
    })
    .catch((err) => {
@@ -66,7 +75,14 @@ const AddDifferedType = () => {
      }
      else if(res.data.status === false)
      {
-      toast(res.data.message,{type:"error"});
+      if(res.data.code === 3)
+            {
+              toast("Session expired , Please re-login",{type:"warning"})
+              navigate('/');
+            }
+            else{
+             toast(res.data.message,{type:"error"});
+            }
      }
     })
     .catch((err) => {
@@ -169,10 +185,20 @@ const save = () => {
         if(res.data.status === true)
         {
           toast("Defered Expense Type Added Successfully",{type:"success"});
+          setTimeout(() => {
+            navigate('/DifferedExpenseType')
+          }, 1000);
         }
         else if(res.data.status === false)
         {
-          toast(res.data.message,{type:"error"})
+          if(res.data.code === 3)
+          {
+            toast("Session expired , Please re-login",{type:"warning"})
+            navigate('/');
+          }
+          else{
+           toast(res.data.message,{type:"error"});
+          }
         }
       })
       .catch((err) => {
@@ -304,6 +330,9 @@ const save = () => {
         if(res.data.status === true)
         {
           toast("Asset Type is updated Successfully !",{type:"success"})
+          setTimeout(() => {
+            navigate('/DifferedExpenseType')
+          }, 1000);
         }
         else if(res.data.status === false)
         {

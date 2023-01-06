@@ -10,8 +10,11 @@ const DeletePopup = (props) => {
     const {show , setShow , setDeleteConfirm} = props;
 
   return (
-    <div>
-         <Modal show={show}  animation={false}>
+    <>
+    <div className=''>
+    
+         <Modal show={show}  animation={false} className="delete_modal">
+         
         <Modal.Header  >
         <RiDeleteBin7Line style={{margin:"10px",color:"#0077b0"}}  size={35}/>
           <Modal.Title style={{fontSize:"20px",color:"#6a6a6a"}}>Are you sure you want to delete ?</Modal.Title>
@@ -27,6 +30,7 @@ const DeletePopup = (props) => {
         </Modal.Footer>
       </Modal>
     </div>
+    </>
   )
 }
 

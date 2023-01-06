@@ -6,10 +6,10 @@ import AccountNavbar from '../../../components/AccountNavbar/AccountNavbar';
 import { toast,ToastContainer} from 'react-toastify';
 import { endpoints } from '../../../services/endpoints';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AddCurrencies = () => {
-
+  const navigate = useNavigate()
   const [currencies , setCurrencies] = useState("");
   const [currenciesUnit , setCurrenciesUnit] = useState("");
   const [currenciesRate , setCurrenciesRate] = useState("");
@@ -57,6 +57,9 @@ const AddCurrencies = () => {
         if(res.data.status === true)
         {
             toast("Currencies Added Successfully" , {type:"success"})
+            setTimeout(() => {
+              navigate('/Currencies')
+            }, 1000);
         }
         else if(res.data.status === false)
         {
@@ -124,6 +127,9 @@ const AddCurrencies = () => {
       if(res.data.status === true)
       {
         toast("Currencies is updated Successfully !",{type:"success"})
+        setTimeout(() => {
+          navigate('/Currencies')
+        }, 1000);
       }
       else if(res.data.status === false)
       {

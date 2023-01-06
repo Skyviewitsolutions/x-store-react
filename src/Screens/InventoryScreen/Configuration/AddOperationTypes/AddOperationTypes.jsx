@@ -61,6 +61,9 @@ const AddOperationTypes = () => {
           console.log(res, "response");
           if (res.data.status == true) {
             toast("Operation Type Added successfully", { type: "Sucess" });
+            setTimeout(() => {
+              navigate('/OperationType')
+            }, 1000);
           } else if (res.data.status == false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -168,6 +171,9 @@ const AddOperationTypes = () => {
         .then((res) => {
           if (res.data.status == true) {
             toast("Opertaion Type Updated Successfully!", { type: "success" });
+            setTimeout(() => {
+              navigate('/OperationType')
+            }, 1000);
           } else if (res.data.status == false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });

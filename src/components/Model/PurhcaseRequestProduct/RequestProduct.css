@@ -1,13 +1,13 @@
-.reproductCon{
-    width:140%;
+.reproductCon {
+    width: 100%;
     background-color: #fff;
     position: relative;
-    margin-left: -20%;
+    margin-left: 0%;
     padding-bottom: 4%;
 }
 .product_content{
     width: 100%;
-    padding: 15px 20px;
+    padding: 15px 10%;
     display: flex;
     margin-top: 40px;
 }
@@ -15,10 +15,9 @@
     font-size: 25px;
     color: #666666;
     font-weight: 400;
-    margin-left: 50px;
 }
 .product_text{
-    width: 50%;
+    width: 100%;
 }
 .pro_details{
     display: flex;
@@ -53,10 +52,12 @@
     width: 50%;
     margin-top: 42px;
 }
-.probtn{
-    margin: 21px 39px;
-}
-.btn{
+
+    .probtn {
+        margin: 20px 0px;
+    }
+
+.product_save{
     background-color:#0077b0;
     border:none;
     color: #fff;
@@ -66,5 +67,4 @@
     padding: 8px 33px;
     font-weight: 600;
     transition: 0.3s;
-    margin-left: 10px;
 }

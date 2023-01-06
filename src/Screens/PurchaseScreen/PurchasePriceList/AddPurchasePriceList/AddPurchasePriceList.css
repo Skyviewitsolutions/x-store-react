@@ -58,7 +58,7 @@
 }
 .priceListPart2{
     width: 50%;
-    padding-left: 17px;
+    margin-left: 20px;
 }
 .priceListPart2 h1{
     color: #666666;
@@ -86,7 +86,7 @@
 
 }
 .priceListtext select{
-    width: 500px;
+    width: 450px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
@@ -103,20 +103,65 @@
     width: 150px; 
 }
 .pricetexts input{
-    width: 250px;
+    width: 450px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
 }
-.pricetexts select{
-    width: 250px;
+
+.price_currency{
+   display: flex;
+    align-items: center; 
+}
+.price_currency p{
+   color: #666666;
+    margin-bottom: 10px; 
+    font-size: 15px;
+    font-weight: bold;
+    width: 150px; 
+}
+.price_currency input{
+    width: 240px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
     margin-left: 5px;
 }
-.pricetexts span{
-    color: black;
+.price_currency select{
+    width: 200px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+    margin-left: 5px;
+}
+.valid_date{
+    display: flex;
+    align-items: center; 
+}
+
+.valid_date p{
+   color: #666666;
+    margin-bottom: 10px; 
+    font-size: 15px;
+    font-weight: bold;
+    width: 150px; 
+}
+.valid_date input{
+    width: 200px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+    margin-left: 5px;
+}
+.valid_date select{
+    width: 200px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccccc;
+}
+
+.valid_date span{
+    color: #666666;
     font-size: 15px;
 }
 

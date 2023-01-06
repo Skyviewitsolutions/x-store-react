@@ -6,6 +6,7 @@ import { MdDelete } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import CustomTable from '../../../components/CustomTable/CustomTable'
+import DeletePopup from '../../../components/Model/DeletePopup/DeletePopup'
 import { endpoints } from '../../../services/endpoints'
 import PurchaseNavbar from '../PurchaseNavbar'
 
@@ -21,6 +22,9 @@ const PurchaseAgreementTypes = () => {
   const userAuth = localStorage.getItem("userAuth");
   const getagreementtypeUrl = endpoints.purchaseAgreementtype.allAgreementtype;
 
+  const [show , setShow] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
   const getagreeementtype = () => {
     const formData =  new FormData();
@@ -32,7 +36,10 @@ const PurchaseAgreementTypes = () => {
      if(res.data.status === true){
        var val = res.data.data;
        val = val.reverse();
-       setAllagreementtype(val);
+       const filterAgreement = val.filter((itm,ind) => {
+        return itm.DELETE_STATUS != 'X'
+       })
+       setAllagreementtype(filterAgreement);
      }else if(res.data.status === false){
       if(res.data.code === 3)
       {
@@ -63,6 +70,9 @@ const PurchaseAgreementTypes = () => {
     .then((res) => {
      if(res.data.status === true)
      {
+      setShow(false)
+      setDeleteConfirm(false)
+      setSelectedData("")
       getagreeementtype();
        toast("Purchase Agreement Type deleted Successfully!",{type:"success"});
      }
@@ -83,6 +93,12 @@ const PurchaseAgreementTypes = () => {
     })
   }
   
+  useEffect(() => {
+    if (deleteConfirm) {
+      deleteItem(selectedData);
+    }
+  }, [deleteConfirm]);
+
  const handleUpdate = (data) => {
   const val =allAgreementtype .filter((itm,index) => {
     return itm.ID == data
@@ -102,8 +118,10 @@ const PurchaseAgreementTypes = () => {
               return(
                 <div className="updtdlt">
                 <FiEdit size={23} color="#4f4e4d" onClick={() => handleUpdate(value)} style={{cursor:"pointer"}}/>
-                <MdDelete size={23} color="4f4e4d" onClick={() => deleteItem(value)}  style={{cursor:"pointer"}}
-                />
+             <MdDelete size={23} color="#4f434d" onClick={() => {
+                    setShow(true);
+                    setSelectedData(value)
+                  }}  style={{cursor:"pointer"}}/>
               </div>
               )
             }
@@ -114,6 +132,9 @@ const PurchaseAgreementTypes = () => {
     <div>
       <PurchaseNavbar showBelowMenu={true} title="Purchase Agreement Types" handleCreatePage={handleCreatePage}/>
       <CustomTable data={allAgreementtype} column={column}/>
+      <DeletePopup show={show}
+            setShow={setShow}
+            setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer/>
     </div>
   )

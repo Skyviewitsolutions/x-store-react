@@ -61,7 +61,7 @@ const VendorsCard = (props) => {
 
   return (<>
 
-  {data.VENDOR_STATUS == "X" ? 
+  {data.VENDOR_STATUS == "X" ? (
     <div style={{opacity : 0.5}} className="vendor_card">
       <div className="yf_card">
       <div className="VendorsContainer">
@@ -85,7 +85,7 @@ const VendorsCard = (props) => {
       </div>
       </div>
       <ToastContainer/>
-    </div> : 
+    </div>) : ( 
     <div >
       <div className="VendorsContainer">
         <div className="VendorsCon"  onClick={() => renderToEditPage(data)}>
@@ -114,7 +114,7 @@ const VendorsCard = (props) => {
             setShow={setShow}
             setDeleteConfirm={setDeleteConfirm}/>
       <ToastContainer/>
-    </div> }
+    </div> )}
     </>);
 };
 export default VendorsCard;

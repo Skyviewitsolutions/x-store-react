@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import VariantModal from "./VariantModal";
 import CustomTable from "../../CustomTable/CustomTable";
 import Loader from "../../Loader/Loader";
+import ProductTable from "../../ProductTable/ProductTable";
 
 const VariantsEdit = (props) => {
   const navigate = useNavigate();
@@ -285,9 +286,9 @@ const VariantsEdit = (props) => {
   return (
     <div className="VariantsEditContainer">
       {productId ? (
-        <CustomTable data={attributesValues} column={column2} />
+        <ProductTable data={attributesValues} column={column2} />
       ) : (
-        <CustomTable data={attributesValues} column={column1} />
+        <ProductTable data={attributesValues} column={column1} />
       )}
 
       <button

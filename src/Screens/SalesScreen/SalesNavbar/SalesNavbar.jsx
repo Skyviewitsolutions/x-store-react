@@ -5,9 +5,39 @@ import { FaSearchMinus } from "react-icons/fa";
 import "./SalesNavbar.css";
 import { useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
+import { endpoints } from "../../../services/endpoints";
+import { toast } from "react-toastify";
+import axios from "axios";
 const SalesNavbar = (props) => {
   const { showBelowMenu, handleCreatePage, title, save ,showCanelBtn,disabledCreate} = props;
   const navigate = useNavigate();
+
+  const logotUrl = endpoints.authentication.logout;
+  const getAuthtoken = localStorage.getItem("authtoken");
+  const userAuth = localStorage.getItem("userAuth");
+  const userEmails = localStorage.getItem("UserEmail");
+  const userLoginTime = localStorage.getItem("loginTime");
+
+  const logout = () => {
+
+    const formData = new FormData()
+    formData.append("email",userEmails);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("LoginTime", userLoginTime);
+    axios.post(logotUrl,formData)
+    .then((res) => {
+   if(res.data.status === true){
+    toast(res.data.message,{type:"success"})
+    setTimeout(() => {
+      navigate('/')
+    }, 1000);
+   }
+    })
+    .catch((err) => {
+      console.log(err,"eror")
+    })
+  }
+
   return (
     <>
       <div className="container-fluid navCont">
@@ -69,14 +99,8 @@ const SalesNavbar = (props) => {
                 <NavDropdown.Item onClick={() => navigate("/sales_teams")}>
                   Sales Teams
                 </NavDropdown.Item>
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                  Sales Orders
-                </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate("/shipping_methods")}>
                   Shipping Methods
-                </NavDropdown.Item>
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
-                  Product
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate("/sales_attribute")}>
                   Attributes
@@ -98,9 +122,8 @@ const SalesNavbar = (props) => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-          <div className="logout">
-              <IoMdLogOut
-               style={{ color: "white", marginRight: "10px",fontSize:"25px"}} onClick={() => navigate('/')}/>
+          <div className="logout"  onClick={logout}>
+              <IoMdLogOut style={{ color: "white", marginRight: "10px",fontSize:"25px"}}/>
               <p>Logout</p>
             </div>
         </Navbar>

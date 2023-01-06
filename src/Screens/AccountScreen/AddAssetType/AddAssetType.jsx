@@ -2,7 +2,7 @@ import { GroupAdd } from "@mui/icons-material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast,ToastContainer } from "react-toastify";
 import AccountNavbar from "../../../components/AccountNavbar/AccountNavbar";
 import { endpoints } from "../../../services/endpoints";
@@ -10,10 +10,11 @@ import "./AddAssetType.css";
 
 const AddAssetType = () => {
 
+  const navigate = useNavigate()
   const [assetType , setAssetType] = useState("");
   const [parentCate , setParentCate] = useState("");
   const [virtual , setVirtual] = useState(false);
-  const [journal , setJournal] = useState("");
+  const [journals , setJournals] = useState("");
   const [assetAcc , setAssetAcc] = useState("");
   const [assAcc , setAssAcc] = useState("");
   const [expenceAcc , setExpenceAcc] = useState("");
@@ -45,11 +46,16 @@ const AddAssetType = () => {
    .then((res) => {
     if(res.data.status === true)
     {
-      setGetJournal(res.data.data);
+
+      const val = res.data.data;
+      const filterJournal = val.filter((itm,ind) => {
+        return itm.DELETE_STATUS != 'X'
+      })
+      setGetJournal(filterJournal);
     }
     else if(res.data.status === false)
     {
-     alert(res.data.message);
+      toast(res.data.message,{type:"error"})
     }
    })
    .catch((err) => {
@@ -65,11 +71,16 @@ const AddAssetType = () => {
    .then((res) => {
     if(res.data.status === true)
     {
-      setGetAnayticAcc(res.data.data);
+      const val = res.data.data;
+      const filterAnnAcc = val.filter((itm,ind) => {
+        return itm.DELETE_STATUS != 'X'
+      })
+
+      setGetAnayticAcc(filterAnnAcc);
     }
     else if(res.data.status === false)
     {
-     alert(res.data.message);
+     toast(res.data.message,{type:"error"})
     }
    })
    .catch((err) => {
@@ -94,7 +105,7 @@ const AddAssetType = () => {
     {
       toast("Virtual Category Is Required!",{type:"warning"});
     }
-    else if(journal === "")
+    else if(journals === "")
     {
       toast("Joural Is Required!",{type:"warning"});
     }
@@ -152,7 +163,7 @@ const AddAssetType = () => {
        formData.append("Asset_Type",assetType);
        formData.append("Parent_Category",parentCate);
        formData.append("Vartual",virtual);
-       formData.append("Journal",journal);
+       formData.append("Journal",journals);
        formData.append("Time_Method_Based_On",time);
        formData.append("Asset_Account",assetAcc);
        formData.append("Dep_Asset_Account",assAcc);
@@ -173,6 +184,9 @@ const AddAssetType = () => {
         if(res.data.status === true)
         {
           toast("Asset Type Added Successfully",{type:"success"});
+          setTimeout(() => {
+            navigate('/AssetTypes')
+          }, 1000);
         }
         else if(res.data.status === false)
         {
@@ -196,7 +210,7 @@ const AddAssetType = () => {
       setAssetType(selectedData.ASSET_TYPE);
       setParentCate(selectedData.PRODUCT_CATEGORY);
       setVirtual(selectedData.VIRTUAL_STATUS);
-      setJournal(selectedData.JOURNAL_INFORMATION);
+      setJournals(selectedData.JOURNAL_INFORMATION);
       setAssetAcc(selectedData.ASSET_ACCOUNT);
       setAssAcc(selectedData.ASSETS_EXPENSE_ACCOUNT);
       setExpenceAcc(selectedData.ASSET_EXPENSE_ACCOUNT);
@@ -227,7 +241,7 @@ const AddAssetType = () => {
     {
       toast("Virtual Category Is Required!",{type:"warning"});
     }
-    else if(journal === "")
+    else if(journals === "")
     {
       toast("Joural Is Required!",{type:"warning"});
     }
@@ -286,7 +300,7 @@ const AddAssetType = () => {
       formData.append("Asset_Type",assetType);
       formData.append("Parent_Category",parentCate);
       formData.append("Vartual",virtual);
-      formData.append("Journal",journal);
+      formData.append("Journal",journals);
       formData.append("Time_Method_Based_On",time);
       formData.append("Asset_Account",assetAcc);
       formData.append("Dep_Asset_Account",assAcc);
@@ -307,6 +321,9 @@ const AddAssetType = () => {
         if(res.data.status === true)
         {
           toast("Asset Type is updated Successfully !",{type:"success"})
+          setTimeout(() => {
+            navigate('/AssetTypes')
+          }, 1000);
         }
         else if(res.data.status === false)
         {
@@ -357,7 +374,7 @@ const AddAssetType = () => {
             <p>Journal Entries</p>
             <div className="assettext">
               <p>Journal</p>
-              <select value={journal} onChange={(e) => setJournal(e.target.value)}>
+              <select value={journals} onChange={(e) => setJournals(e.target.value)}>
                 <option value="">select any one</option>
                 {
                   getJournal.map((itm,index) => {
