@@ -12,166 +12,11 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
+import { FiEdit } from "react-icons/fi";
 
 const AddRequestQuotation = (props) => {
   const navigate = useNavigate();
   const [events, setEvents] = useState("Products");
-
-  const [vendorAll, setVendorAll] = useState([]);
-  const [currencyAll, setCurrencyAll] = useState([]);
-  const [paymentTermsAll, setPaymentTermsAll] = useState([]);
-    const [vendor, setVendor] = useState("");
-
-  const vendorUrl = endpoints.vendors.allVendors;
-  const currencyUrl = endpoints.Currency.allCurrency;
-  const paymentUrl = endpoints.PaymentTerms.allPayment;
-  const requestQuotationUrl = endpoints.requestQuotation.addRequestQuotation;
-
- 
-//  -------------------------ProductDetails useState-----------------------
-
-const [modalShow , setModalShow] = useState(false)
-const [productAll , setProductAll] = useState([]);
-
-const [productdet , setProductDet] = useState("")
-const [description , setDescription] = useState("")
-const [quantity , setQuantity] = useState("")
-const [uomdet , setUomdet] = useState("")
-const productDetailsUrl = endpoints.requestQuotation.getAllproductdetails;
-const addProductUrl = endpoints.requestQuotation.addProductdetails;
-const getAuthtoken = localStorage.getItem("authtoken");
-const userAuth = localStorage.getItem("userAuth");
-const vendorId = localStorage.getItem("varId");
-
-const getAllproductdetails = () => {
-  
-    const formData = new FormData();
-    formData.append("User_Authorization" , getAuthtoken);
-    formData.append("User_AuthKey" , userAuth);
-   
-    axios.post(productDetailsUrl,formData)
-    .then((res) => {
-      console.log(res,"responscbdch")
-      if(res.data.DELETE_STATUS != "X"){
-        setProductAll(res.data.data)
-      }else if(res.data.status === false){
-        if(res.data.code === 3)
-        {
-          toast("Session expired , Please re-login",{type:"warning"})
-          navigate('/');
-        }
-        else{
-         toast(res.data.message,{type:"error"});
-        }
-      }
-    })
-    .catch((err) => {
-      console.log(err , "something went wrong");
-    })
-  
-}
-
-useEffect(() => {
-  getAllproductdetails()
-},[])
-
-
-
-
- const saveProduct = () => {
- 
- if(productdet === ""){
-    toast("Product is required" ,{type:'warning'})
-  }else if(description === ""){
-    toast("Description is required" ,{type:"warning"})
-  }else if(quantity === ""){
-    toast("Quantity is required",{type:"warning"})
-  }else if(uomdet === ""){
-    toast("UOM is required",{type:"warning"})
-  }else{
-    const formData = new FormData()
-    formData.append("Product_ID" , productdet);
-    formData.append("UOM_ID" , uomdet);
-    formData.append("Description" , description);
-    formData.append("Qty" , quantity);
-    formData.append("User_Authorization", getAuthtoken);
-    formData.append("User_AuthKey", userAuth);
-    axios.post(addProductUrl , formData)
-    .then((res) => {
-      if(res.data.status === true){
-        toast("Product Details Added successfully" ,{type:"success"})
-        setModalShow(false)
-        getAllproductdetails()
-      }else if(res.data.status === false){
-        toast(res.data.data ,{type:"error"})
-      }
-    })
-    .catch((err) => {
-      console.log(err,"error")
-    })
-  }
-
-};
-
-// ------------------deleteProductDetails---------------------------
-
-const deleteProductDetailsUrl = endpoints.requestQuotation.deleteProductdetails;
-
-const deleteItem = (data) => {
-  const formData = new FormData();
-  formData.append("ID" , data);
-  formData.append("User_Authorization", getAuthtoken);
-  formData.append("User_AuthKey", userAuth);
-  axios.post(deleteProductDetailsUrl,formData)
-  .then((res) => {
-    if(res.data.status === true)
-    {
-      saveProduct()
-        toast("Product deleted Successfully",{type:"success"});
-    }
-    else if(res.data.status === false)
-    {
-      if(res.data.code === 3)
-      {
-        toast("Session expired , Please re-login",{type:"warning"})
-        navigate('/');
-      }
-      else{
-       toast(res.data.mrssage,{type:"error"});
-      }
-    }
-  })
-  .catch((err) => {
-    console.log(err,"error");
-})
- }
-
- console.log(productAll,"sdhfhfgh")
-const column = [
-    {label:"VenID" , name:"VENDOR_ID"},
-    {label:"No" , name:"SERIAL_NO"},
-    {label:"Product" , name:"PRODUCT_NAME"},
-    {label:"Description" , name:"DESCRIPTION"},
-    {label:"Quantity" , name:"PRODUCT_QUANTITY"},
-    {label:"UOM" , name:"UNIT_OF_MEASUREMENT"},
-    {
-      label:"Actions",
-      name:"ID",
-      options:{
-          customBodyRender:(value , tableMeta , updateValue) => {
-              return(
-                  <>
-                   <div className="updtdlt">
-                  <MdDelete size={23} color="#4f434d"  onClick={() => deleteItem(value)} style={{cursor:"pointer"}}/>
-                  </div>
-                  </>
-                  
-              )
-          }
-      }
-  }
-]
-
 
   // ------------------------Request Quotation State----------------------------
 
@@ -238,6 +83,9 @@ const column = [
         .then((res) => {
           if (res.data.status === true) {
             toast("Request Quotation Added Successfully", { type: "success" });
+            setTimeout(() => {
+              navigate('/RequestforQuotation')
+            }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -284,7 +132,12 @@ const column = [
       .post(currencyUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          setCurrencyAll(res.data.data);
+
+          var val = res.data.data;
+          const filterCurrency = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != 'X'
+          })
+          setCurrencyAll(filterCurrency);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -396,6 +249,9 @@ const column = [
         .then((res) => {
           if (res.data.status === true) {
             toast("Request Quotation updated Successfully", { type: "success" });
+            setTimeout(() => {
+              navigate('/RequestforQuotation')
+            }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -410,6 +266,289 @@ const column = [
         });
     }
   }
+
+
+  const [vendorAll, setVendorAll] = useState([]);
+  const [currencyAll, setCurrencyAll] = useState([]);
+  const [paymentTermsAll, setPaymentTermsAll] = useState([]);
+  const [vendor, setVendor] = useState("");
+
+  const [selectedProductsId , setSelectedProductsId] = useState("")
+  const [updateProductDetails , setUpdateProductDetails] = useState(false)
+
+
+  const vendorUrl = endpoints.vendors.allVendors;
+  const currencyUrl = endpoints.Currency.allCurrency;
+  const paymentUrl = endpoints.PaymentTerms.allPayment;
+  const requestQuotationUrl = endpoints.requestQuotation.addRequestQuotation;
+
+ 
+//  -------------------------ProductDetails useState-----------------------
+
+const [modalShow , setModalShow] = useState(false)
+const [productAll , setProductAll] = useState([]);
+const [singleProduct , setSingleProduct] = useState([])
+
+const [productdet , setProductDet] = useState("")
+const [description , setDescription] = useState("")
+const [quantity , setQuantity] = useState("")
+const [uomdet , setUomdet] = useState("")
+
+const getAuthtoken = localStorage.getItem("authtoken");
+const userAuth = localStorage.getItem("userAuth");
+
+const productDetailsUrl = endpoints.requestQuotation.getAllproductdetails;
+const addProductUrl = endpoints.requestQuotation.addProductdetails;
+
+const singleProductUrl = endpoints.requestQuotation.singleProductDetails;
+
+const getAllproductdetails = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+   
+    axios.post(productDetailsUrl,formData)
+    .then((res) => {
+      console.log(res,"responscbdch")
+      if(res.data.status === true){
+        var val = res.data.data;
+        val = val.reverse();
+        const filterProduct = val.filter((itm,ind) =>{
+          return itm.DELETE_STATUS != "X"
+        })
+        setProductAll(filterProduct)
+      }else if(res.data.status === false){
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+        //  toast(res.data.message,{type:"error"});
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err , "something went wrong");
+    })
+}
+
+const getSingleProduct = () => {
+  const formData = new FormData()
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+    formData.append("RFQ_ID" ,requestId);
+    axios.post(singleProductUrl,formData)
+    .then((res) => {
+      if(res.data.status === true){
+        const val = res.data.data;
+        console.log(val,"single data here")
+        const filteredProductDetails = val.filter((itm,ind) =>{
+          return itm.DELETE_STATUS != "X"
+        })
+        setSingleProduct(filteredProductDetails)
+      }
+      else if(res.data.status === false){
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+      }
+    })
+    .catch((err) => {
+      
+    })
+
+
+  }
+
+
+useEffect(() => {
+  console.log(requestId,"jbkjbk")
+  if(requestId){
+    getSingleProduct()
+  }else{
+    getAllproductdetails()
+  }
+ 
+},[requestId])
+
+
+
+ const saveProduct = () => {
+ 
+ if(productdet === ""){
+    toast("Product is required" ,{type:'warning'})
+  }else if(description === ""){
+    toast("Description is required" ,{type:"warning"})
+  }else if(quantity === ""){
+    toast("Quantity is required",{type:"warning"})
+  }else if(uomdet === ""){
+    toast("UOM is required",{type:"warning"})
+  }else{
+    const formData = new FormData()
+    formData.append("Product_ID" , productdet);
+    formData.append("UOM_ID" , uomdet);
+    formData.append("Description" , description);
+    formData.append("Qty" , quantity);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(addProductUrl , formData)
+    .then((res) => {
+      if(res.data.status === true){
+        toast("Product Details Added successfully" ,{type:"success"})
+        setModalShow(false)
+        getAllproductdetails()
+      }else if(res.data.status === false){
+        toast(res.data.data ,{type:"error"})
+      }
+    })
+    .catch((err) => {
+      console.log(err,"error")
+    })
+  }
+
+};
+
+// ------------------deleteProductDetails---------------------------
+
+const deleteProductDetailsUrl = endpoints.requestQuotation.deleteProductdetails;
+
+const deleteItem = (data) => {
+  const formData = new FormData();
+  formData.append("ID" , data);
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
+  axios.post(deleteProductDetailsUrl,formData)
+  .then((res) => {
+    if(res.data.status === true)
+    {
+        toast("Product deleted Successfully",{type:"success"});
+        getAllproductdetails()
+    }
+    else if(res.data.status === false)
+    {
+      if(res.data.code === 3)
+      {
+        toast("Session expired , Please re-login",{type:"warning"})
+        navigate('/');
+      }
+      else{
+       toast(res.data.mrssage,{type:"error"});
+      }
+    }
+  })
+  .catch((err) => {
+    console.log(err,"error");
+})
+ }
+
+//  ----------------------Update ProductDetails-------------------------------
+
+const updateProductDetailsUrl = endpoints.requestQuotation.updateProductDetails;
+ const handleUpdate = (id) => {
+  var selectedProductsList = productAll.filter((itm,ind) => {
+    return itm.ID === id
+  })
+  console.log(selectedProductsList,"csdf")
+  setModalShow(true)
+  setSelectedProductsId(id)
+  selectedProductsList = selectedProductsList[0];
+  setProductDet(selectedProductsList.PRODUCT_ID);
+  setDescription(selectedProductsList.DESCRIPTION);
+  setUomdet(selectedProductsList.UNITOFMEASUREMENT_ID);
+  setQuantity(selectedProductsList.PRODUCT_QUANTITY);
+  setUpdateProductDetails(true)
+ }
+
+ const updateSelectedProductList = () => {
+  const formData = new FormData();
+  formData.append("ID",selectedProductsId)
+  formData.append("Product_ID" , productdet);
+  formData.append("UOM_ID" , uomdet);
+  formData.append("Description" , description);
+  formData.append("Qty" , quantity);
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
+  axios.post(updateProductDetailsUrl,formData)
+  .then((res) => {
+    console.log(res,"vfshgdf")
+    if(res.data.status === true){
+      toast("Product Details Updated successfully" ,{type:"success"})
+      window.location.reload()
+      setModalShow(false)
+      getAllproductdetails()
+      getSingleProduct()
+    }else if(res.data.status === false){
+      toast(res.data.data ,{type:"error"})
+    }
+  })
+  .catch((err) => {
+    console.log(err,"error")
+  })
+ }
+
+
+
+
+const column = [
+    {label:"Product" , name:"PRODUCT_NAME"},
+    {label:"Description" , name:"DESCRIPTION"},
+    {label:"Quantity" , name:"PRODUCT_QUANTITY"},
+    {label:"UOM" , name:"UNIT_OF_MEASUREMENT"},
+    {
+      label:"Actions",
+      name:"ID",
+      options:{
+          customBodyRender:(value , tableMeta , updateValue) => {
+              return(
+                  <>
+                   <div className="updtdlt">
+                  <MdDelete size={23} color="#4f434d"  onClick={() => deleteItem(value)} style={{cursor:"pointer"}}/>
+                  <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
+                  </div>
+                  </>
+                  
+              )
+          }
+      }
+  }
+]
+
+const column2 = [
+    {label:"Product" , name:"PRODUCT_NAME"},
+    {label:"Description" , name:"DESCRIPTION"},
+    {label:"Quantity" , name:"PRODUCT_QUANTITY"},
+    {label:"UOM" , name:"UNIT_OF_MEASUREMENT"},
+    {
+      label:"Actions",
+      name:"ID",
+      options:{
+          customBodyRender:(value , tableMeta , updateValue) => {
+              return(
+                  <>
+                   <div className="updtdlt">
+                  <MdDelete size={23} color="#4f434d"  onClick={() => deleteItem(value)} style={{cursor:"pointer"}}/>
+                  <FiEdit
+                  size={23}
+                  color="#4f4e4d"
+                  onClick={() => handleUpdate(value)}
+                  style={{ cursor: "pointer" }}
+                />
+                  </div>
+                  </>
+                  
+              )
+          }
+      }
+  }
+]
    
   return (
     <div>
@@ -564,10 +703,10 @@ const column = [
           </Nav>
         </div>
         <div className="Warehouse">
-          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem}/>}
-          {events === "Other Information" && <OtherInfo recepitDate={recepitDate} setRecepitDate={setRecepitDate} incoTerms={incoTerms} setIncoTerms={setIncoTerms} purchaseRep={purchaseRep} setPurchaseRep={setPurchaseRep} fisicalPosition={fisicalPosition} setFisicalPosition={setFisicalPosition}/>}
+          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} requestId={requestId} singleProduct={singleProduct} setSingleProduct={setSingleProduct}/>}
+          {events === "Other Information" && <OtherInfo recepitDate={recepitDate} setRecepitDate={setRecepitDate} incoTerms={incoTerms} setIncoTerms={setIncoTerms} purchaseRep={purchaseRep} setPurchaseRep={setPurchaseRep} fisicalPosition={fisicalPosition} setFisicalPosition={setFisicalPosition} />}
         </div>
-      </div>
+      </div> 
       <ToastContainer />
     </div>
   );

@@ -140,7 +140,7 @@ const AddAccountType = () => {
             <div className="AddAccContent">
                 <p>Type</p>
                <select value={type} onChange={(e) => setType(e.target.value)}>
-                <option value=""></option>
+                <option>Choose any one</option>
                 <option value="Regular">Regular</option>
                 <option value="Receivable">Receivable</option>
                 <option value="Payable">Payable</option>
@@ -150,7 +150,7 @@ const AddAccountType = () => {
             <div className="AddAccContent">
                 <p>Internal Group</p>
                <select value={internal} onChange={(e) => setInternal(e.target.value)}>
-                <option value=""></option>
+                <option>Choose any one</option>
                 <option value="Equity">Equity</option>
                 <option value="Asset">Asset</option>
                 <option value="Liability">Liability</option>
@@ -159,13 +159,14 @@ const AddAccountType = () => {
                 <option value="Off Balance">Off Balance</option>
                </select>
             </div>
-            <div className="AddAccTypecheckbox">
-                <label htmlFor='balance'>Bring Accounts Balance Forward</label>
-                <input type="checkbox" value={balance} onChange={() => setBalance(!balance)} checked={balance} id='balance'/>
-            </div>
+           
             <div className="des">
             <h3>Description</h3>
             <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+            </div>
+            <div className="AddAccTypecheckbox">
+                <label htmlFor='balance'>Bring Accounts Balance Forward</label>
+                <input type="checkbox" value={balance} onChange={() => setBalance(!balance)} checked={balance} id='balance'/>
             </div>
            
          </div>

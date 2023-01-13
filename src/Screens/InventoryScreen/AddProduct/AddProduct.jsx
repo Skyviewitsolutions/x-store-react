@@ -93,7 +93,12 @@ const AddProduct = () => {
       toast("Customer Tax is required", { type: "warning" });
     } else if (customerLeadTime === "") {
       toast("Customer lead time is required", { type: "warning" });
-    } else {
+    }else if (productImg === "") {
+      toast("product image is required", { type: "warning" });
+    } else if(interRef === ""){
+      toast("Internal Notes is required !",{type:"warning"})
+    }
+    else {
       const formData = new FormData();
       formData.append("Product_Name", productName);
       formData.append("Product_Type", productType);

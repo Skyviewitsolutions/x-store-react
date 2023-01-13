@@ -161,7 +161,7 @@ const AddAnalyticAccount = () => {
         .then((res) => {
           console.log(res, "AccountTagAdd");
           if (res.data.status === true) {
-            toast("Analytic Account  Added Successfully", { type: "Success" });
+            toast("Analytic Account  Added Successfully", { type: "success" });
             setTimeout(() => {
               navigate('/AnalyticAccounts')
             }, 1000);
@@ -284,7 +284,7 @@ const AddAnalyticAccount = () => {
           console.log(res, "AccountTagAdd");
           if (res.data.status === true) {
             toast("Analytic Account  updated Successfully", {
-              type: "Success",
+              type: "success",
             });
             setTimeout(() => {
               navigate('/AnalyticAccounts')
@@ -405,6 +405,7 @@ const AddAnalyticAccount = () => {
                   value={administrator}
                   onChange={(e) => setAdministrator(e.target.value)}
                 >
+                  <option>Choose any one</option>
                   <option value="110">110</option>
                   <option value="13103">13103</option>
                   <option value="Aad Saud Alshaibani Alotaibi">
@@ -421,6 +422,7 @@ const AddAnalyticAccount = () => {
               </div>
               <div className="AnalyticMulti">
                 <p>Staff </p>
+                <div className="addmultiple">
                 <Multiselect
                   className="Analyticmultiselect"
                   options={option} // Options to display in the dropdown
@@ -430,6 +432,7 @@ const AddAnalyticAccount = () => {
                   displayValue="name" // Property name to display in the dropdown options
                 />
               </div>
+              </div>
             </div>
             <div className="AnaylticContentSecond">
               <div className="Analyticselect">
@@ -438,6 +441,7 @@ const AddAnalyticAccount = () => {
                   value={group}
                   onChange={(e) => setGroup(e.target.value)}
                 >
+                  <option>Choose any one</option>
                   <option value="Macca Projects">Macca Projects</option>
                   <option value="Yanbae Projects">Yanbae Projects</option>
                   <option value="ِِAl Ahsa Projects">ِِAl Ahsa Projects</option>

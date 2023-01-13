@@ -175,7 +175,7 @@ const InventoryProductDetails = () => {
       formData.append("Barcode", barcode);
       formData.append("internal_Reference", interRef);
       formData.append("Customer_Taxes", customerTax);
-      formData.append("Internal_Notes", description);
+      formData.append("Internal_Notes", interRef);
       formData.append("UOM_ID", unitOfMeasurementId);
       formData.append("Purchase_UOMID", purchaseUnitOfMeasuremntId);
       formData.append("Weight", weight);
@@ -239,7 +239,7 @@ const InventoryProductDetails = () => {
   return (
     <div>
         <Navebar />
-        <ProductDetailsHeader isEdit={isEdit} setIsEdit={setIsEdit} name={productdetails.PRODUCT_NAME}  save={updateData}/>
+        <ProductDetailsHeader isEdit={isEdit} setIsEdit={setIsEdit} name={productdetails.PRODUCT_NAME}  save={updateData}  productId = {id}/>
         
         <InventoryProductDetailsMain isEdit={isEdit} 
            productName = {productName}

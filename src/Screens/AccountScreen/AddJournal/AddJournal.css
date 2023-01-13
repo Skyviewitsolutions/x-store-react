@@ -28,14 +28,18 @@
     font-size: 14px;
     color: #6a6a6a;
     font-weight: 600;
-    width: 150px;
+    width: 100px;
     margin-bottom: 5px;
 }
 .Journalinput select{
-    width: 500px;
+    width: 400px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc;
+}
+.detail_journal {
+    margin-top: 20px;
+    cursor: pointer;
 }
 
 @media screen and (max-width:1000px){

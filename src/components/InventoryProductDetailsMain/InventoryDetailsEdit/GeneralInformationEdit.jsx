@@ -313,7 +313,7 @@ const GeneralInformationEdit = (props) => {
             placeholder="This note is only for internal purposes."
             value={interRef}
             onChange={(e) => setInterRef(e.target.value)}
-            style={{ width: "450px", border: "none", outline: "none" }}
+            style={{ width: "450px", border: "none", outline: "none",borderBottom:"1px solid #cccccc"}}
           />
         </div>
         <div className="Editpart2">

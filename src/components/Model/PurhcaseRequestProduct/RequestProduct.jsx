@@ -9,7 +9,7 @@ import { endpoints } from "../../../services/endpoints";
 import "./RequestProduct.css";
 
 export const RequestProduct = (props) => {
-  const { modalShow, setModalShow,serialNo,setSerialNo,productdet,setProductDet,description,setDescription,quantity,setQuantity,uomdet,setUomdet,vendorId,setVendorId,saveProduct} = props;
+  const { modalShow, setModalShow,serialNo,setSerialNo,productdet,setProductDet,description,setDescription,quantity,setQuantity,uomdet,setUomdet,vendorId,setVendorId,saveProduct,updateSelectedProductList,updateProductDetails} = props;
   const navigate = useNavigate();
   const [productAll, setProductAll] = useState([]);
   const [uomAll, setUomAll] = useState([]);
@@ -107,7 +107,7 @@ export const RequestProduct = (props) => {
               </div>
               <div className="pro_details">
                 <p>Quantity</p>
-                <input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+                <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
               </div>
               <div className="pro_details">
                 <p>UOM</p>
@@ -116,15 +116,15 @@ export const RequestProduct = (props) => {
                   {uomAll.map((item, index) => {
                     return (
                       <>
-                        <option value={item.UOM_CATEGORY_ID}>{item.UNIT_OF_MEASUREMENT}</option>
+                        <option value={item.ID}>{item.UNIT_OF_MEASUREMENT}</option>
                       </>
                     );
                   })}
                 </select>
               </div>
               <div className="probtn">
-                <button className="product_save" onClick={saveProduct}>
-                  Save
+                <button className="product_save" onClick={updateProductDetails ? updateSelectedProductList : saveProduct}>
+              {updateProductDetails ? "update" : "save"}
                 </button>
               </div>
             </div>

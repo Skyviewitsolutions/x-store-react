@@ -33,8 +33,8 @@
 .AddCurrenciesdetails{
     width: 100%;
     display: flex;
-    /* align-items: center; */
-    padding: 15px 15px;
+    align-items: center;
+    padding: 20px 40px;
 }
 .Currenciesdetails1{
     width: 50%;
@@ -47,15 +47,14 @@
     width: 150px;
     font-size: 14px;
     color: #6a6a6a;
-    margin-left: 50px;
     font-weight: 600;
     margin-bottom: 7px;
 }
 .currenciestext input{
     border: none;
     outline: none;
-    border-bottom: 1px solid #666666;
-    width: 500px;
+    border-bottom: 1px solid #cccc;
+    width: 400px;
 }
 .currenciescheckbox{
     display: flex;
@@ -65,15 +64,15 @@
     width: 140px;
     font-size: 14px;
     color: #6a6a6a;
-    margin-left: 50px;
     font-weight: 600;
     margin-bottom: 5px;
 }
 .currenciescheckbox input{
-    width: 25px;
+    width: 30px;
 }
 .Currenciesdetails2{
     width: 50%;
+    margin-left: 10px;
 }
 
 

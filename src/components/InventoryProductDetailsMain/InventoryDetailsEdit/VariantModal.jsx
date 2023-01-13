@@ -66,6 +66,7 @@ const VariantModal = (props) => {
       .then((res) => {
         if (res.data.status === true) {
           toast(res.data.message, { type: "success" });
+          window.location.reload()
           GetAllAttribute();
           setShowModal(false);
         } else if (res.data.status === false) {

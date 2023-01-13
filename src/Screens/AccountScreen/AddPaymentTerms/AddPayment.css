@@ -9,23 +9,23 @@
 }
 .paymentCon{
     width: 100%;
-    padding: 10px 20px;
+    padding: 10px 50px;
 }
-.AddPaytext {
+/* .AddPaytext {
     display: flex;
     align-items: center;
-}
+} */
 .AddPaytext p{
-    font-size: 16px;
+    font-size: 20px;
     width: 150px;
     color: #6a6a6a;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 5px;
 }
 .AddPaytext input{
     border: none;
     outline: none;
-    width: 450px;
+    width: 600px;
     border-bottom: 1px solid #cccccc;
 }
 .AddPayDes p{

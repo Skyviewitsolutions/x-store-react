@@ -155,6 +155,7 @@ const ProductBarcode = (props) => {
       .then((res) => {
         if (res.data.status) {
           toast("Product Barcode updated successfully", { type: "success" });
+          window.location.reload()
           setModalShow(false);
           getProBarcode();
           getSingleBarcode()

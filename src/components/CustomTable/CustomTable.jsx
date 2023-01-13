@@ -13,9 +13,19 @@ const CustomTable = (props) => {
     //     { label: 'Ratings', name: 'rating' }
     //   ];
 
-      const options = {
-        filterType: 'checkbox'
-      };
+    const options = {
+      search: true,
+      download: true,
+      print: true,
+      viewColumns: true,
+      filter: true,
+      filterType: 'dropdown',
+      selectableRows: false,
+      onTableChange: (action, state) => {
+        console.log(action);
+        console.dir(state);
+      },
+    }
 
   return(
     <>
@@ -24,7 +34,7 @@ const CustomTable = (props) => {
         data={data}
         columns={column}
         // titl='Books Directory'
-        // options=-{options}
+        options={options}
       />
       </div>
     </>

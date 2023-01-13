@@ -12,11 +12,13 @@ import './AddProductRequest.css'
 const AddProductRequest = (props) => {
 
     const navigate = useNavigate()
-    const { modalShow, setModalShow,productdet,setProductDet,description,setDescription,quantity,setQuantity,uomdet,setUomdet,save,vendor,column,productAll,saveProduct,} = props;
+    const { modalShow, setModalShow,productdet,setProductDet,description,setDescription,quantity,setQuantity,uomdet,setUomdet,save,vendor,column,productAll,saveProduct,updateProductDetails,updateSelectedProductList,column2,requestId,singleProduct,setSingleProduct} = props;
+
   return (
     <div>
         <div className="addproduct_Con">
-        <ProductTable data={productAll} column={column} />
+        {requestId  ?  <ProductTable data={singleProduct} column={column2}/> : <ProductTable data={productAll} column={column}/>
+    }
             <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Product</button>
             <div className="addproduct_conditions">
                 {/* <div className="add_part2">

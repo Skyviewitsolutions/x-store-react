@@ -11,6 +11,7 @@
 .TaxNamemain{
     width: 100%;
     display: flex;
+    padding: 10px 20px;
 }
 .TaxNamecontent{
     width: 50%;
@@ -20,10 +21,9 @@
     align-items: center;
 }
 .AddTaxinput p{
-    width: 150px;
+    width: 200px;
     font-size: 15px;
     color: #666666;
-    margin-left: 50px;
     font-weight: 600;
     margin-bottom: 7px;
 
@@ -48,10 +48,9 @@
     align-items: center;
 }
 .AddTaxammount p{
-    width: 150px;
+    width: 200px;
     font-size: 15px;
     color: #666666;
-    margin-left: 50px;
     font-weight: 600;
     margin-bottom: 7px; 
 }
@@ -65,6 +64,7 @@
     width: 100%;
     margin-top: 20px;
     display: flex;
+    padding: 10px 20px;
 }
 .Taxadvance1{
     width: 50%;
@@ -73,17 +73,15 @@
     font-size: 25px;
     color: #666666;
     font-weight: 400;
-    margin-left: 50px;
 }
 .Advanceinput{
     display: flex;
     align-items: center;
 }
 .Advanceinput p{
-    width: 150px;
+    width: 200px;
     font-size: 15px;
     color: #666666;
-    margin-left: 50px;
     font-weight: 600;
     margin-bottom: 7px; 
 }
@@ -105,10 +103,9 @@
     margin-top: 7px;
 }
 .Advancecheckbox label{
-    width: 250px;
+    width: 200px;
     font-size: 15px;
     color: #666666;
-    margin-left: 50px;
     font-weight: 600;
     margin-bottom: 7px; 
 }

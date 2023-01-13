@@ -121,6 +121,7 @@ console.log("getAll")
   useEffect(() => {
     if(productId){
       getSingleVendorList()
+      console.log()
     }else{
       getAllVendorlist()
     }
@@ -219,17 +220,19 @@ console.log("getAll")
   .then((res) => {
     if (res.data.status) {
       toast("Varients updated successfully", { type: "success" });
+      window.location.reload()
       setModalShow(false);
       getAllVendorlist();
       getSingleVendorList()
     } else if (res.data.status === false) {
-      toast(res.data.message, { type: "warning" });
+      toast(res.data.message, { type: "error" });
     }
   })
   .catch((err) => {
     console.log(err, "this is the error");
   });
  }
+
 
 
   const column = [

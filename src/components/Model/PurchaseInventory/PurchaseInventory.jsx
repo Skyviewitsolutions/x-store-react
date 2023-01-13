@@ -76,7 +76,7 @@ const PurchaseInventory = (props) => {
       toast("vendor Quantity is Required !", { type: "warning" });
     } else if (vendorPrice === "") {
       toast("vendor Price is Required !", { type: "warning" });
-    } else if (vendorCurrency === "") {
+    }else if (vendorCurrency === "") {
       toast("vendor Currency is Required !", { type: "warning" });
     } else if (vendorDate1 === "") {
       toast("vendor Date1 is Required !", { type: "warning" });
@@ -104,6 +104,7 @@ const PurchaseInventory = (props) => {
             getSingleVendorList();
             getAllVendorlist()
             toast("Vendor List Added Successfully", { type: "success" });
+            window.location.reload()
             setModalShow(false);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
@@ -135,6 +136,7 @@ const PurchaseInventory = (props) => {
       return [...item, data];
     });
   };
+
 
   return (
     <div>

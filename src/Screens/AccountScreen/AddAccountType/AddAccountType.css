@@ -16,7 +16,7 @@
     font-size: 16px;
     margin-left: 19px;
     margin-bottom: 5px;
-    width: 200px;
+    width: 220px;
     font-weight: 500;
 }
 .AddAccContent input{
@@ -30,12 +30,17 @@
     outline: none;
 border-bottom: 1px solid #cccccc;    width: 500px;
 }
+.des{
+    display: flex;
+    align-items: center;
+}
 .des h3{
-    font-size: 20px;
-    color: #6a6a6a;
-    font-weight: 400;
-    margin-left: 18px;
-    margin-top: 10px;
+    color:#6a6a6a;
+    font-size: 16px;
+    margin-left: 19px;
+    margin-bottom: 5px;
+    width: 260px;
+    font-weight: 500;
 }
 .des input{
     border: none;

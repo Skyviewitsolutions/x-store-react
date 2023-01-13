@@ -149,7 +149,7 @@ const AddAnalyticAccountGroup = () => {
                 <div className="AddAnalyticAccountGrouptext1">
                     <p>Parent</p>
                     <select value={parent} onChange={(e) => setParent(e.target.value)}>
-                        <option value=""></option>
+                        <option>Choose any one</option>
                         <option value="Bank">Bank</option>s
                         <option value="Other C.Assets">Other C.Assets</option>
                         <option value="accumulated depreciation">accumulated depreciation</option>

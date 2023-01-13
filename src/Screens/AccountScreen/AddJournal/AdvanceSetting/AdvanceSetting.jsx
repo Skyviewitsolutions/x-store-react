@@ -6,42 +6,9 @@ const AdvanceSetting = (props) => {
 
  
 
-  const {acctypeAllow,setAccTypeAllow,accAllow,setAccAllow,lockPost,setLockPost} = props
+  const {acctypeAllow,setAccTypeAllow,accAllow,setAccAllow,lockPost,setLockPost,accAllow1,setAccAllow1,acctypeAllow1,setAccTypeAllow1,getSingleJournal,onSelect1,onRemove1,onSelect2,onRemove2,options,options1} = props
+    console.log(accAllow,"hhhfh")
 
-//   const options = [
-//     { name: "Receviable", id: 1 },
-//     { name: "Payable", id: 2 },
-//     { name: "Bank and Cash", id: 2 },
-//     { name: "Credit Card", id: 3 },
-//     { name: "Current Assets", id: 4 },
-//     { name: "Non Current Assets", id: 5 },
-//     { name: "PrePayments", id: 6 },
-//     { name: "Fixed Assets", id: 7},
-//   ];
-//   const options1 = [
-//     { name: "110101001 صندوق ادارة الرياض", id: 1 },
-//     { name: "110101003 صندوق الهفوف", id: 2 },
-//     { name: "110101004 صندوق الباحة", id: 2 },
-//     { name: "110101005 صندوق بيشة", id: 3 },
-//     { name: "110101007 صندوق مكة", id: 4 },
-//   ];
-
-// const  onSelect1 = (selectedList, selectedItem) => {
-//   setAccTypeAllow(selectedList);
-//   console.log(selectedList , "selecctedList Here")
-// };
-
-// const onRemove1 = (selectedList, removedItem) => {
-//   setAccTypeAllow(selectedList);
-// }
-// const  onSelect2 = (selectedList, selectedItem) => {
-//   setAccAllow(selectedList);
-//   console.log(selectedList , "selecctedList Here")
-// };
-
-// const onRemove2 = (selectedList, removedItem) => {
-//   setAccAllow(selectedList);
-// }
   return (
     <div className='AdvanceSettingCon'>
       <div className="AdvanceSettingContent">
@@ -50,36 +17,39 @@ const AdvanceSetting = (props) => {
       </div>
       <div className="AdvanceSettinginput">
         <p>Account Types Allowed</p>
-        <select value={acctypeAllow} onChange={(e) => setAccTypeAllow(e.target.value)}>
+        {/* <select value={acctypeAllow} onChange={(e) => setAccTypeAllow(e.target.value)}>
+        <option>Choose any one</o 
+        ption>
           <option value="Receviable">Receviable</option>
           <option value="Payable">Payable</option>
           <option value="Bank and Cash">Bank and Cash</option>
           <option value="Credit Card">Credit Card</option>
           <option value="Current Assetss">Current Assets</option>
-        </select>
-        {/* <Multiselect className='Advancemultiselect'
+        </select> */}
+        <Multiselect className='Advancemultiselect'
               options={options}
               selectedValues={acctypeAllow} 
               onSelect={onSelect1}
               onRemove={onRemove1} 
               displayValue="name"
-            /> */}
+            />
       </div>
       <div className="AdvanceSettinginput">
         <p>Accounts Allowed</p>
-        <select value={accAllow} onChange={(e) => setAccAllow(e.target.value)}>
+        {/* <select value={accAllow} onChange={(e) => setAccAllow(e.target.value)}>
+          <option>Choose any one</option>
           <option value="100003 Security Deposit">100003 Security Deposit</option>
           <option value="100004 Security Deposit">100004 Security Deposit</option>
           <option value="100005 Security Deposit">100005 Security Deposit</option>
 
-        </select>
-        {/* <Multiselect className='Advancemultiselect'
+        </select> */}
+        <Multiselect className='Advancemultiselect'
               options={options1}
               selectedValues={accAllow} 
               onSelect={onSelect2}
               onRemove={onRemove2} 
               displayValue="name"
-            /> */}
+            />
       </div>
       <div className="AdvanceSettingcheckbox">
         <label htmlFor='lockPost'>Lock Posted Entries with Hash</label>

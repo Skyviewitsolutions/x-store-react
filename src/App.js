@@ -143,6 +143,8 @@ import DeletePopup from "./components/Model/DeletePopup/DeletePopup";
 import {GetAllData} from "./Helper/ApiHelper";
 import $ from "jquery";
 import AddAccVendor from "./Screens/AccountScreen/AccountVendor/AddAccVendor";
+import ProductBrandList from "./Screens/InventoryScreen/ProductBrand/ProductBrandList";
+import PrintProductBarcode from "./Screens/InventoryScreen/AddAccount/PrintProductBarcode/PrintProductBarcode";
 
 
 const App = () => {
@@ -198,10 +200,12 @@ const App = () => {
         <Route path='/AddAttribute' element={<AddAtrribute/>} />
         <Route path="/AddOperationTypes" element={<AddOperationTypes/>} />
         <Route path='/AddPutwayRules' element={<AddPutwayRules/>} />
+        <Route path='/ProductBrandList' element={<ProductBrandList/>} />
         <Route path='/ProductBrand' element={<ProductBrand/>} />
         <Route path="/AddParentCategory" element={<AddParentCategory/>}/>
         <Route path='/ParentCategory' element={<ParentCategory/>} />
         <Route path='/ProductPrice' element={<ProductPriceList/>} />
+        <Route path='/PrintProductBarcode' element={<PrintProductBarcode/>} />
 
        {/* --------Accounting Pages------------- */}
 

@@ -196,7 +196,7 @@ const AddTaxName = () => {
             <div className="AddTaxinput">
             <p>Tax Computation</p>
              <select value={taxComputation} onChange={(e) => setTaxComputation(e.target.value)}>
-                <option value=""></option>
+                <option>Choose any one</option>
                 <option value="Group Of Taxes">Group Of Taxes</option>
                 <option value="Fixed">Fixed</option>
                 <option value="Percentage of Price">Percentage of Price</option>
@@ -209,7 +209,7 @@ const AddTaxName = () => {
             <div className="AddTaxinput">
             <p>Tax Scope</p>
             <select value={taxScope} onChange={(e) => setTaxscope(e.target.value)}>
-                <option value=""></option>
+                <option>Choose any one</option>
                 <option value="Sales">Sales</option>
                 <option value="Purchase">Purchase</option>
                 <option value="None">None</option>
@@ -233,7 +233,7 @@ const AddTaxName = () => {
             <div className="Advanceinput">
             <p>Tax Group</p>
            <select value={taxGroup} onChange={(e) => setTaxGroup(e.target.value)}>
-            <option value=""></option>
+            <option>Choose any one</option>
             <option value="Taxes">Taxes</option>
             <option value="Reservation of the owner / advance payment">Reservation of the owner / advance payment</option>
             <option value="advance payment">advance payment</option>

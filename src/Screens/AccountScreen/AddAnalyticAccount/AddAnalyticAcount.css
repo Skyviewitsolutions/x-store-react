@@ -106,7 +106,7 @@
     border: none;
     border-bottom: 1px solid #cccc;
     outline: none;
-    width:350px;
+    width:350px !important;
     color: #666666; 
 }
 .AnaylticContentSecond{

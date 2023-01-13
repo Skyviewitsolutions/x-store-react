@@ -9,7 +9,6 @@ import { MdDelete } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
 import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 
-
 const Warehouse = () => {
 
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const Warehouse = () => {
     navigate("/AddWarehouse");
   };
 
-  const [show , setShow] = useState(false)
+  const [show, setShow] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [selectedData, setSelectedData] = useState("");
 
@@ -37,16 +36,14 @@ const Warehouse = () => {
         console.log(res, "response");
         if (res.data.status === true) {
           var val = res.data.data;
-          val = val.reverse()
+          val = val.reverse();
           setWareHousedetails(val);
         } else if (res.data.status === false) {
-          if(res.data.code === 3)
-          {
-            toast("Session expired , Please re-login",{type:"warning"})
-            navigate('/');
-          }
-          else{
-           toast(res.data.message,{type:"error"});
+          if (res.data.code === 3) {
+            toast("Session expired , Please re-login", { type: "warning" });
+            navigate("/");
+          } else {
+            toast(res.data.message, { type: "error" });
           }
         }
       })
@@ -58,7 +55,6 @@ const Warehouse = () => {
   useEffect(() => {
     getWarehouseList();
   }, []);
-
 
   const WarehousedeleteUrl = endpoints.wareHouse.deleteWarehouse;
   const deleteItem = (data) => {
@@ -72,19 +68,17 @@ const Warehouse = () => {
         console.log(res, "warehousedelete");
         if (res.data.status === true) {
           toast("Warehouse deleted successfully!", { type: "success" });
-          setShow(false)
-          setDeleteConfirm(false)
-          setSelectedData("")
+          setShow(false);
+          setDeleteConfirm(false);
+          setSelectedData("");
           getWarehouseList();
         } else if (res.data.status === false) {
-          if(res.data.code === 3)
-            {
-              toast("Session expired , Please re-login",{type:"warning"})
-              navigate('/');
-            }
-            else{
-             toast(res.data.message,{type:"error"});
-            }
+          if (res.data.code === 3) {
+            toast("Session expired , Please re-login", { type: "warning" });
+            navigate("/");
+          } else {
+            toast(res.data.message, { type: "error" });
+          }
         }
       })
       .catch((err) => {
@@ -110,7 +104,9 @@ const Warehouse = () => {
   const column = [
     { label: "Warehouse", name: "WAREHOUSE_NAME" },
     { label: "Location stock", name: "LOCATIONS_STOCK" },
-    { label: "Address", name: "WAREHOUSE_ADDRESS" },
+    { label: "Address", name: "WAREHOUSE_ADDRESS",
+      options : {print : false }
+  },
     {
       label: "Actions",
       name: "WAREHOUSE_ID",
@@ -130,7 +126,7 @@ const Warehouse = () => {
                   color="#4f4e4d"
                   onClick={() => {
                     setShow(true);
-                    setSelectedData(value)
+                    setSelectedData(value);
                   }}
                   style={{ cursor: "pointer" }}
                 />
@@ -150,9 +146,11 @@ const Warehouse = () => {
         showCancel={false}
       />
       <CustomTable column={column} data={WareHousedetails} />
-      <DeletePopup show={show}
-            setShow={setShow}
-            setDeleteConfirm={setDeleteConfirm}/>
+      <DeletePopup
+        show={show}
+        setShow={setShow}
+        setDeleteConfirm={setDeleteConfirm}
+      />
       <ToastContainer />
     </div>
   );

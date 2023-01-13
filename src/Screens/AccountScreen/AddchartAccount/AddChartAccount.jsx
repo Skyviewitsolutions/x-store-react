@@ -63,7 +63,6 @@ const AddChartAccount = () => {
     const allDefTax = selectedList.map((itm, ind) => {
       return itm.name;
     });
-
     setDefTax2(allDefTax);
   };
 
@@ -177,7 +176,7 @@ const AddChartAccount = () => {
     formData.append("User_Authorization", getAuthtoken);
     axios
       .post(singleChartAcc, formData)
-      .then((res) => {
+      .then((res) => {   
         const val = res.data.data;
         setSelectedChartAcc(val);
         setUpdate(true);

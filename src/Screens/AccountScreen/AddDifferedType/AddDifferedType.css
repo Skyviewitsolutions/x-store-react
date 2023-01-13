@@ -116,20 +116,20 @@
     align-items: center;
 }
 .diff_radio p{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
 }
-.diff_radio input{
+/* .diff_radio input{
     width: 16px;
     margin-left: 20px;
     height: 15px;
 
-}
+} */
 .diff_radio label{
-    margin-left: 10px;
+    margin-left: 5px;
     color: #666666;
     font-size: 16px;
 }
@@ -138,14 +138,14 @@
     align-items: center;
 }
 .diff_text2 p{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
 }
 .diff_text2 input{
-    width: 400px;
+    width: 350px;
     border:none;
     outline: none;
     border-bottom: 1px solid #cccc  ;
@@ -155,6 +155,7 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .Diff_Additional{
     width: 50%;
@@ -171,24 +172,24 @@
     align-items: center;
 }
 .Diff_typecheckbox label{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
     color:#6a6a6a
 }
-.Diff_typecheckbox input{
+/* .Diff_typecheckbox input{
     width: 20px;
     height: 15px;
 
-}
+} */
 .Diff_typeselect{
     display: flex;
     align-items: center;
 }
 .Diff_typeselect p{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
@@ -198,11 +199,12 @@
 .Diff_typeselect select{
     outline: none;
     border: none;
-    width: 400px;
+    width: 350px;
     border-bottom: 1px solid #cccc;
 }
 .Dif_Depreciation{
     width: 50%;
+    margin-left: 40px;
 }
 .Dif_Depreciation p{
     font-size: 25px;
@@ -214,15 +216,15 @@
     align-items: center; 
 }
 .dif_distradio p{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
 }
-.dif_distradio input{
+/* .dif_distradio input{
     width: 16px;
     margin-left: 20px;
-}
+} */
 .dif_distradio label{
     margin-left: 10px;
     color: #6a6a6a;
@@ -232,8 +234,8 @@
 display: flex;
 align-items: center;
 }
-.deff_checkbox label{
-    width: 200px;
+.deff_checkbox label {
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;

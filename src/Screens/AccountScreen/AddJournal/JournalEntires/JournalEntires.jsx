@@ -49,24 +49,25 @@ const userAuth = localStorage.getItem("userAuth");
              </div>
              <div className="FirstContent">
              <p>Next Number</p>
-            <input type="text" value={nextNum} onChange={(e) => setNextNum(e.target.value)} />
+            <input type="number" value={nextNum} onChange={(e) => setNextNum(e.target.value)} />
              </div>
        </div>
        <div className="journalEntiresSecond">
         <div className="SecondContent">
         <p>Default Debit Account</p>
             <select value={debitAcc} onChange={(e) => setDebitAcc(e.target.value)}>
-                <option value=""></option>
-                <option value="110101001">110101001</option>
-                <option value="110101002">110101002</option>
-                <option value="110101003">110101003</option>
-                <option value="110101004">110101004</option>
-                <option value="11010105">110101005</option>
+                <option>Choose any one</option>
+                <option value="	479100 Product Sales">	479100 Product Sales</option>
+                <option value="100003 Security Deposit">100003 Security Deposit</option>
+                <option value="100004 Un-Realized Collection">100004 Un-Realized Collection</option>
+                <option value="100010 MAIN CASH RYD01">100010 MAIN CASH RYD01</option>
+                <option value="100010 MAIN CASH RYD01">100010 MAIN CASH RYD01</option>
                 </select>
         </div>
         <div className="SecondContent">
         <p>Default Credit Account</p>
             <select value={creditAcc} onChange={(e) => setCreditAcc(e.target.value)}>
+                <option>Choose any one</option>
                 <option value="110101001">110101001</option>
                 <option value="110101002">110101002</option>
                 <option value="110101003">110101003 </option>

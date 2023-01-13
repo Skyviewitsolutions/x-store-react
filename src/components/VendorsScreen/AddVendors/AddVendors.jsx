@@ -119,7 +119,9 @@ const AddVendors = () => {
       toast("Account Receviable is required !", { type: "warning" });
     } else if (accPayable === "") {
       toast("Account Payable is required !", { type: "warning" });
-    } else {
+    } else if(vendorImg === ""){
+      toast("Vendor Imgae is required !",{type:"warning"})
+    }else {
       const formData = new FormData();
       formData.append("Address_Type", addressType);
       formData.append("Name", vendorName);
@@ -321,6 +323,9 @@ const AddVendors = () => {
           console.log(res, "response");
           if (res.data.status === true) {
             toast("Product Updated Successfully", { type: "success" });
+            setTimeout(() => {
+              navigate('/Vendors')
+            }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -454,7 +459,7 @@ const AddVendors = () => {
                 </select>
               ) : null}
             </div>
-            <div className="cameraimg">
+            <div className="Vendor_img">
               <label htmlFor="takePhoto">
                 <img src={vendorImg ? vendorImg : camera} alt="camera" />
               </label>
@@ -497,7 +502,7 @@ const AddVendors = () => {
               <div className="vendorstextinput">
                 <p>Zip</p>
                 <input
-                  type="text"
+                  type="number"
                   value={zip}
                   onChange={(e) => setZip(e.target.value)}
                 />
@@ -582,7 +587,7 @@ const AddVendors = () => {
                 <p>Website Link</p>
                 <input
                   type="url"
-                  placeholder="e.g. https://xstore-front.skyviewads.com/"
+                  placeholder="e.g. https://xstore-front.skyviewads.com"
                   value={webLink}
                   onChange={(e) => setWebLink(e.target.value)}
                 />

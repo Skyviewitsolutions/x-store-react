@@ -103,3 +103,13 @@ align-items: flex-end;
 .btn3:hover{
     background-color:rgb(230, 222, 222);
 }
+
+.dropdown_menu{
+    border: 1px solid black;
+    width: 200px;
+    background-color: #1669a2;
+    padding: 10px 10px;
+}
+.dropdown_menu p{
+    color: #fff;
+}

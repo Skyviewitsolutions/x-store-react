@@ -134,18 +134,18 @@
     align-items: center;
 }
 .assetradio p{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
 }
-.assetradio input{
+/* .assetradio input{
     width: 16px;
     margin-left: 20px;
     height: 15px;
 
-}
+} */
 .assetradio label{
     margin-left: 10px;
     color: #666666;
@@ -157,14 +157,14 @@
     align-items: center;
 }
 .assettext2 p{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
 }
 .assettext2 input{
-    width: 400px;
+    width: 300px;
     border:none;
     outline: none;
     border-bottom: 1px solid #cccc  ;
@@ -174,6 +174,7 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .Additional{
     width: 50%;
@@ -190,24 +191,24 @@
     align-items: center;
 }
 .assettypecheckbox label{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
     color:#6a6a6a
 }
-.assettypecheckbox input{
+/* .assettypecheckbox input{
     width: 20px;
     height: 15px;
 
-}
+} */
 .assettypeselect{
     display: flex;
     align-items: center;
 }
 .assettypeselect p{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
@@ -217,11 +218,13 @@
 .assettypeselect select{
     outline: none;
     border: none;
-    width: 400px;
+    width: 350px;
     border-bottom: 1px solid #cccc;
 }
 .Depreciation{
     width: 50%;
+    margin-left: 40px;
+
 }
 .Depreciation p{
     font-size: 25px;
@@ -233,15 +236,15 @@
     align-items: center; 
 }
 .distradio p{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
 }
-.distradio input{
+/* .distradio input{
     width: 16px;
     margin-left: 20px;
-}
+} */
 .distradio label{
     margin-left: 10px;
     color: #6a6a6a;
@@ -253,16 +256,16 @@ display: flex;
 align-items: center;
 }
 .depcheckbox label{
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 10px;
     color: #6a6a6a;
 }
-.depcheckbox input{
+/* .depcheckbox input{
     width: 50px;
-}
+} */
 
 @media (min-width:768px) and (max-width:1024px) {
     .AddAssetTypeCon {
@@ -280,6 +283,7 @@ align-items: center;
     .Depreciation{
         width: 100%;
         margin-top: 10px;
+        margin-left: 0px;
     }
     .assettypedetails2{
         width: 100%;

@@ -25,13 +25,13 @@
     border: none;
     outline: none;
     border-bottom:1px solid #cccccc;
-    width: 50%;
+    width: 500px;
 }
 .AddAccountTagContent select{
     border: none;
     outline: none;
     border-bottom:1px solid #cccccc;
-    width: 50%;
+    width: 500px;
 }
 .multiselectcontent{
   display: flex;
@@ -45,6 +45,14 @@
     margin-bottom: -6px;
     font-weight: 500;
     width: 150px;
+}
+.Addmultiselect{
+    border: none;
+    /* border-bottom: 1px solid #cccc; */
+    outline: none;
+    /* margin-left: 15px; */
+    width: 500px;
+    color: #666666;
 }
 
 

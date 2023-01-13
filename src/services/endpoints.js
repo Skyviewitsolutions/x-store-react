@@ -290,7 +290,9 @@ export const endpoints = {
     singleRequestQuotation : BASE_URL + "/Purchase/RequestQuotation/GetSingle",
     getAllproductdetails : BASE_URL + "/Purchase/RequestQuotation/GetAllProductDetail",
     addProductdetails : BASE_URL + "/Purchase/RequestQuotation/AddProduct",
-    deleteProductdetails : BASE_URL + "/Purchase/RequestQuotation/DeleteProduct"
+    deleteProductdetails : BASE_URL + "/Purchase/RequestQuotation/DeleteProduct",
+    singleProductDetails : BASE_URL + "/Purchase/RequestQuotation/GetSingleProduct",
+    updateProductDetails : BASE_URL + "/Purchase/RequestQuotation/UpdateProduct"
   },
 
   agreementType:{
@@ -305,10 +307,12 @@ export const endpoints = {
   purchaseOrders:{
     allProductDetails : BASE_URL + "/Purchase/PurchaseOrders/GetAllProductDetail",
     addProductdetails : BASE_URL + "/Purchase/PurchaseOrders/AddProduct",
+    singleProductDetails : BASE_URL + "/Purchase/PurchaseOrders/GetSingleProduct",
+    deleteProductdetails : BASE_URL + "/Purchase/PurchaseOrders/DeleteProduct",
     allpurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/GetAll",
     addpurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/Add",
     updatepurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/Update",
-    deleteProductdetails : BASE_URL + "/Purchase/RequestQuotation/DeleteProduct"
+    deletePurchaseOrders : BASE_URL + "/Purchase/PurchaseOrders/Delete"
   },
 
   // --------------------------------Sales All Api----------------------------------------

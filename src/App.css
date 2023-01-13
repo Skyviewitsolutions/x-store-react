@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Parisienne&family=Poppins:wght@200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
 .App {
   text-align: center;
 }
@@ -5,6 +8,9 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.body{
+  font-family: 'Poppins', sans-serif !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -37,9 +43,6 @@
   }
 }
 
-.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.tss-tlx3x1-MUIDataTableToolbar-root.css-hyum1k-MuiToolbar-root {
-  display: none !important;
-}
 .MuiInputBase-root.MuiInputBase-colorPrimary.css-16c50h-MuiInputBase-root-MuiTablePagination-select {
   margin-top: -10px !important;
 }
@@ -86,4 +89,16 @@ p#\:rj\: {
 
 table tbody td{
   padding-left: 0px !important;
+}
+
+
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.tss-tlx3x1-MUIDataTableToolbar-root.css-hyum1k-MuiToolbar-root {
+  display: flex !important;
+}
+
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.tss-tlx3x1-MUIDataTableToolbar-root.css-i6s8oy {
+  border: 2px solid green !important;
+  height: 450px !important;
+  width: 200px !important;
+  display: flex !important;
 }

@@ -1,7 +1,7 @@
 
 
 .MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.tss-tlx3x1-MUIDataTableToolbar-root.css-hyum1k-MuiToolbar-root {
-    display: none !important;
+    display: flex !important;
 }
 .protab{
     max-width: 100%;
@@ -35,28 +35,35 @@ p#\:rj\: {
     margin-bottom: 0px !important;
 }
 
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.tss-8ai1ls-MUIDataTableToolbarSelect-deleteIcon.css-i4bv87-MuiSvgIcon-root {
+/* svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.tss-8ai1ls-MUIDataTableToolbarSelect-deleteIcon.css-i4bv87-MuiSvgIcon-root {
     display: none !important;
 }
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.tss-1dqj55d-MUIDataTableToolbarSelect-root.css-1ps6pg7-MuiPaper-root {
     display: none !important;
-}
+} */
 p#\:r15\: {
+    margin-bottom: 0px !important;
+}
+p#\:ra\: {
     margin-bottom: 0px !important;
 }
 .MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.MuiTablePagination-toolbar.tss-1dccma1-MUIDataTablePagination-toolbar.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar p{
     margin-top: 0 !important;
     margin-bottom: 0px !important;
 }
-
+/* 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.tss-1dqj55d-MUIDataTableToolbarSelect-root.css-aoeo82 {
     display: none !important;
-}
+} */
 
 .tss-1akey0g-MUIDataTableHeadCell-data {
     display: inline-block !important;
     font-weight: bold !important;
     color: #6a6a6a !important;
+}
+
+.css-13sljp9 {
+    padding: 10px !important;
 }
 
 @media (max-width: 899.95px)
@@ -68,6 +75,6 @@ p#\:r15\: {
 @media only screen and (min-width:768px) and (max-width:1024px){
     .tss-1qtl85h-MUIDataTableBodyCell-root.tss-1ej321f-MUIDataTableBodyCell-cellHide.tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader.tss-1vd39vz-MUIDataTableBodyCell-stackedCommon {
 
-        display: none !important;
+        display: flex !important;
     }
 }

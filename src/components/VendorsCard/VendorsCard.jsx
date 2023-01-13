@@ -21,7 +21,7 @@ const VendorsCard = (props) => {
 
   const renderToEditPage = (dta) =>{
     var vendorsData = JSON.stringify(dta);
-    navigate("/addVendors" , {state : vendorsData})
+    navigate("/AddAccVendor" , {state : vendorsData})
   }
 
   const getAuthtoken = localStorage.getItem("authtoken");

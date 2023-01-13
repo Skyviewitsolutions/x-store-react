@@ -21,7 +21,7 @@ const DeletePopup = (props) => {
         </Modal.Header>
         {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShow(false)}>
+          <Button  className='btn_cancel' onClick={() => setShow(false)}>
             Cancel
           </Button>
           <Button variant="primary" className='btn_delte' onClick={() => setDeleteConfirm(true)}>

@@ -87,6 +87,7 @@ const Barcode = (props) => {
           if (res.data.status === true) {
             setUom(res.data.code);
             toast(res.data.message, { type: "success" });
+            window.location.reload()
             setModalShow(false);
             getProBarcode();
           } else if (res.data.status === false) {

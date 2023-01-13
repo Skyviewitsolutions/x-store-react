@@ -184,7 +184,7 @@ const save = () => {
       .then((res) => {
         if(res.data.status === true)
         {
-          toast("Defered Expense Type Added Successfully",{type:"success"});
+          toast("Differed Expense Type Added Successfully",{type:"success"})
           setTimeout(() => {
             navigate('/DifferedExpenseType')
           }, 1000);
@@ -305,7 +305,7 @@ const save = () => {
     }
     else{
       const formData = new FormData();
-      formData.append("ID",selectedData.ASSET_TYPE_ID);
+      formData.append("ID",selectedData.ID);
       formData.append("Deffered_Type",defExType);
       formData.append("Parent_Category",parentCate);
       formData.append("Vartual",virtual);
@@ -358,7 +358,7 @@ const save = () => {
             <div className="Diff_parentcat">
               <p>Parent Category</p>
               <select value={parentCate} onChange={(e) => setParentCate(e.target.value)}>
-                <option value=""></option>
+              <option>Select any one</option>
                 <option value="The machine and equipments">The machine and equipments</option>
                 <option value="The Cars">The Cars</option>
                 <option value="Prehab houses">Prehab houses</option>
@@ -399,7 +399,7 @@ const save = () => {
             <div className="Diff_text">
               <p>Asset Account</p>
               <select value={assetAcc} onChange={(e) => setAssetAcc(e.target.value)}>
-                <option value=""></option>
+                <option>Select any one</option>
                 <option value="110101001 Riyadh Management Found">110101001 Riyadh Management Found</option>
                 <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
                 <option value="110101003 Hoffuf Found">110101003 Hoffuf Found</option>
@@ -410,7 +410,7 @@ const save = () => {
             <div className="Diff_text">
               <p>Depreciation Entries: Asset Account</p>
               <select value={assAcc} onChange={(e) => setAssAcc(e.target.value)}>
-                <option value=""></option>
+              <option>Select any one</option>
                 <option value="110101001 Riyadh Management Found">110101001 Riyadh Management Found</option>
                 <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
                 <option value="110101003 Hoffuf Found">110101003 Hoffuf Found</option>
@@ -421,7 +421,7 @@ const save = () => {
             <div className="Diff_text">
               <p>Depreciation Entries: Expense Account</p>
               <select value={expenceAcc} onChange={(e) => setExpenceAcc(e.target.value)} >
-                <option value=""></option>
+              <option>Select any one</option>
                 <option value="110101001 Riyadh Management Found">110101001 Riyadh Management Found</option>
                 <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
                 <option value="110101003 Hoffuf Found">110101003 Hoffuf Found</option>
@@ -481,7 +481,7 @@ const save = () => {
             <div className="Diff_typeselect">
               <p>Automatic Creation</p>
               <select value={creation} onChange={(e) => setCreation(e.target.value)}>
-                <option value=""></option>
+              <option>Select any one</option>
                 <option value="Invoice">Invoice</option>
                 <option value="Material Receipts">Material Receipts</option>
                 <option value="Purchase Order">Purchase Order</option>

@@ -115,7 +115,7 @@ const Navebar = (props) => {
                   UOM Categories
                 </NavDropdown.Item>
                 <NavDropdown.Item  onClick={()=> navigate('/UOM')}>UOM</NavDropdown.Item>
-                <NavDropdown.Item  onClick={()=> navigate('/ProductBrand')}>ProductBrand</NavDropdown.Item>
+                <NavDropdown.Item  onClick={()=> navigate('/ProductBrandList')}>ProductBrand</NavDropdown.Item>
                 {/* <NavDropdown.Item  onClick={()=> navigate('/ParentCategory')}>Parent Category</NavDropdown.Item> */}
                 <NavDropdown.Item  onClick={()=> navigate('/Vendors')}>Vendors</NavDropdown.Item>
               </NavDropdown>
