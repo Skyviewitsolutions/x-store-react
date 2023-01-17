@@ -115,6 +115,7 @@ const AccountTypes = () => {
       label: "Action",
       name: "ACCOUNT_TYPE_ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

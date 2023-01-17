@@ -105,12 +105,12 @@ const Warehouse = () => {
     { label: "Warehouse", name: "WAREHOUSE_NAME" },
     { label: "Location stock", name: "LOCATIONS_STOCK" },
     { label: "Address", name: "WAREHOUSE_ADDRESS",
-      options : {print : false }
   },
     {
       label: "Actions",
       name: "WAREHOUSE_ID",
       options: {
+        print : false ,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

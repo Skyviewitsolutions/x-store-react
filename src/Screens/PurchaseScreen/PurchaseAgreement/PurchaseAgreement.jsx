@@ -104,15 +104,16 @@ const PurchaseAgreement = () => {
   };
 
   const column = [
-    { title: "Agreement Type", name: "AGREEMENT_TYPE" },
-    { title: "Purchase Representative", name: "PURCHASE_REPRESENTATIVE" },
-    { title: "Ordering Date", name: "ORDER_DATE" },
-    { title: "Agreement Deadline", name: "AGREEMENT_DEADLINE" },
-    { title: "Source Document", name: "SOURCE_DOCUMENT" },
+    { label: "Agreement Type", name: "AGREEMENT_TYPE" },
+    { label: "Purchase Representative", name: "PURCHASE_REPRESENTATIVE" },
+    { label: "Ordering Date", name: "ORDER_DATE" },
+    { label: "Agreement Deadline", name: "AGREEMENT_DEADLINE" },
+    { label: "Source Document", name: "SOURCE_DOCUMENT" },
     {
       label: "Actions",
       name: "ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

@@ -108,6 +108,7 @@ const JournalGroup = () => {
       label: "Action",
       name: "JOURNAL_GROUP_ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

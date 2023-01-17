@@ -178,7 +178,7 @@ const UnitPage = () => {
               onChange={(e) => setUnitType(e.target.value)}
               value={unitType}
             >
-              <option value=""></option>
+              <option >Choose any one</option>
               <option value="Bigger than the reference Unit of Measure">
                 Bigger than the reference Unit of Measure
               </option>

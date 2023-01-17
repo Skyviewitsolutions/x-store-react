@@ -60,7 +60,7 @@
 }
 .data_quo{
     width: 50%;
-    margin-left: 15px;
+    margin-left: 30px;
 }
 .data_quo h1{
     color: #666666;
@@ -68,7 +68,7 @@
     font-weight: 400;
 }
 .datas_radio {
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
 }
 .datas_radio p{
@@ -91,16 +91,20 @@ display: flex;
 }
 
 
-@media screen and (max-width: 1000px){
-   .addpatCon{
+@media (min-width:768px) and (max-width:1024px){
+   .addpat_Con{
     display: flex;
     flex-direction: column;
    }
-   .agrementType{
+   .agrements{
     width: 100%;
    }
-   .datafor{
+   .data_quo{
     width: 100%;
-    margin-top: 5px;
+    margin-top: 30px;
+    margin-left: 0px;
+   }
+   .datas_radio p {
+    width: 200px;
    }
 }

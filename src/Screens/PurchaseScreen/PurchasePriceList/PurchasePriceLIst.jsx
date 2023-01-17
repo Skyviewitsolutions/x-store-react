@@ -36,7 +36,10 @@ const PurchasePriceLIst = () => {
         if (res.data.status === true) {
           var val = res.data.data;
           val = val.reverse();
-          setAllVenprice(val);
+          const filterVebdorPrice = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+          setAllVenprice(filterVebdorPrice);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -104,15 +107,16 @@ const PurchasePriceLIst = () => {
   };
 
   const column = [
-    { title: "Vendor", name: "VENDOR_PRODUCT" },
-    { title: "Products", name: "PRODUCT_NAME" },
-    { title: "Currency", name: "VENDOR_CURRENCY" },
-    { title: "Quantity", name: "VENDOR_QUANTITY" },
-    { title: "Price", name: "VENDOR_PRICE" },
+    { label: "Vendor", name: "VENDOR_PRODUCT" },
+    { label: "Products", name: "PRODUCT_NAME" },
+    { label: "Currency", name: "VENDOR_CURRENCY" },
+    { label: "Quantity", name: "VENDOR_QUANTITY" },
+    { label: "Price", name: "VENDOR_PRICE" },
     {
       label: "Actions",
       name: "ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

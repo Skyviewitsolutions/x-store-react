@@ -111,6 +111,7 @@ const AccountTags = () => {
       label: "Actions",
       name: "ACCOUNT_TAG_ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

@@ -100,6 +100,7 @@ const ProductBrandList = () => {
           label: "Actions",
           name: "BRAND_ID",
           options: {
+            print : false ,
             customBodyRender: (value, tableMeta, updateValue) => {
               return (
                 <>

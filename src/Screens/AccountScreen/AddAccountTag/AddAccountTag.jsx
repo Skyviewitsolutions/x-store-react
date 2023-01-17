@@ -206,15 +206,8 @@ const AddAccountTag = () => {
             <option value="Taxes" >Taxes</option>
           </select>
         </div>
-        <div className="AddAccountTagContent">
+        <div className="AddAccountTag_Multi">
           <p>Accounts</p>
-          {/* <select value={account} onChange={(e) => setAccount(e.target.value)}>
-            <option>Choose any one</option>
-            <option value="110101002 Zulfi Box">110101002 Zulfi Box</option>
-            <option value="110101001 Riyadh Management Fund">110101001 Riyadh Management Fund</option>
-            <option value="110101005 Bisha Box">110101005 Bisha Box</option>
-            <option value="110101006 Yanbu Fund">110101006 Yanbu Fund</option>
-          </select> */}
           <Multiselect
             className="Addmultiselect"
             // value={account}

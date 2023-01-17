@@ -7,6 +7,8 @@ import InventoryProductsCard from '../../../components/InventoryProductsCard/Inv
 import Loader from '../../../components/Loader/Loader';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import { endpoints } from '../../../services/endpoints';
+import AccPaymentCard from '../AccPayemntCard/AccPaymentCard';
+import AccProductCard from './AccProductCard';
 
 const AccountProduct = () => {
 
@@ -68,7 +70,7 @@ const AccountProduct = () => {
   }, [deleteRef]);
 
   const handleCreatePage = () => {
-    navigate("/AddProduct");
+    navigate("/AccAddProduct");
   };
 
   useEffect(() => {
@@ -80,7 +82,6 @@ const AccountProduct = () => {
       const filterActiveProduct = allProd.filter((itm, ind) => {
         return itm.PRODUCT_CATEGORY == productCategory && itm.DELETE_STATUS === null
       });
-
       setActiveProduct(filterActiveProduct);
 
       const filterDeactiveProduct = allProd.filter((itm , ind) =>{
@@ -113,7 +114,7 @@ const AccountProduct = () => {
               {activeProduct.map((item, index) => {
                 return (
                   <>
-                    <InventoryProductsCard
+                    <AccProductCard
                       data={item}
                       setDeleteRef={setDeleteRef}
                       deleteRef={deleteRef}
@@ -124,7 +125,7 @@ const AccountProduct = () => {
               {deActiveProduct.map((item, index) => {
                 return (
                   <>
-                    <InventoryProductsCard
+                    <AccProductCard
                       data={item}
                       setDeleteRef={setDeleteRef}
                       deleteRef={deleteRef}

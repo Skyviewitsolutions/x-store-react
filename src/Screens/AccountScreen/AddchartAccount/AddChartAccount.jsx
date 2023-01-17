@@ -331,7 +331,7 @@ const AddChartAccount = () => {
                 </option>
               </select>
             </div>
-            <div className="AddAccountCon1">
+            <div className="Add_Multi">
               <p>Default Taxes</p>
 
               {/* <select value={defTax} onChange={(e) => setDefTax(e.target.value)}>
@@ -342,7 +342,7 @@ const AddChartAccount = () => {
                 <option value="Sales VAT-Zero Rated (Sales)">Sales VAT-Zero Rated (Sales)</option>
               </select> */}
               <Multiselect
-                className="AddChartAccmultiselect"
+                className="AddChartAccountMultiselect"
                 options={options} // Options to display in the dropdown
                 selectedValues={defTax} // Preselected value to persist in dropdown
                 onSelect={onSelect1} // Function will trigger on select event
@@ -350,7 +350,7 @@ const AddChartAccount = () => {
                 displayValue="name" // Property name to display in the dropdown options
               />
             </div>
-            <div className="AddAccountCon1">
+            <div className="Add_Multi">
               <p>Tags</p>
               {/* <select value={tag} onChange={(e) => setTag(e.target.value)}>
                 <option value="Operating Activities">Operating Activities</option>
@@ -358,7 +358,7 @@ const AddChartAccount = () => {
                 <option value="Investing & Extraordinary Activities">Investing & Extraordinary Activities</option>
               </select> */}
               <Multiselect
-                className="AddChartAccmultiselect"
+                className="AddChartAccountMultiselect"
                 options={option} // Options to display in the dropdown
                 selectedValues={tag} // Preselected value to persist in dropdown
                 onSelect={onSelect2} // Function will trigger on select event

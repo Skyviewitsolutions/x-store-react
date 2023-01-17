@@ -2,7 +2,7 @@
     width: 98%;
     border: 1px solid #cccc;
     padding-bottom:10%;
-    padding-top: 30px;
+    /* padding-top: 30px; */
     margin: auto;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     margin-top: 40px;
@@ -25,7 +25,7 @@
     font-size: 15px;
     color: #666666;
     font-weight: 600;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
 
 }
 .AddTaxinput input{
@@ -42,6 +42,7 @@
 }
 .TaxNamecontent2{
     width: 50%;
+    margin-top: 15px;
 }
 .AddTaxammount{
     display: flex;
@@ -111,6 +112,10 @@
 }
 .Advancecheckbox input{
     width: 20px;
+}
+.Taxadvance2 {
+    width: 50%;
+    margin-top: 40px;
 }
 
 @media  screen and (max-width:1000px) {

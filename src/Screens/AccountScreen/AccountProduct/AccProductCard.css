@@ -1,0 +1,99 @@
+.ProductsContainer {
+    height: 100px;
+    width: 30%;
+    /* margin: auto; */
+    /* margin-left: 60px;
+    margin-top: 10px; */
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    margin: 1.5%;
+  }
+  .ProductCon{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ProductsCamera {
+    height: 100px;
+    width: 10%;
+  }
+  
+  .ProductsCamera img {
+    width: 65px;
+    padding: 20px 5px;
+    /* margin: 12px 10px; */
+  }
+  
+  .ProductContent {
+    width: 75%;
+    margin: 10px 10px;
+    padding-left: 15px;
+  }
+  
+  .ProductContent h6 {
+    font-size: 14px;
+    color: #000;
+    margin-top: -4px;
+    margin-bottom: 1%;
+    /* margin-left: 10px; */
+  }
+  
+  .ProductContent p {
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 0%;
+    /* margin-left: 10px; */
+  }
+  .deleteicon {
+    position: absolute;
+    top: 5px;
+    z-index: 10;
+    right: 10px;
+  }
+  @media (max-width :768px) and (max-width: 1040px) {
+    /* .ProductsContainer {
+      width: 303px;
+      margin-left: 21px;
+    } */
+  
+    .ProductsCamera img{
+      padding: 20px 5px;
+    }
+    .ProductContent{
+      padding-left: 30px;
+    }
+    .ProductsContainer {
+      width: 45%;
+  }
+  }
+  @media (max-width :820px) and (max-width: 1180px) {
+    .ProductsContainer {
+      width: 45%;
+  }
+  
+    .ProductsCamera img{
+      padding: 20px 5px;
+    }
+    .ProductContent{
+      padding-left: 30px;
+    }
+  }
+  @media (max-width :912px) and (max-width: 1368px) {
+    .ProductsContainer {
+      width: 45%;
+  }
+  
+    .ProductsCamera img{
+      padding: 20px 5px;
+    }
+    .ProductContent{
+      padding-left: 30px;
+    }
+  }
+  
+  

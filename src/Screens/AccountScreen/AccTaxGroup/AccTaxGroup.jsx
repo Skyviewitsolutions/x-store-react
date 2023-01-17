@@ -113,6 +113,7 @@ const AccTaxGroup = () => {
       label: "Action",
       name: "ACCOUNT_ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

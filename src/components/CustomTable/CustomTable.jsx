@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MUIDataTable from 'mui-datatables';
 // import { data} from './data';
 import './ProductTab.css'
+import { createTheme } from '@mui/material/styles'
 
 const CustomTable = (props) => {
+  
+  const getMuiTheme = () => createTheme({
+    overrides: {
+      MUIDataTableToolbar: {
+        root: {
+          '@media print': {
+            display: 'none'
+          }
+        },
+      },
+      MUIDataTablePagination: {
+        root: {
+          '@media print': {
+            display: 'none'
+          }
+        },
+      }
+    }
+  });
+
+
+  useEffect(() =>{
+    getMuiTheme()
+  },[])
 
   const {data,column} = props
     // const columns = [

@@ -15,7 +15,7 @@ import ProductTable from "../../ProductTable/ProductTable";
 const ProductBarcode = (props) => {
 
   const navigate = useNavigate();
-  const { productId } = props;
+  const { productId,isEdit} = props;
   const [modalShow, setModalShow] = useState(false);
   const userAuth = localStorage.getItem("userAuth");
   const getAuthtoken = localStorage.getItem("authtoken");
@@ -155,7 +155,7 @@ const ProductBarcode = (props) => {
       .then((res) => {
         if (res.data.status) {
           toast("Product Barcode updated successfully", { type: "success" });
-          window.location.reload()
+          // window.location.reload()
           setModalShow(false);
           getProBarcode();
           getSingleBarcode()
@@ -178,6 +178,7 @@ const ProductBarcode = (props) => {
       label: "Action",
       name: "ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>
@@ -209,6 +210,7 @@ const ProductBarcode = (props) => {
       label: "Action",
       name: "ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>
@@ -241,9 +243,10 @@ const ProductBarcode = (props) => {
         ) : (
           <ProductTable data={allBarcode} column={column2} />
         )}
-        <button className="barcode_btn" onClick={() => setModalShow(true)}>
+      {productId == undefined &&<button className="varients_btns" onClick={() => setModalShow(true)}>
           Add Line
         </button>
+}
         <Barcode
           modalShow={modalShow}
           setModalShow={setModalShow}

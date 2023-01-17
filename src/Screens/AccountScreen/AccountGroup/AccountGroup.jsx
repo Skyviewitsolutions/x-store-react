@@ -116,6 +116,7 @@ const AccountGroup = () => {
             label:"Action",
             name:"ID",
             options:{
+              print:false,
                 customBodyRender:(value,tableMeta,updateValue) => {
                  return(
                     <>

@@ -31,19 +31,22 @@ margin-bottom: 8px;
     margin: auto;
     padding: 8px 20px;
     font-weight: 600;
+    margin-left: 10px;
 }
 .btn2{
-    color: #1669a2;
+    color: #fff;
     text-transform: uppercase;
     padding: 8px 20px;
     font-weight: 600;
     border: none;
-    margin-left: 10px;
-    background-color: #fff;
+    background-color:#1669a2;
     transition: 0.2s;
 }
 .btn2:hover{
-    background-color:lightgray;
+    background-color:#6a6a6a;
+}
+.btn1:hover{
+    background-color:#6a6a6a;
 }
 .deatailsdropdown{
 width: 35%;

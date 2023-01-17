@@ -17,6 +17,33 @@ const AddPurchaseOrders = (props) => {
   const navigate = useNavigate();
   const [events, setEvents] = useState("Products");
 
+  
+  const [allPurchaseAgree , setAllPurchaseAgree] = useState([])
+
+  const allPAUrl = endpoints.agreementType.allAgreement;
+
+  const getAllPA = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(allPAUrl,formData)
+    .then((res) => {
+      console.log(res,"data here")
+      if(res.data.status === true){
+
+        var val = res.data.data;
+        const filterPA = val.filter((itm,ind) => {
+          return itm.DELETE_STATUS != 'X'
+        })
+        setAllPurchaseAgree(filterPA)
+      }
+    })
+  }
+
+  useEffect(() => {
+    getAllPA()
+  },[])
+
   // ------------------------Request Quotation State----------------------------
 
   const [vendorRef, setVendorRef] = useState("");
@@ -108,7 +135,11 @@ const AddPurchaseOrders = (props) => {
       .post(vendorUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          setVendorAll(res.data.data);
+          var val = res.data.data;
+          const filterVendor = val.filter((itm,ind) => {
+            return itm.VENDOR_STATUS != "X"
+          })
+          setVendorAll(filterVendor);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -185,11 +216,11 @@ const AddPurchaseOrders = (props) => {
       setPOId(selectedData.ID);
       setVendor(selectedData.VENDOR_ID);
       setVendorRef(selectedData.VENDOR_REFERENCE);
-      setPurchaseAgree(selectedData.PURCHASE_TYPE_ID);
+      setPurchaseAgree(selectedData.PURCHASEAGREEMENT_ID);
       setOrderDate(selectedData.ORDER_DATE);
       setRecepitDate(selectedData.RECEIPT_DATE);
       setPurchaseRep(selectedData.PURCHASE_REPRESENTATIVE);
-      setIncoTerms(selectedData.INCOME_TERMS_ID);
+      setIncoTerms(selectedData.INCOMETERMS_ID);
       setPaymentTerms(selectedData.PAYMENT_TERMS);
       setCurrency(selectedData.PRODUCT_CURRENCY);
       setLocation(selectedData.DESTINATION_LOCATION);
@@ -249,7 +280,7 @@ const AddPurchaseOrders = (props) => {
           if (res.data.status === true) {
             toast("Request Quotation updated Successfully", { type: "success" });
             setTimeout(() => {
-              navigate('/RequestforQuotation')
+              navigate('/PurchaseOrder')
             }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
@@ -412,7 +443,7 @@ useEffect(() => {
 
 // ------------------deleteProductDetails---------------------------
 
-const deleteProductDetailsUrl = endpoints.requestQuotation.deleteProductdetails;
+const deleteProductDetailsUrl = endpoints.purchaseOrders.deleteProductdetails;
 
 const deleteItem = (data) => {
   const formData = new FormData();
@@ -445,7 +476,7 @@ const deleteItem = (data) => {
 
 //  ----------------------Update ProductDetails-------------------------------
 
-const updateProductDetailsUrl = endpoints.requestQuotation.updateProductDetails;
+const productUpdateUrl = endpoints.purchaseOrders.PurchaseupdateProductDetails;
  const handleUpdate = (id) => {
   var selectedProductsList = productAll.filter((itm,ind) => {
     return itm.ID === id
@@ -470,7 +501,7 @@ const updateProductDetailsUrl = endpoints.requestQuotation.updateProductDetails;
   formData.append("Qty" , quantity);
   formData.append("User_Authorization", getAuthtoken);
   formData.append("User_AuthKey", userAuth);
-  axios.post(updateProductDetailsUrl,formData)
+  axios.post(productUpdateUrl,formData)
   .then((res) => {
     console.log(res,"vfshgdf")
     if(res.data.status === true){
@@ -486,12 +517,7 @@ const updateProductDetailsUrl = endpoints.requestQuotation.updateProductDetails;
   .catch((err) => {
     console.log(err,"error")
   })
- }
-
- const [allpurchaseAgree , setAllPurchaseAgree] = useState([])
-
- const getPurchaseAgree = () => {
-
+  console.log(selectedProductsId,"id pro")
  }
 
 
@@ -506,6 +532,7 @@ const column = [
       label:"Actions",
       name:"ID",
       options:{
+        print:false,
           customBodyRender:(value , tableMeta , updateValue) => {
               return(
                   <>
@@ -535,6 +562,7 @@ const column2 = [
       label:"Actions",
       name:"ID",
       options:{
+        print:false,
           customBodyRender:(value , tableMeta , updateValue) => {
               return(
                   <>
@@ -590,13 +618,13 @@ const column2 = [
               <p>Purchase Agreement</p>
               <select value={purchaseAgree} onChange={(e) => setPurchaseAgree(e.target.value)}>
                 <option value="">Select Any one</option>
-                 {allpurchaseAgree.map((item,index) => {
-                  return(
-                    <>
-                    <option value={item.AGREEMENT_TYPE_ID}>{item.AGREEMENT_TYPE}</option>
-                    </>
-                  )
-                 })}
+                {allPurchaseAgree.map((itm,ind) => {
+                return (
+                  <>
+                  <option value={itm.AGREEMENT_TYPE_ID}>{itm.AGREEMENT_TYPE}</option>
+                  </>
+                )
+               })}
               </select>
             </div>
             <div className="reqQuotext">
@@ -712,6 +740,7 @@ const column2 = [
         </div>
         <div className="Warehouse">
         {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} POId={POId} singleProduct={singleProduct} setSingleProduct={setSingleProduct}/>}
+
           {events === "Other Information" && <OtherInfo recepitDate={recepitDate} setRecepitDate={setRecepitDate} incoTerms={incoTerms} setIncoTerms={setIncoTerms} purchaseRep={purchaseRep} setPurchaseRep={setPurchaseRep} fisicalPosition={fisicalPosition} setFisicalPosition={setFisicalPosition}/>}
         </div>
       </div>

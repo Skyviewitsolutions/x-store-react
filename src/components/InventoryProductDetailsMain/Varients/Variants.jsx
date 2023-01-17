@@ -43,7 +43,7 @@ const Variants = (props) => {
 
    useEffect(() => {
     getSingleVarients()
-   })
+   },[])
    const column2 = [
     { label :'Attribute', name:'SALESATTRIBUTE_NAME'},
   { label :'Value', name:'SALESATTRIBUTEVALUE_VALUE'},

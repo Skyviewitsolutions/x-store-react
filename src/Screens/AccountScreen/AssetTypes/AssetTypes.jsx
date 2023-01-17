@@ -107,6 +107,7 @@ const deleteAssetTypeUrl = endpoints.AssetType.deleteAssetType;
             label:"Action",
             name:"ASSET_TYPE_ID",
             options:{
+                print:false,
                 customBodyRender:(value,tableMeta,updateValue) => {
                     return(
                         <>

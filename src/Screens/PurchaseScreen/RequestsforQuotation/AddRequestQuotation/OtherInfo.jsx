@@ -21,8 +21,13 @@ const OtherInfo = (props) => {
     formData.append("User_AuthKey" , userAuth);
     axios.post(incoTermsUrl,formData)
     .then((res) => {
+      console.log(res,"income")
       if(res.data.status === true){
-        setIncoTermsAll(res.data.data)
+        var val = res.data.data;
+        const filterIncome = val.filter((itm,ind) => {
+          return itm.DELETE_STATUS != "X"
+        })
+        setIncoTermsAll(filterIncome)
       }else if(res.data.status === false){
         if(res.data.code === 3)
         {

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import PrintProductBarcode from "../../Screens/InventoryScreen/AddAccount/PrintProductBarcode/PrintProductBarcode";
 
 const ProductDetailsHeader = (props) => {
+  
   const [showBarcode, setShowBarcode] = useState(false);
 
   const { productId } = props;
@@ -29,6 +30,16 @@ const ProductDetailsHeader = (props) => {
           <p>Products{name && `/${name}`}</p>
           <div className="detailsbutton">
             {isEdit === false && (
+              <button className="btn2" onClick={RedirectToProduct}>
+                Cancel
+              </button>
+            )}
+            {isEdit === true && (
+              <button className="btn2" onClick={RedirectToProduct}>
+                Cancel
+              </button>
+            )}
+               {isEdit === false && (
               <button className="btn1" onClick={() => setIsEdit(true)}>
                 Edit
               </button>
@@ -36,16 +47,6 @@ const ProductDetailsHeader = (props) => {
             {isEdit === true && (
               <button className="btn1" onClick={save}>
                 Save
-              </button>
-            )}
-            {isEdit === false && (
-              <button className="btn2" onClick={RedirectToProduct}>
-                Cancel
-              </button>
-            )}
-            {isEdit === true && (
-              <button className="btn2" onClick={RedirectToProduct}>
-                Cancel
               </button>
             )}
           </div>
