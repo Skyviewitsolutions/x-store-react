@@ -122,7 +122,7 @@ const Barcode = (props) => {
             <h3>Product Barcode</h3>
             <div className="barcode_contents">
               <p>Barcode</p>
-              <input type="text" value={barcode} onChange={(e) => setBarcode(e.target.value)}/>
+              <input type="text" value={barcode} onChange={(e) => setBarcode(e.target.value)} maxlength="18"/>
             </div>
             <div className="barcode_contents">
               <p>Barcode Description</p>

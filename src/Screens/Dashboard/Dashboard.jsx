@@ -24,9 +24,16 @@ import attendance from '../../assets/Images/icons/attendance.png';
 import timeOff from "../../assets/Images/icons/time off.png";
 import expenses from "../../assets/Images/icons/expenses.png";
 import loan from "../../assets/Images/icons/loan.png"
+import { IoMdLogOut } from "react-icons/io";
+import { endpoints } from "../../services/endpoints";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Card = (props) => {
+
   const { onClick } = props;
+
+
 
   return (
     <div className="col-sm-1 cardd" onClick={onClick}>
@@ -65,7 +72,33 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const RedirectToInventory = () => {
     navigate("/Inventory");
-  };
+  }
+
+    const logotUrl = endpoints.authentication.logout;
+    const getAuthtoken = localStorage.getItem("authtoken");
+    const userAuth = localStorage.getItem("userAuth");
+    const userEmails = localStorage.getItem("UserEmail");
+    const userLoginTime = localStorage.getItem("loginTime");
+    
+    const logout = () => {
+      const formData = new FormData()
+      formData.append("email",userEmails);
+      formData.append("User_Authorization", getAuthtoken);
+      formData.append("LoginTime", userLoginTime);
+      axios.post(logotUrl,formData)
+      .then((res) => {
+     if(res.data.status === true){
+      toast(res.data.message,{type:"success"})
+      setTimeout(() => {
+        navigate('/')
+      }, 1000);
+     }
+      })
+      .catch((err) => {
+        console.log(err,"eror")
+      })
+    }
+  
 
   return (
     <>
@@ -249,6 +282,10 @@ const Dashboard = () => {
           
           </div>
         </div> */}
+           <div className="logout_das" onClick={logout}>
+              <IoMdLogOut style={{ color: "white", marginRight: "15px",fontSize:"25px"}}/>
+              <p>Logout</p>
+            </div>
         <div className="arrowicon">
           {" "}
           <FaAngleLeft size={40} onClick={RedirectToInventory} />

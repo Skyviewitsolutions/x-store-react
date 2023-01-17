@@ -38,7 +38,7 @@ const PurchaseOrder = () => {
         if (res.data.status === true) {
           var val = res.data.data;
           console.log(val,"hgdshdcs")
-          val = val.reverse()
+          // val = val.reverse()
           const filterPurchaseOr = val.filter((itm,ind) => {
             return itm.DELETE_STATUS != 'X'
           })

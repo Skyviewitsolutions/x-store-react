@@ -256,7 +256,7 @@ const AddShippingMethod = () => {
               <div className="delivery">
                 <p>Delivery Product</p>
                 <select value={deliver} onChange={(e) => setDeliver(e.target.value)}>
-                  <option></option>
+                  <option>choose any one</option>
                  {getProduct.map((item,index) => {
                   if(item.DELETE_STATUS != 'X'){
                     return(
@@ -268,19 +268,36 @@ const AddShippingMethod = () => {
               </div>
             </div>
           </div>
-          <div className="detailsbtn">
+        </div>
+        <div className="detailsbtn">
             <Nav variant="tabs" defaultActiveKey="/home">
               <Nav.Item
-                className="detailslink"
+                className={
+                  events === "Pricing"
+                    ? "navLinkActive"
+                    : "navLinkDeactive"
+                }
                 onClick={() => setEvents("Pricing")} 
               >
-                <Nav.Link href="">Pricing</Nav.Link>
+                <Nav.Link   className={
+                  events === "Pricing"
+                    ? "navLinkActive"
+                    : "navLinkDeactive"
+                } >Pricing</Nav.Link>
               </Nav.Item>
               <Nav.Item
-                className="detailslink"
+              className={
+                events === "Destination"
+                  ? "navLinkActive"
+                  : "navLinkDeactive"
+              }
                 onClick={() => setEvents("Destination")}
               >
-                <Nav.Link eventKey="link-1">Destination Availbility</Nav.Link>
+                <Nav.Link eventKey="link-1"   className={
+                  events === "Destination"
+                    ? "navLinkActive"
+                    : "navLinkDeactive"
+                }>Destination Availbility</Nav.Link>
               </Nav.Item>
             </Nav>
           </div>
@@ -288,7 +305,6 @@ const AddShippingMethod = () => {
             {events === "Pricing" && isEdit === false && <Pricing fixedPrice={fixedPrice} setFixedPrice={setFixedPrice}/>}
             {events === "Destination" && isEdit === false && <Destination state={state} countries={countries} setCountries={setCountries} zipfrom={zipfrom} zipto={zipto} setState={setState} setZipTo={setZipTo} setZipFrom={setZipFrom}/>}
           </div>
-        </div>
       </div>
       <ToastContainer/>
     </div>

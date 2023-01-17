@@ -51,22 +51,25 @@
 
 .AddLocationinput {
   width: 100%;
+  display: flex;
+  align-items:center ;
 }
 
-.AddLocationinput h5 {
+.AddLocationinput p{
   color: #666666;
   font-size: 18px;
   margin-left: 19px;
   font-weight: 500;
   margin-top: 10px;
   margin-bottom: 0px;
+  width: 150px;
 }
 
 .AddLocationinput input {
-  width: 90%;
+  width: 500px;
   outline: none;
   border: none;
-  margin-left: 20px;
+  /* margin-left: 20px; */
  border-bottom: 2px solid #6a666a;
 }
 

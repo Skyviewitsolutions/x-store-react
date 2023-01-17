@@ -81,6 +81,8 @@ const PrintProductBarcode = (props) => {
     setShowBarcode(false)
   }
 
+  console.log(typeof(singleProductBarcode.SALES_PRICE),)
+
   return (
     <>
       <Modal show={showBarcode} size="md">
@@ -95,7 +97,7 @@ const PrintProductBarcode = (props) => {
               <div className="row">
                 <div className="col-lg-12 text-center">
                   <h1>{singleProductBarcode.PRODUCT_NAME}</h1>
-                  <h5>Price :{singleProductBarcode.SALES_PRICE}</h5>
+                  <h5>Price : {singleProductBarcode.SALES_PRICE && singleProductBarcode.SALES_PRICE.toFixed(2)}</h5>
                   <div className="barcode_img">
                     <img
                       src={singleProductBarcode.BARCODE_IMAGE}

@@ -8,6 +8,10 @@
     overflow-y: scroll;
     height: 500px;
 }
+
+.MuiFormControl-root {
+    padding: 10px !important;
+}
 /* td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium.tss-1qtl85h-MUIDataTableBodyCell-root.tss-1y3wvy9-MUIDataTableBodyCell-stackedParent.tss-iwylj0-MUIDataTableBodyCell-responsiveStackedSmallParent.css-1ex1afd-MuiTableCell-root {
     padding: 0px !important;
 }
@@ -76,5 +80,11 @@ p#\:ra\: {
     .tss-1qtl85h-MUIDataTableBodyCell-root.tss-1ej321f-MUIDataTableBodyCell-cellHide.tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader.tss-1vd39vz-MUIDataTableBodyCell-stackedCommon {
 
         display: flex !important;
+    }
+}
+
+@media (min-width : 768px) and (max-width:1024px){
+    .protab{
+        height: 80vh;
     }
 }

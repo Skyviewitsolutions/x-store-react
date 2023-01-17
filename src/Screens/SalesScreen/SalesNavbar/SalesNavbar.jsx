@@ -105,9 +105,9 @@ const SalesNavbar = (props) => {
                 <NavDropdown.Item onClick={() => navigate("/sales_attribute")}>
                   Attributes
                 </NavDropdown.Item>
-                <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
+                {/* <NavDropdown.Item href="" style={{ fontSize: "12px" }}>
                   Units of Measures{" "}
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item
                   onClick={() => navigate("/sales_units_of_measure_category")}
                 >

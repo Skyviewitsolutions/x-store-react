@@ -66,7 +66,7 @@ const VariantModal = (props) => {
       .then((res) => {
         if (res.data.status === true) {
           toast(res.data.message, { type: "success" });
-          window.location.reload()
+          // window.location.reload()
           GetAllAttribute();
           setShowModal(false);
         } else if (res.data.status === false) {
@@ -116,6 +116,7 @@ const VariantModal = (props) => {
                 value={attributeName}
                 onChange={(e) => handleSelectedAttribute(e)}
               >
+                <option>select any one</option>
                 {allAttribute.map((itm, ind) => {
                   return (
                     <>
@@ -133,7 +134,7 @@ const VariantModal = (props) => {
                 value={attributeVal}
                 onChange={(e) => handleSelectedAttributeVal(e)}
               >
-                <option value=""></option>
+               <option>select any one</option>
                 {allAttributeValue.map((itm, ind) => {
                   return (
                     <>

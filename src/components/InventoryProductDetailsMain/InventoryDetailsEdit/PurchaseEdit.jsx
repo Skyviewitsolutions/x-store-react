@@ -95,8 +95,6 @@ console.log("getAll")
     .then((res) => {
       console.log(res, "all vendorlist");
       if(res.data.status === true){
-
-
         const val = res.data.data;
         const filteredVendorList = val.filter((itm,ind) =>{
           return itm.DEL_STATUS != "X"
@@ -220,7 +218,7 @@ console.log("getAll")
   .then((res) => {
     if (res.data.status) {
       toast("Varients updated successfully", { type: "success" });
-      window.location.reload()
+      // window.location.reload()
       setModalShow(false);
       getAllVendorlist();
       getSingleVendorList()

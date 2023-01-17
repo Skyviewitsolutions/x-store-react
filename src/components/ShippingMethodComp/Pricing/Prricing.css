@@ -1,7 +1,7 @@
 .fixedpri{
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    padding: 10px 20px;
 }
 .fixedpri p{
     width: 200px;

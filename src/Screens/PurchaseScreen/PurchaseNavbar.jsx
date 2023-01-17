@@ -69,17 +69,17 @@ const PurchaseNavbar = (props) => {
                 <NavDropdown.Item onClick={() => navigate('/PurchaseAgreement')}>Purchase Agreements</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate('/PurchaseVendor')}>Vendors</NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown title="Products" id="collasible-nav-dropdown">
+              {/* <NavDropdown title="Products" id="collasible-nav-dropdown">
                 <NavDropdown.Item
                 onClick={() => navigate('/InventoryProducts')}
                 >
                   Product
                 </NavDropdown.Item>
                 <NavDropdown.Item>Product Variants</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="#link" className="navetext">
+              </NavDropdown> */}
+              {/* <Nav.Link href="#link" className="navetext">
                 Reporting
-              </Nav.Link>
+              </Nav.Link> */}
               <NavDropdown title="Configuration" id="collasible-nav-dropdown">
                 <NavDropdown.Item onClick={() => navigate('/PurchasePriceList')}>
                 Vendors Pricelists

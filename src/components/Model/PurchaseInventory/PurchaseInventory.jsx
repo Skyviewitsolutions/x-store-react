@@ -104,7 +104,7 @@ const PurchaseInventory = (props) => {
             getSingleVendorList();
             getAllVendorlist()
             toast("Vendor List Added Successfully", { type: "success" });
-            window.location.reload()
+            // window.location.reload()
             setModalShow(false);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {

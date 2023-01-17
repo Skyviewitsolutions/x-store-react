@@ -254,7 +254,7 @@ const AddLocation = () => {
         </div> */}
         <div className="AddLocationmain">
           <div className="AddLocationinput">
-            <h5>Location Name</h5>
+            <p>Location Name</p>
             <input
               type="text"
               value={locationName}

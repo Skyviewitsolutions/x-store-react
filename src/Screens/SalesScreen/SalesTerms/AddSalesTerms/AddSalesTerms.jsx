@@ -38,7 +38,7 @@ const AddSalesTerms = () => {
         <div className="salesteam">
             <p>Team Leader</p>
             <select>
-                <option></option>
+                <option>choose any one</option>
                 <option>Account 02</option>
                 <option>Accountant-Ryd</option>
                 <option>CRUH 01</option>
