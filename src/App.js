@@ -146,7 +146,6 @@ import AddAccVendor from "./Screens/AccountScreen/AccountVendor/AddAccVendor";
 import ProductBrandList from "./Screens/InventoryScreen/ProductBrand/ProductBrandList";
 import PrintProductBarcode from "./Screens/InventoryScreen/AddAccount/PrintProductBarcode/PrintProductBarcode";
 
-
 const App = () => {
  
   // const AllData = await GetAllData()
@@ -158,6 +157,8 @@ const App = () => {
   //     $(this).prevAll('label').first().append('<span style="color:red">*</span>');
   // });
   // },[])
+
+  
 
   return(<>
     <Router>

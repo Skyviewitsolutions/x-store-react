@@ -83,6 +83,7 @@ const VariantsEdit = (props) => {
           val = val.filter((itm, index) => {
             return itm.DELETE_STATUS != "X";
           });
+          console.log(val ,'vall here')
           setAttributeValues(val);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
@@ -172,9 +173,9 @@ const VariantsEdit = (props) => {
       });
   };
 
-  useEffect(() => {
-    getAllAttribute();
-  }, []);
+  // useEffect(() => {
+  //   getAllAttribute();
+  // }, []);
 
   const handleUpdate = (id) => {
     setShowModal(true);
@@ -284,6 +285,7 @@ const VariantsEdit = (props) => {
       },
     },
   ];
+  console.log(attributesValues , "attributes values here");
   return (
     <div className="VariantsEditContainer">
       {productId ? (

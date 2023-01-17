@@ -8,7 +8,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { endpoints } from "../../../services/endpoints";
 import "./Barcode.css";
+
 const Barcode = (props) => {
+
   const navigate = useNavigate();
 
   const {
@@ -87,7 +89,7 @@ const Barcode = (props) => {
           if (res.data.status === true) {
             setUom(res.data.code);
             toast(res.data.message, { type: "success" });
-            window.location.reload()
+            // window.location.reload()
             setModalShow(false);
             getProBarcode();
           } else if (res.data.status === false) {

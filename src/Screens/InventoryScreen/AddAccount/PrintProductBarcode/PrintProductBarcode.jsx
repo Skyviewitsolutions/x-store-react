@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./PrintProductBarcode.css";
 import Barcode from "../../../../assets/Images/Barcode.png";
 import logo from "../../../../assets/Images/logo_2.png";
@@ -8,9 +8,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { MdOutlineCancel } from "react-icons/md";
+import { useReactToPrint } from "react-to-print";
 
 const PrintProductBarcode = (props) => {
   const { showBarcode, setShowBarcode, productId } = props;
+  const componentRef = useRef();
 
   console.log(productId, "his");
 
@@ -55,41 +57,56 @@ const PrintProductBarcode = (props) => {
     }
   }, [productId]);
 
-  const Print = () => {
-    //console.log('print');
-    setShowBarcode(false);
-    let printContents = document.getElementById("printablediv").innerHTML;
-    let originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    
-   
-  };
+  // const Print = () => {
+  //   var divContents = document.getElementById("printablediv").innerHTML;
+  //   // var a = window.crea("", "", "height=800, width=1200");
+  //   var a = document.body.innerHTML
+  //   a.document.write("<html>");
+  //   a.document.write("<body > <h1>Div contents are <br>");
+  //   a.document.write(divContents);
+  //   a.document.write("</body></html>");
+  //   a.document.close();
+  //   window.close()
+  //   a.print();
+  // };
 
-  console.log(showBarcode, "showBarcode here");
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    
+  }
+  );
+
+  const Print = () =>{
+    handlePrint()
+    setShowBarcode(false)
+  }
 
   return (
     <>
-      <Modal show={showBarcode} size="md" id="printablediv">
-        <Modal.Header>
-          <div onClick={() => setShowBarcode(false)}>
-            <MdOutlineCancel size="25px" className="Acccuticons" />
-          </div>
-        </Modal.Header>
-        <div>
-          <div className="containerr">
-            <div className="row">
-              <div className="col-lg-12 text-center">
-                <h1>{singleProductBarcode.PRODUCT_NAME}</h1>
-                <h5>Price :{singleProductBarcode.SALES_PRICE}</h5>
-                <div className="barcode_img">
-                  <img src={singleProductBarcode.BARCODE_IMAGE} alt="barcode" />
-                </div>
-                <h6>{singleProductBarcode.BARCODE}</h6>
-              </div>
+      <Modal show={showBarcode} size="md">
+        <div ref={componentRef} id="printablediv">
+          <Modal.Header>
+            <div onClick={() => setShowBarcode(false)}>
+              <MdOutlineCancel size="25px" className="Acccuticons" />
             </div>
+          </Modal.Header>
+          <div>
+            <div className="containerr">
+              <div className="row">
+                <div className="col-lg-12 text-center">
+                  <h1>{singleProductBarcode.PRODUCT_NAME}</h1>
+                  <h5>Price :{singleProductBarcode.SALES_PRICE}</h5>
+                  <div className="barcode_img">
+                    <img
+                      src={singleProductBarcode.BARCODE_IMAGE}
+                      alt="barcode"
+                    />
+                  </div>
+                  <h6>{singleProductBarcode.BARCODE}</h6>
+                </div>
+              </div>
 
-            {/* <div className="row company_detail">
+              {/* <div className="row company_detail">
                 <div className="col-lg-12">
                     <div className='company_logo'>
                 <img src={logo} alt="logo"/>
@@ -100,14 +117,15 @@ const PrintProductBarcode = (props) => {
                     <p>skyview.ads@gmail.com</p>
                 </div>
             </div> */}
+            </div>
+            <ToastContainer />
           </div>
-          <ToastContainer />
+          <Modal.Footer>
+            <Button className="print_btn" onClick={Print}>
+              Print
+            </Button>
+          </Modal.Footer>
         </div>
-        <Modal.Footer>
-          <Button className="print_btn" onClick={Print}>
-            Print
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

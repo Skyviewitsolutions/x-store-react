@@ -104,13 +104,12 @@ const Warehouse = () => {
   const column = [
     { label: "Warehouse", name: "WAREHOUSE_NAME" },
     { label: "Location stock", name: "LOCATIONS_STOCK" },
-    { label: "Address", name: "WAREHOUSE_ADDRESS",
-      options : {print : false }
-  },
+    { label: "Address", name: "WAREHOUSE_ADDRESS"},
     {
       label: "Actions",
       name: "WAREHOUSE_ID",
       options: {
+        print : false ,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>
