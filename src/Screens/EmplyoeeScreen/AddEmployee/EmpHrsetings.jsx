@@ -50,7 +50,7 @@ const EmpHrsetings = (props) => {
       }
     }
   };
-  console.log(accessModule, "data");
+  console.log( expenseRead, "data");
   return (
     <div>
       <div className="hrsettings_container">
