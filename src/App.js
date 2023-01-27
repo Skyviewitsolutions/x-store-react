@@ -12,6 +12,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { createTheme } from '@mui/material/styles'
 import Navebar from "./components/Navbar/Navbar";
 import InventoryScreen from "./Screens/InventoryScreen/Inventory/InventoryScreen";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -117,7 +118,6 @@ import PurchaseOrder from "./Screens/PurchaseScreen/PurchasesOrder/PurchaseOrder
 import AddPurchaseOrders from "./Screens/PurchaseScreen/PurchasesOrder/AddPurchaseOrders/AddPurchaseOrders";
 import PurchaseAgreement from "./Screens/PurchaseScreen/PurchaseAgreement/PurchaseAgreement";
 import AddPurchaseAgreement from "./Screens/PurchaseScreen/PurchaseAgreement/AddPurchaseAgreement/AddPurchaseAgreement";
-import PurchaseVendor from "./Screens/PurchaseScreen/PurchaseVendor";
 import AccountVendor from "./Screens/AccountScreen/AccountVendor/AccountVendor";
 import AccountProduct from "./Screens/AccountScreen/AccountProduct/AccountProduct";
 import Department from "./Screens/EmplyoeeScreen/Department/Department";
@@ -145,6 +145,11 @@ import $ from "jquery";
 import AddAccVendor from "./Screens/AccountScreen/AccountVendor/AddAccVendor";
 import ProductBrandList from "./Screens/InventoryScreen/ProductBrand/ProductBrandList";
 import PrintProductBarcode from "./Screens/InventoryScreen/AddAccount/PrintProductBarcode/PrintProductBarcode";
+import PurchaseVendors from "./Screens/PurchaseScreen/PurchaseVendors/PurchaseVendors";
+import AddPurchaseVendors from "./Screens/PurchaseScreen/PurchaseVendors/AddPurchaseVendors";
+import AccAddProduct from "./Screens/AccountScreen/AccountProduct/AccAddProduct";
+import AccProductCard from "./Screens/AccountScreen/AccountProduct/AccProductCard";
+import AccProductDetails from "./Screens/AccountScreen/AccountProduct/AccProductDetails";
 
 const App = () => {
  
@@ -158,9 +163,9 @@ const App = () => {
   // });
   // },[])
 
-  
 
-  return(<>
+  return(
+  <>
     <Router>
       <Routes>
 
@@ -172,6 +177,8 @@ const App = () => {
         <Route path="/ForgetPassword" element={<ForgetPassword/>} />
         <Route path="/OtpPage" element={<Otp/>} />
         <Route path="/ChangePassword" element={<ChangePassword/>} />
+
+        <Route path="/AccProductCard" element={<AccProductCard/>} />
 
         {/* inside projects */}
         <Route path="/Dashboard" element={<Dashboard/>} />
@@ -212,7 +219,9 @@ const App = () => {
 
        <Route path='/AccountNavbar' element={<AccountNavbar/>}/>
        <Route path='/AccountVendor' element={<AccountVendor/>} />
-       <Route path='/AccountProduct' element={<AccountProduct/>} />
+       <Route path='/AccountProduct' element={<AccountProduct/>} /> 
+       <Route path="/AccAddProduct" element={<AccAddProduct/>} />
+       <Route path="/AccProductDetails" element={<AccProductDetails/>} />
        <Route path='/PaymentTerms' element={<PaymentTerms/>}/>
        <Route path='AddPayment' element={<AddPayment/>} />
        <Route path='/ChartAccount' element={<ChartAccount/>} />
@@ -300,7 +309,8 @@ const App = () => {
        <Route path='/AddPurchaseOrders' element={<AddPurchaseOrders/>}/>
        <Route path='/PurchaseAgreement' element={<PurchaseAgreement/>}/>
        <Route path='/AddPurchaseAgreement' element={<AddPurchaseAgreement/>}/>
-       <Route path='/PurchaseVendor'  element={<PurchaseVendor/>} />
+       <Route path='/PurchaseVendor'  element={<PurchaseVendors/>} />
+       <Route path='/AddPurchaseVendor' element={<AddPurchaseVendors/>} /> 
      
        {/* -------------------------------------Employee Screens-------------------------------- */}
        <Route path='/AddEmployee' element={<AddEmployee/>} />

@@ -13,7 +13,7 @@ import ProductTable from '../../ProductTable/ProductTable'
 
 const PurchaseEdit = (props) => {
 
-  const {productId} = props
+  const {productId,isEdit} = props
   const navigate = useNavigate();
   const [modalShow , setModalShow] = useState(false)
   const userAuth = localStorage.getItem("userAuth");
@@ -263,6 +263,7 @@ console.log("getAll")
     { label: "Action",
        name: "ID",
     options: {
+      print:false,
       customBodyRender: (value, tableMeta, updateValue) => {
         return (
           <>
@@ -293,6 +294,7 @@ console.log("getAll")
     { label :'currency', name:'VENDOR_CURRENCY'},
     { label :'Price', name:'VENDOR_PRICE' ,
     options: {
+      print:false,
       customBodyRender: (value, tableMeta, updateValue) => {
         var price ;
         if(typeof(value) == "string"){
@@ -347,7 +349,7 @@ console.log("getAll")
     {productId  ?  <ProductTable data={singleVendorList} column={column2}/> : <ProductTable data={allVendorList} column={column}/>
     }
   
-   <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Line</button>
+  {productId == undefined && <button className='varients_btns' onClick={() => setModalShow(true)}>Add Line</button> }
        {/* <div className="purchase_Reordering">
               <div className="purchase_first">
                 <h1>Reordering</h1>

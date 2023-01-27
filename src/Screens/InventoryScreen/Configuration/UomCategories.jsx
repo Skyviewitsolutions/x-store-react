@@ -119,6 +119,7 @@ const getUomCategory = () => {
       label:"Actions",
       name:"ID",
       options:{
+        print : false ,
         customBodyRender:(value,tableMeta,updateValue) => {
           return(
             <>

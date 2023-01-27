@@ -83,26 +83,20 @@ const PrintProductBarcode = (props) => {
 
   return (
     <>
-      <Modal show={showBarcode} size="md">
-        <div ref={componentRef} id="printablediv">
-          <Modal.Header>
-            <div onClick={() => setShowBarcode(false)}>
-              <MdOutlineCancel size="25px" className="Acccuticons" />
-            </div>
-          </Modal.Header>
-          <div>
-            <div className="containerr">
-              <div className="row">
-                <div className="col-lg-12 text-center">
-                  <h1>{singleProductBarcode.PRODUCT_NAME}</h1>
-                  <h5>Price :{singleProductBarcode.SALES_PRICE}</h5>
-                  <div className="barcode_img">
-                    <img
-                      src={singleProductBarcode.BARCODE_IMAGE}
-                      alt="barcode"
-                    />
-                  </div>
-                  <h6>{singleProductBarcode.BARCODE}</h6>
+      <Modal show={showBarcode} size="md" id="printablediv">
+        <Modal.Header>
+          <div onClick={() => setShowBarcode(false)}>
+            <MdOutlineCancel size="25px" className="Acccuticons" />
+          </div>
+        </Modal.Header>
+        <div>
+          <div className="containerr">
+            <div className="row">
+              <div className="col-lg-12 text-center">
+                <h1>{singleProductBarcode.PRODUCT_NAME}</h1>
+                <h5>Price :{singleProductBarcode.SALES_PRICE}</h5>
+                <div className="barcode_img">
+                  <img src={singleProductBarcode.BARCODE_IMAGE} alt="barcode" />
                 </div>
               </div>
 

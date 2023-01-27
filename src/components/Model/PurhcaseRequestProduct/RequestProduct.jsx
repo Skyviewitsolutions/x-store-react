@@ -9,7 +9,7 @@ import { endpoints } from "../../../services/endpoints";
 import "./RequestProduct.css";
 
 export const RequestProduct = (props) => {
-  const { modalShow, setModalShow,serialNo,setSerialNo,productdet,setProductDet,description,setDescription,quantity,setQuantity,uomdet,setUomdet,vendorId,setVendorId,saveProduct,updateSelectedProductList,updateProductDetails} = props;
+  const { modalShow, setModalShow,productdet,setProductDet,description,setDescription,quantity,setQuantity,uomdet,setUomdet,vendorId,setVendorId,saveProduct,updateSelectedProductList,updateProductDetails} = props;
   const navigate = useNavigate();
   const [productAll, setProductAll] = useState([]);
   const [uomAll, setUomAll] = useState([]);

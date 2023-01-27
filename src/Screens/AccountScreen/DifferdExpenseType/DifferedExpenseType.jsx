@@ -116,6 +116,7 @@ const deleteDefExTypeUrl = endpoints.DefExpenseType.deleteDefExType;
           label:"Action",
           name:"ID",
           options:{
+            print:false,
               customBodyRender:(value,tableMeta,updateValue) => {
                   return(
                       <>

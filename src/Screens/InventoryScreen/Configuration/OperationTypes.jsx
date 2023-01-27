@@ -123,6 +123,7 @@ const OperationTypes = (props) => {
       label: "Actions",
       name: "OPERATION_ID",
       options: {
+        print : false ,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

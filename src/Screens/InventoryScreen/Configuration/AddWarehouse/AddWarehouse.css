@@ -47,6 +47,9 @@ margin-top: 15px;
     font-size: 30px;
     margin-left: 20px;
 }
+.details_btns {
+    margin-left: 5px !important;
+}
 .shortname{
     width: 100%;
     display: flex;

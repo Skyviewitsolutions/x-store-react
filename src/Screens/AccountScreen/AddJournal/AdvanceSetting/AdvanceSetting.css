@@ -23,14 +23,14 @@
     font-weight: 600;
     margin-bottom: 5px;
 }
-.AdvanceSettinginput select{
+/* .AdvanceSettinginput select{
     border: none;
     outline: none;
     width: 350px;
     border-bottom: 1px solid #cccccc;
-}
+} */
 .Advancemultiselect{
-    /* border-bottom: 1px solid #cccc; */
+    border-bottom: 1px solid #cccc;
     width: 400px;
 }
 .AdvanceSettingcheckbox{

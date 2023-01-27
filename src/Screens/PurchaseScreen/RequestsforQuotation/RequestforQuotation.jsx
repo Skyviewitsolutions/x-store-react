@@ -110,14 +110,15 @@ const RequestforQuotation = () => {
   };
 
   const column = [
-    { title: "Refrence", name: "VENDOR_REFERENCE" },
-    { title: "Order Date", name: "ORDER_DATE" },
-    { title: "Vendor", name: "VENDOR_NAME" },
-    { title: "Purchase Representative", name: "PURCHASE_REPRESENTATIVE" },
+    { label: "Refrence", name: "VENDOR_REFERENCE" },
+    { label: "Order Date", name: "ORDER_DATE" },
+    { label: "Vendor", name: "VENDOR_NAME" },
+    { label: "Purchase Representative", name: "PURCHASE_REPRESENTATIVE" },
     {
       label: "Actions",
       name: "ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

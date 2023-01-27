@@ -18,6 +18,32 @@ const AddRequestQuotation = (props) => {
   const navigate = useNavigate();
   const [events, setEvents] = useState("Products");
 
+  const [allPurchaseAgree , setAllPurchaseAgree] = useState([])
+
+  const allPAUrl = endpoints.agreementType.allAgreement;
+
+  const getAllPA = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(allPAUrl,formData)
+    .then((res) => {
+      console.log(res,"data here")
+      if(res.data.status === true){
+
+        var val = res.data.data;
+        const filterPA = val.filter((itm,ind) => {
+          return itm.DELETE_STATUS != 'X'
+        })
+        setAllPurchaseAgree(filterPA)
+      }
+    })
+  }
+
+  useEffect(() => {
+    getAllPA()
+  },[])
+
   // ------------------------Request Quotation State----------------------------
 
   const [vendorRef, setVendorRef] = useState("");
@@ -109,7 +135,12 @@ const AddRequestQuotation = (props) => {
       .post(vendorUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
-          setVendorAll(res.data.data);
+
+          var val = res.data.data;
+          const filterVendor = val.filter((itm,ind) => {
+            return itm.VENDOR_STATUS != "X"
+          })
+          setVendorAll(filterVendor);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -190,7 +221,7 @@ const AddRequestQuotation = (props) => {
       setOrderDate(selectedData.ORDER_DATE);
       setRecepitDate(selectedData.RECEIPT_DATE);
       setPurchaseRep(selectedData.PURCHASE_REPRESENTATIVE);
-      setIncoTerms(selectedData.INCOME_TERMS_ID);
+      setIncoTerms(selectedData.INCOMETERMS_ID);
       setPaymentTerms(selectedData.PAYMENT_TERMS);
       setCurrency(selectedData.PRODUCT_CURRENCY);
       setLocation(selectedData.DESTINATION_LOCATION);
@@ -309,7 +340,6 @@ const getAllproductdetails = () => {
    
     axios.post(productDetailsUrl,formData)
     .then((res) => {
-      console.log(res,"responscbdch")
       if(res.data.status === true){
         var val = res.data.data;
         val = val.reverse();
@@ -448,7 +478,7 @@ const deleteItem = (data) => {
 
 const updateProductDetailsUrl = endpoints.requestQuotation.updateProductDetails;
  const handleUpdate = (id) => {
-  var selectedProductsList = productAll.filter((itm,ind) => {
+  var selectedProductsList = singleProduct.filter((itm,ind) => {
     return itm.ID === id
   })
   console.log(selectedProductsList,"csdf")
@@ -501,6 +531,7 @@ const column = [
       label:"Actions",
       name:"ID",
       options:{
+        print:false,
           customBodyRender:(value , tableMeta , updateValue) => {
               return(
                   <>
@@ -530,6 +561,7 @@ const column2 = [
       label:"Actions",
       name:"ID",
       options:{
+          print:false,
           customBodyRender:(value , tableMeta , updateValue) => {
               return(
                   <>
@@ -586,9 +618,13 @@ const column2 = [
               <p>Purchase Agreement</p>
               <select value={purchaseAgree} onChange={(e) => setPurchaseAgree(e.target.value)}>
                 <option value="">Select Any one</option>
-                <option value="1">1</option>
-                <option value="tesing">tesing</option>
-                <option value="testing">testing</option>
+               {allPurchaseAgree.map((itm,ind) => {
+                return (
+                  <>
+                  <option value={itm.AGREEMENT_TYPE_ID}>{itm.AGREEMENT_TYPE}</option>
+                  </>
+                )
+               })}
               </select>
             </div>
             <div className="reqQuotext">

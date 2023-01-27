@@ -15,8 +15,7 @@ import ProductTable from "../../ProductTable/ProductTable";
 
 const VariantsEdit = (props) => {
   const navigate = useNavigate();
-  const { productId, salesPrice } = props;
-
+  const { productId, salesPrice, isEdit, setIsEdit } = props;
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
   const [showModal, setShowModal] = useState(false);
@@ -67,6 +66,8 @@ const VariantsEdit = (props) => {
       });
   };
 
+  console.log(productId, "product id aeha hai");
+
   const getSingleVarients = () => {
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
@@ -74,9 +75,9 @@ const VariantsEdit = (props) => {
     formData.append("Product_ID", productId);
     axios
       .post(singleVarientsUrl, formData)
-     
+
       .then((res) => {
-        console.log(res,"single varients")
+        console.log(res, "single varients");
         if (res.data.status === true) {
           var val = res.data.data;
 
@@ -183,7 +184,7 @@ const VariantsEdit = (props) => {
     var seletedAttribute = attributesValues.filter((itm, ind) => {
       return itm.ID == id;
     });
-   console.log(seletedAttribute,"attr here")
+    console.log(seletedAttribute, "attr here");
     setSelectedVarientsId(id);
 
     seletedAttribute = seletedAttribute[0];
@@ -211,10 +212,10 @@ const VariantsEdit = (props) => {
       .then((res) => {
         if (res.data.status) {
           toast("Varients updated successfully", { type: "success" });
-          window.location.reload()
+          window.location.reload();
           setShowModal(false);
           GetAllAttribute();
-          getSingleVarients()
+          getSingleVarients();
         } else if (res.data.status === false) {
           toast(res.data.message, { type: "warning" });
         }
@@ -231,6 +232,7 @@ const VariantsEdit = (props) => {
       label: "Action",
       name: "ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>
@@ -262,6 +264,7 @@ const VariantsEdit = (props) => {
       label: "Action",
       name: "ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>
@@ -294,20 +297,22 @@ const VariantsEdit = (props) => {
         <ProductTable data={attributesValues} column={column1} />
       )}
 
-      <button
-        className="varients_btns"
-        onClick={() => {
-          setShowModal(true);
-          setUpdateVarients(false);
-        }}
-      >
-        Add Line
-      </button>
+      {productId == undefined && (
+        <button
+          className="varients_btns"
+          onClick={() => {
+            setShowModal(true);
+            setUpdateVarients(false);
+          }}
+        >
+          Add Line
+        </button>
+      )}
 
-      <p className="VariantsEditContainerp">
+      {/* <p className="VariantsEditContainerp">
         Warning: adding or deleting attributes will delete and recreate existing
         variants and lead to the loss of their possible customizations.
-      </p>
+      </p> */}
 
       <VariantModal
         showModal={showModal}

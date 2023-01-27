@@ -113,6 +113,7 @@ const Location = () => {
       label: "Actions",
       name: "LOCATION_ID",
       options: {
+        print : false ,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

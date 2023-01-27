@@ -38,13 +38,21 @@
     outline: none;
     border-bottom: 1px solid #cccc;
 }
-.requestQuoSecond{
+.requestQuoSecond {
     width: 50%;
+    margin-top: 16px;
 }
 
-@media only screen and (max-width:1000px){
+@media (min-width:768px) and (max-width:1024px){
     .addRequestCon{
         display: flex;
         flex-direction: column;
+    }
+    .requestQuofirst {
+        width: 100%;
+    }
+    .requestQuoSecond {
+        width: 100%;
+        margin-top: 16px;
     }
 }

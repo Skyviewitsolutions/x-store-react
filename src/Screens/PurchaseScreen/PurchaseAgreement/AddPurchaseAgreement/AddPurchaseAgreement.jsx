@@ -10,6 +10,7 @@ import PurchaseNavbar from '../../PurchaseNavbar'
 import AddProductRequest from '../../RequestsforQuotation/AddRequestQuotation/AddProductRequest'
 import PurchaseAgreeProduct from './PurchaseAgreeProduct'
 import './AddPurchaseAgreement.css'
+import { FiEdit } from 'react-icons/fi'
 
 const AddPurchaseAgreement = () => {
     
@@ -26,10 +27,14 @@ const AddPurchaseAgreement = () => {
     const [deliveryDate , setDeliveryDate] = useState("")
     const [condition , setCondition] = useState("")
     const [sourceDocument , setSourceDocument] = useState("")
+    const [pAId , setPAID] = useState("")
+    const [update , setUpdate] = useState("")
 
     const [allAgreementType , setAllAgreementType] = useState([]);
     const [allVendor , setAllVendor] = useState([]);
     const [allCurrency , setAllCurrency] = useState([]);
+
+
 
     const allAgreementTypeUrl = endpoints.purchaseAgreementtype.allAgreementtype;
     const vendorAllUrl = endpoints.vendors.allVendors;
@@ -43,7 +48,11 @@ const AddPurchaseAgreement = () => {
       axios.post(allAgreementTypeUrl , formData)
       .then((res) => {
         if(res.data.status === true){
-          setAllAgreementType(res.data.data);
+          var val = res.data.data;
+          const filterAgreementType = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+          })
+          setAllAgreementType(filterAgreementType);
         }else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -66,7 +75,11 @@ const AddPurchaseAgreement = () => {
         .post(vendorAllUrl, formData)
         .then((res) => {
           if (res.data.status === true) {
-            setAllVendor(res.data.data);
+            var val = res.data.data;
+            const filterVendors = val.filter((itm,ind) => {
+              return itm.VENDOR_STATUS != "X"
+            })
+            setAllVendor(filterVendors);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -128,7 +141,7 @@ const AddPurchaseAgreement = () => {
         formData.append("Vendor_ID" , vendor);
         formData.append("Delivery_Date" , deliveryDate);
         formData.append("Currency" , currency);
-        formData.append("Source_Document" , document)
+        formData.append("Source_Document" , sourceDocument)
         formData.append("Condition" , condition);
         formData.append("User_Authorization", getAuthtoken);
         formData.append("User_AuthKey", userAuth);
@@ -136,6 +149,9 @@ const AddPurchaseAgreement = () => {
         .then((res) => {
           if(res.data.status === true){
             toast("Purchase Agreement Added Successfully",{type:'success'})
+            setTimeout(() => {
+              navigate('/PurchaseAgreement')
+            }, 1000);
           }else if(res.data.status === false){
             toast(res.data.message,{type:"warning"})
           }
@@ -145,90 +161,6 @@ const AddPurchaseAgreement = () => {
         })
       }
     }
-
-    //  -------------------------ProductDetails useState-----------------------
-
-const [modalShow , setModalShow] = useState(false)
-const [productAll , setProductAll] = useState([]);
-
-const [serialNo , setSerialNo] = useState("")
-const [productdet , setProductDet] = useState("")
-const [description , setDescription] = useState("")
-const [quantity , setQuantity] = useState("")
-const [uomdet , setUomdet] = useState("")
-const [venId , setVendId] = useState("") 
-const [update , setUpdate] = useState("");
-const [requestId , setRequestId] = useState("")
-const productUrl = endpoints.requestQuotation.getAllproductdetails;
-const productDetailsUrl = endpoints.requestQuotation.addProductdetails;
-const vendorId = localStorage.getItem("varId");
-
-
-useEffect(() => {
-   if(vendor != ""){
-    const formData = new FormData();
-    formData.append("User_Authorization" , getAuthtoken);
-    formData.append("User_AuthKey" , userAuth);
-    formData.append("Vendor_ID" , vendor)
-    axios.post(productUrl,formData)
-    .then((res) => {
-      console.log(res,"responscbdch")
-      if(res.data.status === true){
-        setProductAll(res.data.data)
-      }else if(res.data.status === false){
-        if(res.data.code === 3)
-        {
-          toast("Session expired , Please re-login",{type:"warning"})
-          navigate('/');
-        }
-        else{
-         toast(res.data.message,{type:"error"});
-        }
-      }
-    })
-    .catch((err) => {
-      console.log(err , "something went wrong");
-    })
-  }
-},[vendor])
-
- const saveProduct = () => {
-  if(serialNo === ""){
-    toast("No is required" ,{type:'warning'})
-  }else if(vendorId === ""){
-    toast("Vendor Id is required",{type:"warning"})
-  }else if(productdet === ""){
-    toast("Product is required" ,{type:'warning'})
-  }else if(description === ""){
-    toast("Description is required" ,{type:"warning"})
-  }else if(quantity === ""){
-    toast("Quantity is required",{type:"warning"})
-  }else if(uomdet === ""){
-    toast("UOM is required",{type:"warning"})
-  }else{
-    const formData = new FormData()
-    formData.append("Vendor_ID",vendorId);
-    formData.append("Number",serialNo);
-    formData.append("Product_ID" , productdet);
-    formData.append("UOM" , uomdet);
-    formData.append("Description" , description);
-    formData.append("Qty" , quantity);
-    formData.append("User_Authorization", getAuthtoken);
-    formData.append("User_AuthKey", userAuth);
-    axios.post(productDetailsUrl , formData)
-    .then((res) => {
-      if(res.data.status === true){
-        toast("Product Details Added successfully" ,{type:"success"})
-      }else if(res.data.status === false){
-        toast(res.data.data ,{type:"error"})
-      }
-    })
-    .catch((err) => {
-      console.log(err,"error")
-    })
-  }
-
-};
 
 // -------------------------Purchase Agreement Update------------------
 
@@ -241,7 +173,7 @@ const updatePurchaseAgree = endpoints.agreementType.updateAgreement;
 useEffect(() => {
   if(selectedData){
    setUpdate(true);
-   setRequestId(selectedData.ID);
+   setPAID(selectedData.ID);
    setVendor(selectedData.VENDOR_ID);
    setOrderDate(selectedData.ORDER_DATE);
    setPurchaseRep(selectedData.PURCHASE_REPRESENTATIVE);
@@ -271,7 +203,7 @@ const updateData = () => {
     toast("Deliver Date is required !",{type:"warning"})
   }else{
     const formData = new FormData()
-    formData.append("ID" , requestId)
+    formData.append("ID" , pAId)
     formData.append("Purchase_Representative" , purchaseRep)
     formData.append("Agreement_Deadline" , agreeDeadLine);
     formData.append("Agreement_TypeID" , agreementType);
@@ -279,7 +211,7 @@ const updateData = () => {
     formData.append("Vendor_ID" , vendor);
     formData.append("Delivery_Date" , deliveryDate);
     formData.append("Currency" , currency);
-    formData.append("Source_Document" , document)
+    formData.append("Source_Document" , sourceDocument)
     formData.append("Condition" , condition);
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
@@ -287,6 +219,9 @@ const updateData = () => {
     .then((res) => {
       if(res.data.status === true){
         toast("Purchase Agreement Updated Successfully",{type:'success'})
+        setTimeout(() => {
+          navigate('/PurchaseAgreement')
+        }, 1000);
       }else if(res.data.status === false){
         if (res.data.code === 3) {
           toast("Session expired , Please re-login", { type: "warning" });
@@ -301,9 +236,144 @@ const updateData = () => {
     })
   }
 }
+
+
+
+//  -------------------------ProductDetails useState-----------------------
+
+const [modalShow , setModalShow] = useState(false)
+const [productAll , setProductAll] = useState([]);
+const [singleProduct , setSingleProduct] = useState([])
+
+const [productdet , setProductDet] = useState("")
+const [description , setDescription] = useState("")
+const [quantity , setQuantity] = useState("")
+const [uomdet , setUomdet] = useState("")
+
+
+const [selectedProductsId , setSelectedProductsId] = useState("")
+const [updateProductDetails , setUpdateProductDetails] = useState(false)
+
+const productDetailsUrl = endpoints.agreementType.allProductDetails;
+const addProductUrl = endpoints.agreementType.addProductdetailsPurchase;
+
+const singleProductUrl = endpoints.agreementType.singleProductDetails;
+
+const getAllproductdetails = () => {
+    const formData = new FormData();
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+   
+    axios.post(productDetailsUrl,formData)
+    .then((res) => {
+      console.log(res,"responscbdch")
+      if(res.data.status === true){
+        var val = res.data.data;
+        val = val.reverse();
+        const filterProduct = val.filter((itm,ind) =>{
+          return itm.DELETE_STATUS != "X"
+        })
+        setProductAll(filterProduct)
+      }else if(res.data.status === false){
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+        //  toast(res.data.message,{type:"error"});
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err , "something went wrong");
+    })
+}
+
+const getSingleProduct = () => {
+  const formData = new FormData()
+    formData.append("User_Authorization" , getAuthtoken);
+    formData.append("User_AuthKey" , userAuth);
+    formData.append("PA_ID" ,pAId);
+    axios.post(singleProductUrl,formData)
+    .then((res) => {
+      if(res.data.status === true){
+        const val = res.data.data;
+        console.log(val,"single data here")
+        const filteredProductDetails = val.filter((itm,ind) =>{
+          return itm.DELETE_STATUS != "X"
+        })
+        setSingleProduct(filteredProductDetails)
+      }
+      else if(res.data.status === false){
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+      }
+    })
+    .catch((err) => {
+      
+    })
+
+
+  }
+
+
+useEffect(() => {
+  console.log(pAId,"jbkjbk")
+  if(pAId){
+    getSingleProduct()
+  }else{
+    getAllproductdetails()
+  }
+ 
+},[pAId])
+
+
+
+ const saveProduct = () => {
+ 
+ if(productdet === ""){
+    toast("Product is required" ,{type:'warning'})
+  }else if(description === ""){
+    toast("Description is required" ,{type:"warning"})
+  }else if(quantity === ""){
+    toast("Quantity is required",{type:"warning"})
+  }else if(uomdet === ""){
+    toast("UOM is required",{type:"warning"})
+  }else{
+    const formData = new FormData()
+    formData.append("Product_ID" , productdet);
+    formData.append("UOM_ID" , uomdet);
+    formData.append("Discription" , description);
+    formData.append("Qty" , quantity);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(addProductUrl , formData)
+    .then((res) => {
+      console.log(res,":nscjk")
+      if(res.data.status === true){
+
+        toast("Product Details Added successfully" ,{type:"success"})
+        setModalShow(false)
+        getAllproductdetails()
+      }else if(res.data.status === false){
+        toast(res.data.data ,{type:"error"})
+      }
+    })
+    .catch((err) => {
+      console.log(err,"error")
+    })
+  }
+
+  console.log("vsahd")
+};
+
 // ------------------deleteProductDetails---------------------------
 
-const deleteProductDetailsUrl = endpoints.agreementType.productdeletepurchase;
+const deleteProductDetailsUrl = endpoints.requestQuotation.deleteProductdetails;
 
 const deleteItem = (data) => {
   const formData = new FormData();
@@ -314,8 +384,8 @@ const deleteItem = (data) => {
   .then((res) => {
     if(res.data.status === true)
     {
-      saveProduct()
         toast("Product deleted Successfully",{type:"success"});
+        getAllproductdetails()
     }
     else if(res.data.status === false)
     {
@@ -334,9 +404,56 @@ const deleteItem = (data) => {
 })
  }
 
+//  ----------------------Update ProductDetails-------------------------------
+
+const updateProductDetailsUrl = endpoints.agreementType.updateProductDetails;
+ const handleUpdate = (id) => {
+  console.log(id)
+  console.log(singleProduct , "proeuc")
+  var selectedProductsList = singleProduct.filter((itm,ind) => {
+    return itm.ID === id
+  })
+  console.log(selectedProductsList,"csdf")
+  setModalShow(true)
+  setSelectedProductsId(id)
+  selectedProductsList = selectedProductsList[0];
+  setProductDet(selectedProductsList.PRODUCT_ID
+    );
+  setDescription(selectedProductsList.DESCRIPTION);
+  setUomdet(selectedProductsList.UNITOFMEASUREMENT_ID);
+  setQuantity(selectedProductsList.PRODUCT_QUANTITY);
+  setUpdateProductDetails(true)
+ }
+
+ const updateSelectedProductList = () => {
+  const formData = new FormData();
+  formData.append("ID",selectedProductsId)
+  formData.append("Product_ID" , productdet);
+  formData.append("UOM_ID" , uomdet);
+  formData.append("Discription" , description);
+  formData.append("Qty" , quantity);
+  formData.append("User_Authorization", getAuthtoken);
+  formData.append("User_AuthKey", userAuth);
+  axios.post(updateProductDetailsUrl,formData)
+  .then((res) => {
+    console.log(res,"vfshgdf")
+    if(res.data.status === true){
+      toast("Product Details Updated successfully" ,{type:"success"})
+      window.location.reload()
+      setModalShow(false)
+      getAllproductdetails()
+      getSingleProduct()
+    }else if(res.data.status === false){
+      toast(res.data.data ,{type:"error"})
+    }
+  })
+  .catch((err) => {
+    console.log(err,"error")
+  })
+ }
+
+
 const column = [
-    {label:"VenID" , name:"VENDOR_ID"},
-    {label:"No" , name:"SERIAL_NO"},
     {label:"Product" , name:"PRODUCT_NAME"},
     {label:"Description" , name:"DESCRIPTION"},
     {label:"Quantity" , name:"PRODUCT_QUANTITY"},
@@ -345,11 +462,18 @@ const column = [
       label:"Actions",
       name:"ID",
       options:{
+        print:false,
           customBodyRender:(value , tableMeta , updateValue) => {
               return(
                   <>
                    <div className="updtdlt">
                   <MdDelete size={23} color="#4f434d"  onClick={() => deleteItem(value)} style={{cursor:"pointer"}}/>
+                  <FiEdit
+                size={23}
+                color="#4f4e4d"
+                onClick={() => handleUpdate(value)}
+                style={{ cursor: "pointer" }}
+              />
                   </div>
                   </>
                   
@@ -357,6 +481,36 @@ const column = [
           }
       }
   }
+]
+
+const column2 = [
+  {label:"Product" , name:"PRODUCT_NAME"},
+  {label:"Description" , name:"DESCRIPTION"},
+  {label:"Quantity" , name:"PRODUCT_QUANTITY"},
+  {label:"UOM" , name:"UNIT_OF_MEASUREMENT"},
+  {
+    label:"Actions",
+    name:"ID",
+    options:{
+      print:false,
+        customBodyRender:(value , tableMeta , updateValue) => {
+            return(
+                <>
+                 <div className="updtdlt">
+                <MdDelete size={23} color="#4f434d"  onClick={() => deleteItem(value)} style={{cursor:"pointer"}}/>
+                <FiEdit
+                size={23}
+                color="#4f4e4d"
+                onClick={() => handleUpdate(value)}
+                style={{ cursor: "pointer" }}
+              />
+                </div>
+                </>
+                
+            )
+        }
+    }
+}
 ]
 
 
@@ -460,7 +614,7 @@ const column = [
         </div>
         <div className="Warehouse">
             {events === "Products" && (
-                <PurchaseAgreeProduct vendor={vendor} condition={condition} setCondition={setCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setSerialNo={setSerialNo} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet} setVendId={setVendId} venId={venId}  setVendor={setVendor} serialNo={serialNo} productdet={productdet} description={description} quantity={quantity} uomdet={uomdet}/>
+                <PurchaseAgreeProduct vendor={vendor}  column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} pAId={pAId} singleProduct={singleProduct} setSingleProduct={setSingleProduct}/>
             )} 
             </div>
 

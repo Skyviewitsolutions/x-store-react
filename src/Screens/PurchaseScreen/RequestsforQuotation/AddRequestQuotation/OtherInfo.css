@@ -32,3 +32,18 @@
 .otherInfotext2{
     width: 50%;
 }
+
+@media (min-width:768px) and (max-width:1024px) {
+    .OtherInfoCon{
+        display: flex;
+        flex-direction: column;
+    }
+    .otherInfotext{
+        width: 100%;
+    }
+    .otherInfotext2{
+        width: 100%;
+        margin-top: 5px;
+    }
+    
+}

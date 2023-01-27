@@ -65,14 +65,14 @@
 .AddProductCateMultiselect>div{
     width: 500px;
 }
-.Addmultiselect{
+/* .Addmultiselect{
     border: none;
     border-bottom: 1px solid #cccc;
     outline: none;
     margin-left: 15px;
     width:400px;
     color: #666666;
-}
+} */
 .Rules{
     width: 100%;
     padding: 10px 15px;

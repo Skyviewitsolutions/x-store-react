@@ -62,11 +62,24 @@
     outline: none;
     width: 500px
 }
+.Add_Multi{
+    display: flex;
+    align-items: center;
+}
+.Add_Multi p{
+    width: 200px;
+    color: #6a666a;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 20px;
+    margin-bottom: 0px; 
+}
 .AddChartAccountMultiselect{
     display: flex;
-    width: 100%;
+    width: 500px;
     align-items: center;
     margin-top: 0px;
+    border-bottom: 1px solid #cccc !important;
 }
 .AddChartAccountMultiselect p{
     color: #6f6f6f;
@@ -76,12 +89,7 @@
     font-weight: 600;
     margin-bottom: 0px;
 }
-.AddChartAccmultiselect{
-    border: none;
-    outline: none;
-    width:500px;
-    color: #666666;
-}
+
 .AddAccountCheckbox{
     display: flex;
     align-items: center;

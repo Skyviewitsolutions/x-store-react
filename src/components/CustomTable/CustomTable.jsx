@@ -1,15 +1,12 @@
-import React , {useEffect} from "react";
+import React, { useEffect } from "react";
 import MUIDataTable from 'mui-datatables';
 // import { data} from './data';
-import './ProductTab.css';
+import './ProductTab.css'
 import { createTheme } from '@mui/material/styles'
-
-
 
 const CustomTable = (props) => {
 
-  const {data,column} = props;
-
+  const {data,column} = props
     // const columns = [
     //     { label: 'Title', name: 'title' },
     //     { label: 'Author', name: 'authors' },

@@ -108,12 +108,13 @@ const PurchaseAgreementTypes = () => {
  }
  
     const column = [
-        {title:"Agreement Type" , name:"AGREEMENT_TYPE"},
-        {title:"Agreement Selection" , name:"AGREEMENT_SELECTION_TYPE"},
+        {label:"Agreement Type" , name:"AGREEMENT_TYPE"},
+        {label:"Agreement Selection" , name:"AGREEMENT_SELECTION_TYPE"},
         {
           label:'Action',
           name:'ID',
           options:{
+            print:false,
             customBodyRender:(value , tableMeta , updateValue) => {
               return(
                 <div className="updtdlt">

@@ -48,13 +48,24 @@
 }
 .Addmultiselect{
     border: none;
-    /* border-bottom: 1px solid #cccc; */
+    border-bottom: 1px solid #cccc;
     outline: none;
     /* margin-left: 15px; */
     width: 500px;
     color: #666666;
 }
-
+.AddAccountTag_Multi{
+    display: flex;
+    align-items: center;
+}
+.AddAccountTag_Multi p{
+        color:#6f6f6f;
+    font-size: 16px;
+    margin-left: 19px;
+    margin-bottom: -6px;
+    font-weight: 500;
+    width: 150px;
+}
 
 @media screen and (max-width: 1000px)
 {

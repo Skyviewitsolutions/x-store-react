@@ -103,6 +103,7 @@ const handleUpdate = (data) =>{
         label:"Action",
         name:"JOURNALS_ID",
         options:{
+          print:false,
             customBodyRender :(value,tableMeta,updateValue) => {
                 return(
                     <>

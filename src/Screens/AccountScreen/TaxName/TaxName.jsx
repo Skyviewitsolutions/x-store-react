@@ -105,6 +105,7 @@ const TaxName = () => {
       label: "Action",
       name: "ID",
       options: {
+        print:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

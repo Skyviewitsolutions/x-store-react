@@ -117,6 +117,7 @@ const ProductCategories = () => {
       label: "Action",
       name: "CATEGORY_ID",
       options: {
+        print : false ,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>
