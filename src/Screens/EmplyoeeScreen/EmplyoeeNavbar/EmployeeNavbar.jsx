@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
 
 const EmployeeNavbar = (props) => {
-    const { showBelowMenu, handleCreatePage, title, save } = props;
+    const { showBelowMenu, handleCreatePage, title, save,showCanelBtn,disabledCreate} = props;
     const navigate = useNavigate();
   return (
     <div>
@@ -35,7 +35,7 @@ const EmployeeNavbar = (props) => {
           <Navbar.Collapse id="basic-navbar-nav" style={{ color: "white" }}>
             <Nav className="me-auto px-5">
             <NavDropdown title="Employees" id="collasible-nav-dropdown">
-            <NavDropdown.Item>
+            <NavDropdown.Item  onClick={() => navigate('/Employee')}>
                   Employees
                 </NavDropdown.Item>
               </NavDropdown>
@@ -60,11 +60,8 @@ const EmployeeNavbar = (props) => {
                 <NavDropdown.Item onClick={() => navigate('/WorkAddress')}>
                   Work Address
                 </NavDropdown.Item>
-                <NavDropdown.Item>
-                  Coach
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                 Expense
+                <NavDropdown.Item onClick={() => navigate('/HeadManager')}>
+                   Head Manager
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
@@ -83,12 +80,25 @@ const EmployeeNavbar = (props) => {
               <h5 style={{ marginTop: "10px", color: "#8f8f8f" }}>
                 {title ? title : "Sales"}
               </h5>
-              <button className="createbtn" onClick={handleCreatePage}>
-                Create
-              </button>
-              <button className="savebtn" onClick={save}>
-                Save
-              </button>
+              {showCanelBtn === true ? (
+                <button
+                  className="createbtn"
+                  onClick={() => navigate(-1)}
+                  disabled={disabledCreate}
+                >
+                  cancel
+                </button>
+              ) : (
+                <button
+                  className="createbtn"
+                  onClick={handleCreatePage}
+                  disabled={disabledCreate}
+                >
+                  create
+                </button>
+               
+              )}
+              {showCanelBtn === true && <button className="savebtn" onClick={save}>Save</button> }
             </div>
             {/* <div
               className="col-sm-6 d-flex justify-content-center"

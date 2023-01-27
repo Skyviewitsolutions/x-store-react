@@ -10,7 +10,7 @@ const WorkInfo = (props) => {
            <div className="workInfo_content">
               <p>Work Address</p>
              <select value={workAddr} onChange={(e) => setWorkAddr(e.target.value)}>
-  
+             <option>select any one</option>
               <option value="Akun Market">Akun Market</option>
               <option value="abdullah alsanee">abdullah alsanee</option>
               <option value="hisham">hisham</option>

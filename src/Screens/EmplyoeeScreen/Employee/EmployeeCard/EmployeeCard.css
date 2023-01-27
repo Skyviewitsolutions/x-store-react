@@ -1,0 +1,47 @@
+
+*{margin:0%;
+padding:0%;
+box-sizing: border-box;}
+.empCard_con{position: relative;}
+
+.empCard_container {
+  height: 100px;
+  width: 314px;
+  margin: 20px 30px;
+
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+}
+.empCard_con {
+border: 1px solid #cccccc;
+position: relative;
+margin: 1%;
+cursor: pointer;
+}
+.emp_profile {
+  height: 100px;
+  width: 10%;
+}
+.emp_profile img {
+  width: 65px;
+  padding: 20px 5px;
+}
+.emp_contents{
+  padding: 0px 10px;
+}
+
+.emp_contents h6 {
+  font-size: 15px;
+  color: #000;
+  margin-top: 15px;
+  margin-bottom: 1%;
+}
+
+.VendorsContents p {
+  color: gray;
+  font-size: 15px;
+  margin-bottom: 0%;
+}

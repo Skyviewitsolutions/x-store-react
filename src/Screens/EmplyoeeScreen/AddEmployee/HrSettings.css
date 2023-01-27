@@ -10,7 +10,7 @@
 }
 .hr_status h3{
     color: #666666;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 400; 
 }
 .hr_user{
@@ -22,7 +22,7 @@
     color: #666666;
     font-size: 15px;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .hr_user select{
     outline: none;
@@ -36,11 +36,59 @@
     border-bottom: 1px solid #cccc;
     width: 400px;
 }
-.hr_attendance{
+.hr_attendance {
     width: 50%;
+    margin-top: 20px;
+    margin-left: 15px;
 }
 .hr_attendance h3{
     color: #666666;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 400;  
+}
+.permission{
+    display: flex;
+    /* align-items: center; */
+}
+.permission p{
+    width: 200px; 
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.permission label{
+    width: 100px;
+    color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+.permission_main{
+    display: flex;
+  
+}
+.crud_perf{
+    margin-left: 50px;
+}
+.crud_perf label{
+       color: #666666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 10px; 
+}
+
+@media (min-width :768px) and (max-width:1024px){
+    .hrSettings_details{
+        display: flex;
+        flex-direction: column;
+    }
+    .hr_status{
+        width: 100%;
+    }
+    .hr_attendance {
+        width: 100%;
+        margin-top: 5px;
+        margin-left: 0px;
+    }
 }

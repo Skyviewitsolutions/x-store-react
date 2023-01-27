@@ -7,7 +7,7 @@ import CustomTable from '../../../components/CustomTable/CustomTable'
 import ManagerCard from '../../../components/ManagerCard/ManagerCard'
 import { endpoints } from '../../../services/endpoints'
 import EmployeeNavbar from '../EmplyoeeNavbar/EmployeeNavbar'
-
+import './Manager.css'
 const Manager = () => {
    
     const navigate = useNavigate()
@@ -21,7 +21,7 @@ const Manager = () => {
       const getAuthtoken = localStorage.getItem("authtoken");
       const userAuth = localStorage.getItem("userAuth");
      const [allManager , setAllManager] = useState([])
-     const allManagerUrl = endpoints.manager.allmanager;
+     const allManagerUrl = endpoints.Manager.allmanager;
 
   const getAllManager = () => {
     const formData = new FormData();
@@ -65,21 +65,28 @@ const Manager = () => {
   return (
     <div>
         <EmployeeNavbar showBelowMenu={true} title="Manager" handleCreatePage={handleCreatePage}/>
+        <div className="container-fluid" >
+          <div className='row'>
         {activeManager.map((item,ind) => {
           return(
             <>
+            <div className='col-lg-4 col-md-6'>
              <ManagerCard getAllManager={getAllManager} data={item}/>
+             </div>
             </>
           )
         })}
         {deActiveManager.map((item,ind) => {
           return(
             <>
+            <div className='col-lg-4 col-md-6'>
              <ManagerCard getAllManager={getAllManager} data={item}/>
+             </div>
             </>
           )
         })}
-       
+       </div>
+       </div>
         <ToastContainer />
     </div>
   )

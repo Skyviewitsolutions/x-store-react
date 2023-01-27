@@ -103,7 +103,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="container-fluid d-flex justify-content-center px-10 main dash_tiles">
-        <div className="row">
+        <div className="row dash_cards">
           <div className="col-lg-2 col-md-3 center">
           <Card
               img={inventory}

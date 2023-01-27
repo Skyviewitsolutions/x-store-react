@@ -1,0 +1,167 @@
+.HM_maniContainer {
+    width: 100%;
+    background-color: #f3f5f7;
+    padding: 10px 10px;
+    flex: 1;
+    height: 500px;
+    overflow-y: scroll;
+    padding-right: 12px;
+    position:relative;
+  }
+  .HM_container {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin-top: 5px;
+    background-color: #fff;
+    border: 1px solid #cdd3d9; 
+  }
+  .HM_details {
+    width: 100%;
+    display: flex;
+    padding: 15px 20px;
+    position: relative;
+  }
+  .HM_content {
+    width: 100%;
+  }
+  .HM_Name input {
+    font-size: 25px;
+    /* margin-left: 25px; */
+    width: 600px;
+    margin-top: 18px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #cccc;
+  }
+  .HM_job input {
+    font-size: 20px;
+    margin-left: 25px;
+    width: 600px;
+    margin-top: 18px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+  }
+  .HM_img {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+  .HM_img img {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #cccc;
+    cursor: pointer;
+  }
+  .emp_persanalContent {
+    width: 100%;
+    display: flex;
+    padding: 15px 30px;
+  }
+  .HM_work{
+      width: 100%;
+      padding: 10px 20px;
+  }
+  .HM_mob{
+      display: flex;
+      align-items: center;
+  }
+  .HM_mob p{
+      width: 150px;
+      color: #666666;
+      font-size: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+  }
+  .HM_mob input{
+      width: 450px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #cccc;
+  }
+  .HM_dep{
+      width: 50%;
+      margin-top: 10px;
+  }
+  .HM_select{
+      display: flex;
+      align-items: center;
+  }
+  .HM_select p{
+      width: 150px;
+      color: #666666;
+      font-size: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+  }
+  .HM_select select{
+      width: 450px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #cccc;
+  }
+  
+  
+  .HM_mob .phone_sty{
+      margin-left: 5px;
+  }
+  
+  .HM_mob .react-tel-input {
+      font-family: 'Roboto',sans-serif;
+      font-size: 15px;
+      position: relative;
+      width: 100%;
+      border: none !important;
+      margin-left: 17px;
+  }
+  .HM_mob .react-tel-input .form-control {
+      position: relative;
+      font-size: 14px;
+      letter-spacing: .01rem;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-left: 48px;
+      margin-left: 2px;
+      background: #FFFFFF;
+      border-radius: 0px;
+      line-height: 25px;
+      height: 35px;
+      width: 450px !important;
+      outline: none;
+      border: none !important;
+      border-bottom:1px solid #CCCCCC !important;
+  }
+  .HM_mob .react-tel-input .flag-dropdown {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      padding: 0;
+       background-color: transparent !important;
+      border:none !important;
+      border-radius:0px;
+  }
+  
+  
+  .HM_mob input.form-control:focus {
+      box-shadow: none !important;
+      border-bottom: 1px solid #979797 !important;
+  }
+  .HM_mob input.form-control:active {
+      box-shadow: none !important;
+      border-bottom: 1px solid #979797 !important;
+  }
+  
+  @media (min-width:768px) and (max-width:1024px){
+    .HM_persanalContent{
+      display: flex;
+      flex-direction: column;
+    }
+    .HM_work{
+      width: 100%;
+  }
+  .HM_dep{
+      width: 100%;
+  }
+  }

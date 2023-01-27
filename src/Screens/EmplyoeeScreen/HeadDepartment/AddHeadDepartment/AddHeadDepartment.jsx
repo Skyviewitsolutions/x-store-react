@@ -15,7 +15,7 @@ const AddHeadDepartment = () => {
   const [department , setDepartment] = useState("")
   const [manager , setManager] = useState("")
   const [update , setUpdate] = useState("")
-  const allManagerUrl = endpoints.manager.allmanager
+  const allManagerUrl = endpoints.Manager.allmanager
   const deparmentUrl = endpoints.headDepartment.addHeaddepartment
 
   const [allManager , setAllManager] = useState([])
@@ -53,6 +53,9 @@ const AddHeadDepartment = () => {
         .then((res) => {
           if (res.data.status === true) {
             toast("Head Department Added Successfully",{type:"success"})
+            setTimeout(() => {
+                navigate('/HeadDepartment')
+            }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -79,6 +82,7 @@ const AddHeadDepartment = () => {
       {
         setUpdate(true);
         setDepartment(selectedData.DEPARTMENT_NAME)
+        
       }
 
     },[selectedData])
@@ -93,6 +97,9 @@ const AddHeadDepartment = () => {
           .then((res) => {
             if (res.data.status === true) {
               toast("Head Department Updated Successfully",{type:"success"})
+              setTimeout(() => {
+                navigate('/HeadDepartment')
+            }, 1000);
             } else if (res.data.status === false) {
               if (res.data.code === 3) {
                 toast("Session expired , Please re-login", { type: "warning" });
@@ -112,11 +119,11 @@ const AddHeadDepartment = () => {
 
   return (
     <div>
-         <EmployeeNavbar showBelowMenu={true} title="Head Department" save={update === true ? updateData : save}/>
-      <div className="AddOperatintypeContainer_department">
-        <div className="Addoperationcontent_department">
-          <div className="operationcon1_department">
-            <div className="operation_department">
+         <EmployeeNavbar showBelowMenu={true} title="Head Department" save={update === true ? updateData : save}  showCanelBtn={true}/>
+      <div className="Container_Hdepartment">
+        <div className="content_Hdepartment">
+          <div className="Hdepartment">
+            <div className="head_department">
               <p>Department Name</p>
               <input type="text" value={department} onChange={(e) => setDepartment(e.target.value)}/>
             </div>

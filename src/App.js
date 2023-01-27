@@ -150,6 +150,9 @@ import AddPurchaseVendors from "./Screens/PurchaseScreen/PurchaseVendors/AddPurc
 import AccAddProduct from "./Screens/AccountScreen/AccountProduct/AccAddProduct";
 import AccProductCard from "./Screens/AccountScreen/AccountProduct/AccProductCard";
 import AccProductDetails from "./Screens/AccountScreen/AccountProduct/AccProductDetails";
+import Employee from "./Screens/EmplyoeeScreen/Employee/Employee";
+import AddHeadManager from "./Screens/EmplyoeeScreen/HeadManager/AddHeadManager/AddHeadManager";
+import HeadManager from "./Screens/EmplyoeeScreen/HeadManager/HeadManager";
 
 
 const App = () => {
@@ -314,6 +317,7 @@ const App = () => {
        <Route path='/AddPurchaseVendor' element={<AddPurchaseVendors/>} /> 
      
        {/* -------------------------------------Employee Screens-------------------------------- */}
+       <Route path="/Employee" element={<Employee/>} />
        <Route path='/AddEmployee' element={<AddEmployee/>} />
        <Route path='/Manager' element={<Manager/>} />
        <Route path='/AddManager' element={<AddManager/>} />
@@ -325,8 +329,10 @@ const App = () => {
        <Route path='/AddJobPosition' element={<AddJobPosition/>} />
        <Route path='/WorkAddress' element={<WorkAddress/>}/>
        <Route path='/AddWorkAddress' element={<AddWorkAddress/>} />
-      <Route path='/Testing' element={<Testing/>} />
-      <Route path='/AllCoupon' element={<AllCoupon/>} />
+       <Route path='/HeadManager' element={<HeadManager/>} />
+       <Route path ='/AddHeadManager' element={<AddHeadManager/>} />
+      {/* <Route path='/Testing' element={<Testing/>} />
+      <Route path='/AllCoupon' element={<AllCoupon/>} /> */}
 
 
 

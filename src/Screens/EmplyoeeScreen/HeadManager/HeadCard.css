@@ -1,0 +1,32 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+.empCard_con {
+  position: relative;
+}
+
+.HmCard_con {
+  border: 1px solid #cccccc;
+  position: relative;
+  margin: 1%;
+  cursor: pointer;
+}
+
+.HM_contents {
+  padding: 0px 10px;
+}
+
+.HM_contents h6 {
+  font-size: 15px;
+  color: #000;
+  margin-top: 15px;
+  margin-bottom: 1%;
+}
+
+.HM_contents p {
+  color: gray;
+  font-size: 15px;
+  margin-bottom: 0%;
+}

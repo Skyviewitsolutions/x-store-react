@@ -1,4 +1,4 @@
-.AddOperatintypeContainer_department{
+.Container_department{
     width: 98%;
     border: 1px solid #cccc;
     padding-bottom:10%;
@@ -7,66 +7,64 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     margin-top: 40px;
 }
-.Addoperationcontent_department
+.content_department
 {
     width: 100%;
     display: flex;
+    padding: 15px 20px;
 }
-.operationcon1_department{
-    width: 60%;
+.department{
+    width: 100%;
 }
-.operation_department{
+.text_department{
     display: flex;
    align-items: center;
 }
-.operation_department_1{
+.department_1{
     display: flex;
    align-items: center;
 }
-.operation_department p {
+.text_department p {
     width: 200px;
     font-size: 15px;
     color: #666666;
-    margin-left: 50px;
     font-weight: 600;
     margin-bottom: 7px;
 }
-.operation_department_1 p {
+.department_1 p {
     width: 200px;
     font-size: 15px;
     color: #666666;
-    margin-left: 50px;
     font-weight: 600;
     margin-bottom: 7px;
 }
-.operation_department input {
+.text_department input {
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
-    width: 652px !important;
+    width: 500px !important;
     margin-bottom: 10px;
 }
-.operation_department_1 input{
+.department_1 input{
     border: none;
     outline: none;
     border-bottom: 1px solid #cccccc;
-    width: 450px;
+    width: 500px;
     margin-bottom: 10px;
 }
-.operation_department select{
+.text_department select{
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc;
-    /* width: 474px; */
-    width: 221%;
+    width: 500px;
+
   
 }
-.operation_department_1 select{
+.department_1 select{
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc;
-    /* width: 474px; */
-    width: 70%;
+    width: 500px;
   
 }
 
@@ -76,8 +74,8 @@
 
 
 
-@media screen and (max-width: 1000px){
-    .Addoperationcontent
+@media (min-width:768px) and (max-width: 1024px){
+    .content_department
     {
        display: flex;
        flex-direction: column;

@@ -23,7 +23,7 @@ const AddDepartment = () => {
 
   const addDepartmentUrl = endpoints.department.addDepartment;
   const allHeadUrl = endpoints.headDepartment.allHeaddepartment;
-  const allManagerUrl = endpoints.manager.allmanager;
+  const allManagerUrl = endpoints.Manager.allmanager;
 
   const getHead = () => {
     const formData = new FormData();
@@ -32,7 +32,11 @@ const AddDepartment = () => {
     axios.post(allHeadUrl,formData)
     .then((res) => {
       if(res.data.status === true){
-       setAllHeadDep(res.data.data)
+        var val = res.data.data;
+        const filterHead = val.filter((itm,ind) => {
+          return itm.DELETE_STATUS != "X"
+        })
+       setAllHeadDep(filterHead)
       }else if(res.data.status === false){
         toast(res.data.message,{type:"error"})
       }
@@ -48,7 +52,11 @@ const AddDepartment = () => {
     axios.post(allManagerUrl,formData)
     .then((res) => {
       if(res.data.status === true){
-       setAllManager(res.data.data)
+        var val = res.data.data;
+        const filterManager = val.filter((itm,ind) => {
+          return itm.DELETE_STATUS != "X"
+        })
+       setAllManager(filterManager)
       }else if(res.data.status === false){
         toast(res.data.message,{type:"error"})
       }
@@ -74,6 +82,9 @@ const AddDepartment = () => {
     .then((res) => {
       if(res.data.status === true){
         toast("Deparment Added successfully !",{type:"success"})
+        setTimeout(() => {
+           navigate('/Department')
+        }, 1000);
       }else if(res.data.status === false){
         toast(res.data.message,{type:"error"})
       }
@@ -91,8 +102,9 @@ const AddDepartment = () => {
     {
       setUpdate(true);
       setDepName(selectedData.DEPARTMENT_NAME);
-      setHeadDepName(selectedData.HEAD_DEPARTMENT_NAME);
-      setManager(selectedData.DEPARTMENT_MANAGER);
+      setHeadDepName(selectedData.HEAD_DEPARTMENT_ID
+        );
+      setManager(selectedData.MANAGER_ID);
     }
 
   },[selectedData])
@@ -103,13 +115,18 @@ const AddDepartment = () => {
     const formData = new FormData()
     formData.append("User_Authorization" , getAuthtoken);
     formData.append("User_AuthKey" , userAuth);
-    formData.append("Deparment_Name",depName);
+    formData.append("Deparment_Name" ,depName);
+    formData.append("Head_DepartmentID" ,headDepName);
+    formData.append("ManagerID" , manager);
     formData.append("ID" ,selectedData.ID);
     axios
         .post(departmentupdaterUrl, formData)
         .then((res) => {
           if (res.data.status === true) {
             toast("Department Updated Successfully",{type:"success"})
+            setTimeout(() => {
+              navigate('/Department')
+           }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
@@ -128,18 +145,19 @@ const AddDepartment = () => {
 
   return (
     <div>
-      <EmployeeNavbar showBelowMenu={true} title="Department" save={update === true ? updateData : save}/>
-      <div className="AddOperatintypeContainer_department">
-        <div className="Addoperationcontent_department">
-          <div className="operationcon1_department">
-            <div className="operation_department">
+      <EmployeeNavbar showBelowMenu={true} showCanelBtn={true} title="Department" save={update === true ? updateData : save}/>
+      <div className="Container_department">
+        <div className="content_department">
+          <div className="department">
+            <div className="text_department">
               <p>Department Name</p>
               <input type="text" value={depName} onChange={(e) => setDepName(e.target.value)}/>
             </div>
-            <div className="operation_department_1">
+            <div className="department_1">
               <p>Head Department</p>
 
               <select value={headDepName} onChange={(e) => setHeadDepName(e.target.value)} >
+                <option>select any one</option>
                 {allHeadDep.map((item,ind) => {
                   return(
                     <>
@@ -150,11 +168,11 @@ const AddDepartment = () => {
               </select>
             </div>
 
-            <div className="operation_department_1">
+            <div className="department_1">
               <p>Manager</p>
 
               <select value={manager} onChange={(e) => setManager(e.target.value)}>
-                <option value=""></option>
+                <option >select any one</option>
               {allManager.map((item,ind) => {
                   return(
                     <>

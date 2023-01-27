@@ -361,13 +361,19 @@ export const endpoints = {
   },
 
   // -------------------------------------Employee------------------------------
-
-   manager:{
-    allmanager : BASE_URL + "/Employee/HeadManager/GetAll",
-    addmanager : BASE_URL + "/Employee/HeadManager/Add",
-    updateManager : BASE_URL + "/Employee/HeadManager/Update",
-    deleteManager : BASE_URL + "/Employee/HeadManager/Delete",
-    singleManager : BASE_URL + "/Employee/HeadManager/GetSingle",
+    Manager:{
+        allmanager: BASE_URL + "/Employee/Manager/GetAll",
+        addmanager : BASE_URL + "/Employee/Manager/Add",
+        updatemanager : BASE_URL + "/Employee/Manager/Update",
+        deletemanager : BASE_URL + "/Employee/Manager/Delete",
+        singlemanager : BASE_URL + "/Employee/Manager/GetSingle"
+    },
+   Headmanager:{
+    allHeadmanager : BASE_URL + "/Employee/HeadManager/GetAll",
+    addHeadmanager : BASE_URL + "/Employee/HeadManager/Add",
+    updateHeadManager : BASE_URL + "/Employee/HeadManager/Update",
+    deleteHeadManager : BASE_URL + "/Employee/HeadManager/Delete",
+    singleHeadManager : BASE_URL + "/Employee/HeadManager/GetSingle",
    },
 
    department :{
@@ -400,6 +406,13 @@ export const endpoints = {
     Addemployeejobposition :BASE_URL+"/Employee/Designation/Add",
     Employeeupdatejobposition:BASE_URL+ "/Employee/Designation/Update",
     Employeedeletejobposition:BASE_URL+ "/Employee/Designation/Delete",
+   },
+   employee :{
+    allEmp :BASE_URL + "/Employee/EmployeesUsers/GetAll",
+    addEmp :BASE_URL + "/Employee/EmployeesUsers/Add",
+    singleEmp :BASE_URL + "/Employee/EmployeesUsers/GetSingle",
+    updateEmp :BASE_URL + "/Employee/EmployeesUsers/Update",
+    deleteEmp :BASE_URL + "/Employee/EmployeesUsers/Delete",
    }
 
 

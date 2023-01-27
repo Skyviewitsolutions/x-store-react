@@ -9,7 +9,9 @@ import './AddWorkAddress.css'
 import WorkAddreSales from './WorkAddreSales';
 import { toast, ToastContainer } from 'react-toastify';
 import { endpoints } from '../../../../services/endpoints';
+import validator from "validator";
 import axios from 'axios';
+import PhoneInput from 'react-phone-input-2';
 
 const AddWorkAddress = () => {
 
@@ -69,7 +71,9 @@ const AddWorkAddress = () => {
       toast("Mobile is required !", { type: "warning" });
     } else if (email === "") {
       toast("Email is required !", { type: "warning" });
-    }  else {
+    } else if (!validator.isEmail(email)) {
+      toast("InValid Email !", { type: "warning" });
+    }else {
       const formData = new FormData();
       formData.append("Type", type);
       formData.append("Name", name);
@@ -93,6 +97,9 @@ const AddWorkAddress = () => {
       .then((res) => {
         if (res.data.status === true) {
           toast("WorkAddress is Added Successfully !", { type: "success" });
+          setTimeout(() => {
+            navigate('/WorkAddress')
+          }, 1000);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -171,7 +178,9 @@ toast("Phone is required !", { type: "warning" });
 toast("Mobile is required !", { type: "warning" });
 } else if (email === "") {
 toast("Email is required !", { type: "warning" });
-}  else {
+} else if (!validator.isEmail(email)) {
+      toast("InValid Email !", { type: "warning" });
+    }  else {
 const formData = new FormData();
 formData.append("Type", type);
 formData.append("Name", name);
@@ -193,9 +202,13 @@ formData.append("User_AuthKey", userAuth);
 formData.append("ID",selectedData.ID);
 axios
 .post(updateWorkAddressUrl, formData)
+
 .then((res) => {
   if (res.data.status === true) {
     toast("WorkAddress is Updated Successfully !", { type: "success" });
+    setTimeout(() => {
+      navigate('/WorkAddress')
+    }, 1000);
   } else if (res.data.status === false) {
     if (res.data.code === 3) {
       toast("Session expired , Please re-login", { type: "warning" });
@@ -267,7 +280,7 @@ axios
             </div>
             <div className="work_company">
           
-              <select
+             {showCompany &&  <select
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               >
@@ -285,7 +298,7 @@ axios
                 <option value="Abandoned armor for furnishings - 310151424200003">
                   Abandoned armor for furnishings - 310151424200003
                 </option>
-              </select>
+              </select>}
           </div>
          
         </div>
@@ -318,7 +331,7 @@ axios
             <div className="work_text">
               <p>Zip</p>
               <input
-                type="text" 
+                type="number" 
                 value={zip}
                 onChange={(e) => setZip(e.target.value)}
               />
@@ -332,7 +345,7 @@ axios
             <div className="work_text">
               <p>Tax Id</p>
               <input
-                type="text"
+                type="number"
                 value={taxId}
                 onChange={(e) => setTaxId(e.target.value)}
               />
@@ -362,19 +375,26 @@ axios
             </div>
             <div className="work_text">
               <p>Phone</p>
-              <input
-                type="text"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
+              <PhoneInput
+                  country={"in"}
+                  value={phone}
+                onChange={(e) => setPhone(e)}
+                containerClass="phone_sty"
+                />
             </div>
             <div className="work_text">
               <p>Mobile</p>
-              <input
+              {/* <input
                 type="text"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
-              />
+              /> */}
+                    <PhoneInput
+                  country={"in"}
+                  value={mobile}
+                onChange={(e) => setMobile(e)}
+                containerClass="phone_sty"
+                />
             </div>
             <div className="work_text">
               <p>Email</p>

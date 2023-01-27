@@ -3,8 +3,8 @@
     background-color: #f3f5f7;
     padding: 10px 10px;
     flex: 1;
-    height: 500px;
-    overflow-y: scroll;
+    /* height: 500px;
+    overflow-y: scroll; */
   }
   .work_container {
     width: 100%;
@@ -53,7 +53,7 @@
       width: 500px;
       outline: none;
       border: none;
-      border-bottom:1px solid #6f6f6f;
+      border-bottom:1px solid #cccc;
   }
   .work_company {
       margin-top: 5px;
@@ -62,7 +62,7 @@
       width: 500px;
       outline: none;
       border: none;
-      border-bottom: 1px solid #6f6f6f;
+      border-bottom: 1px solid #cccc;
   }
   .work_personaldetails{
       width: 100%;
@@ -87,16 +87,18 @@
       width: 400px;
       outline: none;
       border: none;
-      border-bottom: 1px solid #6f6f6f;
+      border-bottom: 1px solid #cccc;
   }
   .work_text input{
       width: 400px;
       outline: none;
       border: none;
-      border-bottom: 1px solid #6f6f6f;
+      border-bottom: 1px solid #cccc;
   }
   .work_second{
       width: 50%;
+      margin-top: 15px;
+      margin-left:15px;
   }
   .work_addr{
      display: flex;
@@ -108,5 +110,75 @@
       width: 200px;
       margin-bottom: 7px;
       font-weight: 500;
+  }
+
+  
+  .work_text  .phone_sty{
+  margin-left: 5px;
+}
+
+.work_text .react-tel-input {
+  font-family: 'Roboto',sans-serif;
+  font-size: 15px;
+  position: relative;
+  width: 100%;
+  border: none !important;
+  margin-left: 60px;
+}
+.work_text .react-tel-input .form-control {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: .01rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px;
+  margin-left: 2px;
+  background: #FFFFFF;
+  border-radius: 0px;
+  line-height: 25px;
+  height: 35px;
+  width: 400px !important;
+  outline: none;
+  border: none !important;
+  border-bottom:1px solid #CCCCCC !important;
+}
+.work_text .react-tel-input .flag-dropdown {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+   background-color: transparent !important;
+  border:none !important;
+  border-radius:0px;
+}
+
+
+.work_text input.form-control:focus {
+  box-shadow: none !important;
+  border-bottom: 1px solid #979797 !important;
+}
+.work_text input.form-control:active {
+  box-shadow: none !important;
+  border-bottom: 1px solid #979797 !important;
+}
+
+  @media (min-width:768px) and (max-width:1024px){
+    .work_maincon{
+      height: auto;
+    }
+    .work_personaldetails{
+      display: flex;
+      flex-direction: column;
+    }
+    .work_first{
+      width: 100%;
+    }
+    .work_second{
+      width: 100%;
+      margin-top: 0px;
+      margin-left:0px;
+  }
+
+
   }
   

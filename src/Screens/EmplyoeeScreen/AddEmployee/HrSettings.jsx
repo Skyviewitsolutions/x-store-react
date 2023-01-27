@@ -13,6 +13,7 @@ const HrSettings = (props) => {
                     <div className="hr_user">
                         <p>Related User</p>
                         <select value={relatedUser} onChange={(e) => setRelatedUser(e.target.value)}>
+                            <option>select any one</option>
                             <option value="Account 02">Account 02</option>
                             <option value="Accountant-Ryd">Accountant-Ryd</option>
                             <option value="CRUH 01">CRUH 01</option>

@@ -106,7 +106,7 @@ const InventoryProductDetailsMain = (props) => {
 
   return (
     <div className="MainContainer">
-      <div className="Container">
+      <div className="Product_Container">
         <div className="ContainerHeader">
           {/* <div className="div1"></div> */}
           <div className="div2" onClick={() => RedirectToEmpty("Hand")}>
