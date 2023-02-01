@@ -88,3 +88,15 @@ p#\:ra\: {
         height: 80vh;
     }
 }
+
+.customtable table,  .customtable th, .customtable td {
+    width: 80%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 4px 8px;
+  }
+
+  .customtable table {
+    margin: 20px 40px;
+    display: none;
+  }

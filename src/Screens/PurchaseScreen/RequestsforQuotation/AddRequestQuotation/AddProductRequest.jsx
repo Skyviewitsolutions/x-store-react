@@ -40,11 +40,24 @@ const AddProductRequest = (props) => {
   } = props;
 
   // const [showTable , setShowTable] = useState(false)
+  const [selectedProductList, setSelectedProductList] = useState([]);
 
+  const handleProductSelection = (val) => {
+    var filterProduct = allVendorProduct.filter((product, index) => {
+      return product.PRODUCT_NAME == val;
+    });
 
+    setSelectedProductList((itm) => {
+      return [...itm, filterProduct[0]];
+    });
+  };
 
-
-
+  const removeSelectedItem = (index) =>{
+    const filteredData = selectedProductList.filter((itm,ind) =>{
+      return ind != index
+    })
+    setSelectedProductList(filteredData)
+  }
 
   return (
     <div>
@@ -85,64 +98,66 @@ const AddProductRequest = (props) => {
             <tr>
               <th>No.</th>
               <th>Product</th>
-              <th>Description</th>
+              <th className="req_product_des">Description</th>
               <th>Quantity</th>
               <th>Uom</th>
               <th>Unit Price</th>
             </tr>
           </thead>
-          {modalShow === true && (
+         
             <tbody>
-              <tr className="pro_dropdowns">
-                <td>1</td>
+              
+
+              { selectedProductList.length != 0 &&
+                selectedProductList.map((itm, index) => {
+                  console.log(itm , "items here")
+                  return (
+                    <>
+                      <tr className="pro_dropdowns">
+                        <td>{index + 1}</td>
+                        <td>{itm.PRODUCT_NAME}</td>
+                        <td className="req_product_des"> {itm.PRODUCT_DESCRIPTION}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td onClick={() => removeSelectedItem(index)}>delete</td>
+                      </tr>
+                    </>
+                  );
+                })}
+
+                {modalShow &&  
+                <tr className="pro_dropdowns">
+                <td></td>
                 <td>
-                  <select className="product_select">
-                    <option> </option>
-                    {
-                      allVendorProduct.map((itm,ind) => {
-                        return(
-                          <>
-                          <option>{(itm.PRODUCT_NAME)}</option>
-                          </>
-                        )
-                      })
-                    }
+                  <select
+                    className="product_select"
+                    value=""
+                    onChange={(e) => handleProductSelection(e.target.value)}
+                  >
+                    <option value="">Choose product</option>
+                    {allVendorProduct.map((itm, ind) => {
+                      return (
+                        <>
+                          <option value={itm.PRODUCT_NAME}>
+                            {itm.PRODUCT_NAME}
+                          </option>
+                        </>
+                      );
+                    })}
                   </select>
                 </td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td ></td>
+              </tr>}
             </tbody>
-          )}
+          
         </table>
       </div>
-      <button className="add_productbtn" onClick={() => setModalShow(true)}>
+      <button className="add_productbtn" onClick={() => setModalShow(!modalShow)}>
         Add Product
       </button>
     </div>

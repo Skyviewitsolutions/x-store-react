@@ -41,6 +41,13 @@
     height: auto;
 } */
 
+.req_product_des{
+    max-width: 400px; 
+    text-overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 
 .req_product{
     margin: 10px 20px;
