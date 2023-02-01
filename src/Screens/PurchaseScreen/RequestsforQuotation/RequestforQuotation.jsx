@@ -39,10 +39,11 @@ const RequestforQuotation = () => {
         setLoading(false);
         if (res.data.status === true) {
           var val = res.data.data;
-          val = val.reverse();
+          // val = val.reverse();
           const filterRFQ = val.filter((itm, ind) => {
             return itm.DELETE_STATUS != "X";
           });
+          console.log(val,"all data here")
           setRequestQuotationAll(filterRFQ);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {

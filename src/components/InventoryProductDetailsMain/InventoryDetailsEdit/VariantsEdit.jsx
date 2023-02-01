@@ -212,7 +212,7 @@ const VariantsEdit = (props) => {
       .then((res) => {
         if (res.data.status) {
           toast("Varients updated successfully", { type: "success" });
-          window.location.reload();
+          // window.location.reload();
           setShowModal(false);
           GetAllAttribute();
           getSingleVarients();

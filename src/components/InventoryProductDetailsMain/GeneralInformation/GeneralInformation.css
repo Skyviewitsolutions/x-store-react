@@ -15,25 +15,29 @@
     margin-bottom: 8px;
 }
 .firstcontent p{
-    width: 120px;
+    width: 150px;
     color: #6a666a;
     font-size: 15px;
     font-weight: 600;
     margin-bottom: 0px;
 }
 .firstcontent span{
-    color: #916f6f;
+    color: #6a6a6a;
     font-size: 14px;
-    margin-left: 40px;
+}
+.firstcontent2 {
+    display: flex;
+    align-items: center;
 }
 .firstcontent2 p{
-    color: #6a666a;
+    color: #6a6a6a;
     font-size: 15px;
     font-weight: 600;
     margin-bottom: 0px;
+    width: 150px;
 }
 .part1 h5{
-    color: #877d6f;
+    color: #6a6a6a;
     margin-top: 30px;
     font-size: 25px;
     font-weight: 400;
@@ -49,19 +53,19 @@
     margin-bottom: 8px;
 }
 .firstcontent3 p{
-        color: #6a666a;
+        color: #6a6a6a;
         font-size: 15px;
         width: 200px;
         font-weight: 600;
         margin-bottom: 0px;
 }
 .firstcontent3 span{
-    color: #916f6f;
+    color: #6a6a6a;
     font-size: 15px;  
-    margin-left: 20px;
+    /* margin-left: 20px; */
 }
 .custext{
-    color: #6a666a;
+    color: #6a6a6a;
     font-size: 17px;
     font-weight: 500;
 }

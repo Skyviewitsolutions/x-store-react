@@ -1,13 +1,15 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import { endpoints } from '../../../../services/endpoints'
 import EmployeeNavbar from '../../EmplyoeeNavbar/EmployeeNavbar'
 import './AddJobPosition.css'
 
 const AddJobPosition = () => {
+
+  const navigate = useNavigate()
   const[allDepartment , setAllDepartment] =useState([])
   const [jobPositon , setJobPosition]=useState("")
   const [expectedNew , setExpectedNew]= useState("")
@@ -18,15 +20,20 @@ const AddJobPosition = () => {
   const  userAuth=localStorage.getItem("userAuth");
   const allDepartmentUrl= endpoints.department.allDepartment;
   const addJobpositiourl=endpoints.jobposition. Addemployeejobposition;
+
   const getDepartment = () => {
   const formData= new FormData()
   formData.append("User_Authorization",getAuthtoken)
   formData.append("User_AuthKey", userAuth)
-  
  axios.post(allDepartmentUrl,formData)
  .then((res)=>{
  if(res.data.status===true){
-  setAllDepartment(res.data.data)
+  const val = res.data.data;
+  const filterDep = val.filter((itm,ind) => {
+    return itm.DELETE_STATUS != "X"
+  })
+
+  setAllDepartment(filterDep)
  }
  else if(res.data.status===false){
  toast(res.data.message,{type:"error"})
@@ -41,6 +48,7 @@ useEffect(()=>{
   getDepartment() 
   
 },[])
+
 
 const save=()=>{
   if (jobPositon==""){
@@ -67,6 +75,10 @@ const save=()=>{
   .then((res)=>{
 if (res.data.status===false){
    toast("Job Position added successfully", {type: "success"} )
+   setTimeout(() => {
+    navigate('/JobPosition')
+  }, 1000);
+
 }else if(res.data.status===false){
   toast(res.data.message,{type:"error"})
   }
@@ -115,6 +127,9 @@ const updatedData = () => {
  .then((res)=>{
  if(res.data.status===true){
   toast(res.data.message,{type:"success"})
+  setTimeout(() => {
+    navigate('/JobPosition')
+  }, 1000);
 
  }
  else if(res.data.status===false){
@@ -132,22 +147,22 @@ console.log(err,"errors")
 
   return (
     <div>
-        <EmployeeNavbar showBelowMenu={true} title="Job Position" save={update === true ? updatedData : save}/>
-      <div className="AddOperatintypeContainer_department">
-        <div className="Addoperationcontent_department">
-          <div className="operationcon1_department">
-            <div className="operation_department">
+        <EmployeeNavbar showBelowMenu={true} title="Job Position" save={update === true ? updatedData : save}  showCanelBtn={true}/>
+      <div className="Container_job">
+        <div className="content_job">
+            <div className="job_position">
               <p>Job Position</p>
               <input type="text" value={jobPositon} onChange={(e)=>setJobPosition(e.target.value)}/>
             </div>
-            <div className="operation_department">
+            <div className="job_position">
               <p>Expected New Employees</p>
               <input type="text"  value ={expectedNew} onChange={(e)=>  setExpectedNew(e.target.value)} />
             </div>
-            <div className="operation_department_1">
+            <div className="job_position">
               <p>Department</p>
 
               <select value={department} onChange={(e)=> setDepartment(e.target.value)}>
+                <option>select any one</option>
                 {allDepartment.map((itm,index)=>{
                   return(
                     <>
@@ -157,11 +172,10 @@ console.log(err,"errors")
                 })}
               </select>
             </div>
-            <div className="operation_department">
+            <div className="job_position">
               <p>Job Description</p>
               <input type="text" value ={jobDescription} onChange={(e)=> setJObDescription(e.target.value)}/>
             </div>
-          </div>
         </div>
       </div>
       <ToastContainer/>

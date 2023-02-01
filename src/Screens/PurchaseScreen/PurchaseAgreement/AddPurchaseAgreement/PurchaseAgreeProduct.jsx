@@ -19,9 +19,7 @@ const PurchaseAgreeProduct = (props) => {
       <div className="addproduct_Con">
       {pAId  ?  <ProductTable data={singleProduct} column={column2}/> : <ProductTable data={productAll} column={column}/>
     }
-        <button className="add_productbtn" onClick={() => setModalShow(true)}>
-          Add Product
-        </button>
+      {!pAId ? <button className='add_productbtn' onClick={() => setModalShow(true)}>Add Product</button> : null}
         <div className="addproduct_conditions">
           {/* <div className="add_Part1">
             <input

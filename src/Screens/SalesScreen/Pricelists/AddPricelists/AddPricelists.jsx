@@ -62,16 +62,32 @@ axios.post(CurrencyUrl)
             <div className="detailsbtn">
           <Nav variant="tabs" defaultActiveKey="/home">
             <Nav.Item
-              className="detailslink"
+             className={
+              events === "PriceRules"
+                ? "navLinkActive"
+                : "navLinkDeactive"
+            }
               onClick={() => setEvents("PriceRules")}
             >
-              <Nav.Link href="">Price Rules</Nav.Link>
+              <Nav.Link  className={
+                  events === "PriceRules"
+                    ? "navLinkActive"
+                    : "navLinkDeactive"
+                }>Price Rules</Nav.Link>
             </Nav.Item>
             <Nav.Item
-              className="detailslink"
+              className={
+                events === "PriceConfig"
+                  ? "navLinkActive"
+                  : "navLinkDeactive"
+              }
               onClick={() => setEvents("PriceConfig")}
             >
-              <Nav.Link eventKey="link-1">Configuration</Nav.Link>
+              <Nav.Link eventKey="link-1" className={
+                  events === "PriceConfig"
+                    ? "navLinkActive"
+                    : "navLinkDeactive"
+                }>Configuration</Nav.Link>
             </Nav.Item>
           </Nav>
         </div>

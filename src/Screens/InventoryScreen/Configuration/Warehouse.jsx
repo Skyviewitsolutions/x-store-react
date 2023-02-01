@@ -10,7 +10,6 @@ import { toast, ToastContainer } from "react-toastify";
 import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 
 const Warehouse = () => {
-
   const navigate = useNavigate();
   const handleCreatePage = () => {
     navigate("/AddWarehouse");
@@ -104,14 +103,13 @@ const Warehouse = () => {
   const column = [
     { label: "Warehouse", name: "WAREHOUSE_NAME" },
     { label: "Location stock", name: "LOCATIONS_STOCK" },
-    { label: "Address", name: "WAREHOUSE_ADDRESS",
-  },
+    { label: "Address", name: "WAREHOUSE_ADDRESS" },
     {
       label: "Actions",
       name: "WAREHOUSE_ID",
+
       options: {
-        print : false ,
-        print : false ,
+        print: false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>

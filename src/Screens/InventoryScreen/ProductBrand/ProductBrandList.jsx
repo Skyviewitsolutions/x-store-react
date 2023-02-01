@@ -33,8 +33,12 @@ const ProductBrandList = () => {
         formData.append("User_AuthKey" , userAuth);
         axios.post(getBrandUrl ,formData)
         .then((res) => {
-          console.log(res,"hvxhsa")
-           setAllBrand(res.data.data)
+           var val = res.data.data;
+           val.reverse()
+           const filterProductBrand = val.filter((itm,ind) => {
+            return itm.DELETE_STATUS != "X"
+           })
+           setAllBrand(filterProductBrand)
         }) 
         .catch((err) => {
             console.log(err,"error")

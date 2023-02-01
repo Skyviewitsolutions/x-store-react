@@ -221,7 +221,7 @@ const AddRequestQuotation = (props) => {
       setOrderDate(selectedData.ORDER_DATE);
       setRecepitDate(selectedData.RECEIPT_DATE);
       setPurchaseRep(selectedData.PURCHASE_REPRESENTATIVE);
-      setIncoTerms(selectedData.INCOMETERMS_ID);
+      setIncoTerms(selectedData.INCOME_TERMS_ID);
       setPaymentTerms(selectedData.PAYMENT_TERMS);
       setCurrency(selectedData.PRODUCT_CURRENCY);
       setLocation(selectedData.DESTINATION_LOCATION);
@@ -739,7 +739,7 @@ const column2 = [
           </Nav>
         </div>
         <div className="Warehouse">
-          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} requestId={requestId} singleProduct={singleProduct} setSingleProduct={setSingleProduct}/>}
+          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} requestId={requestId} singleProduct={singleProduct} setSingleProduct={setSingleProduct} uniqueId={requestId}/>}
           {events === "Other Information" && <OtherInfo recepitDate={recepitDate} setRecepitDate={setRecepitDate} incoTerms={incoTerms} setIncoTerms={setIncoTerms} purchaseRep={purchaseRep} setPurchaseRep={setPurchaseRep} fisicalPosition={fisicalPosition} setFisicalPosition={setFisicalPosition} />}
         </div>
       </div> 

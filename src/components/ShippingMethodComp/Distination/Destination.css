@@ -4,7 +4,7 @@
 }
 .destext p{
     font-size: 15px;
-    color: #666666;
+    color: #6a6a6a;
     font-weight: 400;
 }
 .desselect{
@@ -30,15 +30,15 @@
 }
 .mutiselectbox{
     width: 400px;
-    border: 1px solid black;
+    border: 1px solid #6a6a6a;
     position: absolute;
     right: 0px;
     bottom: -10px;
 }
 .Zipbox{
     width: 100%;
-    display: flex;
-    margin-top: 30px;
+    /* display: flex; */
+    margin-top: 5px;
     align-items: center;
     justify-content: space-between;
 }
@@ -50,10 +50,10 @@
     align-items: center;
 }
 .Zipfrom p{
-    width: 100px;
+    width: 150px;
     font-size: 15px;
     font-weight: 500;
-    color: #666666;
+    color: #6a6a6a;
     margin-bottom: 0px;
 }
 .Zipfrom input{

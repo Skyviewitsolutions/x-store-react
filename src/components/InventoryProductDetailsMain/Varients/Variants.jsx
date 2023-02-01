@@ -24,14 +24,12 @@ const Variants = (props) => {
      axios
        .post(singleVarientsUrl, formData)
        .then((res) => {
-         console.log(res,"resssfjvj")
-         if (res.data.status === true) {
+        if (res.data.status === true) {
           var val = res.data.data ;
           val = val.filter((itm, index) => {
             return itm.DELETE_STATUS != "X";
           });
            setSingleVarients(val);
-
          } else if (res.data.status === false) {
            if (res.data.code === 3) {
              toast("Session expired , Please re-login", { type: "warning" });

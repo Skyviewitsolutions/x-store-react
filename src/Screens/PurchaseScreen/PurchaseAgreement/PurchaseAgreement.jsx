@@ -34,7 +34,7 @@ const PurchaseAgreement = () => {
       .then((res) => {
         if (res.data.status === true) {
           var val = res.data.data;
-          val = val.reverse();
+          // val = val.reverse();
           const filterPurchaseAgree = val.filter((itm, ind) => {
             return itm.DELETE_STATUS != "X";
           });

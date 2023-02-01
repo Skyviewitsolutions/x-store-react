@@ -35,11 +35,11 @@ const PurchasePriceLIst = () => {
       .then((res) => {
         if (res.data.status === true) {
           var val = res.data.data;
-          val = val.reverse();
-          const filterVebdorPrice = val.filter((itm,ind) => {
-            return itm.DELETE_STATUS != "X"
-          })
-          setAllVenprice(filterVebdorPrice);
+            // val = val.reverse();
+            const filterPricelist = val.filter((itm,ind) => {
+              return itm.DELETE_STATUS != "X"
+            })
+          setAllVenprice(filterPricelist);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
             toast("Session expired , Please re-login", { type: "warning" });
@@ -111,7 +111,26 @@ const PurchasePriceLIst = () => {
     { label: "Products", name: "PRODUCT_NAME" },
     { label: "Currency", name: "VENDOR_CURRENCY" },
     { label: "Quantity", name: "VENDOR_QUANTITY" },
-    { label: "Price", name: "VENDOR_PRICE" },
+    { label: "Price", name: "VENDOR_PRICE", options: {
+      customBodyRender: (value, tableMeta, updateValue) => {
+        var price ;
+        if(typeof(value) == "string"){
+          price = parseFloat(value).toFixed(2);
+        }
+        else {
+          price = value.toFixed(2)
+        }
+        console.log(value , "value")
+        return (
+          <>
+            <div className="updtdlt">
+            <span>{price} </span>
+            </div>
+          </>
+        );
+      },
+    }, 
+  },
     {
       label: "Actions",
       name: "ID",

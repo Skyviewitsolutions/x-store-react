@@ -21,12 +21,11 @@
     margin-bottom: 5px; 
 }
 .pricelistName input{
-    width: 600px;
+    width: 550px;
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc;
-    color: #000;
-    font-size: 25px;
+    font-size: 20px;
 }
 .Pricecurrency{
     display: flex;
@@ -36,7 +35,7 @@
 .Pricecurrency p{
     width: 150px;
     font-size: 15px;
-    color: #6f6f6f;
+    color: #6a6a6a;
     font-weight: 600;
     margin-bottom: 5px;
 
@@ -46,6 +45,6 @@
     border: none;
     outline: none;
     border-bottom: 1px solid #cccc;
-    color: #000;
+    color: #6a6a6a;
     
 }

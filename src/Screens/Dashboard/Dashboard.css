@@ -1,137 +1,138 @@
-.main{
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
-  vertical-align:center;
+  vertical-align: center;
   height: 100vh;
   /* width: 100%; */
   /* background-color: #857a82; */
   background-image: linear-gradient(177deg, rgb(7 75 122), rgb(142 193 229));
   position: relative;
-  
 }
-.arrowicon{
+.arrowicon {
   position: absolute;
-  top:20px;
+  top: 20px;
   left: 20px;
   color: #fff;
 }
 .containers {
-    margin: auto;
-    width: 60%;
-   /* border: 2px solid gray; */
+  margin: auto;
+  width: 60%;
+  /* border: 2px solid gray; */
+}
 
-  }
-  
-  .row {
-    /* margin-left: 10%; */
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    
-  }
+.dash_cards {
+  /* margin-left: 10%; */
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .dashCont{
-    
-     display: flex;
-     flex-wrap: wrap;
-    /* margin-left: 16px; */
-  }
-  .cardd {
-    width: 100px;
-    height: 100px;
-    margin: 20px;
-    justify-content: center;
-    cursor: pointer;
-  }
+.dashCont {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-left: 16px; */
+}
+.cardd {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  justify-content: center;
+  cursor: pointer;
+}
 
-  .Dash{
-    height: 90px;
-    width: 90px;
-    margin: auto;
-    border-radius: 5px;
-  }
-.Dash:hover{
-  box-shadow:  rgba(0, 0, 0, 0.35) 0px 3px 8px;
+.Dash {
+  height: 90px;
+  width: 90px;
+  margin: auto;
+  border-radius: 5px;
+}
+.Dash:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 8px;
   transition: 0.2s;
 }
-   
-    @media (min-width:768px)  and (max-width: 1020px) {
-      .containers {
-      text-align: center;
-      width: 90%;
-      
-    }
-   
-    .cardd {
-      width: 80px;
-    min-height: 70px;
-    }
-    .dashCont{
-     margin-left:6.3%;
-   }
-  }
-  @media  screen, (min-width : 480px) and (max-width: 768px) {
-    .dashCont{
-      margin: auto;
-      margin-left: 25px;
-    }
-    .dash_tiles .col-lg-2.col-md-3 {
+
+.logout_das {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.logout_das p {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 0px;
+  color: #fff;
+}
+@media (min-width: 768px) and (max-width: 1020px) {
+  .containers {
     text-align: center;
+    width: 90%;
+  }
+
+  .cardd {
+    width: 80px;
+    min-height: 70px;
+  }
+  .dashCont {
+    margin-left: 6.3%;
+  }
 }
-.dash_tiles .col-sm-1.cardd {
+@media screen, (min-width: 480px) and (max-width: 768px) {
+  .dashCont {
+    margin: auto;
+    margin-left: 25px;
+  }
+  .dash_tiles .col-lg-2.col-md-3 {
+    text-align: center;
+  }
+  .dash_tiles .col-sm-1.cardd {
     margin: 25px auto;
+  }
 }
-  }
-  
 
-  @media  (max-width : 600px)  {
-    .containers {
-      text-align: center;
-      width: 100%;
-      
-    }
-    .dashCont{
-      margin: auto;
-      margin-left: 25px;
-    }
+@media (max-width: 600px) {
+  .containers {
+    text-align: center;
+    width: 100%;
   }
-  
-  @media  (max-width : 360px)  {
-    .containers {
-      text-align: center;
-      width: 100%;
-      
-    }
-    .dashCont{
-      margin: auto;
-     margin-left: 12%;
-    }
+  .dashCont {
+    margin: auto;
+    margin-left: 25px;
   }
-  
-  @media only screen and (max-width: 240px) {
-    .containers {
-      text-align: center;
-      width: 100%;
-      
-    }
-    .dashCont{
-      margin: auto;
-      size: 10px;
-    }
-    .cardd {
-      width: 40px;
+}
+
+@media (max-width: 360px) {
+  .containers {
+    text-align: center;
+    width: 100%;
+  }
+  .dashCont {
+    margin: auto;
+    margin-left: 12%;
+  }
+}
+
+@media only screen and (max-width: 240px) {
+  .containers {
+    text-align: center;
+    width: 100%;
+  }
+  .dashCont {
+    margin: auto;
+    size: 10px;
+  }
+  .cardd {
+    width: 40px;
     min-height: 40px;
-
-    }
-    .Dash{
-      text-align: center;
-      height: 80px;
-      width: 70px;
-      
-    }
-    
   }
-
-  
+  .Dash {
+    text-align: center;
+    height: 80px;
+    width: 70px;
+  }
+}

@@ -42,7 +42,7 @@ const AddVendors = () => {
   const [taxId, setTaxId] = useState("");
   const [workAddress, setWorkAddress] = useState(false);
   const [supplierType, setSupplieType] = useState("");
-  const [phone, SetPhone] = useState("");
+  const [phone, setPhone] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [webLink, setWebLink] = useState("");
@@ -189,7 +189,7 @@ const AddVendors = () => {
       setState(VendorsDetails.STATE);
       setZip(VendorsDetails.ZIP);
       setCountry(VendorsDetails.COUNTRY);
-      SetPhone(VendorsDetails.PHONE);
+      setPhone(VendorsDetails.PHONE);
       setMobile(VendorsDetails.MOBILE);
       setEmail(VendorsDetails.EMAIL);
       setSupplieType(VendorsDetails.SUPLLIER_TYPE);
@@ -557,7 +557,7 @@ const AddVendors = () => {
                 <PhoneInput
                   country={"in"}
                   value={phone}
-                  onChange={(e) => SetPhone(e)}
+                  onChange={(e) => setPhone(e)}
                   containerClass="phone_sty"
                 />
               </div>

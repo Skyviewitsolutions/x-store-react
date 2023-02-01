@@ -64,3 +64,7 @@ p#\:r15\: {
         display: none !important;
     } */
 }
+
+.tss-1qtl85h-MUIDataTableBodyCell-root.tss-1ej321f-MUIDataTableBodyCell-cellHide.tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader.tss-1vd39vz-MUIDataTableBodyCell-stackedCommon {
+    display: none !important;
+}

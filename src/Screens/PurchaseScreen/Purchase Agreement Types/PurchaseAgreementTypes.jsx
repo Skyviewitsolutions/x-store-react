@@ -34,12 +34,12 @@ const PurchaseAgreementTypes = () => {
    .then((res) => {
     console.log(res,"response")
      if(res.data.status === true){
-       var val = res.data.data;
-       val = val.reverse();
-       const filterAgreement = val.filter((itm,ind) => {
-        return itm.DELETE_STATUS != 'X'
-       })
-       setAllagreementtype(filterAgreement);
+      var val = res.data.data;
+      // val = val.reverse();
+      const filterPAT = val.filter((itm,ind) => {
+        return itm.DELETE_STATUS != "X"
+      })
+       setAllagreementtype(filterPAT);
      }else if(res.data.status === false){
       if(res.data.code === 3)
       {

@@ -110,7 +110,7 @@ const AddPurchaseOrders = (props) => {
           if (res.data.status === true) {
             toast("Request Quotation Added Successfully", { type: "success" });
             setTimeout(() => {
-              navigate('/RequestforQuotation')
+              navigate('/PurchaseOrder')
             }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
@@ -739,7 +739,7 @@ const column2 = [
           </Nav>
         </div>
         <div className="Warehouse">
-        {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} POId={POId} singleProduct={singleProduct} setSingleProduct={setSingleProduct}/>}
+        {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} POId={POId} singleProduct={singleProduct} setSingleProduct={setSingleProduct} uniqueId={POId}/>}
 
           {events === "Other Information" && <OtherInfo recepitDate={recepitDate} setRecepitDate={setRecepitDate} incoTerms={incoTerms} setIncoTerms={setIncoTerms} purchaseRep={purchaseRep} setPurchaseRep={setPurchaseRep} fisicalPosition={fisicalPosition} setFisicalPosition={setFisicalPosition}/>}
         </div>
