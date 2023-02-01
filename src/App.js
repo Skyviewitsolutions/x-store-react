@@ -141,7 +141,6 @@ import WorkAddress from "./Screens/EmplyoeeScreen/AddEmployee/WorkAddress/WorkAd
 import AllCoupon from "./Screens/SalesScreen/CouponPrograms/AllCoupon";
 import DeletePopup from "./components/Model/DeletePopup/DeletePopup";
 import {GetAllData} from "./Helper/ApiHelper";
-import $ from "jquery";
 import AddAccVendor from "./Screens/AccountScreen/AccountVendor/AddAccVendor";
 import ProductBrandList from "./Screens/InventoryScreen/ProductBrand/ProductBrandList";
 import PrintProductBarcode from "./Screens/InventoryScreen/AddAccount/PrintProductBarcode/PrintProductBarcode";

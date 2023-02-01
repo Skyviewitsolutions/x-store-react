@@ -1,19 +1,8 @@
-.addproduct_Con{
+/* .addproduct_Con{
     width: 100%;
     padding: 15px 25px;
 }
-.add_productbtn{
-    border:none;
-    border: 1px solid #1669a2 ;
-    color: #000;
-    font-size: 15px;
-    text-transform: uppercase;
-    margin: auto;
-    padding: 8px 20px;
-    font-weight: 600;
-    transition: 0.3s;
-    margin-top: 10px;
-}
+
 
 .add_productbtn:hover{
     background-color:#036463;
@@ -50,4 +39,39 @@
 }
 .addproduct_Con .protab {
     height: auto;
+} */
+
+
+.req_product{
+    margin: 10px 20px;
+    border: 1px solid #cccc;
+}
+.req_product tbody{
+    padding: 10px ;
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: none !important;
+    color: none !important;
+}
+.pro_dropdowns td{
+    border-top: 1px solid #cccc;
+    border-right: 1px solid #cccc;
+}
+.product_select{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.add_productbtn{
+    border:none;
+    /* border: 1px solid #1669a2 ; */
+    color: #1669a2;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-top: 10px;
+    background-color: #fff;
 }

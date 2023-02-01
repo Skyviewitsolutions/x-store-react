@@ -24,23 +24,23 @@ const AddManager = () => {
   const addManagerUrl = endpoints.Manager.addmanager;
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
-  const allHeadUrl = endpoints.headDepartment.allHeaddepartment;
+  const allDepUrl = endpoints.department.allDepartment;
   const allJobUrl = endpoints.jobposition.getAlljobposition;
   const allHMUrl = endpoints.Headmanager.allHeadmanager;
 
-  const getHead = () => {
+  const getDep = () => {
     const formData = new FormData();
     formData.append("User_Authorization", getAuthtoken);
     formData.append("User_AuthKey", userAuth);
     axios
-      .post(allHeadUrl, formData)
+      .post(allDepUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
           var val = res.data.data;
-          const filterHeadDep = val.filter((itm, ind) => {
+          const filterDep = val.filter((itm, ind) => {
             return itm.DELETE_STATUS != "X";
           });
-          setAllHeadDep(filterHeadDep);
+          setAllHeadDep(filterDep);
         } else if (res.data.status === false) {
           toast(res.data.message, { type: "error" });
         }
@@ -80,7 +80,6 @@ const AddManager = () => {
       .then((res) => {
         if (res.data.status === true) {
           var val = res.data.data;
-          console.log(val,"all hm")
           const filterHM = val.filter((itm, ind) => {
             return itm.DELETE_STATUS != "X";
           });
@@ -97,7 +96,7 @@ const AddManager = () => {
 
 
   useEffect(() => {
-    getHead();
+    getDep();
     getJobPosition();
     getHM();
   }, []);
@@ -314,15 +313,17 @@ const AddManager = () => {
   const ManagerData = location.state;
 
   const ManagerDetails = JSON.parse(ManagerData);
+  console.log(ManagerDetails,"all manager here")
   useEffect(() => {
     if (ManagerDetails && updated) {
-      setManager(ManagerData.MANAGER_NAME);
-      setJobPosition(ManagerDetails.JOB_POSITIONID)
+      setManager(ManagerDetails.MANAGER_NAME);
+      setJobPosition(ManagerDetails.JOB_POSITION)
       setId(ManagerDetails.ID);
+      setHeadManager(ManagerDetails.HEAD_MANAGERID)
       setWorkMobile(ManagerDetails.WORK_MOBILE);
       setWorkPhone(ManagerDetails.WORK_PHONE);
       setWorkEmail(ManagerDetails.WORK_EMAIL);
-      setLocations(ManagerDetails.WORK_LOCATION_ID);
+      setLocations(ManagerDetails.WORK_LOCATION);
       setDepartment(ManagerDetails.DEPARTMENT_ID);
       setWorkAddr(ManagerDetails.WORK_ADDRESS);
       setEmail(ManagerDetails.PRIVATE_EMAIL);
@@ -353,6 +354,7 @@ const AddManager = () => {
       setRegNo(ManagerDetails.REGISTRATION_NUMBER);
       setPinCode(ManagerDetails.PINCODE);
       setBadgeId(ManagerDetails.BADGE_ID);
+      setAddress(ManagerDetails.PRIVATE_ADDRESS)
       setManagerImg(ManagerDetails.MANAGER_PROFILE);
       setEdit(true);
       const url = ManagerDetails.MANAGER_PROFILE;
@@ -731,7 +733,7 @@ const AddManager = () => {
                 setSpouseBirth={setSpouseBirth}
                 children={children}
                 setChildren={setChildren}
-                emmgContact={emgContact}
+                emgContact={emgContact}
                 setEmgContact={setEmgContact}
                 emgPhone={emgPhone}
                 setEmgPhone={setEmgPhone}

@@ -88,7 +88,7 @@ const ManagerCard = (props) => {
         </div>
         <div className="col-lg-8 col-md-8">
           <h6>{data?.MANAGER_NAME}</h6>
-          <p>{data?.PRIVATE_ADDRESS}</p>
+          <p>{data?.WORK_LOCATION}</p>
         </div>
         <div className="deleteicon">
             <MdDelete

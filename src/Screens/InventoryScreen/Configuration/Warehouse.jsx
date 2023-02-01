@@ -110,6 +110,8 @@ const Warehouse = () => {
 
       options: {
         print: false,
+        filter:false,
+        download:false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>
