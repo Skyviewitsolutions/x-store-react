@@ -292,7 +292,8 @@ export const endpoints = {
     addProductdetails : BASE_URL + "/Purchase/RequestQuotation/AddProduct",
     deleteProductdetails : BASE_URL + "/Purchase/RequestQuotation/DeleteProduct",
     singleProductDetails : BASE_URL + "/Purchase/RequestQuotation/GetSingleProduct",
-    updateProductDetails : BASE_URL + "/Purchase/RequestQuotation/UpdateProduct"
+    updateProductDetails : BASE_URL + "/Purchase/RequestQuotation/UpdateProduct",
+    vendorAllProduct : BASE_URL + "/Purchase/RequestQuotation/GetProduct"
   },
 
   agreementType:{
@@ -305,21 +306,17 @@ export const endpoints = {
     singleProductDetails : BASE_URL + "/Purchase/PurchaseAgreement/GetSingleProduct",
     updateProductDetails : BASE_URL + "/Purchase/PurchaseAgreement/UpdateProduct",
     allProductDetails : BASE_URL + "/Purchase/PurchaseAgreement/GetAllProductDetail",
-
-
   },
-
   purchaseOrders:{
     allProductDetails : BASE_URL + "/Purchase/PurchaseOrders/GetAllProductDetail",
     addProductdetails : BASE_URL + "/Purchase/PurchaseOrders/AddProduct",
     singleProductDetails : BASE_URL + "/Purchase/PurchaseOrders/GetSingleProduct",
     deleteProductdetails : BASE_URL + "/Purchase/PurchaseOrders/DeleteProduct",
-   PurchaseupdateProductDetails : BASE_URL + "/Purchase/PurchaseOrders/UpdateProduct",
+    PurchaseupdateProductDetails : BASE_URL + "/Purchase/PurchaseOrders/UpdateProduct",
     allpurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/GetAll",
     addpurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/Add",
     updatepurchaseOrder : BASE_URL + "/Purchase/PurchaseOrders/Update",
     deletePurchaseOrders : BASE_URL + "/Purchase/PurchaseOrders/Delete",
-
   },
 
   // --------------------------------Sales All Api----------------------------------------

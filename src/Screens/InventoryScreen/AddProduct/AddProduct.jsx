@@ -154,7 +154,7 @@ const AddProduct = () => {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
               navigate("/");
-            } else {
+            }else {
               toast(res.data.message, { type: "error" });
             }
           }

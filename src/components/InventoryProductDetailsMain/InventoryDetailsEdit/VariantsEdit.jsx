@@ -185,7 +185,6 @@ const VariantsEdit = (props) => {
     });
     console.log(seletedAttribute, "attr here");
     setSelectedVarientsId(id);
-
     seletedAttribute = seletedAttribute[0];
     setAttributeName(seletedAttribute.SALESATTRIBUTE_NAME);
     setAttributeId(seletedAttribute.SALES_ATTRIBUTE_ID);
@@ -205,7 +204,6 @@ const VariantsEdit = (props) => {
     formData.append("SalesAttribute_ID", attributeId);
     formData.append("SalesAttributeValue_ID", attributeValId);
     formData.append("Price", salesPrice);
-
     axios
       .post(updateVrientUrl, formData)
       .then((res) => {

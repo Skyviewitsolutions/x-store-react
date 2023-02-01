@@ -21,6 +21,7 @@ const AddEmployee = () => {
 
   const [allDepartments, setAllDepartments] = useState([]);
   const [allJobposition, setAllJobposition] = useState([]);
+  const [accessModule, setAccessModule] = useState([]);
   const [allmanager, setAllManager] = useState([]);
 
   const getAuthtoken = localStorage.getItem("authtoken");
@@ -383,9 +384,12 @@ const AddEmployee = () => {
   console.log(empDetails,"all data")
 
   useEffect(() => {
+
     if(empDetails && updated) {
+      setAccessModule([])
       setEmpName(empDetails.EMPLOYEE_NAME);
-      setJobPosition(empDetails.JOBPOSITION_ID)
+      setJobPosition(empDetails.JOB_POSITION);
+      setManager(empDetails.MANAGER_ID);
       setId(empDetails.ID);
       setWorkEmail(empDetails.WORK_EMAIL);
       setWorkMobile(empDetails.WORKMOBILE);
@@ -422,6 +426,11 @@ const AddEmployee = () => {
       setRegNo(empDetails.REGISTRATION_NO);
       setPinCode(empDetails.PINCODE);
       setBadgeId(empDetails.BADGE_ID);
+      if(empDetails.INVENTORY == "100202201"){
+        setAccessModule((itm) =>{
+          return [...itm , 'Inventory']
+        })
+      }
       setInventory(empDetails.INVENTORY);
       setAccounting(empDetails.ACCOUNTING);
       setSales(empDetails.SALES);
@@ -429,6 +438,20 @@ const AddEmployee = () => {
       setEmployee(empDetails.EMPLOYEE);
       setContact(empDetails.CONTACT);
       setExpense(empDetails.EXPENSEMODULE);
+      setInventoryRead(JSON.parse(empDetails.INVENTORY_READ));
+      setInventoryCrud(JSON.parse(empDetails.INVENTORY_WRITE));
+      setAccountingCrud(JSON.parse(empDetails.ACCOUNTING_WRITE));
+      setAccountingRead(JSON.parse(empDetails.ACCOUNTING_READ));
+      setPurchaseRead(JSON.parse(empDetails.PURCHASE_READ));
+      setPurchaseCrud(JSON.parse(empDetails.PURCHASE_WRITE));
+      setSalesRead(JSON.parse(empDetails.SALES_READ));
+      setSalesCrud(JSON.parse(empDetails.SALES_WRITE));
+      setEmployeeRead(JSON.parse(empDetails.EMPLOYEE_READ));
+      setEmployeeCrud(JSON.parse(empDetails.EMPLOYEE_WRITE));
+      setExpenseRead(JSON.parse(empDetails.EXPENSE_READ));
+      setExpenseCrud(JSON.parse(empDetails.EXPENSE_WRITE));
+      setContactRead(JSON.parse(empDetails.CONTACT_READ));
+      setContactCrud(JSON.parse(empDetails.CONTACT_WRITE));
       setEmpImg(empDetails.PROFILE_IMAGE);
       setEdit(true);
       const url = empDetails.PROFILE_IMAGE;
@@ -837,7 +860,7 @@ const AddEmployee = () => {
                 setSpouseBirth={setSpouseBirth}
                 children={children}
                 setChildren={setChildren}
-                emmgContact={emgContact}
+                emgContact={emgContact}
                 setEmgContact={setEmgContact}
                 emgPhone={emgPhone}
                 setEmgPhone={setEmgPhone}
@@ -873,6 +896,8 @@ const AddEmployee = () => {
                 employeeCrud={employeeCrud}
                 purchaseRead={purchaseRead}
                 purchaseCrud={purchaseCrud}
+                setAccessModule={setAccessModule}
+                accessModule={accessModule}
                 salesRead={salesRead}
                 salesCrud={salesCrud}
                 contactCrud={contactCrud}

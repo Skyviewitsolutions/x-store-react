@@ -14,6 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 
+
 const AddRequestQuotation = (props) => {
   const navigate = useNavigate();
   const [events, setEvents] = useState("Products");
@@ -184,9 +185,9 @@ const AddRequestQuotation = (props) => {
   }, []);
   useEffect(() => {
     const formData = new FormData();
-    formData.append("User_Authorization", getAuthtoken);
-    formData.append("User_AuthKey", userAuth);
-    axios
+     formData.append("User_Authorization", getAuthtoken);
+     formData.append("User_AuthKey", userAuth);
+     axios
       .post(paymentUrl, formData)
       .then((res) => {
         if (res.data.status === true) {
@@ -581,6 +582,56 @@ const column2 = [
       }
   }
 ]
+
+
+// $(document).onChange('keypress', 'input , select' , function (e) {
+//   if(e.which == 13){
+//     e.preventDefault();
+//     var $next = $('[tabIndex=]' + (this.tabIndex + 1) + ']');
+//     console.log($next.length,"ff");
+//     if(!$next.length){
+//       $next = $('[tabIndex=1]');
+//       $next.focus().click();
+//     }
+//   }
+// });
+
+const [vendorId , setVendorId] = useState("")
+
+const [allVendorProduct, setAllVendorProduct] = useState([]);
+
+const VendorProductUrl = endpoints.requestQuotation.vendorAllProduct;
+
+const getVendorProductList = (name) => {
+  const filterData = vendorAll.filter((itm,ind) => {
+
+    return  itm.VENDOR_NAME == name;
+    
+  })
+
+    var id = filterData[0].VENDOR_ID
+  setVendorId(filterData[0].VENDOR_ID)
+  setVendor(filterData[0].VENDOR_NAME);
+
+ const formData = new FormData() 
+ formData.append("Vendor_ID" , id)
+ formData.append("User_Authorization", getAuthtoken);
+ axios.post(VendorProductUrl,formData)
+ .then((res) => {
+  if(res.data.status === true){
+    setAllVendorProduct(res.data.data)
+  }else if(res.data.status === false){
+    toast(res.data.message,{type:"error"})
+  }
+ 
+ })
+ .catch((err) => {
+  console.log(err,"error")
+ })
+}
+
+
+
    
   return (
     <div>
@@ -595,13 +646,13 @@ const column2 = [
           <div className="requestQuofirst">
             <div className="reqQuotext">
               <p>Vendor</p>
-              <select value={vendor} onChange={(e) => setVendor(e.target.value)} disabled={update}>
+              <select value={vendor} onChange={(e) => getVendorProductList(e.target.value)} disabled={update}>
                 <option value="">Select Any one</option>
                 {vendorAll.map((item, index) => {
                   if (item.VENDOR_STATUS != "X") {
                     return (
                       <>
-                        <option value={item.VENDOR_ID}>
+                        <option value={item.VENDOR_NAME}>
                           {item.VENDOR_NAME}
                         </option>
                       </>
@@ -739,7 +790,7 @@ const column2 = [
           </Nav>
         </div>
         <div className="Warehouse">
-          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} requestId={requestId} singleProduct={singleProduct} setSingleProduct={setSingleProduct} uniqueId={requestId}/>}
+          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} requestId={requestId} singleProduct={singleProduct} setSingleProduct={setSingleProduct} uniqueId={requestId} allVendorProduct={allVendorProduct} />}
           {events === "Other Information" && <OtherInfo recepitDate={recepitDate} setRecepitDate={setRecepitDate} incoTerms={incoTerms} setIncoTerms={setIncoTerms} purchaseRep={purchaseRep} setPurchaseRep={setPurchaseRep} fisicalPosition={fisicalPosition} setFisicalPosition={setFisicalPosition} />}
         </div>
       </div> 

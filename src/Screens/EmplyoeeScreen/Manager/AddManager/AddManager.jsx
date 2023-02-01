@@ -80,7 +80,6 @@ const AddManager = () => {
       .then((res) => {
         if (res.data.status === true) {
           var val = res.data.data;
-          console.log(val,"all hm")
           const filterHM = val.filter((itm, ind) => {
             return itm.DELETE_STATUS != "X";
           });
@@ -314,11 +313,13 @@ const AddManager = () => {
   const ManagerData = location.state;
 
   const ManagerDetails = JSON.parse(ManagerData);
+  console.log(ManagerDetails,"all manager here")
   useEffect(() => {
     if (ManagerDetails && updated) {
-      setManager(ManagerData.MANAGER_NAME);
-      setJobPosition(ManagerDetails.JOB_POSITIONID)
+      setManager(ManagerDetails.MANAGER_NAME);
+      setJobPosition(ManagerDetails.JOB_POSITION)
       setId(ManagerDetails.ID);
+      setHeadManager(ManagerDetails.HEAD_MANAGERID)
       setWorkMobile(ManagerDetails.WORK_MOBILE);
       setWorkPhone(ManagerDetails.WORK_PHONE);
       setWorkEmail(ManagerDetails.WORK_EMAIL);
@@ -732,7 +733,7 @@ const AddManager = () => {
                 setSpouseBirth={setSpouseBirth}
                 children={children}
                 setChildren={setChildren}
-                emmgContact={emgContact}
+                emgContact={emgContact}
                 setEmgContact={setEmgContact}
                 emgPhone={emgPhone}
                 setEmgPhone={setEmgPhone}

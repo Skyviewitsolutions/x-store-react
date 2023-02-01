@@ -3,8 +3,8 @@ import { useState } from "react";
 
 const EmpHrsetings = (props) => {
 
-  const [accessModule, setAccessModule] = useState([]);
-  const {relatedUser , setRelatedUser ,regNo ,setRegNo,pinCode,setPinCode,badgeId,setBadgeId,inventoryCrud,inventoryRead,accountingRead,accountingCrud,employeeRead,employeeCrud,purchaseRead,purchaseCrud,salesRead,salesCrud,contactCrud,contactRead,expenseCrud,expenseRead,setInventoryCrud,setInventoryRead,setAccountingCrud,setAccountingRead,setPurchaseCrud,setPurchaseRead,setSalesCrud,setSalesRead,setEmployeeCrud,setEmployeeRead,setExpenseCrud,setExpenseRead,setContactCrud,setContactRead,inventory,setInventory,accounting,setAccounting,sales,setSales,purchase,setPurchase,expense,setExpense,contact,setContact,employee,setEmployee} = props;
+ 
+  const {relatedUser , setRelatedUser ,regNo ,setRegNo,pinCode,setPinCode,badgeId,setBadgeId,inventoryCrud,inventoryRead,accountingRead,accountingCrud,employeeRead,employeeCrud,purchaseRead,purchaseCrud,salesRead,salesCrud,contactCrud,contactRead,expenseCrud,expenseRead,setInventoryCrud,setInventoryRead,setAccountingCrud,setAccountingRead,setPurchaseCrud,setPurchaseRead,setSalesCrud,setSalesRead,setEmployeeCrud,setEmployeeRead,setExpenseCrud,setExpenseRead,setContactCrud,setContactRead,inventory,setInventory,accounting,setAccounting,sales,setSales,purchase,setPurchase,expense,setExpense,contact,setContact,employee,setEmployee , setAccessModule ,accessModule} = props;
 
   const handleChecked = (dta) => {
     //  accessModule.includes("Inventory")
@@ -50,7 +50,7 @@ const EmpHrsetings = (props) => {
       }
     }
   };
-  console.log( expenseRead, "data");
+  console.log( contact, "data");
   return (
     <div>
       <div className="hrsettings_container">
@@ -98,12 +98,12 @@ const EmpHrsetings = (props) => {
                 {accessModule.includes("Inventory") && (
                   <div className="d-flex">
                     <div className="crud_perf">
-                      <input type="radio" name="inventory" onChange={() => {setInventoryRead(!inventoryRead) 
+                      <input type="radio" name="inventory" checked={inventoryRead == true} onChange={() => {setInventoryRead(!inventoryRead) 
                         setInventoryCrud(inventoryRead) }} />
                       <label>Read Only</label>
                     </div>
                     <div className="crud_perf">
-                      <input type="radio" name="inventory" onChange={() => {
+                      <input type="radio" name="inventory" checked={inventoryCrud == true} onChange={() => {
                         setInventoryCrud(!inventoryCrud)
                         setInventoryRead(inventoryCrud)
                       }} />
@@ -121,12 +121,12 @@ const EmpHrsetings = (props) => {
                 {accessModule.includes("Accounting") && (
                   <div className="d-flex">
                     <div className="crud_perf">
-                      <input type="radio" name="accounting" onChange={() => {setAccountingRead(!accountingRead) 
+                      <input type="radio" name="accounting" checked={accountingRead == true} onChange={() => {setAccountingRead(!accountingRead) 
                         setAccountingCrud(accountingRead) }}/>
                       <label>Read Only</label>
                     </div>
                     <div className="crud_perf">
-                      <input type="radio" name="accounting"  onChange={() => {
+                      <input type="radio" name="accounting" checked={accountingCrud == true} onChange={() => {
                         setAccountingCrud(!accountingCrud)
                         setAccountingRead(accountingCrud)
                       }}/>
@@ -147,14 +147,14 @@ const EmpHrsetings = (props) => {
                       <input type="radio" name="purchase" onChange={() => {{
                         setPurchaseRead(!purchaseRead)
                         setPurchaseCrud(purchaseRead)
-                      }}}/>
+                      }}} checked={purchaseRead == true}/>
                       <label>Read Only</label>
                     </div>
                     <div className="crud_perf">
                       <input type="radio" name="purchase" onChange={() => {
                         setPurchaseCrud(!purchaseCrud)
                         setPurchaseRead(purchaseCrud)
-                      }}/>
+                      }} checked={purchaseCrud == true}/>
                       <label>Write</label>
                     </div>
                   </div>
@@ -169,14 +169,14 @@ const EmpHrsetings = (props) => {
                 {accessModule.includes("Sales") && (
                   <div className="d-flex">
                     <div className="crud_perf">
-                      <input type="radio" name="sales" onChange={() => {
+                      <input type="radio" name="sales"  checked={salesRead == true} onChange={() => {
                         setSalesRead(!salesRead)
                         setSalesCrud(salesRead)
                       }}/>
                       <label>Read Only</label>
                     </div>
                     <div className="crud_perf">
-                      <input type="radio" name="sales"  onChange={() => {
+                      <input type="radio" name="sales" checked={salesCrud == true}  onChange={() => {
                         setSalesCrud(!salesCrud)
                         setSalesRead(salesCrud)
                       }}/>
@@ -197,13 +197,13 @@ const EmpHrsetings = (props) => {
                       <input type="radio" name="employee" onChange={() => {
                         setEmployeeRead(!employeeRead)
                         setEmployeeCrud(employeeRead)
-                      }}/>
+                      }} checked={employeeRead == true}/>
                       <label>Read Only</label>
                     </div>
                     <div className="crud_perf">
                       <input type="radio" name="employee" onChange={() => {setEmployeeCrud(!employeeCrud)
                       setEmployeeRead(employeeCrud)
-                      }}/>
+                      }} checked={employeeCrud == true}/>
                       <label>Write</label>
                     </div>
                   </div>
@@ -221,14 +221,14 @@ const EmpHrsetings = (props) => {
                       <input type="radio" name="expense" onChange={() => {
                         setExpenseRead(!expenseRead)
                         setExpenseCrud(expenseRead)
-                      }}/>
+                      }} checked={expenseRead == true}/>
                       <label>Read Only</label>
                     </div>
                     <div className="crud_perf">
                       <input type="radio" name="expense" onChange={() => {
                         setExpenseCrud(!expenseCrud)
                         setExpenseRead(expenseCrud)
-                      }}/>
+                      }} checked={expenseCrud == true}/>
                       <label>Write</label>
                     </div>
                   </div>
@@ -238,6 +238,7 @@ const EmpHrsetings = (props) => {
                 <input
                   type="checkbox"
                   onChange={() => handleChecked("Contact")}
+                  checked={contact == '100202207'}
                 />
                 <label>Contact</label>
                 {accessModule.includes("Contact") && (
@@ -246,14 +247,15 @@ const EmpHrsetings = (props) => {
                       <input type="radio" name="contact" onChange={() => {
                         setContactRead(!contactRead)
                         setContactCrud(contactRead)
-                      }}/>
+                      }}
+                      checked={contactRead == true} />
                       <label>Read Only</label>
                     </div>
                     <div className="crud_perf">
                       <input type="radio" name="contact" onChange={() => {
                         setContactCrud(!contactCrud)
                         setContactRead(contactCrud)
-                      }}/>
+                      }} checked={contactCrud == true}/>
                       <label>Write</label>
                     </div>
                   </div>
