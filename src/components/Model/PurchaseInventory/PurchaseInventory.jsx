@@ -63,7 +63,8 @@ const PurchaseInventory = (props) => {
 
  
 
-  const save = () => {
+  const save = (e) => {
+    e.preventDefault()
     if (vendor === "") {
       toast("Vendor Name is Required !", { type: "warning" });
     } else if (vendorProductName === "") {
@@ -104,7 +105,16 @@ const PurchaseInventory = (props) => {
             getSingleVendorList();
             getAllVendorlist()
             toast("Vendor List Added Successfully", { type: "success" });
-            // window.location.reload()
+            setVendor("")
+            setVendorProductName("")
+            setVendorProductCode("")
+            setVendorLeadTime("")
+            setVendorQuantity("")
+            setVendorPrice("")
+            setVendorCurrency("")
+            setVendorDate1("")
+            setVendorDate2("")
+            
             setModalShow(false);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
@@ -141,7 +151,7 @@ const PurchaseInventory = (props) => {
   return (
     <div>
       <Modal show={modalShow} size="lg">
-        <div className="purchase_main">
+        <form className="purchase_main" onSubmit={updatedVendorList ? updateSelectedVendorlist : save}>
           <div className="purchase_con">
             <div className="purchase_firstcontent">
               <h3>Vendor</h3>
@@ -239,14 +249,14 @@ const PurchaseInventory = (props) => {
             </div>
           </div>
           <div className="pu_btn">
-            <button className="pur_btn" onClick={updatedVendorList ? updateSelectedVendorlist :save}>
+            <button className="pur_btn" type="submit">
               {updatedVendorList ? "update" : "save"}
             </button>
           </div>
           <div onClick={() => setModalShow(false)}>
             <MdOutlineCancel size="25px" className="Acccuticons" />
           </div>
-        </div>
+        </form>
       </Modal>
     </div>
   );

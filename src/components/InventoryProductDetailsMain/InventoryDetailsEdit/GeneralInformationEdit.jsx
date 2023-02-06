@@ -7,7 +7,7 @@ import { endpoints } from "../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Barcode from "../../Model/BarcodeModal/Barcode";
-
+import $ from "jquery";
 
 const GeneralInformationEdit = (props) => {
 
@@ -191,25 +191,25 @@ const GeneralInformationEdit = (props) => {
   }
 
 
-  const handleCostPrice = (e) =>{
+  // const handleCostPrice = (e) =>{
   
-    const val = (e.target.value);
-    setCost(val)
-    console.log(typeof(salesPrice))
-    if(val > salesPrice){
-      toast("Cost price cannot be greater than sales price" ,{type : "warning"})
-    }
-  }
+  //   const val = (e.target.value);
+  //   setCost(val)
+  //   console.log(typeof(salesPrice))
+  //   if(val > salesPrice){
+  //     toast("Cost price cannot be greater than sales price" ,{type : "warning"})
+  //   }
+  // }
 
-  const handleSalesPrice = (e) =>{
-    const val = (e.target.value)
-    setSalesPrice(val)
+  // const handleSalesPrice = (e) =>{
+  //   const val = (e.target.value)
+  //   setSalesPrice(val)
     
-    if(val < cost){
-      toast("Sales price cannot be less than cost price" , {type : "warning"})
-      setSalesPrice(0)
-    }
-  }
+  //   if(val < cost){
+  //     toast("Sales price cannot be less than cost price" , {type : "warning"})
+  //     setSalesPrice(0)
+  //   }
+  // }
 
   const handleUnitOfMeasurement = (e) =>{
 
@@ -239,6 +239,31 @@ const GeneralInformationEdit = (props) => {
       setPurchaseUnitOfMeasurementId(id);
   }
 
+  
+  useEffect(() => {
+    $( document ).ready(function() {
+      // alert("Hello");
+      // $('#field_proCate').selectmenu('open');
+    });
+    $('#field_productType').bind('keypress', function(e) {
+      if(e.keyCode==13){
+      // alert("Hello");
+
+        $('#field_proCate').click();
+      }
+  });
+    $('#field_barcode').bind('keypress', function(e) {
+      if(e.keyCode==13){
+        $('#field_brand').focus();
+      }
+  });
+    $('#field_brand').bind('keypress', function(e) {
+      if(e.keyCode==13){
+        $('#field_notes').focus();
+      }
+  });
+  },[])
+
   return (
     <div>
       <div className="GeneralInformationEditContainer">
@@ -248,6 +273,7 @@ const GeneralInformationEdit = (props) => {
             <select
               value={productType}
               onChange={(e) => setProductType(e.target.value)}
+              id="field_productType"
             >
               <option value="">Select any one</option>
               {proTypes.map((item, index) => {
@@ -259,9 +285,6 @@ const GeneralInformationEdit = (props) => {
                   </>
                 );
               })}
-
-              <option value="Service">Service</option>
-              <option value="Storable Product">Storable Product</option>
             </select>
           </div>
           <div className="Editfirstcontent">
@@ -269,6 +292,7 @@ const GeneralInformationEdit = (props) => {
             <select
               value={productCategory}
               onChange={(e) => handleProductCategory(e)}
+              id="field_proCate"
             >
                <option value="">Select any one</option>
               {proCate.map((item, index) => {
@@ -285,6 +309,7 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent2">
             <p>Product Code</p>
             <input
+            id="field_code"
               type="text"
               value={proCode}
               readOnly={true}
@@ -293,11 +318,11 @@ const GeneralInformationEdit = (props) => {
           </div>
           <div className="Editfirstcontent2">
             <p>Barcode</p>
-            <input type="text" value={barcode} onChange={(e) => setBarcode(e.target.value)}/>
+            <input type="text"  id="field_barcode" value={barcode} onChange={(e) => setBarcode(e.target.value)}/>
           </div>
           <div className="Editfirstcontent">
             <p> Product Brand</p>
-            <select value={productBrand} onChange={(e) => setProductBrand(e.target.value)}>
+            <select value={productBrand} onChange={(e) => setProductBrand(e.target.value)} id="field_brand">
               <option value="">Select Any One</option>
               {proBrand.map((item,index) => {
                 return(
@@ -310,6 +335,7 @@ const GeneralInformationEdit = (props) => {
           </div>
           <h5>Internal Notes</h5>
           <textarea
+          id="field_notes"
             placeholder="This note is only for internal purposes."
             value={interRef}
             onChange={(e) => setInterRef(e.target.value)}
@@ -320,10 +346,10 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Sales Price</p>
             <input
-              type="text"
+              type="number"
               placeholder="1.0000 SAR"
               value={salesPrice}
-              onChange={(e) => handleSalesPrice(e)}
+              onChange={(e) => setSalesPrice(e.target.value)}
             />
             {/* <FaArrowRight
               size="20px"
@@ -352,10 +378,10 @@ const GeneralInformationEdit = (props) => {
           <div className="Editfirstcontent3">
             <p>Cost</p>
             <input
-              type="text"
+              type="number"
               placeholder="0.0000 SAR per Units"
               value={cost}
-              onChange={(e) => handleCostPrice(e)}
+              onChange={(e) => setCost(e.target.value)}
               style={{
                 width: "400px",
                 border: "none",

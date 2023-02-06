@@ -174,9 +174,9 @@ const VariantsEdit = (props) => {
       });
   };
 
-  // useEffect(() => {
-  //   getAllAttribute();
-  // }, []);
+  useEffect(() => {
+    getAllAttribute();
+  }, []);
 
   const handleUpdate = (id) => {
     setShowModal(true);

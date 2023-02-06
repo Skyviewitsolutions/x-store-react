@@ -99,7 +99,7 @@ const Warehouse = () => {
     // console.log(orgValue , "orgValue")
     navigate("/AddWarehouse", { state: orgValue });
   };
-
+  
   const column = [
     { label: "Warehouse", name: "WAREHOUSE_NAME" },
     { label: "Location stock", name: "LOCATIONS_STOCK" },
@@ -138,6 +138,7 @@ const Warehouse = () => {
       },
     },
   ];
+
   return (
     <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
       <Navebar

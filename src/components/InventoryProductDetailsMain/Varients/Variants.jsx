@@ -11,7 +11,8 @@ import ProductTable from "../../ProductTable/ProductTable";
 const Variants = (props) => {
   
   const navigate = useNavigate();
-  const {productId} = props
+  const {productId} = props;
+  
   const getAuthtoken = localStorage.getItem("authtoken");
   const userAuth = localStorage.getItem("userAuth");
   const [singleVarients , setSingleVarients] = useState([])

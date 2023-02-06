@@ -154,7 +154,8 @@ console.log("getAll")
 
   const updatedVendorListUrl = endpoints.products.vendorListUpdate
 
-  const handleUpdate = (id) =>{
+  const handleUpdate = (e,id) =>{
+    e.preventDefault();
    setModalShow(true);
 
    var selectedVendorlist = allVendorList.filter((itm , ind) => {

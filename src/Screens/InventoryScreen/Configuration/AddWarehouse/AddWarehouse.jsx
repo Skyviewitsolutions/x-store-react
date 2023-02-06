@@ -11,6 +11,7 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import $ from "jquery";
 
 
 const AddWarehouse = (props) => {
@@ -181,6 +182,19 @@ const AddWarehouse = (props) => {
 
   };
 
+  useEffect(() => {
+    $('#field_warehouse').bind('keypress', function(e) {
+      if(e.keyCode==13){
+        $('#field_shortname').focus();
+      }
+  });
+    $('#field_shortname').bind('keypress', function(e) {
+      if(e.keyCode==13){
+        $('#select_address').focus();
+      }
+  });
+  },[])
+
   return (
     <>
       <Navebar
@@ -205,6 +219,7 @@ const AddWarehouse = (props) => {
         <div className="Createcontent">
           <p>Warehouse</p>
           <input
+          id="field_warehouse"
             type="text"
             placeholder="Al-Enjaz Contracting & Trading Company"
             value={warehouseName}
@@ -216,6 +231,7 @@ const AddWarehouse = (props) => {
             <div className="textIn">
               <p>Short Name</p>
               <input
+              id="field_shortname"
                 type="text"
                 value={shortName}
                 onChange={(e) => setShortname(e.target.value)}
@@ -225,6 +241,7 @@ const AddWarehouse = (props) => {
             <div className="Adddropdown">
               <p>Address</p>
               <select
+              id="select_address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               >
@@ -268,6 +285,7 @@ const AddWarehouse = (props) => {
               setMenufactureResupply={setMenufactureResupply}
               manufacture={manufacture}
               setManufacture={setManufacture}
+         
             />
           )}
         </div>

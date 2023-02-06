@@ -22,6 +22,7 @@ import InventoryProductDetailsFooter from "../InventoryProductDetailsFooter/Inve
 import axios from "axios";
 import ProductBarcode from "./ProductBarcode/ProductBarcode";
 import ProBarcode from "./ProductBarcode/ProBarcode";
+import $ from "jquery";
 
 
 const InventoryProductDetailsMain = (props) => {
@@ -103,6 +104,10 @@ const InventoryProductDetailsMain = (props) => {
       navigate("/Empty", { state: val });
     }
   };
+
+
+  
+
 
   return (
     <div className="MainContainer">

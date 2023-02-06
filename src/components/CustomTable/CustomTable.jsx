@@ -3,6 +3,7 @@ import MUIDataTable from "mui-datatables";
 // import { data} from './data';
 import "./ProductTab.css";
 import { createTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const CustomTable = (props) => {
   const { data, column } = props;
@@ -13,6 +14,16 @@ const CustomTable = (props) => {
   //     { label: 'Ratings', name: 'rating' }
   //   ];
 
+  const navigate = useNavigate()
+
+  const onRowClick = (rowData) => {
+    console.log("----RowClick" ,rowData);
+    console.log("rowData: ",);
+    console.log("rowMeta: ");
+    // navigate('/AddWarehouse')
+
+  }
+
   const options = {
     search: true,
     download: true,
@@ -20,6 +31,7 @@ const CustomTable = (props) => {
     viewColumns: true,
     filter: true,
     filterType: "dropdown",
+    onCellClick:onRowClick,
     selectableRows: false,
     onTableChange: (action, state) => {
       console.log(action);
@@ -73,10 +85,8 @@ const CustomTable = (props) => {
           // titl='Books Directory'
           options={options}
         />
-
-        <h2 onClick={printDiv}>download</h2>
-
-        {/* here we are creating a demo table just for printing the demo */}
+  {/* here we are creating a demo table just for printing the demo */}
+        {/* <h2 onClick={printDiv}>download</h2> 
        <div className="customtable" id="GFG">
         <table border='1'>
           <thead>
@@ -109,7 +119,7 @@ const CustomTable = (props) => {
             })}
           </tbody>
         </table>
-        </div>
+        </div> */}
       </div>
     </>
   );

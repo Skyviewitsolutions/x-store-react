@@ -152,6 +152,9 @@ import AccProductDetails from "./Screens/AccountScreen/AccountProduct/AccProduct
 import Employee from "./Screens/EmplyoeeScreen/Employee/Employee";
 import AddHeadManager from "./Screens/EmplyoeeScreen/HeadManager/AddHeadManager/AddHeadManager";
 import HeadManager from "./Screens/EmplyoeeScreen/HeadManager/HeadManager";
+import RFQInvoice from "./Screens/PurchaseScreen/Invence/RFQInvoice";
+import MainRFQ from "./Screens/PurchaseScreen/Invence/MainRFQ";
+import PAInvoice from "./Screens/PurchaseScreen/Invence/PAInvoice";
 
 const App = () => {
  
@@ -329,9 +332,11 @@ const App = () => {
        <Route path='/AddWorkAddress' element={<AddWorkAddress/>} />
        <Route path='/HeadManager' element={<HeadManager/>} />
        <Route path ='/AddHeadManager' element={<AddHeadManager/>} />
-      {/* <Route path='/Testing' element={<Testing/>} />
-      <Route path='/AllCoupon' element={<AllCoupon/>} /> */}
-
+      {/* <Route path='/Testing' element={<Testing/>} /> */}
+      {/* <Route path='/AllCoupon' element={<AllCoupon/>} /> */}
+      <Route path="/RFQInvoice" element={<RFQInvoice/>} />
+      <Route path="/MainRFQ" element={<MainRFQ/>} />
+      <Route path="/PAInvoice" element={<PAInvoice/>}/>
 
 
       </Routes>

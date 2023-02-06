@@ -3,7 +3,7 @@ import "./WarehouseConfig.css";
 
 const WarehouseConfig = (props) => {
   const {
-  buy,setBuy,resupply,setResupply,menufactureResupply,setMenufactureResupply,manufacture,setManufacture
+  buy,setBuy,resupply,setResupply,menufactureResupply,setMenufactureResupply,manufacture,setManufacture,
   } = props;
 
   console.log(resupply , "resupply here");
