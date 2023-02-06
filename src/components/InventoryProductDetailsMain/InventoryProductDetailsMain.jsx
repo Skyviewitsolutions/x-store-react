@@ -72,8 +72,6 @@ const InventoryProductDetailsMain = (props) => {
     setFiles,
     selectedVID,
     setSelectedVID,
-  
-
   } = props;
 
   const handleChange = (e) => {

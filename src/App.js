@@ -155,6 +155,7 @@ import HeadManager from "./Screens/EmplyoeeScreen/HeadManager/HeadManager";
 import RFQInvoice from "./Screens/PurchaseScreen/Invence/RFQInvoice";
 import MainRFQ from "./Screens/PurchaseScreen/Invence/MainRFQ";
 import PAInvoice from "./Screens/PurchaseScreen/Invence/PAInvoice";
+import RequestForQuotionDetails from "./Screens/PurchaseScreen/RequestsforQuotation/RequestForQuotionDetails";
 
 const App = () => {
  
@@ -316,8 +317,9 @@ const App = () => {
        <Route path='/AddPurchaseAgreement' element={<AddPurchaseAgreement/>}/>
        <Route path='/PurchaseVendor'  element={<PurchaseVendors/>} />
        <Route path='/AddPurchaseVendor' element={<AddPurchaseVendors/>} /> 
-     
+       <Route path="/RequestForQuotaion/Details/:requestForQuotationId" element={<RequestForQuotionDetails/>} />
        {/* -------------------------------------Employee Screens-------------------------------- */}
+
        <Route path="/Employee" element={<Employee/>} />
        <Route path='/AddEmployee' element={<AddEmployee/>} />
        <Route path='/Manager' element={<Manager/>} />

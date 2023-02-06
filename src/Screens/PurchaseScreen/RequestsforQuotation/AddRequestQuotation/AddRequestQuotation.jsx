@@ -16,6 +16,7 @@ import { FiEdit } from "react-icons/fi";
 
 
 const AddRequestQuotation = (props) => {
+
   const navigate = useNavigate();
   const [events, setEvents] = useState("Products");
 
@@ -790,7 +791,7 @@ const getVendorProductList = (name) => {
           </Nav>
         </div>
         <div className="Warehouse">
-          {events === "Products" && <AddProductRequest vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} requestId={requestId} singleProduct={singleProduct} setSingleProduct={setSingleProduct} uniqueId={requestId} allVendorProduct={allVendorProduct} getAuthtoken={getAuthtoken} userAuth={userAuth}/>}
+          {events === "Products" && <AddProductRequest getAllproductdetails={getAllproductdetails} vendor={vendor} termsCondition={termsCondition} setTermsCondition={setTermsCondition} column={column} productAll={productAll} modalShow={modalShow} setModalShow={setModalShow} saveProduct={saveProduct} setProductDet={setProductDet} setDescription={setDescription} setQuantity={setQuantity} setUomdet={setUomdet}   setVendor={setVendor}  productdet={productdet} description={description} quantity={quantity} uomdet={uomdet} deleteItem={deleteItem} updateSelectedProductList={updateSelectedProductList} updateProductDetails={updateProductDetails} column2={column2} requestId={requestId} singleProduct={singleProduct} setSingleProduct={setSingleProduct} uniqueId={requestId} allVendorProduct={allVendorProduct} getAuthtoken={getAuthtoken} userAuth={userAuth}/>}
           {events === "Other Information" && <OtherInfo recepitDate={recepitDate} setRecepitDate={setRecepitDate} incoTerms={incoTerms} setIncoTerms={setIncoTerms} purchaseRep={purchaseRep} setPurchaseRep={setPurchaseRep} fisicalPosition={fisicalPosition} setFisicalPosition={setFisicalPosition} />}
         </div>
       </div> 

@@ -17,6 +17,7 @@ const AddProductRequest = (props) => {
     modalShow,
     setModalShow,
     productdet,
+    getAllproductdetails,
     setProductDet,
     description,
     setDescription,
@@ -48,17 +49,14 @@ const AddProductRequest = (props) => {
   const addReqProductUrl = endpoints.requestQuotation.addRequestQuotation;
 
   const handleProductSelection = (val) => {
+
     var filterProduct = allVendorProduct.filter((product, index) => {
       return product.PRODUCT_NAME == val;
     });
 
     var filterProducts = filterProduct[0]
-    console.log(filterProducts,"all prodyuxcr")
-    setSelectedProductList((itm) => {
-      return [...itm, filterProduct[0]];
-    });
-
-    const formData = new FormData()
+   
+    const formData = new FormData();
     formData.append("Product_ID" ,filterProducts.PRODUCT_ID);
     formData.append("UOM_ID" ,filterProducts.UNITOFMEASUREMENT_ID);
     formData.append("Description",filterProducts.PRODUCT_DESCRIPTION);
@@ -67,7 +65,16 @@ const AddProductRequest = (props) => {
     formData.append("User_AuthKey", userAuth);
     axios.post(addReqProductUrl,formData)
     .then((res) => {
-      console.log(res,"response")
+      if(res.data.status){
+        setSelectedProductList((itm) => {
+          return [...itm, filterProduct[0]];
+        });
+    
+        toast("product added successfully" , {toast : "success"})
+      }
+      else if(res.data.status == false){
+        toast(res.data.message , {type : "warning"})
+      }
     })
     .catch((err) => {
       console.log(err,"dsfs")
@@ -76,11 +83,48 @@ const AddProductRequest = (props) => {
 
   };
 
+  const deleteProductDetailsUrl = endpoints.requestQuotation.deleteProductdetails;
+
   const removeSelectedItem = (index) => {
     const filteredData = selectedProductList.filter((itm, ind) => {
       return ind != index;
     });
-    setSelectedProductList(filteredData);
+   
+    var selectedData = selectedProductList.find((itm,ind) =>{
+      return ind == index
+    })
+
+    console.log(selectedData , "dd")
+
+    var id = selectedData.ID
+
+    const formData = new FormData();
+    formData.append("ID" , id);
+    formData.append("User_Authorization", getAuthtoken);
+    formData.append("User_AuthKey", userAuth);
+    axios.post(deleteProductDetailsUrl,formData)
+    .then((res) => {
+      if(res.data.status === true)
+      {
+        setSelectedProductList(filteredData);
+          toast("Product deleted Successfully",{type:"success"});
+          getAllproductdetails()
+      }
+      else if(res.data.status === false)
+      {
+        if(res.data.code === 3)
+        {
+          toast("Session expired , Please re-login",{type:"warning"})
+          navigate('/');
+        }
+        else{
+         toast(res.data.mrssage,{type:"error"});
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err,"error");
+  })
   };
 
   return (
@@ -130,7 +174,6 @@ const AddProductRequest = (props) => {
           <tbody>
             {selectedProductList.length != 0 &&
               selectedProductList.map((itm, index) => {
-                console.log(itm, "items here");
                 return (
                   <>
                     <tr className="pro_dropdowns">

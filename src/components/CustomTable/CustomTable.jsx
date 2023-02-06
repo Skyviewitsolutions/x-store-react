@@ -6,7 +6,8 @@ import { createTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 const CustomTable = (props) => {
-  const { data, column } = props;
+
+  const { data, column , rowClicked } = props;
   // const columns = [
   //     { label: 'Title', name: 'title' },
   //     { label: 'Author', name: 'authors' },
@@ -16,13 +17,7 @@ const CustomTable = (props) => {
 
   const navigate = useNavigate()
 
-  const onRowClick = (rowData) => {
-    console.log("----RowClick" ,rowData);
-    console.log("rowData: ",);
-    console.log("rowMeta: ");
-    // navigate('/AddWarehouse')
-
-  }
+  
 
   const options = {
     search: true,
@@ -31,7 +26,7 @@ const CustomTable = (props) => {
     viewColumns: true,
     filter: true,
     filterType: "dropdown",
-    onCellClick:onRowClick,
+    onRowClick : rowClicked,
     selectableRows: false,
     onTableChange: (action, state) => {
       console.log(action);

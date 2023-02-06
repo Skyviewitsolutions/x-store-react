@@ -10,9 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { endpoints } from "../../../services/endpoints";
 import { useNavigate } from "react-router-dom";
 
-
 const AddProduct = () => {
-  
   const navigate = useNavigate();
   const url = endpoints.products.addProduct;
 
@@ -30,8 +28,9 @@ const AddProduct = () => {
   const [interRef, setInterRef] = useState("");
   const [customerTax, setCustomerTax] = useState("");
   const [description, setDescription] = useState("");
-  const [unitOfMeasurementId , setUnitOfMeasurementId] = useState("");
-  const [purchaseUnitOfMeasuremntId , setPurchaseUnitOfMeasurementId] = useState("");
+  const [unitOfMeasurementId, setUnitOfMeasurementId] = useState("");
+  const [purchaseUnitOfMeasuremntId, setPurchaseUnitOfMeasurementId] =
+    useState("");
   const [unitOfMeasurement, setUnitOfMeasurement] = useState("");
   const [purchaseUnitOfMeasuremnt, setPurchaseUnitOfMeasurement] = useState("");
   const [weight, setWeight] = useState("");
@@ -82,23 +81,25 @@ const AddProduct = () => {
   }, []);
 
   const save = () => {
-    
     if (productName === "") {
       toast("Product name required !", { type: "warning" });
     } else if (cost === "") {
       toast("Cost is required !", { type: "warning" });
     } else if (salesPrice === "") {
       toast("Sales Price is reqiured !", { type: "warning" });
+    } else if (salesPrice < cost) {
+      toast("SalesPrice cannot be less than cost price", { type: "warning" });
+    } else if (cost > salesPrice) {
+      toast("Cost price cannot be greater than sales price", {  type: "warning" });
     } else if (customerTax === "") {
       toast("Customer Tax is required", { type: "warning" });
     } else if (customerLeadTime === "") {
       toast("Customer lead time is required", { type: "warning" });
-    }else if (productImg === "") {
+    } else if (productImg === "") {
       toast("product image is required", { type: "warning" });
-    } else if(interRef === ""){
-      toast("Internal Notes is required !",{type:"warning"})
-    }
-    else {
+    } else if (interRef === "") {
+      toast("Internal Notes is required !", { type: "warning" });
+    } else {
       const formData = new FormData();
       formData.append("Product_Name", productName);
       formData.append("Product_Type", productType);
@@ -148,13 +149,13 @@ const AddProduct = () => {
           if (res.data.status === true) {
             toast("Product Added Successfully", { type: "success" });
             setTimeout(() => {
-              navigate('/InventoryProducts')
+              navigate("/InventoryProducts");
             }, 1000);
           } else if (res.data.status === false) {
             if (res.data.code === 3) {
               toast("Session expired , Please re-login", { type: "warning" });
               navigate("/");
-            }else {
+            } else {
               toast(res.data.message, { type: "error" });
             }
           }
@@ -166,7 +167,6 @@ const AddProduct = () => {
     }
   };
 
-  
   return (
     <div>
       <Navebar showBelowMenu={false} />
@@ -259,7 +259,6 @@ const AddProduct = () => {
         </Modal> */}
       <ToastContainer />
       {/* <ProductCategoryPopup /> */}
-      
     </div>
   );
 };

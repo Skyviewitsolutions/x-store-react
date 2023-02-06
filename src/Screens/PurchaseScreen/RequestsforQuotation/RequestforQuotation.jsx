@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { generatePath, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import CustomTable from "../../../components/CustomTable/CustomTable";
 import Loader from "../../../components/Loader/Loader";
@@ -11,6 +11,7 @@ import DeletePopup from "../../../components/Model/DeletePopup/DeletePopup";
 import { endpoints } from "../../../services/endpoints";
 import PurchaseNavbar from "../PurchaseNavbar";
 import "./AddRequestQuotation/AddRequestQuotation.css";
+import {genaratePath} from "react-router-dom";
 
 const RequestforQuotation = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const RequestforQuotation = () => {
           const filterRFQ = val.filter((itm, ind) => {
             return itm.DELETE_STATUS != "X";
           });
-          console.log(val,"all data here")
+          console.log(val, "all data here");
           setRequestQuotationAll(filterRFQ);
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
@@ -115,11 +116,12 @@ const RequestforQuotation = () => {
     { label: "Order Date", name: "ORDER_DATE" },
     { label: "Vendor", name: "VENDOR_NAME" },
     { label: "Purchase Representative", name: "PURCHASE_REPRESENTATIVE" },
+    // { label : "IDs" , name : "Id" , options : { customBodyRender : (value) => { return <span style={{display : "none"}}>{value}</span>}}},
     {
       label: "Actions",
       name: "ID",
       options: {
-        print:false,
+        print: false,
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <>
@@ -130,10 +132,15 @@ const RequestforQuotation = () => {
                   style={{ cursor: "pointer" }}
                   onClick={() => handleUpdate(value)}
                 />
-                 <MdDelete size={23} color="#4f434d" onClick={() => {
+                <MdDelete
+                  size={23}
+                  color="#4f434d"
+                  onClick={() => {
                     setShow(true);
-                    setSelectedData(value)
-                  }}  style={{cursor:"pointer"}}/>
+                    setSelectedData(value);
+                  }}
+                  style={{ cursor: "pointer" }}
+                />
               </div>
             </>
           );
@@ -141,6 +148,19 @@ const RequestforQuotation = () => {
       },
     },
   ];
+
+
+  const rowClicked = (rowData , rowMeta) =>{
+   var rowId = rowMeta.rowIndex;
+   var selectedRow = requestQuotationAll[rowId];
+   var dataId = selectedRow.ID;
+
+   var path = generatePath("/RequestForQuotaion/Details/:requestForQuotationId" , {
+    requestForQuotationId : dataId
+   })
+   navigate(path)
+  }
+
   return (
     <div>
       <PurchaseNavbar
@@ -148,11 +168,13 @@ const RequestforQuotation = () => {
         title="Requests for Quotation"
         handleCreatePage={handleCreatePage}
       />
-      <CustomTable data={requestQuotationAll} column={column} />
+      <CustomTable data={requestQuotationAll} column={column} rowClicked={rowClicked} />
       {loading === true && <Loader />}
-      <DeletePopup show={show}
-            setShow={setShow}
-            setDeleteConfirm={setDeleteConfirm}/>
+      <DeletePopup
+        show={show}
+        setShow={setShow}
+        setDeleteConfirm={setDeleteConfirm}
+      />
       <ToastContainer />
     </div>
   );
