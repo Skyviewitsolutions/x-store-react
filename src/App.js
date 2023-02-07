@@ -187,6 +187,7 @@ const App = () => {
         <Route path="/AccProductCard" element={<AccProductCard/>} />
 
         {/* inside projects */}
+        
         <Route path="/Dashboard" element={<Dashboard/>} />
         <Route path="/Inventory" element={<InventoryScreen/>} />
         <Route path="/InventoryVarient" element={<InventoryVarient/>} />

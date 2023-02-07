@@ -38,13 +38,14 @@ const AddProductRequest = (props) => {
     setSingleProduct,
     uniqueId,
     allVendorProduct,
+    selectedProductList ,
     setAllVendorProduct,
+    setSelectedProductList,
     getAuthtoken,
     userAuth
   } = props;
 
   // const [showTable , setShowTable] = useState(false)
-  const [selectedProductList, setSelectedProductList] = useState([]);
 
   const addReqProductUrl = endpoints.requestQuotation.addProductdetails;
 
@@ -125,6 +126,8 @@ const AddProductRequest = (props) => {
       console.log(err,"error");
   })
   };
+
+  console.log(selectedProductList , "selectedProduct list")
 
   return (
     <div>

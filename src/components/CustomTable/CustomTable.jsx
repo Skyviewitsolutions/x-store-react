@@ -26,7 +26,7 @@ const CustomTable = (props) => {
     viewColumns: true,
     filter: true,
     filterType: "dropdown",
-    onRowClick : rowClicked,
+    // onRowClick : rowClicked,
     selectableRows: false,
     onTableChange: (action, state) => {
       console.log(action);

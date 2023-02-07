@@ -12,6 +12,8 @@ import { endpoints } from "../../../services/endpoints";
 import PurchaseNavbar from "../PurchaseNavbar";
 import "./AddRequestQuotation/AddRequestQuotation.css";
 import {genaratePath} from "react-router-dom";
+import {AiOutlineEye} from "react-icons/ai"
+
 
 const RequestforQuotation = () => {
   const navigate = useNavigate();
@@ -102,7 +104,6 @@ const RequestforQuotation = () => {
   }, [deleteConfirm]);
 
   const handleUpdate = (data) => {
-    console.log(data, "value");
     const val = requestQuotationAll.filter((itm, index) => {
       return itm.ID == data;
     });
@@ -110,6 +111,34 @@ const RequestforQuotation = () => {
     console.log(orgValue, "irhhcbsdh");
     navigate("/AddRequestQuotation", { state: orgValue });
   };
+
+  // const rowClicked = (rowData , rowMeta) =>{
+  //   var rowId = rowMeta.rowIndex;
+  //   var selectedRow = requestQuotationAll[rowId];
+  //   var dataId = selectedRow.VENDOR_ID;
+  //   var rfqID = selectedRow.ID;
+  //   var path = generatePath("/RequestForQuotaion/Details/:VendorId/:RFQID" , {
+  //    VendorId : dataId,
+  //    RFQID : rfqID
+ 
+  //   })
+  //   navigate(path)
+  //  }
+
+  const handleDetails = (data) =>{
+    const val = requestQuotationAll.filter((itm, index) => {
+      return itm.ID == data;
+    });
+    const orgValue = val[0];
+    var dataId = orgValue.VENDOR_ID;
+    var rfqID = orgValue.ID;
+    var path = generatePath("/RequestForQuotaion/Details/:VendorId/:RFQID" , {
+     VendorId : dataId,
+     RFQID : rfqID
+ 
+    })
+    navigate(path)
+  }
 
   const column = [
     { label: "Refrence", name: "VENDOR_REFERENCE" },
@@ -141,6 +170,11 @@ const RequestforQuotation = () => {
                   }}
                   style={{ cursor: "pointer" }}
                 />
+                <AiOutlineEye 
+                  size={23}
+                  color="#4f434d"
+                  onClick={() => handleDetails(value)}
+                />
               </div>
             </>
           );
@@ -150,18 +184,7 @@ const RequestforQuotation = () => {
   ];
 
 
-  const rowClicked = (rowData , rowMeta) =>{
-   var rowId = rowMeta.rowIndex;
-   var selectedRow = requestQuotationAll[rowId];
-   var dataId = selectedRow.VENDOR_ID;
-   var rfqID = selectedRow.ID;
-   var path = generatePath("/RequestForQuotaion/Details/:VendorId/:RFQID" , {
-    VendorId : dataId,
-    RFQID : rfqID
-
-   })
-   navigate(path)
-  }
+  
 
   return (
     <div>
@@ -170,7 +193,7 @@ const RequestforQuotation = () => {
         title="Requests for Quotation"
         handleCreatePage={handleCreatePage}
       />
-      <CustomTable data={requestQuotationAll} column={column} rowClicked={rowClicked} />
+      <CustomTable data={requestQuotationAll} column={column}  />
       {loading === true && <Loader />}
       <DeletePopup
         show={show}
