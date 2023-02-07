@@ -46,7 +46,7 @@ const AddProductRequest = (props) => {
   // const [showTable , setShowTable] = useState(false)
   const [selectedProductList, setSelectedProductList] = useState([]);
 
-  const addReqProductUrl = endpoints.requestQuotation.addRequestQuotation;
+  const addReqProductUrl = endpoints.requestQuotation.addProductdetails;
 
   const handleProductSelection = (val) => {
 
@@ -69,7 +69,6 @@ const AddProductRequest = (props) => {
         setSelectedProductList((itm) => {
           return [...itm, filterProduct[0]];
         });
-    
         toast("product added successfully" , {toast : "success"})
       }
       else if(res.data.status == false){
@@ -106,7 +105,7 @@ const AddProductRequest = (props) => {
     .then((res) => {
       if(res.data.status === true)
       {
-        setSelectedProductList(filteredData);
+          setSelectedProductList(filteredData);
           toast("Product deleted Successfully",{type:"success"});
           getAllproductdetails()
       }

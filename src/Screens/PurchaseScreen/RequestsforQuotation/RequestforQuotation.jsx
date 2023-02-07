@@ -153,10 +153,12 @@ const RequestforQuotation = () => {
   const rowClicked = (rowData , rowMeta) =>{
    var rowId = rowMeta.rowIndex;
    var selectedRow = requestQuotationAll[rowId];
-   var dataId = selectedRow.ID;
+   var dataId = selectedRow.VENDOR_ID;
+   var rfqID = selectedRow.ID;
+   var path = generatePath("/RequestForQuotaion/Details/:VendorId/:RFQID" , {
+    VendorId : dataId,
+    RFQID : rfqID
 
-   var path = generatePath("/RequestForQuotaion/Details/:requestForQuotationId" , {
-    requestForQuotationId : dataId
    })
    navigate(path)
   }

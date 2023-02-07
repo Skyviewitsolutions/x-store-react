@@ -317,7 +317,7 @@ const App = () => {
        <Route path='/AddPurchaseAgreement' element={<AddPurchaseAgreement/>}/>
        <Route path='/PurchaseVendor'  element={<PurchaseVendors/>} />
        <Route path='/AddPurchaseVendor' element={<AddPurchaseVendors/>} /> 
-       <Route path="/RequestForQuotaion/Details/:requestForQuotationId" element={<RequestForQuotionDetails/>} />
+       <Route path="/RequestForQuotaion/Details/:VendorId/:RFQID" element={<RequestForQuotionDetails/>} />
        {/* -------------------------------------Employee Screens-------------------------------- */}
 
        <Route path="/Employee" element={<Employee/>} />

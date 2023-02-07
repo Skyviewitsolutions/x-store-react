@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import skyview from "../../../assets/Images/Asset 2.png";
-const MainRFQ = () => {
+
+const MainRFQ = (props) => {
+ const {singleRFQ ,singleProduct} = props  
   return (
     <div
       style={{
@@ -10,6 +13,7 @@ const MainRFQ = () => {
         height: "auto",
         display: "flow-root",
       }}
+      // ref={componentRef}
     >
       <div
         style={{
@@ -31,7 +35,7 @@ const MainRFQ = () => {
             marginTop: "10px",
           }}
         >
-          X-Store Market
+        {singleRFQ.CREATE_BY}
         </p>
       </div>
 
@@ -52,7 +56,7 @@ const MainRFQ = () => {
               fontFamily: "sans-serif",
             }}
           >
-            Xstore Market
+       {singleRFQ.CREATE_BY}
           </p>
           <p
             style={{
@@ -85,7 +89,7 @@ const MainRFQ = () => {
               fontFamily: "sans-serif",
             }}
           >
-            Lucknow
+          {singleRFQ.DESTINATION_LOCATION}
           </p>
         </div>
         <div>
@@ -146,74 +150,36 @@ const MainRFQ = () => {
           marginTop: "10px",
         }}
       >
-        Request for Quotation P03578
+        Request for Quotation {singleRFQ.RFQ_CODE}
       </h3>
-      {/* <div style={{ display: "flex", width: "50%" }}>
-        <div>
-          <p
-            style={{
-              marginBottom: "0px",
-              color: "black",
-              fontSize: "15px",
-              fontWeight: "500",
-            }}
-          >
-            Purchase
-          </p>
-          <p
-            style={{
-              marginBottom: "0px",
-              color: "black",
-              fontSize: "15px",
-              fontWeight: "500",
-            }}
-          >
-            Representative:
-          </p>
-          <p
-            style={{
-              marginBottom: "0px",
-              color: "black",
-              fontSize: "15px",
-              fontWeight: "400",
-              fontFamily: "sans-serif",
-            }}
-          >
-            Accountant-Ryd
-          </p>
-        </div>
-        <div style={{ marginLeft: "25%" }}>
-          <p
-            style={{
-              marginBottom: "5px",
-              color: "black",
-              fontSize: "15px",
-              fontWeight: "500",
-            }}
-          >
-            Order Date:
-          </p>
-          <p
-            style={{
-              marginBottom: "0px",
-              color: "#666666",
-              fontSize: "14px",
-              fontWeight: "400",
-              fontFamily: "sans-serif",
-            }}
-          >
-            13/01/2023 09:44:23
-          </p>
-        </div>
-      </div> */}
-      <div style={{ marginTop: "20px", width: "100%" }}>
-        <table>
-          <tr style={{ borderTop: "1px solid #cccc",display:'flex',justifyContent:'space-between',paddingTop:'5px'}}>
-            <th style={{  textAlign: "center" }}>Description</th>
-            <th style={{  textAlign: "center" }}>Expected Date </th>
-            <th style={{  textAlign: "center" }}>Qty</th>
+
+      <div style={{ margin: "20px", width: "100%" }}>
+      <table style={{ textAlign: "center",padding:"2px 5px" ,border:'1px solid #cccc'}}>
+          <tr>
+            <th style={{border
+            :"1px solid #cccc",padding:"2px 5px"}}>Description</th>
+            <th  style={{border
+            :"1px solid #cccc",padding:"2px 5px"}}>Expected Date </th>
+            <th  style={{border
+            :"1px solid #cccc",padding:"2px 5px"}}>Qty</th>
           </tr>
-        </table>
+    
+            {singleProduct.map((itm, ind) => {
+              return (
+                <>
+                
+                <tr>
+                  <td  style={{border:
+          "1px solid #cccc",width:'300px',padding:"2px 5px"}}>{itm.DESCRIPTION}</td>
+                  <td  style={{border
+            :"1px solid #cccc",padding:"2px 5px"}}>{itm.CREATE_DATE}</td>
+                  <td  style={{border
+            :"1px solid #cccc",padding:"2px 5px"}}>{itm.PRODUCT_QUANTITY}</td>
+                  </tr>
+                </>
+              );
+            })}
+      </table>
       </div>
 
       {/* <div>

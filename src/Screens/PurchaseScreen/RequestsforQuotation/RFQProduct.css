@@ -1,0 +1,7 @@
+.rfq_products table,.rfq_products th, .rfq_products td {
+    border:1px solid #cccc;
+    padding: 2px 5px;
+  }
+  .rfq_products{
+    margin: 10px 20px;
+  }

@@ -89,7 +89,7 @@ const AddRequestQuotation = (props) => {
       toast("Purchase Representative is required", { type: "warning" });
     } else {
       const formData = new FormData();
-      formData.append("Vendor_ID", vendor);
+      formData.append("Vendor_ID", vendorId);
       formData.append("Purchase_Type", purchaseType);
       formData.append("Vendor_Reference", vendorRef);
       formData.append("Payment_Terms", paymentTerms);
@@ -209,7 +209,7 @@ const AddRequestQuotation = (props) => {
 
   const locations = useLocation();
   const selectedData = locations.state;
-  console.log(selectedData , "selectedData here");
+  // console.log(selectedData , "selectedData here");
    
   const updateRequest = endpoints.requestQuotation.updatrRequestQuotation;
 
@@ -261,7 +261,7 @@ const AddRequestQuotation = (props) => {
     } else {
       const formData = new FormData();
       formData.append("ID" , requestId);
-      formData.append("Vendor_ID", vendor);
+      formData.append("Vendor_ID", vendorId);
       formData.append("Purchase_Type", purchaseType);
       formData.append("Vendor_Reference", vendorRef);
       formData.append("Payment_Terms", paymentTerms);
@@ -605,13 +605,12 @@ const VendorProductUrl = endpoints.requestQuotation.vendorAllProduct;
 
 const getVendorProductList = (name) => {
   const filterData = vendorAll.filter((itm,ind) => {
-
     return  itm.VENDOR_NAME == name;
-    
   })
 
     var id = filterData[0].VENDOR_ID
-  setVendorId(filterData[0].VENDOR_ID)
+  setVendorId(filterData[0].VENDOR_ID);
+
   setVendor(filterData[0].VENDOR_NAME);
 
  const formData = new FormData() 
@@ -630,6 +629,7 @@ const getVendorProductList = (name) => {
   console.log(err,"error")
  })
 }
+
 
 
 

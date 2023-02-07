@@ -1,6 +1,6 @@
-.Detailsheader{
+.DetailsMainheader{
     width: 100%;
-    border: 1px solid red;
+    border-bottom: 1px solid #cccccc;
 }
 .Detaialsheader{
     width: 100%;
