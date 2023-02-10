@@ -52,9 +52,6 @@ const AddShippingMethod = () => {
   const [state, setState] = useState("");
   const [zipfrom, setZipFrom] = useState("");
   const [zipto, setZipTo] = useState("");
-
- 
-
   const save = () => {
     if(name === "") {
       toast("Name is required !", { type: "warning" });

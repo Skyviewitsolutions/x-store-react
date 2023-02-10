@@ -356,6 +356,14 @@ export const endpoints = {
     deletePromotion : BASE_URL + "/SalesDepartment/Promotion/Delete",
     getById : BASE_URL + "/SalesDepartment/Promotion/GetByID",
   },
+  SalesTeams:{
+    allSalesTeam : BASE_URL + "/SalesDepartment/SalesTeam/GetAll",
+    addSalesTeam : BASE_URL + "/SalesDepartment/SalesTeam/Add",
+    updateSalesTeam : BASE_URL + "/SalesDepartment/SalesTeam/Update",
+    deleteSalesTeam : BASE_URL + "/SalesDepartment/SalesTeam/Delete",
+    singleSalesTeam : BASE_URL + "/SalesDepartment/SalesTeam/GetSingle"
+
+  },
 
   // -------------------------------------Employee------------------------------
     Manager:{

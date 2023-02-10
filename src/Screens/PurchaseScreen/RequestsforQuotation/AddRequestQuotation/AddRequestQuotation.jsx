@@ -57,7 +57,7 @@ const AddRequestQuotation = (props) => {
   const [incoTerms, setIncoTerms] = useState("");
   const [purchaseRep, setPurchaseRep] = useState("");
   const [fisicalPosition, setFisicalPosition] = useState("");
-  const [update, setUpdate] = useState("");
+  const [update, setUpdate] = useState(false);
   const [requestId, setRequestId] = useState("");
 
   const save = () => {
@@ -300,6 +300,7 @@ const AddRequestQuotation = (props) => {
   const [paymentTermsAll, setPaymentTermsAll] = useState([]);
   const [vendor, setVendor] = useState("");
   const [selectedProductList, setSelectedProductList] = useState([]);
+  const [selectedProductList2 , setSelectedProductList2] = useState([])
 
 
   const [selectedProductsId, setSelectedProductsId] = useState("");
@@ -373,7 +374,7 @@ const AddRequestQuotation = (props) => {
             return itm.DELETE_STATUS != "X";
           });
           setSingleProduct(filteredProductDetails);
-          setSelectedProductList(filteredProductDetails)
+          setSelectedProductList2(filteredProductDetails)
           
         } else if (res.data.status === false) {
           if (res.data.code === 3) {
@@ -840,6 +841,8 @@ const AddRequestQuotation = (props) => {
               productdet={productdet}
               selectedProductList={selectedProductList}
               setSelectedProductList={setSelectedProductList}
+              selectedProductList2={selectedProductList2}
+              setSelectedProductList2={setSelectedProductList2}
               description={description}
               quantity={quantity}
               uomdet={uomdet}
@@ -854,6 +857,8 @@ const AddRequestQuotation = (props) => {
               allVendorProduct={allVendorProduct}
               getAuthtoken={getAuthtoken}
               userAuth={userAuth}
+              update={update}
+              setUpdate={setUpdate}
             />
           )}
           {events === "Other Information" && (

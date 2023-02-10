@@ -39,13 +39,18 @@ const AddProductRequest = (props) => {
     uniqueId,
     allVendorProduct,
     selectedProductList ,
+    selectedProductList2,
+    setSelectedProductList2,
     setAllVendorProduct,
     setSelectedProductList,
     getAuthtoken,
-    userAuth
+    userAuth,
+    update,
+    setUpdate
   } = props;
 
   // const [showTable , setShowTable] = useState(false)
+  console.log(selectedProductList2 , "selet")
 
   const addReqProductUrl = endpoints.requestQuotation.addProductdetails;
 
@@ -86,18 +91,14 @@ const AddProductRequest = (props) => {
   const deleteProductDetailsUrl = endpoints.requestQuotation.deleteProductdetails;
 
   const removeSelectedItem = (index) => {
+
     const filteredData = selectedProductList.filter((itm, ind) => {
       return ind != index;
     });
-   
     var selectedData = selectedProductList.find((itm,ind) =>{
       return ind == index
     })
-
-    console.log(selectedData , "dd")
-
     var id = selectedData.ID
-
     const formData = new FormData();
     formData.append("ID" , id);
     formData.append("User_Authorization", getAuthtoken);
@@ -203,6 +204,35 @@ const AddProductRequest = (props) => {
                   </>
                 );
               })}
+            {selectedProductList2.length != 0 &&
+              selectedProductList2.map((itm, index) => {
+                return (
+                  <>
+                    <tr className="pro_dropdowns">
+                      <td>{index + 1}</td>
+                      <td>
+                        {itm.PRODUCT_CODE} {itm.PRODUCT_NAME}
+                      </td>
+                      <td className="req_product_des">
+                        {" "}
+                        {itm.DESCRIPTION}
+                      </td>
+                      <td>{itm.PRODUCT_QUANTITY}</td>
+                      <td>{itm.UNIT_OF_MEASUREMENT}</td>
+                      <td>{itm.UNIT_PRICE}</td>
+                      <td>
+                        {" "}
+                        <MdDelete
+                          size={23}
+                          color="#4f4e4d"
+                          onClick={() => removeSelectedItem(index)}
+                          style={{ cursor: "pointer" }}
+                        />
+                      </td>
+                    </tr>
+                  </>
+                );
+              })}
 
             {modalShow && (
               <tr className="pro_dropdowns">
@@ -235,12 +265,13 @@ const AddProductRequest = (props) => {
           </tbody>
         </table>
       </div>
-      <button
+   {update === false &&  <button
         className="add_productbtn"
         onClick={() => setModalShow(!modalShow)}
       >
         Add Product
       </button>
+}
     </div>
   );
 };
